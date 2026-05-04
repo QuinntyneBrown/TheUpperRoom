@@ -13,7 +13,11 @@
     <ng-content />
   </div>
 
-  @if (dismissible) {
+  @if (actionLabel) {
+    <button mat-button class="ur-toast__action" type="button" (click)="selectAction()">
+      {{ actionLabel }}
+    </button>
+  } @else if (dismissible) {
     <button
       mat-icon-button
       class="ur-toast__dismiss"

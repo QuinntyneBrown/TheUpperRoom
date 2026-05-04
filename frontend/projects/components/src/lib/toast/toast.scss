@@ -62,3 +62,16 @@
   height: 32px;
   width: 32px;
 }
+
+.ur-toast__action {
+  --mat-button-text-label-text-color: var(--ur-accent-primary);
+  --mat-button-text-label-text-font: var(--ur-font-heading);
+  --mat-button-text-label-text-size: var(--ur-fs-sm);
+  --mat-button-text-label-text-weight: 600;
+  min-width: 0;
+  padding: 0 var(--ur-sp-2);
+}
+
+.ur-toast--danger .ur-toast__action {
+  --mat-button-text-label-text-color: var(--ur-danger);
+}

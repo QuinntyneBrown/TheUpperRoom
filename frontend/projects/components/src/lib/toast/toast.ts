@@ -23,8 +23,10 @@ export class UrToastComponent {
   @Input() icon = '';
   @Input() title = '';
   @Input() message = '';
+  @Input() actionLabel = '';
   @Input({ transform: booleanAttribute }) dismissible = true;
 
+  @Output() actionSelected = new EventEmitter<void>();
   @Output() dismissed = new EventEmitter<void>();
 
   get toastClass(): string {
@@ -48,5 +50,9 @@ export class UrToastComponent {
 
   dismiss(): void {
     this.dismissed.emit();
+  }
+
+  selectAction(): void {
+    this.actionSelected.emit();
   }
 }

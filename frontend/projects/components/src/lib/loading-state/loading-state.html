@@ -1,0 +1,28 @@
+<mat-card
+  class="ur-loading-state"
+  appearance="outlined"
+  aria-live="polite"
+  [attr.aria-label]="label"
+>
+  <div class="ur-loading-state__rows" aria-hidden="true">
+    @for (row of rowIndexes; track row) {
+      <div class="ur-loading-state__row">
+        <span class="ur-loading-state__avatar"></span>
+        <span class="ur-loading-state__lines">
+          <span class="ur-loading-state__line ur-loading-state__line--title"></span>
+          <span class="ur-loading-state__line ur-loading-state__line--subtitle"></span>
+        </span>
+      </div>
+    }
+  </div>
+
+  <div class="ur-loading-state__status">
+    <mat-progress-spinner
+      class="ur-loading-state__spinner"
+      mode="indeterminate"
+      diameter="14"
+      strokeWidth="2"
+    />
+    <span class="ur-loading-state__label">{{ label }}</span>
+  </div>
+</mat-card>

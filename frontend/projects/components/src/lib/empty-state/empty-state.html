@@ -1,0 +1,23 @@
+<mat-card class="ur-empty-state" appearance="outlined">
+  @if (icon) {
+    <span class="ur-empty-state__icon">
+      <mat-icon aria-hidden="true">{{ icon }}</mat-icon>
+    </span>
+  }
+
+  <div class="ur-empty-state__body">
+    @if (title) {
+      <h2 class="ur-empty-state__title">{{ title }}</h2>
+    }
+
+    @if (message) {
+      <p class="ur-empty-state__message">{{ message }}</p>
+    }
+
+    <ng-content />
+  </div>
+
+  <mat-card-actions class="ur-empty-state__actions">
+    <ng-content select="[ur-empty-state-actions]" />
+  </mat-card-actions>
+</mat-card>

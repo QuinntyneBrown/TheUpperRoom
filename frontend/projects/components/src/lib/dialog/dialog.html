@@ -1,0 +1,51 @@
+<mat-card
+  [class]="dialogClass"
+  appearance="outlined"
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-labelledby]="id + '-title'"
+>
+  <header class="ur-dialog__header">
+    <ng-content select="[ur-dialog-header-start]" />
+
+    @if (icon) {
+      <span class="ur-dialog__icon">
+        <mat-icon aria-hidden="true">{{ icon }}</mat-icon>
+      </span>
+    }
+
+    <div class="ur-dialog__heading">
+      @if (title) {
+        <h2 class="ur-dialog__title" [id]="id + '-title'">{{ title }}</h2>
+      }
+
+      @if (subtitle) {
+        <p class="ur-dialog__subtitle">{{ subtitle }}</p>
+      }
+    </div>
+
+    <ng-content select="[ur-dialog-header-end]" />
+
+    @if (showClose) {
+      <button
+        mat-icon-button
+        class="ur-dialog__close"
+        type="button"
+        [attr.aria-label]="closeLabel"
+        (click)="close()"
+      >
+        <mat-icon aria-hidden="true">close</mat-icon>
+      </button>
+    }
+  </header>
+
+  <mat-card-content class="ur-dialog__content">
+    <ng-content />
+  </mat-card-content>
+
+  @if (showActions) {
+    <mat-card-actions class="ur-dialog__actions" align="end">
+      <ng-content select="[ur-dialog-actions]" />
+    </mat-card-actions>
+  }
+</mat-card>

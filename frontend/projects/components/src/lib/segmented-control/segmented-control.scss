@@ -1,0 +1,47 @@
+@use '../styles/tokens' as tokens;
+
+:host {
+  @include tokens.host;
+  display: inline-block;
+}
+
+.ur-segmented-control {
+  --mat-button-toggle-background-color: var(--ur-bg-surface);
+  --mat-button-toggle-button-text-color: var(--ur-fg-secondary);
+  --mat-button-toggle-divider-color: transparent;
+  --mat-button-toggle-height: 36px;
+  --mat-button-toggle-label-text-font: var(--ur-font-heading);
+  --mat-button-toggle-label-text-size: var(--ur-fs-sm);
+  --mat-button-toggle-label-text-weight: 600;
+  --mat-button-toggle-selected-state-background-color: var(--ur-bg-elevated);
+  --mat-button-toggle-selected-state-text-color: var(--ur-fg-primary);
+  background: var(--ur-bg-surface);
+  border: 1px solid var(--ur-border-subtle);
+  border-radius: var(--ur-radius-lg);
+  display: inline-flex;
+  gap: var(--ur-sp-1);
+  padding: var(--ur-sp-1);
+}
+
+.ur-segmented-control__option {
+  border: 0;
+  border-radius: var(--ur-radius-md);
+}
+
+.ur-segmented-control__icon {
+  color: currentColor;
+  font-size: 16px;
+  height: 16px;
+  margin-right: var(--ur-sp-1);
+  width: 16px;
+}
+
+.ur-segmented-control__label,
+.ur-segmented-control__count {
+  line-height: 1;
+}
+
+.ur-segmented-control__count {
+  color: var(--ur-fg-muted);
+  margin-left: var(--ur-sp-1);
+}
