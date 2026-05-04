@@ -1,0 +1,35 @@
+@startuml sequence_partner_crud
+!theme plain
+title View / Update / Delete Partner
+
+actor User
+participant "PartnerDetail" as P
+participant "PartnersController" as C
+participant "Handler" as H
+database "DB" as DB
+
+User -> P: open
+P -> C: GET /api/partners/{id}
+C -> H: GetPartnerQuery
+H -> DB: SELECT Partner + History + Contacts + Notes
+H --> C: PartnerDto
+C --> P: 200
+P --> User: render
+
+== edit ==
+User -> P: save
+P -> C: PUT /api/partners/{id}
+C -> H: UpdatePartnerCommand
+H -> DB: optimistic update
+H --> C: ok
+C --> P: 200
+
+== delete ==
+User -> P: confirm delete
+P -> C: DELETE /api/partners/{id}
+C -> H: DeletePartnerCommand
+H -> DB: UPDATE Partner.DeletedAt; DELETE PartnerContact
+H --> C: ok
+C --> P: 204
+P --> User: navigate /partners
+@enduml

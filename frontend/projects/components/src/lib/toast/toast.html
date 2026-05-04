@@ -1,0 +1,27 @@
+<mat-card [class]="toastClass" appearance="outlined" role="status">
+  <mat-icon class="ur-toast__icon" aria-hidden="true">{{ resolvedIcon }}</mat-icon>
+
+  <div class="ur-toast__body">
+    @if (title) {
+      <h3 class="ur-toast__title">{{ title }}</h3>
+    }
+
+    @if (message) {
+      <p class="ur-toast__message">{{ message }}</p>
+    }
+
+    <ng-content />
+  </div>
+
+  @if (dismissible) {
+    <button
+      mat-icon-button
+      class="ur-toast__dismiss"
+      type="button"
+      aria-label="Dismiss"
+      (click)="dismiss()"
+    >
+      <mat-icon aria-hidden="true">close</mat-icon>
+    </button>
+  }
+</mat-card>

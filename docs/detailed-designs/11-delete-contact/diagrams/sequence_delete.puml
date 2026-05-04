@@ -1,0 +1,21 @@
+@startuml sequence_delete
+!theme plain
+title Delete Contact (Soft Delete)
+
+actor User
+participant "ContactDetail" as P
+participant "ConfirmDialog" as D
+participant "ContactsController" as C
+participant "DeleteContactHandler" as H
+database "DB" as DB
+
+User -> P: click Delete
+P -> D: open confirm
+User -> D: confirm
+D -> C: DELETE /api/contacts/{id}
+C -> H: Send
+H -> DB: UPDATE Contact SET DeletedAt=now
+H --> C: ok
+C --> P: 204
+P --> User: navigate /contacts (list)
+@enduml

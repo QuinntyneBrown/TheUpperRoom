@@ -1,0 +1,28 @@
+@startuml sequence_chart
+!theme plain
+title Real-Time Line Chart Widget
+
+actor User
+participant "LineChartWidget" as W
+participant "MetricsController" as C
+participant "Handler" as H
+database "DB" as DB
+participant "RealtimeService" as RT
+participant "TeamHub" as Hub
+
+User -> W: mount widget
+W -> C: GET /api/metrics/contactsCreatedDaily
+C -> H: GetMetricQuery
+H -> DB: SELECT date_trunc(day, CreatedAt), count(*) ...
+H --> C: series
+C --> W: 200
+W --> User: render Chart.js
+
+== domain change in another tab ==
+note over Hub: contact created (slice 08 handler also publishes)
+Hub --> RT: metricInvalidated:contactsCreatedDaily
+RT --> W: notify
+W -> C: GET /api/metrics/...
+C --> W: refreshed series
+W --> User: chart updates
+@enduml

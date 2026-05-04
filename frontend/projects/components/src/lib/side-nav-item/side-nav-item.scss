@@ -1,0 +1,47 @@
+@use '../styles/tokens' as tokens;
+
+:host {
+  @include tokens.host;
+  display: block;
+}
+
+.ur-side-nav-item {
+  --mat-list-active-indicator-color: transparent;
+  --mat-list-active-indicator-shape: var(--ur-radius-md);
+  --mat-list-list-item-container-color: transparent;
+  --mat-list-list-item-hover-state-layer-color: var(--ur-bg-hover);
+  --mat-list-list-item-label-text-color: var(--ur-fg-secondary);
+  --mat-list-list-item-label-text-font: var(--ur-font-heading);
+  --mat-list-list-item-label-text-size: var(--ur-fs-base);
+  --mat-list-list-item-label-text-weight: 500;
+  border: 1px solid transparent;
+  border-radius: var(--ur-radius-md);
+  height: 40px;
+}
+
+.ur-side-nav-item--active {
+  --mat-list-active-indicator-color: var(--ur-accent-soft);
+  --mat-list-list-item-label-text-color: var(--ur-fg-primary);
+  background: var(--ur-accent-soft);
+  border-color: var(--ur-border-subtle);
+}
+
+.ur-side-nav-item__icon {
+  color: var(--ur-fg-muted);
+  font-size: 18px;
+  height: 18px;
+  width: 18px;
+}
+
+.ur-side-nav-item--active .ur-side-nav-item__icon {
+  color: var(--ur-accent-primary);
+}
+
+.ur-side-nav-item__label {
+  color: inherit;
+}
+
+.ur-side-nav-item__badge {
+  color: var(--ur-fg-muted);
+  font: var(--mat-sys-label-small);
+}

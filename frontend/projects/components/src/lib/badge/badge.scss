@@ -1,0 +1,56 @@
+@use '../styles/tokens' as tokens;
+
+:host {
+  @include tokens.host;
+  display: inline-block;
+}
+
+.ur-badge-set {
+  display: inline-flex;
+}
+
+.ur-badge {
+  --mat-chip-container-height: 22px;
+  --mat-chip-container-shape-radius: var(--ur-radius-full);
+  --mat-chip-label-text-font: var(--ur-font-heading);
+  --mat-chip-label-text-size: var(--ur-fs-xs);
+  --mat-chip-label-text-weight: 600;
+  border-radius: var(--ur-radius-full);
+  min-height: 22px;
+}
+
+.ur-badge--default {
+  --mat-chip-elevated-container-color: var(--ur-bg-elevated);
+  --mat-chip-label-text-color: var(--ur-fg-secondary);
+  --mat-chip-outline-color: var(--ur-border-default);
+}
+
+.ur-badge--success {
+  --mat-chip-elevated-container-color: var(--ur-success-soft);
+  --mat-chip-label-text-color: var(--ur-success);
+}
+
+.ur-badge--warning {
+  --mat-chip-elevated-container-color: var(--ur-warning-soft);
+  --mat-chip-label-text-color: var(--ur-warning);
+}
+
+.ur-badge--danger {
+  --mat-chip-elevated-container-color: var(--ur-danger-soft);
+  --mat-chip-label-text-color: var(--ur-danger);
+}
+
+.ur-badge--info {
+  --mat-chip-elevated-container-color: var(--ur-info-soft);
+  --mat-chip-label-text-color: var(--ur-info);
+}
+
+.ur-badge--accent {
+  --mat-chip-elevated-container-color: var(--ur-accent-soft);
+  --mat-chip-label-text-color: var(--ur-accent-primary);
+}
+
+:host ::ng-deep .ur-badge .mdc-evolution-chip__action {
+  padding-left: var(--ur-sp-2);
+  padding-right: var(--ur-sp-2);
+}

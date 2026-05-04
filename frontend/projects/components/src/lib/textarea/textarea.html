@@ -1,0 +1,26 @@
+<div class="ur-textarea">
+  @if (label) {
+    <label class="ur-textarea__label" [attr.for]="id">{{ label }}</label>
+  }
+
+  <mat-form-field class="ur-textarea__field" appearance="outline" subscriptSizing="dynamic">
+    <textarea
+      matInput
+      [id]="id"
+      [rows]="rows"
+      [value]="value"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      [required]="required"
+      [attr.aria-describedby]="describedBy"
+      (input)="onInput($event)"
+    ></textarea>
+
+    @if (error) {
+      <mat-error [id]="id + '-error'">{{ error }}</mat-error>
+    } @else if (hint) {
+      <mat-hint [id]="id + '-hint'">{{ hint }}</mat-hint>
+    }
+  </mat-form-field>
+</div>

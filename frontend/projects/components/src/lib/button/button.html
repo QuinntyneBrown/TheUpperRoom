@@ -1,0 +1,71 @@
+@if (variant === 'fab') {
+  <button
+    mat-fab
+    [type]="type"
+    [disabled]="disabled"
+    [attr.aria-label]="ariaLabel || 'Action'"
+    [class]="buttonClass"
+    (click)="onClick($event)"
+  >
+    <mat-icon aria-hidden="true">{{ icon || 'add' }}</mat-icon>
+  </button>
+} @else if (variant === 'icon') {
+  <button
+    mat-icon-button
+    [type]="type"
+    [disabled]="disabled"
+    [attr.aria-label]="ariaLabel || 'Action'"
+    [class]="buttonClass"
+    (click)="onClick($event)"
+  >
+    <mat-icon aria-hidden="true">{{ icon || 'more_horiz' }}</mat-icon>
+  </button>
+} @else if (variant === 'outline') {
+  <button
+    mat-stroked-button
+    [type]="type"
+    [disabled]="disabled"
+    [class]="buttonClass"
+    (click)="onClick($event)"
+  >
+    @if (icon && iconPosition === 'start') {
+      <mat-icon aria-hidden="true">{{ icon }}</mat-icon>
+    }
+    <span class="ur-button__label"><ng-content /></span>
+    @if (icon && iconPosition === 'end') {
+      <mat-icon aria-hidden="true">{{ icon }}</mat-icon>
+    }
+  </button>
+} @else if (variant === 'ghost') {
+  <button
+    mat-button
+    [type]="type"
+    [disabled]="disabled"
+    [class]="buttonClass"
+    (click)="onClick($event)"
+  >
+    @if (icon && iconPosition === 'start') {
+      <mat-icon aria-hidden="true">{{ icon }}</mat-icon>
+    }
+    <span class="ur-button__label"><ng-content /></span>
+    @if (icon && iconPosition === 'end') {
+      <mat-icon aria-hidden="true">{{ icon }}</mat-icon>
+    }
+  </button>
+} @else {
+  <button
+    mat-flat-button
+    [type]="type"
+    [disabled]="disabled"
+    [class]="buttonClass"
+    (click)="onClick($event)"
+  >
+    @if (icon && iconPosition === 'start') {
+      <mat-icon aria-hidden="true">{{ icon }}</mat-icon>
+    }
+    <span class="ur-button__label"><ng-content /></span>
+    @if (icon && iconPosition === 'end') {
+      <mat-icon aria-hidden="true">{{ icon }}</mat-icon>
+    }
+  </button>
+}

@@ -1,0 +1,19 @@
+@startuml sequence_advance
+!theme plain
+title Advance Hackathon Stage
+
+actor User
+participant "HackathonDetail" as P
+participant "HackathonsController" as C
+participant "Handler" as H
+database "DB" as DB
+participant "TeamHub" as Hub
+
+User -> P: click next stage
+P -> C: POST /api/hackathons/{id}/stage
+C -> H: AdvanceHackathonStageCommand
+H -> DB: UPDATE Hackathon.Stage; INSERT StageHistory
+H -> Hub: SendAsync("hackathonStageChanged")
+H --> C: ok
+C --> P: 200
+@enduml

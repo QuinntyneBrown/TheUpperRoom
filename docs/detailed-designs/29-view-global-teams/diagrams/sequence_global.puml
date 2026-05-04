@@ -1,0 +1,28 @@
+@startuml sequence_global
+!theme plain
+title View Global Teams
+
+actor User
+participant "GlobalTeamsPage" as P
+participant "TeamsController" as C
+participant "Handler" as H
+database "DB" as DB
+
+User -> P: open /teams
+P -> C: GET /api/teams?page=1&size=25
+C -> H: ListGlobalTeamsQuery
+H -> DB: SELECT Team + counts (role/hackathon/partner)
+H --> C: rows
+C --> P: 200
+
+User -> P: open team summary
+P -> C: GET /api/teams/{id}
+C -> H: GetGlobalTeamQuery
+alt isAdmin
+  H -> DB: SELECT full detail
+else
+  H -> DB: SELECT summary only
+end
+H --> C: TeamDto
+C --> P: 200
+@enduml

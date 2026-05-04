@@ -1,0 +1,23 @@
+@startuml sequence_update
+!theme plain
+title Update Contact (Optimistic Concurrency)
+
+actor User
+participant "ContactForm" as F
+participant "ContactsController" as C
+participant "UpdateContactHandler" as H
+database "DB" as DB
+
+User -> F: edit + save
+F -> C: PUT /api/contacts/{id} {version=N, ...}
+C -> H: Send
+H -> DB: SELECT Contact WHERE Id=...
+alt loaded.Version != N
+  H --> C: ConflictException
+  C --> F: 409
+else equal
+  H -> DB: UPDATE ... SET Version=N+1, UpdatedAt=now
+  H --> C: ok
+  C --> F: 200
+end
+@enduml

@@ -1,0 +1,51 @@
+@startuml c4_component_spa
+!theme plain
+!include <C4/C4_Component>
+
+title Web App — Components (Angular workspace)
+
+Container_Boundary(spa, "Web App (Angular 18)") {
+    Component(shell, "App Shell", "Standalone Angular app", "Routing, layout, sidebar/topbar, theme bootstrap")
+    Component(comp, "components library", "Angular library", "Branded wrappers over Angular Material: button, dialog, form-field, snackbar, error-message, notification")
+    Component(api, "api library", "Angular library", "TypeScript models, HttpClient services exposed only via injection tokens")
+    Component(featAuth, "feature: auth", "Lazy lib", "sign-in, register, verify, recover")
+    Component(featContacts, "feature: contacts", "Lazy lib", "list, detail, notes, search")
+    Component(featPartners, "feature: partners", "Lazy lib", "list, board, detail, notes, funnel")
+    Component(featHack, "feature: hackathons", "Lazy lib", "list, detail, 4 D's, products")
+    Component(featTeam, "feature: team", "Lazy lib", "local team, invite, role, global teams")
+    Component(featDash, "feature: dashboard", "Lazy lib", "gridster grid, widget catalog, line-chart widget")
+    Component(featNotif, "feature: notifications", "Lazy lib", "notification center")
+    Component(featSearch, "feature: search", "Lazy lib", "global search overlay")
+    Component(realtime, "RealtimeService", "Service in api lib", "@microsoft/signalr connection, reconnect, fan-out events")
+}
+
+Rel(shell, featAuth, "Routes to")
+Rel(shell, featContacts, "Routes to")
+Rel(shell, featPartners, "Routes to")
+Rel(shell, featHack, "Routes to")
+Rel(shell, featTeam, "Routes to")
+Rel(shell, featDash, "Routes to")
+Rel(shell, featNotif, "Routes to")
+Rel(shell, featSearch, "Routes to")
+
+Rel(featAuth, api, "Inject services")
+Rel(featContacts, api, "Inject services")
+Rel(featPartners, api, "Inject services")
+Rel(featHack, api, "Inject services")
+Rel(featTeam, api, "Inject services")
+Rel(featDash, api, "Inject services")
+Rel(featNotif, api, "Inject services")
+Rel(featSearch, api, "Inject services")
+
+Rel(featAuth, comp, "UI primitives")
+Rel(featContacts, comp, "UI primitives")
+Rel(featPartners, comp, "UI primitives")
+Rel(featHack, comp, "UI primitives")
+Rel(featTeam, comp, "UI primitives")
+Rel(featDash, comp, "UI primitives")
+Rel(featNotif, comp, "UI primitives")
+Rel(featSearch, comp, "UI primitives")
+
+Rel(api, realtime, "Subscribes to events")
+
+@enduml

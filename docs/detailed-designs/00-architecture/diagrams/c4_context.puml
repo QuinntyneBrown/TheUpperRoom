@@ -1,0 +1,14 @@
+@startuml c4_context
+!theme plain
+!include <C4/C4_Context>
+
+title The Upper Room — System Context
+
+Person(cityLead, "City Lead / Team Member", "Plans hackathons, manages partners, contacts, team")
+System(upperRoom, "The Upper Room", "Mobile-first dark CRM and hackathon platform")
+System_Ext(smtp, "SMTP Provider", "Sends verification, recovery, invitation emails")
+
+Rel(cityLead, upperRoom, "Uses", "HTTPS")
+Rel(upperRoom, smtp, "Sends mail", "SMTP/TLS")
+
+@enduml

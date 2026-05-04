@@ -1,0 +1,12 @@
+<button
+  mat-button
+  type="button"
+  [disabled]="disabled"
+  [class]="itemClass"
+  (click)="onSelect($event)"
+>
+  @if (icon) {
+    <mat-icon class="ur-bottom-nav-item__icon" aria-hidden="true">{{ icon }}</mat-icon>
+  }
+  <span class="ur-bottom-nav-item__label">{{ label }}<ng-content /></span>
+</button>

@@ -1,0 +1,26 @@
+@startuml sequence_board
+!theme plain
+title Partner Board (Kanban)
+
+actor User
+participant "BoardPage" as BP
+participant "PartnersController" as C
+participant "Handler" as H
+database "DB" as DB
+
+User -> BP: open /partners/board
+BP -> C: GET /api/partners
+C -> H: ListPartnersQuery
+H -> DB: SELECT Partner WHERE TeamId=...
+H --> C: rows
+C --> BP: 200
+BP -> BP: group by stage, render columns
+
+User -> BP: drag card Lead -> InFunnel
+BP -> C: POST /api/partners/{id}/stage {InFunnel}
+C -> H: ChangePartnerStageCommand
+H -> DB: UPDATE; INSERT history
+H --> C: ok
+C --> BP: 200
+BP --> User: card lands in column
+@enduml

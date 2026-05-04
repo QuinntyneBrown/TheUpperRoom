@@ -1,0 +1,26 @@
+@startuml sequence_dashboard
+!theme plain
+title Dashboard Layout: Add / Move / Resize / Persist
+
+actor User
+participant "DashboardPage" as P
+participant "DashboardsController" as C
+participant "Handler" as H
+database "DB" as DB
+
+User -> P: open /dashboard
+P -> C: GET /api/dashboards/me
+C -> H: GetMyDashboardQuery
+H -> DB: SELECT DashboardLayout WHERE UserId=...
+H --> C: { json }
+C --> P: 200
+P --> User: render gridster
+
+User -> P: add widget / drag / resize
+P -> P: update local state
+P -> C: PUT /api/dashboards/me {json} (debounced 300ms)
+C -> H: SaveDashboardCommand
+H -> DB: UPSERT layout
+H --> C: ok
+C --> P: 200
+@enduml

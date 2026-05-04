@@ -1,0 +1,25 @@
+@startuml sequence_remove
+!theme plain
+title Remove Team Member
+
+actor "City Lead" as CL
+participant "ConfirmDialog" as D
+participant "TeamsController" as C
+participant "RemoveHandler" as H
+participant "UserManager" as UM
+database "DB" as DB
+participant "TeamHub" as Hub
+
+CL -> D: confirm
+D -> C: DELETE /api/teams/local/members/{userId}
+C -> H: RemoveMemberCommand
+alt CL trying to remove peer/admin
+  H --> C: 403
+else allowed
+  H -> DB: revoke roles, set TeamId=null
+  H -> UM: UpdateSecurityStampAsync (kills sessions)
+  H -> Hub: SendAsync("teamMemberRemoved")
+  H --> C: ok
+  C --> D: 204
+end
+@enduml

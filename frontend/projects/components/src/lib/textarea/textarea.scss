@@ -1,0 +1,43 @@
+@use '../styles/tokens' as tokens;
+
+:host {
+  @include tokens.host;
+  display: block;
+}
+
+.ur-textarea {
+  display: grid;
+  gap: var(--ur-sp-2);
+  width: 100%;
+}
+
+.ur-textarea__label {
+  color: var(--ur-fg-secondary);
+  font: var(--mat-sys-label-medium);
+}
+
+.ur-textarea__field {
+  --mat-form-field-outlined-container-shape: var(--ur-radius-md);
+  --mat-form-field-outlined-caret-color: var(--ur-accent-primary);
+  --mat-form-field-outlined-error-caret-color: var(--ur-danger);
+  --mat-form-field-outlined-error-focus-outline-color: var(--ur-danger);
+  --mat-form-field-outlined-error-outline-color: var(--ur-danger);
+  --mat-form-field-outlined-focus-outline-color: var(--ur-accent-primary);
+  --mat-form-field-outlined-hover-outline-color: var(--ur-border-strong);
+  --mat-form-field-outlined-input-text-color: var(--ur-fg-primary);
+  --mat-form-field-outlined-input-text-placeholder-color: var(--ur-fg-muted);
+  --mat-form-field-outlined-outline-color: var(--ur-border-default);
+  --mat-form-field-subscript-text-size: var(--ur-fs-sm);
+  width: 100%;
+}
+
+:host ::ng-deep .ur-textarea__field .mat-mdc-text-field-wrapper {
+  background: var(--ur-bg-input);
+  border-radius: var(--ur-radius-md);
+}
+
+:host ::ng-deep .ur-textarea__field .mat-mdc-input-element {
+  font: var(--mat-sys-body-medium);
+  letter-spacing: 0;
+  resize: vertical;
+}

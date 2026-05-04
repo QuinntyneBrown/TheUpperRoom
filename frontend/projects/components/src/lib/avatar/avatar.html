@@ -1,0 +1,7 @@
+<span mat-card-avatar [class]="avatarClass">
+  @if (imageUrl) {
+    <img class="ur-avatar__image" [src]="imageUrl" [alt]="alt" />
+  } @else {
+    <span class="ur-avatar__initials">{{ initials }}</span>
+  }
+</span>

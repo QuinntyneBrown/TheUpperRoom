@@ -1,0 +1,30 @@
+@startuml sequence_notes
+!theme plain
+title Add / Edit / Delete Note
+
+actor User
+participant "NotesPanel" as NP
+participant "NotesController" as C
+participant "Handler" as H
+database "DB" as DB
+
+User -> NP: type body
+NP -> C: POST /api/contacts/{id}/notes
+C -> H: AddNoteCommand
+H -> DB: INSERT Note
+H --> C: NoteDto
+C --> NP: 201
+NP --> User: prepend to list
+
+== edit ==
+User -> NP: edit own note
+NP -> C: PUT /api/notes/{noteId}
+C -> H: UpdateNoteCommand
+alt author or admin/citylead
+  H -> DB: UPDATE Note
+  H --> C: ok
+  C --> NP: 200
+else
+  H --> C: 403
+end
+@enduml

@@ -1,0 +1,18 @@
+@startuml sequence_local
+!theme plain
+title View Local Team
+
+actor User
+participant "LocalTeamPage" as P
+participant "TeamsController" as C
+participant "Handler" as H
+database "DB" as DB
+
+User -> P: open /team
+P -> C: GET /api/teams/local
+C -> H: GetLocalTeamQuery
+H -> DB: SELECT User WHERE TeamId=CurrentUser.TeamId
+H --> C: members
+C --> P: 200
+P --> User: render
+@enduml

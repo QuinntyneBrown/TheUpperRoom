@@ -1,0 +1,39 @@
+@use '../styles/tokens' as tokens;
+
+:host {
+  @include tokens.host;
+  display: inline-block;
+}
+
+.ur-bottom-nav-item {
+  --mat-button-text-container-shape: var(--ur-radius-md);
+  --mat-button-text-label-text-color: var(--ur-fg-muted);
+  --mat-button-text-label-text-font: var(--ur-font-heading);
+  align-items: center;
+  border-radius: var(--ur-radius-md);
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--ur-sp-1);
+  height: 56px;
+  justify-content: center;
+  min-width: 64px;
+  padding: var(--ur-sp-2);
+}
+
+.ur-bottom-nav-item--active {
+  --mat-button-text-label-text-color: var(--ur-accent-primary);
+  color: var(--ur-accent-primary);
+}
+
+.ur-bottom-nav-item__icon {
+  color: currentColor;
+  font-size: 22px;
+  height: 22px;
+  margin: 0;
+  width: 22px;
+}
+
+.ur-bottom-nav-item__label {
+  font-size: var(--ur-fs-xs);
+  line-height: 1;
+}

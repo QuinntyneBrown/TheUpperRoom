@@ -1,0 +1,21 @@
+@startuml sequence_create
+!theme plain
+title Create Contact
+
+actor User
+participant "ContactForm" as F
+participant "ContactsController" as C
+participant "MediatR" as M
+participant "CreateContactHandler" as H
+database "DB" as DB
+
+User -> F: fill + submit
+F -> C: POST /api/contacts
+C -> M: Send(CreateContactCommand{TeamId=current})
+M -> H: handle
+H -> DB: INSERT Contact
+H --> M: id
+M --> C: id
+C --> F: 201 { id }
+F --> User: navigate /contacts/{id}
+@enduml

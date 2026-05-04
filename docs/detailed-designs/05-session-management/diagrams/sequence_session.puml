@@ -1,0 +1,23 @@
+@startuml sequence_session
+!theme plain
+title Session Lifecycle
+
+actor User
+participant "Browser" as B
+participant "AuthN Middleware" as AM
+participant "OnValidatePrincipal" as OVP
+participant "Endpoint" as EP
+
+User -> B: action
+B -> AM: request + cookie
+AM -> OVP: validate
+alt now - IssuedUtc > 12h
+  OVP --> AM: reject
+  AM --> B: 401
+else within sliding window
+  OVP -> OVP: extend cookie 30m
+  OVP --> AM: ok
+  AM -> EP: forward
+  EP --> B: 200 + refreshed cookie
+end
+@enduml

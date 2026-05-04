@@ -1,0 +1,57 @@
+@use '../styles/tokens' as tokens;
+
+:host {
+  @include tokens.host;
+  display: inline-flex;
+}
+
+.ur-avatar {
+  align-items: center;
+  border-radius: var(--ur-radius-full);
+  display: inline-flex;
+  flex: none;
+  font-family: var(--ur-font-heading);
+  font-weight: 600;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ur-avatar--sm {
+  font-size: var(--ur-fs-xs);
+  height: 28px;
+  width: 28px;
+}
+
+.ur-avatar--md {
+  font-size: var(--ur-fs-sm);
+  height: 40px;
+  width: 40px;
+}
+
+.ur-avatar--lg {
+  font-size: var(--ur-fs-xl);
+  height: 80px;
+  width: 80px;
+}
+
+.ur-avatar--default {
+  background: var(--ur-bg-elevated);
+  border: 1px solid var(--ur-border-default);
+  color: var(--ur-fg-secondary);
+}
+
+.ur-avatar--accent {
+  background: var(--ur-accent-soft);
+  border: 1px solid var(--ur-accent-primary);
+  color: var(--ur-accent-primary);
+}
+
+.ur-avatar__image {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.ur-avatar__initials {
+  line-height: 1;
+}

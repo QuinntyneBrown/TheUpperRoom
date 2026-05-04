@@ -1,0 +1,36 @@
+- mobile first web application
+- can be viewable on extra small screens to extra large screens
+- angular material for all ui components
+- contact management feature and can add notes to each contact and search
+- The Upper Room is app for City Leads of an organization that has employees and voluteeners to produce software to move the Kingdom of God foward.
+- partner management
+    - leads
+    - confirmed partners
+    - partners in the funnel
+    - each partner has contacts at the partner organization
+    - notes on each partner
+- The company partners with the other companies to host hackathons
+    - hackathons should produce products using the FaithTech 4 D's process https://www.faithtech.com/
+- The app is dark mode and mostly monocrhomatic
+- The app is allows for management of the Team. The team has:
+    - Prayer Lead
+    - City Lead
+    - Event Lead
+    - Communication Lead
+- The app has ability the management of the local team of the user, but also teams globally
+- The platform is Angular on the frontend and .NET on the backend using Controllers
+- The IMPLEMENTATION OF ALL THE CODE IS RADICALLY SIMPLE
+- The platform uses 
+    - Chart.js for beautiful line graphs on the frontend
+    - angular gridster 2 for a generic dashboard implementation
+- The frontend is an angular workspace spil into
+    - thin app shell with thin empty dashboard
+    - feature libraries
+    - api library with the models and serivices to communicate with the backend
+        - api libraries provides a public interface for the services and exposes them to the consumers via injection tokens, decoupling the implementation of the services from the feature libraries
+    - components library with all the reusable presetation components (which all use angular material under the hood). BUttons, error messages, notifications, dialogs, etc..
+- THe backend uses the free version of MediatR and implements a command and query pattern
+- There is a complete end-to-end tests for major flows using Playwright and Page Object Model pattern
+- The app has user authetnication and RBAC authorization
+- logging on frontend and backend
+- real time updates, notifications and metrics using Microsoft SignalR

@@ -1,0 +1,29 @@
+@startuml sequence_signin
+!theme plain
+title Sign-In
+
+actor User
+participant "SignInPage" as SP
+participant "AuthController" as AC
+participant "SignInHandler" as H
+participant "SignInManager" as SM
+database "DB" as DB
+
+User -> SP: submit creds
+SP -> AC: POST /api/auth/sign-in
+AC -> H: Send(SignInCommand)
+H -> SM: PasswordSignInAsync(...)
+SM -> DB: load User, verify Argon2id
+alt verified + correct
+  SM --> H: success
+  H --> AC: ok (cookie set by Identity)
+  AC --> SP: 200 + Set-Cookie
+  SP --> User: navigate /dashboard
+else lockedOut
+  H --> AC: 429
+else unverified
+  H --> AC: 403 "verification required"
+else other failure
+  H --> AC: 401 "invalid email or password"
+end
+@enduml

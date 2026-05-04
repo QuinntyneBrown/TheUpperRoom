@@ -1,0 +1,24 @@
+@startuml sequence_authz
+!theme plain
+title Endpoint Authorization + Team Scope Enforcement
+
+actor User
+participant "Controller" as C
+participant "MediatR Pipeline" as P
+participant "TeamScopeBehavior" as TS
+participant "Handler" as H
+participant "CurrentUser" as CU
+
+User -> C: POST /api/contacts (TeamId=B)
+C -> P: Send(CreateContactCommand)
+P -> TS: invoke
+TS -> CU: Id, TeamId=A, IsAdmin=false
+alt non-admin and req.TargetTeamId != CU.TeamId
+  TS --> P: throw ForbiddenException
+  P --> C: 403 + audit log
+else allowed
+  TS -> H: continue
+  H --> P: result
+  P --> C: 200
+end
+@enduml

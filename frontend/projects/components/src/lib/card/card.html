@@ -1,0 +1,25 @@
+<mat-card class="ur-card" appearance="outlined">
+  @if (icon || title || subtitle) {
+    <mat-card-header class="ur-card__header">
+      @if (icon) {
+        <mat-icon mat-card-avatar class="ur-card__icon" aria-hidden="true">{{ icon }}</mat-icon>
+      }
+
+      @if (title) {
+        <mat-card-title class="ur-card__title">{{ title }}</mat-card-title>
+      }
+
+      @if (subtitle) {
+        <mat-card-subtitle class="ur-card__subtitle">{{ subtitle }}</mat-card-subtitle>
+      }
+    </mat-card-header>
+  }
+
+  <mat-card-content class="ur-card__content">
+    <ng-content />
+  </mat-card-content>
+
+  <mat-card-actions class="ur-card__actions">
+    <ng-content select="[ur-card-actions]" />
+  </mat-card-actions>
+</mat-card>

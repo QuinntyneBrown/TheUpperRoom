@@ -1,0 +1,24 @@
+@startuml sequence_search
+!theme plain
+title Global Search
+
+actor User
+participant "GlobalSearchOverlay" as O
+participant "SearchController" as C
+participant "Handler" as H
+database "DB" as DB
+
+User -> O: Ctrl+K, type "ottawa"
+O -> C: GET /api/search?q=ottawa
+C -> H: GlobalSearchQuery
+par
+  H -> DB: SELECT Contact LIKE
+  H -> DB: SELECT Partner LIKE
+  H -> DB: SELECT Hackathon LIKE
+  H -> DB: SELECT User LIKE WHERE TeamId=...
+end
+H --> C: grouped results
+C --> O: 200
+User -> O: pick contact "Ava"
+O --> User: navigate /contacts/{id}
+@enduml

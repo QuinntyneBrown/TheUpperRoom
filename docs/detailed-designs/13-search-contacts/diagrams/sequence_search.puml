@@ -1,0 +1,21 @@
+@startuml sequence_search
+!theme plain
+title Search Contacts
+
+actor User
+participant "SearchInput" as I
+participant "ContactsList" as L
+participant "ContactsController" as C
+participant "SearchHandler" as H
+database "DB (idx)" as DB
+
+User -> I: type "av" (≥2 chars, debounce 250ms)
+I -> L: termChange
+L -> C: GET /api/contacts?search=av
+C -> H: SearchContactsQuery
+H -> DB: SELECT ... LIKE %av%
+DB --> H: rows
+H --> C: results (≤50)
+C --> L: 200
+L --> User: render highlighted matches
+@enduml

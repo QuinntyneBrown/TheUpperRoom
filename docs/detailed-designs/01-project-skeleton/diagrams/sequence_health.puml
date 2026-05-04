@@ -1,0 +1,16 @@
+@startuml sequence_health
+!theme plain
+title Health Check
+
+actor User
+participant "SPA (app-shell)" as SPA
+participant "HealthController" as C
+participant "GetHealthHandler" as H
+
+User -> SPA: load /
+SPA -> C: GET /api/health
+C -> H: Send(GetHealth)
+H --> C: { status: "ok" }
+C --> SPA: 200 JSON
+SPA --> User: render footer "OK"
+@enduml

@@ -1,0 +1,43 @@
+@use '../styles/tokens' as tokens;
+
+:host {
+  @include tokens.host;
+  display: block;
+}
+
+.ur-search {
+  --mat-form-field-container-height: 40px;
+  --mat-form-field-container-vertical-padding: 8px;
+  --mat-form-field-outlined-container-shape: var(--ur-radius-md);
+  --mat-form-field-outlined-caret-color: var(--ur-accent-primary);
+  --mat-form-field-outlined-focus-outline-color: var(--ur-accent-primary);
+  --mat-form-field-outlined-hover-outline-color: var(--ur-border-strong);
+  --mat-form-field-outlined-input-text-color: var(--ur-fg-primary);
+  --mat-form-field-outlined-input-text-placeholder-color: var(--ur-fg-muted);
+  --mat-form-field-outlined-outline-color: var(--ur-border-default);
+  width: 100%;
+}
+
+.ur-search__icon {
+  color: var(--ur-fg-muted);
+  font-size: 18px;
+  height: 18px;
+  margin-left: var(--ur-sp-2);
+  width: 18px;
+}
+
+:host ::ng-deep .ur-search .mat-mdc-text-field-wrapper {
+  background: var(--ur-bg-input);
+  border-radius: var(--ur-radius-md);
+}
+
+:host ::ng-deep .ur-search .mat-mdc-form-field-infix {
+  min-height: 40px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
+
+:host ::ng-deep .ur-search .mat-mdc-input-element {
+  font: var(--mat-sys-body-medium);
+  letter-spacing: 0;
+}

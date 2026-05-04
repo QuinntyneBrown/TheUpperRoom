@@ -1,0 +1,19 @@
+@startuml sequence_create
+!theme plain
+title Create Hackathon
+
+actor User
+participant "HackathonForm" as F
+participant "HackathonsController" as C
+participant "Handler" as H
+database "DB" as DB
+
+User -> F: fill (title, dates, partners)
+F -> C: POST /api/hackathons
+C -> H: CreateHackathonCommand
+H -> DB: INSERT Hackathon (stage=Discover)
+H -> DB: INSERT HackathonPartner rows
+H --> C: id
+C --> F: 201
+F --> User: navigate /hackathons/{id}
+@enduml

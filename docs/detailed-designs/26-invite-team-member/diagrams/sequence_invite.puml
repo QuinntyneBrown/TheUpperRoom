@@ -1,0 +1,27 @@
+@startuml sequence_invite
+!theme plain
+title Invite Team Member
+
+actor "City Lead" as CL
+participant "InviteDialog" as D
+participant "TeamsController" as C
+participant "InviteHandler" as H
+database "DB" as DB
+participant "EmailSender" as ES
+
+CL -> D: email + roles
+D -> C: POST /api/teams/local/invitations
+C -> H: InviteMemberCommand
+H -> DB: INSERT Invitation (7d expiry)
+H -> ES: send link
+H --> C: ok
+C --> D: 200
+
+== recipient ==
+actor Recipient
+Recipient -> "RegisterPage" as RP: open ?invite=token, fill form
+RP -> "AuthController" as AC: POST /api/auth/register?invite=token
+AC -> "RegisterHandler" as RH: RegisterCommand{InviteToken}
+RH -> DB: lookup Invitation, INSERT User on TeamId, assign roles, mark Invitation.AcceptedAt
+RH --> AC: ok
+@enduml

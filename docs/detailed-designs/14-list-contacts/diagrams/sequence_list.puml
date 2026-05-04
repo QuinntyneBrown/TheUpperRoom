@@ -1,0 +1,19 @@
+@startuml sequence_list
+!theme plain
+title List + Paginate Contacts
+
+actor User
+participant "ContactsList" as L
+participant "ContactsController" as C
+participant "ListHandler" as H
+database "DB" as DB
+
+User -> L: open /contacts
+L -> C: GET /api/contacts?page=1&size=25&sort=lastName:asc
+C -> H: ListContactsQuery
+H -> DB: SELECT ... ORDER BY LastName LIMIT 25
+H -> DB: SELECT COUNT(*)
+H --> C: { rows, total }
+C --> L: 200
+L --> User: render table or cards
+@enduml

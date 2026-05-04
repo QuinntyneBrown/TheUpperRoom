@@ -1,0 +1,21 @@
+@startuml sequence_product
+!theme plain
+title Add Hackathon Product
+
+actor User
+participant "ProductsSection" as PS
+participant "AddProductDialog" as D
+participant "HackathonsController" as C
+participant "Handler" as H
+database "DB" as DB
+
+User -> PS: click Add Product
+PS -> D: open
+User -> D: fill (name, urls, members)
+D -> C: POST /api/hackathons/{id}/products
+C -> H: AddProductCommand
+H -> DB: INSERT Product; INSERT ProductMember rows
+H --> C: ProductDto
+C --> D: 201
+D -> PS: append card
+@enduml

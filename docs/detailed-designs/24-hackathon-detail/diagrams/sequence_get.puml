@@ -1,0 +1,18 @@
+@startuml sequence_get
+!theme plain
+title View Hackathon Detail
+
+actor User
+participant "HackathonDetail" as P
+participant "HackathonsController" as C
+participant "Handler" as H
+database "DB" as DB
+
+User -> P: open /hackathons/{id}
+P -> C: GET /api/hackathons/{id}
+C -> H: GetHackathonQuery
+H -> DB: SELECT Hackathon + Partners + Products(+Members) + History
+H --> C: HackathonDto
+C --> P: 200
+P --> User: render sections
+@enduml

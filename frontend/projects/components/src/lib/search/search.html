@@ -1,0 +1,14 @@
+<mat-form-field class="ur-search" appearance="outline" subscriptSizing="dynamic">
+  <mat-icon matPrefix class="ur-search__icon" aria-hidden="true">search</mat-icon>
+  <input
+    matInput
+    [id]="id"
+    type="search"
+    [value]="value"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [attr.aria-label]="ariaLabel"
+    (input)="onInput($event)"
+    (keydown.enter)="onSubmit()"
+  />
+</mat-form-field>

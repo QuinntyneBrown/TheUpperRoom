@@ -1,0 +1,24 @@
+@startuml sequence_stage
+!theme plain
+title Change Partner Stage + Realtime Broadcast
+
+actor "User A" as A
+participant "PartnerDetail (A)" as PA
+participant "PartnersController" as C
+participant "ChangeStageHandler" as H
+database "DB" as DB
+participant "TeamHub" as Hub
+participant "PartnerDetail (B)" as PB
+actor "User B" as B
+
+A -> PA: select toStage=Confirmed
+PA -> C: POST /api/partners/{id}/stage
+C -> H: ChangePartnerStageCommand
+H -> DB: UPDATE Partner.Stage; INSERT StageHistory
+H -> Hub: Group(team).SendAsync("partnerStageChanged", payload)
+H --> C: ok
+C --> PA: 200
+
+Hub --> PB: partnerStageChanged
+PB --> B: chip + history update (no reload)
+@enduml

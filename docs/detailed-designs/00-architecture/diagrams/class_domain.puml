@@ -1,0 +1,147 @@
+@startuml class_domain
+!theme plain
+skinparam classAttributeIconSize 0
+skinparam classFontSize 12
+
+title Domain Model — Core Entities
+
+class Team {
+    +Id: Guid
+    +City: string
+    +CreatedAt: DateTime
+}
+
+class User {
+    +Id: Guid
+    +Email: string
+    +DisplayName: string
+    +PasswordHash: string
+    +EmailVerified: bool
+    +TeamId: Guid
+}
+
+class Role {
+    +Id: int
+    +Name: string  // Admin | CityLead | PrayerLead | EventLead | CommunicationLead
+}
+
+class UserRole {
+    +UserId: Guid
+    +RoleId: int
+}
+
+class Contact {
+    +Id: Guid
+    +TeamId: Guid
+    +FirstName: string
+    +LastName: string
+    +Email: string?
+    +Phone: string?
+    +City: string?
+    +CreatedAt: DateTime
+    +UpdatedAt: DateTime
+    +CreatedById: Guid
+    +DeletedAt: DateTime?
+    +Version: int
+}
+
+class Partner {
+    +Id: Guid
+    +TeamId: Guid
+    +Name: string
+    +Website: string?
+    +City: string
+    +Stage: PartnerStage
+    +Description: string?
+    +DeletedAt: DateTime?
+}
+
+enum PartnerStage {
+    Lead
+    InFunnel
+    Confirmed
+}
+
+class PartnerStageHistory {
+    +Id: Guid
+    +PartnerId: Guid
+    +FromStage: PartnerStage
+    +ToStage: PartnerStage
+    +ByUserId: Guid
+    +At: DateTime
+}
+
+class Hackathon {
+    +Id: Guid
+    +TeamId: Guid
+    +Title: string
+    +StartDate: Date
+    +EndDate: Date
+    +HostCity: string
+    +Stage: FourDStage
+}
+
+enum FourDStage {
+    Discover
+    Design
+    Develop
+    Deploy
+}
+
+class HackathonStageHistory {
+    +Id: Guid
+    +HackathonId: Guid
+    +FromStage: FourDStage
+    +ToStage: FourDStage
+    +ByUserId: Guid
+    +At: DateTime
+}
+
+class Product {
+    +Id: Guid
+    +HackathonId: Guid
+    +Name: string
+    +Description: string?
+    +RepoUrl: string?
+    +DemoUrl: string?
+}
+
+class Note {
+    +Id: Guid
+    +TargetType: NoteTarget   // Contact | Partner
+    +TargetId: Guid
+    +AuthorId: Guid
+    +Body: string
+    +CreatedAt: DateTime
+    +UpdatedAt: DateTime?
+}
+
+class DashboardLayout {
+    +UserId: Guid
+    +Json: string  // serialized gridster layout
+    +UpdatedAt: DateTime
+}
+
+class Notification {
+    +Id: Guid
+    +UserId: Guid
+    +Kind: string
+    +EntityType: string
+    +EntityId: Guid
+    +ActorId: Guid
+    +CreatedAt: DateTime
+    +ReadAt: DateTime?
+}
+
+Team "1" -- "*" User
+User "*" -- "*" Role
+Team "1" -- "*" Contact
+Team "1" -- "*" Partner
+Team "1" -- "*" Hackathon
+Partner "*" -- "*" Contact
+Partner "1" -- "*" PartnerStageHistory
+Partner "*" -- "*" Hackathon
+Hackathon "1" -- "*" Product
+Hackathon "1" -- "*" HackathonStageHistory
+
+@enduml

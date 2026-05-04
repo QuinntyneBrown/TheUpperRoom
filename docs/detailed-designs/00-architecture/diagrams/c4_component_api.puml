@@ -1,0 +1,25 @@
+@startuml c4_component_api
+!theme plain
+!include <C4/C4_Component>
+
+title API — Components (single project, MediatR feature folders)
+
+Container_Boundary(api, "API + Realtime (ASP.NET Core 8)") {
+    Component(ctrl, "Controllers", "ASP.NET Core", "Thin: each action dispatches one MediatR request")
+    Component(med, "MediatR Pipeline", "MediatR", "Validation, logging, auth-policy behaviors")
+    Component(handlers, "Feature Handlers", "C# folders: Auth, Contacts, Partners, Hackathons, Teams, Notes, Dashboards, Notifications, Search", "Commands and queries")
+    Component(hub, "TeamHub", "SignalR Hub", "Per-team group; pushes events to connected clients")
+    Component(ef, "AppDbContext", "EF Core", "Single DbContext over all aggregates")
+    Component(identity, "Identity / Cookie Auth", "ASP.NET Core Identity", "Argon2id passwords, cookie sessions, lockout, CSRF")
+}
+
+ContainerDb_Ext(db, "Database", "SQLite/Postgres")
+
+Rel(ctrl, med, "Send()")
+Rel(med, handlers, "Dispatch")
+Rel(handlers, ef, "Reads/Writes")
+Rel(handlers, hub, "Publish realtime events")
+Rel(ctrl, identity, "Sign-in / out / authorize")
+Rel(ef, db, "SQL")
+
+@enduml

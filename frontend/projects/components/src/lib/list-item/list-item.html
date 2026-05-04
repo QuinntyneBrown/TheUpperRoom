@@ -1,0 +1,43 @@
+@if (href) {
+  <a mat-list-item [href]="href" [class]="itemClass" (click)="onSelect($event)">
+    <ng-container *ngTemplateOutlet="itemContent" />
+  </a>
+} @else {
+  <button
+    mat-list-item
+    type="button"
+    [disabled]="disabled"
+    [class]="itemClass"
+    (click)="onSelect($event)"
+  >
+    <ng-container *ngTemplateOutlet="itemContent" />
+  </button>
+}
+
+<ng-template #itemContent>
+  <span matListItemAvatar class="ur-list-item__avatar">
+    @if (imageUrl) {
+      <img class="ur-list-item__image" [src]="imageUrl" alt="" />
+    } @else {
+      {{ initials }}
+    }
+  </span>
+
+  <span matListItemTitle class="ur-list-item__title"
+    >{{ title }}<ng-content select="[ur-list-item-title]"
+  /></span>
+
+  @if (description) {
+    <span matListItemLine class="ur-list-item__description">{{ description }}</span>
+  }
+
+  <ng-content />
+
+  @if (meta) {
+    <span matListItemMeta class="ur-list-item__meta">{{ meta }}</span>
+  } @else if (actionIcon) {
+    <mat-icon matListItemMeta class="ur-list-item__action" aria-hidden="true">{{
+      actionIcon
+    }}</mat-icon>
+  }
+</ng-template>

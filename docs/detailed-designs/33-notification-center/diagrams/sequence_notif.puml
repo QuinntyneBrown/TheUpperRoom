@@ -1,0 +1,30 @@
+@startuml sequence_notif
+!theme plain
+title Notification Center
+
+participant "Mutator Handler" as MH
+participant "Notifications.Persist" as P
+database "DB" as DB
+participant "TeamHub" as Hub
+actor "User B" as B
+participant "NotificationCenter" as NC
+participant "NotificationsController" as C
+participant "Handler" as H
+
+MH -> P: Persist + Broadcast
+P -> DB: INSERT Notification per team member (except actor)
+P -> Hub: SendAsync("eventName")
+Hub --> NC: live event
+NC -> NC: badge++
+B -> NC: open
+NC -> C: GET /api/notifications
+C -> H: ListNotificationsQuery
+H -> DB: SELECT latest 50 WHERE UserId=B
+H --> C: rows + unreadCount
+C --> NC: 200
+B -> NC: click item
+NC -> C: POST /api/notifications/{id}/read
+C -> H: MarkReadCommand
+H -> DB: UPDATE ReadAt=now
+NC --> B: navigate to entity
+@enduml

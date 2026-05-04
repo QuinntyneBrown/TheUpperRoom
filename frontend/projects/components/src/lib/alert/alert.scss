@@ -1,0 +1,71 @@
+@use '../styles/tokens' as tokens;
+
+:host {
+  @include tokens.host;
+  display: block;
+}
+
+.ur-alert {
+  --mat-card-outlined-container-shape: var(--ur-radius-lg);
+  align-items: flex-start;
+  background: var(--ur-info-soft);
+  border-color: var(--ur-info);
+  border-radius: var(--ur-radius-lg);
+  box-shadow: none;
+  color: var(--ur-fg-primary);
+  display: grid;
+  gap: var(--ur-sp-3);
+  grid-template-columns: auto 1fr;
+  padding: var(--ur-sp-4);
+}
+
+.ur-alert--success {
+  background: var(--ur-success-soft);
+  border-color: var(--ur-success);
+}
+
+.ur-alert--warning {
+  background: var(--ur-warning-soft);
+  border-color: var(--ur-warning);
+}
+
+.ur-alert--danger {
+  background: var(--ur-danger-soft);
+  border-color: var(--ur-danger);
+}
+
+.ur-alert__icon {
+  color: var(--ur-info);
+  font-size: 18px;
+  height: 18px;
+  width: 18px;
+}
+
+.ur-alert--success .ur-alert__icon {
+  color: var(--ur-success);
+}
+
+.ur-alert--warning .ur-alert__icon {
+  color: var(--ur-warning);
+}
+
+.ur-alert--danger .ur-alert__icon {
+  color: var(--ur-danger);
+}
+
+.ur-alert__body {
+  display: grid;
+  gap: var(--ur-sp-1);
+}
+
+.ur-alert__title {
+  color: var(--ur-fg-primary);
+  font: var(--mat-sys-title-small);
+  margin: 0;
+}
+
+.ur-alert__message {
+  color: var(--ur-fg-secondary);
+  font: var(--mat-sys-body-medium);
+  margin: 0;
+}

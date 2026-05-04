@@ -1,0 +1,30 @@
+@startuml sequence_recovery
+!theme plain
+title Password Recovery
+
+actor User
+participant "RecoverPage" as RP
+participant "AuthController" as AC
+participant "RecoveryHandler" as H
+participant "UserManager" as UM
+participant "EmailSender" as ES
+
+User -> RP: submit email
+RP -> AC: POST /api/auth/recovery
+AC -> H: Send(RequestRecoveryCommand)
+H -> UM: GeneratePasswordResetTokenAsync
+H -> ES: SendAsync(reset link)
+H --> AC: ok
+AC --> RP: 200 generic
+
+== later ==
+participant "ResetPage" as RPS
+User -> RPS: open reset link, submit new password
+RPS -> AC: POST /api/auth/reset
+AC -> H: Send(ResetPasswordCommand)
+H -> UM: ResetPasswordAsync
+H -> UM: UpdateSecurityStampAsync (invalidates other sessions)
+H --> AC: ok
+AC --> RPS: 200
+RPS --> User: navigate /auth/sign-in
+@enduml

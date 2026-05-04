@@ -1,0 +1,40 @@
+@if (href) {
+  <a
+    mat-list-item
+    [href]="href"
+    [activated]="active"
+    [class]="itemClass"
+    [attr.aria-current]="active ? 'page' : null"
+    (click)="onSelect($event)"
+  >
+    @if (icon) {
+      <mat-icon matListItemIcon class="ur-side-nav-item__icon" aria-hidden="true">{{
+        icon
+      }}</mat-icon>
+    }
+    <span matListItemTitle class="ur-side-nav-item__label">{{ label }}<ng-content /></span>
+    @if (badge) {
+      <span matListItemMeta class="ur-side-nav-item__badge">{{ badge }}</span>
+    }
+  </a>
+} @else {
+  <button
+    mat-list-item
+    type="button"
+    [disabled]="disabled"
+    [activated]="active"
+    [class]="itemClass"
+    [attr.aria-current]="active ? 'page' : null"
+    (click)="onSelect($event)"
+  >
+    @if (icon) {
+      <mat-icon matListItemIcon class="ur-side-nav-item__icon" aria-hidden="true">{{
+        icon
+      }}</mat-icon>
+    }
+    <span matListItemTitle class="ur-side-nav-item__label">{{ label }}<ng-content /></span>
+    @if (badge) {
+      <span matListItemMeta class="ur-side-nav-item__badge">{{ badge }}</span>
+    }
+  </button>
+}

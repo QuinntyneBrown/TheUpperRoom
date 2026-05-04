@@ -1,0 +1,23 @@
+@startuml sequence_assign
+!theme plain
+title Assign / Revoke Team Role
+
+actor "City Lead" as CL
+participant "RoleChipEditor" as E
+participant "TeamsController" as C
+participant "AssignRoleHandler" as H
+database "DB" as DB
+participant "TeamHub" as Hub
+
+CL -> E: toggle "EventLead" on member
+E -> C: POST /api/teams/local/members/{u}/roles {role:"EventLead", action:"add"}
+C -> H: AssignRoleCommand
+alt CL & role in {Prayer,Event,Communication}
+  H -> DB: INSERT/DELETE UserRole
+  H -> Hub: SendAsync("roleChanged")
+  H --> C: ok
+  C --> E: 200
+else CL trying to assign Admin/CityLead
+  H --> C: 403
+end
+@enduml

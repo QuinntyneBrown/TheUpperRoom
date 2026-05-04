@@ -1,0 +1,31 @@
+@startuml sequence_realtime
+!theme plain
+title SignalR Connection + Team Broadcast
+
+actor "User A" as A
+actor "User B" as B
+participant "RealtimeService(A)" as RA
+participant "TeamHub" as Hub
+participant "RealtimeService(B)" as RB
+participant "Handler(some mutator)" as H
+
+A -> RA: connect()
+RA -> Hub: connect (cookie auth)
+Hub -> Hub: AddToGroupAsync team:{teamId}
+RA --> A: connected
+
+B -> RB: connect()
+RB -> Hub: connect
+Hub -> Hub: AddToGroupAsync team:{teamId}
+
+== A creates a contact ==
+A -> H: POST /api/contacts
+H -> Hub: Group(team).SendAsync("contactCreated")
+Hub --> RA: contactCreated (echo)
+Hub --> RB: contactCreated
+RB --> B: notify subscribers
+
+== A signs out ==
+A -> RA: disconnect()
+RA -> Hub: stop
+@enduml

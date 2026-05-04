@@ -1,0 +1,18 @@
+@startuml sequence_create
+!theme plain
+title Create Partner
+
+actor User
+participant "PartnerForm" as F
+participant "PartnersController" as C
+participant "Handler" as H
+database "DB" as DB
+
+User -> F: fill + submit
+F -> C: POST /api/partners
+C -> H: CreatePartnerCommand{Stage??=Lead}
+H -> DB: INSERT Partner
+H --> C: id
+C --> F: 201
+F --> User: navigate /partners/{id}
+@enduml

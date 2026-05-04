@@ -1,0 +1,28 @@
+@startuml sequence_associate
+!theme plain
+title Associate Contact with Partner
+
+actor User
+participant "PartnerContactsPanel" as P
+participant "PartnersController" as C
+participant "Handler" as H
+database "DB" as DB
+
+== add existing ==
+User -> P: pick contact
+P -> C: POST /api/partners/{id}/contacts {contactId}
+C -> H: AddPartnerContactCommand
+H -> DB: INSERT PartnerContact
+H --> C: ok
+C --> P: 200
+
+== add new ==
+User -> P: fill new-contact form
+P -> C: POST /api/partners/{id}/contacts/new
+C -> H: CreateContactForPartnerCommand
+H -> H: Send(CreateContactCommand)
+H -> H: Send(AddPartnerContactCommand)
+H -> DB: INSERT Contact + PartnerContact (one tx)
+H --> C: { contactId }
+C --> P: 201
+@enduml

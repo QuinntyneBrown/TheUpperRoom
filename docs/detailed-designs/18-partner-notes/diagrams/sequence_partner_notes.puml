@@ -1,0 +1,18 @@
+@startuml sequence_partner_notes
+!theme plain
+title Add Note to Partner
+
+actor User
+participant "NotesPanel(target=Partner)" as NP
+participant "NotesController" as C
+participant "AddNoteHandler" as H
+database "DB" as DB
+
+User -> NP: type, submit
+NP -> C: POST /api/partners/{id}/notes
+C -> H: AddNoteCommand{TargetType=Partner}
+H -> DB: INSERT Note
+H --> C: NoteDto
+C --> NP: 201
+NP --> User: prepend
+@enduml

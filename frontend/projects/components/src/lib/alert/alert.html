@@ -1,0 +1,15 @@
+<mat-card [class]="alertClass" appearance="outlined">
+  <mat-icon class="ur-alert__icon" aria-hidden="true">{{ resolvedIcon }}</mat-icon>
+
+  <div class="ur-alert__body">
+    @if (title) {
+      <h3 class="ur-alert__title">{{ title }}</h3>
+    }
+
+    @if (message) {
+      <p class="ur-alert__message">{{ message }}</p>
+    }
+
+    <ng-content />
+  </div>
+</mat-card>

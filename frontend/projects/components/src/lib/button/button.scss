@@ -1,0 +1,90 @@
+@use '../styles/tokens' as tokens;
+
+:host {
+  @include tokens.host;
+  display: inline-block;
+}
+
+.ur-button {
+  --mat-button-filled-container-shape: var(--ur-radius-md);
+  --mat-button-filled-horizontal-padding: var(--ur-sp-4);
+  --mat-button-filled-label-text-font: var(--ur-font-heading);
+  --mat-button-filled-label-text-size: var(--ur-fs-base);
+  --mat-button-filled-label-text-weight: 600;
+  --mat-button-outlined-container-shape: var(--ur-radius-md);
+  --mat-button-outlined-horizontal-padding: var(--ur-sp-4);
+  --mat-button-outlined-label-text-font: var(--ur-font-heading);
+  --mat-button-outlined-label-text-size: var(--ur-fs-base);
+  --mat-button-outlined-label-text-weight: 600;
+  --mat-button-text-container-shape: var(--ur-radius-md);
+  --mat-button-text-label-text-font: var(--ur-font-heading);
+  --mat-button-text-label-text-size: var(--ur-fs-base);
+  --mat-button-text-label-text-weight: 600;
+  align-items: center;
+  border-radius: var(--ur-radius-md);
+  min-height: 36px;
+  white-space: nowrap;
+}
+
+.ur-button--full-width {
+  width: 100%;
+}
+
+.ur-button--primary {
+  --mat-button-filled-container-color: var(--ur-accent-primary);
+  --mat-button-filled-label-text-color: var(--ur-fg-on-accent);
+  --mat-button-filled-state-layer-color: var(--ur-fg-on-accent);
+}
+
+.ur-button--primary:hover {
+  --mat-button-filled-container-color: var(--ur-accent-primary-hover);
+}
+
+.ur-button--secondary {
+  --mat-button-filled-container-color: var(--ur-bg-elevated);
+  --mat-button-filled-label-text-color: var(--ur-fg-primary);
+  --mat-button-filled-state-layer-color: var(--ur-fg-primary);
+  border: 1px solid var(--ur-border-default);
+}
+
+.ur-button--outline {
+  --mat-button-outlined-label-text-color: var(--ur-accent-primary);
+  --mat-button-outlined-outline-color: var(--ur-accent-primary);
+  --mat-button-outlined-state-layer-color: var(--ur-accent-primary);
+}
+
+.ur-button--ghost {
+  --mat-button-text-label-text-color: var(--ur-fg-secondary);
+  --mat-button-text-state-layer-color: var(--ur-fg-secondary);
+}
+
+.ur-button--danger {
+  --mat-button-filled-container-color: var(--ur-danger);
+  --mat-button-filled-label-text-color: var(--ur-fg-on-accent);
+  --mat-button-filled-state-layer-color: var(--ur-fg-on-accent);
+}
+
+.ur-button--icon {
+  --mat-icon-button-container-shape: var(--ur-radius-md);
+  --mat-icon-button-icon-color: var(--ur-fg-primary);
+  --mat-icon-button-icon-size: 18px;
+  --mat-icon-button-state-layer-size: 36px;
+  background: var(--ur-bg-elevated);
+  border: 1px solid var(--ur-border-default);
+  border-radius: var(--ur-radius-md);
+  height: 36px;
+  padding: 0;
+  width: 36px;
+}
+
+.ur-button--fab {
+  --mat-fab-container-color: var(--ur-accent-primary);
+  --mat-fab-foreground-color: var(--ur-fg-on-accent);
+  --mat-fab-container-shape: var(--ur-radius-full);
+  height: 56px;
+  width: 56px;
+}
+
+.ur-button__label {
+  line-height: 1;
+}

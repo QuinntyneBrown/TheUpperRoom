@@ -1,0 +1,30 @@
+@startuml sequence_register
+!theme plain
+title Registration + Email Verification
+
+actor Visitor
+participant "RegisterPage" as RP
+participant "AuthController" as AC
+participant "RegisterHandler" as H
+participant "UserManager" as UM
+database "DB" as DB
+participant "EmailSender" as ES
+
+Visitor -> RP: submit form
+RP -> AC: POST /api/auth/register
+AC -> H: Send(RegisterCommand)
+H -> UM: CreateAsync(user, password)
+UM -> DB: INSERT User (Argon2id hash)
+H -> DB: INSERT VerificationToken
+H -> ES: SendAsync(verifyLink)
+H --> AC: ok
+AC --> RP: 200 generic OK
+RP --> Visitor: "Check your email"
+
+== later ==
+Visitor -> AC: GET /api/auth/verify?token=...
+AC -> H: Send(VerifyEmailCommand)
+H -> DB: lookup token, set User.EmailVerified=true, mark UsedAt
+H --> AC: ok
+AC --> Visitor: 302 /auth/sign-in
+@enduml

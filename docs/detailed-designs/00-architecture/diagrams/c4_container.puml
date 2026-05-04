@@ -1,0 +1,22 @@
+@startuml c4_container
+!theme plain
+!include <C4/C4_Container>
+
+title The Upper Room — Containers
+
+Person(user, "User", "Authenticated City Lead / role")
+
+System_Boundary(upper, "The Upper Room") {
+    Container(spa, "Web App", "Angular 18 SPA", "App shell, lazy feature libs, components lib, api lib")
+    Container(api, "API + Realtime", "ASP.NET Core 8, MediatR, SignalR", "REST endpoints, command/query handlers, TeamHub for realtime")
+    ContainerDb(db, "Database", "SQLite (dev) / PostgreSQL (prod), EF Core", "Stores users, teams, contacts, partners, hackathons, notes, dashboards, notifications")
+}
+
+System_Ext(smtp, "SMTP Provider", "Outgoing email")
+
+Rel(user, spa, "Uses", "HTTPS")
+Rel(spa, api, "Calls", "JSON/HTTPS, WebSocket (SignalR)")
+Rel(api, db, "Reads/Writes", "EF Core")
+Rel(api, smtp, "Sends mail", "SMTP/TLS")
+
+@enduml

@@ -1,0 +1,57 @@
+@use '../styles/tokens' as tokens;
+
+:host {
+  @include tokens.host;
+  display: block;
+}
+
+.ur-card {
+  --mat-card-elevated-container-color: var(--ur-bg-surface);
+  --mat-card-outlined-container-color: var(--ur-bg-surface);
+  --mat-card-outlined-outline-color: var(--ur-border-subtle);
+  --mat-card-outlined-container-shape: var(--ur-radius-lg);
+  background: var(--ur-bg-surface);
+  border-color: var(--ur-border-subtle);
+  border-radius: var(--ur-radius-lg);
+  box-shadow: none;
+  color: var(--ur-fg-primary);
+}
+
+.ur-card__header {
+  align-items: center;
+  padding: var(--ur-sp-4) var(--ur-sp-4) 0;
+}
+
+.ur-card__icon {
+  align-items: center;
+  background: var(--ur-accent-soft);
+  border-radius: var(--ur-radius-md);
+  color: var(--ur-accent-primary);
+  display: inline-flex;
+  font-size: 18px;
+  height: 32px;
+  justify-content: center;
+  margin-bottom: 0;
+  width: 32px;
+}
+
+.ur-card__title {
+  color: var(--ur-fg-primary);
+  font: var(--mat-sys-title-medium);
+}
+
+.ur-card__subtitle {
+  color: var(--ur-fg-secondary);
+  font: var(--mat-sys-body-medium);
+}
+
+.ur-card__content {
+  color: var(--ur-fg-secondary);
+  font: var(--mat-sys-body-medium);
+  padding: var(--ur-sp-4);
+}
+
+.ur-card__actions {
+  gap: var(--ur-sp-2);
+  padding: 0 var(--ur-sp-4) var(--ur-sp-4);
+}

@@ -1,0 +1,18 @@
+@startuml sequence_signout
+!theme plain
+title Sign-Out
+
+actor User
+participant "AppShell" as AS
+participant "AuthController" as AC
+participant "SignInManager" as SM
+participant "RealtimeService" as RT
+
+User -> AS: click Sign out
+AS -> AC: POST /api/auth/sign-out
+AC -> SM: SignOutAsync()
+SM --> AC: cookie cleared
+AC --> AS: 200
+AS -> RT: disconnect()
+AS --> User: navigate /auth/sign-in
+@enduml

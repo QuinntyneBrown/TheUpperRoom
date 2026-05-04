@@ -1,0 +1,22 @@
+@startuml sequence_get
+!theme plain
+title View Contact
+
+actor User
+participant "ContactDetailPage" as P
+participant "ContactsController" as C
+participant "GetContactHandler" as H
+database "DB" as DB
+
+User -> P: navigate /contacts/{id}
+P -> C: GET /api/contacts/{id}
+C -> DB: SELECT Contact + Notes
+alt found, same team or admin
+  C -> H: handle
+  H --> C: ContactDto
+  C --> P: 200 ContactDto
+  P --> User: render summary + notes
+else missing or other-team non-admin
+  C --> P: 404
+end
+@enduml

@@ -1,0 +1,64 @@
+@use '../styles/tokens' as tokens;
+
+:host {
+  @include tokens.host;
+  display: block;
+}
+
+.ur-toast {
+  --mat-card-outlined-container-shape: var(--ur-radius-lg);
+  align-items: center;
+  background: var(--ur-bg-overlay);
+  border-color: var(--ur-border-default);
+  border-radius: var(--ur-radius-lg);
+  box-shadow: none;
+  color: var(--ur-fg-primary);
+  display: grid;
+  gap: var(--ur-sp-3);
+  grid-template-columns: auto 1fr auto;
+  padding: var(--ur-sp-3) var(--ur-sp-4);
+}
+
+.ur-toast__icon {
+  color: var(--ur-success);
+  font-size: 18px;
+  height: 18px;
+  width: 18px;
+}
+
+.ur-toast--info .ur-toast__icon {
+  color: var(--ur-info);
+}
+
+.ur-toast--warning .ur-toast__icon {
+  color: var(--ur-warning);
+}
+
+.ur-toast--danger .ur-toast__icon {
+  color: var(--ur-danger);
+}
+
+.ur-toast__body {
+  display: grid;
+  gap: var(--ur-sp-1);
+  min-width: 0;
+}
+
+.ur-toast__title {
+  color: var(--ur-fg-primary);
+  font: var(--mat-sys-title-small);
+  margin: 0;
+}
+
+.ur-toast__message {
+  color: var(--ur-fg-secondary);
+  font: var(--mat-sys-body-small);
+  margin: 0;
+}
+
+.ur-toast__dismiss {
+  --mat-icon-button-icon-color: var(--ur-fg-muted);
+  --mat-icon-button-state-layer-size: 32px;
+  height: 32px;
+  width: 32px;
+}
