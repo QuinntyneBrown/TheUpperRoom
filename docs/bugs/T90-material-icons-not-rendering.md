@@ -17,3 +17,5 @@ Design file uses `iconFontFamily: "Material Symbols Outlined"`. The Angular app 
 Add `provideMatIconRegistry(withDefaultFontSetClass('material-symbols-outlined'))` to app providers, which makes `mat-icon` use the already-loaded Material Symbols Outlined font.
 
 ## Fixed
+
+Added `APP_INITIALIZER` in `app.config.ts` calling `MatIconRegistry.setDefaultFontSetClass('material-symbols-outlined')`. This aligns `mat-icon` rendering with the already-loaded Material Symbols Outlined font from `index.html`.

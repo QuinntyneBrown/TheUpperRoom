@@ -24,3 +24,5 @@ Design reference: `docs/ui-design.pen` → "Tablet / New Partner Modal" (node `R
   - `create()` method uses `getByTestId('add-partner-btn')` — testid stays the same, no POM change needed for this field
 
 ## Fixed
+
+`partner-create-page.html`: title → "New partner", button → "Create partner". Route title in `app.config.ts` updated to match. E2e test added in `partner-create-labels.spec.ts`. Rebuilt `dist/feature-partners` to apply template changes.
