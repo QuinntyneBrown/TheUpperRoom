@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CONTACT_SERVICE, ContactDto } from 'api';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,9 +29,16 @@ import { ContactFormComponent, ContactFormInitial, ContactFormValue } from '../c
     .conflict-field__label { font-size: 0.7rem; color: var(--ur-fg-muted, #64748b); text-transform: uppercase; }
     .conflict-field__value { font-size: 0.875rem; padding: 4px 0; min-height: 20px; }
     .conflict-dialog__actions { display: flex; justify-content: flex-end; gap: 12px; }
+    .edit-error-toast {
+      position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
+      gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 500;
+      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
+      border: 1px solid var(--ur-error-fg, #dc2626); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .edit-error-toast mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
   `],
 })
-export class ContactEditPageComponent implements OnInit {
+export class ContactEditPageComponent implements OnInit, OnDestroy {
   private contacts = inject(CONTACT_SERVICE);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
@@ -40,10 +47,17 @@ export class ContactEditPageComponent implements OnInit {
   initial = signal<ContactFormInitial | null>(null);
   errors = signal<Record<string, string[]>>({});
   loading = signal(false);
+  saveError = signal(false);
   conflict = signal(false);
   notFound = signal(false);
   serverContact = signal<ContactDto | null>(null);
   pendingValue = signal<ContactFormValue | null>(null);
+
+  private saveErrorTimer?: ReturnType<typeof setTimeout>;
+
+  ngOnDestroy(): void {
+    clearTimeout(this.saveErrorTimer);
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')!;
@@ -80,6 +94,10 @@ export class ContactEditPageComponent implements OnInit {
           });
         } else if (err.status === 400 && err.error?.fields) {
           this.errors.set(err.error.fields);
+        } else {
+          clearTimeout(this.saveErrorTimer);
+          this.saveError.set(true);
+          this.saveErrorTimer = setTimeout(() => this.saveError.set(false), 4000);
         }
       },
     });
