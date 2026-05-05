@@ -1,4 +1,4 @@
-# 24 — View Hackathon Details
+# 24 — View Hackathon Details ✅ Accepted
 
 **Traces to:** L2-025 (L1-005).
 
