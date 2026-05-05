@@ -1,0 +1,15 @@
+@use 'components/src/lib/styles/tokens' as ur;
+
+:root {
+  @include ur.host();
+
+  --chart-grid: #2a2a3a;
+  --chart-axis: #3a3a4f;
+  --chart-series-1: #9f86ff;
+  --chart-series-2: #bf40ff;
+  --chart-series-3: #00f2ff;
+  --chart-series-4: #34d399;
+  --chart-series-5: #fbbf24;
+  --chart-series-6: #f87171;
+  --chart-tooltip-bg: var(--ur-bg-overlay);
+}

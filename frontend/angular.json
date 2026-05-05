@@ -75,6 +75,9 @@
             "browser": "projects/app-shell/src/main.ts",
             "tsConfig": "projects/app-shell/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "stylePreprocessorOptions": {
+              "includePaths": ["projects"]
+            },
             "assets": [
               {
                 "glob": "**/*",
