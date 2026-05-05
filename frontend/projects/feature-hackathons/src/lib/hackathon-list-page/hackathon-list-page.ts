@@ -14,36 +14,42 @@ import { MatIconModule } from '@angular/material/icon';
         <h1>Hackathons</h1>
         <a mat-raised-button routerLink="/hackathons/new" data-testid="new-hackathon-btn">+ Plan hackathon</a>
       </div>
-      @if (loading()) {
-        <div class="hackathon-list-loading" data-testid="hackathons-list-loading" aria-busy="true" aria-label="Loading hackathons">
-          @for (_ of [1,2,3]; track $index) {
-            <div class="hackathon-list-loading__card">
-              <div class="hackathon-list-loading__title"></div>
-              <div class="hackathon-list-loading__meta"></div>
-            </div>
+      <div class="hackathon-list-page__scroll">
+        @if (loading()) {
+          <div class="hackathon-list-loading" data-testid="hackathons-list-loading" aria-busy="true" aria-label="Loading hackathons">
+            @for (_ of [1,2,3]; track $index) {
+              <div class="hackathon-list-loading__card">
+                <div class="hackathon-list-loading__title"></div>
+                <div class="hackathon-list-loading__meta"></div>
+              </div>
+            }
+          </div>
+        } @else if (loadError()) {
+          <div class="hackathon-list-error" data-testid="hackathons-error" role="alert">
+            <mat-icon>error_outline</mat-icon>
+            <span>Failed to load hackathons.</span>
+            <button mat-stroked-button data-testid="hackathons-retry-btn" (click)="load()">Retry</button>
+          </div>
+        } @else if (rows().length === 0) {
+          <div class="hackathon-list-page__empty" data-testid="hackathons-empty">
+            <mat-icon>rocket_launch</mat-icon>
+            <p>No hackathons yet.</p>
+            <a mat-stroked-button routerLink="/hackathons/new" data-testid="hackathons-empty-create-btn">Create first hackathon</a>
+          </div>
+        } @else {
+          @for (row of rows(); track row.id) {
+            <a class="hackathon-card" [routerLink]="['/hackathons', row.id]" [attr.data-testid]="'hackathon-card-' + row.id">
+              <div class="hackathon-card__top">
+                <div class="hackathon-card__titles">
+                  <strong>{{ row.title }}</strong>
+                  <span class="hackathon-card__meta">{{ row.hostCity }} · {{ row.startDate | date:'mediumDate' }}–{{ row.endDate | date:'mediumDate' }}</span>
+                </div>
+                <span class="hackathon-card__stage" data-testid="hackathon-stage-badge">{{ row.currentStage }}</span>
+              </div>
+            </a>
           }
-        </div>
-      } @else if (loadError()) {
-        <div class="hackathon-list-error" data-testid="hackathons-error" role="alert">
-          <mat-icon>error_outline</mat-icon>
-          <span>Failed to load hackathons.</span>
-          <button mat-stroked-button data-testid="hackathons-retry-btn" (click)="load()">Retry</button>
-        </div>
-      } @else if (rows().length === 0) {
-        <div class="hackathon-list-page__empty" data-testid="hackathons-empty">
-          <mat-icon>rocket_launch</mat-icon>
-          <p>No hackathons yet.</p>
-          <a mat-stroked-button routerLink="/hackathons/new" data-testid="hackathons-empty-create-btn">Create first hackathon</a>
-        </div>
-      }
-      @for (row of rows(); track row.id) {
-        <a class="hackathon-card" [routerLink]="['/hackathons', row.id]" [attr.data-testid]="'hackathon-card-' + row.id">
-          <strong>{{ row.title }}</strong>
-          <span class="hackathon-card__meta">
-            {{ row.hostCity }} · {{ row.startDate | date:'mediumDate' }}–{{ row.endDate | date:'mediumDate' }} · {{ row.currentStage }}
-          </span>
-        </a>
-      }
+        }
+      </div>
     </div>
     @if (deletedToast()) {
       <div class="hackathon-list-toast" role="status" data-testid="hackathon-deleted-toast">
@@ -56,19 +62,30 @@ import { MatIconModule } from '@angular/material/icon';
     .hackathon-list-page { display: flex; flex-direction: column; height: 100%; }
     .hackathon-list-page__header {
       display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
-      padding: 16px 20px; border-bottom: 1px solid var(--ur-border-subtle, #334155);
-      background: var(--ur-bg-surface, #1e293b);
+      padding: 16px 24px; border-bottom: 1px solid var(--ur-border-subtle, #222233);
+      background: var(--ur-bg-elevated, #101018); height: 64px; flex-shrink: 0;
     }
-    .hackathon-list-page__header h1 { margin: 0; font-size: 1.125rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); }
+    .hackathon-list-page__header h1 { margin: 0; font-size: 1.125rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); font-family: var(--ur-font-heading, 'Geist', sans-serif); }
+    .hackathon-list-page__scroll { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 16px; }
     .hackathon-card {
-      display: flex; flex-direction: column; gap: 4px; padding: 14px 20px;
-      border-bottom: 1px solid var(--ur-border-subtle, #334155);
-      text-decoration: none; color: inherit; background: transparent;
-      transition: background 0.15s ease;
+      display: block; padding: 20px; border-radius: 8px;
+      border: 1px solid var(--ur-accent-primary, #9f86ff);
+      background: var(--ur-bg-elevated, #101018);
+      text-decoration: none; color: inherit;
+      transition: border-color 0.15s ease, background 0.15s ease;
     }
-    .hackathon-card:hover { background: var(--ur-bg-elevated, #0f172a); }
-    .hackathon-card strong { font-size: 0.9375rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); }
-    .hackathon-card__meta { font-size: 0.8125rem; color: var(--ur-fg-secondary, #94a3b8); }
+    .hackathon-card:hover { background: var(--ur-bg-surface, #16161f); }
+    .hackathon-card__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .hackathon-card__titles { display: flex; flex-direction: column; gap: 4px; }
+    .hackathon-card strong { font-size: 1rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); font-family: var(--ur-font-heading, 'Geist', sans-serif); }
+    .hackathon-card__meta { font-size: 0.6875rem; color: var(--ur-fg-muted, #a8a8b5); font-family: var(--ur-font-mono, 'Geist Mono', monospace); }
+    .hackathon-card__stage {
+      flex-shrink: 0; font-size: 0.6875rem; font-family: var(--ur-font-mono, 'Geist Mono', monospace);
+      color: var(--ur-accent-primary, #9f86ff); font-weight: 500;
+      background: color-mix(in srgb, var(--ur-accent-primary, #9f86ff) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--ur-accent-primary, #9f86ff) 40%, transparent);
+      border-radius: 4px; padding: 2px 8px; white-space: nowrap;
+    }
     .hackathon-list-error {
       display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 8px; margin: 16px 0;
       background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
