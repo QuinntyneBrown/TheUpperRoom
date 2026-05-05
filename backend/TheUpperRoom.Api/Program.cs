@@ -1,16 +1,27 @@
+using FluentValidation;
+using MediatR;
 using TheUpperRoom.Api.Audit;
 using TheUpperRoom.Api.Infrastructure;
 using TheUpperRoom.Api.Observability;
+using TheUpperRoom.Api.Validation;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.WebHost.ConfigureKestrel(o =>
+    o.Limits.MaxRequestBodySize = 1 * 1024 * 1024); // 1 MB
+
+builder.Services.AddControllers(o => o.Filters.Add<ValidationExceptionFilter>());
 builder.Services.AddHsts(options =>
 {
     options.MaxAge = TimeSpan.FromDays(365);
     options.IncludeSubDomains = true;
 });
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssemblyContaining<Program>();
+    cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+});
 builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddSingleton<ApiMetrics>();
 builder.Services.AddHttpContextAccessor();
