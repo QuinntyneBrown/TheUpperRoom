@@ -102,4 +102,8 @@ export class PartnersPage {
   savedToast() {
     return this.page.getByTestId('partner-saved-toast');
   }
+
+  deletedToast() {
+    return this.page.getByTestId('partner-deleted-toast');
+  }
 }
