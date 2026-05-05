@@ -18,7 +18,7 @@
     </header>
 
     @if (conflict()) {
-      <div class="partner-edit__conflict" role="alert">
+      <div class="partner-edit__conflict" role="alert" data-testid="partner-edit-conflict-banner">
         This partner was modified by someone else. Please go back and refresh.
       </div>
     }
