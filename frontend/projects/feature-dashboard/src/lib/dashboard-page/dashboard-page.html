@@ -33,7 +33,7 @@
           <div class="dashboard-widget" [attr.data-testid]="'widget-' + item.id">
             <header class="dashboard-widget__header">
               <span class="dashboard-widget__type">{{ item.type }}</span>
-              <button mat-icon-button (click)="removeWidget(item)" aria-label="Remove widget">
+              <button mat-icon-button (click)="removeWidget(item)" aria-label="Remove widget" data-testid="remove-widget-btn">
                 <mat-icon>close</mat-icon>
               </button>
             </header>

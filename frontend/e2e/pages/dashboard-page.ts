@@ -22,7 +22,7 @@ export class DashboardPage {
   }
 
   async removeWidget(type: string) {
-    await this.widgetByType(type).getByRole('button', { name: /remove widget/i }).click();
+    await this.widgetByType(type).getByTestId('remove-widget-btn').click();
     await expect(this.widgetByType(type)).not.toBeVisible();
   }
 
