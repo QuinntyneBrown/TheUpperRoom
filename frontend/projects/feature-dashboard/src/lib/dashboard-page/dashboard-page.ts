@@ -67,10 +67,8 @@ export class DashboardPageComponent implements OnInit {
     clearTimeout(this.undoTimer);
     this.items.update((prev) => prev.filter((i) => i.id !== item.id));
     this.removedWidget.set(item);
-    this.undoTimer = setTimeout(() => {
-      this.removedWidget.set(null);
-      this.save$.next();
-    }, UNDO_MS);
+    this.save$.next();
+    this.undoTimer = setTimeout(() => this.removedWidget.set(null), UNDO_MS);
   }
 
   undoRemove(): void {
@@ -79,6 +77,7 @@ export class DashboardPageComponent implements OnInit {
     clearTimeout(this.undoTimer);
     this.items.update((prev) => [...prev, item]);
     this.removedWidget.set(null);
+    this.save$.next();
   }
 
   private persist(): void {

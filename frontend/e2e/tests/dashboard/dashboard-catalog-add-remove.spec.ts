@@ -32,7 +32,7 @@ test.describe('Widget catalog — L2-033', () => {
     await expect(page.locator('[data-testid^="widget-"]')).toHaveCount(2);
   });
 
-  test('removing a widget decrements widget count', async ({ page, dashboard }) => {
+  test('removing a widget decrements widget count and shows undo snackbar', async ({ page, dashboard }) => {
     await dashboard.goto();
     await dashboard.addWidgetCta().click();
     await dashboard.catalogItem('kpi').click();
@@ -40,6 +40,20 @@ test.describe('Widget catalog — L2-033', () => {
 
     await page.locator('[aria-label="Remove widget"]').first().click();
     await expect(dashboard.emptyState()).toBeVisible();
+    await expect(dashboard.undoSnackbar()).toBeVisible();
+  });
+
+  test('undo remove restores widget', async ({ page, dashboard }) => {
+    await dashboard.goto();
+    await dashboard.addWidgetCta().click();
+    await dashboard.catalogItem('kpi').click();
+    await expect(page.locator('[data-testid^="widget-"]')).toHaveCount(1);
+
+    await page.locator('[aria-label="Remove widget"]').first().click();
+    await expect(dashboard.undoSnackbar()).toBeVisible();
+    await dashboard.undoRemoveBtn().click();
+    await expect(page.locator('[data-testid^="widget-"]')).toHaveCount(1);
+    await expect(dashboard.undoSnackbar()).not.toBeVisible();
   });
 });
 

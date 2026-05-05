@@ -69,4 +69,16 @@ export class DashboardPage {
   anyWidget() {
     return this.page.locator('[data-testid^="widget-"]').first();
   }
+
+  undoSnackbar() {
+    return this.page.getByTestId('undo-snackbar');
+  }
+
+  undoRemoveBtn() {
+    return this.page.getByTestId('undo-remove-btn');
+  }
+
+  savedToast() {
+    return this.page.getByTestId('layout-saved-toast');
+  }
 }
