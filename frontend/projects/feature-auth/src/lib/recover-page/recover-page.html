@@ -17,8 +17,9 @@
         (valueChange)="email.set($event)"
       />
       <ur-button type="submit" [disabled]="loading()" fullWidth data-testid="forgot-password-submit-btn">
-        {{ loading() ? 'Sending…' : 'Send reset link' }}
+        {{ loading() ? 'Sending…' : 'Send recovery link' }}
       </ur-button>
+      <p class="auth-hint" data-testid="recover-security-notice">For security, we respond the same way whether or not the email is registered.</p>
     </form>
     <p><a routerLink="/auth/sign-in">Back to sign in</a></p>
   </div>
