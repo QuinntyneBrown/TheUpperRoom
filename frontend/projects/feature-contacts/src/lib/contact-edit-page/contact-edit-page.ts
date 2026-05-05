@@ -36,6 +36,10 @@ import { ContactFormComponent, ContactFormInitial, ContactFormValue } from '../c
       border: 1px solid var(--ur-error-fg, #dc2626); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
     .edit-error-toast mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
+    .contact-edit-loading { display: flex; flex-direction: column; gap: 16px; padding: 24px 0; }
+    .contact-edit-loading__title { height: 24px; width: 30%; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: ce-pulse 1.4s ease-in-out infinite; }
+    .contact-edit-loading__field { height: 48px; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: ce-pulse 1.4s ease-in-out infinite; }
+    @keyframes ce-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
   `],
 })
 export class ContactEditPageComponent implements OnInit, OnDestroy {
@@ -46,6 +50,7 @@ export class ContactEditPageComponent implements OnInit, OnDestroy {
   contact = signal<ContactDto | null>(null);
   initial = signal<ContactFormInitial | null>(null);
   errors = signal<Record<string, string[]>>({});
+  fetching = signal(true);
   loading = signal(false);
   saveError = signal(false);
   conflict = signal(false);
@@ -65,8 +70,9 @@ export class ContactEditPageComponent implements OnInit, OnDestroy {
       next: (c) => {
         this.contact.set(c);
         this.initial.set({ firstName: c.firstName, lastName: c.lastName, email: c.email, phone: c.phone, city: c.city });
+        this.fetching.set(false);
       },
-      error: () => this.notFound.set(true),
+      error: () => { this.notFound.set(true); this.fetching.set(false); },
     });
   }
 

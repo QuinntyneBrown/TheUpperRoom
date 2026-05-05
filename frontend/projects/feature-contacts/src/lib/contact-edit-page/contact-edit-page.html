@@ -1,4 +1,11 @@
-@if (notFound()) {
+@if (fetching()) {
+  <div class="contact-edit-loading" data-testid="contact-edit-loading" aria-busy="true" aria-label="Loading contact">
+    <div class="contact-edit-loading__title"></div>
+    <div class="contact-edit-loading__field"></div>
+    <div class="contact-edit-loading__field"></div>
+    <div class="contact-edit-loading__field"></div>
+  </div>
+} @else if (notFound()) {
   <div class="not-found">
     <h1>Contact not found</h1>
     <a routerLink="/contacts">Back to contacts</a>
@@ -15,8 +22,6 @@
       (formSubmit)="save($event)"
     />
   </div>
-} @else {
-  <div class="loading" role="status">Loading…</div>
 }
 
 @if (conflict()) {

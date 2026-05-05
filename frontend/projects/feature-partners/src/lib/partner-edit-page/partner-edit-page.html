@@ -1,4 +1,11 @@
-@if (notFound()) {
+@if (loading()) {
+  <div class="partner-edit-loading" data-testid="partner-edit-loading" aria-busy="true" aria-label="Loading partner">
+    <div class="partner-edit-loading__title"></div>
+    <div class="partner-edit-loading__field"></div>
+    <div class="partner-edit-loading__field"></div>
+    <div class="partner-edit-loading__field"></div>
+  </div>
+} @else if (notFound()) {
   <div class="not-found">
     <h1>Partner not found</h1>
     <a routerLink="/partners">Back to partners</a>
@@ -74,8 +81,6 @@
       </div>
     </form>
   </div>
-} @else {
-  <div class="loading" role="status">Loading…</div>
 }
 
 @if (saveError()) {

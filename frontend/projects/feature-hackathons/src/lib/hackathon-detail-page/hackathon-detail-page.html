@@ -1,4 +1,10 @@
-@if (notFound()) {
+@if (loading()) {
+  <div class="hackathon-detail-loading" data-testid="hackathon-detail-loading" aria-busy="true" aria-label="Loading hackathon">
+    <div class="hackathon-detail-loading__title"></div>
+    <div class="hackathon-detail-loading__meta"></div>
+    <div class="hackathon-detail-loading__block"></div>
+  </div>
+} @else if (notFound()) {
   <div class="hackathon-detail__not-found">Hackathon not found.</div>
 } @else if (hackathon(); as h) {
   <div class="hackathon-detail" data-testid="hackathon-detail">
@@ -81,8 +87,6 @@
       }
     </div>
   </div>
-} @else {
-  <div class="hackathon-detail__loading" aria-busy="true">Loading…</div>
 }
 
 @if (deleteError()) {

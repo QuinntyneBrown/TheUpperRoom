@@ -30,6 +30,11 @@ const STAGES: { value: HackathonStage; label: string }[] = [
     }
     .hackathon-toast--error { border: 1px solid var(--ur-error-fg, #dc2626); }
     .hackathon-toast--error mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
+    .hackathon-detail-loading { display: flex; flex-direction: column; gap: 16px; padding: 24px 0; }
+    .hackathon-detail-loading__title { height: 28px; width: 50%; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hd-pulse 1.4s ease-in-out infinite; }
+    .hackathon-detail-loading__meta { height: 16px; width: 35%; border-radius: 4px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hd-pulse 1.4s ease-in-out infinite; }
+    .hackathon-detail-loading__block { height: 80px; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hd-pulse 1.4s ease-in-out infinite; }
+    @keyframes hd-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
   `],
 })
 export class HackathonDetailPageComponent implements OnInit, OnDestroy {
@@ -39,6 +44,7 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
   private router = inject(Router);
 
   hackathon = signal<HackathonDetailDto | null>(null);
+  loading = signal(true);
   notFound = signal(false);
   changingStage = signal(false);
   showDeleteDialog = signal(false);
@@ -61,8 +67,8 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')!;
     this.hackathons.getById(id).subscribe({
-      next: (h) => this.hackathon.set(h),
-      error: () => this.notFound.set(true),
+      next: (h) => { this.hackathon.set(h); this.loading.set(false); },
+      error: () => { this.notFound.set(true); this.loading.set(false); },
     });
 
     this.realtime.connect().catch(() => {});

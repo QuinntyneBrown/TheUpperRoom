@@ -18,6 +18,10 @@ import { UrButtonComponent } from 'components';
       border: 1px solid var(--ur-error-fg, #dc2626); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
     .edit-error-toast mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
+    .partner-edit-loading { display: flex; flex-direction: column; gap: 16px; padding: 24px 0; }
+    .partner-edit-loading__title { height: 24px; width: 30%; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: pe-pulse 1.4s ease-in-out infinite; }
+    .partner-edit-loading__field { height: 48px; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: pe-pulse 1.4s ease-in-out infinite; }
+    @keyframes pe-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
   `],
 })
 export class PartnerEditPageComponent implements OnInit, OnDestroy {
@@ -26,6 +30,7 @@ export class PartnerEditPageComponent implements OnInit, OnDestroy {
   private router = inject(Router);
 
   partner = signal<PartnerDetailDto | null>(null);
+  loading = signal(true);
   notFound = signal(false);
   saving = signal(false);
   saveError = signal(false);
@@ -52,8 +57,9 @@ export class PartnerEditPageComponent implements OnInit, OnDestroy {
         this.city.set(p.city);
         this.website.set(p.website ?? '');
         this.description.set(p.description ?? '');
+        this.loading.set(false);
       },
-      error: () => this.notFound.set(true),
+      error: () => { this.notFound.set(true); this.loading.set(false); },
     });
   }
 
