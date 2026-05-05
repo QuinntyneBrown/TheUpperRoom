@@ -2,7 +2,10 @@
   <header class="team-page__header">
     <h1 class="team-page__title">Team</h1>
     @if (canEdit()) {
-      <ur-button (click)="showInvite.set(true)" data-testid="invite-member-button">+ Invite member</ur-button>
+      <div class="team-page__header-actions">
+        <ur-button variant="ghost" data-testid="manage-roles-btn">Manage roles</ur-button>
+        <ur-button (click)="showInvite.set(true)" data-testid="invite-member-button">+ Invite member</ur-button>
+      </div>
     }
   </header>
 
