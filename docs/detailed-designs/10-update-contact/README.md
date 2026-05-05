@@ -2,6 +2,9 @@
 
 **Traces to:** L2-011 (L1-003). Adds optimistic concurrency.
 
+## Status
+Accepted
+
 ## Components
 - Backend `Contacts/UpdateContact.cs` — `UpdateContactCommand : ITeamScopedRequest { Id, TargetTeamId, FirstName, LastName, Email?, Phone?, City?, Version }`. Handler loads contact, asserts `Contact.Version == cmd.Version`; if mismatch, throws `ConflictException` → 409. Otherwise updates fields, increments `Version`, sets `UpdatedAt`, sets `UpdatedById`.
 - Backend `ContactsController.Update` — `PUT /api/contacts/{id}`.
