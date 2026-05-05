@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, HostListener, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { SEARCH_SERVICE, GlobalSearchResult, SearchResultItem } from 'api';
 import { debounceTime, distinctUntilChanged, Subject, switchMap, of } from 'rxjs';
 
@@ -8,7 +10,7 @@ import { debounceTime, distinctUntilChanged, Subject, switchMap, of } from 'rxjs
   selector: 'ur-global-search-overlay',
   templateUrl: './global-search-overlay.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule],
+  imports: [FormsModule, MatIconModule, MatButtonModule],
 })
 export class GlobalSearchOverlayComponent implements OnInit {
   private searchSvc = inject(SEARCH_SERVICE);

@@ -5,8 +5,9 @@
     (click)="toggle()"
     aria-label="Notifications"
     [attr.aria-expanded]="open()"
+    mat-icon-button
   >
-    🔔
+    <mat-icon>notifications</mat-icon>
     @if (unreadCount() > 0) {
       <span class="notification-center__badge" data-testid="unread-badge" aria-live="polite">{{ unreadCount() }}</span>
     }
@@ -29,7 +30,7 @@
               <span class="notification-center__kind">{{ n.kind }}</span>
               <span class="notification-center__time">{{ n.createdAt | date:'short' }}</span>
               @if (!n.isRead) {
-                <button class="notification-center__read-btn" (click)="markRead(n.id)" [attr.aria-label]="'Mark ' + n.kind + ' read'">✓</button>
+                <button class="notification-center__read-btn" (click)="markRead(n.id)" [attr.aria-label]="'Mark ' + n.kind + ' read'"><mat-icon>check</mat-icon></button>
               }
             </li>
           }

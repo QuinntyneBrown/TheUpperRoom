@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { NOTIFICATION_SERVICE, NotificationDto, REALTIME_SERVICE } from 'api';
 import { filter } from 'rxjs';
 
@@ -12,7 +14,7 @@ const NOTIFICATION_EVENTS = new Set([
   selector: 'ur-notification-center',
   templateUrl: './notification-center.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [DatePipe],
+  imports: [DatePipe, MatIconModule, MatButtonModule],
 })
 export class NotificationCenterComponent implements OnInit {
   private notifSvc = inject(NOTIFICATION_SERVICE);

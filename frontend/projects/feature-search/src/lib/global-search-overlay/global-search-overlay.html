@@ -3,8 +3,9 @@
   data-testid="global-search-trigger"
   aria-label="Open global search"
   (click)="open.set(true)"
+  mat-icon-button
 >
-  🔍
+  <mat-icon>search</mat-icon>
 </button>
 
 @if (open()) {
