@@ -44,26 +44,33 @@
     }
 
     <div class="hackathon-detail__body">
-      <section class="hackathon-detail__stage-section" aria-label="4 D's stage">
-        <div class="hackathon-steps">
-          @for (s of stages; track s.value; let i = $index) {
-            <button
-              class="hackathon-step"
-              [class.hackathon-step--complete]="i < stageIndex()"
-              [class.hackathon-step--current]="i === stageIndex()"
-              [attr.aria-current]="i === stageIndex() ? 'step' : null"
-              [attr.data-testid]="'stage-step-' + s.value"
-              [disabled]="changingStage()"
-              (click)="changeStage(s.value)"
-            >
-              <span class="hackathon-step__dot"></span>
-              <span class="hackathon-step__label">{{ s.label }}</span>
-            </button>
-            @if (i < stages.length - 1) {
-              <div class="hackathon-step__connector" [class.hackathon-step__connector--done]="i < stageIndex()"></div>
-            }
-          }
-        </div>
+      <section class="four-d-cards" aria-label="4 D's stage">
+        @for (s of stages; track s.value; let i = $index) {
+          <div
+            class="d-card"
+            [class.d-card--done]="i < stageIndex()"
+            [class.d-card--active]="i === stageIndex()"
+            [attr.data-testid]="'d-card-' + s.value"
+          >
+            <div class="d-card__top">
+              <div class="d-card__phase">
+                <span class="d-card__marker" [class.d-card__marker--accent]="i <= stageIndex()" [class.d-card__marker--muted]="i > stageIndex()">{{ s.marker }}</span>
+                <span class="d-card__label">{{ s.label }}</span>
+              </div>
+              <button
+                class="d-card__badge"
+                [class.d-card__badge--done]="i < stageIndex()"
+                [class.d-card__badge--active]="i === stageIndex()"
+                [class.d-card__badge--upcoming]="i > stageIndex()"
+                [attr.aria-current]="i === stageIndex() ? 'step' : null"
+                [attr.data-testid]="'stage-step-' + s.value"
+                [disabled]="changingStage()"
+                (click)="changeStage(s.value)"
+              >{{ i < stageIndex() ? 'Done' : i === stageIndex() ? 'In progress' : 'Upcoming' }}</button>
+            </div>
+            <p class="d-card__desc">{{ s.description }}</p>
+          </div>
+        }
       </section>
 
       <ur-products-section [hackathonId]="h.id" [initialProducts]="h.products"></ur-products-section>

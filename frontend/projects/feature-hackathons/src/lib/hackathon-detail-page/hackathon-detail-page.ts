@@ -9,11 +9,11 @@ import { UrButtonComponent, UrDialogComponent } from 'components';
 import { ProductsSectionComponent } from '../products-section/products-section';
 import { Subscription } from 'rxjs';
 
-const STAGES: { value: HackathonStage; label: string }[] = [
-  { value: 'Discover', label: 'Discover' },
-  { value: 'Design', label: 'Design' },
-  { value: 'Develop', label: 'Develop' },
-  { value: 'Deploy', label: 'Deploy' },
+const STAGES: { value: HackathonStage; label: string; marker: string; description: string }[] = [
+  { value: 'Discover', label: 'Discover', marker: 'D1', description: 'Listen to the Spirit. Identify Kingdom problems worth solving.' },
+  { value: 'Design', label: 'Design', marker: 'D2', description: 'Pray and shape the solution. Form teams and define scope.' },
+  { value: 'Develop', label: 'Develop', marker: 'D3', description: 'Build the solution during the 48-hour development sprint.' },
+  { value: 'Deploy', label: 'Deploy', marker: 'D4', description: 'Demo, ship, and steward what was built.' },
 ];
 
 @Component({
@@ -36,6 +36,39 @@ const STAGES: { value: HackathonStage; label: string }[] = [
     .hackathon-detail-loading__meta { height: 16px; width: 35%; border-radius: 4px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hd-pulse 1.4s ease-in-out infinite; }
     .hackathon-detail-loading__block { height: 80px; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hd-pulse 1.4s ease-in-out infinite; }
     @keyframes hd-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
+    .four-d-cards { display: flex; flex-direction: column; gap: 12px; }
+    .d-card {
+      display: flex; flex-direction: column; gap: 12px; padding: 20px;
+      border-radius: 12px; background: var(--ur-bg-surface, #1e293b);
+      border: 1px solid var(--ur-border-subtle, #334155);
+    }
+    .d-card--active { border-color: var(--ur-accent-primary, #6366f1); }
+    .d-card--done { border-color: var(--ur-accent-primary, #6366f1); }
+    .d-card__top { display: flex; align-items: center; justify-content: space-between; }
+    .d-card__phase { display: flex; align-items: center; gap: 12px; }
+    .d-card__marker {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 8px;
+      font-family: var(--ur-font-heading, inherit); font-size: 0.875rem; font-weight: 600;
+    }
+    .d-card__marker--accent {
+      background: var(--ur-accent-soft, rgba(99,102,241,0.15));
+      border: 1px solid var(--ur-accent-primary, #6366f1);
+      color: var(--ur-accent-primary, #6366f1);
+    }
+    .d-card__marker--muted {
+      background: var(--ur-bg-elevated, #334155);
+      border: 1px solid var(--ur-border-default, #475569);
+      color: var(--ur-fg-secondary, #94a3b8);
+    }
+    .d-card__label { font-family: var(--ur-font-heading, inherit); font-size: 1.125rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); }
+    .d-card__badge {
+      padding: 2px 8px; border-radius: 999px; font-size: 0.75rem; font-weight: 500;
+    }
+    .d-card__badge--done { background: var(--ur-accent-soft, rgba(99,102,241,0.15)); color: var(--ur-accent-primary, #6366f1); }
+    .d-card__badge--active { background: var(--ur-accent-soft, rgba(99,102,241,0.15)); color: var(--ur-accent-primary, #6366f1); }
+    .d-card__badge--upcoming { background: var(--ur-bg-elevated, #334155); color: var(--ur-fg-secondary, #94a3b8); }
+    .d-card__desc { font-size: 0.875rem; color: var(--ur-fg-secondary, #94a3b8); line-height: 1.5; }
   `],
 })
 export class HackathonDetailPageComponent implements OnInit, OnDestroy {
