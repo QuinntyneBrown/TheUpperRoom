@@ -1,6 +1,6 @@
 # T25 — Contact delete confirmation
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 4 — Contact lifecycle
 **Area**: Contacts
 **Requirements**: L1-003, L2-012
@@ -20,7 +20,7 @@ Add a destructive-action confirmation dialog for deleting a contact, including t
 
 ## Acceptance criteria
 
-- [ ] Dialog exists with destructive button styling.
-- [ ] Copy describes side effects accurately.
-- [ ] Undo path described (or omitted with rationale).
-- [ ] Mobile bottom-sheet variant per T21.
+- [x] Dialog exists with destructive button styling.
+- [x] Copy describes side effects accurately.
+- [x] Undo path described (or omitted with rationale).
+- [x] Mobile bottom-sheet variant per T21.
