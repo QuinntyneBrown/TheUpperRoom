@@ -1,5 +1,6 @@
 # T40 — Partner validation and permission states
 
+**Status**: Accepted
 **Phase**: 5 — Partner and hackathon management
 **Area**: Partner
 **Requirements**: L1-002, L1-004, L2-016, L2-019, L2-020, L2-051
