@@ -55,4 +55,15 @@ export class AuthPages {
   async tryNavigateToDashboard() {
     await this.page.goto('/dashboard');
   }
+
+  async signInAs(role: 'city-lead' | 'admin') {
+    await this.page.request.post('/api/dev/seed');
+    const creds: Record<string, { email: string; password: string }> = {
+      'city-lead': { email: 'cityLead@test.com', password: 'Str0ng!Pass#99' },
+      'admin': { email: 'admin@test.com', password: 'Str0ng!Pass#99' },
+    };
+    const { email, password } = creds[role];
+    await this.signIn(email, password);
+    await this.assertOnDashboard();
+  }
 }

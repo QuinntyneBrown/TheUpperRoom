@@ -10,9 +10,11 @@ import { PartnersPage } from './pages/partners-page';
 import { TeamPage } from './pages/team-page';
 import { GlobalSearchOverlay } from './pages/global-search-overlay';
 import { Mailbox } from './mailbox';
+import { AdminPage } from './pages/admin-page';
 
 type Fixtures = {
   auth: AuthPages;
+  admin: AdminPage;
   contacts: ContactsPage;
   dashboard: DashboardPage;
   hackathons: HackathonsPage;
@@ -25,6 +27,7 @@ type Fixtures = {
 
 export const test = base.extend<Fixtures>({
   auth: async ({ page }, use) => use(new AuthPages(page)),
+  admin: async ({ page }, use) => use(new AdminPage(page)),
   contacts: async ({ page }, use) => use(new ContactsPage(page)),
   dashboard: async ({ page }, use) => use(new DashboardPage(page)),
   hackathons: async ({ page }, use) => use(new HackathonsPage(page)),
