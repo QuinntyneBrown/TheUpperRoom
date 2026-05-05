@@ -82,7 +82,7 @@
     @if (isMobile()) {
       <nav class="shell__bottom-nav" data-testid="bottom-nav">
         @for (item of bottomNavItems; track item.route) {
-          <ur-bottom-nav-item [icon]="item.icon" [label]="item.label" />
+          <ur-bottom-nav-item [icon]="item.icon" [label]="item.label" [href]="item.route" />
         }
       </nav>
     }
