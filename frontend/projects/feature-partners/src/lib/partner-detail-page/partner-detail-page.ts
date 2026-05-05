@@ -183,6 +183,10 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
     this.linkedToastTimer = setTimeout(() => this.linkedToast.set(false), 4000);
   }
 
+  stageLabel(stage: PartnerStage): string {
+    return this.stages.find(s => s.value === stage)?.label ?? stage;
+  }
+
   scrollToNotes(): void {
     document.querySelector('ur-notes-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
