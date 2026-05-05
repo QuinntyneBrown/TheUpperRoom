@@ -21,7 +21,23 @@
           <button mat-button data-testid="mark-all-read" (click)="markAllRead()">Mark all read</button>
         }
       </header>
-      @if (notifications().length === 0) {
+      @if (loading()) {
+        <div class="notification-center__skeleton" data-testid="notifications-loading-skeleton" aria-busy="true" aria-label="Loading notifications">
+          @for (i of [1,2,3]; track i) {
+            <div class="notification-skeleton-row">
+              <div class="notification-skeleton-row__line notification-skeleton-row__line--wide"></div>
+              <div class="notification-skeleton-row__line notification-skeleton-row__line--narrow"></div>
+            </div>
+          }
+        </div>
+      } @else if (loadError()) {
+        <div class="notification-center__error" data-testid="notifications-error" role="alert">
+          <mat-icon>wifi_off</mat-icon>
+          <p>Couldn't load notifications</p>
+          <p class="notification-center__error-hint">Check your connection and try again.</p>
+          <button mat-raised-button (click)="load()" data-testid="notifications-retry-btn">Retry</button>
+        </div>
+      } @else if (notifications().length === 0) {
         <p class="notification-center__empty">No notifications.</p>
       } @else {
         <ul class="notification-center__list">

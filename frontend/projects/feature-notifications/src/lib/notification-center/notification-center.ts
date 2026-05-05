@@ -15,6 +15,27 @@ const NOTIFICATION_EVENTS = new Set([
   templateUrl: './notification-center.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [DatePipe, MatIconModule, MatButtonModule],
+  styles: [`
+    .notification-skeleton-row {
+      padding: 12px 16px; display: flex; flex-direction: column; gap: 6px; border-bottom: 1px solid var(--ur-border, #e2e8f0);
+    }
+    .notification-skeleton-row__line {
+      height: 12px; border-radius: 4px; background: var(--ur-skeleton, #e2e8f0);
+      animation: notif-shimmer 1.4s ease-in-out infinite;
+    }
+    .notification-skeleton-row__line--wide { width: 70%; }
+    .notification-skeleton-row__line--narrow { width: 40%; }
+    @keyframes notif-shimmer {
+      0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; }
+    }
+    .notification-center__error {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      padding: 32px 16px; text-align: center; color: var(--ur-text-muted, #64748b);
+    }
+    .notification-center__error mat-icon { font-size: 32px; width: 32px; height: 32px; color: var(--ur-danger, #ef4444); }
+    .notification-center__error p { margin: 0; font-weight: 500; color: inherit; }
+    .notification-center__error-hint { font-size: 0.8rem; }
+  `],
 })
 export class NotificationCenterComponent implements OnInit {
   private notifSvc = inject(NOTIFICATION_SERVICE);
@@ -23,6 +44,8 @@ export class NotificationCenterComponent implements OnInit {
   notifications = signal<NotificationDto[]>([]);
   unreadCount = signal(0);
   open = signal(false);
+  loading = signal(false);
+  loadError = signal(false);
 
   ngOnInit(): void {
     this.load();
@@ -43,8 +66,11 @@ export class NotificationCenterComponent implements OnInit {
   }
 
   load(): void {
+    this.loading.set(true);
+    this.loadError.set(false);
     this.notifSvc.list().subscribe({
-      next: (r) => { this.notifications.set(r.rows); this.unreadCount.set(r.unreadCount); }
+      next: (r) => { this.notifications.set(r.rows); this.unreadCount.set(r.unreadCount); this.loading.set(false); },
+      error: () => { this.loading.set(false); this.loadError.set(true); },
     });
   }
 
