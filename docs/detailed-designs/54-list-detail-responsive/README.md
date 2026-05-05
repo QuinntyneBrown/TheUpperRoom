@@ -4,6 +4,9 @@
 
 Vertical slice: shared list-card pattern and detail two-column pattern that every feature route consumes verbatim.
 
+## Status
+Accepted
+
 ## Components
 
 - Frontend `components/list-card-list` — given an items array and a card template, renders cards on `<lg` and a table on `>=lg`.
