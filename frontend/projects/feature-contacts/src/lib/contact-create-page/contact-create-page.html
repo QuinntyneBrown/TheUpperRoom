@@ -3,6 +3,7 @@
   <ur-contact-form
     [errors]="errors()"
     [loading]="loading()"
+    [showNotes]="false"
     submitLabel="Save contact"
     cancelRoute="/contacts"
     (formSubmit)="save($event)"
