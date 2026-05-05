@@ -1,5 +1,5 @@
 import { Injectable, InjectionToken, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import * as signalR from '@microsoft/signalr';
 
 export interface RealtimeEvent {
@@ -10,25 +10,31 @@ export interface RealtimeEvent {
   [key: string]: unknown;
 }
 
+export type ConnectionState = 'connected' | 'connecting' | 'disconnected';
+
 export interface IRealtimeService {
   events$: Subject<RealtimeEvent>;
+  connectionState$: BehaviorSubject<ConnectionState>;
   connect(): Promise<void>;
   disconnect(): Promise<void>;
 }
 
 export const REALTIME_SERVICE = new InjectionToken<IRealtimeService>('REALTIME_SERVICE');
 
-// Exponential backoff: 1s, 2s, 4s, 8s, 16s, 32s, 60s, 60s, 60s... indefinitely
+export function computeRetryDelay(previousRetryCount: number): number {
+  return Math.min(1000 * Math.pow(2, previousRetryCount), 60_000);
+}
+
 class ExponentialRetryPolicy implements signalR.IRetryPolicy {
   nextRetryDelayInMilliseconds(ctx: signalR.RetryContext): number {
-    const delay = Math.min(1000 * Math.pow(2, ctx.previousRetryCount), 60_000);
-    return delay;
+    return computeRetryDelay(ctx.previousRetryCount);
   }
 }
 
 @Injectable({ providedIn: 'root' })
 export class RealtimeService implements IRealtimeService, OnDestroy {
   events$ = new Subject<RealtimeEvent>();
+  connectionState$ = new BehaviorSubject<ConnectionState>('disconnected');
 
   private hub = new signalR.HubConnectionBuilder()
     .withUrl('/hubs/team')
@@ -36,7 +42,12 @@ export class RealtimeService implements IRealtimeService, OnDestroy {
     .build();
 
   constructor() {
-    this.hub.onreconnected(() => this.registerHandlers());
+    this.hub.onreconnecting(() => this.connectionState$.next('connecting'));
+    this.hub.onreconnected(() => {
+      this.connectionState$.next('connected');
+      this.registerHandlers();
+    });
+    this.hub.onclose(() => this.connectionState$.next('disconnected'));
     this.registerHandlers();
   }
 
@@ -51,16 +62,21 @@ export class RealtimeService implements IRealtimeService, OnDestroy {
       'teamMemberRemoved',
       'roleChanged',
       'metricInvalidated',
+      'hackathonDeleted',
+      'hackathonRestored',
     ].forEach((event) => this.hub.on(event, forward));
   }
 
   async connect(): Promise<void> {
     if (this.hub.state === signalR.HubConnectionState.Disconnected) {
+      this.connectionState$.next('connecting');
       await this.hub.start();
+      this.connectionState$.next('connected');
     }
   }
 
   async disconnect(): Promise<void> {
+    this.connectionState$.next('disconnected');
     await this.hub.stop();
   }
 

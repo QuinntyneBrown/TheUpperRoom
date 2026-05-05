@@ -1,4 +1,4 @@
-# 50 — SignalR Connection Lifecycle ✅ Accepted
+# 50 — SignalR Connection Lifecycle ✅ Complete
 
 **Traces to:** L2-036. L1-008.
 

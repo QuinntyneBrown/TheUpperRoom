@@ -15,7 +15,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
-import { HEALTH_SERVICE } from 'api';
+import { HEALTH_SERVICE, REALTIME_SERVICE } from 'api';
 import { UrSideNavItemComponent, UrBottomNavItemComponent, UrLiveRegionComponent } from 'components';
 
 const WORKSPACE_ITEMS = [
@@ -60,6 +60,7 @@ const BOTTOM_NAV_ITEMS = [
 export class App implements OnInit {
   private bpo = inject(BreakpointObserver);
   private healthService = inject(HEALTH_SERVICE);
+  private realtimeSvc = inject(REALTIME_SERVICE);
 
   readonly workspaceItems = WORKSPACE_ITEMS;
   readonly globalItems = GLOBAL_ITEMS;
@@ -77,6 +78,10 @@ export class App implements OnInit {
     { initialValue: window.matchMedia('(max-width: 767px)').matches }
   );
 
+  connectionState = toSignal(this.realtimeSvc.connectionState$, { initialValue: 'disconnected' as const });
+
+  isOffline = computed(() => this.connectionState() === 'disconnected');
+
   sidenavMode = computed<'side' | 'over'>(() =>
     this.isDesktop() ? 'side' : 'over'
   );
@@ -88,5 +93,6 @@ export class App implements OnInit {
       next: (r) => this.healthStatus.set(r.status.toUpperCase()),
       error: () => this.healthStatus.set('ERROR'),
     });
+    this.realtimeSvc.connect();
   }
 }
