@@ -12,7 +12,7 @@
         <span data-testid="partner-name">{{ p.name }}</span>
       </nav>
       <div class="partner-detail__header-actions">
-        <a [routerLink]="['/partners', p.id, 'edit']" class="partner-detail__edit-link">Edit</a>
+        <a mat-stroked-button [routerLink]="['/partners', p.id, 'edit']">Edit</a>
         <ur-button variant="danger" (click)="showDeleteDialog.set(true)">Delete</ur-button>
       </div>
     </header>
@@ -89,7 +89,7 @@
               <ur-button variant="secondary" [disabled]="changingStage()"
                          (click)="changeStage(stages[stageIndex() - 1].value)"
                          data-testid="stage-back-btn">
-                ← {{ stages[stageIndex() - 1].label }}
+                <mat-icon aria-hidden="true">arrow_back</mat-icon> {{ stages[stageIndex() - 1].label }}
               </ur-button>
             }
             <span class="partner-stage-card__spacer"></span>
@@ -97,7 +97,7 @@
               <ur-button [disabled]="changingStage()"
                          (click)="changeStage(stages[stageIndex() + 1].value)"
                          data-testid="stage-advance-btn">
-                {{ stages[stageIndex() + 1].label }} →
+                {{ stages[stageIndex() + 1].label }} <mat-icon aria-hidden="true">arrow_forward</mat-icon>
               </ur-button>
             }
           </div>
@@ -133,7 +133,7 @@
                   <div class="partner-history__body">
                     <div class="partner-history__change">
                       <span class="partner-history__from">{{ entry.fromStage }}</span>
-                      <span class="partner-history__arrow">→</span>
+                      <mat-icon class="partner-history__arrow" aria-hidden="true">arrow_forward</mat-icon>
                       <span class="partner-history__to">{{ entry.toStage }}</span>
                       <span class="partner-history__date">· {{ entry.changedAt | date:'MMM d' }}</span>
                     </div>

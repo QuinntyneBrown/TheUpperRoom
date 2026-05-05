@@ -27,7 +27,7 @@
               [routerLink]="['/partners', row.id]"
               [attr.data-testid]="'partner-card-' + row.id"
             >
-              <div cdkDragHandle class="partner-card__drag-handle">⠿</div>
+              <div cdkDragHandle class="partner-card__drag-handle"><mat-icon aria-hidden="true">drag_indicator</mat-icon></div>
               <div class="partner-card__body">
                 <p class="partner-card__name">{{ row.name }}</p>
                 <p class="partner-card__city">{{ row.city }}</p>

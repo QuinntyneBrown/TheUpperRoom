@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component, inject, input, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { PARTNER_SERVICE, PartnerContactDto, CreateContactForPartnerRequest } from 'api';
+import { MatIconModule } from '@angular/material/icon';
 import { UrButtonComponent } from 'components';
 
 @Component({
   selector: 'ur-partner-contacts-panel',
   templateUrl: './partner-contacts-panel.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, UrButtonComponent],
+  imports: [RouterLink, MatIconModule, UrButtonComponent],
 })
 export class PartnerContactsPanelComponent implements OnInit {
   private partners = inject(PARTNER_SERVICE);

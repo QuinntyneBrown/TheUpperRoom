@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, computed, inject, OnDestroy, OnInit
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AUTH_SERVICE, PARTNER_SERVICE, PartnerDetailDto, PartnerStage, REALTIME_SERVICE } from 'api';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { UrButtonComponent, UrDialogComponent } from 'components';
 import { NotesPanelComponent } from 'feature-contacts';
 import { PartnerContactsPanelComponent } from '../partner-contacts-panel/partner-contacts-panel';
@@ -17,7 +19,7 @@ const STAGES: { value: PartnerStage; label: string }[] = [
   selector: 'ur-partner-detail-page',
   templateUrl: './partner-detail-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, DatePipe, UrButtonComponent, UrDialogComponent, NotesPanelComponent, PartnerContactsPanelComponent],
+  imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule, UrButtonComponent, UrDialogComponent, NotesPanelComponent, PartnerContactsPanelComponent],
 })
 export class PartnerDetailPageComponent implements OnInit, OnDestroy {
   private partners = inject(PARTNER_SERVICE);

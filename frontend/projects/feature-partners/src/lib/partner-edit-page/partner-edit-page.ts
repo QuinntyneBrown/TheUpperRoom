@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { PARTNER_SERVICE, PartnerDetailDto } from 'api';
+import { MatIconModule } from '@angular/material/icon';
 import { UrButtonComponent } from 'components';
 
 @Component({
   selector: 'ur-partner-edit-page',
   templateUrl: './partner-edit-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, UrButtonComponent],
+  imports: [RouterLink, MatIconModule, UrButtonComponent],
 })
 export class PartnerEditPageComponent implements OnInit {
   private partners = inject(PARTNER_SERVICE);
