@@ -1,0 +1,39 @@
+@if (open()) {
+  <div class="search-overlay" data-testid="search-overlay" role="dialog" aria-modal="true" aria-label="Global search">
+    <div class="search-overlay__backdrop" (click)="open.set(false)"></div>
+    <div class="search-overlay__panel">
+      <input
+        class="search-overlay__input"
+        type="search"
+        placeholder="Search contacts, partners, hackathons... (min 2 chars)"
+        [ngModel]="term()"
+        (ngModelChange)="onInput($event)"
+        autofocus
+        data-testid="search-input"
+        aria-label="Search"
+      />
+      @if (allGroups().length > 0) {
+        <div class="search-overlay__results" data-testid="search-results">
+          @for (group of allGroups(); track group.label) {
+            <section class="search-overlay__group">
+              <h3 class="search-overlay__group-label">{{ group.label }}</h3>
+              <ul class="search-overlay__group-items">
+                @for (item of group.items; track item.id) {
+                  <li>
+                    <button
+                      class="search-overlay__item"
+                      [attr.data-testid]="'search-result-' + item.id"
+                      (click)="navigate(item)"
+                    >{{ item.label }}</button>
+                  </li>
+                }
+              </ul>
+            </section>
+          }
+        </div>
+      } @else if (term().length >= 2) {
+        <p class="search-overlay__empty">No results found.</p>
+      }
+    </div>
+  </div>
+}
