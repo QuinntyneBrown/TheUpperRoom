@@ -4,6 +4,9 @@
 
 Vertical slice: the `api` library exposes service interfaces and injection tokens; concrete services are provided through tokens; feature unit tests substitute mocks via `TestBed`.
 
+## Status
+Accepted
+
 ## Components
 
 - Frontend `frontend/projects/api` exports:
