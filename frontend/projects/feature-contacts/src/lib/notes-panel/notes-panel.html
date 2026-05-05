@@ -34,13 +34,13 @@
             aria-label="Edit note"
           ></textarea>
           <div class="note-card__actions">
-            <ur-button (click)="saveEdit(note.id)">Save</ur-button>
+            <ur-button (click)="saveEdit(note.id)" data-testid="note-save-btn">Save</ur-button>
             <ur-button variant="ghost" (click)="cancelEdit()">Cancel</ur-button>
           </div>
         } @else if (deletingId() === note.id) {
           <p class="note-card__confirm">Delete this note?</p>
           <div class="note-card__actions">
-            <ur-button variant="danger" (click)="doDelete(note.id)">Delete</ur-button>
+            <ur-button variant="danger" (click)="doDelete(note.id)" data-testid="note-confirm-delete-btn">Delete</ur-button>
             <ur-button variant="ghost" (click)="cancelDelete()">Cancel</ur-button>
           </div>
         } @else {
@@ -49,8 +49,8 @@
             <time>{{ note.createdAt | date:'mediumDate' }}</time>
             @if (isOwn(note)) {
               <div class="note-card__actions">
-                <ur-button variant="ghost" (click)="startEdit(note)" aria-label="Edit note">Edit</ur-button>
-                <ur-button variant="ghost" (click)="confirmDelete(note.id)" aria-label="Delete note">Delete</ur-button>
+                <ur-button variant="ghost" (click)="startEdit(note)" aria-label="Edit note" data-testid="note-edit-btn">Edit</ur-button>
+                <ur-button variant="ghost" (click)="confirmDelete(note.id)" aria-label="Delete note" data-testid="note-delete-btn">Delete</ur-button>
               </div>
             }
           </div>

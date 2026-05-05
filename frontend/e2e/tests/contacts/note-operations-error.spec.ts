@@ -14,7 +14,7 @@ test.describe('Notes panel operation errors', () => {
     await contacts.page.waitForURL(/\/contacts\/[a-f0-9-]+$/);
 
     await page.getByPlaceholder(/add a note/i).fill('Test note');
-    await page.getByRole('button', { name: /add note/i }).click();
+    await page.getByTestId('add-note-btn').click();
     await page.waitForFunction(() => document.querySelectorAll('[data-testid^="note-"]').length > 0, { timeout: 3000 }).catch(() => {});
 
     await page.route('**/api/notes/*', (route) => {
@@ -25,10 +25,9 @@ test.describe('Notes panel operation errors', () => {
       }
     });
 
-    const editBtn = page.getByRole('button', { name: /edit/i }).first();
-    await editBtn.click();
+    await page.getByTestId('note-edit-btn').first().click();
     await page.getByRole('textbox').last().fill('Updated note');
-    await page.getByRole('button', { name: /save/i }).last().click();
+    await page.getByTestId('note-save-btn').last().click();
     await expect(page.getByTestId('note-operation-error-toast')).toBeVisible({ timeout: 3000 });
   });
 
@@ -39,7 +38,7 @@ test.describe('Notes panel operation errors', () => {
     await contacts.page.waitForURL(/\/contacts\/[a-f0-9-]+$/);
 
     await page.getByPlaceholder(/add a note/i).fill('Delete test note');
-    await page.getByRole('button', { name: /add note/i }).click();
+    await page.getByTestId('add-note-btn').click();
     await page.waitForFunction(() => document.querySelectorAll('[data-testid^="note-"]').length > 0, { timeout: 3000 }).catch(() => {});
 
     await page.route('**/api/notes/*', (route) => {
@@ -50,9 +49,8 @@ test.describe('Notes panel operation errors', () => {
       }
     });
 
-    const deleteBtn = page.getByRole('button', { name: /delete/i }).first();
-    await deleteBtn.click();
-    await page.getByRole('button', { name: /confirm/i }).click();
+    await page.getByTestId('note-delete-btn').first().click();
+    await page.getByTestId('note-confirm-delete-btn').click();
     await expect(page.getByTestId('note-operation-error-toast')).toBeVisible({ timeout: 3000 });
   });
 });

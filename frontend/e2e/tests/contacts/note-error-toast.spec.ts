@@ -16,7 +16,7 @@ test.describe('Note server error toast', () => {
     });
 
     await contacts.page.getByLabel('New note').fill('Draft that should survive');
-    await contacts.page.getByRole('button', { name: /add note/i }).click();
+    await contacts.page.getByTestId('add-note-btn').click();
 
     await expect(contacts.page.getByTestId('note-save-error-toast')).toBeVisible();
     await expect(contacts.page.getByLabel('New note')).toHaveValue('Draft that should survive');
@@ -31,7 +31,7 @@ test.describe('Note server error toast', () => {
     });
 
     await contacts.page.getByLabel('New note').fill('Draft content');
-    await contacts.page.getByRole('button', { name: /add note/i }).click();
+    await contacts.page.getByTestId('add-note-btn').click();
 
     await expect(contacts.page.getByTestId('note-save-error-toast')).toBeVisible();
     await expect(contacts.page.getByTestId('note-save-error-toast')).not.toBeVisible({ timeout: 8000 });
