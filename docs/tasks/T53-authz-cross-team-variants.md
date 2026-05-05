@@ -1,5 +1,6 @@
 # T53 — Cross-team restricted/public/admin variants
 
+**Status**: Accepted
 **Phase**: 6 — Team administration and authorization
 **Area**: Authorization
 **Requirements**: L1-002, L2-006, L2-007, L2-008
