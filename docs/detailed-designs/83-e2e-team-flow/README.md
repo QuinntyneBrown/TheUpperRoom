@@ -1,4 +1,4 @@
-# 83 — E2E Team Management Flow ✅ Accepted
+# 83 — E2E Team Management Flow ✅ Complete
 
 **Traces to:** L2-063. L1-002, L1-004.
 
