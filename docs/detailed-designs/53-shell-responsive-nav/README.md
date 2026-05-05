@@ -5,7 +5,7 @@
 Vertical slice: the app-wide shell layout — persistent sidebar on `lg+`, hamburger drawer on `sm/md`, bottom navigation bar on `xs`.
 
 ## Status
-Accepted
+Complete
 
 ## Design update (2026-05-05)
 Design exports (`design-exports/`) show three distinct patterns (differs from original README):
