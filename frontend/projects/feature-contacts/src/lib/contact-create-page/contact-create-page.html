@@ -1,0 +1,9 @@
+<div class="page-container">
+  <h1>New contact</h1>
+  <ur-contact-form
+    [errors]="errors()"
+    [loading]="loading()"
+    submitLabel="Create contact"
+    (formSubmit)="save($event)"
+  />
+</div>

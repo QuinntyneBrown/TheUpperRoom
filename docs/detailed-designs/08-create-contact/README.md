@@ -3,7 +3,7 @@
 **Traces to:** L2-009 (L1-003).
 
 ## Status
-Accepted
+Complete
 
 ## Components
 - Backend `Contacts/CreateContact.cs` — `CreateContactCommand : ITeamScopedRequest { TargetTeamId, FirstName, LastName, Email?, Phone?, City?, Notes? }` + handler that inserts a `Contact` row and, when `Notes` is non-empty, inserts the first `Note` for that contact in the same transaction. Returns `{ id }`.

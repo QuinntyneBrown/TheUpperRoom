@@ -9,6 +9,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
     : IdentityDbContext<User, IdentityRole<Guid>, Guid>(options)
 {
     public DbSet<VerificationToken> VerificationTokens => Set<VerificationToken>();
+    public DbSet<Contact> Contacts => Set<Contact>();
+    public DbSet<Note> Notes => Set<Note>();
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

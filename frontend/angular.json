@@ -155,6 +155,32 @@
           }
         }
       }
+    },
+    "feature-contacts": {
+      "projectType": "library",
+      "root": "projects/feature-contacts",
+      "sourceRoot": "projects/feature-contacts/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/feature-contacts/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/feature-contacts/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/feature-contacts/tsconfig.spec.json"
+          }
+        }
+      }
     }
   }
 }

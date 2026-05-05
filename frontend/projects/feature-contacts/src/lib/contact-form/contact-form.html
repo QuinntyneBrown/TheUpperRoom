@@ -1,0 +1,53 @@
+<form (ngSubmit)="submit()" novalidate>
+  <ur-input
+    label="First name"
+    type="text"
+    [value]="firstName()"
+    [error]="fieldError('firstName')"
+    required
+    (valueChange)="firstName.set($event)"
+  />
+  <ur-input
+    label="Last name"
+    type="text"
+    [value]="lastName()"
+    [error]="fieldError('lastName')"
+    required
+    (valueChange)="lastName.set($event)"
+  />
+  <ur-input
+    label="Email"
+    type="email"
+    [value]="email()"
+    [error]="fieldError('email')"
+    autocomplete="email"
+    (valueChange)="email.set($event)"
+  />
+  <ur-input
+    label="Phone"
+    type="tel"
+    [value]="phone()"
+    [error]="fieldError('phone')"
+    autocomplete="tel"
+    (valueChange)="phone.set($event)"
+  />
+  <ur-input
+    label="City"
+    type="text"
+    [value]="city()"
+    [error]="fieldError('city')"
+    (valueChange)="city.set($event)"
+  />
+  @if (showNotes()) {
+    <ur-textarea
+      label="Notes"
+      [value]="notes()"
+      [error]="fieldError('notes')"
+      [rows]="4"
+      (valueChange)="notes.set($event)"
+    />
+  }
+  <ur-button type="submit" [disabled]="loading()" fullWidth>
+    {{ loading() ? 'Saving…' : submitLabel() }}
+  </ur-button>
+</form>
