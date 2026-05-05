@@ -3,25 +3,35 @@
 
 Pull any changes from origin
 
-Find a task in C:\projects\TheUpperRoom\docs\tasks that is not implemented respecting the sequential order.
+Find a detailed design in C:\projects\TheUpperRoom\docs\detailed-designs that is not implemented respecting the sequential order.
 
-Mark the task as accepted.
+Mark the design as accepted.
 
 COMMIT ALL CHANGES AND PUSH TO ORIGIN
 
+Verify the design still makes sense as the code base has changed and update design if needed. The designed code shall be radically simple
 
-Implement the task
+Implement the detailed design using Acceptance Test Driven Development.
 
-    1. COMMIT ALL CHANGES AND PUSH TO ORIGIN
+    1. Write the failing tests (Unit and / or e2e Playwright Test using Page Object Model).
 
-    2. Audit the implementation 5 times for completeness against the task.
+    2. commit and push to origin
 
-        a) Is the padding and margin correct in buttons and inputs. Is text alignment correctly
+    3. Implement the simplest radically simple code to make the tests pass
 
-        b) Are any frames overlapping
+        - TARGETING THE LOWEST COMPLEXITY SCORE POSSIBLE
 
-        c) Is it complete
+    4. COMMIT ALL CHANGES AND PUSH TO ORIGIN
 
-    6. Mark task as complete
+    5. Audit the implementation 5 times for radical simplicity and completeness against the detail design, docs and C:\projects\TheUpperRoom\docs\ui-design.pen.
+
+        a) Can the implementation be made more testable or simpler? Fix it
+
+        b) If a UI change, ensure the correct icons visible to user in browser, fonts, spacing, etc...
+
+        c) Can a change reduce the complexity score to make it more approach by a junior dev (1 year experience with Angular)? Change it
+
+
+    6. Mark detailed design as complete
 
     7. COMMIT ALL CHANGES AND PUSH TO ORIGIN

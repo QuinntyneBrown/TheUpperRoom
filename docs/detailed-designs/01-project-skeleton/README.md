@@ -41,7 +41,7 @@ test('shows healthy status', async ({ page }) => {
 - No abstraction layer in the controller — direct `mediator.Send`.
 
 ## Status
-Accepted
+Complete
 
 ## Decision
 - The health check does not require a real DB row. `GetHealth` returns a constant and verifies app boot. EF Core configuration is wired here, but migrations start in slice 02.
