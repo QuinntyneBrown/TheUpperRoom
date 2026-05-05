@@ -30,6 +30,8 @@ const UNDO_MS = 8000;
     .dashboard-toast { position: fixed; bottom: 24px; right: 24px; display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); z-index: 1000; font-size: 0.875rem; font-weight: 500; }
     .dashboard-toast--saved { background: var(--ur-bg-overlay, #1e293b); color: #fff; border: 1px solid var(--ur-success, #22c55e); }
     .dashboard-toast--saved mat-icon { color: var(--ur-success, #22c55e); }
+    .dashboard-toast--error { background: var(--ur-bg-overlay, #1e293b); color: #fff; border: 1px solid var(--ur-danger, #ef4444); }
+    .dashboard-toast--error mat-icon { color: var(--ur-danger, #ef4444); }
   `],
 })
 export class DashboardPageComponent implements OnInit {
@@ -39,10 +41,12 @@ export class DashboardPageComponent implements OnInit {
   showCatalog = signal(false);
   removedWidget = signal<DashboardItem | null>(null);
   savedToast = signal(false);
+  saveErrorToast = signal(false);
 
   private save$ = new Subject<void>();
   private undoTimer?: ReturnType<typeof setTimeout>;
   private savedTimer?: ReturnType<typeof setTimeout>;
+  private saveErrorTimer?: ReturnType<typeof setTimeout>;
 
   options = buildGridsterOptions(() => this.save$.next());
 
@@ -85,9 +89,20 @@ export class DashboardPageComponent implements OnInit {
     this.dashboardSvc.save(json).subscribe({
       next: () => {
         clearTimeout(this.savedTimer);
+        this.saveErrorToast.set(false);
         this.savedToast.set(true);
         this.savedTimer = setTimeout(() => this.savedToast.set(false), 2500);
       },
+      error: () => {
+        clearTimeout(this.saveErrorTimer);
+        this.saveErrorToast.set(true);
+        this.saveErrorTimer = setTimeout(() => this.saveErrorToast.set(false), 8000);
+      },
     });
+  }
+
+  retrySave(): void {
+    this.saveErrorToast.set(false);
+    this.save$.next();
   }
 }
