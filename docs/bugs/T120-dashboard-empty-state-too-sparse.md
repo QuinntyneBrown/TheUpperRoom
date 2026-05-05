@@ -1,6 +1,6 @@
 # T120 — Dashboard: empty state too sparse vs design
 
-**Status**: Open
+**Status**: Fixed
 
 ## Description
 
