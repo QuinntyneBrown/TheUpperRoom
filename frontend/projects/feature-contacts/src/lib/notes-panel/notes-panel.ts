@@ -104,7 +104,10 @@ export class NotesPanelComponent implements OnDestroy {
   saveEdit(noteId: string): void {
     const body = this.editBody().trim();
     if (!body) return;
-    this.contacts.updateNote(noteId, body).subscribe({
+    const update$ = this.targetType() === 'Partner'
+      ? this.partners.updateNote(noteId, body)
+      : this.contacts.updateNote(noteId, body);
+    update$.subscribe({
       next: () => {
         this.notes.update((ns) =>
           ns.map((n) => (n.id === noteId ? { ...n, body } : n))
@@ -132,7 +135,10 @@ export class NotesPanelComponent implements OnDestroy {
   }
 
   doDelete(noteId: string): void {
-    this.contacts.deleteNote(noteId).subscribe({
+    const delete$ = this.targetType() === 'Partner'
+      ? this.partners.deleteNote(noteId)
+      : this.contacts.deleteNote(noteId);
+    delete$.subscribe({
       next: () => {
         this.notes.update((ns) => ns.filter((n) => n.id !== noteId));
         this.deletingId.set(null);

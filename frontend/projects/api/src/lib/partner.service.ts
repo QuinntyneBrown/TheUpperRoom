@@ -84,6 +84,8 @@ export interface IPartnerService {
   removeContact(partnerId: string, contactId: string): Observable<void>;
   createAndLinkContact(partnerId: string, req: CreateContactForPartnerRequest): Observable<CreateContactForPartnerResponse>;
   addNote(partnerId: string, body: string): Observable<NoteDto>;
+  updateNote(noteId: string, body: string): Observable<void>;
+  deleteNote(noteId: string): Observable<void>;
 }
 
 export const PARTNER_SERVICE = new InjectionToken<IPartnerService>('PARTNER_SERVICE');
@@ -131,5 +133,13 @@ export class PartnerService implements IPartnerService {
 
   addNote(partnerId: string, body: string): Observable<NoteDto> {
     return this.http.post<NoteDto>(`/api/partners/${partnerId}/notes`, { body });
+  }
+
+  updateNote(noteId: string, body: string): Observable<void> {
+    return this.http.put<void>(`/api/notes/${noteId}`, { body });
+  }
+
+  deleteNote(noteId: string): Observable<void> {
+    return this.http.delete<void>(`/api/notes/${noteId}`);
   }
 }

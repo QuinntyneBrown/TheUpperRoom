@@ -9,7 +9,7 @@ const PARTNER = {
 };
 
 test.describe('Partner note edit and delete use partner service', () => {
-  test('edit note calls PATCH /api/notes/:id, not contact endpoint', async ({ page }) => {
+  test('edit note calls PUT /api/notes/:id, not contact endpoint', async ({ page }) => {
     const requests: string[] = [];
 
     await page.route('**/api/auth/me', (route) => {
@@ -32,7 +32,7 @@ test.describe('Partner note edit and delete use partner service', () => {
     await page.getByTestId('note-save-btn').click();
 
     await expect(page.getByTestId('note-n1')).toContainText('Updated note text');
-    expect(requests.some((r) => r.startsWith('PATCH'))).toBe(true);
+    expect(requests.some((r) => r.startsWith('PUT'))).toBe(true);
     expect(requests.some((r) => r.includes('/contacts/'))).toBe(false);
   });
 
