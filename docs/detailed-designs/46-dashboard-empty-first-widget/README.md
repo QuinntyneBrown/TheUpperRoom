@@ -1,4 +1,4 @@
-# 46 — Dashboard Empty State and First Widget ✅ Accepted
+# 46 — Dashboard Empty State and First Widget ✅ Complete
 
 **Traces to:** L2-032. L1-007.
 
