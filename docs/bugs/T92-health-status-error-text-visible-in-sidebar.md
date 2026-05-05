@@ -1,6 +1,6 @@
 # T92: Health status "ERROR" text visible in sidebar footer — not in design
 
-**Status:** Open
+**Status:** Fixed
 
 ## Description
 
@@ -22,3 +22,9 @@ The design has no health status text indicator in the sidebar. This is an undesi
 ## Fix
 
 Remove the visible health status span. The health check can remain as a background check (logged to console via `GlobalErrorHandler`) without showing raw status text in the UI.
+
+## Fixed
+
+- Removed `<span data-testid="health-status">{{ healthStatus() }}</span>` from `app.html`
+- Removed `healthStatus` signal from `app.ts`
+- Simplified health service subscription to `.subscribe()` (errors still flow through `GlobalErrorHandler`)
