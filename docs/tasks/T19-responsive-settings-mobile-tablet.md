@@ -1,6 +1,6 @@
 # T19 — Mobile and tablet settings
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 3 — Responsive coverage and clipping fixes
 **Area**: Settings, Responsive
 **Requirements**: L1-009, L2-039, L2-040
@@ -18,6 +18,6 @@ Provide responsive variants of the settings screen.
 
 ## Acceptance criteria
 
-- [ ] Mobile and tablet settings screens exist.
-- [ ] Section headers are sticky or otherwise easily reachable.
-- [ ] All inputs and toggles meet hit-target requirements.
+- [x] Mobile and tablet settings screens exist.
+- [x] Section headers are sticky or otherwise easily reachable.
+- [x] All inputs and toggles meet hit-target requirements.
