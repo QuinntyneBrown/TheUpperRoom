@@ -1,6 +1,6 @@
 # T89: Create Partner — dialog title and save button label mismatch
 
-**Status:** Open
+**Status:** Fixed
 
 ## Description
 
