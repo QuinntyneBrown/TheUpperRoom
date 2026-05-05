@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, output, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
@@ -9,7 +10,7 @@ import { UrButtonComponent, UrDialogComponent, UrInputComponent } from 'componen
   selector: 'ur-new-contact-dialog',
   templateUrl: './new-contact-dialog.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, MatIconModule, UrButtonComponent, UrDialogComponent, UrInputComponent],
+  imports: [FormsModule, MatButtonModule, MatIconModule, UrButtonComponent, UrDialogComponent, UrInputComponent],
   styles: [`
     .ncd-form { display: flex; flex-direction: column; gap: 16px; }
     .ncd-row { display: flex; gap: 16px; }

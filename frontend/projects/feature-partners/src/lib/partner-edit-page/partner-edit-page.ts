@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { PARTNER_SERVICE, PartnerDetailDto } from 'api';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,7 +10,7 @@ import { UrButtonComponent } from 'components';
   selector: 'ur-partner-edit-page',
   templateUrl: './partner-edit-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, MatButtonModule, MatIconModule, UrButtonComponent],
+  imports: [FormsModule, RouterLink, MatButtonModule, MatIconModule, UrButtonComponent],
   styles: [`
     .partner-edit { display: flex; flex-direction: column; height: 100%; }
     .partner-edit__header { display: flex; align-items: center; gap: 8px; padding: 12px 24px; border-bottom: 1px solid var(--ur-border-subtle, #334155); background: var(--ur-bg-elevated, #0f172a); height: 56px; }

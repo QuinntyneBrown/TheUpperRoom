@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AUTH_SERVICE } from 'api';
 import { UrButtonComponent, UrInputComponent } from 'components';
@@ -8,7 +9,7 @@ import { UrButtonComponent, UrInputComponent } from 'components';
   templateUrl: './recover-page.html',
   styleUrl: './recover-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [UrButtonComponent, UrInputComponent, RouterLink],
+  imports: [FormsModule, UrButtonComponent, UrInputComponent, RouterLink],
 })
 export class RecoverPageComponent {
   private auth = inject(AUTH_SERVICE);

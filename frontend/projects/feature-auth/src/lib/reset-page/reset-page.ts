@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AUTH_SERVICE } from 'api';
 import { UrButtonComponent, UrInputComponent } from 'components';
@@ -8,7 +9,7 @@ import { UrButtonComponent, UrInputComponent } from 'components';
   templateUrl: './reset-page.html',
   styleUrl: './reset-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [UrButtonComponent, UrInputComponent, RouterLink],
+  imports: [FormsModule, UrButtonComponent, UrInputComponent, RouterLink],
 })
 export class ResetPageComponent implements OnInit {
   private auth = inject(AUTH_SERVICE);

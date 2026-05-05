@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AUTH_SERVICE } from 'api';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,7 +10,7 @@ import { UrButtonComponent, UrInputComponent } from 'components';
   templateUrl: './sign-in-page.html',
   styleUrl: './sign-in-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [UrButtonComponent, UrInputComponent, RouterLink, MatIconModule],
+  imports: [FormsModule, UrButtonComponent, UrInputComponent, RouterLink, MatIconModule],
 })
 export class SignInPageComponent implements OnInit {
   private auth = inject(AUTH_SERVICE);
