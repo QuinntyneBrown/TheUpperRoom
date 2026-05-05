@@ -1,4 +1,4 @@
-# 20 — Partner Funnel Board
+# 20 — Partner Funnel Board ✅ Complete
 
 **Traces to:** L2-021 (L1-004).
 

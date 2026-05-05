@@ -65,7 +65,16 @@ export interface CreateContactForPartnerResponse {
   contactId: string;
 }
 
+export interface PartnerListRow {
+  id: string;
+  name: string;
+  city: string;
+  website?: string;
+  stage: PartnerStage;
+}
+
 export interface IPartnerService {
+  list(stages?: PartnerStage[]): Observable<PartnerListRow[]>;
   create(req: CreatePartnerRequest): Observable<CreatePartnerResponse>;
   getById(id: string): Observable<PartnerDetailDto>;
   changeStage(id: string, toStage: PartnerStage): Observable<void>;
@@ -82,6 +91,11 @@ export const PARTNER_SERVICE = new InjectionToken<IPartnerService>('PARTNER_SERV
 @Injectable({ providedIn: 'root' })
 export class PartnerService implements IPartnerService {
   private http = inject(HttpClient);
+
+  list(stages?: PartnerStage[]): Observable<PartnerListRow[]> {
+    const params = stages?.length ? `?stages=${stages.join(',')}` : '';
+    return this.http.get<PartnerListRow[]>(`/api/partners${params}`);
+  }
 
   create(req: CreatePartnerRequest): Observable<CreatePartnerResponse> {
     return this.http.post<CreatePartnerResponse>('/api/partners', req);

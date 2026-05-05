@@ -1,7 +1,45 @@
-<div class="partners-board-page" data-testid="partner-board">
-  <header class="partners-board-page__header">
+<div class="partner-board" data-testid="partner-board">
+  <header class="partner-board__header">
     <h1>Partners</h1>
-    <a routerLink="/partners/new" data-testid="create-partner-button">Add partner</a>
+    <a routerLink="/partners/new" class="partner-board__add" data-testid="create-partner-button">+ Add partner</a>
   </header>
-  <router-outlet />
+
+  <div class="partner-board__columns">
+    @for (col of columns; track col.stage) {
+      <div class="partner-board__column" [attr.data-testid]="'column-' + col.stage">
+        <div class="partner-board__col-header">
+          <span class="partner-board__col-label">{{ col.label }}</span>
+          <span class="partner-board__col-count">{{ byStage()[col.stage].length }}</span>
+        </div>
+
+        <div
+          class="partner-board__drop-zone"
+          cdkDropList
+          [cdkDropListData]="byStage()[col.stage]"
+          (cdkDropListDropped)="drop($event, col.stage)"
+          [attr.id]="'drop-' + col.stage"
+        >
+          @for (row of byStage()[col.stage]; track row.id) {
+            <div
+              class="partner-card"
+              cdkDrag
+              [cdkDragData]="row"
+              [routerLink]="['/partners', row.id]"
+              [attr.data-testid]="'partner-card-' + row.id"
+            >
+              <div cdkDragHandle class="partner-card__drag-handle">⠿</div>
+              <div class="partner-card__body">
+                <p class="partner-card__name">{{ row.name }}</p>
+                <p class="partner-card__city">{{ row.city }}</p>
+              </div>
+            </div>
+          }
+
+          @if (byStage()[col.stage].length === 0) {
+            <div class="partner-board__empty">No partners yet</div>
+          }
+        </div>
+      </div>
+    }
+  </div>
 </div>

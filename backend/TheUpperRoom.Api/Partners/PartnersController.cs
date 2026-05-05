@@ -12,6 +12,21 @@ namespace TheUpperRoom.Api.Partners;
 [Authorize(Roles = $"{Roles.Admin},{Roles.CityLead},{Roles.PrayerLead},{Roles.EventLead},{Roles.CommunicationLead}")]
 public class PartnersController(IMediator mediator) : ControllerBase
 {
+    [HttpGet]
+    public async Task<IActionResult> List([FromQuery] string? stages)
+    {
+        PartnerStage[]? stageFilter = null;
+        if (!string.IsNullOrWhiteSpace(stages))
+        {
+            stageFilter = stages.Split(',')
+                .Select(s => Enum.TryParse<PartnerStage>(s.Trim(), out var v) ? (PartnerStage?)v : null)
+                .Where(v => v.HasValue)
+                .Select(v => v!.Value)
+                .ToArray();
+        }
+        return Ok(await mediator.Send(new ListPartnersQuery(stageFilter)));
+    }
+
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> Get(Guid id)
     {
