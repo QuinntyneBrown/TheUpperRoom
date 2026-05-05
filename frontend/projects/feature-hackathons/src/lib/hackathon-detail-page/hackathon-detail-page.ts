@@ -53,39 +53,39 @@ const STAGES: { value: HackathonStage; label: string; marker: string; descriptio
     .hackathon-detail-loading__meta { height: 16px; width: 35%; border-radius: 4px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hd-pulse 1.4s ease-in-out infinite; }
     .hackathon-detail-loading__block { height: 80px; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hd-pulse 1.4s ease-in-out infinite; }
     @keyframes hd-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
-    .four-d-cards { display: flex; flex-direction: column; gap: 12px; }
+    .four-d-cards { display: flex; flex-direction: row; gap: 16px; }
     .d-card {
-      display: flex; flex-direction: column; gap: 12px; padding: 20px;
-      border-radius: 12px; background: var(--ur-bg-surface, #1e293b);
-      border: 1px solid var(--ur-border-subtle, #334155);
+      display: flex; flex-direction: column; gap: 16px; padding: 20px; flex: 1; min-width: 0;
+      border-radius: 8px; background: var(--ur-bg-elevated, #101018);
+      border: 1px solid var(--ur-border-subtle, #222233);
     }
-    .d-card--active { border-color: var(--ur-accent-primary, #6366f1); }
-    .d-card--done { border-color: var(--ur-accent-primary, #6366f1); }
+    .d-card--active { border-color: var(--ur-accent-primary, #9f86ff); }
+    .d-card--done { border-color: var(--ur-accent-primary, #9f86ff); }
     .d-card__top { display: flex; align-items: center; justify-content: space-between; }
     .d-card__phase { display: flex; align-items: center; gap: 12px; }
     .d-card__marker {
       display: flex; align-items: center; justify-content: center;
-      width: 36px; height: 36px; border-radius: 8px;
+      width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0;
       font-family: var(--ur-font-heading, inherit); font-size: 0.875rem; font-weight: 600;
     }
     .d-card__marker--accent {
-      background: var(--ur-accent-soft, rgba(99,102,241,0.15));
-      border: 1px solid var(--ur-accent-primary, #6366f1);
-      color: var(--ur-accent-primary, #6366f1);
+      background: var(--ur-accent-soft, #1a1432);
+      border: 1px solid var(--ur-accent-primary, #9f86ff);
+      color: var(--ur-accent-primary, #9f86ff);
     }
     .d-card__marker--muted {
-      background: var(--ur-bg-elevated, #334155);
-      border: 1px solid var(--ur-border-default, #475569);
-      color: var(--ur-fg-secondary, #94a3b8);
+      background: var(--ur-bg-base, #0e0e16);
+      border: 1px solid var(--ur-border-default, #2a2a3a);
+      color: var(--ur-fg-muted, #a8a8b5);
     }
-    .d-card__label { font-family: var(--ur-font-heading, inherit); font-size: 1.125rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); }
+    .d-card__label { font-family: var(--ur-font-heading, inherit); font-size: 1.125rem; font-weight: 600; color: var(--ur-fg-primary, #fff); }
     .d-card__badge {
-      padding: 2px 8px; border-radius: 999px; font-size: 0.75rem; font-weight: 500;
+      padding: 2px 8px; border-radius: 999px; font-size: 0.75rem; font-weight: 500; border: none; cursor: pointer;
     }
-    .d-card__badge--done { background: var(--ur-accent-soft, rgba(99,102,241,0.15)); color: var(--ur-accent-primary, #6366f1); }
-    .d-card__badge--active { background: var(--ur-accent-soft, rgba(99,102,241,0.15)); color: var(--ur-accent-primary, #6366f1); }
-    .d-card__badge--upcoming { background: var(--ur-bg-elevated, #334155); color: var(--ur-fg-secondary, #94a3b8); }
-    .d-card__desc { font-size: 0.875rem; color: var(--ur-fg-secondary, #94a3b8); line-height: 1.5; }
+    .d-card__badge--done { background: color-mix(in srgb, var(--ur-accent-primary, #9f86ff) 15%, transparent); color: var(--ur-accent-primary, #9f86ff); }
+    .d-card__badge--active { background: color-mix(in srgb, var(--ur-accent-primary, #9f86ff) 15%, transparent); color: var(--ur-accent-primary, #9f86ff); }
+    .d-card__badge--upcoming { background: var(--ur-bg-base, #0e0e16); color: var(--ur-fg-muted, #a8a8b5); }
+    .d-card__desc { font-size: 0.875rem; color: var(--ur-fg-secondary, #a1a1aa); line-height: 1.5; }
   `],
 })
 export class HackathonDetailPageComponent implements OnInit, OnDestroy {
