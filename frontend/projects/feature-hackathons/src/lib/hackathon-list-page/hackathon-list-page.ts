@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
     <div class="hackathon-list-page" data-perf-ready="hackathons">
       <div class="hackathon-list-page__header">
         <h1>Hackathons</h1>
-        <a mat-raised-button routerLink="/hackathons/new">New Hackathon</a>
+        <a mat-raised-button routerLink="/hackathons/new" data-testid="new-hackathon-btn">New Hackathon</a>
       </div>
       @if (loading()) {
         <div class="hackathon-list-loading" data-testid="hackathons-list-loading" aria-busy="true" aria-label="Loading hackathons">
