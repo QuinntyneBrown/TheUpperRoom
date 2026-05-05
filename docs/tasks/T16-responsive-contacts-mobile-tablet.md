@@ -1,6 +1,6 @@
 # T16 — Mobile and tablet contact variants
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 3 — Responsive coverage and clipping fixes
 **Area**: Contacts, Responsive
 **Requirements**: L1-003, L1-009, L2-039, L2-040
@@ -28,7 +28,7 @@ Produce mobile and tablet variants for the entire contact surface so contacts me
 
 ## Acceptance criteria
 
-- [ ] All four mobile screens and two tablet screens exist.
-- [ ] Filter and sort controls are accessible via a sheet/drawer on mobile.
-- [ ] Touch targets meet hit-target requirements.
-- [ ] List supports infinite scroll OR mobile pagination control (decide and document).
+- [x] All four mobile screens and two tablet screens exist.
+- [x] Filter and sort controls are accessible via a sheet/drawer on mobile.
+- [x] Touch targets meet hit-target requirements.
+- [x] List supports infinite scroll OR mobile pagination control (decide and document).
