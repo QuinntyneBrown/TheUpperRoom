@@ -1,6 +1,6 @@
 # T124 — Partner detail: two-column layout and card CSS missing
 
-**Status**: Open
+**Status**: Fixed
 
 ## Description
 
