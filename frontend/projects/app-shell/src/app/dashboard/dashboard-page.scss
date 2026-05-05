@@ -1,0 +1,8 @@
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--ur-dashboard-cols, 1), 1fr);
+  gap: 16px;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
