@@ -27,6 +27,8 @@ export interface IAuthService {
   verify(token: string): Observable<void>;
   signIn(req: SignInRequest): Observable<SignInResponse>;
   signOut(): Observable<void>;
+  requestRecovery(email: string): Observable<{ message: string }>;
+  resetPassword(req: { email: string; token: string; newPassword: string }): Observable<{ message: string }>;
 }
 
 export const AUTH_SERVICE = new InjectionToken<IAuthService>('AUTH_SERVICE');
@@ -49,5 +51,13 @@ export class AuthService implements IAuthService {
 
   signOut(): Observable<void> {
     return this.http.post<void>('/api/auth/sign-out', {});
+  }
+
+  requestRecovery(email: string): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>('/api/auth/recovery', { email });
+  }
+
+  resetPassword(req: { email: string; token: string; newPassword: string }): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>('/api/auth/reset', req);
   }
 }

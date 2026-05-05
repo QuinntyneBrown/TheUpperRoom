@@ -30,10 +30,26 @@ public class AuthController(IMediator mediator) : ControllerBase
 
     [Authorize]
     [HttpPost("sign-out")]
-    public async Task<IActionResult> SignOut()
+    public new async Task<IActionResult> SignOut()
     {
         await mediator.Send(new SignOutCommand());
         return Ok(new { message = "Signed out." });
+    }
+
+    [HttpPost("recovery")]
+    [EnableRateLimiting("recovery-email")]
+    public async Task<IActionResult> Recovery([FromBody] RequestRecoveryCommand cmd)
+    {
+        await mediator.Send(cmd);
+        return Ok(new { message = "If the email is registered, a reset link has been sent." });
+    }
+
+    [HttpPost("reset")]
+    public async Task<IActionResult> Reset([FromBody] ResetPasswordCommand cmd)
+    {
+        var result = await mediator.Send(cmd);
+        if (!result.Success) return BadRequest(new { error = result.Error });
+        return Ok(new { message = "Password reset." });
     }
 
     [HttpPost("sign-in")]

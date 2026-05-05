@@ -1,0 +1,19 @@
+<div class="auth-card">
+  <h1>Reset password</h1>
+  @if (error()) {
+    <div role="alert" class="auth-error">{{ error() }}</div>
+  }
+  <form (ngSubmit)="submit()" novalidate>
+    <ur-input
+      label="New password"
+      type="password"
+      [value]="newPassword()"
+      autocomplete="new-password"
+      required
+      (valueChange)="newPassword.set($event)"
+    />
+    <ur-button type="submit" [disabled]="loading()" fullWidth>
+      {{ loading() ? 'Resetting…' : 'Reset password' }}
+    </ur-button>
+  </form>
+</div>

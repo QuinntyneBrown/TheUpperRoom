@@ -1,0 +1,25 @@
+@if (submitted()) {
+  <div role="status">
+    <h2>Check your inbox</h2>
+    <p>If the email is registered, a reset link has been sent.</p>
+    <a routerLink="/auth/sign-in">Back to sign in</a>
+  </div>
+} @else {
+  <div class="auth-card">
+    <h1>Forgot password</h1>
+    <form (ngSubmit)="submit()" novalidate>
+      <ur-input
+        label="Email"
+        type="email"
+        [value]="email()"
+        autocomplete="email"
+        required
+        (valueChange)="email.set($event)"
+      />
+      <ur-button type="submit" [disabled]="loading()" fullWidth>
+        {{ loading() ? 'Sending…' : 'Send reset link' }}
+      </ur-button>
+    </form>
+    <p><a routerLink="/auth/sign-in">Back to sign in</a></p>
+  </div>
+}
