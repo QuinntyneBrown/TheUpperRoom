@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:tokens": "vitest run --config vitest.tokens.config.ts"
+    "test:tokens": "vitest run --config vitest.tokens.config.ts",
+    "lint": "eslint projects/app-shell --max-warnings 0"
   },
   "private": true,
   "packageManager": "npm@10.9.4",
@@ -32,6 +33,9 @@
     "@angular/compiler-cli": "^21.2.0",
     "@axe-core/playwright": "^4.11.3",
     "@playwright/test": "^1.59.1",
+    "@typescript-eslint/eslint-plugin": "^8.59.2",
+    "@typescript-eslint/parser": "^8.59.2",
+    "eslint": "^10.3.0",
     "jsdom": "^28.0.0",
     "ng-packagr": "^21.2.0",
     "prettier": "^3.8.1",

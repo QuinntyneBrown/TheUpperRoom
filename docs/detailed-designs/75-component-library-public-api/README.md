@@ -4,6 +4,9 @@
 
 Vertical slice: feature libraries import UI primitives only from `components`. Direct Material imports are blocked.
 
+## Status
+Accepted
+
 ## Components
 
 - Frontend Nx project `frontend/projects/components` — exports branded wrappers (button, dialog, form-field, snackbar, empty-state, loading-state, segmented-control).

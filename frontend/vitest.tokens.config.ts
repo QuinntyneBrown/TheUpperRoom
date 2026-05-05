@@ -3,6 +3,9 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   test: {
     environment: 'node',
-    include: ['projects/app-shell/src/styles/**/*.spec.ts'],
+    include: [
+      'projects/app-shell/src/styles/**/*.spec.ts',
+      'projects/app-shell/src/app/test/**/*.spec.ts',
+    ],
   },
 });
