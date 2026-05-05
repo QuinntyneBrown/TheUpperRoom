@@ -1,4 +1,4 @@
-# 34 — Global Search
+# 34 — Global Search ✅ Accepted
 
 **Traces to:** L2-043 (L1-011).
 
