@@ -1,6 +1,6 @@
 # T41 — Hackathon create form
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 5 — Partner and hackathon management
 **Area**: Hackathon
 **Requirements**: L1-005, L2-022
@@ -19,6 +19,6 @@ Replace the placeholder "+ Plan hackathon" CTA with an actual create flow.
 
 ## Acceptance criteria
 
-- [ ] Create form designed at desktop and mobile.
-- [ ] Date-range validation state shown.
-- [ ] Sponsor picker handles loading/empty.
+- [x] Create form designed at desktop and mobile.
+- [x] Date-range validation state shown.
+- [x] Sponsor picker handles loading/empty.
