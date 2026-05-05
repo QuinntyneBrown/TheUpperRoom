@@ -3,7 +3,7 @@
     <h1 class="team-page__title">Team</h1>
     @if (canEdit()) {
       <div class="team-page__header-actions">
-        <ur-button variant="ghost" data-testid="manage-roles-btn">Manage roles</ur-button>
+        <button mat-stroked-button data-testid="manage-roles-btn">Manage roles</button>
         <ur-button (click)="showInvite.set(true)" data-testid="invite-member-button">+ Invite member</ur-button>
       </div>
     }
