@@ -1,5 +1,6 @@
 # T38 — Create-and-associate contact from partner
 
+**Status**: Accepted
 **Phase**: 5 — Partner and hackathon management
 **Area**: Partner, Contacts
 **Requirements**: L1-004, L2-018
