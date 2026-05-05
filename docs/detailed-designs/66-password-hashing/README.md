@@ -3,7 +3,7 @@
 **Traces to:** L2-050. L1-014.
 
 ## Status
-Accepted
+Complete
 
 Vertical slice: passwords are stored only as ASP.NET Identity hashes (PBKDF2 with the framework defaults), never as plaintext or reversible ciphertext. Proven by tests.
 
