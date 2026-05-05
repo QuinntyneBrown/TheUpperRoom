@@ -13,14 +13,24 @@
 } @else if (partner(); as p) {
   <div class="partner-detail" data-testid="partner-detail">
     <header class="partner-detail__header">
-      <nav class="partner-detail__breadcrumb" aria-label="breadcrumb">
-        <a routerLink="/partners" class="partner-detail__back">Partners</a>
+      <div class="partner-detail__breadcrumb">
+        <mat-icon class="partner-detail__back-icon" data-testid="partner-breadcrumb-back-arrow">arrow_back</mat-icon>
+        <a routerLink="/partners" class="partner-detail__breadcrumb-link" data-testid="partner-breadcrumb-link">Partners</a>
         <span class="partner-detail__sep" aria-hidden="true">/</span>
-        <span data-testid="partner-name" aria-current="page">{{ p.name }}</span>
-      </nav>
+        <span data-testid="partner-name" class="partner-detail__breadcrumb-name">{{ p.name }}</span>
+      </div>
       <div class="partner-detail__header-actions">
         <a mat-stroked-button [routerLink]="['/partners', p.id, 'edit']" data-testid="partner-edit-link">Edit</a>
-        <ur-button variant="danger" [disabled]="!canDelete()" (click)="canDelete() && showDeleteDialog.set(true)" data-testid="partner-delete-btn">Delete</ur-button>
+        <button mat-stroked-button (click)="scrollToNotes()" data-testid="partner-add-note-btn">+ Add note</button>
+        <button mat-icon-button [matMenuTriggerFor]="moreMenu" data-testid="partner-more-btn" aria-label="More options">
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+        <mat-menu #moreMenu="matMenu">
+          <button mat-menu-item [disabled]="!canDelete()" (click)="canDelete() && showDeleteDialog.set(true)" data-testid="partner-delete-menu-item">
+            <mat-icon>delete</mat-icon>
+            Delete partner
+          </button>
+        </mat-menu>
       </div>
       @if (!canDelete()) {
         <div class="partner-detail__permission-banner" data-testid="partner-delete-permission-denied-banner" role="note">

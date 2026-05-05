@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AUTH_SERVICE, PARTNER_SERVICE, PartnerDetailDto, PartnerStage, REALTIME_SERVICE } from 'api';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { UrButtonComponent, UrDialogComponent } from 'components';
 import { NotesPanelComponent } from 'feature-contacts';
 import { PartnerContactsPanelComponent } from '../partner-contacts-panel/partner-contacts-panel';
@@ -19,7 +20,7 @@ const STAGES: { value: PartnerStage; label: string }[] = [
   selector: 'ur-partner-detail-page',
   templateUrl: './partner-detail-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule, UrButtonComponent, UrDialogComponent, NotesPanelComponent, PartnerContactsPanelComponent],
+  imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule, MatMenuModule, UrButtonComponent, UrDialogComponent, NotesPanelComponent, PartnerContactsPanelComponent],
   styles: [`
     .partner-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
@@ -31,6 +32,13 @@ const STAGES: { value: PartnerStage; label: string }[] = [
     .partner-toast mat-icon { color: var(--ur-success, #22c55e); font-size: 18px; width: 18px; height: 18px; }
     .partner-toast--error { border-color: var(--ur-error-fg, #dc2626); }
     .partner-toast--error mat-icon { color: var(--ur-error-fg, #dc2626); }
+    .partner-detail__header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 16px 20px; border-bottom: 1px solid var(--ur-border-subtle); background: var(--ur-bg-surface); }
+    .partner-detail__breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--ur-fg-secondary); }
+    .partner-detail__back-icon { font-size: 18px; width: 18px; height: 18px; color: var(--ur-fg-secondary); }
+    .partner-detail__breadcrumb-link { color: var(--ur-fg-secondary); text-decoration: none; }
+    .partner-detail__breadcrumb-link:hover { text-decoration: underline; }
+    .partner-detail__breadcrumb-name { color: var(--ur-fg-primary); font-weight: 500; }
+    .partner-detail__header-actions { display: flex; align-items: center; gap: 8px; }
     .partner-detail__permission-banner {
       display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 6px; margin-top: 8px;
       background: var(--ur-info-bg, #eff6ff); color: var(--ur-info-fg, #1d4ed8);
@@ -173,5 +181,9 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
     this.linkedContactId.set(contactId);
     this.linkedToast.set(true);
     this.linkedToastTimer = setTimeout(() => this.linkedToast.set(false), 4000);
+  }
+
+  scrollToNotes(): void {
+    document.querySelector('ur-notes-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
