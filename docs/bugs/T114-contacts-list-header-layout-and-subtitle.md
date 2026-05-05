@@ -1,6 +1,6 @@
 # T114 — Contacts List: Header layout wrong, missing contact count subtitle
 
-**Status**: Open
+**Status**: Fixed
 
 ## Description
 
