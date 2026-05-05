@@ -1,6 +1,6 @@
 # T133 — Widget catalog dialog: missing CSS for all widget-catalog-dialog__* classes
 
-**Status**: Fixed
+**Status**: Fixed ✓
 
 ## Description
 

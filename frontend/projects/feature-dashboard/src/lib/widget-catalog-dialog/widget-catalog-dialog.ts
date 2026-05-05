@@ -30,7 +30,7 @@ import { WIDGET_CATALOG } from './widget-catalog';
     }
     .widget-catalog-dialog__entry {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 0; border-bottom: 1px solid var(--ur-border-subtle, #1e293b);
+      padding: 12px 0; border-bottom: 1px solid var(--ur-border-default, #334155);
       &:last-child { border-bottom: none; }
     }
     .widget-catalog-dialog__info {
