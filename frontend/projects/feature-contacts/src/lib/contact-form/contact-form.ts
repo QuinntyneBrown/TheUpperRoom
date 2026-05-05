@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, effect, input, output, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { UrButtonComponent, UrInputComponent, UrTextareaComponent } from 'components';
 
 export interface ContactFormValue {
@@ -22,13 +23,14 @@ export interface ContactFormInitial {
   selector: 'ur-contact-form',
   templateUrl: './contact-form.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [UrButtonComponent, UrInputComponent, UrTextareaComponent],
+  imports: [UrButtonComponent, UrInputComponent, UrTextareaComponent, RouterLink],
 })
 export class ContactFormComponent {
   errors = input<Record<string, string[]>>({});
   loading = input(false);
   showNotes = input(true);
   submitLabel = input('Save');
+  cancelRoute = input<string | null>(null);
   initial = input<ContactFormInitial | null>(null);
 
   formSubmit = output<ContactFormValue>();

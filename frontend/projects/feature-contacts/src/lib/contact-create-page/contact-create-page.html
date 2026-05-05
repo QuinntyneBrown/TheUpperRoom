@@ -3,7 +3,8 @@
   <ur-contact-form
     [errors]="errors()"
     [loading]="loading()"
-    submitLabel="Create contact"
+    submitLabel="Save contact"
+    cancelRoute="/contacts"
     (formSubmit)="save($event)"
   />
 </div>

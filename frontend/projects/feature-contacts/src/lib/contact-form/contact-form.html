@@ -47,7 +47,12 @@
       (valueChange)="notes.set($event)"
     />
   }
-  <ur-button type="submit" [disabled]="loading()" fullWidth data-testid="contact-form-submit-btn">
-    {{ loading() ? 'Saving…' : submitLabel() }}
-  </ur-button>
+  <div class="contact-form__actions">
+    @if (cancelRoute()) {
+      <a [routerLink]="cancelRoute()" data-testid="contact-create-cancel-btn">Cancel</a>
+    }
+    <ur-button type="submit" [disabled]="loading()" data-testid="contact-form-submit-btn">
+      {{ loading() ? 'Saving…' : submitLabel() }}
+    </ur-button>
+  </div>
 </form>
