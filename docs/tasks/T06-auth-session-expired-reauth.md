@@ -1,6 +1,6 @@
 # T06 — Session-expired and re-authentication state
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 1 — Authentication and session edge states
 **Area**: Authentication, Authorization
 **Requirements**: L1-001, L1-002, L2-004, L2-007
@@ -26,6 +26,6 @@ Define the UX for an expired session: a banner/dialog that interrupts the curren
 
 ## Acceptance criteria
 
-- [ ] `Dialog / Session Expired` (modal) exists with re-auth form and sign-out CTA.
-- [ ] Behavior on form-heavy screens (preserve draft) and on read-only screens (banner-only) is documented in design notes.
-- [ ] Focus is trapped inside the modal; first input focused on open.
+- [x] `Dialog / Session Expired` (modal) exists with re-auth form and sign-out CTA.
+- [x] Behavior on form-heavy screens (preserve draft) and on read-only screens (banner-only) is documented in design notes.
+- [x] Focus is trapped inside the modal; first input focused on open.
