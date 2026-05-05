@@ -24374,6 +24374,17 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "Zu6hB",
+      "x": 0,
+      "y": 23631,
+      "name": "Desktop / Password Recovery - Sent",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base"
     }
   ],
   "variables": {
