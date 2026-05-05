@@ -11,7 +11,7 @@ test.describe('@major-flow realtime notification', () => {
   test('realtime contactCreated delivered to notification center', async ({ auth, contacts, notifications }) => {
     await auth.signInAs('city-lead');
     await notifications.open();
-    await contacts.create({ firstName: 'Realtime', lastName: 'Person', city: 'Test City' });
+    await contacts.create({ name: 'Realtime Person' });
     await notifications.assertContains('contactCreated');
   });
 });

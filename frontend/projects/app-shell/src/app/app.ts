@@ -18,6 +18,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { AUTH_SERVICE, HEALTH_SERVICE, REALTIME_SERVICE } from 'api';
 import { UrSideNavItemComponent, UrBottomNavItemComponent, UrLiveRegionComponent } from 'components';
+import { NotificationCenterComponent } from 'feature-notifications';
 
 const WORKSPACE_ITEMS = [
   { icon: 'dashboard', label: 'Dashboard', route: '/dashboard' },
@@ -54,6 +55,7 @@ const BOTTOM_NAV_ITEMS = [
     UrBottomNavItemComponent,
     UrLiveRegionComponent,
     MatMenuModule,
+    NotificationCenterComponent,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',

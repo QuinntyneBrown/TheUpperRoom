@@ -1,4 +1,4 @@
-# 85 — E2E Realtime Notification Flow ✅ Accepted
+# 85 — E2E Realtime Notification Flow ✅ Complete
 
 **Traces to:** L2-063. L1-008.
 
@@ -10,7 +10,7 @@ Vertical slice: sign in → create contact → notification center shows contact
 test('realtime contactCreated delivered to notification center', async ({ auth, contacts, notifications }) => {
   await auth.signInAs('city-lead');
   await notifications.open();
-  await contacts.create({ firstName: 'Realtime', lastName: 'Person', city: 'Test City' });
+  await contacts.create({ name: 'Realtime Person' });
   await notifications.assertContains('contactCreated');
 });
 ```
