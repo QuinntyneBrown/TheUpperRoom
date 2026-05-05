@@ -1,6 +1,6 @@
 # T36 — Partner Kanban board
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 5 — Partner and hackathon management
 **Area**: Partner
 **Requirements**: L1-004, L2-021
@@ -20,6 +20,6 @@ Add a desktop Kanban view of partners grouped by funnel stage, with drag-and-dro
 
 ## Acceptance criteria
 
-- [ ] Board view exists at desktop width with all three columns and several sample cards.
-- [ ] Drag/drop interaction states represented.
-- [ ] Toggle between list and board views in the partner page header.
+- [x] Board view exists at desktop width with all three columns and several sample cards.
+- [x] Drag/drop interaction states represented.
+- [x] Toggle between list and board views in the partner page header.
