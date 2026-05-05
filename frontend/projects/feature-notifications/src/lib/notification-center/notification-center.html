@@ -38,7 +38,10 @@
           <button mat-raised-button (click)="load()" data-testid="notifications-retry-btn">Retry</button>
         </div>
       } @else if (notifications().length === 0) {
-        <p class="notification-center__empty">No notifications.</p>
+        <div class="notification-center__empty">
+          <mat-icon>notifications_none</mat-icon>
+          <p>No notifications.</p>
+        </div>
       } @else {
         <ul class="notification-center__list">
           @for (n of notifications(); track n.id) {

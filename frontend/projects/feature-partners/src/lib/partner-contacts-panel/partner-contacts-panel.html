@@ -5,7 +5,10 @@
   </div>
 
   @if (contacts().length === 0 && !showNewForm()) {
-    <p class="partner-contacts__empty">No contacts associated yet.</p>
+    <div class="partner-contacts__empty">
+      <mat-icon>person_outline</mat-icon>
+      <p>No contacts associated yet.</p>
+    </div>
   }
 
   @for (c of contacts(); track c.id) {

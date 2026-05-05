@@ -35,6 +35,12 @@ const NOTIFICATION_EVENTS = new Set([
     .notification-center__error mat-icon { font-size: 32px; width: 32px; height: 32px; color: var(--ur-danger, #ef4444); }
     .notification-center__error p { margin: 0; font-weight: 500; color: inherit; }
     .notification-center__error-hint { font-size: 0.8rem; }
+    .notification-center__empty {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      padding: 32px 16px; text-align: center; color: var(--ur-text-muted, #64748b);
+    }
+    .notification-center__empty mat-icon { font-size: 32px; width: 32px; height: 32px; opacity: 0.4; }
+    .notification-center__empty p { margin: 0; font-size: 0.875rem; }
   `],
 })
 export class NotificationCenterComponent implements OnInit {

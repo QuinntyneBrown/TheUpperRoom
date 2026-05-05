@@ -20,6 +20,12 @@ import { UrButtonComponent } from 'components';
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
     .note-error-toast mat-icon { color: var(--ur-danger, #ef4444); font-size: 18px; width: 18px; height: 18px; }
+    .notes-panel__empty {
+      display: flex; align-items: center; gap: 8px; padding: 12px 0;
+      color: var(--ur-fg-muted, #64748b); font-size: 0.875rem;
+    }
+    .notes-panel__empty mat-icon { font-size: 18px; width: 18px; height: 18px; opacity: 0.6; }
+    .notes-panel__empty p { margin: 0; }
   `],
 })
 export class NotesPanelComponent implements OnDestroy {

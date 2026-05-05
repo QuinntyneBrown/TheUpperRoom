@@ -40,7 +40,11 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
             <button mat-stroked-button data-testid="partners-retry-btn" (click)="loadPartners()">Retry</button>
           </div>
         } @else if (filtered().length === 0) {
-          <p>No partners found.</p>
+          <div class="partner-list-page__empty" data-testid="partners-empty">
+            <mat-icon>handshake</mat-icon>
+            <p>No partners found.</p>
+            <a mat-stroked-button routerLink="/partners/new" data-testid="partners-empty-create-btn">Add first partner</a>
+          </div>
         }
         @for (row of filtered(); track row.id) {
           <a class="partner-card" [routerLink]="['/partners', row.id]">
@@ -64,6 +68,12 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
       border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
     }
     .partner-load-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
+    .partner-list-page__empty {
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+      padding: 48px 24px; text-align: center; color: var(--ur-fg-muted, #64748b);
+    }
+    .partner-list-page__empty mat-icon { font-size: 48px; width: 48px; height: 48px; opacity: 0.4; }
+    .partner-list-page__empty p { margin: 0; font-size: 0.9375rem; }
     .partner-list-toast {
       position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
       display: flex; align-items: center; gap: 10px; padding: 12px 16px;

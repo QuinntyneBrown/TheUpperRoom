@@ -17,6 +17,12 @@ import { UrButtonComponent } from 'components';
       border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
     }
     .contacts-remove-error mat-icon { font-size: 16px; width: 16px; height: 16px; flex-shrink: 0; }
+    .partner-contacts__empty {
+      display: flex; align-items: center; gap: 8px; padding: 12px 0;
+      color: var(--ur-fg-muted, #64748b); font-size: 0.875rem;
+    }
+    .partner-contacts__empty mat-icon { font-size: 18px; width: 18px; height: 18px; opacity: 0.6; }
+    .partner-contacts__empty p { margin: 0; }
   `],
 })
 export class PartnerContactsPanelComponent implements OnInit, OnDestroy {

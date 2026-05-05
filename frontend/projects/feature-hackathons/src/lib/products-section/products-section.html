@@ -5,7 +5,10 @@
   </div>
 
   @if (products().length === 0) {
-    <p class="products-section__empty">No products yet.</p>
+    <div class="products-section__empty">
+      <mat-icon>inventory_2</mat-icon>
+      <p>No products yet.</p>
+    </div>
   } @else {
     <div class="products-section__list">
       @for (p of products(); track p.id) {

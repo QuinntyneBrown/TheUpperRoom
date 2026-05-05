@@ -17,7 +17,10 @@
   </form>
 
   @if (notes().length === 0) {
-    <p class="notes-panel__empty">No notes yet.</p>
+    <div class="notes-panel__empty">
+      <mat-icon>note</mat-icon>
+      <p>No notes yet.</p>
+    </div>
   } @else {
     @for (note of notes(); track note.id) {
       <div class="note-card" [attr.data-testid]="'note-' + note.id">

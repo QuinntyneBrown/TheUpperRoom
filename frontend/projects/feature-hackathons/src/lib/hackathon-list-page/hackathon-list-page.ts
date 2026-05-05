@@ -23,7 +23,11 @@ import { MatIconModule } from '@angular/material/icon';
           <button mat-stroked-button data-testid="hackathons-retry-btn" (click)="load()">Retry</button>
         </div>
       } @else if (rows().length === 0) {
-        <p>No hackathons yet.</p>
+        <div class="hackathon-list-page__empty" data-testid="hackathons-empty">
+          <mat-icon>rocket_launch</mat-icon>
+          <p>No hackathons yet.</p>
+          <a mat-stroked-button routerLink="/hackathons/new" data-testid="hackathons-empty-create-btn">Create first hackathon</a>
+        </div>
       }
       @for (row of rows(); track row.id) {
         <a class="hackathon-card" [routerLink]="['/hackathons', row.id]">
@@ -42,6 +46,12 @@ import { MatIconModule } from '@angular/material/icon';
       border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
     }
     .hackathon-list-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
+    .hackathon-list-page__empty {
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+      padding: 48px 24px; text-align: center; color: var(--ur-fg-muted, #64748b);
+    }
+    .hackathon-list-page__empty mat-icon { font-size: 48px; width: 48px; height: 48px; opacity: 0.4; }
+    .hackathon-list-page__empty p { margin: 0; font-size: 0.9375rem; }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

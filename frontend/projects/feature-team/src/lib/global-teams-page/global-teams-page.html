@@ -27,7 +27,10 @@
       <button mat-stroked-button data-testid="teams-retry-btn" (click)="loadTeams()">Retry</button>
     </div>
   } @else if (teams().length === 0) {
-    <p class="global-teams-page__empty">No teams found.</p>
+    <div class="global-teams-page__empty" data-testid="teams-empty">
+      <mat-icon>groups</mat-icon>
+      <p>No teams found.</p>
+    </div>
   } @else {
     <table class="teams-table" aria-label="All teams">
       <thead>

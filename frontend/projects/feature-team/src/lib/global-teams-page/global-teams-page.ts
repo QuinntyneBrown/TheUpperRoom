@@ -20,6 +20,12 @@ import { catchError, debounceTime, distinctUntilChanged, of, Subject, switchMap 
     .teams-loading { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
     .teams-loading__row { height: 40px; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: teams-pulse 1.4s ease-in-out infinite; }
     @keyframes teams-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
+    .global-teams-page__empty {
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+      padding: 48px 24px; text-align: center; color: var(--ur-fg-muted, #64748b);
+    }
+    .global-teams-page__empty mat-icon { font-size: 48px; width: 48px; height: 48px; opacity: 0.4; }
+    .global-teams-page__empty p { margin: 0; font-size: 0.9375rem; }
   `],
 })
 export class GlobalTeamsPageComponent implements OnInit {
