@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, input, OnInit, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, OnDestroy, OnInit, output, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { PARTNER_SERVICE, PartnerContactDto, CreateContactForPartnerRequest } from 'api';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,8 +10,16 @@ import { UrButtonComponent } from 'components';
   templateUrl: './partner-contacts-panel.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, MatButtonModule, MatIconModule, UrButtonComponent],
+  styles: [`
+    .contacts-remove-error {
+      display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 6px; margin-top: 8px;
+      background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
+      border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
+    }
+    .contacts-remove-error mat-icon { font-size: 16px; width: 16px; height: 16px; flex-shrink: 0; }
+  `],
 })
-export class PartnerContactsPanelComponent implements OnInit {
+export class PartnerContactsPanelComponent implements OnInit, OnDestroy {
   private partners = inject(PARTNER_SERVICE);
 
   partnerId = input.required<string>();
@@ -22,6 +30,9 @@ export class PartnerContactsPanelComponent implements OnInit {
   contacts = signal<PartnerContactDto[]>([]);
   showNewForm = signal(false);
   saving = signal(false);
+  removeError = signal(false);
+
+  private removeErrorTimer?: ReturnType<typeof setTimeout>;
 
   firstName = signal('');
   lastName = signal('');
@@ -29,6 +40,10 @@ export class PartnerContactsPanelComponent implements OnInit {
 
   ngOnInit(): void {
     this.contacts.set(this.initialContacts());
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.removeErrorTimer);
   }
 
   openNewForm(): void {
@@ -69,6 +84,11 @@ export class PartnerContactsPanelComponent implements OnInit {
   remove(contactId: string): void {
     this.partners.removeContact(this.partnerId(), contactId).subscribe({
       next: () => this.contacts.update(cs => cs.filter(c => c.id !== contactId)),
+      error: () => {
+        clearTimeout(this.removeErrorTimer);
+        this.removeError.set(true);
+        this.removeErrorTimer = setTimeout(() => this.removeError.set(false), 4000);
+      },
     });
   }
 
