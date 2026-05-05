@@ -1,4 +1,4 @@
-# 51 — Team Event Envelope Contract ✅ Accepted
+# 51 — Team Event Envelope Contract ✅ Complete
 
 **Traces to:** L2-037. L1-008.
 

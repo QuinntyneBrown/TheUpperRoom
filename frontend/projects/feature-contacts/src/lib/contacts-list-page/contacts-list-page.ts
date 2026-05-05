@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { debounceTime, distinctUntilChanged, Subject, switchMap, of } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, Subject, switchMap, of } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { CONTACT_SERVICE, ContactListRow, ContactListResult, ContactSearchResult } from 'api';
+import { CONTACT_SERVICE, ContactListRow, ContactListResult, ContactSearchResult, REALTIME_SERVICE } from 'api';
 import { HighlightPipe, UrSearchComponent } from 'components';
 
 type SortField = 'firstName' | 'lastName';
@@ -16,6 +16,7 @@ type SortDir = 'asc' | 'desc';
 })
 export class ContactsListPageComponent implements OnInit {
   private contacts = inject(CONTACT_SERVICE);
+  private realtime = inject(REALTIME_SERVICE);
 
   term = signal('');
   searchResults = signal<ContactSearchResult[]>([]);
@@ -46,6 +47,13 @@ export class ContactsListPageComponent implements OnInit {
         if (res !== null) this.searchResults.set(res ?? []);
         this.loading.set(false);
       });
+
+    this.realtime.events$
+      .pipe(
+        filter((e) => e.eventType === 'contactCreated'),
+        takeUntilDestroyed(),
+      )
+      .subscribe(() => this.loadPage());
   }
 
   ngOnInit(): void {

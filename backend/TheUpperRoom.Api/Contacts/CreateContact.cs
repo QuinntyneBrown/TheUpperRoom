@@ -1,7 +1,9 @@
 using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.SignalR;
 using TheUpperRoom.Api.Domain;
 using TheUpperRoom.Api.Infrastructure;
+using TheUpperRoom.Api.Realtime;
 
 namespace TheUpperRoom.Api.Contacts;
 
@@ -32,14 +34,15 @@ public class CreateContactCommandValidator : AbstractValidator<CreateContactComm
     }
 }
 
-public class CreateContactCommandHandler(AppDbContext db, ICurrentUser currentUser)
+public class CreateContactCommandHandler(AppDbContext db, ICurrentUser currentUser, IHubContext<TeamHub> hub)
     : IRequestHandler<CreateContactCommand, Guid>
 {
     public async Task<Guid> Handle(CreateContactCommand cmd, CancellationToken ct)
     {
+        var teamId = cmd.TeamId ?? currentUser.TeamId ?? Guid.Empty;
         var contact = new Contact
         {
-            TeamId = cmd.TeamId ?? currentUser.TeamId ?? Guid.Empty,
+            TeamId = teamId,
             FirstName = cmd.FirstName,
             LastName = cmd.LastName,
             Email = cmd.Email,
@@ -60,6 +63,7 @@ public class CreateContactCommandHandler(AppDbContext db, ICurrentUser currentUs
             });
         }
         await db.SaveChangesAsync(ct);
+        await Broadcast.TeamEvent(hub, teamId, "contactCreated", contact.Id, currentUser, new { contact.Id });
         return contact.Id;
     }
 }
