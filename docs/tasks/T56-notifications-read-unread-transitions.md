@@ -1,6 +1,6 @@
 # T56 — Notification read/unread transitions
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 7 — Notifications and real-time lifecycle
 **Area**: Notifications
 **Requirements**: L1-008, L2-038
@@ -20,5 +20,5 @@ Define how individual notifications visually transition between unread and read.
 
 ## Acceptance criteria
 
-- [ ] Unread, read, hover-to-toggle, and click-to-navigate states designed.
-- [ ] Unread treatment is detectable without color alone (icon/weight) per accessibility (T58/T59).
+- [x] Unread, read, hover-to-toggle, and click-to-navigate states designed.
+- [x] Unread treatment is detectable without color alone (icon/weight) per accessibility (T58/T59).
