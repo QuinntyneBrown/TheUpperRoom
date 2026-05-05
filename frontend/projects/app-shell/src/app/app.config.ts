@@ -63,6 +63,7 @@ export const appConfig: ApplicationConfig = {
       { path: 'prayer', component: PlaceholderPageComponent },
       { path: 'reports', component: PlaceholderPageComponent },
       { path: 'settings', component: PlaceholderPageComponent },
+      { path: 'more', component: PlaceholderPageComponent },
       { path: 'test/layout', component: LayoutTestComponent },
       { path: 'test/dialog', component: DialogTestComponent },
       { path: 'test/form', component: FormTestComponent },

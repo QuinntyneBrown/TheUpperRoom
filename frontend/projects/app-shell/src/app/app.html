@@ -66,12 +66,20 @@
         <mat-icon class="shell__topbar-logo">church</mat-icon>
         <span class="shell__topbar-title">The Upper Room</span>
         <span class="shell__spacer"></span>
-        <button mat-icon-button aria-label="Notifications">
+        <button mat-icon-button aria-label="Notifications" (click)="sidenav.open()">
           <mat-icon>notifications</mat-icon>
         </button>
-        <button mat-icon-button aria-label="Profile">
+        <button mat-icon-button
+                aria-label="Profile menu"
+                [matMenuTriggerFor]="topbarProfileMenu">
           <mat-icon>account_circle</mat-icon>
         </button>
+        <mat-menu #topbarProfileMenu="matMenu">
+          <button mat-menu-item (click)="doSignOut()">
+            <mat-icon>logout</mat-icon>
+            Sign out
+          </button>
+        </mat-menu>
       </mat-toolbar>
     }
 
