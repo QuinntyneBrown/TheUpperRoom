@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   testDir: './e2e',
@@ -12,7 +12,9 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   projects: [
-    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+    { name: 'xs-mobile',  use: { viewport: { width: 375,  height: 667  } } },
+    { name: 'md-tablet',  use: { viewport: { width: 768,  height: 1024 } } },
+    { name: 'lg-desktop', use: { viewport: { width: 1280, height: 800  } } },
   ],
   webServer: {
     command: 'npx ng serve --project app-shell',

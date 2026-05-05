@@ -92,7 +92,7 @@ These slices were derived from the gaps identified in [`docs/missing-detailed-de
 | # | Slice | L2 traces | Status |
 |---|-------|-----------|--------|
 | 63 | [Page-load performance budget harness](63-pageload-budget-harness/README.md) | L2-046 | Complete |
-| 64 | [API load and seeded data budget harness](64-api-load-budget-harness/README.md) | L2-047 | Accepted |
+| 64 | [API load and seeded data budget harness](64-api-load-budget-harness/README.md) | L2-047 | Complete |
 
 ### Security slices
 
@@ -130,7 +130,7 @@ These slices were derived from the gaps identified in [`docs/missing-detailed-de
 | 84 | [E2E dashboard widget flow](84-e2e-dashboard-flow/README.md) | L2-063, L2-064 | Draft |
 | 85 | [E2E realtime notification flow](85-e2e-realtime-flow/README.md) | L2-063 | Draft |
 | 86 | [E2E global search flow](86-e2e-search-flow/README.md) | L2-063, L2-064 | Draft |
-| 87 | [Multi-viewport smoke matrix](87-viewport-matrix/README.md) | L2-064 | Draft |
+| 87 | [Multi-viewport smoke matrix](87-viewport-matrix/README.md) | L2-064 | Complete |
 
 ## Cross-cutting slices
 

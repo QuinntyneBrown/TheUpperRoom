@@ -2,6 +2,9 @@
 
 **Traces to:** L2-064. L1-009.
 
+## Status
+Complete
+
 Vertical slice: declare three Playwright projects and the smoke flows that participate in each. Individual flow slices opt in by tag, not by reimplementation.
 
 ## Components
