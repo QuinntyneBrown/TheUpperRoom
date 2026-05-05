@@ -1,7 +1,9 @@
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.SignalR;
 using TheUpperRoom.Api.Domain;
 using TheUpperRoom.Api.Infrastructure;
+using TheUpperRoom.Api.Realtime;
 
 namespace TheUpperRoom.Api.Auth;
 
@@ -9,7 +11,8 @@ public record AssignRoleCommand(Guid TargetUserId, string Role, string Action) :
 
 public class AssignRoleCommandHandler(
     UserManager<User> userManager,
-    ICurrentUser currentUser) : IRequestHandler<AssignRoleCommand>
+    ICurrentUser currentUser,
+    IHubContext<TeamHub> hub) : IRequestHandler<AssignRoleCommand>
 {
     public async Task Handle(AssignRoleCommand cmd, CancellationToken ct)
     {
@@ -31,5 +34,9 @@ public class AssignRoleCommandHandler(
             await userManager.AddToRoleAsync(target, cmd.Role);
         else
             await userManager.RemoveFromRoleAsync(target, cmd.Role);
+
+        if (currentUser.TeamId.HasValue)
+            await Broadcast.TeamEvent(hub, currentUser.TeamId.Value, "roleChanged",
+                cmd.TargetUserId, currentUser, new { cmd.Role, cmd.Action });
     }
 }

@@ -1,4 +1,4 @@
-const SENSITIVE_FIELDS = new Set(['password', 'token', 'authorization', 'cookie', 'email']);
+const SENSITIVE_FIELDS = new Set(['password', 'token', 'authorization', 'cookie', 'session', 'email']);
 
 export function sanitizePayload(obj: Record<string, unknown>): Record<string, unknown> {
   return Object.fromEntries(

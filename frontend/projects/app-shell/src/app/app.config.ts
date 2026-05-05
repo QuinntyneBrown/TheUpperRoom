@@ -2,6 +2,7 @@ import { ApplicationConfig, ErrorHandler, provideBrowserGlobalErrorListeners } f
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { csrfInterceptor } from './services/csrf.interceptor';
+import { correlationInterceptor } from './services/correlation.interceptor';
 import { errorLoggingInterceptor } from './services/error-logging.interceptor';
 import { AUTH_SERVICE, AuthService, CONTACT_SERVICE, ContactService, DASHBOARD_SERVICE, DashboardService, HACKATHON_SERVICE, HackathonService, HEALTH_SERVICE, HealthService, METRIC_SERVICE, MetricService, NOTIFICATION_SERVICE, NotificationService, PARTNER_SERVICE, PartnerService, REALTIME_SERVICE, RealtimeService, SEARCH_SERVICE, SearchService, TEAM_SERVICE, TeamService } from 'api';
 import { ContactCreatePageComponent, ContactDetailPageComponent, ContactEditPageComponent, ContactsListPageComponent } from 'feature-contacts';
@@ -18,7 +19,7 @@ import { FormTestComponent } from './test/form-test';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideHttpClient(withInterceptors([csrfInterceptor, errorLoggingInterceptor])),
+    provideHttpClient(withInterceptors([correlationInterceptor, csrfInterceptor, errorLoggingInterceptor])),
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     { provide: HEALTH_SERVICE, useClass: HealthService },
     { provide: AUTH_SERVICE, useClass: AuthService },

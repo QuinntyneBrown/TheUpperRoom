@@ -1,10 +1,8 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
 using TheUpperRoom.Api.Auth;
 using TheUpperRoom.Api.Infrastructure;
-using TheUpperRoom.Api.Realtime;
 
 namespace TheUpperRoom.Api.Teams;
 
@@ -14,7 +12,7 @@ public record AssignRoleRequest(string Role, string Action);
 [ApiController]
 [Route("api/teams")]
 [Authorize(Roles = $"{Roles.Admin},{Roles.CityLead},{Roles.PrayerLead},{Roles.EventLead},{Roles.CommunicationLead}")]
-public class TeamsController(IMediator mediator, IHubContext<TeamHub> hub, ICurrentUser currentUser) : ControllerBase
+public class TeamsController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
     [Authorize(Roles = Roles.Admin)]
@@ -61,27 +59,9 @@ public class TeamsController(IMediator mediator, IHubContext<TeamHub> hub, ICurr
     [Authorize(Roles = $"{Roles.Admin},{Roles.CityLead}")]
     public async Task<IActionResult> AssignRole(Guid userId, [FromBody] AssignRoleRequest req)
     {
-        try
-        {
-            await mediator.Send(new AssignRoleCommand(userId, req.Role, req.Action));
-        }
-        catch (UnauthorizedAccessException)
-        {
-            return Forbid();
-        }
-        catch (KeyNotFoundException)
-        {
-            return NotFound(new { error = "not_found" });
-        }
-        await hub.Clients.Group($"team:{currentUser.TeamId}").SendAsync("roleChanged", new
-        {
-            eventType = "roleChanged",
-            entityId = userId,
-            actorId = currentUser.Id,
-            timestamp = DateTime.UtcNow,
-            role = req.Role,
-            action = req.Action,
-        });
+        try { await mediator.Send(new AssignRoleCommand(userId, req.Role, req.Action)); }
+        catch (UnauthorizedAccessException) { return Forbid(); }
+        catch (KeyNotFoundException) { return NotFound(new { error = "not_found" }); }
         return Ok();
     }
 }

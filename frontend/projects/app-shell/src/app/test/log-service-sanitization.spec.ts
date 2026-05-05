@@ -29,6 +29,11 @@ describe('sanitizePayload', () => {
     expect(result).not.toHaveProperty('email');
   });
 
+  it('strips session field', () => {
+    const result = sanitizePayload({ message: 'err', session: 'abc' });
+    expect(result).not.toHaveProperty('session');
+  });
+
   it('preserves safe fields', () => {
     const result = sanitizePayload({ message: 'err', route: '/dashboard', level: 'error' });
     expect(result).toEqual({ message: 'err', route: '/dashboard', level: 'error' });

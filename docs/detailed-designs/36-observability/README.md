@@ -1,4 +1,4 @@
-# 36 - Logging and Observability
+# 36 - Logging and Observability ✅ Complete
 
 **Traces to:** L2-044, L2-045 (L1-012).
 
