@@ -28517,6 +28517,674 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "U7ry4",
+      "x": 0,
+      "y": 29539,
+      "name": "Desktop / Profile Menu Open",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "txYpC",
+          "layoutPosition": "absolute",
+          "x": 0,
+          "y": 0,
+          "name": "screen",
+          "width": 1440,
+          "height": 1024,
+          "fill": "$bg-base",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "GnDYi",
+              "name": "topBar",
+              "width": "fill_container",
+              "height": 56,
+              "fill": "$bg-elevated",
+              "stroke": {
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "$border-subtle"
+              },
+              "padding": [
+                "$sp-6",
+                "$sp-3"
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "PlBRF",
+                  "name": "brand",
+                  "gap": "$sp-2",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "AUkIl",
+                      "name": "logoMark",
+                      "width": 28,
+                      "height": 28,
+                      "fill": "$accent-primary",
+                      "cornerRadius": "$radius-md",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "dbpGu",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "church",
+                          "iconFontFamily": "Material Symbols Outlined",
+                          "fill": "$fg-on-accent"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "OFuhI",
+                      "fill": "$fg-primary",
+                      "content": "The Upper Room",
+                      "fontFamily": "$font-heading",
+                      "fontSize": "$fs-base",
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "I7At2",
+                  "name": "right",
+                  "gap": "$sp-3",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "jSsaO",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "bell",
+                      "iconFontFamily": "lucide",
+                      "fill": "$fg-secondary"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "FPbM4",
+                      "name": "avatarBtn",
+                      "fill": "$bg-hover",
+                      "cornerRadius": "$radius-md",
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$accent-primary"
+                      },
+                      "gap": "$sp-2",
+                      "padding": [
+                        "$sp-2",
+                        "$sp-1"
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "id": "i7lnG",
+                          "type": "ref",
+                          "ref": "v2ftCK",
+                          "name": "avatar"
+                        },
+                        {
+                          "type": "text",
+                          "id": "P8oT8S",
+                          "fill": "$fg-primary",
+                          "content": "Pat O'Connor",
+                          "fontFamily": "$font-body",
+                          "fontSize": "$fs-sm",
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "icon_font",
+                          "id": "m0OOC8",
+                          "width": 14,
+                          "height": 14,
+                          "iconFontName": "chevron-up",
+                          "iconFontFamily": "lucide",
+                          "fill": "$fg-secondary"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Zyfwo",
+              "name": "body",
+              "width": "fill_container",
+              "height": "fill_container",
+              "fill": "$bg-base",
+              "padding": "$sp-12",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "nB9Yr",
+                  "fill": "$fg-disabled",
+                  "content": "Dashboard content...",
+                  "fontFamily": "$font-mono",
+                  "fontSize": "$fs-xs",
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "CFCE5",
+          "layoutPosition": "absolute",
+          "x": 1190,
+          "y": 64,
+          "name": "profileMenu",
+          "width": 240,
+          "fill": "$bg-overlay",
+          "cornerRadius": "$radius-lg",
+          "stroke": {
+            "thickness": 1,
+            "fill": "$border-default"
+          },
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#000000",
+            "offset": {
+              "x": 0,
+              "y": 12
+            },
+            "blur": 32
+          },
+          "layout": "vertical",
+          "gap": "$sp-1",
+          "padding": "$sp-2",
+          "children": [
+            {
+              "type": "frame",
+              "id": "vGJRi",
+              "name": "mHeader",
+              "width": "fill_container",
+              "gap": "$sp-2",
+              "padding": "$sp-3",
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "DSnSj",
+                  "type": "ref",
+                  "ref": "o3gcq",
+                  "name": "avatar"
+                },
+                {
+                  "type": "frame",
+                  "id": "JvZsO",
+                  "name": "ident",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "XejMx",
+                      "fill": "$fg-primary",
+                      "content": "Pat O'Connor",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-sm",
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "zqoxJ",
+                      "fill": "$fg-secondary",
+                      "content": "pat@upperroom.org",
+                      "fontFamily": "$font-mono",
+                      "fontSize": "$fs-xs",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "zmKk6",
+              "fill": "$border-subtle",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "gxWl7",
+              "name": "itemProfile",
+              "width": "fill_container",
+              "cornerRadius": "$radius-md",
+              "gap": "$sp-3",
+              "padding": "$sp-3",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "DpF4d",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "user",
+                  "iconFontFamily": "lucide",
+                  "fill": "$fg-secondary"
+                },
+                {
+                  "type": "text",
+                  "id": "qeHBy",
+                  "fill": "$fg-primary",
+                  "content": "Profile & preferences",
+                  "fontFamily": "$font-body",
+                  "fontSize": "$fs-sm",
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "lItPf",
+              "name": "itemSettings",
+              "width": "fill_container",
+              "cornerRadius": "$radius-md",
+              "gap": "$sp-3",
+              "padding": "$sp-3",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "SzLfe",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "settings",
+                  "iconFontFamily": "lucide",
+                  "fill": "$fg-secondary"
+                },
+                {
+                  "type": "text",
+                  "id": "q1IyR",
+                  "fill": "$fg-primary",
+                  "content": "Workspace settings",
+                  "fontFamily": "$font-body",
+                  "fontSize": "$fs-sm",
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "OUVii",
+              "name": "itemHelp",
+              "width": "fill_container",
+              "cornerRadius": "$radius-md",
+              "gap": "$sp-3",
+              "padding": "$sp-3",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "hYNqH",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "life-buoy",
+                  "iconFontFamily": "lucide",
+                  "fill": "$fg-secondary"
+                },
+                {
+                  "type": "text",
+                  "id": "Owqep",
+                  "fill": "$fg-primary",
+                  "content": "Help & support",
+                  "fontFamily": "$font-body",
+                  "fontSize": "$fs-sm",
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "T9MS0",
+              "fill": "$border-subtle",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "qQ8Dj",
+              "name": "itemSignOut",
+              "width": "fill_container",
+              "fill": "$danger-soft",
+              "cornerRadius": "$radius-md",
+              "gap": "$sp-3",
+              "padding": "$sp-3",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "aMCxW",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "log-out",
+                  "iconFontFamily": "lucide",
+                  "fill": "$danger"
+                },
+                {
+                  "type": "text",
+                  "id": "gKS99",
+                  "fill": "$danger",
+                  "content": "Sign out",
+                  "fontFamily": "$font-body",
+                  "fontSize": "$fs-sm",
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "XnSO6",
+      "x": 1540,
+      "y": 29539,
+      "name": "Desktop / Sign In - Signed Out Toast",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base",
+      "children": [
+        {
+          "type": "frame",
+          "id": "UJlz9",
+          "layoutPosition": "absolute",
+          "x": -200,
+          "y": 200,
+          "name": "bg",
+          "width": 1840,
+          "height": 600,
+          "layout": "none",
+          "children": [
+            {
+              "type": "ellipse",
+              "id": "Achz6",
+              "x": 200,
+              "y": 0,
+              "opacity": 0.6,
+              "fill": "$accent-soft",
+              "width": 600,
+              "height": 600,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "Ogd2Y",
+              "x": 1100,
+              "y": 100,
+              "opacity": 0.15,
+              "fill": "$accent-secondary",
+              "width": 500,
+              "height": 500,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "aZoVQ",
+          "name": "center",
+          "width": "fill_container",
+          "height": "fill_container",
+          "padding": "$sp-12",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "UpXrD",
+              "name": "card",
+              "width": 480,
+              "fill": "$bg-surface",
+              "cornerRadius": "$radius-2xl",
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "layout": "vertical",
+              "gap": "$sp-8",
+              "padding": "$sp-12",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "r5hoB6",
+                  "name": "head",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-3",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "p4iEod",
+                      "name": "logoBox",
+                      "gap": "$sp-2",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "z7frx",
+                          "name": "logoMark",
+                          "width": 36,
+                          "height": 36,
+                          "fill": "$accent-primary",
+                          "cornerRadius": "$radius-md",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "bnZUt",
+                              "width": 22,
+                              "height": 22,
+                              "iconFontName": "church",
+                              "iconFontFamily": "Material Symbols Outlined",
+                              "fill": "$fg-on-accent"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "pDOTr",
+                          "fill": "$fg-primary",
+                          "content": "The Upper Room",
+                          "fontFamily": "$font-heading",
+                          "fontSize": "$fs-xl",
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "ru4qI",
+                      "fill": "$fg-secondary",
+                      "content": "Sign in to your City Lead workspace",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-base",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "id": "ltCv7",
+                  "type": "ref",
+                  "ref": "kTdXr",
+                  "name": "emailField",
+                  "width": "fill_container",
+                  "descendants": {
+                    "LCJBW": {
+                      "content": "Email"
+                    },
+                    "ZHHVY": {
+                      "content": "name@church.org"
+                    }
+                  }
+                },
+                {
+                  "id": "CumfC",
+                  "type": "ref",
+                  "ref": "kTdXr",
+                  "name": "pwField",
+                  "width": "fill_container",
+                  "descendants": {
+                    "LCJBW": {
+                      "content": "Password"
+                    },
+                    "ZHHVY": {
+                      "content": "••••••••••"
+                    }
+                  }
+                },
+                {
+                  "id": "JurK6",
+                  "type": "ref",
+                  "ref": "CJdjz",
+                  "name": "signinBtn",
+                  "width": "fill_container",
+                  "descendants": {
+                    "Xfl4P": {
+                      "content": "Sign in"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "C0RBT",
+          "layoutPosition": "absolute",
+          "x": 1080,
+          "y": 24,
+          "name": "signedOutToast",
+          "width": 336,
+          "fill": "$bg-overlay",
+          "cornerRadius": "$radius-lg",
+          "stroke": {
+            "thickness": 1,
+            "fill": "$success"
+          },
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#000000",
+            "offset": {
+              "x": 0,
+              "y": 8
+            },
+            "blur": 24
+          },
+          "gap": "$sp-3",
+          "padding": "$sp-4",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "kkFkj",
+              "width": 18,
+              "height": 18,
+              "iconFontName": "check",
+              "iconFontFamily": "lucide",
+              "fill": "$success"
+            },
+            {
+              "type": "frame",
+              "id": "hLZW5",
+              "name": "body",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": "$sp-1",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "SXxMK",
+                  "fill": "$fg-primary",
+                  "content": "You have been signed out",
+                  "fontFamily": "$font-body",
+                  "fontSize": "$fs-sm",
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "i5FO2P",
+                  "fill": "$fg-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Sign back in to continue where you left off.",
+                  "lineHeight": 1.5,
+                  "fontFamily": "$font-body",
+                  "fontSize": "$fs-xs",
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "icon_font",
+              "id": "jkgyY",
+              "width": 16,
+              "height": 16,
+              "iconFontName": "x",
+              "iconFontFamily": "lucide",
+              "fill": "$fg-disabled"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "rqHDd",
+      "x": 3080,
+      "y": 29539,
+      "name": "Dialog / Confirm Sign Out (Unsaved Work)",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base",
+      "layout": "none"
+    },
+    {
+      "type": "frame",
+      "id": "Dqa28",
+      "x": 4620,
+      "y": 29539,
+      "name": "Mobile / Profile Sheet",
+      "clip": true,
+      "width": 375,
+      "height": 812,
+      "fill": "$bg-base",
+      "layout": "vertical"
     }
   ],
   "variables": {
