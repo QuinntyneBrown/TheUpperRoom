@@ -1,6 +1,6 @@
 # T22 — Partner board responsive variants
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 3 — Responsive coverage and clipping fixes
 **Area**: Partner, Responsive
 **Requirements**: L1-004, L1-009, L2-021, L2-039, L2-040, L2-041
@@ -27,6 +27,6 @@ Provide responsive variants of the Kanban-style partner board built in T36.
 
 ## Acceptance criteria
 
-- [ ] Mobile and tablet partner board variants exist.
-- [ ] Stage transitions on touch are described (long-press + move-to menu, or drag).
-- [ ] Empty-stage state designed.
+- [x] Mobile and tablet partner board variants exist.
+- [x] Stage transitions on touch are described (long-press + move-to menu, or drag).
+- [x] Empty-stage state designed.
