@@ -1,6 +1,6 @@
 # T123 — Partners board: columns have no CSS, stacking vertically
 
-**Status**: Open
+**Status**: Fixed
 
 ## Description
 
