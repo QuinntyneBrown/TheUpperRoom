@@ -8,7 +8,7 @@ import { toggleStage, parseStages } from './stage-filter.utils';
 
 const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
   { stage: 'Lead', label: 'Lead' },
-  { stage: 'InFunnel', label: 'In Funnel' },
+  { stage: 'InFunnel', label: 'In funnel' },
   { stage: 'Confirmed', label: 'Confirmed' },
 ];
 

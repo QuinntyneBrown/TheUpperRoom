@@ -7,7 +7,7 @@ import { PARTNER_SERVICE, PartnerListRow, PartnerStage } from 'api';
 
 const COLUMNS: { stage: PartnerStage; label: string }[] = [
   { stage: 'Lead', label: 'Lead' },
-  { stage: 'InFunnel', label: 'In Funnel' },
+  { stage: 'InFunnel', label: 'In funnel' },
   { stage: 'Confirmed', label: 'Confirmed' },
 ];
 
