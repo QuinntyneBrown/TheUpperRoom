@@ -18,7 +18,13 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
   template: `
     <div class="partner-list-page" data-perf-ready="partners">
       <div class="partner-list-page__header">
-        <h1>Partners</h1>
+        <div class="partner-list-page__title-row">
+          <h1>Partners</h1>
+          <div class="partners-view-toggle">
+            <a class="partners-view-toggle__btn partners-view-toggle__btn--active" routerLink="/partners" data-testid="partners-list-tab" aria-label="List view">List</a>
+            <a class="partners-view-toggle__btn" routerLink="/partners/board" data-testid="partners-board-tab" aria-label="Board view">Board</a>
+          </div>
+        </div>
         <a mat-raised-button routerLink="/partners/new" data-testid="new-partner-btn">+ Add partner</a>
       </div>
       <mat-chip-listbox multiple aria-label="Filter by stage">
@@ -75,7 +81,18 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
       height: 56px; padding: 0 20px; border-bottom: 1px solid var(--ur-border-subtle, #222233);
       background: var(--ur-bg-elevated, #101018);
     }
+    .partner-list-page__title-row { display: flex; align-items: center; gap: 12px; }
     .partner-list-page__header h1 { margin: 0; font-size: 1.125rem; font-weight: 600; color: var(--ur-fg-primary, #fff); }
+    .partners-view-toggle {
+      display: flex; align-items: center; border-radius: 6px;
+      background: var(--ur-bg-base, #0e0e16); border: 1px solid var(--ur-border-default, #2a2a3a);
+      overflow: hidden;
+    }
+    .partners-view-toggle__btn {
+      padding: 4px 12px; font-size: 0.75rem; font-weight: 500; line-height: 1.5;
+      color: var(--ur-fg-muted, #7a7a87); text-decoration: none; transition: background 0.12s, color 0.12s;
+    }
+    .partners-view-toggle__btn--active { background: var(--ur-accent-primary, #9f86ff); color: #fff; }
     .partner-list-page__list { display: flex; flex-direction: column; gap: 8px; padding: 32px; }
     .partner-card {
       display: flex; flex-direction: row; align-items: center; gap: 12px; padding: 12px;
