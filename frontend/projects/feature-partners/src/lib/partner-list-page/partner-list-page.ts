@@ -33,6 +33,12 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
       <div class="partner-list-page__list">
         @if (loading()) {
           <p role="status">Loading…</p>
+        } @else if (loadError()) {
+          <div class="partner-load-error" data-testid="partners-load-error" role="alert">
+            <mat-icon>error_outline</mat-icon>
+            <span>Failed to load partners.</span>
+            <button mat-stroked-button data-testid="partners-retry-btn" (click)="loadPartners()">Retry</button>
+          </div>
         } @else if (filtered().length === 0) {
           <p>No partners found.</p>
         }
@@ -52,6 +58,12 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
     }
   `,
   styles: [`
+    .partner-load-error {
+      display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 8px; margin: 16px 0;
+      background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
+      border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
+    }
+    .partner-load-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
     .partner-list-toast {
       position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
       display: flex; align-items: center; gap: 10px; padding: 12px 16px;
@@ -72,6 +84,7 @@ export class PartnerListPageComponent implements OnInit, OnDestroy {
   readonly stages = ALL_STAGES;
   private allRows = signal<PartnerListRow[]>([]);
   loading = signal(true);
+  loadError = signal(false);
   deletedToast = signal(false);
 
   activeStages = signal<PartnerStage[]>([]);
@@ -88,7 +101,16 @@ export class PartnerListPageComponent implements OnInit, OnDestroy {
     this.route.queryParamMap.subscribe(params => {
       this.activeStages.set(parseStages(params.get('stage')));
     });
-    this.partnerSvc.list().subscribe({ next: rows => { this.allRows.set(rows); this.loading.set(false); }, error: () => this.loading.set(false) });
+    this.loadPartners();
+  }
+
+  loadPartners(): void {
+    this.loading.set(true);
+    this.loadError.set(false);
+    this.partnerSvc.list().subscribe({
+      next: rows => { this.allRows.set(rows); this.loading.set(false); },
+      error: () => { this.loading.set(false); this.loadError.set(true); },
+    });
   }
 
   ngOnInit(): void {

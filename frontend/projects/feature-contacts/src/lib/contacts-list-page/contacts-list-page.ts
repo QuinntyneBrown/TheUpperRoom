@@ -16,6 +16,12 @@ type SortDir = 'asc' | 'desc';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, MatButtonModule, MatIconModule, UrSearchComponent, HighlightPipe],
   styles: [`
+    .contacts-load-error {
+      display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 8px; margin: 16px 0;
+      background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
+      border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
+    }
+    .contacts-load-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
     .contact-toast {
       position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
       display: flex; align-items: center; gap: 10px; padding: 12px 16px;
@@ -52,6 +58,7 @@ export class ContactsListPageComponent implements OnInit, OnDestroy {
   sortField = signal<SortField>('lastName');
   sortDir = signal<SortDir>('asc');
   loading = signal(false);
+  loadError = signal(false);
   deletedToast = signal(false);
 
   private deletedToastTimer?: ReturnType<typeof setTimeout>;
@@ -101,10 +108,11 @@ export class ContactsListPageComponent implements OnInit, OnDestroy {
 
   loadPage(): void {
     this.loading.set(true);
+    this.loadError.set(false);
     const sort = `${this.sortField()}:${this.sortDir()}`;
     this.contacts.list(this.page(), 25, sort).subscribe({
       next: (r) => { this.listResult.set(r); this.loading.set(false); },
-      error: () => this.loading.set(false),
+      error: () => { this.loading.set(false); this.loadError.set(true); },
     });
   }
 
