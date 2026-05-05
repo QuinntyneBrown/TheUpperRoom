@@ -1,4 +1,5 @@
-import { ApplicationConfig, ErrorHandler, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig, ErrorHandler, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { csrfInterceptor } from './services/csrf.interceptor';
@@ -22,6 +23,7 @@ import { authGuard } from './route-guards/auth.guard';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
+    { provide: APP_INITIALIZER, useFactory: (r: MatIconRegistry) => () => r.setDefaultFontSetClass('material-symbols-outlined'), deps: [MatIconRegistry], multi: true },
     provideHttpClient(withInterceptors([correlationInterceptor, csrfInterceptor, errorLoggingInterceptor])),
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     { provide: HEALTH_SERVICE, useClass: HealthService },
@@ -45,7 +47,7 @@ export const appConfig: ApplicationConfig = {
       { path: 'hackathons/:id/edit', title: 'Edit Hackathon – The Upper Room', component: HackathonEditPageComponent },
       { path: 'partners', title: 'Partners – The Upper Room', component: PartnerListPageComponent },
       { path: 'partners/board', title: 'Partners Board – The Upper Room', component: PartnersBoardPageComponent },
-      { path: 'partners/new', title: 'Add Partner – The Upper Room', component: PartnerCreatePageComponent },
+      { path: 'partners/new', title: 'New Partner – The Upper Room', component: PartnerCreatePageComponent },
       { path: 'partners/:id', title: 'Partner – The Upper Room', component: PartnerDetailPageComponent },
       { path: 'partners/:id/edit', title: 'Edit Partner – The Upper Room', component: PartnerEditPageComponent },
       { path: 'contacts', title: 'Contacts – The Upper Room', component: ContactsListPageComponent },
