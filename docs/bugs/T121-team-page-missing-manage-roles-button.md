@@ -1,6 +1,6 @@
 # T121 — Team: "Manage roles" button missing from header
 
-**Status**: Open
+**Status**: Fixed
 
 ## Description
 

@@ -1,0 +1,87 @@
+- generic [ref=e2]:
+  - link "Skip to content" [ref=e3] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e4]:
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - img [ref=e9]: church
+        - generic [ref=e10]: The Upper Room
+      - paragraph [ref=e11]: WORKSPACE
+      - navigation [ref=e12]:
+        - link "Dashboard" [ref=e14] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e15]: home
+          - generic [ref=e16]: Dashboard
+        - link "Partners" [ref=e18] [cursor=pointer]:
+          - /url: /partners
+          - img [ref=e19]: handshake
+          - generic [ref=e20]: Partners
+        - link "Contacts" [ref=e22] [cursor=pointer]:
+          - /url: /contacts
+          - img [ref=e23]: contacts
+          - generic [ref=e24]: Contacts
+        - link "Hackathons" [ref=e26] [cursor=pointer]:
+          - /url: /hackathons
+          - img [ref=e27]: rocket_launch
+          - generic [ref=e28]: Hackathons
+        - link "Team" [ref=e30] [cursor=pointer]:
+          - /url: /team
+          - img [ref=e31]: diversity_3
+          - generic [ref=e32]: Team
+        - link "Prayer" [ref=e34] [cursor=pointer]:
+          - /url: /prayer
+          - img [ref=e35]: volunteer_activism
+          - generic [ref=e36]: Prayer
+      - paragraph [ref=e37]: GLOBAL
+      - navigation [ref=e38]:
+        - link "Cities" [ref=e40] [cursor=pointer]:
+          - /url: /teams
+          - img [ref=e41]: public
+          - generic [ref=e42]: Cities
+        - link "Reports" [ref=e44] [cursor=pointer]:
+          - /url: /reports
+          - img [ref=e45]: insights
+          - generic [ref=e46]: Reports
+        - link "Settings" [ref=e48] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e49]: settings
+          - generic [ref=e50]: Settings
+      - generic [ref=e51]:
+        - button "Open global search" [ref=e53]: 🔍
+        - button "Notifications" [ref=e56]: 🔔
+        - button "Profile menu" [ref=e57] [cursor=pointer]:
+          - img [ref=e58]: account_circle
+    - main [ref=e63]:
+      - generic [ref=e65]:
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - link "Hackathons" [ref=e68] [cursor=pointer]:
+              - /url: /hackathons
+              - img [ref=e69]: arrow_back
+              - text: Hackathons
+            - heading "FaithTech 2024" [level=1] [ref=e70]
+            - paragraph [ref=e71]: Toronto · Mar 1, 2024 – Mar 3, 2024
+          - generic [ref=e72]:
+            - link "Edit" [ref=e73] [cursor=pointer]:
+              - /url: /hackathons/h1/edit
+              - generic [ref=e74]: Edit
+            - button "More options" [ref=e77] [cursor=pointer]:
+              - img [ref=e78]: more_horiz
+        - generic [ref=e81]:
+          - region "4 D's stage" [ref=e82]:
+            - generic [ref=e83]:
+              - button "Discover" [ref=e84]: Discover
+              - button "Design" [ref=e85]: Design
+              - button "Develop" [ref=e86]: Develop
+              - button "Deploy" [ref=e87]: Deploy
+          - region "Products" [ref=e89]:
+            - generic [ref=e90]:
+              - heading "Products" [level=2] [ref=e91]
+              - button "+ Add product" [ref=e93]:
+                - generic [ref=e94]: + Add product
+            - generic [ref=e97]:
+              - img [ref=e98]: inventory_2
+              - paragraph [ref=e99]: No products yet.
+  - alert [ref=e101]:
+    - img [ref=e102]: error_outline
+    - generic [ref=e103]: Something went wrong. Please try again.
