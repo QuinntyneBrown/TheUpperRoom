@@ -1,6 +1,6 @@
 # T28 — Contact validation states
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 4 — Contact lifecycle
 **Area**: Contacts
 **Requirements**: L1-003, L2-009, L2-011, L2-051
@@ -20,6 +20,6 @@ Cover every validation outcome on the New Contact dialog and the Edit Contact fo
 
 ## Acceptance criteria
 
-- [ ] Each invalid state appears as a variant on the relevant form.
-- [ ] Errors use the existing input-error component.
-- [ ] AA contrast verified.
+- [x] Each invalid state appears as a variant on the relevant form.
+- [x] Errors use the existing input-error component.
+- [x] AA contrast verified.
