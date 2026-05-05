@@ -1,6 +1,6 @@
 # T29 — Contact notes permission and over-limit states
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 4 — Contact lifecycle
 **Area**: Contacts
 **Requirements**: L1-003, L2-013, L2-051
@@ -20,5 +20,5 @@ Cover the missing per-note states on contact detail.
 
 ## Acceptance criteria
 
-- [ ] Edit-note state, delete confirmation, permission-hidden state, and over-limit state designed.
-- [ ] Counter behavior matches existing 0/4000 indicator.
+- [x] Edit-note state, delete confirmation, permission-hidden state, and over-limit state designed.
+- [x] Counter behavior matches existing 0/4000 indicator.
