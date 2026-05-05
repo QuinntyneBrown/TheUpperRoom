@@ -1,6 +1,6 @@
 # T02 — Registration error and duplicate-email states
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 1 — Authentication and session edge states
 **Area**: Authentication
 **Requirements**: L1-001, L2-001, L2-051, L2-055
@@ -20,7 +20,7 @@ Show the registration screen's error/validation states: per-field validation, pa
 
 ## Acceptance criteria
 
-- [ ] Registration screen has invalid, password-failure, submitting, and post-submit-generic-confirmation variants.
-- [ ] Error copy does not reveal duplicate-email information.
-- [ ] Inline errors use the existing input-error component and meet AA contrast.
-- [ ] Submitting state shows spinner and disabled CTA.
+- [x] Registration screen has invalid, password-failure, submitting, and post-submit-generic-confirmation variants.
+- [x] Error copy does not reveal duplicate-email information.
+- [x] Inline errors use the existing input-error component and meet AA contrast.
+- [x] Submitting state shows spinner and disabled CTA.

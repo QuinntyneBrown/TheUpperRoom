@@ -22370,6 +22370,2010 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "hvMz5",
+      "x": 0,
+      "y": 21183,
+      "name": "Desktop / Email Verification - Pending",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base",
+      "children": [
+        {
+          "type": "frame",
+          "id": "X4NDWk",
+          "layoutPosition": "absolute",
+          "x": -200,
+          "y": 200,
+          "name": "signinBg",
+          "width": 1840,
+          "height": 600,
+          "layout": "none",
+          "children": [
+            {
+              "type": "ellipse",
+              "id": "S6YM1",
+              "x": 200,
+              "y": 0,
+              "opacity": 0.6,
+              "fill": "$accent-soft",
+              "width": 600,
+              "height": 600,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "KMfT5",
+              "x": 1100,
+              "y": 100,
+              "opacity": 0.15,
+              "fill": "$accent-secondary",
+              "width": 500,
+              "height": 500,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "e77ww",
+          "name": "center",
+          "width": "fill_container",
+          "height": "fill_container",
+          "padding": "$sp-12",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "BG0lO",
+              "name": "card",
+              "width": 480,
+              "fill": "$bg-surface",
+              "cornerRadius": "$radius-2xl",
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "layout": "vertical",
+              "gap": "$sp-8",
+              "padding": "$sp-12",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "c3CTpC",
+                  "name": "head",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-3",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "EKpEw",
+                      "name": "logoBox",
+                      "gap": "$sp-2",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "no434",
+                          "name": "logoMark",
+                          "width": 36,
+                          "height": 36,
+                          "fill": "$accent-primary",
+                          "cornerRadius": "$radius-md",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "cvd7x",
+                              "fill": "$fg-on-accent",
+                              "content": "TUR",
+                              "fontFamily": "$font-heading",
+                              "fontSize": "$fs-sm",
+                              "fontWeight": "700"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "JcIoc",
+                          "fill": "$fg-primary",
+                          "content": "The Upper Room",
+                          "fontFamily": "$font-heading",
+                          "fontSize": "$fs-xl",
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "iJk2Q",
+                  "name": "iconWrap",
+                  "width": "fill_container",
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Z8xJ8",
+                      "name": "iconCircle",
+                      "width": 72,
+                      "height": 72,
+                      "fill": "$accent-soft",
+                      "cornerRadius": "$radius-full",
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$border-default"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "bfCry",
+                          "width": 36,
+                          "height": 36,
+                          "iconFontName": "mail",
+                          "iconFontFamily": "lucide",
+                          "fill": "$accent-primary"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "YIdUs",
+                  "name": "titleBox",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-2",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Np8xt",
+                      "fill": "$fg-primary",
+                      "content": "Check your email",
+                      "fontFamily": "$font-heading",
+                      "fontSize": "$fs-2xl",
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "GSOSn",
+                      "fill": "$fg-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "If an account exists for that address, we just sent a verification link.",
+                      "lineHeight": 1.5,
+                      "textAlign": "center",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-base",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "d7n23",
+                  "name": "emailAlert",
+                  "width": "fill_container",
+                  "fill": "$bg-input",
+                  "cornerRadius": "$radius-md",
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border-default"
+                  },
+                  "gap": "$sp-2",
+                  "padding": "$sp-3",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "ujzUc",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "send",
+                      "iconFontFamily": "lucide",
+                      "fill": "$fg-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "X7Cr9e",
+                      "fill": "$fg-primary",
+                      "content": "name@church.org",
+                      "fontFamily": "$font-mono",
+                      "fontSize": "$fs-sm",
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "w64Oiv",
+                  "name": "pHelp",
+                  "fill": "$fg-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "The link expires in 30 minutes. Open it on this device to finish setting up your account.",
+                  "lineHeight": 1.5,
+                  "textAlign": "center",
+                  "fontFamily": "$font-body",
+                  "fontSize": "$fs-sm",
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "qFDXX",
+                  "name": "resendBox",
+                  "width": "fill_container",
+                  "fill": "$bg-input",
+                  "cornerRadius": "$radius-md",
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border-subtle"
+                  },
+                  "layout": "vertical",
+                  "gap": "$sp-2",
+                  "padding": "$sp-3",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "WNXi5",
+                      "name": "resendRow",
+                      "gap": "$sp-2",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "lAfK6",
+                          "width": 14,
+                          "height": 14,
+                          "iconFontName": "timer",
+                          "iconFontFamily": "lucide",
+                          "fill": "$fg-disabled"
+                        },
+                        {
+                          "type": "text",
+                          "id": "TqPKL",
+                          "fill": "$fg-disabled",
+                          "content": "Didn't get it? Resend in 0:42",
+                          "fontFamily": "$font-body",
+                          "fontSize": "$fs-sm",
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "X7BT60",
+                      "fill": "$fg-muted",
+                      "content": "You can request a new link up to 5 times per hour.",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-xs",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ndldm",
+                  "name": "divider",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": "$border-subtle"
+                },
+                {
+                  "type": "frame",
+                  "id": "vZMka",
+                  "name": "actions",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-3",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "G55Rq9",
+                      "fill": "$accent-primary",
+                      "content": "Wrong email address? Use a different email",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-sm",
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "N3uxP9",
+                      "fill": "$fg-secondary",
+                      "content": "Back to sign in",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-sm",
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "GiGKl",
+      "x": 1540,
+      "y": 21183,
+      "name": "Desktop / Email Verification - Success",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base",
+      "children": [
+        {
+          "type": "frame",
+          "id": "Zy8Lr",
+          "layoutPosition": "absolute",
+          "x": -200,
+          "y": 200,
+          "name": "signinBg",
+          "width": 1840,
+          "height": 600,
+          "layout": "none",
+          "children": [
+            {
+              "type": "ellipse",
+              "id": "B7lqS",
+              "x": 200,
+              "y": 0,
+              "opacity": 0.7,
+              "fill": "$success-soft",
+              "width": 600,
+              "height": 600,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "xMgHN",
+              "x": 1100,
+              "y": 100,
+              "opacity": 0.12,
+              "fill": "$accent-primary",
+              "width": 500,
+              "height": 500,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "t8QnA",
+          "name": "center",
+          "width": "fill_container",
+          "height": "fill_container",
+          "padding": "$sp-12",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "rRfLH",
+              "name": "card",
+              "width": 480,
+              "fill": "$bg-surface",
+              "cornerRadius": "$radius-2xl",
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "layout": "vertical",
+              "gap": "$sp-8",
+              "padding": "$sp-12",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "NvM8D",
+                  "name": "head",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-3",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "HLcjM",
+                      "name": "logoBox",
+                      "gap": "$sp-2",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "sVeJR",
+                          "name": "logoMark",
+                          "width": 36,
+                          "height": 36,
+                          "fill": "$accent-primary",
+                          "cornerRadius": "$radius-md",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "E90zs",
+                              "fill": "$fg-on-accent",
+                              "content": "TUR",
+                              "fontFamily": "$font-heading",
+                              "fontSize": "$fs-sm",
+                              "fontWeight": "700"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "L8KIUK",
+                          "fill": "$fg-primary",
+                          "content": "The Upper Room",
+                          "fontFamily": "$font-heading",
+                          "fontSize": "$fs-xl",
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gLN3T",
+                  "name": "iconWrap",
+                  "width": "fill_container",
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "cF4j5",
+                      "name": "iconCircle",
+                      "width": 72,
+                      "height": 72,
+                      "fill": "$success-soft",
+                      "cornerRadius": "$radius-full",
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$success"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "D7I8eq",
+                          "width": 36,
+                          "height": 36,
+                          "iconFontName": "check",
+                          "iconFontFamily": "lucide",
+                          "fill": "$success"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "O76Nc",
+                  "name": "titleBox",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-2",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "c9lQnd",
+                      "fill": "$fg-primary",
+                      "content": "Email verified",
+                      "fontFamily": "$font-heading",
+                      "fontSize": "$fs-2xl",
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "i8sYQm",
+                      "fill": "$fg-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Your account is ready to use. You can sign in below.",
+                      "lineHeight": 1.5,
+                      "textAlign": "center",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-base",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "id": "v3RfW4",
+                  "type": "ref",
+                  "ref": "CJdjz",
+                  "name": "signinBtn",
+                  "width": "fill_container",
+                  "descendants": {
+                    "Xfl4P": {
+                      "content": "Sign in to continue"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "rcW1O",
+                  "name": "countdown",
+                  "width": "fill_container",
+                  "gap": "$sp-2",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "cFK6X",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "timer",
+                      "iconFontFamily": "lucide",
+                      "fill": "$fg-disabled"
+                    },
+                    {
+                      "type": "text",
+                      "id": "WqX5H",
+                      "fill": "$fg-disabled",
+                      "content": "Redirecting in 5 seconds...",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-sm",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "YDmE0",
+      "x": 3080,
+      "y": 21183,
+      "name": "Desktop / Email Verification - Expired",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base",
+      "children": [
+        {
+          "type": "frame",
+          "id": "SvjoB",
+          "layoutPosition": "absolute",
+          "x": -200,
+          "y": 200,
+          "name": "signinBg",
+          "width": 1840,
+          "height": 600,
+          "layout": "none",
+          "children": [
+            {
+              "type": "ellipse",
+              "id": "IwK9D",
+              "x": 200,
+              "y": 0,
+              "opacity": 0.7,
+              "fill": "$danger-soft",
+              "width": 600,
+              "height": 600,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "nq2PQ",
+              "x": 1100,
+              "y": 100,
+              "opacity": 0.12,
+              "fill": "$accent-secondary",
+              "width": 500,
+              "height": 500,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "cfGyJ",
+          "name": "center",
+          "width": "fill_container",
+          "height": "fill_container",
+          "padding": "$sp-12",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "nUzR5",
+              "name": "card",
+              "width": 480,
+              "fill": "$bg-surface",
+              "cornerRadius": "$radius-2xl",
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "layout": "vertical",
+              "gap": "$sp-8",
+              "padding": "$sp-12",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Fwvr9",
+                  "name": "head",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-3",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "zuv06",
+                      "name": "logoBox",
+                      "gap": "$sp-2",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "SY4PN",
+                          "name": "logoMark",
+                          "width": 36,
+                          "height": 36,
+                          "fill": "$accent-primary",
+                          "cornerRadius": "$radius-md",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "tDlnr",
+                              "fill": "$fg-on-accent",
+                              "content": "TUR",
+                              "fontFamily": "$font-heading",
+                              "fontSize": "$fs-sm",
+                              "fontWeight": "700"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "N3c9f",
+                          "fill": "$fg-primary",
+                          "content": "The Upper Room",
+                          "fontFamily": "$font-heading",
+                          "fontSize": "$fs-xl",
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "R8jYH",
+                  "name": "iconWrap",
+                  "width": "fill_container",
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "C9PPX5",
+                      "name": "iconCircle",
+                      "width": 72,
+                      "height": 72,
+                      "fill": "$danger-soft",
+                      "cornerRadius": "$radius-full",
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$danger"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "x354g",
+                          "width": 32,
+                          "height": 32,
+                          "iconFontName": "link-2-off",
+                          "iconFontFamily": "lucide",
+                          "fill": "$danger"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "crkKj",
+                  "name": "titleBox",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-2",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "auCDx",
+                      "fill": "$fg-primary",
+                      "content": "This link can't be used",
+                      "fontFamily": "$font-heading",
+                      "fontSize": "$fs-2xl",
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "pB7X7",
+                      "fill": "$fg-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The verification link is expired or has already been used. Request a new one and we'll send it right over.",
+                      "lineHeight": 1.5,
+                      "textAlign": "center",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-base",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "id": "xr46B",
+                  "type": "ref",
+                  "ref": "Bac6Q",
+                  "name": "errorAlert",
+                  "width": "fill_container",
+                  "descendants": {
+                    "yFrPi": {
+                      "content": "Verification link expired"
+                    },
+                    "PaBpp": {
+                      "content": "For your security, links expire after 30 minutes."
+                    }
+                  }
+                },
+                {
+                  "id": "dNf3D",
+                  "type": "ref",
+                  "ref": "kTdXr",
+                  "name": "emailField",
+                  "width": "fill_container",
+                  "descendants": {
+                    "LCJBW": {
+                      "content": "Email"
+                    },
+                    "ZHHVY": {
+                      "content": "name@church.org"
+                    }
+                  }
+                },
+                {
+                  "id": "F1EQDo",
+                  "type": "ref",
+                  "ref": "CJdjz",
+                  "name": "resendBtn",
+                  "width": "fill_container",
+                  "descendants": {
+                    "Xfl4P": {
+                      "content": "Send a new link"
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "fWEFr",
+                  "fill": "$fg-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Back to sign in",
+                  "textAlign": "center",
+                  "fontFamily": "$font-body",
+                  "fontSize": "$fs-sm",
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "KgVnN",
+      "x": 0,
+      "y": 22407,
+      "name": "Desktop / Register - Invalid Fields",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base",
+      "children": [
+        {
+          "type": "frame",
+          "id": "DNkEN",
+          "layoutPosition": "absolute",
+          "x": -200,
+          "y": 200,
+          "name": "bg",
+          "width": 1840,
+          "height": 600,
+          "layout": "none",
+          "children": [
+            {
+              "type": "ellipse",
+              "id": "gv5CC",
+              "x": 200,
+              "y": 0,
+              "opacity": 0.6,
+              "fill": "$accent-soft",
+              "width": 600,
+              "height": 600,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "TRx3e",
+              "x": 1100,
+              "y": 100,
+              "opacity": 0.15,
+              "fill": "$accent-secondary",
+              "width": 500,
+              "height": 500,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "EgWCW",
+          "name": "center",
+          "width": "fill_container",
+          "height": "fill_container",
+          "padding": "$sp-12",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "fx0Uh",
+              "name": "card",
+              "width": 520,
+              "fill": "$bg-surface",
+              "cornerRadius": "$radius-2xl",
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "layout": "vertical",
+              "gap": "$sp-6",
+              "padding": "$sp-12",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "q2k6L6",
+                  "name": "head",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-3",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "K6sTE",
+                      "name": "logoBox",
+                      "gap": "$sp-2",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "IVMMi",
+                          "name": "logoMark",
+                          "width": 36,
+                          "height": 36,
+                          "fill": "$accent-primary",
+                          "cornerRadius": "$radius-md",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "bujLz",
+                              "width": 22,
+                              "height": 22,
+                              "iconFontName": "church",
+                              "iconFontFamily": "Material Symbols Outlined",
+                              "fill": "$fg-on-accent"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "sUvQ2",
+                          "fill": "$fg-primary",
+                          "content": "The Upper Room",
+                          "fontFamily": "$font-heading",
+                          "fontSize": "$fs-xl",
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "k3OW74",
+                      "fill": "$fg-secondary",
+                      "content": "Create your City Lead account",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-base",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "id": "n1Lc3",
+                  "type": "ref",
+                  "ref": "D0SBZ8",
+                  "name": "nameField",
+                  "width": "fill_container",
+                  "descendants": {
+                    "IEeP9": {
+                      "content": "Display name"
+                    },
+                    "acl73": {
+                      "content": "",
+                      "fill": "$fg-muted"
+                    },
+                    "fOmwv": {
+                      "content": "Display name is required"
+                    }
+                  }
+                },
+                {
+                  "id": "E45nu",
+                  "type": "ref",
+                  "ref": "D0SBZ8",
+                  "name": "emailField",
+                  "width": "fill_container",
+                  "descendants": {
+                    "IEeP9": {
+                      "content": "Email"
+                    },
+                    "acl73": {
+                      "content": "name@church",
+                      "fill": "$fg-primary"
+                    },
+                    "fOmwv": {
+                      "content": "Enter a valid email address"
+                    }
+                  }
+                },
+                {
+                  "id": "lC8Me",
+                  "type": "ref",
+                  "ref": "D0SBZ8",
+                  "name": "cityField",
+                  "width": "fill_container",
+                  "descendants": {
+                    "IEeP9": {
+                      "content": "City"
+                    },
+                    "acl73": {
+                      "content": "",
+                      "fill": "$fg-muted"
+                    },
+                    "fOmwv": {
+                      "content": "City is required"
+                    }
+                  }
+                },
+                {
+                  "id": "VdF1T",
+                  "type": "ref",
+                  "ref": "kTdXr",
+                  "name": "pwField",
+                  "width": "fill_container",
+                  "descendants": {
+                    "LCJBW": {
+                      "content": "Password"
+                    },
+                    "ZHHVY": {
+                      "content": "At least 12 characters"
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "Hlyaq",
+                  "fill": "$fg-muted",
+                  "content": "Use 12+ characters with a mix of letters, numbers, symbols.",
+                  "fontFamily": "$font-mono",
+                  "fontSize": "$fs-xs",
+                  "fontWeight": "normal"
+                },
+                {
+                  "id": "DSwi5",
+                  "type": "ref",
+                  "ref": "CJdjz",
+                  "name": "regBtn",
+                  "width": "fill_container",
+                  "opacity": 0.5,
+                  "descendants": {
+                    "Xfl4P": {
+                      "content": "Create account"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "IP8Gm",
+                  "name": "foot",
+                  "width": "fill_container",
+                  "gap": "$sp-2",
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "G3JGmH",
+                      "fill": "$fg-secondary",
+                      "content": "Already have an account?",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-sm",
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "RYRLc",
+                      "fill": "$accent-primary",
+                      "content": "Sign in",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-sm",
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "QbVBp",
+      "x": 1540,
+      "y": 22407,
+      "name": "Desktop / Register - Password Failure",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base",
+      "children": [
+        {
+          "type": "frame",
+          "id": "fr8vn",
+          "layoutPosition": "absolute",
+          "x": -200,
+          "y": 200,
+          "name": "bg",
+          "width": 1840,
+          "height": 600,
+          "layout": "none",
+          "children": [
+            {
+              "type": "ellipse",
+              "id": "y6eVw",
+              "x": 200,
+              "y": 0,
+              "opacity": 0.6,
+              "fill": "$accent-soft",
+              "width": 600,
+              "height": 600,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "Ct6UI",
+              "x": 1100,
+              "y": 100,
+              "opacity": 0.15,
+              "fill": "$accent-secondary",
+              "width": 500,
+              "height": 500,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "jubnY",
+          "name": "center",
+          "width": "fill_container",
+          "height": "fill_container",
+          "padding": "$sp-12",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "pB9N8",
+              "name": "card",
+              "width": 520,
+              "fill": "$bg-surface",
+              "cornerRadius": "$radius-2xl",
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "layout": "vertical",
+              "gap": "$sp-6",
+              "padding": "$sp-12",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "B2wwI1",
+                  "name": "head",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-3",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "qe5ch",
+                      "name": "logoBox",
+                      "gap": "$sp-2",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "U0nQGn",
+                          "name": "logoMark",
+                          "width": 36,
+                          "height": 36,
+                          "fill": "$accent-primary",
+                          "cornerRadius": "$radius-md",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "s3sn6",
+                              "width": 22,
+                              "height": 22,
+                              "iconFontName": "church",
+                              "iconFontFamily": "Material Symbols Outlined",
+                              "fill": "$fg-on-accent"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "KoIf5",
+                          "fill": "$fg-primary",
+                          "content": "The Upper Room",
+                          "fontFamily": "$font-heading",
+                          "fontSize": "$fs-xl",
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "MhzcB",
+                      "fill": "$fg-secondary",
+                      "content": "Create your City Lead account",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-base",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "id": "T6lRAl",
+                  "type": "ref",
+                  "ref": "kTdXr",
+                  "name": "nameField",
+                  "width": "fill_container",
+                  "descendants": {
+                    "LCJBW": {
+                      "content": "Display name"
+                    },
+                    "ZHHVY": {
+                      "content": "Quinn Brown",
+                      "fill": "$fg-primary"
+                    }
+                  }
+                },
+                {
+                  "id": "k1n7hj",
+                  "type": "ref",
+                  "ref": "kTdXr",
+                  "name": "emailField",
+                  "width": "fill_container",
+                  "descendants": {
+                    "LCJBW": {
+                      "content": "Email"
+                    },
+                    "ZHHVY": {
+                      "content": "name@church.org",
+                      "fill": "$fg-primary"
+                    }
+                  }
+                },
+                {
+                  "id": "IgczG",
+                  "type": "ref",
+                  "ref": "kTdXr",
+                  "name": "cityField",
+                  "width": "fill_container",
+                  "descendants": {
+                    "LCJBW": {
+                      "content": "City"
+                    },
+                    "ZHHVY": {
+                      "content": "Toronto",
+                      "fill": "$fg-primary"
+                    }
+                  }
+                },
+                {
+                  "id": "w3PVLr",
+                  "type": "ref",
+                  "ref": "D0SBZ8",
+                  "name": "pwField",
+                  "width": "fill_container",
+                  "descendants": {
+                    "IEeP9": {
+                      "content": "Password"
+                    },
+                    "acl73": {
+                      "content": "••••••",
+                      "fill": "$fg-primary"
+                    },
+                    "fOmwv": {
+                      "content": "Password is too weak — add length and variety to continue"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "oUc9X",
+                  "name": "strengthMeter",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-2",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "o2KqcJ",
+                      "name": "bars",
+                      "width": "fill_container",
+                      "gap": "$sp-1",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": "$radius-sm",
+                          "id": "l9h8z",
+                          "fill": "$danger",
+                          "width": "fill_container",
+                          "height": 4
+                        },
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": "$radius-sm",
+                          "id": "kllQu",
+                          "fill": "$bg-input",
+                          "width": "fill_container",
+                          "height": 4
+                        },
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": "$radius-sm",
+                          "id": "KnukG",
+                          "fill": "$bg-input",
+                          "width": "fill_container",
+                          "height": 4
+                        },
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": "$radius-sm",
+                          "id": "ssVQJ",
+                          "fill": "$bg-input",
+                          "width": "fill_container",
+                          "height": 4
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "hfCse",
+                      "name": "meta",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "U9j7Xt",
+                          "fill": "$danger",
+                          "content": "Strength: Weak",
+                          "fontFamily": "$font-body",
+                          "fontSize": "$fs-xs",
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "zMlct",
+                          "fill": "$fg-muted",
+                          "content": "6 / 12 minimum",
+                          "fontFamily": "$font-mono",
+                          "fontSize": "$fs-xs",
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "C8Dpc",
+                  "name": "hints",
+                  "width": "fill_container",
+                  "fill": "$danger-soft",
+                  "cornerRadius": "$radius-md",
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$danger"
+                  },
+                  "layout": "vertical",
+                  "gap": "$sp-1",
+                  "padding": "$sp-3",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "YxDNn",
+                      "name": "hintTitle",
+                      "gap": "$sp-2",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "Dxm6L",
+                          "width": 14,
+                          "height": 14,
+                          "iconFontName": "shield-alert",
+                          "iconFontFamily": "lucide",
+                          "fill": "$danger"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Y51L0P",
+                          "fill": "$fg-primary",
+                          "content": "Make this password stronger",
+                          "fontFamily": "$font-body",
+                          "fontSize": "$fs-sm",
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "P2eiG",
+                      "fill": "$fg-secondary",
+                      "content": "• Use at least 12 characters",
+                      "fontFamily": "$font-mono",
+                      "fontSize": "$fs-xs",
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "BM8xZ",
+                      "fill": "$fg-secondary",
+                      "content": "• Add a number and a symbol",
+                      "fontFamily": "$font-mono",
+                      "fontSize": "$fs-xs",
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "psOD4",
+                      "fill": "$fg-secondary",
+                      "content": "• Avoid common words and repeated characters",
+                      "fontFamily": "$font-mono",
+                      "fontSize": "$fs-xs",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "id": "K01Cv",
+                  "type": "ref",
+                  "ref": "CJdjz",
+                  "name": "regBtn",
+                  "width": "fill_container",
+                  "opacity": 0.5,
+                  "descendants": {
+                    "Xfl4P": {
+                      "content": "Create account"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "fBjdZ",
+                  "name": "foot",
+                  "width": "fill_container",
+                  "gap": "$sp-2",
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kOMSq",
+                      "fill": "$fg-secondary",
+                      "content": "Already have an account?",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-sm",
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "kmT4T",
+                      "fill": "$accent-primary",
+                      "content": "Sign in",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-sm",
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "pZ5zz",
+      "x": 3080,
+      "y": 22407,
+      "name": "Desktop / Register - Submitting",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base",
+      "children": [
+        {
+          "type": "frame",
+          "id": "Du7v9",
+          "layoutPosition": "absolute",
+          "x": -200,
+          "y": 200,
+          "name": "bg",
+          "width": 1840,
+          "height": 600,
+          "layout": "none",
+          "children": [
+            {
+              "type": "ellipse",
+              "id": "htyA5",
+              "x": 200,
+              "y": 0,
+              "opacity": 0.6,
+              "fill": "$accent-soft",
+              "width": 600,
+              "height": 600,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "agyIM",
+              "x": 1100,
+              "y": 100,
+              "opacity": 0.15,
+              "fill": "$accent-secondary",
+              "width": 500,
+              "height": 500,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "mvptO",
+          "name": "center",
+          "width": "fill_container",
+          "height": "fill_container",
+          "padding": "$sp-12",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "n4uBE",
+              "name": "card",
+              "width": 520,
+              "fill": "$bg-surface",
+              "cornerRadius": "$radius-2xl",
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "layout": "vertical",
+              "gap": "$sp-6",
+              "padding": "$sp-12",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "HlbyZ",
+                  "name": "head",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-3",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "qHj6a",
+                      "name": "logoBox",
+                      "gap": "$sp-2",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "MZntg",
+                          "name": "logoMark",
+                          "width": 36,
+                          "height": 36,
+                          "fill": "$accent-primary",
+                          "cornerRadius": "$radius-md",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "A3UuWo",
+                              "width": 22,
+                              "height": 22,
+                              "iconFontName": "church",
+                              "iconFontFamily": "Material Symbols Outlined",
+                              "fill": "$fg-on-accent"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "D2hr8y",
+                          "fill": "$fg-primary",
+                          "content": "The Upper Room",
+                          "fontFamily": "$font-heading",
+                          "fontSize": "$fs-xl",
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "w1SNVx",
+                      "fill": "$fg-secondary",
+                      "content": "Create your City Lead account",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-base",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "id": "tTcn0",
+                  "type": "ref",
+                  "ref": "Y5QHiy",
+                  "name": "nameField",
+                  "width": "fill_container",
+                  "descendants": {
+                    "P4ZL6": {
+                      "content": "Display name"
+                    },
+                    "QUD4g": {
+                      "content": "Quinn Brown"
+                    }
+                  }
+                },
+                {
+                  "id": "J3tgQx",
+                  "type": "ref",
+                  "ref": "Y5QHiy",
+                  "name": "emailField",
+                  "width": "fill_container",
+                  "descendants": {
+                    "P4ZL6": {
+                      "content": "Email"
+                    },
+                    "QUD4g": {
+                      "content": "name@church.org"
+                    }
+                  }
+                },
+                {
+                  "id": "WTvVW",
+                  "type": "ref",
+                  "ref": "Y5QHiy",
+                  "name": "cityField",
+                  "width": "fill_container",
+                  "descendants": {
+                    "P4ZL6": {
+                      "content": "City"
+                    },
+                    "QUD4g": {
+                      "content": "Toronto"
+                    }
+                  }
+                },
+                {
+                  "id": "T3JEh",
+                  "type": "ref",
+                  "ref": "Y5QHiy",
+                  "name": "pwField",
+                  "width": "fill_container",
+                  "descendants": {
+                    "P4ZL6": {
+                      "content": "Password"
+                    },
+                    "QUD4g": {
+                      "content": "••••••••••••"
+                    }
+                  }
+                },
+                {
+                  "id": "h9j7v",
+                  "type": "ref",
+                  "ref": "CJdjz",
+                  "name": "regBtn",
+                  "width": "fill_container",
+                  "opacity": 0.7,
+                  "descendants": {
+                    "Xfl4P": {
+                      "content": "Creating account..."
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "wMMu4",
+                  "name": "foot",
+                  "width": "fill_container",
+                  "gap": "$sp-2",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "mi42b",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "loader",
+                      "iconFontFamily": "lucide",
+                      "fill": "$fg-disabled"
+                    },
+                    {
+                      "type": "text",
+                      "id": "q8I1DI",
+                      "fill": "$fg-disabled",
+                      "content": "Securing your account, this may take a moment",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-sm",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "b27XT5",
+      "x": 4620,
+      "y": 22407,
+      "name": "Desktop / Register - Generic Confirmation",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base",
+      "children": [
+        {
+          "type": "frame",
+          "id": "lpFmg",
+          "layoutPosition": "absolute",
+          "x": -200,
+          "y": 200,
+          "name": "bg",
+          "width": 1840,
+          "height": 600,
+          "layout": "none",
+          "children": [
+            {
+              "type": "ellipse",
+              "id": "wrYAK",
+              "x": 200,
+              "y": 0,
+              "opacity": 0.6,
+              "fill": "$accent-soft",
+              "width": 600,
+              "height": 600,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "xEeSw",
+              "x": 1100,
+              "y": 100,
+              "opacity": 0.15,
+              "fill": "$accent-secondary",
+              "width": 500,
+              "height": 500,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "X5RfYJ",
+          "name": "center",
+          "width": "fill_container",
+          "height": "fill_container",
+          "padding": "$sp-12",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "mObAp",
+              "name": "card",
+              "width": 480,
+              "fill": "$bg-surface",
+              "cornerRadius": "$radius-2xl",
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "layout": "vertical",
+              "gap": "$sp-8",
+              "padding": "$sp-12",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "qy7iL",
+                  "name": "head",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-3",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "M8ppC",
+                      "name": "logoBox",
+                      "gap": "$sp-2",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Skaz1",
+                          "name": "logoMark",
+                          "width": 36,
+                          "height": 36,
+                          "fill": "$accent-primary",
+                          "cornerRadius": "$radius-md",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "kwzLS",
+                              "width": 22,
+                              "height": 22,
+                              "iconFontName": "church",
+                              "iconFontFamily": "Material Symbols Outlined",
+                              "fill": "$fg-on-accent"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "tDgpN",
+                          "fill": "$fg-primary",
+                          "content": "The Upper Room",
+                          "fontFamily": "$font-heading",
+                          "fontSize": "$fs-xl",
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WuZqh",
+                  "name": "iconWrap",
+                  "width": "fill_container",
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "vTRpE",
+                      "name": "iconCircle",
+                      "width": 72,
+                      "height": 72,
+                      "fill": "$accent-soft",
+                      "cornerRadius": "$radius-full",
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$border-default"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "UApeu",
+                          "width": 36,
+                          "height": 36,
+                          "iconFontName": "mail",
+                          "iconFontFamily": "lucide",
+                          "fill": "$accent-primary"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "c80aD",
+                  "name": "titleBox",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-2",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "e2Tgn",
+                      "fill": "$fg-primary",
+                      "content": "Almost done",
+                      "fontFamily": "$font-heading",
+                      "fontSize": "$fs-2xl",
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "s08gP",
+                      "fill": "$fg-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "If your email is new to The Upper Room, we just sent you a verification link to finish setting up your account.",
+                      "lineHeight": 1.5,
+                      "textAlign": "center",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-base",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "U1CH7W",
+                  "name": "note",
+                  "width": "fill_container",
+                  "fill": "$bg-input",
+                  "cornerRadius": "$radius-md",
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border-default"
+                  },
+                  "gap": "$sp-2",
+                  "padding": "$sp-3",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "q76Mvx",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "info",
+                      "iconFontFamily": "lucide",
+                      "fill": "$fg-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Ib3Ig",
+                      "fill": "$fg-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "For your privacy, we show this same message whether or not the email is already in use.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-sm",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "id": "agE67",
+                  "type": "ref",
+                  "ref": "j1vsZ",
+                  "name": "backBtn",
+                  "width": "fill_container",
+                  "descendants": {
+                    "KSqo0": {
+                      "content": "Back to sign in"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "variables": {
