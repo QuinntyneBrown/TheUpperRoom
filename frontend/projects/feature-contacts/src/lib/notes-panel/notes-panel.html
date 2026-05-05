@@ -1,4 +1,4 @@
-<section class="notes-panel" data-testid="contact-notes-section">
+<section class="notes-panel" [attr.data-testid]="targetType() === 'Partner' ? 'partner-notes-section' : 'contact-notes-section'">
   <h2>Notes</h2>
 
   <form class="notes-panel__add" data-testid="add-note-form" (ngSubmit)="addNote()">
@@ -17,7 +17,7 @@
   </form>
 
   @if (notes().length === 0) {
-    <div class="notes-panel__empty">
+    <div class="notes-panel__empty" data-testid="notes-empty">
       <mat-icon>note</mat-icon>
       <p>No notes yet.</p>
     </div>
