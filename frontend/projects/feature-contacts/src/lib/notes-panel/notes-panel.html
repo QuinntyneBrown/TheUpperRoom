@@ -35,13 +35,13 @@
           ></textarea>
           <div class="note-card__actions">
             <ur-button (click)="saveEdit(note.id)" data-testid="note-save-btn">Save</ur-button>
-            <ur-button variant="ghost" (click)="cancelEdit()">Cancel</ur-button>
+            <button mat-button (click)="cancelEdit()" data-testid="note-cancel-edit-btn">Cancel</button>
           </div>
         } @else if (deletingId() === note.id) {
           <p class="note-card__confirm">Delete this note?</p>
           <div class="note-card__actions">
             <ur-button variant="danger" (click)="doDelete(note.id)" data-testid="note-confirm-delete-btn">Delete</ur-button>
-            <ur-button variant="ghost" (click)="cancelDelete()">Cancel</ur-button>
+            <button mat-button (click)="cancelDelete()" data-testid="note-cancel-delete-btn">Cancel</button>
           </div>
         } @else {
           <p class="note-card__body">{{ note.body }}</p>
