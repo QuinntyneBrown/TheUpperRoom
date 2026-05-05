@@ -1,6 +1,6 @@
 # T35 — Partner stage history
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 5 — Partner and hackathon management
 **Area**: Partner
 **Requirements**: L1-004, L2-017
@@ -19,6 +19,6 @@ Show a chronological audit of partner stage changes on partner detail.
 
 ## Acceptance criteria
 
-- [ ] Timeline component designed with at least three entries.
-- [ ] Empty state designed.
-- [ ] Mobile variant per T22.
+- [x] Timeline component designed with at least three entries.
+- [x] Empty state designed.
+- [x] Mobile variant per T22.
