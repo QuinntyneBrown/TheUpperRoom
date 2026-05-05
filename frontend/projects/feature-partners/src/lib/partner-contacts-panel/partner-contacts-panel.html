@@ -1,9 +1,7 @@
 <div class="partner-contacts" data-testid="partner-contacts-panel">
   <div class="partner-contacts__hd">
     <span class="partner-contacts__label">CONTACTS</span>
-    <button class="partner-contacts__add-btn" (click)="openNewForm()" data-testid="add-contact-btn">
-      + Associate
-    </button>
+    <ur-button variant="ghost" (click)="openNewForm()" data-testid="add-contact-btn">+ Associate</ur-button>
   </div>
 
   @if (contacts().length === 0 && !showNewForm()) {
@@ -21,7 +19,7 @@
           <span class="partner-contacts__email">{{ c.email }}</span>
         }
       </div>
-      <button class="partner-contacts__remove" (click)="remove(c.id)" aria-label="Remove"><mat-icon aria-hidden="true">close</mat-icon></button>
+      <button mat-icon-button (click)="remove(c.id)" aria-label="Remove"><mat-icon>close</mat-icon></button>
     </div>
   }
 
