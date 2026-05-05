@@ -38,7 +38,7 @@ test.describe('Widget catalog — L2-033', () => {
     await dashboard.catalogItem('kpi').click();
     await expect(page.locator('[data-testid^="widget-"]')).toHaveCount(1);
 
-    await page.locator('[aria-label="Remove widget"]').first().click();
+    await page.getByTestId('remove-widget-btn').first().click();
     await expect(dashboard.emptyState()).toBeVisible();
     await expect(dashboard.undoSnackbar()).toBeVisible();
   });
@@ -49,7 +49,7 @@ test.describe('Widget catalog — L2-033', () => {
     await dashboard.catalogItem('kpi').click();
     await expect(page.locator('[data-testid^="widget-"]')).toHaveCount(1);
 
-    await page.locator('[aria-label="Remove widget"]').first().click();
+    await page.getByTestId('remove-widget-btn').first().click();
     await expect(dashboard.undoSnackbar()).toBeVisible();
     await dashboard.undoRemoveBtn().click();
     await expect(page.locator('[data-testid^="widget-"]')).toHaveCount(1);
@@ -94,7 +94,7 @@ test.describe('Widget persistence — L2-033', () => {
     await dashboard.catalogItem('kpi').click();
     await page.waitForTimeout(500);
 
-    await page.locator('[aria-label="Remove widget"]').first().click();
+    await page.getByTestId('remove-widget-btn').first().click();
     await page.waitForTimeout(500);
 
     await page.reload();
