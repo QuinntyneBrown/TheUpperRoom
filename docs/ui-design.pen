@@ -25459,6 +25459,300 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "AxGSO",
+      "x": 0,
+      "y": 26079,
+      "name": "Desktop / Sign In - Invalid Credentials",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base",
+      "children": [
+        {
+          "type": "frame",
+          "id": "W7eUd",
+          "layoutPosition": "absolute",
+          "x": -200,
+          "y": 200,
+          "name": "bg",
+          "width": 1840,
+          "height": 600,
+          "layout": "none",
+          "children": [
+            {
+              "type": "ellipse",
+              "id": "GqpTx",
+              "x": 200,
+              "y": 0,
+              "opacity": 0.6,
+              "fill": "$accent-soft",
+              "width": 600,
+              "height": 600,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "jK47d",
+              "x": 1100,
+              "y": 100,
+              "opacity": 0.15,
+              "fill": "$accent-secondary",
+              "width": 500,
+              "height": 500,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "V33VTI",
+          "name": "center",
+          "width": "fill_container",
+          "height": "fill_container",
+          "padding": "$sp-12",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Y4oNO",
+              "name": "card",
+              "width": 480,
+              "fill": "$bg-surface",
+              "cornerRadius": "$radius-2xl",
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "layout": "vertical",
+              "gap": "$sp-8",
+              "padding": "$sp-12",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "g0yKpa",
+                  "name": "head",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-3",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "QyHZS",
+                      "name": "logoBox",
+                      "gap": "$sp-2",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "tdsUO",
+                          "name": "logoMark",
+                          "width": 36,
+                          "height": 36,
+                          "fill": "$accent-primary",
+                          "cornerRadius": "$radius-md",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "m0Krk",
+                              "width": 22,
+                              "height": 22,
+                              "iconFontName": "church",
+                              "iconFontFamily": "Material Symbols Outlined",
+                              "fill": "$fg-on-accent"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "VEXyP",
+                          "fill": "$fg-primary",
+                          "content": "The Upper Room",
+                          "fontFamily": "$font-heading",
+                          "fontSize": "$fs-xl",
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "giAc8",
+                      "fill": "$fg-secondary",
+                      "content": "Sign in to your City Lead workspace",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-base",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "id": "Z77Pet",
+                  "type": "ref",
+                  "ref": "Bac6Q",
+                  "name": "alert",
+                  "width": "fill_container"
+                },
+                {
+                  "id": "F7OJae",
+                  "type": "ref",
+                  "ref": "kTdXr",
+                  "name": "emailField",
+                  "width": "fill_container",
+                  "descendants": {
+                    "LCJBW": {
+                      "content": "Email"
+                    },
+                    "ZHHVY": {
+                      "content": "name@church.org",
+                      "fill": "$fg-primary"
+                    }
+                  }
+                },
+                {
+                  "id": "eoItK",
+                  "type": "ref",
+                  "ref": "kTdXr",
+                  "name": "pwField",
+                  "width": "fill_container",
+                  "descendants": {
+                    "LCJBW": {
+                      "content": "Password"
+                    },
+                    "WzEDo": {
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$danger"
+                      }
+                    },
+                    "ZHHVY": {
+                      "content": "••••••••",
+                      "fill": "$fg-primary"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "GLvwP",
+                  "name": "opts",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "GicYH",
+                      "name": "remember",
+                      "gap": "$sp-2",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": "$radius-sm",
+                          "id": "kzkcr",
+                          "fill": "$bg-input",
+                          "width": 18,
+                          "height": 18,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "$border-default"
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "id": "w7lf3",
+                          "fill": "$fg-secondary",
+                          "content": "Remember me",
+                          "fontFamily": "$font-body",
+                          "fontSize": "$fs-sm",
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "ImM7n",
+                      "fill": "$accent-primary",
+                      "content": "Forgot password?",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-sm",
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "id": "nrEIC",
+                  "type": "ref",
+                  "ref": "CJdjz",
+                  "name": "signinBtn",
+                  "width": "fill_container",
+                  "descendants": {
+                    "Xfl4P": {
+                      "content": "Sign in"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "FvvlD",
+      "x": 1540,
+      "y": 26079,
+      "name": "Desktop / Sign In - Unverified Account",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base"
+    },
+    {
+      "type": "frame",
+      "id": "H2lmy",
+      "x": 3080,
+      "y": 26079,
+      "name": "Desktop / Sign In - Locked Out",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base"
+    },
+    {
+      "type": "frame",
+      "id": "S1uiV6",
+      "x": 4620,
+      "y": 26079,
+      "name": "Desktop / Sign In - Submitting",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base"
+    },
+    {
+      "type": "frame",
+      "id": "PTex7",
+      "x": 6160,
+      "y": 26079,
+      "name": "Desktop / Sign In - Field Validation",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base"
     }
   ],
   "variables": {
