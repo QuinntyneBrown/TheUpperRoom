@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AUTH_SERVICE } from 'api';
 import { UrButtonComponent, UrInputComponent } from 'components';
@@ -18,8 +18,19 @@ export class ResetPageComponent implements OnInit {
   token = '';
   email = '';
   newPassword = signal('');
+  confirmPassword = signal('');
   error = signal('');
   loading = signal(false);
+
+  passwordsMatch = computed(() =>
+    this.confirmPassword() === '' || this.newPassword() === this.confirmPassword()
+  );
+
+  canSubmit = computed(() =>
+    this.newPassword().length >= 1 &&
+    this.newPassword() === this.confirmPassword() &&
+    !this.loading()
+  );
 
   ngOnInit(): void {
     this.token = this.route.snapshot.queryParamMap.get('token') ?? '';
@@ -27,6 +38,7 @@ export class ResetPageComponent implements OnInit {
   }
 
   submit(): void {
+    if (!this.canSubmit()) return;
     this.loading.set(true);
     this.error.set('');
     this.auth.resetPassword({ email: this.email, token: this.token, newPassword: this.newPassword() }).subscribe({
