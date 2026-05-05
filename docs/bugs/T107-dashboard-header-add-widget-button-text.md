@@ -1,6 +1,6 @@
 # T107 — Dashboard header "Add widget" button should be "+ Add widget"
 
-**Status:** Open
+**Status:** Fixed
 
 **Route:** `/dashboard`
 

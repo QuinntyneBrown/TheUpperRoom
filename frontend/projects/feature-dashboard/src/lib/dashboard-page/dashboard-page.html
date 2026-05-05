@@ -1,9 +1,7 @@
 <div class="dashboard-page" data-testid="dashboard-page">
   <header class="dashboard-page__header">
     <h1>Dashboard</h1>
-    <button mat-raised-button data-testid="add-widget-btn" (click)="showCatalog.set(true)">
-      <mat-icon>add</mat-icon> Add widget
-    </button>
+    <button mat-raised-button data-testid="add-widget-btn" (click)="showCatalog.set(true)">+ Add widget</button>
   </header>
 
   @if (showCatalog()) {
