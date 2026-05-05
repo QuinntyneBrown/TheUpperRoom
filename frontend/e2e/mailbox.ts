@@ -11,6 +11,14 @@ export interface MailMessage {
 }
 
 export class Mailbox {
+  uniqueEmail(): string {
+    return `e2e+${Date.now()}@example.com`;
+  }
+
+  async firstVerificationLink(email: string, timeoutMs = 15_000): Promise<string> {
+    return this.waitForVerificationLink(email, timeoutMs);
+  }
+
   async latestTo(email: string): Promise<MailMessage | null> {
     const res = await fetch(`${BASE}/api/v1/messages?limit=50`);
     const data = await res.json() as { messages: MailMessage[] };
