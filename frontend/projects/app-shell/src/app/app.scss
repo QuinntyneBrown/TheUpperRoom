@@ -110,7 +110,7 @@
     flex-shrink: 0;
   }
 
-  &--hidden { display: none; }
+  &--hidden { visibility: hidden; }
 
   &__resolving {
     position: fixed; inset: 0; z-index: 9999;
