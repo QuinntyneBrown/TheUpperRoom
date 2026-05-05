@@ -49,8 +49,12 @@
             <time>{{ note.createdAt | date:'mediumDate' }}</time>
             @if (isOwn(note)) {
               <div class="note-card__actions">
-                <ur-button variant="ghost" (click)="startEdit(note)" aria-label="Edit note" data-testid="note-edit-btn">Edit</ur-button>
-                <ur-button variant="ghost" (click)="confirmDelete(note.id)" aria-label="Delete note" data-testid="note-delete-btn">Delete</ur-button>
+                <button mat-icon-button (click)="startEdit(note)" aria-label="Edit note" data-testid="note-edit-btn">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="confirmDelete(note.id)" aria-label="Delete note" data-testid="note-delete-btn">
+                  <mat-icon>delete</mat-icon>
+                </button>
               </div>
             }
           </div>
