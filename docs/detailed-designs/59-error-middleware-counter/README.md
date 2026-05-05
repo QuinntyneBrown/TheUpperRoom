@@ -3,7 +3,7 @@
 **Traces to:** L2-044 AC2. L1-011.
 
 ## Status
-Accepted
+Complete
 
 Vertical slice: any unhandled exception returns a generic 500, logs the stack with the correlation ID, and increments an error counter.
 
