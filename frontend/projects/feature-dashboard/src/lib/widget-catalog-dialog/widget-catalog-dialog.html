@@ -1,0 +1,15 @@
+<div class="widget-catalog-dialog" data-testid="widget-catalog-dialog" role="dialog" aria-modal="true" aria-label="Add Widget">
+  <header class="widget-catalog-dialog__header">
+    <h2>Add Widget</h2>
+    <button class="widget-catalog-dialog__close" (click)="closed.emit()" aria-label="Close">✕</button>
+  </header>
+  <ul class="widget-catalog-dialog__list">
+    @for (wt of widgetTypes; track wt.type) {
+      <li>
+        <button class="widget-catalog-dialog__item" [attr.data-testid]="'widget-type-' + wt.type" (click)="pick(wt)">
+          {{ wt.label }}
+        </button>
+      </li>
+    }
+  </ul>
+</div>

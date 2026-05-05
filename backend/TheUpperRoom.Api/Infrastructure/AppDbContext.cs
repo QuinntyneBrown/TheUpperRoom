@@ -20,6 +20,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
     public DbSet<Product> Products => Set<Product>();
     public DbSet<ProductMember> ProductMembers => Set<ProductMember>();
     public DbSet<Invitation> Invitations => Set<Invitation>();
+    public DbSet<DashboardLayout> DashboardLayouts => Set<DashboardLayout>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -31,6 +32,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
         builder.Entity<PartnerContact>().HasKey(pc => new { pc.PartnerId, pc.ContactId });
         builder.Entity<HackathonPartner>().HasKey(hp => new { hp.HackathonId, hp.PartnerId });
         builder.Entity<Product>().HasQueryFilter(p => p.DeletedAt == null);
+        builder.Entity<DashboardLayout>().HasKey(d => d.UserId);
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

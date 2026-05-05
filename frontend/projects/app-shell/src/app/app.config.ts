@@ -3,8 +3,9 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { csrfInterceptor } from './services/csrf.interceptor';
 import { errorLoggingInterceptor } from './services/error-logging.interceptor';
-import { AUTH_SERVICE, AuthService, CONTACT_SERVICE, ContactService, HACKATHON_SERVICE, HackathonService, HEALTH_SERVICE, HealthService, PARTNER_SERVICE, PartnerService, REALTIME_SERVICE, RealtimeService, TEAM_SERVICE, TeamService } from 'api';
+import { AUTH_SERVICE, AuthService, CONTACT_SERVICE, ContactService, DASHBOARD_SERVICE, DashboardService, HACKATHON_SERVICE, HackathonService, HEALTH_SERVICE, HealthService, PARTNER_SERVICE, PartnerService, REALTIME_SERVICE, RealtimeService, TEAM_SERVICE, TeamService } from 'api';
 import { ContactCreatePageComponent, ContactDetailPageComponent, ContactEditPageComponent, ContactsListPageComponent } from 'feature-contacts';
+import { DashboardPageComponent } from 'feature-dashboard';
 import { HackathonCreatePageComponent, HackathonDetailPageComponent } from 'feature-hackathons';
 import { GlobalTeamsPageComponent, LocalTeamPageComponent } from 'feature-team';
 import { PartnerCreatePageComponent, PartnerDetailPageComponent, PartnerEditPageComponent, PartnersBoardPageComponent } from 'feature-partners';
@@ -13,7 +14,6 @@ import { GlobalErrorHandler } from './global-error-handler';
 import { LayoutTestComponent } from './test/layout-test';
 import { DialogTestComponent } from './test/dialog-test';
 import { FormTestComponent } from './test/form-test';
-import { DashboardPageComponent } from './dashboard/dashboard-page';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,6 +26,7 @@ export const appConfig: ApplicationConfig = {
     { provide: PARTNER_SERVICE, useClass: PartnerService },
     { provide: HACKATHON_SERVICE, useClass: HackathonService },
     { provide: TEAM_SERVICE, useClass: TeamService },
+    { provide: DASHBOARD_SERVICE, useClass: DashboardService },
     { provide: REALTIME_SERVICE, useClass: RealtimeService },
     provideRouter([
       { path: 'dashboard', component: DashboardPageComponent },

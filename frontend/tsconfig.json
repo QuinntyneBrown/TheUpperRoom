@@ -8,6 +8,7 @@
       "components": ["./dist/components"],
       "feature-auth": ["./dist/feature-auth"],
       "feature-contacts": ["./dist/feature-contacts"],
+      "feature-dashboard": ["./dist/feature-dashboard"],
       "feature-partners": ["./dist/feature-partners"],
       "feature-hackathons": ["./dist/feature-hackathons"],
       "feature-team": ["./dist/feature-team"]
@@ -79,6 +80,12 @@
     },
     {
       "path": "./projects/feature-team/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/feature-dashboard/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/feature-dashboard/tsconfig.spec.json"
     }
   ]
 }

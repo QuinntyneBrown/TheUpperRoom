@@ -1,4 +1,4 @@
-# 30 — Dashboard: Default Layout, Add/Move/Resize/Remove Widgets, Persistence ✅ Accepted
+# 30 — Dashboard: Default Layout, Add/Move/Resize/Remove Widgets, Persistence ✅ Complete
 
 **Traces to:** L2-032, L2-033, L2-035 (L1-007). Bundles three closely related ACs that share the same data and the same gridster integration.
 

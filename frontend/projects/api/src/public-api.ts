@@ -1,4 +1,5 @@
 export * from './lib/contact.service';
+export * from './lib/dashboard.service';
 export * from './lib/hackathon.service';
 export * from './lib/health.service';
 export * from './lib/team.service';
