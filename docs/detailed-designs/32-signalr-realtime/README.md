@@ -1,4 +1,4 @@
-# 32 — SignalR Connection Lifecycle & Push Events ✅ Accepted
+# 32 — SignalR Connection Lifecycle & Push Events ✅ Complete
 
 **Traces to:** L2-036, L2-037, L2-048 (L1-008, L1-013).
 

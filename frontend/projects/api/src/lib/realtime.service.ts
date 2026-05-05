@@ -18,13 +18,21 @@ export interface IRealtimeService {
 
 export const REALTIME_SERVICE = new InjectionToken<IRealtimeService>('REALTIME_SERVICE');
 
+// Exponential backoff: 1s, 2s, 4s, 8s, 16s, 32s, 60s, 60s, 60s... indefinitely
+class ExponentialRetryPolicy implements signalR.IRetryPolicy {
+  nextRetryDelayInMilliseconds(ctx: signalR.RetryContext): number {
+    const delay = Math.min(1000 * Math.pow(2, ctx.previousRetryCount), 60_000);
+    return delay;
+  }
+}
+
 @Injectable({ providedIn: 'root' })
 export class RealtimeService implements IRealtimeService, OnDestroy {
   events$ = new Subject<RealtimeEvent>();
 
   private hub = new signalR.HubConnectionBuilder()
     .withUrl('/hubs/team')
-    .withAutomaticReconnect()
+    .withAutomaticReconnect(new ExponentialRetryPolicy())
     .build();
 
   constructor() {
@@ -34,8 +42,16 @@ export class RealtimeService implements IRealtimeService, OnDestroy {
 
   private registerHandlers(): void {
     const forward = (payload: RealtimeEvent) => this.events$.next(payload);
-    this.hub.on('partnerStageChanged', forward);
-    this.hub.on('metricInvalidated', forward);
+    [
+      'contactCreated',
+      'partnerStageChanged',
+      'hackathonStageChanged',
+      'noteAdded',
+      'teamMemberAdded',
+      'teamMemberRemoved',
+      'roleChanged',
+      'metricInvalidated',
+    ].forEach((event) => this.hub.on(event, forward));
   }
 
   async connect(): Promise<void> {
