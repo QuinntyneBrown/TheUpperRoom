@@ -2,6 +2,28 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
 
+export type HackathonStage = 'Discover' | 'Define' | 'Design' | 'Develop' | 'Launch';
+
+export interface HackathonStageHistoryDto {
+  id: string;
+  fromStage: string;
+  toStage: string;
+  changedById: string;
+  changedAt: string;
+}
+
+export interface HackathonDetailDto {
+  id: string;
+  teamId: string;
+  title: string;
+  startDate: string;
+  endDate: string;
+  hostCity: string;
+  stage: HackathonStage;
+  version: number;
+  history: HackathonStageHistoryDto[];
+}
+
 export interface CreateHackathonRequest {
   title: string;
   startDate: string;
@@ -16,6 +38,8 @@ export interface CreateHackathonResponse {
 
 export interface IHackathonService {
   create(req: CreateHackathonRequest): Observable<CreateHackathonResponse>;
+  getById(id: string): Observable<HackathonDetailDto>;
+  changeStage(id: string, toStage: HackathonStage): Observable<void>;
 }
 
 export const HACKATHON_SERVICE = new InjectionToken<IHackathonService>('HACKATHON_SERVICE');
@@ -26,5 +50,13 @@ export class HackathonService implements IHackathonService {
 
   create(req: CreateHackathonRequest): Observable<CreateHackathonResponse> {
     return this.http.post<CreateHackathonResponse>('/api/hackathons', req);
+  }
+
+  getById(id: string): Observable<HackathonDetailDto> {
+    return this.http.get<HackathonDetailDto>(`/api/hackathons/${id}`);
+  }
+
+  changeStage(id: string, toStage: HackathonStage): Observable<void> {
+    return this.http.post<void>(`/api/hackathons/${id}/stage`, { toStage });
   }
 }

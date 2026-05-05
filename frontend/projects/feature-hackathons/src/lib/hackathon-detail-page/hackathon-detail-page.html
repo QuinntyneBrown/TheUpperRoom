@@ -1,0 +1,55 @@
+@if (notFound()) {
+  <div class="hackathon-detail__not-found">Hackathon not found.</div>
+} @else if (hackathon(); as h) {
+  <div class="hackathon-detail" data-testid="hackathon-detail">
+    <header class="hackathon-detail__header">
+      <div>
+        <a routerLink="/hackathons" class="hackathon-detail__back">← Hackathons</a>
+        <h1 class="hackathon-detail__title">{{ h.title }}</h1>
+        <p class="hackathon-detail__meta">{{ h.hostCity }} · {{ h.startDate | date:'mediumDate' }} – {{ h.endDate | date:'mediumDate' }}</p>
+      </div>
+    </header>
+
+    <div class="hackathon-detail__body">
+      <section class="hackathon-detail__stage-section" aria-label="4 D's stage">
+        <div class="hackathon-steps">
+          @for (s of stages; track s.value; let i = $index) {
+            <button
+              class="hackathon-step"
+              [class.hackathon-step--complete]="i < stageIndex()"
+              [class.hackathon-step--current]="i === stageIndex()"
+              [attr.aria-current]="i === stageIndex() ? 'step' : null"
+              [attr.data-testid]="'stage-step-' + s.value"
+              [disabled]="changingStage()"
+              (click)="changeStage(s.value)"
+            >
+              <span class="hackathon-step__dot"></span>
+              <span class="hackathon-step__label">{{ s.label }}</span>
+            </button>
+            @if (i < stages.length - 1) {
+              <div class="hackathon-step__connector" [class.hackathon-step__connector--done]="i < stageIndex()"></div>
+            }
+          }
+        </div>
+      </section>
+
+      @if (h.history.length > 0) {
+        <section class="hackathon-detail__history" aria-label="Stage history">
+          <h2 class="hackathon-detail__section-title">Stage history</h2>
+          <ul class="hackathon-history">
+            @for (entry of h.history; track entry.id) {
+              <li class="hackathon-history__item">
+                <span class="hackathon-history__from">{{ entry.fromStage }}</span>
+                <span class="hackathon-history__arrow">→</span>
+                <span class="hackathon-history__to">{{ entry.toStage }}</span>
+                <time class="hackathon-history__time">{{ entry.changedAt | date:'short' }}</time>
+              </li>
+            }
+          </ul>
+        </section>
+      }
+    </div>
+  </div>
+} @else {
+  <div class="hackathon-detail__loading" aria-busy="true">Loading…</div>
+}

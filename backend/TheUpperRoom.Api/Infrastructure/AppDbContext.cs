@@ -16,6 +16,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
     public DbSet<PartnerContact> PartnerContacts => Set<PartnerContact>();
     public DbSet<Hackathon> Hackathons => Set<Hackathon>();
     public DbSet<HackathonPartner> HackathonPartners => Set<HackathonPartner>();
+    public DbSet<HackathonStageHistory> HackathonStageHistories => Set<HackathonStageHistory>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
