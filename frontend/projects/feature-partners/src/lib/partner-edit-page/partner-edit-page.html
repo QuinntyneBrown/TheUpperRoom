@@ -6,7 +6,7 @@
     <div class="partner-edit-loading__field"></div>
   </div>
 } @else if (notFound()) {
-  <div class="not-found">
+  <div class="not-found" data-testid="partner-edit-not-found">
     <h1>Partner not found</h1>
     <a routerLink="/partners">Back to partners</a>
   </div>
@@ -32,9 +32,10 @@
           [value]="name()"
           (input)="name.set($any($event.target).value)"
           data-testid="partner-name-input"
+          aria-describedby="partnerName-error"
         />
         @if (errors()['name']) {
-          <span class="partner-edit__error">{{ errors()['name'] }}</span>
+          <span id="partnerName-error" class="partner-edit__error">{{ errors()['name'] }}</span>
         }
       </div>
 
@@ -46,9 +47,10 @@
           [value]="city()"
           (input)="city.set($any($event.target).value)"
           data-testid="partner-city-input"
+          aria-describedby="partnerCity-error"
         />
         @if (errors()['city']) {
-          <span class="partner-edit__error">{{ errors()['city'] }}</span>
+          <span id="partnerCity-error" class="partner-edit__error">{{ errors()['city'] }}</span>
         }
       </div>
 
