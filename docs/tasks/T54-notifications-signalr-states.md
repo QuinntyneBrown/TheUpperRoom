@@ -1,5 +1,6 @@
 # T54 — SignalR connected/offline/retry-exhausted states
 
+**Status**: Accepted
 **Phase**: 7 — Notifications and real-time lifecycle
 **Area**: Real-time, Notifications
 **Requirements**: L1-008, L2-036
