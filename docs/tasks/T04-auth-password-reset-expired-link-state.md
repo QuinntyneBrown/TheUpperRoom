@@ -1,6 +1,6 @@
 # T04 — Password reset expired/used link state
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 1 — Authentication and session edge states
 **Area**: Authentication
 **Requirements**: L1-001, L2-003
@@ -18,6 +18,6 @@ When a user opens an expired or already-used reset link, show an explanatory sta
 
 ## Acceptance criteria
 
-- [ ] Expired and already-used states exist as variants of `Desktop / Password Reset`.
-- [ ] Generic, duplicate-safe copy.
-- [ ] Successful-reset state directs the user back to sign-in (does not auto-authenticate).
+- [x] Expired and already-used states exist as variants of `Desktop / Password Reset`.
+- [x] Generic, duplicate-safe copy.
+- [x] Successful-reset state directs the user back to sign-in (does not auto-authenticate).
