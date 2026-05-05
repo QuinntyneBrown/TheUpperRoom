@@ -57,13 +57,22 @@
     <div class="contact-detail__body">
       <section class="contact-detail__summary">
         @if (contact()!.email) {
-          <p><strong>Email:</strong> {{ contact()!.email }}</p>
+          <div class="contact-detail__meta-row" data-testid="contact-meta-email">
+            <mat-icon>mail</mat-icon>
+            <span>{{ contact()!.email }}</span>
+          </div>
         }
         @if (contact()!.phone) {
-          <p><strong>Phone:</strong> {{ contact()!.phone }}</p>
+          <div class="contact-detail__meta-row" data-testid="contact-meta-phone">
+            <mat-icon>call</mat-icon>
+            <span>{{ contact()!.phone }}</span>
+          </div>
         }
         @if (contact()!.city) {
-          <p><strong>City:</strong> {{ contact()!.city }}</p>
+          <div class="contact-detail__meta-row" data-testid="contact-meta-city">
+            <mat-icon>location_on</mat-icon>
+            <span>{{ contact()!.city }}</span>
+          </div>
         }
       </section>
 
