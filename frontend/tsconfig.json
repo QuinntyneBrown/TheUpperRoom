@@ -12,6 +12,7 @@
       "feature-partners": ["./dist/feature-partners"],
       "feature-notifications": ["./dist/feature-notifications"],
       "feature-hackathons": ["./dist/feature-hackathons"],
+      "feature-admin": ["./dist/feature-admin"],
       "feature-search": ["./dist/feature-search"],
       "feature-team": ["./dist/feature-team"]
     },
@@ -94,6 +95,12 @@
     },
     {
       "path": "./projects/feature-notifications/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/feature-admin/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/feature-admin/tsconfig.spec.json"
     },
     {
       "path": "./projects/feature-search/tsconfig.lib.json"

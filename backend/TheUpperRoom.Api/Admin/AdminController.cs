@@ -10,6 +10,10 @@ namespace TheUpperRoom.Api.Admin;
 [Authorize(Roles = Roles.Admin)]
 public class AdminController(IMediator mediator) : ControllerBase
 {
+    [HttpGet("contacts/deleted")]
+    public async Task<IActionResult> ListDeletedContacts() =>
+        Ok(await mediator.Send(new ListDeletedContactsQuery()));
+
     [HttpPost("contacts/{id:guid}/restore")]
     public async Task<IActionResult> RestoreContact(Guid id)
     {

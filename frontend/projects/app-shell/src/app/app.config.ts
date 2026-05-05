@@ -9,6 +9,7 @@ import { ContactCreatePageComponent, ContactDetailPageComponent, ContactEditPage
 import { DashboardPageComponent } from 'feature-dashboard';
 import { HackathonCreatePageComponent, HackathonDetailPageComponent } from 'feature-hackathons';
 import { GlobalTeamsPageComponent, LocalTeamPageComponent } from 'feature-team';
+import { DeletedContactsPageComponent } from 'feature-admin';
 import { PartnerCreatePageComponent, PartnerDetailPageComponent, PartnerEditPageComponent, PartnersBoardPageComponent } from 'feature-partners';
 import { NoAccessPageComponent, RecoverPageComponent, RegisterPageComponent, ResetPageComponent, SignInPageComponent, VerifyPageComponent } from 'feature-auth';
 import { GlobalErrorHandler } from './global-error-handler';
@@ -46,6 +47,7 @@ export const appConfig: ApplicationConfig = {
       { path: 'contacts/new', component: ContactCreatePageComponent },
       { path: 'contacts/:id', component: ContactDetailPageComponent },
       { path: 'contacts/:id/edit', component: ContactEditPageComponent },
+      { path: 'admin/contacts/deleted', component: DeletedContactsPageComponent },
       { path: 'no-access', component: NoAccessPageComponent },
       { path: 'auth/forgot-password', component: RecoverPageComponent },
       { path: 'auth/register', component: RegisterPageComponent },

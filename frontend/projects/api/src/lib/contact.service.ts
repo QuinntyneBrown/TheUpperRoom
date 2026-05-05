@@ -66,6 +66,13 @@ export interface ContactSearchResult {
   matchedField: string;
 }
 
+export interface DeletedContactDto {
+  id: string;
+  name: string;
+  deletedAt: string;
+  teamId: string;
+}
+
 export interface IContactService {
   create(req: CreateContactRequest): Observable<CreateContactResponse>;
   getById(id: string): Observable<ContactDto>;
@@ -76,6 +83,8 @@ export interface IContactService {
   addNote(contactId: string, body: string): Observable<NoteDto>;
   updateNote(noteId: string, body: string): Observable<void>;
   deleteNote(noteId: string): Observable<void>;
+  listDeleted(): Observable<DeletedContactDto[]>;
+  restore(id: string): Observable<void>;
 }
 
 export const CONTACT_SERVICE = new InjectionToken<IContactService>('CONTACT_SERVICE');
@@ -118,5 +127,13 @@ export class ContactService implements IContactService {
 
   deleteNote(noteId: string): Observable<void> {
     return this.http.delete<void>(`/api/notes/${noteId}`);
+  }
+
+  listDeleted(): Observable<DeletedContactDto[]> {
+    return this.http.get<DeletedContactDto[]>('/api/admin/contacts/deleted');
+  }
+
+  restore(id: string): Observable<void> {
+    return this.http.post<void>(`/api/admin/contacts/${id}/restore`, {});
   }
 }
