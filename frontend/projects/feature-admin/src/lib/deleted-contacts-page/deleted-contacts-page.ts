@@ -20,7 +20,10 @@ import { MatTableModule } from '@angular/material/table';
           <button mat-stroked-button data-testid="deleted-contacts-retry-btn" (click)="load()">Retry</button>
         </div>
       } @else if (rows().length === 0) {
-        <p>No deleted contacts.</p>
+        <div class="admin-empty" data-testid="deleted-contacts-empty">
+          <mat-icon>person_off</mat-icon>
+          <p>No deleted contacts.</p>
+        </div>
       } @else {
         <table mat-table [dataSource]="rows()">
           <ng-container matColumnDef="name">
@@ -59,6 +62,12 @@ import { MatTableModule } from '@angular/material/table';
     }
     .admin-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
     .admin-loading { color: var(--ur-fg-muted, #64748b); font-size: 0.875rem; margin: 16px 0; }
+    .admin-empty {
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+      padding: 48px 24px; color: var(--ur-fg-muted, #64748b); text-align: center;
+    }
+    .admin-empty mat-icon { font-size: 48px; width: 48px; height: 48px; opacity: 0.4; }
+    .admin-empty p { margin: 0; font-size: 0.9rem; }
     .admin-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
       gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
