@@ -1,6 +1,6 @@
 # T23 — Layout clipping fixes and verification
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 3 — Responsive coverage and clipping fixes
 **Area**: Responsive, QA
 **Requirements**: L1-009, L2-039, L2-040, L2-041
@@ -49,6 +49,6 @@ Per-frame `snapshot_layout(problemsOnly=true)` runs on every frame touched above
 
 ## Acceptance criteria
 
-- [ ] `snapshot_layout(problemsOnly=true)` reports zero new clipping after fixes.
-- [ ] Auth decorative clipping is annotated as intentional or fixed.
-- [ ] Verification screenshot saved or referenced.
+- [x] `snapshot_layout(problemsOnly=true)` reports zero new clipping after fixes.
+- [x] Auth decorative clipping is annotated as intentional or fixed.
+- [x] Verification screenshot saved or referenced.
