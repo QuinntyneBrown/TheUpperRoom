@@ -3,7 +3,7 @@
 **Traces to:** L2-045 AC2, AC3. L1-011.
 
 ## Status
-Accepted
+Complete
 
 Vertical slice: failed HTTP calls from the frontend are logged with correlation IDs and sanitized.
 
