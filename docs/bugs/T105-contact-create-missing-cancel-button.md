@@ -1,6 +1,6 @@
 # T105 — Contact Create page missing Cancel button
 
-**Status:** Open
+**Status:** Fixed
 
 **Route:** `/contacts/new`
 

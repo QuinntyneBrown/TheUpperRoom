@@ -1,6 +1,6 @@
 # T104 — Contact Create submit button shows "Create contact" instead of "Save contact"
 
-**Status:** Open
+**Status:** Fixed
 
 **Route:** `/contacts/new`
 
