@@ -90,4 +90,16 @@ export class PartnersPage {
   board() {
     return this.page.getByTestId('partner-board');
   }
+
+  stageSuccessToast() {
+    return this.page.getByTestId('stage-success-toast');
+  }
+
+  linkedToast() {
+    return this.page.getByTestId('linked-toast');
+  }
+
+  savedToast() {
+    return this.page.getByTestId('partner-saved-toast');
+  }
 }
