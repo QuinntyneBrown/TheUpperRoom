@@ -1,9 +1,9 @@
-# 16 — Move Partner Through Funnel Stages
+# 16 — Move Partner Through Funnel Stages ✅ Accepted
 
 **Traces to:** L2-017 (L1-004). First slice that uses SignalR end-to-end.
 
 ## Components
-- Backend `Partners/ChangeStage.cs` — `ChangePartnerStageCommand : ITeamScopedRequest { PartnerId, TargetTeamId, ToStage }`. Handler updates `Partner.Stage`, inserts `PartnerStageHistory` row, then publishes `partnerStageChanged` through `Broadcast.TeamEvent(...)` with `eventType`, `entityId`, `actorId`, `timestamp`, and `{ partnerId, fromStage, toStage }`.
+- Backend `Partners/ChangeStage.cs` — `ChangePartnerStageCommand { PartnerId, ToStage }`. Handler uses `ICurrentUser` directly (consistent with all handlers — no `ITeamScopedRequest`). Updates `Partner.Stage`, inserts `PartnerStageHistory` row, then publishes `partnerStageChanged` via `IHubContext<TeamHub>` with `eventType`, `entityId`, `actorId`, `timestamp`, and `{ partnerId, fromStage, toStage }`.
 - Backend `PartnersController.ChangeStage` — `POST /api/partners/{id}/stage` body `{ toStage }`.
 - Backend `Realtime/TeamHub.cs` — minimal hub already specified in slice 32; this slice is its first publisher.
 - Frontend `feature-partners/partner-detail-page` includes a stage switcher. Subscribes to `partnerStageChanged` via `RealtimeService` to update other clients viewing the same partner.
