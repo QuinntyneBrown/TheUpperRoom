@@ -2,6 +2,9 @@
 
 **Traces to:** L2-044 AC1. L1-011.
 
+## Status
+Accepted
+
 Vertical slice: every request gets a correlation ID and a structured request log line.
 
 ## Components
