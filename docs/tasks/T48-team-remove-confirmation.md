@@ -1,6 +1,6 @@
 # T48 — Team remove member confirmation
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 6 — Team administration and authorization
 **Area**: Team
 **Requirements**: L1-006, L2-028
@@ -19,5 +19,5 @@ Add a destructive confirmation for removing a team member, with handling for pro
 
 ## Acceptance criteria
 
-- [ ] Confirmation dialog and rejection state designed.
-- [ ] Mobile variant per T21.
+- [x] Confirmation dialog and rejection state designed.
+- [x] Mobile variant per T21.
