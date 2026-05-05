@@ -1,5 +1,6 @@
 # T15 — Mobile and tablet dashboard editor
 
+**Status**: Accepted
 **Phase**: 2 — Dashboard editor interaction model
 **Area**: Dashboard, Responsive
 **Requirements**: L1-007, L1-009, L2-033, L2-040, L2-041
