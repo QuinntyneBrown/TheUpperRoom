@@ -29,6 +29,8 @@ const STAGES: { value: PartnerStage; label: string }[] = [
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
     .partner-toast mat-icon { color: var(--ur-success, #22c55e); font-size: 18px; width: 18px; height: 18px; }
+    .partner-toast--error { border-color: var(--ur-error-fg, #dc2626); }
+    .partner-toast--error mat-icon { color: var(--ur-error-fg, #dc2626); }
     .partner-detail__permission-banner {
       display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 6px; margin-top: 8px;
       background: var(--ur-info-bg, #eff6ff); color: var(--ur-info-fg, #1d4ed8);
@@ -57,10 +59,12 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
   linkedToast = signal(false);
   linkedContactId = signal<string | null>(null);
   savedToast = signal(false);
+  deleteError = signal(false);
 
   private stageToastTimer?: ReturnType<typeof setTimeout>;
   private linkedToastTimer?: ReturnType<typeof setTimeout>;
   private savedToastTimer?: ReturnType<typeof setTimeout>;
+  private deleteErrorTimer?: ReturnType<typeof setTimeout>;
 
   stageIndex = computed(() => {
     const p = this.partner();
@@ -106,6 +110,7 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
     clearTimeout(this.stageToastTimer);
     clearTimeout(this.linkedToastTimer);
     clearTimeout(this.savedToastTimer);
+    clearTimeout(this.deleteErrorTimer);
   }
 
   confirmDelete(): void {
@@ -114,7 +119,13 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
     this.deleting.set(true);
     this.partners.delete(p.id).subscribe({
       next: () => this.router.navigate(['/partners'], { queryParams: { deleted: '1' } }),
-      error: () => this.deleting.set(false),
+      error: () => {
+        this.deleting.set(false);
+        this.showDeleteDialog.set(false);
+        clearTimeout(this.deleteErrorTimer);
+        this.deleteError.set(true);
+        this.deleteErrorTimer = setTimeout(() => this.deleteError.set(false), 4000);
+      },
     });
   }
 

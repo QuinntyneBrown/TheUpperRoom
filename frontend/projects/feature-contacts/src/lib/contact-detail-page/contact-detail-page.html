@@ -63,3 +63,10 @@
     <span>Contact saved</span>
   </div>
 }
+
+@if (deleteError()) {
+  <div class="contact-toast contact-toast--error" role="alert" data-testid="contact-delete-error-toast">
+    <mat-icon>error_outline</mat-icon>
+    <span>Delete failed. Please try again.</span>
+  </div>
+}

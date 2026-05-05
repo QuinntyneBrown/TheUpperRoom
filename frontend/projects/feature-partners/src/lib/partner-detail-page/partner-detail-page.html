@@ -190,3 +190,10 @@
     <span>Partner saved</span>
   </div>
 }
+
+@if (deleteError()) {
+  <div class="partner-toast partner-toast--error" role="alert" data-testid="partner-delete-error-toast">
+    <mat-icon>error_outline</mat-icon>
+    <span>Delete failed. Please try again.</span>
+  </div>
+}

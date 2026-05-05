@@ -21,6 +21,8 @@ import { NotesPanelComponent } from '../notes-panel/notes-panel';
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
     .contact-toast mat-icon { color: var(--ur-success, #22c55e); font-size: 18px; width: 18px; height: 18px; }
+    .contact-toast--error { border-color: var(--ur-error-fg, #dc2626); }
+    .contact-toast--error mat-icon { color: var(--ur-error-fg, #dc2626); }
     .contact-detail__permission-banner {
       display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 6px; margin-top: 8px;
       background: var(--ur-info-bg, #eff6ff); color: var(--ur-info-fg, #1d4ed8);
@@ -40,10 +42,12 @@ export class ContactDetailPageComponent implements OnInit, OnDestroy {
   notFound = signal(false);
   showDeleteDialog = signal(false);
   deleting = signal(false);
+  deleteError = signal(false);
   savedToast = signal(false);
   canDelete = signal(false);
 
   private savedToastTimer?: ReturnType<typeof setTimeout>;
+  private deleteErrorTimer?: ReturnType<typeof setTimeout>;
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')!;
@@ -67,6 +71,7 @@ export class ContactDetailPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     clearTimeout(this.savedToastTimer);
+    clearTimeout(this.deleteErrorTimer);
   }
 
   confirmDelete(): void {
@@ -75,7 +80,13 @@ export class ContactDetailPageComponent implements OnInit, OnDestroy {
     this.deleting.set(true);
     this.contacts.delete(c.id).subscribe({
       next: () => this.router.navigate(['/contacts'], { queryParams: { deleted: '1' } }),
-      error: () => this.deleting.set(false),
+      error: () => {
+        this.deleting.set(false);
+        this.showDeleteDialog.set(false);
+        clearTimeout(this.deleteErrorTimer);
+        this.deleteError.set(true);
+        this.deleteErrorTimer = setTimeout(() => this.deleteError.set(false), 4000);
+      },
     });
   }
 }
