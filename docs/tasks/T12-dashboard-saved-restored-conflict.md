@@ -1,5 +1,6 @@
 # T12 — Saved, restored, and conflict layout states
 
+**Status**: Accepted
 **Phase**: 2 — Dashboard editor interaction model
 **Area**: Dashboard
 **Requirements**: L1-007, L2-035
