@@ -1,6 +1,6 @@
 # T99: Partner create form — field labels wrong
 
-**Status:** Open
+**Status:** Fixed
 
 ## Description
 

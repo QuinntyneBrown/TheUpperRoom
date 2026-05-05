@@ -1,6 +1,6 @@
 # T98: Partners list — CTA button text should be "New partner"
 
-**Status:** Open
+**Status:** Fixed
 
 ## Description
 

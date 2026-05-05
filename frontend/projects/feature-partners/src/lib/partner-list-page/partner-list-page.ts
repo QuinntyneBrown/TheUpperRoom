@@ -19,7 +19,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
     <div class="partner-list-page" data-perf-ready="partners">
       <div class="partner-list-page__header">
         <h1>Partners</h1>
-        <a mat-raised-button routerLink="/partners/new" data-testid="new-partner-btn">Add Partner</a>
+        <a mat-raised-button routerLink="/partners/new" data-testid="new-partner-btn">New partner</a>
       </div>
       <mat-chip-listbox multiple aria-label="Filter by stage">
         @for (s of stages; track s.stage) {

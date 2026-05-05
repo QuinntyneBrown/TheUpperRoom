@@ -6,7 +6,7 @@
 >
   <form (ngSubmit)="submit()" class="partner-form">
     <div class="partner-form__field">
-      <label for="partnerName">Organization name</label>
+      <label for="partnerName">Partner name</label>
       <input
         id="partnerName"
         type="text"
@@ -53,7 +53,7 @@
     </div>
 
     <div class="partner-form__field">
-      <span class="partner-form__label">Status</span>
+      <span class="partner-form__label">Stage</span>
       <div class="partner-form__stage-opts">
         @for (s of stages; track s.value) {
           <button
