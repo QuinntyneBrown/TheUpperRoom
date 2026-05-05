@@ -16,7 +16,7 @@
       <h1 data-testid="contact-name">{{ contact()!.firstName }} {{ contact()!.lastName }}</h1>
       <div class="contact-detail__actions">
         <a mat-stroked-button [routerLink]="['/contacts', contact()!.id, 'edit']">Edit</a>
-        <ur-button variant="danger" [disabled]="!canDelete()" (click)="canDelete() && showDeleteDialog.set(true)">Delete</ur-button>
+        <ur-button variant="danger" [disabled]="!canDelete()" (click)="canDelete() && showDeleteDialog.set(true)" data-testid="contact-delete-btn">Delete</ur-button>
       </div>
       @if (!canDelete()) {
         <div class="contact-detail__permission-banner" data-testid="delete-permission-denied-banner" role="note">
@@ -33,8 +33,9 @@
         variant="danger"
         closeLabel="Cancel"
         (closed)="showDeleteDialog.set(false)"
+        data-testid="contact-delete-dialog"
       >
-        <ur-button variant="danger" [disabled]="deleting()" (click)="confirmDelete()">
+        <ur-button variant="danger" [disabled]="deleting()" (click)="confirmDelete()" data-testid="confirm-delete-contact-btn">
           {{ deleting() ? 'Deleting…' : 'Delete contact' }}
         </ur-button>
       </ur-dialog>

@@ -20,7 +20,7 @@
       </nav>
       <div class="partner-detail__header-actions">
         <a mat-stroked-button [routerLink]="['/partners', p.id, 'edit']">Edit</a>
-        <ur-button variant="danger" [disabled]="!canDelete()" (click)="canDelete() && showDeleteDialog.set(true)">Delete</ur-button>
+        <ur-button variant="danger" [disabled]="!canDelete()" (click)="canDelete() && showDeleteDialog.set(true)" data-testid="partner-delete-btn">Delete</ur-button>
       </div>
       @if (!canDelete()) {
         <div class="partner-detail__permission-banner" data-testid="partner-delete-permission-denied-banner" role="note">
@@ -37,8 +37,9 @@
         variant="danger"
         closeLabel="Cancel"
         (closed)="showDeleteDialog.set(false)"
+        data-testid="partner-delete-dialog"
       >
-        <ur-button variant="danger" [disabled]="deleting()" (click)="confirmDelete()">
+        <ur-button variant="danger" [disabled]="deleting()" (click)="confirmDelete()" data-testid="confirm-delete-partner-btn">
           {{ deleting() ? 'Deleting…' : 'Delete partner' }}
         </ur-button>
       </ur-dialog>
