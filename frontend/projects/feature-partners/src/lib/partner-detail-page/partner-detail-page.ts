@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, OnDestroy, OnInit, signal } from '@angular/core';
-import { DatePipe, NgTemplateOutlet } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AUTH_SERVICE, PARTNER_SERVICE, PartnerDetailDto, PartnerStage, REALTIME_SERVICE } from 'api';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,7 +23,7 @@ const STAGES: { value: PartnerStage; label: string }[] = [
   selector: 'ur-partner-detail-page',
   templateUrl: './partner-detail-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, DatePipe, NgTemplateOutlet, MatButtonModule, MatIconModule, MatMenuModule, MatFormFieldModule, MatInputModule, FormsModule, UrButtonComponent, UrDialogComponent, NotesPanelComponent, PartnerContactsPanelComponent],
+  imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule, MatMenuModule, MatFormFieldModule, MatInputModule, FormsModule, UrButtonComponent, UrDialogComponent, NotesPanelComponent, PartnerContactsPanelComponent],
   styles: [`
     .partner-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
