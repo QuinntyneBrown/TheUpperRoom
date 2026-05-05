@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { TEAM_SERVICE, GlobalTeamSummaryDto } from 'api';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,7 +10,7 @@ import { catchError, debounceTime, distinctUntilChanged, of, Subject, switchMap 
   selector: 'ur-global-teams-page',
   templateUrl: './global-teams-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, MatButtonModule, MatIconModule],
+  imports: [FormsModule, RouterModule, MatButtonModule, MatIconModule],
   styles: [`
     .global-teams-page { display: flex; flex-direction: column; height: 100%; }
     .global-teams-page__header {

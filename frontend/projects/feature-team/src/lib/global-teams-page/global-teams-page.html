@@ -47,7 +47,7 @@
       </thead>
       <tbody>
         @for (t of teams(); track t.id) {
-          <tr [attr.data-testid]="'team-row-' + t.id">
+          <tr [attr.data-testid]="'team-row-' + t.id" [routerLink]="['/teams', t.id]" style="cursor:pointer">
             <td>{{ t.city }}</td>
             <td>{{ t.memberCount }}</td>
             <td>{{ t.prayerLeadCount }}</td>
@@ -62,7 +62,7 @@
 
     <div class="teams-cards" aria-label="All teams">
       @for (t of teams(); track t.id) {
-        <div class="team-card" [attr.data-testid]="'team-card-' + t.id">
+        <div class="team-card" [attr.data-testid]="'team-card-' + t.id" [routerLink]="['/teams', t.id]" style="cursor:pointer">
           <p class="team-card__city">{{ t.city }}</p>
           <p class="team-card__members">{{ t.memberCount }} members</p>
           <p class="team-card__hackathons">{{ t.activeHackathonCount }} active hackathons</p>

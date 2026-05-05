@@ -9,7 +9,7 @@ import { AUTH_SERVICE, AuthService, CONTACT_SERVICE, ContactService, DASHBOARD_S
 import { ContactCreatePageComponent, ContactDetailPageComponent, ContactEditPageComponent, ContactsListPageComponent } from 'feature-contacts';
 import { DashboardPageComponent } from 'feature-dashboard';
 import { HackathonCreatePageComponent, HackathonDetailPageComponent, HackathonEditPageComponent, HackathonListPageComponent } from 'feature-hackathons';
-import { GlobalTeamsPageComponent, LocalTeamPageComponent } from 'feature-team';
+import { GlobalTeamDetailPageComponent, GlobalTeamsPageComponent, LocalTeamPageComponent } from 'feature-team';
 import { DeletedContactsPageComponent, DeletedHackathonsPageComponent } from 'feature-admin';
 import { PartnerCreatePageComponent, PartnerDetailPageComponent, PartnerEditPageComponent, PartnerListPageComponent, PartnersBoardPageComponent } from 'feature-partners';
 import { NoAccessPageComponent, RecoverPageComponent, RegisterPageComponent, ResetPageComponent, SignInPageComponent, VerifyPageComponent } from 'feature-auth';
@@ -41,6 +41,7 @@ export const appConfig: ApplicationConfig = {
       { path: 'dashboard', title: 'Dashboard – The Upper Room', component: DashboardPageComponent, canActivate: [authGuard] },
       { path: 'team', title: 'My Team – The Upper Room', component: LocalTeamPageComponent },
       { path: 'teams', title: 'All Teams – The Upper Room', component: GlobalTeamsPageComponent },
+      { path: 'teams/:id', title: 'Team – The Upper Room', component: GlobalTeamDetailPageComponent },
       { path: 'hackathons', title: 'Hackathons – The Upper Room', component: HackathonListPageComponent },
       { path: 'hackathons/new', title: 'New Hackathon – The Upper Room', component: HackathonCreatePageComponent },
       { path: 'hackathons/:id', title: 'Hackathon – The Upper Room', component: HackathonDetailPageComponent },
