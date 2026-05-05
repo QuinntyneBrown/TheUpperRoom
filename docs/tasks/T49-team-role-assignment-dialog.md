@@ -1,6 +1,6 @@
 # T49 — Team role assignment/revocation dialog
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 6 — Team administration and authorization
 **Area**: Team, Authorization
 **Requirements**: L1-002, L1-006, L2-006, L2-029
@@ -19,6 +19,6 @@ Replace the placeholder "Manage roles" button with a functional role-assignment 
 
 ## Acceptance criteria
 
-- [ ] Dialog designed with member list, role toggles, and constraint warnings.
-- [ ] Save/Cancel and dirty-state behavior defined.
-- [ ] Mobile variant per T21.
+- [x] Dialog designed with member list, role toggles, and constraint warnings.
+- [x] Save/Cancel and dirty-state behavior defined.
+- [x] Mobile variant per T21.
