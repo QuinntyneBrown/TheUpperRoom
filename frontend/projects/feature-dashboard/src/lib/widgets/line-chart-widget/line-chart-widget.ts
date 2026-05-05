@@ -1,6 +1,7 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, inject, input, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, inject, input, OnDestroy, signal, ViewChild } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { METRIC_SERVICE, MetricName, REALTIME_SERVICE } from 'api';
+import { MatIconModule } from '@angular/material/icon';
 import { Chart, ChartData, ChartOptions, registerables } from 'chart.js';
 import { filter, Subscription } from 'rxjs';
 
@@ -16,6 +17,7 @@ const BADGE_CONFIG: Record<string, { label: string; icon: string }> = {
   selector: 'ur-line-chart-widget',
   templateUrl: './line-chart-widget.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatIconModule],
   styles: [`
     .chart-badge {
       display: inline-flex; align-items: center; gap: 4px;
@@ -28,6 +30,13 @@ const BADGE_CONFIG: Record<string, { label: string; icon: string }> = {
     .chart-badge--disconnected { background: var(--ur-danger-bg, #fee2e2); color: var(--ur-danger-fg, #991b1b); }
     .line-chart-widget--dimmed canvas { opacity: 0.4; }
     .chart-header { display: flex; align-items: center; justify-content: flex-end; padding: 4px 8px; }
+    .chart-body { position: relative; flex: 1; }
+    .chart-load-error {
+      position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px; background: var(--ur-bg-surface, #fff); color: var(--ur-error-fg, #dc2626);
+      font-size: 0.875rem; text-align: center; border-radius: 4px;
+    }
+    .chart-load-error mat-icon { font-size: 24px; width: 24px; height: 24px; }
   `],
 })
 export class LineChartWidgetComponent implements AfterViewInit, OnDestroy {
@@ -40,6 +49,8 @@ export class LineChartWidgetComponent implements AfterViewInit, OnDestroy {
 
   connectionState = toSignal(this.realtimeSvc.connectionState$, { initialValue: 'disconnected' as const });
   readonly badgeConfig = BADGE_CONFIG;
+
+  loadError = signal(false);
 
   private chart: Chart | null = null;
   private sub: Subscription | null = null;
@@ -65,8 +76,10 @@ export class LineChartWidgetComponent implements AfterViewInit, OnDestroy {
   private loadData(): void {
     const to = new Date();
     const from = new Date(to.getTime() - 30 * 24 * 60 * 60 * 1000);
+    this.loadError.set(false);
     this.metricSvc.get(this.metric(), from, to).subscribe({
       next: (dto) => this.renderChart(dto.series.map((p) => p.label), dto.series.map((p) => p.value)),
+      error: () => this.loadError.set(true),
     });
   }
 

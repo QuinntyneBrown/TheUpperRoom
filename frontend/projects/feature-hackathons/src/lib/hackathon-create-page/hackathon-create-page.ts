@@ -37,7 +37,10 @@ export class HackathonCreatePageComponent implements OnInit, OnDestroy {
   private saveErrorTimer?: ReturnType<typeof setTimeout>;
 
   ngOnInit(): void {
-    this.partners.list().subscribe({ next: (rows) => this.allPartners.set(rows) });
+    this.partners.list().subscribe({
+      next: (rows) => this.allPartners.set(rows),
+      error: () => { /* partners are optional; silently continue with empty list */ },
+    });
   }
 
   ngOnDestroy(): void {

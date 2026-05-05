@@ -13,5 +13,13 @@
       {{ badgeConfig[connectionState()].label }}
     </span>
   </div>
-  <canvas #canvas aria-label="{{ metric() }} chart" role="img"></canvas>
+  <div class="chart-body">
+    <canvas #canvas aria-label="{{ metric() }} chart" role="img"></canvas>
+    @if (loadError()) {
+      <div class="chart-load-error" data-testid="chart-load-error" role="alert">
+        <mat-icon>error_outline</mat-icon>
+        <span>Failed to load chart data.</span>
+      </div>
+    }
+  </div>
 </div>

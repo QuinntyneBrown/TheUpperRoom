@@ -45,7 +45,10 @@ export class LocalTeamPageComponent implements OnInit, OnDestroy {
   );
 
   ngOnInit(): void {
-    this.auth.me().subscribe({ next: (me) => this.currentRoles.set(me.roles) });
+    this.auth.me().subscribe({
+      next: (me) => this.currentRoles.set(me.roles),
+      error: () => { /* roles default to empty — user cannot edit */ },
+    });
     this.loadTeam();
   }
 

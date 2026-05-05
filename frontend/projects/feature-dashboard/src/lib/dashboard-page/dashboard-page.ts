@@ -32,6 +32,12 @@ const UNDO_MS = 8000;
     .dashboard-toast--saved mat-icon { color: var(--ur-success, #22c55e); }
     .dashboard-toast--error { background: var(--ur-bg-overlay, #1e293b); color: #fff; border: 1px solid var(--ur-danger, #ef4444); }
     .dashboard-toast--error mat-icon { color: var(--ur-danger, #ef4444); }
+    .dashboard-load-error {
+      display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 8px; margin: 16px 24px;
+      background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
+      border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
+    }
+    .dashboard-load-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
   `],
 })
 export class DashboardPageComponent implements OnInit {
@@ -42,6 +48,7 @@ export class DashboardPageComponent implements OnInit {
   removedWidget = signal<DashboardItem | null>(null);
   savedToast = signal(false);
   saveErrorToast = signal(false);
+  loadError = signal(false);
 
   private save$ = new Subject<void>();
   private undoTimer?: ReturnType<typeof setTimeout>;
@@ -51,15 +58,21 @@ export class DashboardPageComponent implements OnInit {
   options = buildGridsterOptions(() => this.save$.next());
 
   ngOnInit(): void {
+    this.loadLayout();
+    this.save$.pipe(debounceTime(300)).subscribe(() => this.persist());
+  }
+
+  loadLayout(): void {
+    this.loadError.set(false);
     this.dashboardSvc.get().subscribe({
       next: ({ json }) => {
         try {
           const layout = JSON.parse(json) as { items: DashboardItem[] };
           this.items.set(layout.items ?? []);
         } catch { /* use empty */ }
-      }
+      },
+      error: () => this.loadError.set(true),
     });
-    this.save$.pipe(debounceTime(300)).subscribe(() => this.persist());
   }
 
   onWidgetAdded(item: DashboardItem): void {
