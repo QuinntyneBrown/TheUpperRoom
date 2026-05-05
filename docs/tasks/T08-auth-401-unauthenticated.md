@@ -1,5 +1,6 @@
 # T08 — 401 unauthenticated state
 
+**Status**: Accepted
 **Phase**: 1 — Authentication and session edge states
 **Area**: Authorization
 **Requirements**: L1-002, L2-007
