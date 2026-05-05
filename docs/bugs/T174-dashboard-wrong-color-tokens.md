@@ -1,6 +1,6 @@
 # T174 — Dashboard page: wrong color tokens (light-mode fallbacks)
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 
