@@ -2,6 +2,9 @@
 
 **Traces to:** L2-051. L1-014.
 
+## Status
+Accepted
+
 Vertical slice: every endpoint validates inputs through one validation pipeline and rejects oversized bodies with a consistent 400 contract.
 
 ## Components
