@@ -1,5 +1,6 @@
 # T45 — Hackathon product create/edit cards
 
+**Status**: Accepted
 **Phase**: 5 — Partner and hackathon management
 **Area**: Hackathon
 **Requirements**: L1-005, L2-024
