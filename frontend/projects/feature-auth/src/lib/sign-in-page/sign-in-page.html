@@ -36,6 +36,9 @@
       {{ loading() ? 'Signing in…' : 'Sign in' }}
     </ur-button>
   </form>
-  <p><a routerLink="/auth/register">Create an account</a></p>
+  <p class="auth-card__signup-row">
+    <span>New to The Upper Room?</span>
+    <a routerLink="/auth/register">Request access</a>
+  </p>
   <p><a routerLink="/auth/forgot-password">Forgot password?</a></p>
 </div>
