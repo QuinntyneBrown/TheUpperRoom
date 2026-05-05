@@ -81,4 +81,13 @@ export class DashboardPage {
   savedToast() {
     return this.page.getByTestId('layout-saved-toast');
   }
+
+  saveErrorToast() {
+    return this.page.getByTestId('layout-save-error-toast');
+  }
+
+  async addFirstWidget() {
+    await this.page.getByTestId('add-widget-btn').click();
+    await this.page.locator('[data-testid^="widget-type-"]').first().click();
+  }
 }
