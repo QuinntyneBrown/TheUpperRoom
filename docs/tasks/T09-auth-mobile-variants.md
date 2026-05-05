@@ -1,5 +1,6 @@
 # T09 — Mobile variants for registration, recovery, reset, access denied
 
+**Status**: Accepted
 **Phase**: 1 — Authentication and session edge states
 **Area**: Authentication, Responsive
 **Requirements**: L1-009, L2-001, L2-003, L2-007, L2-039
