@@ -5,7 +5,7 @@ import { csrfInterceptor } from './services/csrf.interceptor';
 import { errorLoggingInterceptor } from './services/error-logging.interceptor';
 import { AUTH_SERVICE, AuthService, CONTACT_SERVICE, ContactService, HEALTH_SERVICE, HealthService, PARTNER_SERVICE, PartnerService, REALTIME_SERVICE, RealtimeService } from 'api';
 import { ContactCreatePageComponent, ContactDetailPageComponent, ContactEditPageComponent, ContactsListPageComponent } from 'feature-contacts';
-import { PartnerCreatePageComponent, PartnerDetailPageComponent, PartnersBoardPageComponent } from 'feature-partners';
+import { PartnerCreatePageComponent, PartnerDetailPageComponent, PartnerEditPageComponent, PartnersBoardPageComponent } from 'feature-partners';
 import { NoAccessPageComponent, RecoverPageComponent, RegisterPageComponent, ResetPageComponent, SignInPageComponent, VerifyPageComponent } from 'feature-auth';
 import { GlobalErrorHandler } from './global-error-handler';
 import { LayoutTestComponent } from './test/layout-test';
@@ -28,6 +28,7 @@ export const appConfig: ApplicationConfig = {
       { path: 'partners', component: PartnersBoardPageComponent },
       { path: 'partners/new', component: PartnerCreatePageComponent },
       { path: 'partners/:id', component: PartnerDetailPageComponent },
+      { path: 'partners/:id/edit', component: PartnerEditPageComponent },
       { path: 'contacts', component: ContactsListPageComponent },
       { path: 'contacts/new', component: ContactCreatePageComponent },
       { path: 'contacts/:id', component: ContactDetailPageComponent },

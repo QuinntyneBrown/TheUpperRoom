@@ -11,8 +11,25 @@
         <span class="partner-detail__sep">/</span>
         <span data-testid="partner-name">{{ p.name }}</span>
       </nav>
-      <a [routerLink]="['/partners', p.id, 'edit']" class="partner-detail__edit-link">Edit</a>
+      <div class="partner-detail__header-actions">
+        <a [routerLink]="['/partners', p.id, 'edit']" class="partner-detail__edit-link">Edit</a>
+        <ur-button variant="danger" (click)="showDeleteDialog.set(true)">Delete</ur-button>
+      </div>
     </header>
+
+    @if (showDeleteDialog()) {
+      <ur-dialog
+        title="Delete partner"
+        subtitle="This partner will be removed and contacts will be detached. An admin can restore it."
+        variant="danger"
+        closeLabel="Cancel"
+        (closed)="showDeleteDialog.set(false)"
+      >
+        <ur-button variant="danger" [disabled]="deleting()" (click)="confirmDelete()">
+          {{ deleting() ? 'Deleting…' : 'Delete partner' }}
+        </ur-button>
+      </ur-dialog>
+    }
 
     <div class="partner-detail__body">
       <aside class="partner-detail__left">
@@ -135,7 +152,7 @@
         <ur-notes-panel
           [targetId]="p.id"
           targetType="Partner"
-          [initialNotes]="[]"
+          [initialNotes]="p.notes"
           [currentUserId]="currentUserId()"
         />
       </div>

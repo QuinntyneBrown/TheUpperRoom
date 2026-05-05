@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AUTH_SERVICE, PARTNER_SERVICE, PartnerDetailDto, PartnerStage, REALTIME_SERVICE } from 'api';
-import { UrButtonComponent } from 'components';
+import { UrButtonComponent, UrDialogComponent } from 'components';
 import { NotesPanelComponent } from 'feature-contacts';
 import { PartnerContactsPanelComponent } from '../partner-contacts-panel/partner-contacts-panel';
 import { Subscription } from 'rxjs';
@@ -17,18 +17,21 @@ const STAGES: { value: PartnerStage; label: string }[] = [
   selector: 'ur-partner-detail-page',
   templateUrl: './partner-detail-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, DatePipe, UrButtonComponent, NotesPanelComponent, PartnerContactsPanelComponent],
+  imports: [RouterLink, DatePipe, UrButtonComponent, UrDialogComponent, NotesPanelComponent, PartnerContactsPanelComponent],
 })
 export class PartnerDetailPageComponent implements OnInit, OnDestroy {
   private partners = inject(PARTNER_SERVICE);
   private realtime = inject(REALTIME_SERVICE);
   private auth = inject(AUTH_SERVICE);
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
 
   partner = signal<PartnerDetailDto | null>(null);
   notFound = signal(false);
   changingStage = signal(false);
   currentUserId = signal('');
+  showDeleteDialog = signal(false);
+  deleting = signal(false);
   stages = STAGES;
 
   stageIndex = computed(() => {
@@ -61,6 +64,16 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
+  }
+
+  confirmDelete(): void {
+    const p = this.partner();
+    if (!p) return;
+    this.deleting.set(true);
+    this.partners.delete(p.id).subscribe({
+      next: () => this.router.navigateByUrl('/partners'),
+      error: () => this.deleting.set(false),
+    });
   }
 
   changeStage(stage: PartnerStage): void {

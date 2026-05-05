@@ -32,6 +32,14 @@ export interface PartnerContactDto {
   email?: string;
 }
 
+export interface UpdatePartnerRequest {
+  name: string;
+  city: string;
+  website?: string;
+  description?: string;
+  version: number;
+}
+
 export interface PartnerDetailDto {
   id: string;
   teamId: string;
@@ -43,6 +51,7 @@ export interface PartnerDetailDto {
   version: number;
   history: PartnerStageHistoryDto[];
   contacts: PartnerContactDto[];
+  notes: NoteDto[];
 }
 
 export interface CreateContactForPartnerRequest {
@@ -60,6 +69,8 @@ export interface IPartnerService {
   create(req: CreatePartnerRequest): Observable<CreatePartnerResponse>;
   getById(id: string): Observable<PartnerDetailDto>;
   changeStage(id: string, toStage: PartnerStage): Observable<void>;
+  update(id: string, req: UpdatePartnerRequest): Observable<void>;
+  delete(id: string): Observable<void>;
   addContact(partnerId: string, contactId: string): Observable<void>;
   removeContact(partnerId: string, contactId: string): Observable<void>;
   createAndLinkContact(partnerId: string, req: CreateContactForPartnerRequest): Observable<CreateContactForPartnerResponse>;
@@ -82,6 +93,14 @@ export class PartnerService implements IPartnerService {
 
   changeStage(id: string, toStage: PartnerStage): Observable<void> {
     return this.http.post<void>(`/api/partners/${id}/stage`, { toStage });
+  }
+
+  update(id: string, req: UpdatePartnerRequest): Observable<void> {
+    return this.http.put<void>(`/api/partners/${id}`, req);
+  }
+
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`/api/partners/${id}`);
   }
 
   addContact(partnerId: string, contactId: string): Observable<void> {

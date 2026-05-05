@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using TheUpperRoom.Api.Contacts;
 using TheUpperRoom.Api.Domain;
 using TheUpperRoom.Api.Infrastructure;
 
@@ -24,7 +25,8 @@ public record PartnerDetailDto(
     string? Description,
     int Version,
     List<PartnerStageHistoryDto> History,
-    List<PartnerContactDto> Contacts);
+    List<PartnerContactDto> Contacts,
+    List<NoteDto> Notes);
 
 public record GetPartnerQuery(Guid Id) : IRequest<PartnerDetailDto?>;
 
@@ -50,8 +52,14 @@ public class GetPartnerQueryHandler(AppDbContext db, ICurrentUser currentUser)
             select new PartnerContactDto(c.Id, c.FirstName, c.LastName, c.Email))
             .ToListAsync(ct);
 
+        var notes = await db.Notes
+            .Where(n => n.TargetType == "Partner" && n.TargetId == partner.Id)
+            .OrderByDescending(n => n.CreatedAt)
+            .Select(n => new NoteDto(n.Id, n.Body, n.AuthorId, n.CreatedAt))
+            .ToListAsync(ct);
+
         return new PartnerDetailDto(
             partner.Id, partner.TeamId, partner.Name, partner.Website, partner.City,
-            partner.Stage.ToString(), partner.Description, partner.Version, history, contacts);
+            partner.Stage.ToString(), partner.Description, partner.Version, history, contacts, notes);
     }
 }

@@ -1,0 +1,79 @@
+@if (notFound()) {
+  <div class="not-found">
+    <h1>Partner not found</h1>
+    <a routerLink="/partners">Back to partners</a>
+  </div>
+} @else if (partner(); as p) {
+  <div class="partner-edit" data-testid="partner-edit">
+    <header class="partner-edit__header">
+      <a [routerLink]="['/partners', p.id]" class="partner-edit__back">← Back</a>
+      <h1>Edit partner</h1>
+    </header>
+
+    @if (conflict()) {
+      <div class="partner-edit__conflict" role="alert">
+        This partner was modified by someone else. Please go back and refresh.
+      </div>
+    }
+
+    <form class="partner-edit__form" (ngSubmit)="save()">
+      <div class="partner-edit__field">
+        <label for="partnerName">Name</label>
+        <input
+          id="partnerName"
+          type="text"
+          [value]="name()"
+          (input)="name.set($any($event.target).value)"
+          data-testid="partner-name-input"
+        />
+        @if (errors()['name']) {
+          <span class="partner-edit__error">{{ errors()['name'] }}</span>
+        }
+      </div>
+
+      <div class="partner-edit__field">
+        <label for="partnerCity">City</label>
+        <input
+          id="partnerCity"
+          type="text"
+          [value]="city()"
+          (input)="city.set($any($event.target).value)"
+          data-testid="partner-city-input"
+        />
+        @if (errors()['city']) {
+          <span class="partner-edit__error">{{ errors()['city'] }}</span>
+        }
+      </div>
+
+      <div class="partner-edit__field">
+        <label for="partnerWebsite">Website</label>
+        <input
+          id="partnerWebsite"
+          type="url"
+          placeholder="https://"
+          [value]="website()"
+          (input)="website.set($any($event.target).value)"
+        />
+      </div>
+
+      <div class="partner-edit__field">
+        <label for="partnerDescription">Description</label>
+        <textarea
+          id="partnerDescription"
+          [value]="description()"
+          (input)="description.set($any($event.target).value)"
+          rows="4"
+        ></textarea>
+      </div>
+
+      <div class="partner-edit__actions">
+        <ur-button type="button" variant="ghost" (click)="cancel()">Cancel</ur-button>
+        <ur-button type="submit" [disabled]="saving()">
+          {{ saving() ? 'Saving…' : 'Save' }}
+        </ur-button>
+      </div>
+    </form>
+  </div>
+} @else {
+  <div class="loading" role="status">Loading…</div>
+}

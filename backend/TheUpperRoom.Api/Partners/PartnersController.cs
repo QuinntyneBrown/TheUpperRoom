@@ -27,6 +27,30 @@ public class PartnersController(IMediator mediator) : ControllerBase
         return CreatedAtAction(nameof(Create), new { id }, new { id });
     }
 
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> Update(Guid id, [FromBody] UpdatePartnerRequest req)
+    {
+        try
+        {
+            var found = await mediator.Send(new UpdatePartnerCommand(id, req.Name, req.City, req.Website, req.Description, req.Version));
+            if (!found) return NotFound(new { error = "not_found" });
+            return Ok();
+        }
+        catch (Contacts.ConflictException ex)
+        {
+            return Conflict(new { error = ex.Message });
+        }
+    }
+
+    [HttpDelete("{id:guid}")]
+    [Authorize(Roles = $"{Roles.Admin},{Roles.CityLead}")]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        var found = await mediator.Send(new DeletePartnerCommand(id));
+        if (!found) return NotFound(new { error = "not_found" });
+        return NoContent();
+    }
+
     [HttpPost("{id:guid}/stage")]
     public async Task<IActionResult> ChangeStage(Guid id, [FromBody] ChangeStageRequest req)
     {
@@ -71,6 +95,7 @@ public class PartnersController(IMediator mediator) : ControllerBase
 }
 
 public record ChangeStageRequest(string ToStage);
+public record UpdatePartnerRequest(string Name, string City, string? Website, string? Description, int Version);
 public record AddPartnerNoteRequest(string Body);
 public record AddContactRequest(Guid ContactId);
 public record CreateContactForPartnerRequest(string FirstName, string LastName, string? Email, string? Phone);
