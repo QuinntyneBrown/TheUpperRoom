@@ -1,6 +1,6 @@
 # T46 — Hackathon product team assignment
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 5 — Partner and hackathon management
 **Area**: Hackathon, Team
 **Requirements**: L1-005, L1-006, L2-024
@@ -19,6 +19,6 @@ Allow assignment of team members as builders on a product record.
 
 ## Acceptance criteria
 
-- [ ] Picker designed with loading/empty/error states.
-- [ ] Builder display on product card designed.
-- [ ] Mobile variant per T21.
+- [x] Picker designed with loading/empty/error states.
+- [x] Builder display on product card designed.
+- [x] Mobile variant per T21.
