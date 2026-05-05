@@ -1,5 +1,6 @@
 # T56 — Notification read/unread transitions
 
+**Status**: Accepted
 **Phase**: 7 — Notifications and real-time lifecycle
 **Area**: Notifications
 **Requirements**: L1-008, L2-038
