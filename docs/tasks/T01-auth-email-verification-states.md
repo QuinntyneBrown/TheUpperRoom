@@ -1,6 +1,6 @@
 # T01 — Email verification states
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 1 — Authentication and session edge states
 **Area**: Authentication
 **Requirements**: L1-001, L2-001
@@ -19,8 +19,8 @@ Add the three email-verification visual states a user lands on after registering
 
 ## Acceptance criteria
 
-- [ ] Three distinct frames exist under `Desktop / Email Verification - Pending`, `... Success`, `... Expired`.
-- [ ] Copy is generic and does not leak whether an email exists in the system (per L2-001 duplicate-safe behavior).
-- [ ] Resend control shows disabled/cooldown state.
-- [ ] All three states meet AA contrast on the dark theme.
-- [ ] Snapshot reports no clipping.
+- [x] Three distinct frames exist under `Desktop / Email Verification - Pending`, `... Success`, `... Expired`.
+- [x] Copy is generic and does not leak whether an email exists in the system (per L2-001 duplicate-safe behavior).
+- [x] Resend control shows disabled/cooldown state.
+- [x] All three states meet AA contrast on the dark theme.
+- [x] Snapshot reports no clipping.
