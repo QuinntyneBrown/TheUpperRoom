@@ -1,4 +1,6 @@
+using System.Threading.RateLimiting;
 using FluentValidation;
+using Microsoft.AspNetCore.RateLimiting;
 using MediatR;
 using TheUpperRoom.Api.Audit;
 using TheUpperRoom.Api.Infrastructure;
@@ -16,6 +18,29 @@ builder.Services.AddAntiforgery(o =>
     o.HeaderName = "X-CSRF-TOKEN";
     o.Cookie.Name = "XSRF-TOKEN";
     o.Cookie.SameSite = SameSiteMode.Strict;
+});
+builder.Services.AddRateLimiter(o =>
+{
+    o.AddFixedWindowLimiter("sign-in-ip", opts =>
+    {
+        opts.Window = TimeSpan.FromMinutes(1);
+        opts.PermitLimit = 10;
+        opts.QueueLimit = 0;
+    });
+    o.AddFixedWindowLimiter("recovery-email", opts =>
+    {
+        opts.Window = TimeSpan.FromHours(1);
+        opts.PermitLimit = 3;
+        opts.QueueLimit = 0;
+    });
+    o.OnRejected = async (ctx, _) =>
+    {
+        ctx.HttpContext.Response.StatusCode = 429;
+        var retryAfter = ctx.Lease.TryGetMetadata(MetadataName.RetryAfter, out var ra)
+            ? (int)ra.TotalSeconds : 60;
+        await ctx.HttpContext.Response.WriteAsJsonAsync(
+            new { error = "too_many_requests", retryAfterSeconds = retryAfter });
+    };
 });
 builder.Services.AddHsts(options =>
 {
@@ -41,6 +66,7 @@ var app = builder.Build();
 app.UseMiddleware<CorrelationMiddleware>();
 app.UseMiddleware<ErrorMiddleware>();
 app.UseMiddleware<RequestLoggingMiddleware>();
+app.UseRateLimiter();
 app.UseCors();
 app.UseHsts();
 app.UseHttpsRedirection();
