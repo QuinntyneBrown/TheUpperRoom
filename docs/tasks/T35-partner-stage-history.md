@@ -1,5 +1,6 @@
 # T35 — Partner stage history
 
+**Status**: Accepted
 **Phase**: 5 — Partner and hackathon management
 **Area**: Partner
 **Requirements**: L1-004, L2-017
