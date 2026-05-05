@@ -1,6 +1,6 @@
 # T47 — Team invite form
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 6 — Team administration and authorization
 **Area**: Team
 **Requirements**: L1-006, L2-027
@@ -20,7 +20,7 @@ Replace the placeholder "+ Invite member" button with a functional invite flow.
 
 ## Acceptance criteria
 
-- [ ] Invite dialog designed with all states.
-- [ ] Pending-invite list UI on the team screen.
-- [ ] Invite-link completion (signup landing) state designed (links to T01/T02).
-- [ ] Mobile variant per T21.
+- [x] Invite dialog designed with all states.
+- [x] Pending-invite list UI on the team screen.
+- [x] Invite-link completion (signup landing) state designed (links to T01/T02).
+- [x] Mobile variant per T21.
