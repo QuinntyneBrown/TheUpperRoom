@@ -1,6 +1,6 @@
 # T45 — Hackathon product create/edit cards
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 5 — Partner and hackathon management
 **Area**: Hackathon
 **Requirements**: L1-005, L2-024
@@ -20,6 +20,6 @@ Define the product record visible on hackathon detail with create and edit affor
 
 ## Acceptance criteria
 
-- [ ] Product card, create dialog, edit dialog, and empty state designed.
-- [ ] URL validation state shown.
-- [ ] Mobile variant per T21.
+- [x] Product card, create dialog, edit dialog, and empty state designed.
+- [x] URL validation state shown.
+- [x] Mobile variant per T21.
