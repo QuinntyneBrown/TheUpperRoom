@@ -1,6 +1,6 @@
 # T31 — Contact search loading/empty/error states
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 4 — Contact lifecycle
 **Area**: Contacts, Search
 **Requirements**: L1-011, L2-014
@@ -20,5 +20,5 @@ Cover every state of the contacts-list search field.
 
 ## Acceptance criteria
 
-- [ ] All four states represented as variants of the contacts search field/component.
-- [ ] States compose cleanly with filters and pagination.
+- [x] All four states represented as variants of the contacts search field/component.
+- [x] States compose cleanly with filters and pagination.
