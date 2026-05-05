@@ -1,5 +1,6 @@
 # T04 — Password reset expired/used link state
 
+**Status**: Accepted
 **Phase**: 1 — Authentication and session edge states
 **Area**: Authentication
 **Requirements**: L1-001, L2-003
