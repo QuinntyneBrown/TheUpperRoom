@@ -1,4 +1,4 @@
-# 21 — Create Hackathon
+# 21 — Create Hackathon ✅ Accepted
 
 **Traces to:** L2-022 (L1-005).
 
