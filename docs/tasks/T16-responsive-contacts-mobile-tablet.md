@@ -17,6 +17,15 @@ Produce mobile and tablet variants for the entire contact surface so contacts me
 - `Mobile / New Contact` (full-screen sheet).
 - `Tablet / Contacts` and `Tablet / Contact Detail`.
 
+## Design notes
+
+- **Mobile (≤ 767 px)** — single-column card list, 56 px FAB for "+ new contact", filter/sort entry points sit in a sticky pill row that opens a bottom sheet (`Mobile / Contacts - Filter Sheet`).
+- **Mobile detail** — hero with avatar/name/role + chip badges, three primary actions (Call · Email · Text) at the top, then stacked cards for Details and Notes. Bottom sheet pattern keeps thumb-reach actions near the bottom.
+- **Mobile new contact** — full-screen sheet with sticky *Cancel · New contact · Save* header; required fields marked with `*`; bottom 200 px reserved for the iOS/Android keyboard.
+- **Tablet (768—1199 px)** — same card list with three columns (Name | Partner | Role), `New contact` becomes a full button in the top bar. Detail page is two-column: left card stack (avatar/details) and right column (notes + activity timeline).
+- **List pagination** — chose **infinite scroll on mobile** (`Loading more…` row at bottom of list) for one-handed thumb scrolling, and the same pattern on tablet for consistency. Pagination controls would force returning to top after every page; infinite scroll keeps focus on the user's current contact.
+- **Hit targets** — every interactive control is ≥ 32 px (filter/sort pills, list rows are 64 px tall, FAB is 56 × 56, top-bar buttons 28 px with full-width tap area).
+
 ## Acceptance criteria
 
 - [ ] All four mobile screens and two tablet screens exist.
