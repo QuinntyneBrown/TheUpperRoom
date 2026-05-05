@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { debounceTime, distinctUntilChanged, filter, Subject, switchMap, of } from 'rxjs';
@@ -15,10 +15,23 @@ type SortDir = 'asc' | 'desc';
   templateUrl: './contacts-list-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, MatButtonModule, MatIconModule, UrSearchComponent, HighlightPipe],
+  styles: [`
+    .contact-toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 10px; padding: 12px 16px;
+      border-radius: 8px; z-index: 1000;
+      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
+      border: 1px solid var(--ur-success, #22c55e);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .contact-toast mat-icon { color: var(--ur-success, #22c55e); font-size: 18px; width: 18px; height: 18px; }
+  `],
 })
-export class ContactsListPageComponent implements OnInit {
+export class ContactsListPageComponent implements OnInit, OnDestroy {
   private contacts = inject(CONTACT_SERVICE);
   private realtime = inject(REALTIME_SERVICE);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
 
   term = signal('');
   searchResults = signal<ContactSearchResult[]>([]);
@@ -27,6 +40,9 @@ export class ContactsListPageComponent implements OnInit {
   sortField = signal<SortField>('lastName');
   sortDir = signal<SortDir>('asc');
   loading = signal(false);
+  deletedToast = signal(false);
+
+  private deletedToastTimer?: ReturnType<typeof setTimeout>;
 
   private search$ = new Subject<string>();
 
@@ -60,6 +76,15 @@ export class ContactsListPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPage();
+    if (this.route.snapshot.queryParamMap.get('deleted') === '1') {
+      this.deletedToast.set(true);
+      this.deletedToastTimer = setTimeout(() => this.deletedToast.set(false), 3000);
+      this.router.navigate([], { replaceUrl: true, relativeTo: this.route, queryParams: {} });
+    }
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.deletedToastTimer);
   }
 
   loadPage(): void {

@@ -89,3 +89,10 @@
     }
   }
 </div>
+
+@if (deletedToast()) {
+  <div class="contact-toast contact-toast--deleted" role="status" data-testid="contact-deleted-toast">
+    <mat-icon>check_circle</mat-icon>
+    <span>Contact deleted</span>
+  </div>
+}

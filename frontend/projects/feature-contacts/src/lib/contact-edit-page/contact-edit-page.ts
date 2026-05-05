@@ -42,7 +42,7 @@ export class ContactEditPageComponent implements OnInit {
     this.contacts.update(c.id, { ...value, version: c.version }).subscribe({
       next: () => {
         this.loading.set(false);
-        this.router.navigateByUrl(`/contacts/${c.id}`);
+        this.router.navigate(['/contacts', c.id], { queryParams: { saved: '1' } });
       },
       error: (err: { status: number; error?: { fields?: Record<string, string[]> } }) => {
         this.loading.set(false);
