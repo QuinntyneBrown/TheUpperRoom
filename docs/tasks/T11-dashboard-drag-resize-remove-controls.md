@@ -1,6 +1,6 @@
 # T11 — Drag/resize/remove widget controls
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 2 — Dashboard editor interaction model
 **Area**: Dashboard
 **Requirements**: L1-007, L2-033
@@ -30,6 +30,6 @@ Visually specify the per-widget controls used during edit mode and the in-progre
 
 ## Acceptance criteria
 
-- [ ] Drag, resize, and remove states each have a dedicated frame or component variant.
-- [ ] Undo snackbar copy and timing are documented.
-- [ ] Keyboard equivalents are annotated for accessibility (links to T60).
+- [x] Drag, resize, and remove states each have a dedicated frame or component variant.
+- [x] Undo snackbar copy and timing are documented.
+- [x] Keyboard equivalents are annotated for accessibility (links to T60).
