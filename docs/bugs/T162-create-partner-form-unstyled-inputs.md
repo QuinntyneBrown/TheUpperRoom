@@ -1,6 +1,6 @@
 # T162 — Create partner form: unstyled inputs, no layout CSS
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 
