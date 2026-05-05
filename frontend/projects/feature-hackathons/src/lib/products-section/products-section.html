@@ -62,6 +62,12 @@
         <ur-button type="button" variant="ghost" (click)="cancelForm()">Cancel</ur-button>
         <ur-button type="submit" [disabled]="saving()">{{ saving() ? 'Saving…' : 'Add product' }}</ur-button>
       </div>
+      @if (saveError()) {
+        <div class="products-save-error" data-testid="products-save-error" role="alert">
+          <mat-icon>error_outline</mat-icon>
+          <span>Failed to save product. Please try again.</span>
+        </div>
+      }
     </form>
   </ur-dialog>
 }

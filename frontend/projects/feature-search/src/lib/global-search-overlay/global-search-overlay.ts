@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SEARCH_SERVICE, GlobalSearchResult, SearchResultItem } from 'api';
-import { debounceTime, distinctUntilChanged, Subject, switchMap, of } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, Subject, switchMap, of } from 'rxjs';
 
 @Component({
   selector: 'ur-global-search-overlay',
@@ -50,12 +50,11 @@ export class GlobalSearchOverlayComponent implements OnInit {
       switchMap((q) => {
         if (q.length < 2) { this.searching.set(false); return of(null); }
         this.searching.set(true);
-        return this.searchSvc.search(q);
+        return this.searchSvc.search(q).pipe(
+          catchError(() => { this.searching.set(false); return of(null); })
+        );
       })
-    ).subscribe({
-      next: (r) => { this.results.set(r); this.searching.set(false); },
-      error: () => this.searching.set(false),
-    });
+    ).subscribe((r) => { this.results.set(r); this.searching.set(false); });
   }
 
   onInput(value: string): void {

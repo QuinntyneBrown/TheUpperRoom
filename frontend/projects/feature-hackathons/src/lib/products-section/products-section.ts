@@ -1,15 +1,23 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
-import { inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, OnDestroy, signal } from '@angular/core';
 import { HACKATHON_SERVICE, ProductDto } from 'api';
+import { MatIconModule } from '@angular/material/icon';
 import { UrButtonComponent, UrDialogComponent } from 'components';
 
 @Component({
   selector: 'ur-products-section',
   templateUrl: './products-section.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [UrButtonComponent, UrDialogComponent],
+  imports: [MatIconModule, UrButtonComponent, UrDialogComponent],
+  styles: [`
+    .products-save-error {
+      display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 6px; margin-top: 8px;
+      background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
+      border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
+    }
+    .products-save-error mat-icon { font-size: 16px; width: 16px; height: 16px; flex-shrink: 0; }
+  `],
 })
-export class ProductsSectionComponent {
+export class ProductsSectionComponent implements OnDestroy {
   private hackathons = inject(HACKATHON_SERVICE);
 
   hackathonId = input.required<string>();
@@ -18,11 +26,18 @@ export class ProductsSectionComponent {
   products = signal<ProductDto[]>([]);
   showForm = signal(false);
   saving = signal(false);
+  saveError = signal(false);
   errors = signal<Record<string, string>>({});
   name = signal('');
   description = signal('');
   repoUrl = signal('');
   demoUrl = signal('');
+
+  private saveErrorTimer?: ReturnType<typeof setTimeout>;
+
+  ngOnDestroy(): void {
+    clearTimeout(this.saveErrorTimer);
+  }
 
   ngOnInit(): void {
     this.products.set(this.initialProducts());
@@ -77,7 +92,12 @@ export class ProductsSectionComponent {
         this.showForm.set(false);
         this.saving.set(false);
       },
-      error: () => this.saving.set(false),
+      error: () => {
+        this.saving.set(false);
+        clearTimeout(this.saveErrorTimer);
+        this.saveError.set(true);
+        this.saveErrorTimer = setTimeout(() => this.saveError.set(false), 4000);
+      },
     });
   }
 }

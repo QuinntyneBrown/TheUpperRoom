@@ -4,6 +4,14 @@
     <a mat-raised-button routerLink="/partners/new" data-testid="create-partner-button">Add partner</a>
   </header>
 
+  @if (loadError()) {
+    <div class="board-load-error" data-testid="board-load-error" role="alert">
+      <mat-icon>error_outline</mat-icon>
+      <span>Failed to load partners.</span>
+      <button mat-stroked-button (click)="loadBoard()">Retry</button>
+    </div>
+  }
+
   <div class="partner-board__columns">
     @for (col of columns; track col.stage) {
       <div class="partner-board__column" [attr.data-testid]="'column-' + col.stage">

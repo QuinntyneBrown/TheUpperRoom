@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { TEAM_SERVICE, GlobalTeamSummaryDto } from 'api';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { debounceTime, distinctUntilChanged, Subject, switchMap } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, of, Subject, switchMap } from 'rxjs';
 
 @Component({
   selector: 'ur-global-teams-page',
@@ -37,9 +37,11 @@ export class GlobalTeamsPageComponent implements OnInit {
       distinctUntilChanged(),
       switchMap((term) => {
         const search = term.length >= 2 ? term : undefined;
-        return this.team.listGlobalTeams(1, 25, search);
+        return this.team.listGlobalTeams(1, 25, search).pipe(
+          catchError(() => of(null))
+        );
       })
-    ).subscribe({ next: (r) => { this.teams.set(r.rows); this.total.set(r.total); this.page.set(1); } });
+    ).subscribe((r) => { if (r) { this.teams.set(r.rows); this.total.set(r.total); this.page.set(1); } });
   }
 
   loadTeams(): void {

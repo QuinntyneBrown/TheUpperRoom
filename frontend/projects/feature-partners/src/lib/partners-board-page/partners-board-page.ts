@@ -16,12 +16,21 @@ const COLUMNS: { stage: PartnerStage; label: string }[] = [
   templateUrl: './partners-board-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, DragDropModule, MatButtonModule, MatIconModule],
+  styles: [`
+    .board-load-error {
+      display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 8px; margin: 16px 0;
+      background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
+      border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
+    }
+    .board-load-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
+  `],
 })
 export class PartnersBoardPageComponent implements OnInit {
   private partners = inject(PARTNER_SERVICE);
 
   columns = COLUMNS;
   rows = signal<PartnerListRow[]>([]);
+  loadError = signal(false);
 
   byStage = computed(() => {
     const all = this.rows();
@@ -31,7 +40,15 @@ export class PartnersBoardPageComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.partners.list().subscribe({ next: (rows) => this.rows.set(rows) });
+    this.loadBoard();
+  }
+
+  loadBoard(): void {
+    this.loadError.set(false);
+    this.partners.list().subscribe({
+      next: (rows) => this.rows.set(rows),
+      error: () => this.loadError.set(true),
+    });
   }
 
   drop(event: CdkDragDrop<PartnerListRow[]>, toStage: PartnerStage): void {
