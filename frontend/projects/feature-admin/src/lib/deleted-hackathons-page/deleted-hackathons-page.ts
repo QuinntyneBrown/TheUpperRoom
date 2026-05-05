@@ -33,7 +33,7 @@ import { MatTableModule } from '@angular/material/table';
           <p>No deleted hackathons.</p>
         </div>
       } @else {
-        <table mat-table [dataSource]="rows()">
+        <table mat-table [dataSource]="rows()" aria-label="Deleted hackathons">
           <ng-container matColumnDef="title">
             <th mat-header-cell *matHeaderCellDef>Title</th>
             <td mat-cell *matCellDef="let row">{{ row.title }}</td>
