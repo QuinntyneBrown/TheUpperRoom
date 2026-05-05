@@ -1,5 +1,6 @@
 # T16 — Mobile and tablet contact variants
 
+**Status**: Accepted
 **Phase**: 3 — Responsive coverage and clipping fixes
 **Area**: Contacts, Responsive
 **Requirements**: L1-003, L1-009, L2-039, L2-040
