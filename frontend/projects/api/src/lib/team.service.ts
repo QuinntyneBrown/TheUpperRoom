@@ -6,7 +6,7 @@ export interface TeamMemberDto {
   id: string;
   displayName: string;
   email: string;
-  role: string;
+  roles: string[];
   isActive: boolean;
 }
 
@@ -15,9 +15,15 @@ export interface InviteMemberRequest {
   roles: string[];
 }
 
+export interface AssignRoleRequest {
+  role: string;
+  action: 'add' | 'remove';
+}
+
 export interface ITeamService {
   getLocalTeam(): Observable<TeamMemberDto[]>;
   invite(req: InviteMemberRequest): Observable<void>;
+  assignRole(userId: string, req: AssignRoleRequest): Observable<void>;
 }
 
 export const TEAM_SERVICE = new InjectionToken<ITeamService>('TEAM_SERVICE');
@@ -32,5 +38,9 @@ export class TeamService implements ITeamService {
 
   invite(req: InviteMemberRequest): Observable<void> {
     return this.http.post<void>('/api/teams/local/invitations', req);
+  }
+
+  assignRole(userId: string, req: AssignRoleRequest): Observable<void> {
+    return this.http.post<void>(`/api/teams/local/members/${userId}/roles`, req);
   }
 }

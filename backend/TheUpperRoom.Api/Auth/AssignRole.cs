@@ -24,7 +24,8 @@ public class AssignRoleCommandHandler(
             throw new UnauthorizedAccessException("CityLead can only assign subordinate roles.");
 
         var target = await userManager.FindByIdAsync(cmd.TargetUserId.ToString());
-        if (target is null) throw new KeyNotFoundException("User not found.");
+        if (target is null || (!isAdmin && target.TeamId != currentUser.TeamId))
+            throw new KeyNotFoundException("User not found.");
 
         if (cmd.Action == "add")
             await userManager.AddToRoleAsync(target, cmd.Role);

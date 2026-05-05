@@ -4,7 +4,7 @@ using TheUpperRoom.Api.Infrastructure;
 
 namespace TheUpperRoom.Api.Teams;
 
-public record TeamMemberDto(Guid Id, string DisplayName, string Email, string Role, bool IsActive);
+public record TeamMemberDto(Guid Id, string DisplayName, string Email, string[] Roles, bool IsActive);
 
 public record GetLocalTeamQuery : IRequest<List<TeamMemberDto>>;
 
@@ -24,7 +24,7 @@ public class GetLocalTeamQueryHandler(AppDbContext db, ICurrentUser currentUser)
     {
         var teamId = currentUser.TeamId ?? Guid.Empty;
 
-        var members = await (
+        var rows = await (
             from u in db.Users
             join ur in db.UserRoles on u.Id equals ur.UserId
             join r in db.Roles on ur.RoleId equals r.Id
@@ -32,15 +32,23 @@ public class GetLocalTeamQueryHandler(AppDbContext db, ICurrentUser currentUser)
             select new { u.Id, u.DisplayName, u.Email, Role = r.Name!, u.LockoutEnabled, u.LockoutEnd }
         ).ToListAsync(ct);
 
-        return members
-            .OrderBy(m => RolePriority.GetValueOrDefault(m.Role, 99))
-            .ThenBy(m => m.DisplayName)
-            .Select(m => new TeamMemberDto(
-                m.Id,
-                m.DisplayName,
-                m.Email ?? "",
-                m.Role,
-                m.LockoutEnd == null || m.LockoutEnd < DateTimeOffset.UtcNow))
+        return rows
+            .GroupBy(m => m.Id)
+            .Select(g =>
+            {
+                var first = g.First();
+                var roles = g.Select(m => m.Role).ToArray();
+                var topRole = roles.MinBy(r => RolePriority.GetValueOrDefault(r, 99)) ?? roles[0];
+                return (Member: first, Roles: roles, TopPriority: RolePriority.GetValueOrDefault(topRole, 99));
+            })
+            .OrderBy(x => x.TopPriority)
+            .ThenBy(x => x.Member.DisplayName)
+            .Select(x => new TeamMemberDto(
+                x.Member.Id,
+                x.Member.DisplayName,
+                x.Member.Email ?? "",
+                x.Roles,
+                x.Member.LockoutEnd == null || x.Member.LockoutEnd < DateTimeOffset.UtcNow))
             .ToList();
     }
 }

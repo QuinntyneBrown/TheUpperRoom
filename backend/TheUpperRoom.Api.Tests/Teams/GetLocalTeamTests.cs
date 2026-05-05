@@ -60,7 +60,7 @@ public class GetLocalTeamTests(WebApplicationFactory<Program> factory)
         Assert.NotNull(body);
         Assert.True(body!.Count >= 2); // lead + seeded member
         Assert.All(body, m => Assert.NotNull(m["displayName"]));
-        Assert.All(body, m => Assert.NotNull(m["role"]));
+        Assert.All(body, m => Assert.NotNull(m["roles"]));
         Assert.All(body, m => Assert.NotNull(m["email"]));
     }
 }

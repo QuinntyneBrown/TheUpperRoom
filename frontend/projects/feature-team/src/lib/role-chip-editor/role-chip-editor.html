@@ -1,0 +1,13 @@
+<div class="role-chips" data-testid="role-chip-editor">
+  @for (role of roles; track role) {
+    <button
+      class="role-chip"
+      [class.role-chip--active]="hasRole(role)"
+      [class.role-chip--disabled]="!canEdit() || saving()"
+      [disabled]="!canEdit() || saving()"
+      [attr.aria-pressed]="hasRole(role)"
+      [attr.data-testid]="'role-chip-' + role"
+      (click)="toggle(role)"
+    >{{ role }}</button>
+  }
+</div>

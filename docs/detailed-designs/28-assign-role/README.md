@@ -1,4 +1,4 @@
-# 28 — Assign / Revoke Team Role ✅ Accepted
+# 28 — Assign / Revoke Team Role ✅ Complete
 
 **Traces to:** L2-029 (L1-006). Reuses `AssignRoleCommand` from slice 07.
 
