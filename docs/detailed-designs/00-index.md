@@ -119,7 +119,7 @@ These slices were derived from the gaps identified in [`docs/missing-detailed-de
 | # | Slice | L2 traces | Status |
 |---|-------|-----------|--------|
 | 75 | [Component library public API enforcement](75-component-library-public-api/README.md) | L2-060 | Complete |
-| 76 | [API library injection-token contract](76-api-injection-tokens/README.md) | L2-061 | Accepted |
+| 76 | [API library injection-token contract](76-api-injection-tokens/README.md) | L2-061 | Complete |
 | 77 | [Backend CQRS/MediatR enforcement](77-cqrs-mediatr-enforcement/README.md) | L2-062 | Draft |
 | 78 | [Playwright Page Object foundation](78-playwright-pom/README.md) | L2-063 | Draft |
 | 79 | [E2E auth and session flow](79-e2e-auth-session/README.md) | L2-063, L2-064 | Draft |
