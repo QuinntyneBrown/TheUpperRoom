@@ -1,18 +1,34 @@
 <div class="widget-catalog-dialog" data-testid="widget-catalog-dialog" role="dialog" aria-modal="true" aria-label="Widget catalog">
   <header class="widget-catalog-dialog__header">
-    <h2>Widget catalog</h2>
-    <p class="widget-catalog-dialog__subtitle">Drag a widget onto your dashboard, or click to add it at the next free slot.</p>
-    <button mat-icon-button (click)="closed.emit()" aria-label="Close"><mat-icon>close</mat-icon></button>
+    <div class="widget-catalog-dialog__header-text">
+      <h2>Widget catalog</h2>
+      <p class="widget-catalog-dialog__subtitle">Drag a widget onto your dashboard, or click to add it at the next free slot.</p>
+    </div>
+    <button class="widget-catalog-dialog__close" (click)="closed.emit()" aria-label="Close">
+      <mat-icon>close</mat-icon>
+    </button>
   </header>
-  <ul class="widget-catalog-dialog__list">
-    @for (wt of widgetTypes; track wt.type) {
-      <li class="widget-catalog-dialog__entry">
-        <div class="widget-catalog-dialog__info">
-          <span class="widget-catalog-dialog__label">{{ wt.label }}</span>
-          <span class="widget-catalog-dialog__desc">{{ wt.description }}</span>
-        </div>
-        <button mat-stroked-button [attr.data-testid]="'widget-type-' + wt.type" (click)="pick(wt)">Add</button>
-      </li>
+  <div class="widget-catalog-dialog__body">
+    @for (section of sections(); track section.label) {
+      <div class="widget-catalog-dialog__section">
+        <p class="widget-catalog-dialog__section-label">{{ section.label }}</p>
+        <ul class="widget-catalog-dialog__list">
+          @for (wt of section.entries; track wt.type) {
+            <li class="widget-catalog-dialog__entry" [attr.data-testid]="'widget-type-' + wt.type" (click)="pick(wt)" role="button" [attr.aria-label]="'Add ' + wt.label + ' widget'">
+              <div class="widget-catalog-dialog__icon">
+                <mat-icon>{{ wt.icon }}</mat-icon>
+              </div>
+              <div class="widget-catalog-dialog__info">
+                <span class="widget-catalog-dialog__label">{{ wt.label }}</span>
+                <span class="widget-catalog-dialog__desc">{{ wt.description }}</span>
+              </div>
+              <span class="widget-catalog-dialog__add" aria-hidden="true">
+                <mat-icon>add</mat-icon>
+              </span>
+            </li>
+          }
+        </ul>
+      </div>
     }
-  </ul>
+  </div>
 </div>
