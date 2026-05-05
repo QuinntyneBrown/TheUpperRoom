@@ -45,6 +45,14 @@ import { NotesPanelComponent } from '../notes-panel/notes-panel';
     .contact-detail-loading__line--medium { width: 45%; }
     .contact-detail-loading__line--narrow { width: 30%; }
     @keyframes cd-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
+    .contact-detail__body { display: flex; gap: 24px; padding: 32px; align-items: flex-start; }
+    .contact-detail__summary {
+      width: 340px; flex-shrink: 0; display: flex; flex-direction: column; gap: 12px;
+      padding: 24px; border-radius: 12px; background: var(--ur-bg-surface, #1e293b);
+      border: 1px solid var(--ur-border-subtle, #334155);
+    }
+    .contact-detail__meta-row { display: flex; align-items: center; gap: 10px; font-size: 0.875rem; color: var(--ur-fg-secondary, #94a3b8); }
+    .contact-detail__meta-row mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; color: var(--ur-fg-muted, #64748b); }
   `],
 })
 export class ContactDetailPageComponent implements OnInit, OnDestroy {
