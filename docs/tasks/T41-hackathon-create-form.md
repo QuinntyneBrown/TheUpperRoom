@@ -1,5 +1,6 @@
 # T41 — Hackathon create form
 
+**Status**: Accepted
 **Phase**: 5 — Partner and hackathon management
 **Area**: Hackathon
 **Requirements**: L1-005, L2-022
