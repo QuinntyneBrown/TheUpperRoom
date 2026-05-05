@@ -1,20 +1,24 @@
 <div class="contacts-list-page" data-perf-ready="contacts">
   <header class="contacts-list-page__header">
-    <h1>Contacts</h1>
-    <a mat-raised-button routerLink="/contacts/new" data-testid="new-contact-btn">+ New contact</a>
+    <div class="contacts-list-page__header-left">
+      <h1>Contacts</h1>
+      @if (listResult().total > 0) {
+        <p class="contacts-list-page__subtitle" data-testid="contacts-count-subtitle">{{ listResult().total }} contacts</p>
+      }
+    </div>
+    <div class="contacts-list-page__header-right">
+      <input
+        type="search"
+        class="contacts-list-page__input"
+        placeholder="Search contacts…"
+        [value]="term()"
+        (input)="onSearch($any($event.target).value)"
+        aria-label="Search contacts"
+        data-testid="contact-search-input"
+      />
+      <a mat-raised-button routerLink="/contacts/new" data-testid="new-contact-btn">+ New contact</a>
+    </div>
   </header>
-
-  <div class="contacts-list-page__search">
-    <input
-      type="search"
-      class="contacts-list-page__input"
-      placeholder="Search contacts…"
-      [value]="term()"
-      (input)="onSearch($any($event.target).value)"
-      aria-label="Search contacts"
-      data-testid="contact-search-input"
-    />
-  </div>
 
   @if (!isSearching && loading()) {
     <div class="contacts-list-loading" data-testid="contacts-list-loading" aria-busy="true" aria-label="Loading contacts">
