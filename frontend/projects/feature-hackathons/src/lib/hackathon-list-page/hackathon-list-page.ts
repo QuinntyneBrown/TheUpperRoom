@@ -37,7 +37,7 @@ import { MatIconModule } from '@angular/material/icon';
         </div>
       }
       @for (row of rows(); track row.id) {
-        <a class="hackathon-card" [routerLink]="['/hackathons', row.id]">
+        <a class="hackathon-card" [routerLink]="['/hackathons', row.id]" [attr.data-testid]="'hackathon-card-' + row.id">
           <strong>{{ row.title }}</strong>
           <span class="hackathon-card__meta">
             {{ row.hostCity }} · {{ row.startDate | date:'mediumDate' }}–{{ row.endDate | date:'mediumDate' }} · {{ row.currentStage }}

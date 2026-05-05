@@ -54,7 +54,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
           </div>
         }
         @for (row of filtered(); track row.id) {
-          <a class="partner-card" [routerLink]="['/partners', row.id]">
+          <a class="partner-card" [routerLink]="['/partners', row.id]" [attr.data-testid]="'partner-card-' + row.id">
             <strong>{{ row.name }}</strong>
             <span class="partner-card__meta">{{ row.city }} · {{ row.stage }}</span>
           </a>
