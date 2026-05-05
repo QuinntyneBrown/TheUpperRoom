@@ -2,6 +2,9 @@
 
 **Traces to:** L2-056. L1-014.
 
+## Status
+Complete
+
 Vertical slice: secrets never enter source or the production frontend bundle; runtime values come from environment variables or the platform secrets store.
 
 ## Components

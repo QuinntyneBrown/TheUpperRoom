@@ -8,6 +8,7 @@ using TheUpperRoom.Api.Observability;
 using TheUpperRoom.Api.Validation;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddEnvironmentVariables("THEUPPERROOM_");
 
 builder.WebHost.ConfigureKestrel(o =>
     o.Limits.MaxRequestBodySize = 1 * 1024 * 1024); // 1 MB

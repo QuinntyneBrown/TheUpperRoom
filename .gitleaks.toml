@@ -1,0 +1,6 @@
+# gitleaks configuration — uses default ruleset
+# Run: gitleaks detect --source . --config .gitleaks.toml
+title = "TheUpperRoom gitleaks config"
+
+[extend]
+useDefault = true

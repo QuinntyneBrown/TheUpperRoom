@@ -10,6 +10,12 @@ frontend/.angular/
 frontend/playwright-report/
 frontend/test-results/
 
+# Secrets — never commit
+appsettings.Production.json
+backend/**/appsettings.Production.json
+.env
+.env.*
+
 # OS
 .DS_Store
 Thumbs.db
