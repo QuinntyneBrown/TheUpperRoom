@@ -1,7 +1,7 @@
 // Traces to: 61 - Frontend global error logging
 // L2-045 AC3: payload containing sensitive field names is stripped before transport
 import { describe, it, expect } from 'vitest';
-import { sanitizePayload } from '../services/log.service';
+import { sanitizePayload } from '../services/sanitize';
 
 describe('sanitizePayload', () => {
   it('strips password field', () => {
