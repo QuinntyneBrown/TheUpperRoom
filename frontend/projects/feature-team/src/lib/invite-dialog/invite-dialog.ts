@@ -23,6 +23,22 @@ const ROLE_LABELS: Record<string, string> = {
       border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
     }
     .invite-save-error mat-icon { font-size: 16px; width: 16px; height: 16px; flex-shrink: 0; }
+    .invite-form { display: flex; flex-direction: column; gap: 16px; }
+    .invite-form__field { display: flex; flex-direction: column; gap: 6px; }
+    .invite-form__field label, .invite-form__label {
+      font-size: 0.875rem; font-weight: 500; color: var(--ur-fg-secondary, #94a3b8);
+    }
+    .invite-form__field input[type=email] {
+      height: 38px; padding: 0 12px; border-radius: 6px; width: 100%; box-sizing: border-box;
+      border: 1px solid var(--ur-border-default, #475569);
+      background: var(--ur-bg-elevated, #0f172a); color: var(--ur-fg-primary, #f1f5f9);
+      font-size: 0.875rem; outline: none;
+    }
+    .invite-form__field input[type=email]:focus { border-color: var(--ur-accent-primary, #6366f1); }
+    .invite-form__roles { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+    .invite-form__role-opt { display: flex; align-items: center; gap: 6px; font-size: 0.875rem; color: var(--ur-fg-primary, #f1f5f9); cursor: pointer; }
+    .invite-form__actions { display: flex; justify-content: flex-end; gap: 8px; }
+    .invite-form__error { font-size: 0.75rem; color: var(--ur-error-fg, #dc2626); }
   `],
 })
 export class InviteDialogComponent implements OnDestroy {
