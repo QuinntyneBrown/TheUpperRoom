@@ -1,6 +1,6 @@
 # T57 — Mark-all-read completion state
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 7 — Notifications and real-time lifecycle
 **Area**: Notifications
 **Requirements**: L1-008, L2-038
@@ -19,5 +19,5 @@ Define the behavior immediately after a user clicks "Mark all read".
 
 ## Acceptance criteria
 
-- [ ] Optimistic-update, undo, large-N confirm, and rollback states designed.
-- [ ] Mobile variant per T18.
+- [x] Optimistic-update, undo, large-N confirm, and rollback states designed.
+- [x] Mobile variant per T18.
