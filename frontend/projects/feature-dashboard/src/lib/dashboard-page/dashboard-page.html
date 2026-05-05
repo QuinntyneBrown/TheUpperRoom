@@ -36,7 +36,8 @@
         <gridster-item [item]="item">
           <div class="dashboard-widget" [attr.data-testid]="'widget-' + item.id">
             <header class="dashboard-widget__header">
-              <span class="dashboard-widget__type">{{ item.type }}</span>
+              <mat-icon class="dashboard-widget__drag-handle">drag_indicator</mat-icon>
+              <span class="dashboard-widget__label">{{ widgetLabel(item.type) }}</span>
               <button mat-icon-button (click)="removeWidget(item)" aria-label="Remove widget" data-testid="remove-widget-btn">
                 <mat-icon>close</mat-icon>
               </button>
@@ -45,6 +46,9 @@
               @if (item.type === 'line-chart') {
                 <ur-line-chart-widget [metric]="$any(item.config?.['metric']) ?? 'contactsCreatedDaily'" />
               }
+            </div>
+            <div class="dashboard-widget__resize-hint" data-testid="widget-resize-hint">
+              <mat-icon>open_in_full</mat-icon>
             </div>
           </div>
         </gridster-item>

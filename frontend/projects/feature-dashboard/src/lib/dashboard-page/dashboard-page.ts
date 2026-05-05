@@ -7,6 +7,7 @@ import { debounceTime, Subject } from 'rxjs';
 import { WidgetCatalogDialogComponent } from '../widget-catalog-dialog/widget-catalog-dialog';
 import { LineChartWidgetComponent } from '../widgets/line-chart-widget/line-chart-widget';
 import { buildGridsterOptions } from './gridster-options';
+import { WIDGET_CATALOG } from '../widget-catalog-dialog/widget-catalog';
 
 const UNDO_MS = 8000;
 
@@ -20,10 +21,13 @@ const UNDO_MS = 8000;
     .dashboard-page__header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid var(--ur-border-subtle, #e2e8f0); }
     .dashboard-page__header h1 { margin: 0; font-size: 1.25rem; font-weight: 600; }
     .dashboard-page__empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; color: var(--ur-fg-muted, #888); }
-    .dashboard-widget { display: flex; flex-direction: column; height: 100%; background: var(--ur-bg-surface, #fff); border-radius: 8px; border: 1px solid var(--ur-border-subtle, #e2e8f0); overflow: hidden; }
-    .dashboard-widget__header { display: flex; align-items: center; justify-content: space-between; padding: 8px 8px 8px 12px; border-bottom: 1px solid var(--ur-border-subtle, #e2e8f0); }
-    .dashboard-widget__type { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ur-fg-muted, #888); }
-    .dashboard-widget__body { flex: 1; overflow: hidden; }
+    .dashboard-widget { display: flex; flex-direction: column; height: 100%; background: var(--ur-bg-surface, #101018); border-radius: 8px; border: 1px solid var(--ur-accent-primary, #9f86ff); overflow: hidden; }
+    .dashboard-widget__header { display: flex; align-items: center; justify-content: space-between; padding: 6px 6px 6px 8px; background: var(--ur-accent-soft, #1a1432); }
+    .dashboard-widget__drag-handle { font-size: 18px; width: 18px; height: 18px; color: var(--ur-accent-primary, #9f86ff); cursor: grab; margin-right: 4px; flex-shrink: 0; }
+    .dashboard-widget__label { font-size: 0.75rem; font-weight: 600; color: var(--ur-fg-primary, #fff); flex: 1; }
+    .dashboard-widget__body { flex: 1; overflow: hidden; padding: 12px; }
+    .dashboard-widget__resize-hint { display: flex; align-items: flex-end; justify-content: flex-end; padding: 2px 4px; }
+    .dashboard-widget__resize-hint mat-icon { font-size: 14px; width: 14px; height: 14px; color: var(--ur-accent-primary, #9f86ff); }
     .dashboard-snackbar { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; background: var(--ur-bg-overlay, #1e293b); color: #fff; padding: 12px 16px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); z-index: 1000; min-width: 280px; }
     .dashboard-snackbar__icon { color: var(--ur-danger, #ef4444); }
     .dashboard-snackbar__text { flex: 1; font-size: 0.875rem; }
@@ -117,5 +121,9 @@ export class DashboardPageComponent implements OnInit {
   retrySave(): void {
     this.saveErrorToast.set(false);
     this.save$.next();
+  }
+
+  widgetLabel(type: string): string {
+    return WIDGET_CATALOG.find(e => e.type === type)?.label ?? type;
   }
 }
