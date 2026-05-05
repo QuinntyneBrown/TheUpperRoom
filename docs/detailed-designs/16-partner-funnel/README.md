@@ -1,4 +1,4 @@
-# 16 — Move Partner Through Funnel Stages ✅ Accepted
+# 16 — Move Partner Through Funnel Stages ✅ Complete
 
 **Traces to:** L2-017 (L1-004). First slice that uses SignalR end-to-end.
 

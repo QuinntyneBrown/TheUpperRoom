@@ -3,9 +3,9 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { csrfInterceptor } from './services/csrf.interceptor';
 import { errorLoggingInterceptor } from './services/error-logging.interceptor';
-import { AUTH_SERVICE, AuthService, CONTACT_SERVICE, ContactService, HEALTH_SERVICE, HealthService, PARTNER_SERVICE, PartnerService } from 'api';
+import { AUTH_SERVICE, AuthService, CONTACT_SERVICE, ContactService, HEALTH_SERVICE, HealthService, PARTNER_SERVICE, PartnerService, REALTIME_SERVICE, RealtimeService } from 'api';
 import { ContactCreatePageComponent, ContactDetailPageComponent, ContactEditPageComponent, ContactsListPageComponent } from 'feature-contacts';
-import { PartnerCreatePageComponent, PartnersBoardPageComponent } from 'feature-partners';
+import { PartnerCreatePageComponent, PartnerDetailPageComponent, PartnersBoardPageComponent } from 'feature-partners';
 import { NoAccessPageComponent, RecoverPageComponent, RegisterPageComponent, ResetPageComponent, SignInPageComponent, VerifyPageComponent } from 'feature-auth';
 import { GlobalErrorHandler } from './global-error-handler';
 import { LayoutTestComponent } from './test/layout-test';
@@ -22,10 +22,12 @@ export const appConfig: ApplicationConfig = {
     { provide: AUTH_SERVICE, useClass: AuthService },
     { provide: CONTACT_SERVICE, useClass: ContactService },
     { provide: PARTNER_SERVICE, useClass: PartnerService },
+    { provide: REALTIME_SERVICE, useClass: RealtimeService },
     provideRouter([
       { path: 'dashboard', component: DashboardPageComponent },
       { path: 'partners', component: PartnersBoardPageComponent },
       { path: 'partners/new', component: PartnerCreatePageComponent },
+      { path: 'partners/:id', component: PartnerDetailPageComponent },
       { path: 'contacts', component: ContactsListPageComponent },
       { path: 'contacts/new', component: ContactCreatePageComponent },
       { path: 'contacts/:id', component: ContactDetailPageComponent },

@@ -12,6 +12,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
     public DbSet<Contact> Contacts => Set<Contact>();
     public DbSet<Note> Notes => Set<Note>();
     public DbSet<Partner> Partners => Set<Partner>();
+    public DbSet<PartnerStageHistory> PartnerStageHistories => Set<PartnerStageHistory>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

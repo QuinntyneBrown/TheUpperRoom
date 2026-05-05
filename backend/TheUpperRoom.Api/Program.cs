@@ -8,6 +8,7 @@ using TheUpperRoom.Api.Audit;
 using TheUpperRoom.Api.Domain;
 using TheUpperRoom.Api.Infrastructure;
 using TheUpperRoom.Api.Observability;
+using TheUpperRoom.Api.Realtime;
 using TheUpperRoom.Api.Services;
 using TheUpperRoom.Api.Validation;
 
@@ -99,6 +100,7 @@ builder.Services.AddScoped<ICurrentUser, CurrentUser>();
 builder.Services.AddScoped<IUserClaimsPrincipalFactory<User>, AppUserClaimsPrincipalFactory>();
 builder.Services.AddHostedService<SeedRolesService>();
 builder.Services.AddScoped<IAuditLog, AuditLog>();
+builder.Services.AddSignalR();
 builder.Services.AddCors(options =>
     options.AddDefaultPolicy(policy =>
         policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod()));
@@ -118,6 +120,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+app.MapHub<TeamHub>("/hubs/team");
 app.Run();
 
 public partial class Program { }

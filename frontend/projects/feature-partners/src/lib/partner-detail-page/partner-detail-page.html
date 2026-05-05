@@ -1,0 +1,134 @@
+@if (notFound()) {
+  <div class="not-found">
+    <h1>Partner not found</h1>
+    <a routerLink="/partners">Back to partners</a>
+  </div>
+} @else if (partner(); as p) {
+  <div class="partner-detail" data-testid="partner-detail">
+    <header class="partner-detail__header">
+      <nav class="partner-detail__breadcrumb">
+        <a routerLink="/partners" class="partner-detail__back">Partners</a>
+        <span class="partner-detail__sep">/</span>
+        <span data-testid="partner-name">{{ p.name }}</span>
+      </nav>
+      <a [routerLink]="['/partners', p.id, 'edit']" class="partner-detail__edit-link">Edit</a>
+    </header>
+
+    <div class="partner-detail__body">
+      <aside class="partner-detail__left">
+        <div class="partner-hero-card">
+          <div class="partner-hero-card__icon">
+            <span class="material-symbols-outlined">church</span>
+          </div>
+          <div class="partner-hero-card__ident">
+            <p class="partner-hero-card__name">{{ p.name }}</p>
+            <p class="partner-hero-card__meta">{{ p.city }}</p>
+          </div>
+        </div>
+      </aside>
+
+      <div class="partner-detail__right">
+        <div class="partner-stage-card" data-testid="stage-card">
+          <div class="partner-stage-card__hd">
+            <span class="partner-stage-card__label">PARTNERSHIP STAGE</span>
+            <a href="#stage-history" class="partner-stage-card__history-link">View history</a>
+          </div>
+
+          <div class="partner-stepper" data-testid="stage-stepper">
+            @for (s of stages; track s.value; let i = $index) {
+              @if (i > 0) {
+                <div class="partner-stepper__divider"></div>
+              }
+              <div class="partner-stepper__step"
+                   [class.partner-stepper__step--complete]="stageIndex() > i"
+                   [class.partner-stepper__step--current]="stageIndex() === i"
+                   [class.partner-stepper__step--future]="stageIndex() < i"
+                   [attr.data-testid]="'stage-step-' + s.value">
+                <div class="partner-stepper__step-hd">
+                  @if (stageIndex() > i) {
+                    <span class="material-symbols-outlined partner-stepper__check">check</span>
+                  } @else if (stageIndex() === i) {
+                    <span class="partner-stepper__dot partner-stepper__dot--current"></span>
+                  } @else {
+                    <span class="partner-stepper__dot partner-stepper__dot--future"></span>
+                  }
+                  <span class="partner-stepper__name">{{ s.label }}</span>
+                </div>
+                @if (stageIndex() > i) {
+                  @if (getEntryForStage(s.value); as entry) {
+                    <span class="partner-stepper__date">{{ entry.changedAt | date:'MMM d' }}</span>
+                  }
+                } @else if (stageIndex() === i) {
+                  <span class="partner-stepper__current-badge" data-testid="current-stage-label">Current</span>
+                } @else {
+                  <span class="partner-stepper__not-reached">Not yet reached</span>
+                }
+              </div>
+            }
+          </div>
+
+          <div class="partner-stage-card__actions">
+            @if (stageIndex() > 0) {
+              <ur-button variant="secondary" [disabled]="changingStage()"
+                         (click)="changeStage(stages[stageIndex() - 1].value)"
+                         data-testid="stage-back-btn">
+                ← {{ stages[stageIndex() - 1].label }}
+              </ur-button>
+            }
+            <span class="partner-stage-card__spacer"></span>
+            @if (stageIndex() < stages.length - 1) {
+              <ur-button [disabled]="changingStage()"
+                         (click)="changeStage(stages[stageIndex() + 1].value)"
+                         data-testid="stage-advance-btn">
+                {{ stages[stageIndex() + 1].label }} →
+              </ur-button>
+            }
+          </div>
+
+          <p class="partner-stage-card__hint">
+            Stage changes are recorded in stage history with the actor and timestamp.
+          </p>
+        </div>
+
+        <div class="partner-history" id="stage-history" data-testid="stage-history">
+          <div class="partner-history__hd">
+            <div class="partner-history__hd-left">
+              <span class="partner-history__label">STAGE HISTORY</span>
+              <span class="partner-history__live">
+                <span class="partner-history__live-dot"></span>
+                LIVE
+              </span>
+            </div>
+          </div>
+
+          @if (p.history.length === 0) {
+            <p class="partner-history__empty">No stage changes yet.</p>
+          } @else {
+            <div class="partner-history__timeline">
+              @for (entry of p.history; track entry.id; let last = $last) {
+                <div class="partner-history__entry">
+                  <div class="partner-history__marker">
+                    <div class="partner-history__dot"></div>
+                    @if (!last) {
+                      <div class="partner-history__line"></div>
+                    }
+                  </div>
+                  <div class="partner-history__body">
+                    <div class="partner-history__change">
+                      <span class="partner-history__from">{{ entry.fromStage }}</span>
+                      <span class="partner-history__arrow">→</span>
+                      <span class="partner-history__to">{{ entry.toStage }}</span>
+                      <span class="partner-history__date">· {{ entry.changedAt | date:'MMM d' }}</span>
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="loading" role="status">Loading…</div>
+}
