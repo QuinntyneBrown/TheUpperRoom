@@ -11,10 +11,9 @@ import { Subscription } from 'rxjs';
 
 const STAGES: { value: HackathonStage; label: string }[] = [
   { value: 'Discover', label: 'Discover' },
-  { value: 'Define', label: 'Define' },
   { value: 'Design', label: 'Design' },
   { value: 'Develop', label: 'Develop' },
-  { value: 'Launch', label: 'Launch' },
+  { value: 'Deploy', label: 'Deploy' },
 ];
 
 @Component({

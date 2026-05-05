@@ -1,6 +1,6 @@
 # T106 — Hackathon stage selector shows wrong stage names
 
-**Status:** Open
+**Status:** Fixed
 
 **Route:** `/hackathons/:id`
 

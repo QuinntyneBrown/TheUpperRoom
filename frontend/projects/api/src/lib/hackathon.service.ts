@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
 
-export type HackathonStage = 'Discover' | 'Define' | 'Design' | 'Develop' | 'Launch';
+export type HackathonStage = 'Discover' | 'Design' | 'Develop' | 'Deploy';
 
 export interface HackathonStageHistoryDto {
   id: string;
