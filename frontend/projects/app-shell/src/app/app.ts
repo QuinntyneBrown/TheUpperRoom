@@ -16,7 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { HealthService } from 'api';
-import { UrSideNavItemComponent, UrBottomNavItemComponent } from 'components';
+import { UrSideNavItemComponent, UrBottomNavItemComponent, UrLiveRegionComponent } from 'components';
 
 const WORKSPACE_ITEMS = [
   { icon: 'dashboard', label: 'Dashboard', route: '/dashboard' },
@@ -51,6 +51,7 @@ const BOTTOM_NAV_ITEMS = [
     MatListModule,
     UrSideNavItemComponent,
     UrBottomNavItemComponent,
+    UrLiveRegionComponent,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
