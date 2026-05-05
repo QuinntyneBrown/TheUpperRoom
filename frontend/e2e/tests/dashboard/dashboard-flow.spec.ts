@@ -17,7 +17,8 @@ test.describe('@major-flow dashboard widget lifecycle', () => {
     await dashboard.addWidget('line-chart');
     await dashboard.removeWidget('kpi');
     await auth.signOut();
-    await auth.signInAs('city-lead');
+    await auth.signIn('cityLead@test.com', 'Str0ng!Pass#99');
+    await auth.assertOnDashboard();
     await dashboard.goto();
     await dashboard.assertHasWidget('line-chart');
     await dashboard.assertNoWidget('kpi');

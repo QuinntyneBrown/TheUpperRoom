@@ -9,7 +9,7 @@ namespace TheUpperRoom.Api.Dev;
 [ApiController]
 [Route("api/dev")]
 [AllowAnonymous]
-public class DevController(UserManager<User> userManager, IWebHostEnvironment env) : ControllerBase
+public class DevController(UserManager<User> userManager, AppDbContext db, IWebHostEnvironment env) : ControllerBase
 {
     static readonly Guid TestTeamId = Guid.Parse("00000000-0000-0000-0000-000000000001");
     const string TestPassword = "Str0ng!Pass#99";
@@ -19,13 +19,21 @@ public class DevController(UserManager<User> userManager, IWebHostEnvironment en
     {
         if (!env.IsDevelopment()) return NotFound();
 
-        await EnsureUser("cityLead@test.com", "City Lead", TestTeamId, Roles.CityLead);
+        var cityLead = await EnsureUser("cityLead@test.com", "City Lead", TestTeamId, Roles.CityLead);
         await EnsureUser("admin@test.com", "Admin User", TestTeamId, Roles.Admin);
+
+        // Reset city-lead dashboard so assertEmpty() always starts clean
+        var layout = await db.DashboardLayouts.FindAsync(cityLead.Id);
+        if (layout is not null)
+        {
+            layout.Json = """{"items":[]}""";
+            await db.SaveChangesAsync();
+        }
 
         return Ok(new { seeded = true });
     }
 
-    private async Task EnsureUser(string email, string displayName, Guid? teamId, string role)
+    private async Task<User> EnsureUser(string email, string displayName, Guid? teamId, string role)
     {
         var user = await userManager.FindByEmailAsync(email);
         if (user is null)
@@ -43,5 +51,6 @@ public class DevController(UserManager<User> userManager, IWebHostEnvironment en
         }
         if (!await userManager.IsInRoleAsync(user, role))
             await userManager.AddToRoleAsync(user, role);
+        return user;
     }
 }

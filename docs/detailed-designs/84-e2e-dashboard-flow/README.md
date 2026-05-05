@@ -1,4 +1,4 @@
-# 84 — E2E Dashboard Widget Flow ✅ Accepted
+# 84 — E2E Dashboard Widget Flow ✅ Complete
 
 **Traces to:** L2-063, L2-064. L1-007.
 
@@ -15,7 +15,8 @@ test('dashboard widget lifecycle and persistence', async ({ auth, dashboard }) =
   await dashboard.addWidget('line-chart');
   await dashboard.removeWidget('kpi');
   await auth.signOut();
-  await auth.signInAs('city-lead');
+  await auth.signIn('cityLead@test.com', 'Str0ng!Pass#99');
+  await auth.assertOnDashboard();
   await dashboard.goto();
   await dashboard.assertHasWidget('line-chart');
   await dashboard.assertNoWidget('kpi');
