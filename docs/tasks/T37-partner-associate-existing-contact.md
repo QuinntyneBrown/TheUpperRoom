@@ -1,6 +1,6 @@
 # T37 — Associate existing contact with partner
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 5 — Partner and hackathon management
 **Area**: Partner, Contacts
 **Requirements**: L1-004, L2-018
@@ -19,6 +19,6 @@ Provide a picker on partner detail that lets the user attach an existing contact
 
 ## Acceptance criteria
 
-- [ ] Picker dialog designed with all states.
-- [ ] Search highlights match (links to T30).
-- [ ] Mobile bottom-sheet variant per T21.
+- [x] Picker dialog designed with all states.
+- [x] Search highlights match (links to T30).
+- [x] Mobile bottom-sheet variant per T21.
