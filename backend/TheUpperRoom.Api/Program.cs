@@ -61,6 +61,22 @@ builder.Services.AddMediatR(cfg =>
 builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme)
     .AddIdentityCookies();
+builder.Services.ConfigureApplicationCookie(o =>
+{
+    o.Cookie.HttpOnly = true;
+    o.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    o.Cookie.SameSite = SameSiteMode.Lax;
+    o.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+    o.SlidingExpiration = true;
+    o.LoginPath = "/auth/sign-in";
+    o.Events.OnValidatePrincipal = async ctx =>
+    {
+        var issued = ctx.Properties.IssuedUtc;
+        if (issued.HasValue && DateTimeOffset.UtcNow - issued.Value > TimeSpan.FromHours(12))
+            ctx.RejectPrincipal();
+        await Task.CompletedTask;
+    };
+});
 builder.Services.AddIdentityCore<User>(o =>
     {
         o.Password.RequiredLength = 12;

@@ -3,7 +3,7 @@
 **Traces to:** L2-004 (L1-001).
 
 ## Status
-Accepted
+Complete
 
 Configure Identity cookie options. No code beyond `Program.cs` configuration and one acceptance test.
 

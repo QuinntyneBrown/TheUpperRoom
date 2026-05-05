@@ -9,7 +9,7 @@ Each design below is a small vertical slice intended to be implemented end-to-en
 | 02 | [User registration](02-user-registration/README.md) | L2-001 | Complete |
 | 03 | [User sign-in](03-user-signin/README.md) | L2-002 | Complete |
 | 04 | [Password recovery](04-password-recovery/README.md) | L2-003 | Draft |
-| 05 | [Session management](05-session-management/README.md) | L2-004 | Accepted |
+| 05 | [Session management](05-session-management/README.md) | L2-004 | Complete |
 | 06 | [User sign-out](06-user-signout/README.md) | L2-005 | Draft |
 | 07 | [RBAC: roles, endpoint authz, team isolation](07-rbac-authorization/README.md) | L2-006, L2-007, L2-008 | Draft |
 | 08 | [Create contact](08-create-contact/README.md) | L2-009 | Draft |
