@@ -5,7 +5,7 @@
 Vertical slice: the SCSS token file and Angular Material override that every UI surface consumes. No light mode, no theme switcher.
 
 ## Status
-Accepted
+Complete
 
 ## Design update (2026-05-05)
 The `components` library already has a complete `--ur-*` token system in `projects/components/src/lib/styles/_tokens.scss`, including `--mat-sys-*` → `--ur-*` mappings for Angular Material M3 overrides. Design aligns to that existing system rather than re-inventing different token names. Token colors updated to match `docs/ui-design.pen` exactly.
