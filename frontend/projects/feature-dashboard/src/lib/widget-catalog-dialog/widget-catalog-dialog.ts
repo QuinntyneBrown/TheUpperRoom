@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, output, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { DashboardItem } from 'api';
@@ -8,6 +8,7 @@ import { WIDGET_CATALOG } from './widget-catalog';
   selector: 'ur-widget-catalog-dialog',
   templateUrl: './widget-catalog-dialog.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   imports: [MatButtonModule, MatIconModule],
   styles: [`
     .widget-catalog-dialog {
