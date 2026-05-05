@@ -47,17 +47,18 @@ public class CreateContactCommandHandler(AppDbContext db, ICurrentUser currentUs
             City = cmd.City,
         };
 
+        db.Contacts.Add(contact);
+
         if (!string.IsNullOrWhiteSpace(cmd.Notes))
         {
-            contact.Notes.Add(new Note
+            db.Notes.Add(new Note
             {
-                ContactId = contact.Id,
+                TargetType = "Contact",
+                TargetId = contact.Id,
                 AuthorId = currentUser.Id ?? Guid.Empty,
                 Body = cmd.Notes,
             });
         }
-
-        db.Contacts.Add(contact);
         await db.SaveChangesAsync(ct);
         return contact.Id;
     }

@@ -16,6 +16,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
     {
         base.OnModelCreating(builder);
         builder.Entity<Contact>().HasQueryFilter(c => c.DeletedAt == null);
+        builder.Entity<Note>().HasQueryFilter(n => n.DeletedAt == null);
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

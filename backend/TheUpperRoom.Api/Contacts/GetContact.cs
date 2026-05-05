@@ -26,12 +26,17 @@ public class GetContactQueryHandler(AppDbContext db, ICurrentUser currentUser)
     public async Task<ContactDto?> Handle(GetContactQuery query, CancellationToken ct)
     {
         var contact = await db.Contacts
-            .Include(c => c.Notes)
             .FirstOrDefaultAsync(c => c.Id == query.Id, ct);
 
         if (contact is null) return null;
 
         if (!currentUser.IsAdmin && currentUser.TeamId != contact.TeamId) return null;
+
+        var notes = await db.Notes
+            .Where(n => n.TargetType == "Contact" && n.TargetId == contact.Id)
+            .OrderByDescending(n => n.CreatedAt)
+            .Select(n => new NoteDto(n.Id, n.Body, n.AuthorId, n.CreatedAt))
+            .ToArrayAsync(ct);
 
         return new ContactDto(
             contact.Id,
@@ -43,9 +48,6 @@ public class GetContactQueryHandler(AppDbContext db, ICurrentUser currentUser)
             contact.City,
             contact.Version,
             contact.UpdatedAt,
-            contact.Notes
-                .OrderByDescending(n => n.CreatedAt)
-                .Select(n => new NoteDto(n.Id, n.Body, n.AuthorId, n.CreatedAt))
-                .ToArray());
+            notes);
     }
 }

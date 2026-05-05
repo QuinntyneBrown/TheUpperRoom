@@ -13,5 +13,4 @@ public class Contact
     public DateTime? UpdatedAt { get; set; }
     public Guid? UpdatedById { get; set; }
     public DateTime? DeletedAt { get; set; }
-    public List<Note> Notes { get; set; } = [];
 }

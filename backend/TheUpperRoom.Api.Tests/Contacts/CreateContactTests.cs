@@ -117,7 +117,7 @@ public class CreateContactTests(WebApplicationFactory<Program> factory)
 
         using var scope = factory.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-        var note = db.Notes.FirstOrDefault(n => n.ContactId == id);
+        var note = db.Notes.FirstOrDefault(n => n.TargetId == id);
         Assert.NotNull(note);
         Assert.Equal("Met at partner kickoff.", note.Body);
     }
