@@ -1,6 +1,6 @@
 # T52 — Administrator role management view
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 6 — Team administration and authorization
 **Area**: Authorization
 **Requirements**: L1-002, L2-006
@@ -19,6 +19,6 @@ Provide an Administrator-only screen for assigning and revoking the Administrato
 
 ## Acceptance criteria
 
-- [ ] Administrators list screen and add/revoke flows designed.
-- [ ] Last-administrator constraint warning designed.
-- [ ] Reachable only by Administrators (annotated).
+- [x] Administrators list screen and add/revoke flows designed.
+- [x] Last-administrator constraint warning designed.
+- [x] Reachable only by Administrators (annotated).
