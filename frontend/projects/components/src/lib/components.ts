@@ -1,4 +1,6 @@
 export * from './alert/alert';
+export * from './detail-two-column/detail-two-column';
+export * from './list-card-list/list-card-list';
 export * from './avatar/avatar';
 export * from './badge/badge';
 export * from './bottom-nav-item/bottom-nav-item';
