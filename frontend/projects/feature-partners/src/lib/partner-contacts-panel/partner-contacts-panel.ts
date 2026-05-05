@@ -11,18 +11,44 @@ import { UrButtonComponent } from 'components';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, MatButtonModule, MatIconModule, UrButtonComponent],
   styles: [`
-    .contacts-remove-error {
-      display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 6px; margin-top: 8px;
-      background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
-      border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
-    }
-    .contacts-remove-error mat-icon { font-size: 16px; width: 16px; height: 16px; flex-shrink: 0; }
+    .partner-contacts__hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .partner-contacts__label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; color: var(--ur-fg-secondary, #94a3b8); }
     .partner-contacts__empty {
       display: flex; align-items: center; gap: 8px; padding: 12px 0;
       color: var(--ur-fg-muted, #64748b); font-size: 0.875rem;
     }
     .partner-contacts__empty mat-icon { font-size: 18px; width: 18px; height: 18px; opacity: 0.6; }
     .partner-contacts__empty p { margin: 0; }
+    .partner-contacts__row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--ur-border-subtle, #334155); }
+    .partner-contacts__row:last-of-type { border-bottom: none; }
+    .partner-contacts__avatar {
+      width: 32px; height: 32px; border-radius: 50%; background: var(--ur-accent-primary, #6366f1);
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 600; flex-shrink: 0;
+    }
+    .partner-contacts__body { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+    .partner-contacts__name { font-size: 0.875rem; font-weight: 500; color: var(--ur-accent-primary, #6366f1); text-decoration: none; }
+    .partner-contacts__name:hover { text-decoration: underline; }
+    .partner-contacts__email { font-size: 0.8125rem; color: var(--ur-fg-muted, #64748b); }
+    .partner-contacts__new-form { display: flex; flex-direction: column; gap: 8px; padding: 12px 0; }
+    .partner-contacts__new-banner {
+      font-size: 0.8125rem; color: var(--ur-fg-secondary, #94a3b8); padding: 8px 10px;
+      background: var(--ur-bg-elevated, #0f172a); border-radius: 6px;
+    }
+    .partner-contacts__new-row { display: flex; gap: 8px; }
+    .partner-contacts__new-form input {
+      flex: 1; height: 36px; padding: 0 10px; border-radius: 6px; font-size: 0.875rem; outline: none;
+      border: 1px solid var(--ur-border-default, #475569);
+      background: var(--ur-bg-elevated, #0f172a); color: var(--ur-fg-primary, #f1f5f9);
+    }
+    .partner-contacts__new-form input:focus { border-color: var(--ur-accent-primary, #6366f1); }
+    .partner-contacts__new-actions { display: flex; justify-content: flex-end; gap: 8px; }
+    .contacts-remove-error {
+      display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 6px; margin-top: 8px;
+      background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
+      border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
+    }
+    .contacts-remove-error mat-icon { font-size: 16px; width: 16px; height: 16px; flex-shrink: 0; }
   `],
 })
 export class PartnerContactsPanelComponent implements OnInit, OnDestroy {
