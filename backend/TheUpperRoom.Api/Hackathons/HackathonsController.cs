@@ -15,6 +15,14 @@ public record CreateHackathonRequest(
 
 public record AdvanceStageRequest(string ToStage);
 
+public record AddProductRequest(
+    string Name,
+    string? Description,
+    string? RepoUrl,
+    string? DemoUrl,
+    Guid[] MemberUserIds,
+    Guid[] MemberContactIds);
+
 [ApiController]
 [Route("api/hackathons")]
 [Authorize(Roles = $"{Roles.Admin},{Roles.CityLead},{Roles.PrayerLead},{Roles.EventLead},{Roles.CommunicationLead}")]
@@ -35,6 +43,16 @@ public class HackathonsController(IMediator mediator) : ControllerBase
             req.Title, req.StartDate, req.EndDate, req.HostCity, req.PartnerIds));
         if (id is null) return NotFound(new { error = "partner_not_found" });
         return CreatedAtAction(nameof(Create), new { id }, new { id });
+    }
+
+    [HttpPost("{id:guid}/products")]
+    public async Task<IActionResult> AddProduct(Guid id, [FromBody] AddProductRequest req)
+    {
+        var productId = await mediator.Send(new AddProductCommand(
+            id, req.Name, req.Description, req.RepoUrl, req.DemoUrl,
+            req.MemberUserIds, req.MemberContactIds));
+        if (productId is null) return NotFound(new { error = "not_found" });
+        return CreatedAtAction(nameof(AddProduct), new { id, productId }, new { id = productId });
     }
 
     [HttpPost("{id:guid}/stage")]

@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HACKATHON_SERVICE, HackathonDetailDto, HackathonStage, REALTIME_SERVICE } from 'api';
 import { UrButtonComponent } from 'components';
+import { ProductsSectionComponent } from '../products-section/products-section';
 import { Subscription } from 'rxjs';
 
 const STAGES: { value: HackathonStage; label: string }[] = [
@@ -17,7 +18,7 @@ const STAGES: { value: HackathonStage; label: string }[] = [
   selector: 'ur-hackathon-detail-page',
   templateUrl: './hackathon-detail-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, DatePipe, UrButtonComponent],
+  imports: [RouterLink, DatePipe, UrButtonComponent, ProductsSectionComponent],
 })
 export class HackathonDetailPageComponent implements OnInit, OnDestroy {
   private hackathons = inject(HACKATHON_SERVICE);

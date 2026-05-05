@@ -33,6 +33,8 @@
         </div>
       </section>
 
+      <ur-products-section [hackathonId]="h.id" [initialProducts]="h.products"></ur-products-section>
+
       @if (h.history.length > 0) {
         <section class="hackathon-detail__history" aria-label="Stage history">
           <h2 class="hackathon-detail__section-title">Stage history</h2>

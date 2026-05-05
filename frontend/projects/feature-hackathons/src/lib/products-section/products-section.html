@@ -1,0 +1,67 @@
+<section class="products-section" aria-label="Products">
+  <div class="products-section__header">
+    <h2 class="products-section__title">Products</h2>
+    <ur-button variant="secondary" (click)="openForm()">+ Add product</ur-button>
+  </div>
+
+  @if (products().length === 0) {
+    <p class="products-section__empty">No products yet.</p>
+  } @else {
+    <div class="products-section__list">
+      @for (p of products(); track p.id) {
+        <div class="product-card" [attr.data-testid]="'product-card-' + p.id">
+          <p class="product-card__name">{{ p.name }}</p>
+          @if (p.description) {
+            <p class="product-card__desc">{{ p.description }}</p>
+          }
+          <div class="product-card__links">
+            @if (p.repoUrl) {
+              <a [href]="p.repoUrl" target="_blank" rel="noopener" class="product-card__link">Repo</a>
+            }
+            @if (p.demoUrl) {
+              <a [href]="p.demoUrl" target="_blank" rel="noopener" class="product-card__link">Demo</a>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  }
+</section>
+
+@if (showForm()) {
+  <ur-dialog title="Add product" closeLabel="Cancel" (closed)="cancelForm()" data-testid="add-product-dialog">
+    <form (submit)="$event.preventDefault(); submit()" class="product-form">
+      <div class="product-form__field">
+        <label for="productName">Name</label>
+        <input id="productName" type="text" [value]="name()" (input)="name.set($any($event.target).value)" />
+        @if (errors()['name']) {
+          <span class="product-form__error">{{ errors()['name'] }}</span>
+        }
+      </div>
+      <div class="product-form__field">
+        <label for="productDesc">Description (optional)</label>
+        <textarea id="productDesc" rows="2" [value]="description()" (input)="description.set($any($event.target).value)"></textarea>
+      </div>
+      <div class="product-form__row">
+        <div class="product-form__field">
+          <label for="productRepo">Repo URL (optional)</label>
+          <input id="productRepo" type="url" [value]="repoUrl()" (input)="repoUrl.set($any($event.target).value)" />
+          @if (errors()['repoUrl']) {
+            <span class="product-form__error">{{ errors()['repoUrl'] }}</span>
+          }
+        </div>
+        <div class="product-form__field">
+          <label for="productDemo">Demo URL (optional)</label>
+          <input id="productDemo" type="url" [value]="demoUrl()" (input)="demoUrl.set($any($event.target).value)" />
+          @if (errors()['demoUrl']) {
+            <span class="product-form__error">{{ errors()['demoUrl'] }}</span>
+          }
+        </div>
+      </div>
+      <div class="product-form__actions">
+        <ur-button type="button" variant="ghost" (click)="cancelForm()">Cancel</ur-button>
+        <ur-button type="submit" [disabled]="saving()">{{ saving() ? 'Saving…' : 'Add product' }}</ur-button>
+      </div>
+    </form>
+  </ur-dialog>
+}

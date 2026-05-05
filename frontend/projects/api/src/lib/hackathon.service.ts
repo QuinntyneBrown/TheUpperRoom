@@ -12,6 +12,21 @@ export interface HackathonStageHistoryDto {
   changedAt: string;
 }
 
+export interface ProductMemberDto {
+  id: string;
+  userId?: string;
+  contactId?: string;
+}
+
+export interface ProductDto {
+  id: string;
+  name: string;
+  description?: string;
+  repoUrl?: string;
+  demoUrl?: string;
+  members: ProductMemberDto[];
+}
+
 export interface HackathonDetailDto {
   id: string;
   teamId: string;
@@ -22,6 +37,20 @@ export interface HackathonDetailDto {
   stage: HackathonStage;
   version: number;
   history: HackathonStageHistoryDto[];
+  products: ProductDto[];
+}
+
+export interface AddProductRequest {
+  name: string;
+  description?: string;
+  repoUrl?: string;
+  demoUrl?: string;
+  memberUserIds: string[];
+  memberContactIds: string[];
+}
+
+export interface AddProductResponse {
+  id: string;
 }
 
 export interface CreateHackathonRequest {
@@ -40,6 +69,7 @@ export interface IHackathonService {
   create(req: CreateHackathonRequest): Observable<CreateHackathonResponse>;
   getById(id: string): Observable<HackathonDetailDto>;
   changeStage(id: string, toStage: HackathonStage): Observable<void>;
+  addProduct(hackathonId: string, req: AddProductRequest): Observable<AddProductResponse>;
 }
 
 export const HACKATHON_SERVICE = new InjectionToken<IHackathonService>('HACKATHON_SERVICE');
@@ -58,5 +88,9 @@ export class HackathonService implements IHackathonService {
 
   changeStage(id: string, toStage: HackathonStage): Observable<void> {
     return this.http.post<void>(`/api/hackathons/${id}/stage`, { toStage });
+  }
+
+  addProduct(hackathonId: string, req: AddProductRequest): Observable<AddProductResponse> {
+    return this.http.post<AddProductResponse>(`/api/hackathons/${hackathonId}/products`, req);
   }
 }
