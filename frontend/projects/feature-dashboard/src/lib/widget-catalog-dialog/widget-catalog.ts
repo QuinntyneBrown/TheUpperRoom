@@ -18,7 +18,7 @@ export const WIDGET_CATALOG: CatalogEntry[] = [
     section: 'CHARTS',
     cols: 4,
     rows: 3,
-    defaultConfig: { metric: 'contactsCreatedDaily', range: '7d' },
+    defaultConfig: { metric: 'contacts.created', range: '7d' },
   },
   {
     type: 'kpi',
