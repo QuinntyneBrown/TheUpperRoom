@@ -51,6 +51,7 @@ import { NotesPanelComponent } from '../notes-panel/notes-panel';
       padding: 24px; border-radius: 12px; background: var(--ur-bg-surface, #1e293b);
       border: 1px solid var(--ur-border-subtle, #334155);
     }
+    .contact-detail__name { margin: 0 0 12px; font-size: 1.25rem; font-weight: 700; color: var(--ur-fg-primary, #f1f5f9); }
     .contact-detail__meta-row { display: flex; align-items: center; gap: 10px; font-size: 0.875rem; color: var(--ur-fg-secondary, #94a3b8); }
     .contact-detail__meta-row mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; color: var(--ur-fg-muted, #64748b); }
   `],
