@@ -1,6 +1,6 @@
 # T08 — 401 unauthenticated state
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 1 — Authentication and session edge states
 **Area**: Authorization
 **Requirements**: L1-002, L2-007
@@ -18,6 +18,6 @@ Distinct from the existing 403 access-denied screen, define what the user sees w
 
 ## Acceptance criteria
 
-- [ ] `Desktop / Sign In - Returning` (or sign-in with toast) shows the redirect copy.
-- [ ] Route-guard loading state exists as a documented frame or annotation.
-- [ ] Distinct from 403 access denied (T53).
+- [x] `Desktop / Sign In - Returning` (or sign-in with toast) shows the redirect copy.
+- [x] Route-guard loading state exists as a documented frame or annotation.
+- [x] Distinct from 403 access denied (T53).
