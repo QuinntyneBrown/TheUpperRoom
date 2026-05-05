@@ -1,6 +1,6 @@
 # T118 — Partner List: card meta shows raw stage enum value (InFunnel)
 
-**Status**: Open
+**Status**: Fixed
 
 ## Description
 

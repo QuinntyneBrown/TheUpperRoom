@@ -1,6 +1,9 @@
 <div class="dashboard-page" data-testid="dashboard-page">
   <header class="dashboard-page__header">
-    <h1>Dashboard</h1>
+    <div class="dashboard-page__header-left">
+      <h1>Dashboard</h1>
+      <p class="dashboard-page__header-subtitle" data-testid="dashboard-header-subtitle">Welcome to your workspace</p>
+    </div>
     <button mat-raised-button data-testid="add-widget-btn" (click)="showCatalog.set(true)">+ Add widget</button>
   </header>
 
