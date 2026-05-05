@@ -102,7 +102,7 @@ These slices were derived from the gaps identified in [`docs/missing-detailed-de
 | 66 | [Password hashing storage proof](66-password-hashing/README.md) | L2-050 | Complete |
 | 67 | [Request validation and body-size limits](67-validation-body-limits/README.md) | L2-051 | Complete |
 | 68 | [Injection and stored-XSS hardening checks](68-injection-xss-checks/README.md) | L2-052, L2-053 | Complete |
-| 69 | [CSRF token flow](69-csrf-token/README.md) | L2-054 | Accepted |
+| 69 | [CSRF token flow](69-csrf-token/README.md) | L2-054 | Complete |
 | 70 | [Sensitive endpoint rate limiting](70-rate-limiting/README.md) | L2-055 | Draft |
 | 71 | [Secrets scanning and runtime configuration](71-secrets-runtime/README.md) | L2-056 | Draft |
 
