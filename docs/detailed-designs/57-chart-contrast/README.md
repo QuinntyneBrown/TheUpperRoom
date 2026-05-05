@@ -5,7 +5,7 @@
 Vertical slice: ensure chart series, focus rings, error states, and meaningful icons meet 3:1 non-text contrast.
 
 ## Status
-Accepted
+Complete
 
 ## Components
 
