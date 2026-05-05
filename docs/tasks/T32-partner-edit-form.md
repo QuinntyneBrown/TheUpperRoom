@@ -1,5 +1,6 @@
 # T32 — Partner edit form
 
+**Status**: Accepted
 **Phase**: 5 — Partner and hackathon management
 **Area**: Partner
 **Requirements**: L1-004, L2-020
