@@ -1,5 +1,6 @@
 # T57 — Mark-all-read completion state
 
+**Status**: Accepted
 **Phase**: 7 — Notifications and real-time lifecycle
 **Area**: Notifications
 **Requirements**: L1-008, L2-038
