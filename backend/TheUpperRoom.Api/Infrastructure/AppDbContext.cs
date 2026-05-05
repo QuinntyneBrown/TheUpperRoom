@@ -14,6 +14,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
     public DbSet<Partner> Partners => Set<Partner>();
     public DbSet<PartnerStageHistory> PartnerStageHistories => Set<PartnerStageHistory>();
     public DbSet<PartnerContact> PartnerContacts => Set<PartnerContact>();
+    public DbSet<Hackathon> Hackathons => Set<Hackathon>();
+    public DbSet<HackathonPartner> HackathonPartners => Set<HackathonPartner>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -21,7 +23,9 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
         builder.Entity<Contact>().HasQueryFilter(c => c.DeletedAt == null);
         builder.Entity<Note>().HasQueryFilter(n => n.DeletedAt == null);
         builder.Entity<Partner>().HasQueryFilter(p => p.DeletedAt == null);
+        builder.Entity<Hackathon>().HasQueryFilter(h => h.DeletedAt == null);
         builder.Entity<PartnerContact>().HasKey(pc => new { pc.PartnerId, pc.ContactId });
+        builder.Entity<HackathonPartner>().HasKey(hp => new { hp.HackathonId, hp.PartnerId });
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

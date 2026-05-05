@@ -207,6 +207,32 @@
           }
         }
       }
+    },
+    "feature-hackathons": {
+      "projectType": "library",
+      "root": "projects/feature-hackathons",
+      "sourceRoot": "projects/feature-hackathons/src",
+      "prefix": "ur",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/feature-hackathons/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/feature-hackathons/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/feature-hackathons/tsconfig.spec.json"
+          }
+        }
+      }
     }
   }
 }

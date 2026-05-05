@@ -1,0 +1,88 @@
+<ur-dialog
+  title="Plan hackathon"
+  closeLabel="Cancel"
+  (closed)="cancel()"
+  data-testid="hackathon-create-form"
+>
+  <form (submit)="$event.preventDefault(); submit()" class="hackathon-form">
+    <div class="hackathon-form__field">
+      <label for="hackathonTitle">Title</label>
+      <input
+        id="hackathonTitle"
+        type="text"
+        placeholder="e.g. Spring Hackathon 2026"
+        [value]="title()"
+        (input)="title.set($any($event.target).value)"
+      />
+      @if (errors()['title']) {
+        <span class="hackathon-form__error">{{ errors()['title'] }}</span>
+      }
+    </div>
+
+    <div class="hackathon-form__field">
+      <label for="hackathonHostCity">Host city</label>
+      <input
+        id="hackathonHostCity"
+        type="text"
+        placeholder="e.g. Toronto, ON"
+        [value]="hostCity()"
+        (input)="hostCity.set($any($event.target).value)"
+      />
+      @if (errors()['hostCity']) {
+        <span class="hackathon-form__error">{{ errors()['hostCity'] }}</span>
+      }
+    </div>
+
+    <div class="hackathon-form__row">
+      <div class="hackathon-form__field">
+        <label for="hackathonStart">Start date</label>
+        <input
+          id="hackathonStart"
+          type="date"
+          [value]="startDate()"
+          (input)="startDate.set($any($event.target).value)"
+        />
+        @if (errors()['startDate']) {
+          <span class="hackathon-form__error">{{ errors()['startDate'] }}</span>
+        }
+      </div>
+      <div class="hackathon-form__field">
+        <label for="hackathonEnd">End date</label>
+        <input
+          id="hackathonEnd"
+          type="date"
+          [value]="endDate()"
+          (input)="endDate.set($any($event.target).value)"
+        />
+        @if (errors()['endDate']) {
+          <span class="hackathon-form__error">{{ errors()['endDate'] }}</span>
+        }
+      </div>
+    </div>
+
+    @if (allPartners().length > 0) {
+      <div class="hackathon-form__field">
+        <span class="hackathon-form__label">Partners (optional)</span>
+        <div class="hackathon-form__partners">
+          @for (p of allPartners(); track p.id) {
+            <label class="hackathon-form__partner-opt">
+              <input
+                type="checkbox"
+                [checked]="selectedPartnerIds().has(p.id)"
+                (change)="togglePartner(p.id)"
+              />
+              {{ p.name }}
+            </label>
+          }
+        </div>
+      </div>
+    }
+
+    <div class="hackathon-form__actions">
+      <ur-button type="button" variant="ghost" (click)="cancel()">Cancel</ur-button>
+      <ur-button type="submit" [disabled]="saving()">
+        {{ saving() ? 'Saving…' : 'Plan hackathon' }}
+      </ur-button>
+    </div>
+  </form>
+</ur-dialog>
