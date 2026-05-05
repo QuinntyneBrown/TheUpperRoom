@@ -18,8 +18,8 @@ import { UrButtonComponent, UrDialogComponent } from 'components';
     .hackathon-form__field input[type=text],
     .hackathon-form__field input[type=date] {
       height: 38px; padding: 0 12px; border-radius: 6px;
-      border: 1px solid var(--ur-border-default, #475569);
-      background: var(--ur-bg-elevated, #0f172a); color: var(--ur-fg-primary, #f1f5f9);
+      border: 1px solid var(--ur-border-default, #2a2a3a);
+      background: var(--ur-bg-elevated, #101018); color: var(--ur-fg-primary, #f1f5f9);
       font-size: 0.875rem; outline: none; width: 100%;
     }
     .hackathon-form__field input:focus { border-color: var(--ur-accent-primary, #6366f1); }

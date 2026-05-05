@@ -1,6 +1,6 @@
 # T176 — Hackathon create form: input fields use wrong color tokens
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 
