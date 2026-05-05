@@ -5,6 +5,12 @@ import { TEAM_SERVICE } from 'api';
 const SUBORDINATE_ROLES = ['PrayerLead', 'EventLead', 'CommunicationLead'] as const;
 type SubRole = (typeof SUBORDINATE_ROLES)[number];
 
+const ROLE_LABELS: Record<SubRole, string> = {
+  PrayerLead: 'Prayer Lead',
+  EventLead: 'Event Lead',
+  CommunicationLead: 'Communication Lead',
+};
+
 @Component({
   selector: 'ur-role-chip-editor',
   templateUrl: './role-chip-editor.html',
@@ -33,6 +39,7 @@ export class RoleChipEditorComponent implements OnDestroy {
   private toggleErrorTimer?: ReturnType<typeof setTimeout>;
 
   readonly roles: SubRole[] = [...SUBORDINATE_ROLES];
+  readonly roleLabel = (role: SubRole) => ROLE_LABELS[role];
 
   ngOnDestroy(): void {
     clearTimeout(this.toggleErrorTimer);

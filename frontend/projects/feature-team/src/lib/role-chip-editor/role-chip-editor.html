@@ -8,7 +8,7 @@
       [attr.aria-pressed]="hasRole(role)"
       [attr.data-testid]="'role-chip-' + role"
       (click)="toggle(role)"
-    >{{ role }}</button>
+    >{{ roleLabel(role) }}</button>
   }
   @if (toggleError()) {
     <div class="role-chip-error" data-testid="role-toggle-error" role="alert">
