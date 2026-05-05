@@ -10,6 +10,25 @@ import { UrButtonComponent, UrDialogComponent } from 'components';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatIconModule, UrButtonComponent, UrDialogComponent],
   styles: [`
+    .hackathon-form { display: flex; flex-direction: column; gap: 16px; }
+    .hackathon-form__field { display: flex; flex-direction: column; gap: 6px; }
+    .hackathon-form__field label, .hackathon-form__label {
+      font-size: 0.875rem; font-weight: 500; color: var(--ur-fg-secondary, #94a3b8);
+    }
+    .hackathon-form__field input[type=text],
+    .hackathon-form__field input[type=date] {
+      height: 38px; padding: 0 12px; border-radius: 6px;
+      border: 1px solid var(--ur-border-default, #475569);
+      background: var(--ur-bg-elevated, #0f172a); color: var(--ur-fg-primary, #f1f5f9);
+      font-size: 0.875rem; outline: none; width: 100%;
+    }
+    .hackathon-form__field input:focus { border-color: var(--ur-accent-primary, #6366f1); }
+    .hackathon-form__row { display: flex; gap: 16px; }
+    .hackathon-form__row .hackathon-form__field { flex: 1; }
+    .hackathon-form__error { font-size: 0.75rem; color: var(--ur-error-fg, #dc2626); }
+    .hackathon-form__partners { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+    .hackathon-form__partner-opt { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--ur-fg-primary, #f1f5f9); cursor: pointer; }
+    .hackathon-form__actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
     .create-error-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
       gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
