@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, computed, inject, OnDestroy, OnInit
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { HACKATHON_SERVICE, HackathonDetailDto, HackathonStage, REALTIME_SERVICE } from 'api';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { UrButtonComponent, UrDialogComponent } from 'components';
 import { ProductsSectionComponent } from '../products-section/products-section';
 import { Subscription } from 'rxjs';
@@ -18,7 +20,7 @@ const STAGES: { value: HackathonStage; label: string }[] = [
   selector: 'ur-hackathon-detail-page',
   templateUrl: './hackathon-detail-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, DatePipe, UrButtonComponent, UrDialogComponent, ProductsSectionComponent],
+  imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule, UrButtonComponent, UrDialogComponent, ProductsSectionComponent],
 })
 export class HackathonDetailPageComponent implements OnInit, OnDestroy {
   private hackathons = inject(HACKATHON_SERVICE);
