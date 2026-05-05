@@ -1,5 +1,6 @@
 # T42 — Hackathon detail screen
 
+**Status**: Accepted
 **Phase**: 5 — Partner and hackathon management
 **Area**: Hackathon
 **Requirements**: L1-005, L2-025
