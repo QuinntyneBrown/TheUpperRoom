@@ -4,6 +4,9 @@
 
 Vertical slice: shared form components produce screen-reader-correct labels and error wiring; a single live region announces realtime notifications.
 
+## Status
+Accepted
+
 ## Components
 
 - Frontend `components/form-field` — wraps Material's form field. Always renders a visible `<label>` linked by `for`/`id`. Error messages render in a `<div id="{id}-err" role="alert">` and the input has `aria-describedby="{id}-err"` only when an error is present.
