@@ -2,15 +2,21 @@
 // L2-013 AC: inline add-note form, edit-in-place, delete confirm
 import { test, expect } from '../../fixtures';
 
-test.describe('Contact Notes', () => {
-  test('notes panel is present on contact detail page', async ({ page }) => {
-    await page.goto('/contacts/00000000-0000-0000-0000-000000000001');
-    await expect(page.locator('body')).toBeVisible();
-  });
+const DEV_ENABLED = process.env['CI'] !== 'true' || process.env['DEV_E2E'] === 'true';
 
-  test('add-note form is visible inside notes section', async ({ page }) => {
-    await page.goto('/contacts/00000000-0000-0000-0000-000000000001');
-    await expect(page.getByTestId('contact-notes-section')).toBeVisible();
+test.describe('Contact Notes', () => {
+  test.fixme(!DEV_ENABLED, 'Requires backend in Development mode with /api/dev/seed');
+
+  test('notes panel is present on contact detail page', async ({ auth, page }) => {
+    await auth.signInAs('city-lead');
+
+    const contact = { id: 'c-notes1', firstName: 'Notes', lastName: 'Test', email: '', phone: '', city: '', notes: [], deletedAt: null };
+    await page.route('**/api/contacts/c-notes1', (route) => {
+      route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(contact) });
+    });
+
+    await page.goto('/contacts/c-notes1');
+    await expect(page.getByTestId('contact-notes-section')).toBeVisible({ timeout: 3000 });
     await expect(page.getByTestId('add-note-form')).toBeVisible();
   });
 

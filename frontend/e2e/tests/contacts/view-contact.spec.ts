@@ -2,19 +2,32 @@
 // L2-010 AC: contact detail page renders name and empty notes panel
 import { test, expect } from '../../fixtures';
 
+const DEV_ENABLED = process.env['CI'] !== 'true' || process.env['DEV_E2E'] === 'true';
+
 test.describe('View Contact', () => {
-  test('contact detail page renders name', async ({ page, contacts }) => {
-    // Navigate to a contact detail URL (uses a fixed test id pattern)
-    await page.goto('/contacts/00000000-0000-0000-0000-000000000001');
-    // If the backend returns 404, the page handles it gracefully
-    // For e2e this verifies the route exists
-    await expect(page.locator('body')).toBeVisible();
+  test.fixme(!DEV_ENABLED, 'Requires backend in Development mode with /api/dev/seed');
+
+  test('contact detail page renders name and notes section', async ({ auth, page }) => {
+    await auth.signInAs('city-lead');
+
+    const contact = { id: 'c-view1', firstName: 'Alice', lastName: 'Smith', email: 'alice@example.com', phone: '', city: 'Toronto', notes: [], deletedAt: null };
+    await page.route('**/api/contacts/c-view1', (route) => {
+      route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(contact) });
+    });
+
+    await page.goto('/contacts/c-view1');
+    await expect(page.getByTestId('contact-name')).toContainText('Alice', { timeout: 3000 });
+    await expect(page.getByTestId('contact-notes-section')).toBeVisible();
   });
 
-  test('contact detail page has notes section', async ({ page }) => {
-    await page.goto('/contacts/00000000-0000-0000-0000-000000000001');
-    // Notes section should be present even when empty
-    // The test is fixme until backend+auth is wired in e2e
-    test.fixme(true, 'Requires authenticated e2e session with seeded contact');
+  test('unknown contact ID shows not-found state', async ({ auth, page }) => {
+    await auth.signInAs('city-lead');
+
+    await page.route('**/api/contacts/no-such-id', (route) => {
+      route.fulfill({ status: 404, contentType: 'application/json', body: JSON.stringify({ message: 'Not found' }) });
+    });
+
+    await page.goto('/contacts/no-such-id');
+    await expect(page.getByTestId('contact-not-found')).toBeVisible({ timeout: 3000 });
   });
 });

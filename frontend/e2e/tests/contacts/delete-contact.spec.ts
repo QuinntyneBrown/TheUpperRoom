@@ -2,10 +2,22 @@
 // L2-012 AC: confirm dialog, soft delete, contact disappears; restore by admin
 import { test, expect } from '../../fixtures';
 
+const DEV_ENABLED = process.env['CI'] !== 'true' || process.env['DEV_E2E'] === 'true';
+
 test.describe('Delete Contact', () => {
-  test('contact detail page has delete action', async ({ page }) => {
-    await page.goto('/contacts/00000000-0000-0000-0000-000000000001');
-    await expect(page.locator('body')).toBeVisible();
+  test.fixme(!DEV_ENABLED, 'Requires backend in Development mode with /api/dev/seed');
+
+  test('contact detail page shows delete button for city-lead', async ({ auth, page }) => {
+    await auth.signInAs('city-lead');
+
+    const contact = { id: 'c-del1', firstName: 'Bob', lastName: 'Jones', email: '', phone: '', city: '', notes: [], deletedAt: null };
+    await page.route('**/api/contacts/c-del1', (route) => {
+      route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(contact) });
+    });
+
+    await page.goto('/contacts/c-del1');
+    await expect(page.getByTestId('contact-delete-btn')).toBeVisible({ timeout: 3000 });
+    await expect(page.getByTestId('contact-delete-btn')).toBeEnabled();
   });
 
   test.fixme('city lead can delete contact via confirm dialog', async ({ page, contacts }) => {
