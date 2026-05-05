@@ -2,6 +2,9 @@
 
 **Traces to:** L2-003 (L1-001).
 
+## Status
+Accepted
+
 Email-based reset using Identity's `GeneratePasswordResetTokenAsync` + `ResetPasswordAsync`.
 
 ## Components

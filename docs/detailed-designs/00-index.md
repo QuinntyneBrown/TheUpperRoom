@@ -8,7 +8,7 @@ Each design below is a small vertical slice intended to be implemented end-to-en
 | 01 | [Project skeleton & health check](01-project-skeleton/README.md) | bootstraps everything | Complete |
 | 02 | [User registration](02-user-registration/README.md) | L2-001 | Complete |
 | 03 | [User sign-in](03-user-signin/README.md) | L2-002 | Complete |
-| 04 | [Password recovery](04-password-recovery/README.md) | L2-003 | Draft |
+| 04 | [Password recovery](04-password-recovery/README.md) | L2-003 | Accepted |
 | 05 | [Session management](05-session-management/README.md) | L2-004 | Complete |
 | 06 | [User sign-out](06-user-signout/README.md) | L2-005 | Complete |
 | 07 | [RBAC: roles, endpoint authz, team isolation](07-rbac-authorization/README.md) | L2-006, L2-007, L2-008 | Draft |
