@@ -25,4 +25,17 @@ public class TeamsController(IMediator mediator) : ControllerBase
         await mediator.Send(new InviteMemberCommand(req.Email, req.Roles));
         return Ok();
     }
+
+    [HttpDelete("local/members/{userId:guid}")]
+    [Authorize(Roles = $"{Roles.Admin},{Roles.CityLead}")]
+    public async Task<IActionResult> RemoveMember(Guid userId)
+    {
+        var result = await mediator.Send(new RemoveMemberCommand(userId));
+        return result switch
+        {
+            RemoveMemberResult.Ok => Ok(),
+            RemoveMemberResult.Forbidden => Forbid(),
+            _ => NotFound(new { error = "not_found" }),
+        };
+    }
 }
