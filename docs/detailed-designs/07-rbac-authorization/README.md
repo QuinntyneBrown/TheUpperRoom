@@ -2,6 +2,9 @@
 
 **Traces to:** L2-006, L2-007, L2-008 (L1-002).
 
+## Status
+Accepted
+
 This slice introduces the role catalog and the two enforcement points used by every later slice: per-endpoint `[Authorize(Roles=...)]` and a MediatR `TeamScopeBehavior` that rejects cross-team access for non-Administrators.
 
 ## Components
