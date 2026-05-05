@@ -5,52 +5,40 @@
   data-testid="partner-create-form"
 >
   <form (ngSubmit)="submit()" class="partner-form">
-    <div class="partner-form__field">
-      <label for="partnerName">Partner name</label>
-      <input
-        id="partnerName"
-        type="text"
-        placeholder="e.g. FaithTech Toronto"
-        [value]="name()"
-        (input)="name.set($any($event.target).value)"
-        autocomplete="organization"
-        aria-describedby="partnerName-error"
-      />
-      @if (errors()['name']) {
-        <span id="partnerName-error" class="partner-form__error">{{ errors()['name'] }}</span>
-      }
-    </div>
+    <ur-input
+      label="Organization name *"
+      type="text"
+      placeholder="e.g. FaithTech Toronto"
+      [value]="name()"
+      autocomplete="organization"
+      (valueChange)="name.set($event)"
+    />
+    @if (errors()['name']) {
+      <span class="partner-form__error">{{ errors()['name'] }}</span>
+    }
 
     <div class="partner-form__row">
-      <div class="partner-form__field">
-        <label for="partnerCity">City</label>
-        <input
-          id="partnerCity"
-          type="text"
-          placeholder="e.g. Toronto, ON"
-          [value]="city()"
-          (input)="city.set($any($event.target).value)"
-          aria-describedby="partnerCity-error"
-        />
-        @if (errors()['city']) {
-          <span id="partnerCity-error" class="partner-form__error">{{ errors()['city'] }}</span>
-        }
-      </div>
-      <div class="partner-form__field">
-        <label for="partnerWebsite">Website</label>
-        <input
-          id="partnerWebsite"
-          type="url"
-          placeholder="https://"
-          [value]="website()"
-          (input)="website.set($any($event.target).value)"
-          aria-describedby="partnerWebsite-error"
-        />
-        @if (errors()['website']) {
-          <span id="partnerWebsite-error" class="partner-form__error">{{ errors()['website'] }}</span>
-        }
-      </div>
+      <ur-input
+        label="City"
+        type="text"
+        placeholder="e.g. Toronto, ON"
+        [value]="city()"
+        (valueChange)="city.set($event)"
+      />
+      <ur-input
+        label="Website"
+        type="url"
+        placeholder="https://"
+        [value]="website()"
+        (valueChange)="website.set($event)"
+      />
     </div>
+    @if (errors()['city']) {
+      <span class="partner-form__error">{{ errors()['city'] }}</span>
+    }
+    @if (errors()['website']) {
+      <span class="partner-form__error">{{ errors()['website'] }}</span>
+    }
 
     <div class="partner-form__field">
       <span class="partner-form__label">Stage</span>
@@ -67,7 +55,7 @@
     </div>
 
     <div class="partner-form__field">
-      <label for="partnerNote">First note (optional)</label>
+      <label class="partner-form__label" for="partnerNote">First note (optional)</label>
       <textarea
         id="partnerNote"
         placeholder="Add context, prayer requests, action items…"
