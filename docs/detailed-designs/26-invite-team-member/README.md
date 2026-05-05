@@ -1,4 +1,4 @@
-# 26 — Invite Team Member ✅ Accepted
+# 26 — Invite Team Member ✅ Complete
 
 **Traces to:** L2-027 (L1-006).
 

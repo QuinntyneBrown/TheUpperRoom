@@ -1,7 +1,12 @@
 <div class="team-page" data-testid="local-team-page">
   <header class="team-page__header">
     <h1 class="team-page__title">Team</h1>
+    <ur-button (click)="showInvite.set(true)" data-testid="invite-member-button">+ Invite member</ur-button>
   </header>
+
+  @if (showInvite()) {
+    <ur-invite-dialog (closed)="showInvite.set(false)" (invited)="onInvited()"></ur-invite-dialog>
+  }
 
   @if (members().length === 0) {
     <p class="team-page__empty">No team members found.</p>

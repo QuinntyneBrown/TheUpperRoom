@@ -3,13 +3,16 @@ using System.Text;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
 using TheUpperRoom.Api.Domain;
 using TheUpperRoom.Api.Infrastructure;
+using TheUpperRoom.Api.Realtime;
 using TheUpperRoom.Api.Services;
 
 namespace TheUpperRoom.Api.Auth;
 
-public record RegisterCommand(string Email, string Password, string DisplayName, string City) : IRequest;
+public record RegisterCommand(string Email, string Password, string DisplayName, string City, string? InviteToken = null) : IRequest;
 
 public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
 {
@@ -30,23 +33,55 @@ public class RegisterCommandHandler(
     UserManager<User> userManager,
     AppDbContext db,
     EmailSender emailSender,
-    IConfiguration config) : IRequestHandler<RegisterCommand>
+    IConfiguration config,
+    IHubContext<TeamHub> hub) : IRequestHandler<RegisterCommand>
 {
     public async Task Handle(RegisterCommand cmd, CancellationToken ct)
     {
         var existing = await userManager.FindByEmailAsync(cmd.Email);
         if (existing != null) return; // Generic — no enumeration
 
+        // Resolve invitation before creating user
+        Invitation? invitation = null;
+        if (!string.IsNullOrEmpty(cmd.InviteToken))
+        {
+            invitation = await db.Invitations.FirstOrDefaultAsync(
+                i => i.Token == cmd.InviteToken && i.AcceptedAt == null && i.ExpiresAt > DateTime.UtcNow, ct);
+        }
+
         var user = new User
         {
             Email = cmd.Email,
             UserName = cmd.Email,
             DisplayName = cmd.DisplayName,
-            City = cmd.City
+            City = cmd.City,
+            TeamId = invitation?.TeamId,
+            EmailConfirmed = invitation != null, // skip email verification for invited users
         };
 
         var result = await userManager.CreateAsync(user, cmd.Password);
         if (!result.Succeeded) return;
+
+        if (invitation != null)
+        {
+            foreach (var role in invitation.RoleNames.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                await userManager.AddToRoleAsync(user, role.Trim());
+
+            invitation.AcceptedAt = DateTime.UtcNow;
+            await db.SaveChangesAsync(ct);
+
+            await hub.Clients.Group($"team:{invitation.TeamId}").SendAsync("teamMemberAdded", new
+            {
+                eventType = "teamMemberAdded",
+                entityId = user.Id,
+                actorId = user.Id,
+                timestamp = DateTime.UtcNow,
+                userId = user.Id,
+                displayName = user.DisplayName,
+                roles = invitation.RoleNames,
+            }, ct);
+            return;
+        }
 
         var rawToken = Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
         var tokenHash = Convert.ToBase64String(SHA256.HashData(Encoding.UTF8.GetBytes(rawToken)));

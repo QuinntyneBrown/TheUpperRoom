@@ -1,0 +1,44 @@
+<ur-dialog title="Invite team member" closeLabel="Cancel" (closed)="closed.emit()" data-testid="invite-dialog">
+  <form (submit)="$event.preventDefault(); submit()" class="invite-form">
+    <div class="invite-form__field">
+      <label for="inviteEmail">Email address</label>
+      <input
+        id="inviteEmail"
+        type="email"
+        placeholder="member@example.com"
+        [value]="email()"
+        (input)="email.set($any($event.target).value)"
+        autocomplete="email"
+      />
+      @if (errors()['email']) {
+        <span class="invite-form__error">{{ errors()['email'] }}</span>
+      }
+    </div>
+
+    <div class="invite-form__field">
+      <span class="invite-form__label">Roles</span>
+      <div class="invite-form__roles">
+        @for (role of allRoles; track role) {
+          <label class="invite-form__role-opt">
+            <input
+              type="checkbox"
+              [checked]="selectedRoles().has(role)"
+              (change)="toggleRole(role)"
+            />
+            {{ role }}
+          </label>
+        }
+      </div>
+      @if (errors()['roles']) {
+        <span class="invite-form__error">{{ errors()['roles'] }}</span>
+      }
+    </div>
+
+    <div class="invite-form__actions">
+      <ur-button type="button" variant="ghost" (click)="closed.emit()">Cancel</ur-button>
+      <ur-button type="submit" [disabled]="saving()">
+        {{ saving() ? 'Sending…' : 'Send invite' }}
+      </ur-button>
+    </div>
+  </form>
+</ur-dialog>

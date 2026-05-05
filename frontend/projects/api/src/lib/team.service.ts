@@ -10,8 +10,14 @@ export interface TeamMemberDto {
   isActive: boolean;
 }
 
+export interface InviteMemberRequest {
+  email: string;
+  roles: string[];
+}
+
 export interface ITeamService {
   getLocalTeam(): Observable<TeamMemberDto[]>;
+  invite(req: InviteMemberRequest): Observable<void>;
 }
 
 export const TEAM_SERVICE = new InjectionToken<ITeamService>('TEAM_SERVICE');
@@ -22,5 +28,9 @@ export class TeamService implements ITeamService {
 
   getLocalTeam(): Observable<TeamMemberDto[]> {
     return this.http.get<TeamMemberDto[]>('/api/teams/local');
+  }
+
+  invite(req: InviteMemberRequest): Observable<void> {
+    return this.http.post<void>('/api/teams/local/invitations', req);
   }
 }

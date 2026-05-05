@@ -19,6 +19,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
     public DbSet<HackathonStageHistory> HackathonStageHistories => Set<HackathonStageHistory>();
     public DbSet<Product> Products => Set<Product>();
     public DbSet<ProductMember> ProductMembers => Set<ProductMember>();
+    public DbSet<Invitation> Invitations => Set<Invitation>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
