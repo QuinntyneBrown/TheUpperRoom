@@ -27,6 +27,12 @@ export interface ProductDto {
   members: ProductMemberDto[];
 }
 
+export interface HackathonPartnerDto {
+  id: string;
+  name: string;
+  city: string;
+}
+
 export interface HackathonDetailDto {
   id: string;
   teamId: string;
@@ -38,6 +44,7 @@ export interface HackathonDetailDto {
   version: number;
   history: HackathonStageHistoryDto[];
   products: ProductDto[];
+  partners: HackathonPartnerDto[];
 }
 
 export interface AddProductRequest {
