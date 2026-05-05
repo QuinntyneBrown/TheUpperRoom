@@ -2,6 +2,9 @@
 
 **Traces to:** L2-012 (L1-003). Soft delete with confirmation.
 
+## Status
+Accepted
+
 ## Components
 - Backend `Contacts/DeleteContact.cs` — `DeleteContactCommand : ITeamScopedRequest { Id, TargetTeamId }`. Handler sets `Contact.DeletedAt = now`. `[Authorize(Roles="Admin,CityLead")]` on the controller.
 - Backend `ContactsController.Delete` — `DELETE /api/contacts/{id}`.
