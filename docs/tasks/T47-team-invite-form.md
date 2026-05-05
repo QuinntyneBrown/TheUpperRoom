@@ -1,5 +1,6 @@
 # T47 — Team invite form
 
+**Status**: Accepted
 **Phase**: 6 — Team administration and authorization
 **Area**: Team
 **Requirements**: L1-006, L2-027
