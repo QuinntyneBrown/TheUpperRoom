@@ -90,4 +90,12 @@ export class ContactsPage {
   searchInput() {
     return this.page.getByTestId('contact-search-input');
   }
+
+  savedToast() {
+    return this.page.getByTestId('contact-saved-toast');
+  }
+
+  deletedToast() {
+    return this.page.getByTestId('contact-deleted-toast');
+  }
 }
