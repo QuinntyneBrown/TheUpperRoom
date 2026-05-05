@@ -1,0 +1,62 @@
+<div class="partner-contacts" data-testid="partner-contacts-panel">
+  <div class="partner-contacts__hd">
+    <span class="partner-contacts__label">CONTACTS</span>
+    <button class="partner-contacts__add-btn" (click)="openNewForm()" data-testid="add-contact-btn">
+      + Associate
+    </button>
+  </div>
+
+  @if (contacts().length === 0 && !showNewForm()) {
+    <p class="partner-contacts__empty">No contacts associated yet.</p>
+  }
+
+  @for (c of contacts(); track c.id) {
+    <div class="partner-contacts__row" [attr.data-testid]="'contact-row-' + c.id">
+      <div class="partner-contacts__avatar">{{ initials(c) }}</div>
+      <div class="partner-contacts__body">
+        <a [routerLink]="['/contacts', c.id]" class="partner-contacts__name">
+          {{ c.firstName }} {{ c.lastName }}
+        </a>
+        @if (c.email) {
+          <span class="partner-contacts__email">{{ c.email }}</span>
+        }
+      </div>
+      <button class="partner-contacts__remove" (click)="remove(c.id)" aria-label="Remove">×</button>
+    </div>
+  }
+
+  @if (showNewForm()) {
+    <div class="partner-contacts__new-form" data-testid="new-contact-form">
+      <div class="partner-contacts__new-banner">
+        Will be created and linked atomically.
+      </div>
+      <div class="partner-contacts__new-row">
+        <input
+          placeholder="First name *"
+          [value]="firstName()"
+          (input)="firstName.set($any($event.target).value)"
+          data-testid="new-contact-first-name"
+        />
+        <input
+          placeholder="Last name *"
+          [value]="lastName()"
+          (input)="lastName.set($any($event.target).value)"
+          data-testid="new-contact-last-name"
+        />
+      </div>
+      <input
+        type="email"
+        placeholder="Email"
+        [value]="email()"
+        (input)="email.set($any($event.target).value)"
+        data-testid="new-contact-email"
+      />
+      <div class="partner-contacts__new-actions">
+        <ur-button variant="ghost" (click)="cancelNew()">Cancel</ur-button>
+        <ur-button [disabled]="saving()" (click)="createAndLink()" data-testid="create-link-btn">
+          {{ saving() ? 'Saving…' : 'Create & link' }}
+        </ur-button>
+      </div>
+    </div>
+  }
+</div>

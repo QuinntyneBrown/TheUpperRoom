@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PARTNER_SERVICE, PartnerDetailDto, PartnerStage, REALTIME_SERVICE } from 'api';
 import { UrButtonComponent } from 'components';
+import { PartnerContactsPanelComponent } from '../partner-contacts-panel/partner-contacts-panel';
 import { Subscription } from 'rxjs';
 
 const STAGES: { value: PartnerStage; label: string }[] = [
@@ -15,7 +16,7 @@ const STAGES: { value: PartnerStage; label: string }[] = [
   selector: 'ur-partner-detail-page',
   templateUrl: './partner-detail-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, DatePipe, UrButtonComponent],
+  imports: [RouterLink, DatePipe, UrButtonComponent, PartnerContactsPanelComponent],
 })
 export class PartnerDetailPageComponent implements OnInit, OnDestroy {
   private partners = inject(PARTNER_SERVICE);

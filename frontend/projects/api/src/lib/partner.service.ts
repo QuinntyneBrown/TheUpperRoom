@@ -24,6 +24,13 @@ export interface PartnerStageHistoryDto {
   changedAt: string;
 }
 
+export interface PartnerContactDto {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email?: string;
+}
+
 export interface PartnerDetailDto {
   id: string;
   teamId: string;
@@ -34,12 +41,27 @@ export interface PartnerDetailDto {
   description?: string;
   version: number;
   history: PartnerStageHistoryDto[];
+  contacts: PartnerContactDto[];
+}
+
+export interface CreateContactForPartnerRequest {
+  firstName: string;
+  lastName: string;
+  email?: string;
+  phone?: string;
+}
+
+export interface CreateContactForPartnerResponse {
+  contactId: string;
 }
 
 export interface IPartnerService {
   create(req: CreatePartnerRequest): Observable<CreatePartnerResponse>;
   getById(id: string): Observable<PartnerDetailDto>;
   changeStage(id: string, toStage: PartnerStage): Observable<void>;
+  addContact(partnerId: string, contactId: string): Observable<void>;
+  removeContact(partnerId: string, contactId: string): Observable<void>;
+  createAndLinkContact(partnerId: string, req: CreateContactForPartnerRequest): Observable<CreateContactForPartnerResponse>;
 }
 
 export const PARTNER_SERVICE = new InjectionToken<IPartnerService>('PARTNER_SERVICE');
@@ -58,5 +80,17 @@ export class PartnerService implements IPartnerService {
 
   changeStage(id: string, toStage: PartnerStage): Observable<void> {
     return this.http.post<void>(`/api/partners/${id}/stage`, { toStage });
+  }
+
+  addContact(partnerId: string, contactId: string): Observable<void> {
+    return this.http.post<void>(`/api/partners/${partnerId}/contacts`, { contactId });
+  }
+
+  removeContact(partnerId: string, contactId: string): Observable<void> {
+    return this.http.delete<void>(`/api/partners/${partnerId}/contacts/${contactId}`);
+  }
+
+  createAndLinkContact(partnerId: string, req: CreateContactForPartnerRequest): Observable<CreateContactForPartnerResponse> {
+    return this.http.post<CreateContactForPartnerResponse>(`/api/partners/${partnerId}/contacts/new`, req);
   }
 }

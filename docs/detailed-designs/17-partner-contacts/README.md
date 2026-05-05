@@ -1,4 +1,4 @@
-# 17 — Associate Contacts with Partner ✅ Accepted
+# 17 — Associate Contacts with Partner ✅ Complete
 
 **Traces to:** L2-018 (L1-004).
 
