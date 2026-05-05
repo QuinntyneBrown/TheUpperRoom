@@ -1,5 +1,6 @@
 # T18 — Mobile and tablet notifications
 
+**Status**: Accepted
 **Phase**: 3 — Responsive coverage and clipping fixes
 **Area**: Notifications, Responsive
 **Requirements**: L1-008, L1-009, L2-038, L2-039, L2-040
