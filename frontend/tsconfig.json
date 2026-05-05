@@ -5,7 +5,8 @@
   "compilerOptions": {
     "paths": {
       "api": ["./dist/api"],
-      "components": ["./dist/components"]
+      "components": ["./dist/components"],
+      "feature-auth": ["./dist/feature-auth"]
     },
     "strict": true,
     "noImplicitOverride": true,
@@ -44,6 +45,12 @@
     },
     {
       "path": "./projects/app-shell/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/feature-auth/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/feature-auth/tsconfig.spec.json"
     }
   ]
 }

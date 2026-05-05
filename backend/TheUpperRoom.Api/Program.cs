@@ -1,10 +1,14 @@
 using System.Threading.RateLimiting;
+using Microsoft.EntityFrameworkCore;
 using FluentValidation;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.RateLimiting;
 using MediatR;
 using TheUpperRoom.Api.Audit;
+using TheUpperRoom.Api.Domain;
 using TheUpperRoom.Api.Infrastructure;
 using TheUpperRoom.Api.Observability;
+using TheUpperRoom.Api.Services;
 using TheUpperRoom.Api.Validation;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -55,7 +59,18 @@ builder.Services.AddMediatR(cfg =>
     cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 });
 builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddIdentityCore<User>(o =>
+    {
+        o.Password.RequiredLength = 12;
+        o.Password.RequireLowercase = true;
+        o.Password.RequireUppercase = true;
+        o.Password.RequireDigit = true;
+        o.Password.RequireNonAlphanumeric = true;
+    })
+    .AddRoles<IdentityRole<Guid>>()
+    .AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddSingleton<ApiMetrics>();
+builder.Services.AddSingleton<EmailSender>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IAuditLog, AuditLog>();
 builder.Services.AddCors(options =>
@@ -63,6 +78,9 @@ builder.Services.AddCors(options =>
         policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod()));
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+    scope.ServiceProvider.GetRequiredService<AppDbContext>().Database.Migrate();
 
 app.UseMiddleware<CorrelationMiddleware>();
 app.UseMiddleware<ErrorMiddleware>();

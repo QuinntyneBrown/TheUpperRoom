@@ -1,0 +1,53 @@
+@if (submitted()) {
+  <div class="auth-success" role="status">
+    <h2>Check your inbox</h2>
+    <p>A verification email has been sent. Click the link to activate your account.</p>
+    <a routerLink="/auth/sign-in">Go to sign-in</a>
+  </div>
+} @else {
+  <div class="auth-card">
+    <h1>Create account</h1>
+    <form (ngSubmit)="submit()" novalidate>
+      <ur-input
+        label="Display name"
+        type="text"
+        [value]="displayName()"
+        [error]="fieldError('displayName')"
+        autocomplete="name"
+        required
+        (valueChange)="displayName.set($event)"
+      />
+      <ur-input
+        label="Email"
+        type="email"
+        [value]="email()"
+        [error]="fieldError('email')"
+        autocomplete="email"
+        required
+        (valueChange)="email.set($event)"
+      />
+      <ur-input
+        label="Password"
+        type="password"
+        [value]="password()"
+        [error]="fieldError('password')"
+        autocomplete="new-password"
+        required
+        (valueChange)="password.set($event)"
+      />
+      <ur-input
+        label="City"
+        type="text"
+        [value]="city()"
+        [error]="fieldError('city')"
+        autocomplete="address-level2"
+        required
+        (valueChange)="city.set($event)"
+      />
+      <ur-button type="submit" [disabled]="loading()" fullWidth>
+        {{ loading() ? 'Creating account…' : 'Create account' }}
+      </ur-button>
+    </form>
+    <p>Already have an account? <a routerLink="/auth/sign-in">Sign in</a></p>
+  </div>
+}

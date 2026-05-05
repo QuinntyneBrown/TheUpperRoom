@@ -3,7 +3,7 @@
 **Traces to:** L2-001 (L1-001).
 
 ## Status
-Accepted
+Complete
 
 A visitor submits email, password, display name, and city. We create a pending `User` and send a verification email. Clicking the link activates the account and redirects to sign-in.
 

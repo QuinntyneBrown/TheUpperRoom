@@ -8,7 +8,7 @@ const MAILPIT_ENABLED = process.env['MAILPIT'] === 'true';
 test.describe('@smoke', () => {
   test('register form is accessible at /auth/register', async ({ page }) => {
     await page.goto('/auth/register');
-    await expect(page.getByRole('heading', { name: /register|sign up/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /create account/i })).toBeVisible();
   });
 });
 

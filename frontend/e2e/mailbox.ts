@@ -27,6 +27,14 @@ export class Mailbox {
     throw new Error(`No email for ${email} within ${timeoutMs}ms`);
   }
 
+  async waitForVerificationLink(email: string, timeoutMs = 15_000): Promise<string> {
+    const msg = await this.waitForEmail(email, timeoutMs);
+    const text = msg.Text ?? msg.HTML ?? '';
+    const match = text.match(/https?:\/\/\S+\/api\/auth\/verify\?token=\S+/);
+    if (!match) throw new Error(`No verification link found in email to ${email}`);
+    return match[0].replace(/&amp;/g, '&');
+  }
+
   async deleteAll() {
     await fetch(`${BASE}/api/v1/messages`, { method: 'DELETE' });
   }

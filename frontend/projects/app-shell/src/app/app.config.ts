@@ -3,7 +3,8 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { csrfInterceptor } from './services/csrf.interceptor';
 import { errorLoggingInterceptor } from './services/error-logging.interceptor';
-import { HEALTH_SERVICE, HealthService } from 'api';
+import { AUTH_SERVICE, AuthService, HEALTH_SERVICE, HealthService } from 'api';
+import { RegisterPageComponent, VerifyPageComponent } from 'feature-auth';
 import { GlobalErrorHandler } from './global-error-handler';
 import { LayoutTestComponent } from './test/layout-test';
 import { DialogTestComponent } from './test/dialog-test';
@@ -16,8 +17,11 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([csrfInterceptor, errorLoggingInterceptor])),
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     { provide: HEALTH_SERVICE, useClass: HealthService },
+    { provide: AUTH_SERVICE, useClass: AuthService },
     provideRouter([
       { path: 'dashboard', component: DashboardPageComponent },
+      { path: 'auth/register', component: RegisterPageComponent },
+      { path: 'auth/verify', component: VerifyPageComponent },
       { path: 'test/layout', component: LayoutTestComponent },
       { path: 'test/dialog', component: DialogTestComponent },
       { path: 'test/form', component: FormTestComponent },

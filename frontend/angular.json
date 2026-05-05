@@ -129,6 +129,32 @@
           "builder": "@angular/build:unit-test"
         }
       }
+    },
+    "feature-auth": {
+      "projectType": "library",
+      "root": "projects/feature-auth",
+      "sourceRoot": "projects/feature-auth/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/feature-auth/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/feature-auth/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/feature-auth/tsconfig.spec.json"
+          }
+        }
+      }
     }
   }
 }
