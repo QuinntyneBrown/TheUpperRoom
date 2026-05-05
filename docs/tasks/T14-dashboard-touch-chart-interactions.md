@@ -1,6 +1,6 @@
 # T14 — Touch chart interactions
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 2 — Dashboard editor interaction model
 **Area**: Dashboard, Responsive
 **Requirements**: L1-007, L1-009, L2-034, L2-039
@@ -29,6 +29,6 @@ Define how a user inspects, scrubs, and reads chart values on touch devices wher
 
 ## Acceptance criteria
 
-- [ ] Tooltip, scrub, and legend-toggle states are designed for mobile and tablet chart cards.
-- [ ] Touch targets meet hit-target requirements.
-- [ ] No reliance on hover for any meaningful chart interaction.
+- [x] Tooltip, scrub, and legend-toggle states are designed for mobile and tablet chart cards.
+- [x] Touch targets meet hit-target requirements.
+- [x] No reliance on hover for any meaningful chart interaction.
