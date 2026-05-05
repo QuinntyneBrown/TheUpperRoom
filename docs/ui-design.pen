@@ -74500,6 +74500,42 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "k0yfg",
+      "x": 0,
+      "y": 71931,
+      "name": "Desktop / Hackathon Detail - Stage History",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base",
+      "layout": "vertical"
+    },
+    {
+      "type": "frame",
+      "id": "ctubz",
+      "x": 1540,
+      "y": 71931,
+      "name": "Desktop / Hackathon Detail - Stage History Empty",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base",
+      "layout": "vertical"
+    },
+    {
+      "type": "frame",
+      "id": "MHWDy",
+      "x": 3080,
+      "y": 71931,
+      "name": "Mobile / Hackathon Detail - Stage History",
+      "clip": true,
+      "width": 375,
+      "height": 812,
+      "fill": "$bg-base",
+      "layout": "vertical"
     }
   ],
   "variables": {
