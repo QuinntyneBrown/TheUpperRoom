@@ -56,6 +56,9 @@
 
     <div class="contact-detail__body">
       <section class="contact-detail__summary">
+        <div class="contact-detail__avatar" aria-hidden="true" data-testid="contact-avatar">
+          {{ contact()!.firstName[0] }}{{ contact()!.lastName[0] }}
+        </div>
         <h2 class="contact-detail__name" data-testid="contact-summary-name">{{ contact()!.firstName }} {{ contact()!.lastName }}</h2>
         @if (contact()!.email) {
           <div class="contact-detail__meta-row" data-testid="contact-meta-email">
