@@ -33,6 +33,21 @@ export default [
     },
   },
   {
+    files: ['projects/**/*.ts'],
+    languageOptions: {
+      parser: tsParser,
+    },
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: "CallExpression[callee.property.name=/^bypassSecurityTrust/]",
+          message: 'DomSanitizer.bypassSecurityTrust*() is forbidden — use Angular\'s default safe bindings.',
+        },
+      ],
+    },
+  },
+  {
     files: ['projects/app-shell/**/*.ts', 'projects/api/**/*.ts'],
     languageOptions: {
       parser: tsParser,
