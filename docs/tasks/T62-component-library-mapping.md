@@ -1,5 +1,6 @@
 # T62 — Map design components to Angular Material wrappers
 
+**Status**: Accepted
 **Phase**: 10 — Component mapping and acceptance traceability
 **Area**: Architecture, Design system
 **Requirements**: L1-016, L2-060
