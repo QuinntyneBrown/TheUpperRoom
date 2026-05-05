@@ -5,7 +5,7 @@
 Vertical slice: dashboard-specific grid column counts and widget sizing constraints, separated from the general shell.
 
 ## Status
-Accepted
+Complete
 
 ## Design update (2026-05-05)
 Angular Gridster2 is not compatible with Angular 21. Implemented using CSS Grid + `BreakpointObserver` directly in app-shell. The radical simplicity note "No responsive grid framework" is taken literally — CSS Grid with a 4-entry column-count switch.
