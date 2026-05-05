@@ -1,5 +1,6 @@
 # T28 — Contact validation states
 
+**Status**: Accepted
 **Phase**: 4 — Contact lifecycle
 **Area**: Contacts
 **Requirements**: L1-003, L2-009, L2-011, L2-051
