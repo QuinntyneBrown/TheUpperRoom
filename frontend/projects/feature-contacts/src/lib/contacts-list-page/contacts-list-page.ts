@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 import { debounceTime, distinctUntilChanged, filter, Subject, switchMap, of } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CONTACT_SERVICE, ContactListRow, ContactListResult, ContactSearchResult, REALTIME_SERVICE } from 'api';
@@ -12,7 +13,7 @@ type SortDir = 'asc' | 'desc';
   selector: 'ur-contacts-list-page',
   templateUrl: './contacts-list-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, UrSearchComponent, HighlightPipe],
+  imports: [RouterLink, MatIconModule, UrSearchComponent, HighlightPipe],
 })
 export class ContactsListPageComponent implements OnInit {
   private contacts = inject(CONTACT_SERVICE);

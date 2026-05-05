@@ -30,7 +30,9 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
         }
       </mat-chip-listbox>
       <div class="partner-list-page__list">
-        @if (filtered().length === 0) {
+        @if (loading()) {
+          <p role="status">Loading…</p>
+        } @else if (filtered().length === 0) {
           <p>No partners found.</p>
         }
         @for (row of filtered(); track row.id) {
@@ -51,6 +53,7 @@ export class PartnerListPageComponent {
 
   readonly stages = ALL_STAGES;
   private allRows = signal<PartnerListRow[]>([]);
+  loading = signal(true);
 
   activeStages = signal<PartnerStage[]>([]);
 
@@ -64,7 +67,7 @@ export class PartnerListPageComponent {
     this.route.queryParamMap.subscribe(params => {
       this.activeStages.set(parseStages(params.get('stage')));
     });
-    this.partnerSvc.list().subscribe(rows => this.allRows.set(rows));
+    this.partnerSvc.list().subscribe({ next: rows => { this.allRows.set(rows); this.loading.set(false); }, error: () => this.loading.set(false) });
   }
 
   toggle(stage: PartnerStage): void {

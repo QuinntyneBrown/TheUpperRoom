@@ -39,7 +39,7 @@
             <td>{{ m.isActive ? 'Active' : 'Inactive' }}</td>
             @if (canEdit()) {
               <td>
-                <button class="team-table__remove-btn" (click)="removingMember.set(m)" aria-label="Remove member">Remove</button>
+                <ur-button variant="ghost" (click)="removingMember.set(m)" aria-label="Remove member">Remove</ur-button>
               </td>
             }
           </tr>
@@ -60,7 +60,7 @@
           <p class="team-card__email">{{ m.email }}</p>
           <span class="team-card__status">{{ m.isActive ? 'Active' : 'Inactive' }}</span>
           @if (canEdit()) {
-            <button class="team-card__remove-btn" (click)="removingMember.set(m)" aria-label="Remove member">Remove</button>
+            <ur-button variant="ghost" (click)="removingMember.set(m)" aria-label="Remove member">Remove</ur-button>
           }
         </div>
       }

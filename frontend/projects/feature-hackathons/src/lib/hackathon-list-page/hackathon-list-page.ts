@@ -13,7 +13,9 @@ import { MatButtonModule } from '@angular/material/button';
         <h1>Hackathons</h1>
         <a mat-raised-button routerLink="/hackathons/new">New Hackathon</a>
       </div>
-      @if (rows().length === 0) {
+      @if (loading()) {
+        <p role="status">Loading…</p>
+      } @else if (rows().length === 0) {
         <p>No hackathons yet.</p>
       }
       @for (row of rows(); track row.id) {
@@ -31,8 +33,9 @@ import { MatButtonModule } from '@angular/material/button';
 export class HackathonListPageComponent {
   private hackathonSvc = inject(HACKATHON_SERVICE);
   rows = signal<HackathonListRow[]>([]);
+  loading = signal(true);
 
   constructor() {
-    this.hackathonSvc.list().subscribe(rows => this.rows.set(rows));
+    this.hackathonSvc.list().subscribe({ next: rows => { this.rows.set(rows); this.loading.set(false); }, error: () => this.loading.set(false) });
   }
 }

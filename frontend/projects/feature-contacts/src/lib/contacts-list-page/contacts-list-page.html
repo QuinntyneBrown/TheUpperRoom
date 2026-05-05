@@ -53,14 +53,14 @@
               <button (click)="toggleSort('firstName')" class="sort-btn"
                 [attr.aria-label]="'Sort by first name ' + (sortField() === 'firstName' ? sortDir() : 'asc')">
                 First name
-                @if (sortField() === 'firstName') { <span>{{ sortDir() === 'asc' ? '↑' : '↓' }}</span> }
+                @if (sortField() === 'firstName') { <mat-icon class="sort-icon">{{ sortDir() === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon> }
               </button>
             </th>
             <th>
               <button (click)="toggleSort('lastName')" class="sort-btn"
                 [attr.aria-label]="'Sort by last name ' + (sortField() === 'lastName' ? sortDir() : 'asc')">
                 Last name
-                @if (sortField() === 'lastName') { <span>{{ sortDir() === 'asc' ? '↑' : '↓' }}</span> }
+                @if (sortField() === 'lastName') { <mat-icon class="sort-icon">{{ sortDir() === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon> }
               </button>
             </th>
             <th>Email</th>
