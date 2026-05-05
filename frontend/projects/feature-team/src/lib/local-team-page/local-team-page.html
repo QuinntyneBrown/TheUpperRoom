@@ -83,15 +83,22 @@
   }
 
   @if (removingMember()) {
-    <ur-dialog title="Remove member" closeLabel="Cancel" (closed)="removingMember.set(null)">
+    <ur-dialog title="Remove member" closeLabel="Cancel" (closed)="removingMember.set(null)" data-testid="remove-member-dialog">
       <p>Remove {{ removingMember()!.displayName }} from the team? This cannot be undone.</p>
       <div class="dialog-actions">
         <ur-button variant="ghost" (click)="removingMember.set(null)">Cancel</ur-button>
-        <ur-button variant="danger" (click)="confirmRemove()">Confirm remove</ur-button>
+        <ur-button variant="danger" (click)="confirmRemove()" data-testid="confirm-remove-btn">Confirm remove</ur-button>
       </div>
     </ur-dialog>
   }
 </div>
+
+@if (removeSuccess()) {
+  <div class="team-success-toast" role="status" data-testid="remove-member-success-toast">
+    <mat-icon>check_circle</mat-icon>
+    <span>Member removed</span>
+  </div>
+}
 
 @if (removeError()) {
   <div class="team-error-toast" data-testid="remove-member-error-toast" role="alert">

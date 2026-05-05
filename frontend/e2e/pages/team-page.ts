@@ -47,7 +47,11 @@ export class TeamPage {
   async remove(email: string) {
     const row = await this.memberRowByEmail(email);
     await row.getByRole('button', { name: /remove/i }).click();
-    await this.page.getByRole('button', { name: /confirm remove/i }).click();
+    await this.page.getByTestId('confirm-remove-btn').click();
     await expect(this.page.getByRole('row').filter({ hasText: email })).not.toBeVisible();
+  }
+
+  removeSuccessToast() {
+    return this.page.getByTestId('remove-member-success-toast');
   }
 }

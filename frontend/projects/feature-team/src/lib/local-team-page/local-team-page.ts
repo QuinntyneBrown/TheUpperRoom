@@ -18,13 +18,16 @@ import { RoleChipEditorComponent } from '../role-chip-editor/role-chip-editor';
       border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
     }
     .team-load-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
-    .team-error-toast {
+    .team-error-toast, .team-success-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
       gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
       background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
-      border: 1px solid var(--ur-error-fg, #dc2626); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
+    .team-error-toast { border: 1px solid var(--ur-error-fg, #dc2626); }
     .team-error-toast mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
+    .team-success-toast { border: 1px solid var(--ur-success, #22c55e); }
+    .team-success-toast mat-icon { color: var(--ur-success, #22c55e); font-size: 18px; width: 18px; height: 18px; }
     .team-loading { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
     .team-loading__row { height: 48px; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: team-pulse 1.4s ease-in-out infinite; }
     @keyframes team-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
@@ -44,11 +47,13 @@ export class LocalTeamPageComponent implements OnInit, OnDestroy {
   loading = signal(true);
   loadError = signal(false);
   removeError = signal(false);
+  removeSuccess = signal(false);
   showInvite = signal(false);
   removingMember = signal<TeamMemberDto | null>(null);
   currentRoles = signal<string[]>([]);
 
   private removeErrorTimer?: ReturnType<typeof setTimeout>;
+  private removeSuccessTimer?: ReturnType<typeof setTimeout>;
 
   canEdit = computed(() =>
     this.currentRoles().includes('Admin') || this.currentRoles().includes('CityLead')
@@ -64,6 +69,7 @@ export class LocalTeamPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     clearTimeout(this.removeErrorTimer);
+    clearTimeout(this.removeSuccessTimer);
   }
 
   loadTeam(): void {
@@ -86,6 +92,9 @@ export class LocalTeamPageComponent implements OnInit, OnDestroy {
     this.team.removeMember(m.id).subscribe({
       next: () => {
         this.removingMember.set(null);
+        clearTimeout(this.removeSuccessTimer);
+        this.removeSuccess.set(true);
+        this.removeSuccessTimer = setTimeout(() => this.removeSuccess.set(false), 3000);
         this.loadTeam();
       },
       error: () => {
