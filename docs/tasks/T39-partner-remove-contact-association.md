@@ -1,6 +1,6 @@
 # T39 — Remove contact association
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 5 — Partner and hackathon management
 **Area**: Partner, Contacts
 **Requirements**: L1-004, L2-018
@@ -19,6 +19,6 @@ Allow the user to detach a contact from a partner without deleting the contact.
 
 ## Acceptance criteria
 
-- [ ] Row action and confirmation dialog designed.
-- [ ] Copy distinguishes "remove association" from "delete contact".
-- [ ] Mobile variant per T21.
+- [x] Row action and confirmation dialog designed.
+- [x] Copy distinguishes "remove association" from "delete contact".
+- [x] Mobile variant per T21.
