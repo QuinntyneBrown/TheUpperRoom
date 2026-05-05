@@ -15,7 +15,14 @@ import { MatIconModule } from '@angular/material/icon';
         <a mat-raised-button routerLink="/hackathons/new">New Hackathon</a>
       </div>
       @if (loading()) {
-        <p role="status">Loading…</p>
+        <div class="hackathon-list-loading" data-testid="hackathons-list-loading" aria-busy="true" aria-label="Loading hackathons">
+          @for (_ of [1,2,3]; track $index) {
+            <div class="hackathon-list-loading__card">
+              <div class="hackathon-list-loading__title"></div>
+              <div class="hackathon-list-loading__meta"></div>
+            </div>
+          }
+        </div>
       } @else if (loadError()) {
         <div class="hackathon-list-error" data-testid="hackathons-error" role="alert">
           <mat-icon>error_outline</mat-icon>
@@ -46,6 +53,11 @@ import { MatIconModule } from '@angular/material/icon';
       border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
     }
     .hackathon-list-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
+    .hackathon-list-loading { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+    .hackathon-list-loading__card { padding: 16px; border-radius: 8px; border: 1px solid var(--ur-border-subtle, #e2e8f0); display: flex; flex-direction: column; gap: 8px; }
+    .hackathon-list-loading__title { height: 18px; width: 55%; border-radius: 4px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hl-pulse 1.4s ease-in-out infinite; }
+    .hackathon-list-loading__meta { height: 13px; width: 70%; border-radius: 4px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hl-pulse 1.4s ease-in-out infinite; }
+    @keyframes hl-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
     .hackathon-list-page__empty {
       display: flex; flex-direction: column; align-items: center; gap: 12px;
       padding: 48px 24px; text-align: center; color: var(--ur-fg-muted, #64748b);

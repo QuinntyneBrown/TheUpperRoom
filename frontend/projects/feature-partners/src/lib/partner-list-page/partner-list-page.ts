@@ -32,7 +32,14 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
       </mat-chip-listbox>
       <div class="partner-list-page__list">
         @if (loading()) {
-          <p role="status">Loading…</p>
+          <div class="partner-list-loading" data-testid="partners-list-loading" aria-busy="true" aria-label="Loading partners">
+            @for (_ of [1,2,3,4]; track $index) {
+              <div class="partner-list-loading__card">
+                <div class="partner-list-loading__name"></div>
+                <div class="partner-list-loading__meta"></div>
+              </div>
+            }
+          </div>
         } @else if (loadError()) {
           <div class="partner-load-error" data-testid="partners-load-error" role="alert">
             <mat-icon>error_outline</mat-icon>
@@ -68,6 +75,11 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
       border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
     }
     .partner-load-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
+    .partner-list-loading { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+    .partner-list-loading__card { padding: 14px 16px; border-radius: 8px; border: 1px solid var(--ur-border-subtle, #e2e8f0); display: flex; flex-direction: column; gap: 8px; }
+    .partner-list-loading__name { height: 16px; width: 45%; border-radius: 4px; background: var(--ur-skeleton-bg, #f1f5f9); animation: pl-pulse 1.4s ease-in-out infinite; }
+    .partner-list-loading__meta { height: 12px; width: 30%; border-radius: 4px; background: var(--ur-skeleton-bg, #f1f5f9); animation: pl-pulse 1.4s ease-in-out infinite; }
+    @keyframes pl-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
     .partner-list-page__empty {
       display: flex; flex-direction: column; align-items: center; gap: 12px;
       padding: 48px 24px; text-align: center; color: var(--ur-fg-muted, #64748b);
