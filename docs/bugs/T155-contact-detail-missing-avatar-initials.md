@@ -1,6 +1,6 @@
 # T155 — Contact detail profile card missing avatar/initials circle
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 
