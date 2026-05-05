@@ -147,6 +147,7 @@
         <ur-partner-contacts-panel
           [partnerId]="p.id"
           [initialContacts]="p.contacts"
+          (contactLinked)="onContactLinked($event)"
         />
 
         <ur-notes-panel
@@ -160,4 +161,26 @@
   </div>
 } @else {
   <div class="loading" role="status">Loading…</div>
+}
+
+@if (stageToast()) {
+  <div class="partner-toast" role="status" data-testid="stage-success-toast">
+    <mat-icon>check_circle</mat-icon>
+    <span>Stage updated</span>
+  </div>
+}
+
+@if (linkedToast()) {
+  <div class="partner-toast" role="status" data-testid="linked-toast">
+    <mat-icon>link</mat-icon>
+    <span>Contact created &amp; linked</span>
+    <a [routerLink]="['/contacts', linkedContactId()]" mat-button>Open</a>
+  </div>
+}
+
+@if (savedToast()) {
+  <div class="partner-toast" role="status" data-testid="partner-saved-toast">
+    <mat-icon>check_circle</mat-icon>
+    <span>Partner saved</span>
+  </div>
 }

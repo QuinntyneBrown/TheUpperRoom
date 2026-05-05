@@ -20,6 +20,16 @@ const STAGES: { value: PartnerStage; label: string }[] = [
   templateUrl: './partner-detail-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule, UrButtonComponent, UrDialogComponent, NotesPanelComponent, PartnerContactsPanelComponent],
+  styles: [`
+    .partner-toast {
+      position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
+      gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
+      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
+      border: 1px solid var(--ur-success, #22c55e);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .partner-toast mat-icon { color: var(--ur-success, #22c55e); font-size: 18px; width: 18px; height: 18px; }
+  `],
 })
 export class PartnerDetailPageComponent implements OnInit, OnDestroy {
   private partners = inject(PARTNER_SERVICE);
@@ -35,6 +45,15 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
   showDeleteDialog = signal(false);
   deleting = signal(false);
   stages = STAGES;
+
+  stageToast = signal(false);
+  linkedToast = signal(false);
+  linkedContactId = signal<string | null>(null);
+  savedToast = signal(false);
+
+  private stageToastTimer?: ReturnType<typeof setTimeout>;
+  private linkedToastTimer?: ReturnType<typeof setTimeout>;
+  private savedToastTimer?: ReturnType<typeof setTimeout>;
 
   stageIndex = computed(() => {
     const p = this.partner();
@@ -55,6 +74,12 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
       error: () => this.notFound.set(true),
     });
     this.auth.me().subscribe({ next: (u) => this.currentUserId.set(u.id) });
+
+    if (this.route.snapshot.queryParamMap.get('saved') === '1') {
+      this.savedToast.set(true);
+      this.savedToastTimer = setTimeout(() => this.savedToast.set(false), 3000);
+      this.router.navigate([], { replaceUrl: true, relativeTo: this.route, queryParams: {} });
+    }
 
     this.realtime.connect().catch(() => {});
     this.sub = this.realtime.events$.subscribe((event) => {
@@ -93,8 +118,18 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
           ],
         } : current);
         this.changingStage.set(false);
+        clearTimeout(this.stageToastTimer);
+        this.stageToast.set(true);
+        this.stageToastTimer = setTimeout(() => this.stageToast.set(false), 3000);
       },
       error: () => this.changingStage.set(false),
     });
+  }
+
+  onContactLinked(contactId: string): void {
+    clearTimeout(this.linkedToastTimer);
+    this.linkedContactId.set(contactId);
+    this.linkedToast.set(true);
+    this.linkedToastTimer = setTimeout(() => this.linkedToast.set(false), 4000);
   }
 }

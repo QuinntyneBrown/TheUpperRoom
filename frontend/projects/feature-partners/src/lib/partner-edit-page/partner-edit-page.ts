@@ -59,7 +59,7 @@ export class PartnerEditPageComponent implements OnInit {
       description: this.description().trim() || undefined,
       version: p.version,
     }).subscribe({
-      next: () => this.router.navigate(['/partners', p.id]),
+      next: () => this.router.navigate(['/partners', p.id], { queryParams: { saved: '1' } }),
       error: (err: { status: number }) => {
         this.saving.set(false);
         if (err.status === 409) this.conflict.set(true);

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, input, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, OnInit, output, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { PARTNER_SERVICE, PartnerContactDto, CreateContactForPartnerRequest } from 'api';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,6 +16,8 @@ export class PartnerContactsPanelComponent implements OnInit {
 
   partnerId = input.required<string>();
   initialContacts = input<PartnerContactDto[]>([]);
+
+  contactLinked = output<string>();
 
   contacts = signal<PartnerContactDto[]>([]);
   showNewForm = signal(false);
@@ -58,6 +60,7 @@ export class PartnerContactsPanelComponent implements OnInit {
         }]);
         this.showNewForm.set(false);
         this.saving.set(false);
+        this.contactLinked.emit(res.contactId);
       },
       error: () => this.saving.set(false),
     });
