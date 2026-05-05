@@ -66,7 +66,9 @@ builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme)
 builder.Services.ConfigureApplicationCookie(o =>
 {
     o.Cookie.HttpOnly = true;
-    o.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    o.Cookie.SecurePolicy = builder.Environment.IsDevelopment()
+        ? CookieSecurePolicy.SameAsRequest
+        : CookieSecurePolicy.Always;
     o.Cookie.SameSite = SameSiteMode.Lax;
     o.ExpireTimeSpan = TimeSpan.FromMinutes(30);
     o.SlidingExpiration = true;
@@ -115,8 +117,11 @@ app.UseMiddleware<ErrorMiddleware>();
 app.UseMiddleware<RequestLoggingMiddleware>();
 app.UseRateLimiter();
 app.UseCors();
-app.UseHsts();
-app.UseHttpsRedirection();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHsts();
+    app.UseHttpsRedirection();
+}
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
