@@ -28,6 +28,7 @@ const STAGES: { value: HackathonStage; label: string }[] = [
       background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
+    .hackathon-toast mat-icon { font-size: 18px; width: 18px; height: 18px; color: var(--ur-success-fg, #16a34a); }
     .hackathon-toast--error { border: 1px solid var(--ur-error-fg, #dc2626); }
     .hackathon-toast--error mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
     .hackathon-detail-loading { display: flex; flex-direction: column; gap: 16px; padding: 24px 0; }
@@ -51,10 +52,12 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
   deleting = signal(false);
   deleteError = signal(false);
   changeStageError = signal(false);
+  stageToast = signal(false);
   stages = STAGES;
 
   private deleteErrorTimer?: ReturnType<typeof setTimeout>;
   private changeStageErrorTimer?: ReturnType<typeof setTimeout>;
+  private stageToastTimer?: ReturnType<typeof setTimeout>;
 
   stageIndex = computed(() => {
     const h = this.hackathon();
@@ -83,6 +86,7 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
     this.sub?.unsubscribe();
     clearTimeout(this.deleteErrorTimer);
     clearTimeout(this.changeStageErrorTimer);
+    clearTimeout(this.stageToastTimer);
   }
 
   confirmDelete(): void {
@@ -116,6 +120,9 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
           ],
         } : current);
         this.changingStage.set(false);
+        clearTimeout(this.stageToastTimer);
+        this.stageToast.set(true);
+        this.stageToastTimer = setTimeout(() => this.stageToast.set(false), 3000);
       },
       error: () => {
         this.changingStage.set(false);
