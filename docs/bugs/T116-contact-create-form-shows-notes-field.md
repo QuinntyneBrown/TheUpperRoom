@@ -1,6 +1,6 @@
 # T116 — Contact Create form shows Notes field not in design
 
-**Status**: Open
+**Status**: Fixed
 
 ## Description
 

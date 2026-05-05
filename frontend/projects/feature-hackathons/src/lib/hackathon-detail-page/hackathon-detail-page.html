@@ -12,7 +12,7 @@
       <div>
         <a routerLink="/hackathons" class="hackathon-detail__back"><mat-icon class="hackathon-detail__back-icon" aria-hidden="true">arrow_back</mat-icon> Hackathons</a>
         <h1 class="hackathon-detail__title" data-testid="hackathon-title">{{ h.title }}</h1>
-        <p class="hackathon-detail__meta">{{ h.hostCity }} · {{ h.startDate | date:'mediumDate' }} – {{ h.endDate | date:'mediumDate' }}</p>
+        <p class="hackathon-detail__meta">FaithTech 4 D's process · {{ h.hostCity }} · {{ h.startDate | date:'mediumDate' }} – {{ h.endDate | date:'mediumDate' }}</p>
       </div>
       <div class="hackathon-detail__header-actions">
         <a mat-stroked-button [routerLink]="['/hackathons', h.id, 'edit']" data-testid="hackathon-edit-link">Edit</a>
