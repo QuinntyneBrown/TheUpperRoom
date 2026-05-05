@@ -53,11 +53,13 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
   deleteError = signal(false);
   changeStageError = signal(false);
   stageToast = signal(false);
+  savedToast = signal(false);
   stages = STAGES;
 
   private deleteErrorTimer?: ReturnType<typeof setTimeout>;
   private changeStageErrorTimer?: ReturnType<typeof setTimeout>;
   private stageToastTimer?: ReturnType<typeof setTimeout>;
+  private savedToastTimer?: ReturnType<typeof setTimeout>;
 
   stageIndex = computed(() => {
     const h = this.hackathon();
@@ -74,6 +76,12 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
       error: () => { this.notFound.set(true); this.loading.set(false); },
     });
 
+    if (this.route.snapshot.queryParamMap.get('saved') === '1') {
+      this.savedToast.set(true);
+      this.savedToastTimer = setTimeout(() => this.savedToast.set(false), 3000);
+      this.router.navigate([], { replaceUrl: true, relativeTo: this.route, queryParams: {} });
+    }
+
     this.realtime.connect().catch(() => {});
     this.sub = this.realtime.events$.subscribe((event) => {
       if (event['eventType'] === 'hackathonStageChanged' && event['hackathonId'] === id) {
@@ -87,6 +95,7 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
     clearTimeout(this.deleteErrorTimer);
     clearTimeout(this.changeStageErrorTimer);
     clearTimeout(this.stageToastTimer);
+    clearTimeout(this.savedToastTimer);
   }
 
   confirmDelete(): void {

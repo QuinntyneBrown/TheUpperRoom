@@ -71,7 +71,7 @@ export class PartnerCreatePageComponent implements OnDestroy {
       stage: this.stage(),
       description: this.description().trim() || undefined,
     }).subscribe({
-      next: (res) => this.router.navigate(['/partners', res.id]),
+      next: (res) => this.router.navigate(['/partners', res.id], { queryParams: { saved: '1' } }),
       error: () => {
         this.saving.set(false);
         clearTimeout(this.saveErrorTimer);

@@ -73,4 +73,12 @@ export class HackathonsPage {
   hackathonCard(name: string) {
     return this.page.getByTestId(`hackathon-card-${name}`);
   }
+
+  savedToast() {
+    return this.page.getByTestId('hackathon-saved-toast');
+  }
+
+  deletedToast() {
+    return this.page.getByTestId('hackathon-deleted-toast');
+  }
 }

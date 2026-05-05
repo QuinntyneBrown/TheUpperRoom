@@ -40,7 +40,7 @@ export class ContactCreatePageComponent implements OnDestroy {
     this.contacts.create(value).subscribe({
       next: ({ id }) => {
         this.loading.set(false);
-        this.router.navigateByUrl(`/contacts/${id}`);
+        this.router.navigate(['/contacts', id], { queryParams: { saved: '1' } });
       },
       error: (err: { status: number; error?: { fields?: Record<string, string[]> } }) => {
         this.loading.set(false);

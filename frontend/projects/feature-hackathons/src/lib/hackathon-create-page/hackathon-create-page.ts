@@ -74,7 +74,7 @@ export class HackathonCreatePageComponent implements OnInit, OnDestroy {
       hostCity: this.hostCity().trim(),
       partnerIds: [...this.selectedPartnerIds()],
     }).subscribe({
-      next: (res) => this.router.navigate(['/hackathons', res.id]),
+      next: (res) => this.router.navigate(['/hackathons', res.id], { queryParams: { saved: '1' } }),
       error: () => {
         this.saving.set(false);
         clearTimeout(this.saveErrorTimer);
