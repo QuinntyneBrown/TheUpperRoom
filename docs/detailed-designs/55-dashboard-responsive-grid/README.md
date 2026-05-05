@@ -4,21 +4,27 @@
 
 Vertical slice: dashboard-specific grid column counts and widget sizing constraints, separated from the general shell.
 
+## Status
+Accepted
+
+## Design update (2026-05-05)
+Angular Gridster2 is not compatible with Angular 21. Implemented using CSS Grid + `BreakpointObserver` directly in app-shell. The radical simplicity note "No responsive grid framework" is taken literally — CSS Grid with a 4-entry column-count switch.
+
 ## Components
 
-- Frontend `feature-dashboard/dashboard-page` configures `<gridster>` with `gridType: 'fit'` and column counts driven by `viewport$`:
-  - `xs`: 1 column.
-  - `sm`: 2 columns.
-  - `md`: 6 columns.
-  - `lg+`: 12 columns.
-- Each catalog widget declares `minCols`, `minRows`, `maxCols`, `maxRows`. Widgets exceeding the current viewport's column count are clamped to that count.
+- `app-shell/src/app/dashboard/dashboard-page.ts` — a `DashboardPageComponent` that:
+  - Uses `BreakpointObserver` (same pattern as the shell) for four breakpoints: xs/sm/md/lg+.
+  - Computes `cols` signal: xs=1, sm=2, md=6, lg+=12.
+  - Renders a grid container with `[attr.data-cols]="cols()"` for testability.
+  - CSS Grid layout with `repeat(var(--ur-dashboard-cols), 1fr)`.
+- Widget slots are `<ng-content>` projected items.
 
 ## Acceptance tests
 
-- L2-041: at `1280x800`, the gridster reports `12` columns; resizing a widget can span up to 12.
-- L2-033 mobile: at `375x667`, all widgets render in a single column stacked vertically; resize is disabled.
+- L2-041: at `1280x800`, `[data-cols="12"]` is visible.
+- L2-033 mobile: at `375x667`, `[data-cols="1"]` is visible.
 
 ## Radical simplicity notes
 
 - Column counts are a four-entry switch. No responsive grid framework.
-- Resize is automatically disabled on `xs` because `cols=1` and `maxCols=1` collapse the grip.
+- `data-cols` attribute makes column count directly testable without CSS inspection.
