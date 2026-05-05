@@ -1,6 +1,6 @@
 # T26 — Contact concurrency conflict state
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 4 — Contact lifecycle
 **Area**: Contacts
 **Requirements**: L1-003, L2-011
@@ -19,6 +19,6 @@ Show what the user sees when their contact edit collides with a concurrent edit 
 
 ## Acceptance criteria
 
-- [ ] Conflict resolution UI exists for the contact edit form.
-- [ ] Diff is readable on the dark theme with AA contrast.
-- [ ] Mobile variant per T16/T21.
+- [x] Conflict resolution UI exists for the contact edit form.
+- [x] Diff is readable on the dark theme with AA contrast.
+- [x] Mobile variant per T16/T21.
