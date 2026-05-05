@@ -1,5 +1,6 @@
 # T37 — Associate existing contact with partner
 
+**Status**: Accepted
 **Phase**: 5 — Partner and hackathon management
 **Area**: Partner, Contacts
 **Requirements**: L1-004, L2-018
