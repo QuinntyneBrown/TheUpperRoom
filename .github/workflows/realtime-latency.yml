@@ -1,0 +1,34 @@
+name: Realtime Latency Budget
+
+on:
+  pull_request:
+    paths:
+      - 'backend/TheUpperRoom.Api/Realtime/**'
+      - 'frontend/projects/api/src/lib/realtime.service.ts'
+  schedule:
+    - cron: '0 2 * * *'  # nightly at 02:00 UTC
+
+jobs:
+  latency:
+    runs-on: ubuntu-latest
+    env:
+      REALTIME_LATENCY: 'true'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.x'
+
+      - name: Run latency harness
+        working-directory: backend
+        run: dotnet test TheUpperRoom.Api.Tests --filter "FullyQualifiedName~RealtimeLatencyTests" -q
+
+      - name: Upload latency artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: realtime-latency-${{ github.run_number }}
+          path: realtime-latency.json
+          if-no-files-found: warn
