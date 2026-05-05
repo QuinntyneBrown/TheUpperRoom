@@ -1,6 +1,6 @@
 # T05 — Sign-in invalid/unverified/locked/loading states
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 1 — Authentication and session edge states
 **Area**: Authentication
 **Requirements**: L1-001, L2-002, L2-055
@@ -20,7 +20,7 @@ Add the missing sign-in failure and progress states so the form covers every rea
 
 ## Acceptance criteria
 
-- [ ] Each state appears as a variant of `Desktop / Sign In` and `Mobile / Sign In`.
-- [ ] No state reveals whether the email exists.
-- [ ] Lockout state references rate-limit policy without leaking exact thresholds.
-- [ ] AA contrast verified across all states.
+- [x] Each state appears as a variant of `Desktop / Sign In` and `Mobile / Sign In`.
+- [x] No state reveals whether the email exists.
+- [x] Lockout state references rate-limit policy without leaking exact thresholds.
+- [x] AA contrast verified across all states.
