@@ -13,6 +13,7 @@ import { DeletedContactsPageComponent, DeletedHackathonsPageComponent } from 'fe
 import { PartnerCreatePageComponent, PartnerDetailPageComponent, PartnerEditPageComponent, PartnerListPageComponent, PartnersBoardPageComponent } from 'feature-partners';
 import { NoAccessPageComponent, RecoverPageComponent, RegisterPageComponent, ResetPageComponent, SignInPageComponent, VerifyPageComponent } from 'feature-auth';
 import { GlobalErrorHandler } from './global-error-handler';
+import { PlaceholderPageComponent } from './placeholder-page';
 import { LayoutTestComponent } from './test/layout-test';
 import { DialogTestComponent } from './test/dialog-test';
 import { FormTestComponent } from './test/form-test';
@@ -59,6 +60,9 @@ export const appConfig: ApplicationConfig = {
       { path: 'auth/reset', component: ResetPageComponent },
       { path: 'auth/sign-in', component: SignInPageComponent },
       { path: 'auth/verify', component: VerifyPageComponent },
+      { path: 'prayer', component: PlaceholderPageComponent },
+      { path: 'reports', component: PlaceholderPageComponent },
+      { path: 'settings', component: PlaceholderPageComponent },
       { path: 'test/layout', component: LayoutTestComponent },
       { path: 'test/dialog', component: DialogTestComponent },
       { path: 'test/form', component: FormTestComponent },

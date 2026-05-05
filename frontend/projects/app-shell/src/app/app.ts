@@ -22,17 +22,17 @@ import { NotificationCenterComponent } from 'feature-notifications';
 import { GlobalSearchOverlayComponent } from 'feature-search';
 
 const WORKSPACE_ITEMS = [
-  { icon: 'dashboard', label: 'Dashboard', route: '/dashboard' },
+  { icon: 'home', label: 'Dashboard', route: '/dashboard' },
   { icon: 'handshake', label: 'Partners', route: '/partners' },
   { icon: 'contacts', label: 'Contacts', route: '/contacts' },
   { icon: 'rocket_launch', label: 'Hackathons', route: '/hackathons' },
-  { icon: 'group', label: 'Team', route: '/team' },
-  { icon: 'church', label: 'Prayer', route: '/prayer' },
+  { icon: 'diversity_3', label: 'Team', route: '/team' },
+  { icon: 'volunteer_activism', label: 'Prayer', route: '/prayer' },
 ];
 
 const GLOBAL_ITEMS = [
-  { icon: 'location_city', label: 'Cities', route: '/cities' },
-  { icon: 'bar_chart', label: 'Reports', route: '/reports' },
+  { icon: 'public', label: 'Cities', route: '/teams' },
+  { icon: 'insights', label: 'Reports', route: '/reports' },
   { icon: 'settings', label: 'Settings', route: '/settings' },
 ];
 

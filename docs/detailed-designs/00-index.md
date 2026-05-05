@@ -4,47 +4,47 @@ Each design below is a small vertical slice intended to be implemented end-to-en
 
 | # | Slice | L2 traces | Status |
 |---|-------|-----------|--------|
-| 00 | [Architecture overview](00-architecture/README.md) | shared baseline | Draft |
+| 00 | [Architecture overview](00-architecture/README.md) | shared baseline | Reference |
 | 01 | [Project skeleton & health check](01-project-skeleton/README.md) | bootstraps everything | Complete |
 | 02 | [User registration](02-user-registration/README.md) | L2-001 | Complete |
 | 03 | [User sign-in](03-user-signin/README.md) | L2-002 | Complete |
 | 04 | [Password recovery](04-password-recovery/README.md) | L2-003 | Complete |
 | 05 | [Session management](05-session-management/README.md) | L2-004 | Complete |
 | 06 | [User sign-out](06-user-signout/README.md) | L2-005 | Complete |
-| 07 | [RBAC: roles, endpoint authz, team isolation](07-rbac-authorization/README.md) | L2-006, L2-007, L2-008 | Accepted |
-| 08 | [Create contact](08-create-contact/README.md) | L2-009 | Draft |
-| 09 | [View contact](09-view-contact/README.md) | L2-010 | Draft |
-| 10 | [Update contact](10-update-contact/README.md) | L2-011 | Draft |
-| 11 | [Delete contact (soft delete)](11-delete-contact/README.md) | L2-012 | Draft |
-| 12 | [Contact notes](12-contact-notes/README.md) | L2-013 | Draft |
-| 13 | [Search contacts](13-search-contacts/README.md) | L2-014 | Draft |
-| 14 | [List & paginate contacts](14-list-contacts/README.md) | L2-015 | Draft |
-| 15 | [Create partner](15-create-partner/README.md) | L2-016 | Draft |
-| 16 | [Move partner through funnel stages](16-partner-funnel/README.md) | L2-017 | Draft |
-| 17 | [Associate contacts with partner](17-partner-contacts/README.md) | L2-018 | Draft |
-| 18 | [Partner notes](18-partner-notes/README.md) | L2-019 | Draft |
-| 19 | [View / Update / Delete partner](19-view-update-delete-partner/README.md) | L2-020 | Draft |
-| 20 | [Partner funnel board (Kanban)](20-partner-board/README.md) | L2-021 | Draft |
-| 21 | [Create hackathon](21-create-hackathon/README.md) | L2-022 | Draft |
-| 22 | [Track 4 D's process stage](22-hackathon-4ds/README.md) | L2-023 | Draft |
-| 23 | [Document hackathon products](23-hackathon-products/README.md) | L2-024 | Draft |
-| 24 | [View hackathon details](24-hackathon-detail/README.md) | L2-025 | Draft |
-| 25 | [View local team](25-view-local-team/README.md) | L2-026 | Draft |
-| 26 | [Invite team member](26-invite-team-member/README.md) | L2-027 | Draft |
-| 27 | [Remove team member](27-remove-team-member/README.md) | L2-028 | Draft |
-| 28 | [Assign / revoke team role](28-assign-role/README.md) | L2-029 | Draft |
-| 29 | [View & search global teams](29-view-global-teams/README.md) | L2-030, L2-031 | Draft |
-| 30 | [Dashboard layout, widgets, persistence](30-dashboard/README.md) | L2-032, L2-033, L2-035 | Draft |
-| 31 | [Real-time line-chart widget](31-realtime-charts/README.md) | L2-034 | Draft |
-| 32 | [SignalR connection lifecycle & push events](32-signalr-realtime/README.md) | L2-036, L2-037, L2-048 | Draft |
-| 33 | [Notification center](33-notification-center/README.md) | L2-038 | Draft |
-| 34 | [Global search](34-global-search/README.md) | L2-043 | Draft |
-| 35 | [Responsive layouts and dark theme](35-responsive-theme/README.md) | L2-039, L2-040, L2-041, L2-042, L2-059 | Draft |
-| 36 | [Logging and observability](36-observability/README.md) | L2-044, L2-045 | Draft |
-| 37 | [Performance and scalability](37-performance/README.md) | L2-046, L2-047 | Draft |
-| 38 | [Data protection and application security](38-security/README.md) | L2-049, L2-050, L2-051, L2-052, L2-053, L2-054, L2-055, L2-056 | Draft |
-| 39 | [Accessibility](39-accessibility/README.md) | L2-057, L2-058, L2-059 | Draft |
-| 40 | [Component, API, CQRS, and E2E test architecture](40-architecture-testing/README.md) | L2-060, L2-061, L2-062, L2-063, L2-064 | Draft |
+| 07 | [RBAC: roles, endpoint authz, team isolation](07-rbac-authorization/README.md) | L2-006, L2-007, L2-008 | Complete |
+| 08 | [Create contact](08-create-contact/README.md) | L2-009 | Complete |
+| 09 | [View contact](09-view-contact/README.md) | L2-010 | Complete |
+| 10 | [Update contact](10-update-contact/README.md) | L2-011 | Complete |
+| 11 | [Delete contact (soft delete)](11-delete-contact/README.md) | L2-012 | Complete |
+| 12 | [Contact notes](12-contact-notes/README.md) | L2-013 | Complete |
+| 13 | [Search contacts](13-search-contacts/README.md) | L2-014 | Complete |
+| 14 | [List & paginate contacts](14-list-contacts/README.md) | L2-015 | Complete |
+| 15 | [Create partner](15-create-partner/README.md) | L2-016 | Complete |
+| 16 | [Move partner through funnel stages](16-partner-funnel/README.md) | L2-017 | Complete |
+| 17 | [Associate contacts with partner](17-partner-contacts/README.md) | L2-018 | Complete |
+| 18 | [Partner notes](18-partner-notes/README.md) | L2-019 | Complete |
+| 19 | [View / Update / Delete partner](19-view-update-delete-partner/README.md) | L2-020 | Complete |
+| 20 | [Partner funnel board (Kanban)](20-partner-board/README.md) | L2-021 | Complete |
+| 21 | [Create hackathon](21-create-hackathon/README.md) | L2-022 | Complete |
+| 22 | [Track 4 D's process stage](22-hackathon-4ds/README.md) | L2-023 | Complete |
+| 23 | [Document hackathon products](23-hackathon-products/README.md) | L2-024 | Complete |
+| 24 | [View hackathon details](24-hackathon-detail/README.md) | L2-025 | Complete |
+| 25 | [View local team](25-view-local-team/README.md) | L2-026 | Complete |
+| 26 | [Invite team member](26-invite-team-member/README.md) | L2-027 | Complete |
+| 27 | [Remove team member](27-remove-team-member/README.md) | L2-028 | Complete |
+| 28 | [Assign / revoke team role](28-assign-role/README.md) | L2-029 | Complete |
+| 29 | [View & search global teams](29-view-global-teams/README.md) | L2-030, L2-031 | Complete |
+| 30 | [Dashboard layout, widgets, persistence](30-dashboard/README.md) | L2-032, L2-033, L2-035 | Complete |
+| 31 | [Real-time line-chart widget](31-realtime-charts/README.md) | L2-034 | Complete |
+| 32 | [SignalR connection lifecycle & push events](32-signalr-realtime/README.md) | L2-036, L2-037, L2-048 | Complete |
+| 33 | [Notification center](33-notification-center/README.md) | L2-038 | Complete |
+| 34 | [Global search](34-global-search/README.md) | L2-043 | Complete |
+| 35 | [Responsive layouts and dark theme](35-responsive-theme/README.md) | L2-039, L2-040, L2-041, L2-042, L2-059 | Complete |
+| 36 | [Logging and observability](36-observability/README.md) | L2-044, L2-045 | Complete |
+| 37 | [Performance and scalability](37-performance/README.md) | L2-046, L2-047 | Complete |
+| 38 | [Data protection and application security](38-security/README.md) | L2-049, L2-050, L2-051, L2-052, L2-053, L2-054, L2-055, L2-056 | Complete |
+| 39 | [Accessibility](39-accessibility/README.md) | L2-057, L2-058, L2-059 | Complete |
+| 40 | [Component, API, CQRS, and E2E test architecture](40-architecture-testing/README.md) | L2-060, L2-061, L2-062, L2-063, L2-064 | Complete |
 
 ## Vertical refinements (small slices)
 
@@ -54,18 +54,18 @@ These slices were derived from the gaps identified in [`docs/missing-detailed-de
 
 | # | Slice | L2 traces | Status |
 |---|-------|-----------|--------|
-| 41 | [Contact audit and restore view](41-contact-audit-restore/README.md) | L2-012 | Draft |
-| 42 | [Partner list stage filtering](42-partner-list-stage-filter/README.md) | L2-021, L2-046 | Draft |
-| 43 | [Hackathon list and navigation](43-hackathon-list/README.md) | L2-025, L2-046, L2-063 | Draft |
-| 44 | [Update hackathon details](44-update-hackathon/README.md) | L2-063, supports L2-022/L2-025 | Draft |
-| 45 | [Delete and restore hackathon](45-delete-restore-hackathon/README.md) | L2-063, L2-008, L2-044 | Draft |
-| 46 | [Dashboard empty state and first widget](46-dashboard-empty-first-widget/README.md) | L2-032 | Draft |
-| 47 | [Dashboard widget catalog add/remove](47-dashboard-catalog-add-remove/README.md) | L2-033 | Draft |
-| 48 | [Dashboard drag and resize persistence](48-dashboard-drag-resize/README.md) | L2-033 | Draft |
-| 49 | [Dashboard layout restore and last-write-wins](49-dashboard-restore-lww/README.md) | L2-035 | Draft |
-| 50 | [SignalR connection lifecycle](50-signalr-lifecycle/README.md) | L2-036 | Draft |
-| 51 | [Team event envelope contract](51-team-event-envelope/README.md) | L2-037 | Draft |
-| 52 | [Realtime latency budget harness](52-realtime-latency-harness/README.md) | L2-048 | Draft |
+| 41 | [Contact audit and restore view](41-contact-audit-restore/README.md) | L2-012 | Complete |
+| 42 | [Partner list stage filtering](42-partner-list-stage-filter/README.md) | L2-021, L2-046 | Complete |
+| 43 | [Hackathon list and navigation](43-hackathon-list/README.md) | L2-025, L2-046, L2-063 | Complete |
+| 44 | [Update hackathon details](44-update-hackathon/README.md) | L2-063, supports L2-022/L2-025 | Complete |
+| 45 | [Delete and restore hackathon](45-delete-restore-hackathon/README.md) | L2-063, L2-008, L2-044 | Complete |
+| 46 | [Dashboard empty state and first widget](46-dashboard-empty-first-widget/README.md) | L2-032 | Complete |
+| 47 | [Dashboard widget catalog add/remove](47-dashboard-catalog-add-remove/README.md) | L2-033 | Complete |
+| 48 | [Dashboard drag and resize persistence](48-dashboard-drag-resize/README.md) | L2-033 | Complete |
+| 49 | [Dashboard layout restore and last-write-wins](49-dashboard-restore-lww/README.md) | L2-035 | Complete |
+| 50 | [SignalR connection lifecycle](50-signalr-lifecycle/README.md) | L2-036 | Complete |
+| 51 | [Team event envelope contract](51-team-event-envelope/README.md) | L2-037 | Complete |
+| 52 | [Realtime latency budget harness](52-realtime-latency-harness/README.md) | L2-048 | Complete |
 
 ### Responsive and theme slices
 
@@ -122,14 +122,14 @@ These slices were derived from the gaps identified in [`docs/missing-detailed-de
 | 76 | [API library injection-token contract](76-api-injection-tokens/README.md) | L2-061 | Complete |
 | 77 | [Backend CQRS/MediatR enforcement](77-cqrs-mediatr-enforcement/README.md) | L2-062 | Complete |
 | 78 | [Playwright Page Object foundation](78-playwright-pom/README.md) | L2-063 | Complete |
-| 79 | [E2E auth and session flow](79-e2e-auth-session/README.md) | L2-063, L2-064 | Draft |
-| 80 | [E2E contact management flow](80-e2e-contact-flow/README.md) | L2-063, L2-064 | Draft |
-| 81 | [E2E partner management flow](81-e2e-partner-flow/README.md) | L2-063, L2-064 | Draft |
-| 82 | [E2E hackathon management flow](82-e2e-hackathon-flow/README.md) | L2-063, L2-064 | Draft |
-| 83 | [E2E team management flow](83-e2e-team-flow/README.md) | L2-063 | Draft |
-| 84 | [E2E dashboard widget flow](84-e2e-dashboard-flow/README.md) | L2-063, L2-064 | Draft |
-| 85 | [E2E realtime notification flow](85-e2e-realtime-flow/README.md) | L2-063 | Draft |
-| 86 | [E2E global search flow](86-e2e-search-flow/README.md) | L2-063, L2-064 | Draft |
+| 79 | [E2E auth and session flow](79-e2e-auth-session/README.md) | L2-063, L2-064 | Complete |
+| 80 | [E2E contact management flow](80-e2e-contact-flow/README.md) | L2-063, L2-064 | Complete |
+| 81 | [E2E partner management flow](81-e2e-partner-flow/README.md) | L2-063, L2-064 | Complete |
+| 82 | [E2E hackathon management flow](82-e2e-hackathon-flow/README.md) | L2-063, L2-064 | Complete |
+| 83 | [E2E team management flow](83-e2e-team-flow/README.md) | L2-063 | Complete |
+| 84 | [E2E dashboard widget flow](84-e2e-dashboard-flow/README.md) | L2-063, L2-064 | Complete |
+| 85 | [E2E realtime notification flow](85-e2e-realtime-flow/README.md) | L2-063 | Complete |
+| 86 | [E2E global search flow](86-e2e-search-flow/README.md) | L2-063, L2-064 | Complete |
 | 87 | [Multi-viewport smoke matrix](87-viewport-matrix/README.md) | L2-064 | Complete |
 
 ## Cross-cutting slices
