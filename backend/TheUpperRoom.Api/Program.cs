@@ -1,4 +1,5 @@
 using TheUpperRoom.Api.Infrastructure;
+using TheUpperRoom.Api.Observability;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,8 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+app.UseMiddleware<CorrelationMiddleware>();
+app.UseMiddleware<RequestLoggingMiddleware>();
 app.UseCors();
 app.UseHttpsRedirection();
 app.MapControllers();

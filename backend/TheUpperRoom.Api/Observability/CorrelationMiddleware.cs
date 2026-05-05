@@ -1,0 +1,17 @@
+namespace TheUpperRoom.Api.Observability;
+
+public class CorrelationMiddleware(RequestDelegate next)
+{
+    private const string HeaderName = "X-Correlation-Id";
+
+    public async Task InvokeAsync(HttpContext context)
+    {
+        var correlationId = context.Request.Headers[HeaderName].FirstOrDefault()
+            ?? Guid.NewGuid().ToString();
+
+        context.Items["CorrelationId"] = correlationId;
+        context.Response.Headers[HeaderName] = correlationId;
+
+        await next(context);
+    }
+}
