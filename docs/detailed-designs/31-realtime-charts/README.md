@@ -1,4 +1,4 @@
-# 31 — Real-Time Metric Charts (line-chart widget)
+# 31 — Real-Time Metric Charts (line-chart widget) ✅ Accepted
 
 **Traces to:** L2-034 (L1-007, L1-008).
 
