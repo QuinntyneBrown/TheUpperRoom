@@ -1,5 +1,6 @@
 # T60 — Keyboard navigation and modal focus trap
 
+**Status**: Accepted
 **Phase**: 9 — Accessibility annotations
 **Area**: Accessibility
 **Requirements**: L1-015, L2-057
