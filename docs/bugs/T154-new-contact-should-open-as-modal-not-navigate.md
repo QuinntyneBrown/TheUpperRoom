@@ -1,6 +1,6 @@
 # T154 — "New contact" opens routed page instead of modal dialog
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 

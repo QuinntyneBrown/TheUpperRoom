@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, OnDestroy, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, output, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
@@ -18,7 +18,7 @@ import { UrButtonComponent, UrDialogComponent, UrInputComponent } from 'componen
     .ncd-hint mat-icon { font-size: 14px; width: 14px; height: 14px; }
   `],
 })
-export class NewContactDialogComponent implements OnDestroy {
+export class NewContactDialogComponent {
   private contacts = inject(CONTACT_SERVICE);
   private router = inject(Router);
 
@@ -35,12 +35,6 @@ export class NewContactDialogComponent implements OnDestroy {
   canSave = computed(() =>
     !!this.firstName().trim() && !!this.lastName().trim() && !!this.email().trim() && !this.loading()
   );
-
-  private saveErrorTimer?: ReturnType<typeof setTimeout>;
-
-  ngOnDestroy(): void {
-    clearTimeout(this.saveErrorTimer);
-  }
 
   fieldError(field: string): string {
     return this.errors()[field]?.[0] ?? '';
