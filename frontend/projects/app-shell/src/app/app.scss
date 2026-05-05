@@ -88,4 +88,23 @@
     background: var(--ur-bg-surface);
     flex-shrink: 0;
   }
+
+  &--hidden { display: none; }
+
+  &__resolving {
+    position: fixed; inset: 0; z-index: 9999;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 16px; background: var(--ur-bg-base, #0f172a); color: var(--ur-fg-on-dark, #f1f5f9);
+    text-align: center;
+
+    &-logo { font-size: 48px; width: 48px; height: 48px; color: var(--ur-accent-primary, #818cf8); }
+    &-spinner {
+      font-size: 36px; width: 36px; height: 36px; color: var(--ur-accent-primary, #818cf8);
+      animation: shell-spin 1s linear infinite;
+    }
+    &-heading { margin: 0; font-size: 1.25rem; font-weight: 600; }
+    &-body { margin: 0; font-size: 0.875rem; opacity: 0.65; }
+  }
 }
+
+@keyframes shell-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }

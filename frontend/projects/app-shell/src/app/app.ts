@@ -7,7 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { Router, RouterOutlet } from '@angular/router';
+import { NavigationCancel, NavigationEnd, NavigationError, Router, RouterOutlet } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -75,6 +75,9 @@ export class App implements OnInit {
   readonly bottomNavItems = BOTTOM_NAV_ITEMS;
 
   healthStatus = signal('...');
+  resolving = signal(true);
+
+  private firstNavDone = false;
 
   isDesktop = toSignal(
     this.bpo.observe('(min-width: 1280px)').pipe(map((r) => r.matches)),
@@ -104,6 +107,13 @@ export class App implements OnInit {
   }
 
   ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (this.firstNavDone) return;
+      if (event instanceof NavigationEnd || event instanceof NavigationCancel || event instanceof NavigationError) {
+        this.firstNavDone = true;
+        this.resolving.set(false);
+      }
+    });
     this.healthService.get().subscribe({
       next: (r) => this.healthStatus.set(r.status.toUpperCase()),
       error: () => this.healthStatus.set('ERROR'),
