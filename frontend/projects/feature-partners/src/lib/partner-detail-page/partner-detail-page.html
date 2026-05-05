@@ -13,8 +13,14 @@
       </nav>
       <div class="partner-detail__header-actions">
         <a mat-stroked-button [routerLink]="['/partners', p.id, 'edit']">Edit</a>
-        <ur-button variant="danger" (click)="showDeleteDialog.set(true)">Delete</ur-button>
+        <ur-button variant="danger" [disabled]="!canDelete()" (click)="canDelete() && showDeleteDialog.set(true)">Delete</ur-button>
       </div>
+      @if (!canDelete()) {
+        <div class="partner-detail__permission-banner" data-testid="partner-delete-permission-denied-banner" role="note">
+          <mat-icon>info</mat-icon>
+          <span>You don't have permission to delete this partner.</span>
+        </div>
+      }
     </header>
 
     @if (showDeleteDialog()) {
