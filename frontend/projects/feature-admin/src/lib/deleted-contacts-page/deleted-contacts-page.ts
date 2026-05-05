@@ -12,7 +12,15 @@ import { MatTableModule } from '@angular/material/table';
     <div class="deleted-contacts-page">
       <h1>Deleted Contacts</h1>
       @if (loading()) {
-        <p class="admin-loading" data-testid="deleted-contacts-loading" aria-busy="true">Loading…</p>
+        <div class="admin-skeleton" data-testid="deleted-contacts-loading" aria-busy="true" aria-label="Loading deleted contacts">
+          @for (row of [1,2,3]; track row) {
+            <div class="admin-skeleton__row">
+              <div class="admin-skeleton__cell admin-skeleton__cell--name"></div>
+              <div class="admin-skeleton__cell admin-skeleton__cell--date"></div>
+              <div class="admin-skeleton__cell admin-skeleton__cell--action"></div>
+            </div>
+          }
+        </div>
       } @else if (loadError()) {
         <div class="admin-error" data-testid="deleted-contacts-error" role="alert">
           <mat-icon>error_outline</mat-icon>
@@ -61,7 +69,20 @@ import { MatTableModule } from '@angular/material/table';
       border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
     }
     .admin-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
-    .admin-loading { color: var(--ur-fg-muted, #64748b); font-size: 0.875rem; margin: 16px 0; }
+    @keyframes dcp-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
+    .admin-skeleton { display: flex; flex-direction: column; gap: 10px; margin: 16px 0; }
+    .admin-skeleton__row {
+      display: flex; align-items: center; gap: 16px; padding: 12px 0;
+      border-bottom: 1px solid var(--ur-border-subtle, #e2e8f0);
+    }
+    .admin-skeleton__cell {
+      height: 14px; border-radius: 4px;
+      background: var(--ur-bg-skeleton, #e2e8f0);
+      animation: dcp-pulse 1.4s ease-in-out infinite;
+    }
+    .admin-skeleton__cell--name { width: 40%; }
+    .admin-skeleton__cell--date { width: 20%; }
+    .admin-skeleton__cell--action { width: 10%; margin-left: auto; }
     .admin-empty {
       display: flex; flex-direction: column; align-items: center; gap: 12px;
       padding: 48px 24px; color: var(--ur-fg-muted, #64748b); text-align: center;
