@@ -17,6 +17,18 @@ const ROLE_LABELS: Record<SubRole, string> = {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatIconModule],
   styles: [`
+    .role-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .role-chip {
+      padding: 3px 10px; border-radius: 99px; font-size: 0.8125rem; cursor: pointer;
+      border: 1px solid var(--ur-border-default, #475569);
+      background: transparent; color: var(--ur-fg-muted, #64748b);
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .role-chip--active {
+      background: var(--ur-accent-primary, #6366f1); color: #fff;
+      border-color: var(--ur-accent-primary, #6366f1);
+    }
+    .role-chip--disabled { opacity: 0.6; cursor: default; }
     .role-chip-error {
       display: flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 0.8rem;
       color: var(--ur-error-fg, #dc2626);
