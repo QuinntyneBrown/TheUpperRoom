@@ -1,6 +1,6 @@
 # T169 — Partner list: items are flat rows with dividers, not styled cards
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 
