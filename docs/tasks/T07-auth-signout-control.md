@@ -1,6 +1,6 @@
 # T07 — Sign-out control and signed-out redirect
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 1 — Authentication and session edge states
 **Area**: Authentication
 **Requirements**: L1-001, L2-005
@@ -19,6 +19,6 @@ Add a discoverable sign-out control to authenticated navigation and define the p
 
 ## Acceptance criteria
 
-- [ ] Sign-out control is reachable from every authenticated screen via the top bar / profile menu.
-- [ ] Mobile variant present (overlaps with T09).
-- [ ] Signed-out toast shown on the sign-in screen after redirect.
+- [x] Sign-out control is reachable from every authenticated screen via the top bar / profile menu.
+- [x] Mobile variant present (overlaps with T09).
+- [x] Signed-out toast shown on the sign-in screen after redirect.
