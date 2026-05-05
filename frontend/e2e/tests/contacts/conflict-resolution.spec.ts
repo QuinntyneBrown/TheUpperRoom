@@ -22,7 +22,7 @@ test.describe('Contact conflict resolution', () => {
     });
 
     await contacts.page.getByLabel('First name').fill('Conflict Name');
-    await contacts.page.getByRole('button', { name: /save changes/i }).click();
+    await contacts.page.getByTestId('contact-form-submit-btn').click();
     await expect(page.getByTestId('conflict-dialog')).toBeVisible({ timeout: 3000 });
   });
 
@@ -41,7 +41,7 @@ test.describe('Contact conflict resolution', () => {
     });
 
     await contacts.page.getByLabel('First name').fill('My Version');
-    await contacts.page.getByRole('button', { name: /save changes/i }).click();
+    await contacts.page.getByTestId('contact-form-submit-btn').click();
 
     await expect(page.getByTestId('conflict-dialog')).toBeVisible({ timeout: 3000 });
     await expect(page.getByTestId('conflict-your-changes')).toBeVisible();
@@ -63,7 +63,7 @@ test.describe('Contact conflict resolution', () => {
     });
 
     await contacts.page.getByLabel('First name').fill('Discard Test');
-    await contacts.page.getByRole('button', { name: /save changes/i }).click();
+    await contacts.page.getByTestId('contact-form-submit-btn').click();
     await expect(page.getByTestId('conflict-dialog')).toBeVisible({ timeout: 3000 });
     await page.getByTestId('conflict-discard-btn').click();
     await page.waitForURL(/\/contacts\/[a-f0-9-]+$/);

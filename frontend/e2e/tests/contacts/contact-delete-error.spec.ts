@@ -21,8 +21,8 @@ test.describe('Contact delete error', () => {
       }
     });
 
-    await page.getByRole('button', { name: /delete/i }).click();
-    await page.getByRole('button', { name: /delete contact/i }).click();
+    await page.getByTestId('contact-delete-btn').click();
+    await page.getByTestId('confirm-delete-contact-btn').click();
     await expect(page.getByTestId('contact-delete-error-toast')).toBeVisible({ timeout: 3000 });
   });
 });

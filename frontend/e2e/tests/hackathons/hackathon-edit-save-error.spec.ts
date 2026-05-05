@@ -23,7 +23,7 @@ test.describe('Hackathon edit generic save error', () => {
     });
 
     await page.getByLabel(/title/i).fill('Updated Title');
-    await page.getByRole('button', { name: /save/i }).click();
+    await page.getByTestId('hackathon-edit-save-btn').click();
     await expect(page.getByTestId('edit-save-error-toast')).toBeVisible({ timeout: 3000 });
   });
 });

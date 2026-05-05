@@ -21,7 +21,7 @@ test.describe('Contact create save error', () => {
     await page.goto('/contacts/new');
     await page.getByLabel('First name').fill('Test');
     await page.getByLabel('Last name').fill('User');
-    await page.getByRole('button', { name: /save/i }).click();
+    await page.getByTestId('contact-form-submit-btn').click();
     await expect(page.getByTestId('create-save-error-toast')).toBeVisible({ timeout: 3000 });
   });
 });

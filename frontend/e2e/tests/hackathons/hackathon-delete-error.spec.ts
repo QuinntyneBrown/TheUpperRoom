@@ -20,8 +20,8 @@ test.describe('Hackathon delete error', () => {
       }
     });
 
-    await page.getByRole('button', { name: /delete/i }).click();
-    await page.getByRole('button', { name: /delete hackathon/i }).click();
+    await page.getByTestId('hackathon-delete-btn').click();
+    await page.getByTestId('confirm-delete-hackathon-btn').click();
     await expect(page.getByTestId('hackathon-delete-error-toast')).toBeVisible({ timeout: 3000 });
     await expect(page.getByTestId('hackathon-delete-dialog')).not.toBeVisible({ timeout: 1000 });
   });

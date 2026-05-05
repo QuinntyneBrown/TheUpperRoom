@@ -21,8 +21,8 @@ test.describe('Partner delete error', () => {
       }
     });
 
-    await page.getByRole('button', { name: /delete/i }).click();
-    await page.getByRole('button', { name: /delete partner/i }).click();
+    await page.getByTestId('partner-delete-btn').click();
+    await page.getByTestId('confirm-delete-partner-btn').click();
     await expect(page.getByTestId('partner-delete-error-toast')).toBeVisible({ timeout: 3000 });
   });
 });

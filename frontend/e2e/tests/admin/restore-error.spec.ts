@@ -47,8 +47,8 @@ test.describe('Admin restore error handling', () => {
     const contactsPage = page;
     await contactsPage.goto('/contacts');
     await contactsPage.getByRole('link', { name: /Restore Error Contact/i }).click();
-    await contactsPage.getByTestId('delete-btn').click();
-    await contactsPage.getByRole('button', { name: /delete contact/i }).click();
+    await contactsPage.getByTestId('contact-delete-btn').click();
+    await contactsPage.getByTestId('confirm-delete-contact-btn').click();
     await contactsPage.waitForURL(/\/contacts\?deleted=1/);
 
     await page.route('**/api/contacts/*/restore', (route) => {
@@ -57,7 +57,7 @@ test.describe('Admin restore error handling', () => {
 
     await page.goto('/admin/contacts/deleted');
     const row = page.getByRole('row').filter({ hasText: /Restore Error Contact/i }).first();
-    await row.getByRole('button', { name: /restore/i }).click();
+    await row.locator('[data-testid^="restore-contact-"]').click();
     await expect(page.getByTestId('restore-error-toast')).toBeVisible({ timeout: 3000 });
   });
 
@@ -87,7 +87,7 @@ test.describe('Admin restore error handling', () => {
 
     await page.goto('/admin/hackathons/deleted');
     const row = page.getByRole('row').filter({ hasText: /Restore Error Hackathon/i }).first();
-    await row.getByRole('button', { name: /restore/i }).click();
+    await row.locator('[data-testid^="restore-hackathon-"]').click();
     await expect(page.getByTestId('restore-error-toast')).toBeVisible({ timeout: 3000 });
   });
 });

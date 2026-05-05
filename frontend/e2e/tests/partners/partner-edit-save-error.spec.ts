@@ -22,7 +22,7 @@ test.describe('Partner edit generic save error', () => {
     });
 
     await partners.page.getByLabel(/organization name/i).fill('Error Test');
-    await partners.page.getByRole('button', { name: /save/i }).click();
+    await partners.page.getByTestId('partner-edit-save-btn').click();
     await expect(page.getByTestId('edit-save-error-toast')).toBeVisible({ timeout: 3000 });
   });
 });

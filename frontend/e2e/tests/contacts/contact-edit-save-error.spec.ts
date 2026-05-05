@@ -22,7 +22,7 @@ test.describe('Contact edit generic save error', () => {
     });
 
     await contacts.page.getByLabel('First name').fill('Error Test');
-    await contacts.page.getByRole('button', { name: /save changes/i }).click();
+    await contacts.page.getByTestId('contact-form-submit-btn').click();
     await expect(page.getByTestId('edit-save-error-toast')).toBeVisible({ timeout: 3000 });
   });
 });

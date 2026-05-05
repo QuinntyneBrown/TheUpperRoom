@@ -23,7 +23,7 @@ test.describe('Hackathon create save error', () => {
     await page.getByLabel(/host city/i).fill('Toronto');
     await page.getByLabel(/start date/i).fill('2026-09-01');
     await page.getByLabel(/end date/i).fill('2026-09-03');
-    await page.getByRole('button', { name: /create/i }).click();
+    await page.getByTestId('plan-hackathon-btn').click();
     await expect(page.getByTestId('create-save-error-toast')).toBeVisible({ timeout: 3000 });
   });
 });

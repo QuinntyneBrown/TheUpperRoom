@@ -21,13 +21,13 @@ test.describe('Contact delete permission denied state', () => {
 
     await page.reload();
     await expect(page.getByTestId('delete-permission-denied-banner')).toBeVisible({ timeout: 3000 });
-    await expect(page.getByRole('button', { name: /delete/i })).toBeDisabled();
+    await expect(page.getByTestId('contact-delete-btn')).toBeDisabled();
   });
 
   test('city-lead sees enabled delete button (no banner)', async ({ auth, contacts, page }) => {
     await auth.signInAs('city-lead');
     await contacts.create({ name: 'CityLead Delete Test' });
     await expect(page.getByTestId('delete-permission-denied-banner')).not.toBeVisible();
-    await expect(page.getByRole('button', { name: /delete/i }).first()).toBeEnabled();
+    await expect(page.getByTestId('contact-delete-btn').first()).toBeEnabled();
   });
 });
