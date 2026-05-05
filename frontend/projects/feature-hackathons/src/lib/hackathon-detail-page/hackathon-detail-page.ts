@@ -42,16 +42,16 @@ const STAGES: { value: HackathonStage; label: string; marker: string; descriptio
     .hackathon-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
       gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
-      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
+      background: var(--ur-bg-surface, #16161f); color: #fff; font-size: 0.875rem; font-weight: 500;
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
     .hackathon-toast mat-icon { font-size: 18px; width: 18px; height: 18px; color: var(--ur-success, #34d399); }
     .hackathon-toast--error { border: 1px solid var(--ur-danger, #f87171); }
     .hackathon-toast--error mat-icon { color: var(--ur-danger, #f87171); font-size: 18px; width: 18px; height: 18px; }
     .hackathon-detail-loading { display: flex; flex-direction: column; gap: 16px; padding: 24px 0; }
-    .hackathon-detail-loading__title { height: 28px; width: 50%; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hd-pulse 1.4s ease-in-out infinite; }
-    .hackathon-detail-loading__meta { height: 16px; width: 35%; border-radius: 4px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hd-pulse 1.4s ease-in-out infinite; }
-    .hackathon-detail-loading__block { height: 80px; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hd-pulse 1.4s ease-in-out infinite; }
+    .hackathon-detail-loading__title { height: 28px; width: 50%; border-radius: 6px; background: var(--ur-border-default, #2a2a3a); animation: hd-pulse 1.4s ease-in-out infinite; }
+    .hackathon-detail-loading__meta { height: 16px; width: 35%; border-radius: 4px; background: var(--ur-border-default, #2a2a3a); animation: hd-pulse 1.4s ease-in-out infinite; }
+    .hackathon-detail-loading__block { height: 80px; border-radius: 6px; background: var(--ur-border-default, #2a2a3a); animation: hd-pulse 1.4s ease-in-out infinite; }
     @keyframes hd-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
     .four-d-cards { display: flex; flex-direction: row; gap: 16px; }
     .d-card {

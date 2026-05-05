@@ -1,6 +1,6 @@
 # T175 — Hackathon pages: wrong color tokens (light-mode fallbacks)
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 

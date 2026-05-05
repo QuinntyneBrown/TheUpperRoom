@@ -11,15 +11,15 @@ import { UrButtonComponent } from 'components';
     .edit-error-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
       gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
-      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
-      border: 1px solid var(--ur-error-fg, #dc2626); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      background: var(--ur-bg-surface, #16161f); color: #fff; font-size: 0.875rem; font-weight: 500;
+      border: 1px solid var(--ur-danger, #f87171); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
-    .edit-error-toast mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
+    .edit-error-toast mat-icon { color: var(--ur-danger, #f87171); font-size: 18px; width: 18px; height: 18px; }
     .hackathon-edit-loading { display: flex; flex-direction: column; gap: 14px; padding: 24px; max-width: 480px; }
-    .hackathon-edit-loading__title { height: 32px; width: 60%; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: edit-pulse 1.4s ease-in-out infinite; }
-    .hackathon-edit-loading__field { height: 48px; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: edit-pulse 1.4s ease-in-out infinite; }
+    .hackathon-edit-loading__title { height: 32px; width: 60%; border-radius: 6px; background: var(--ur-border-default, #2a2a3a); animation: edit-pulse 1.4s ease-in-out infinite; }
+    .hackathon-edit-loading__field { height: 48px; border-radius: 6px; background: var(--ur-border-default, #2a2a3a); animation: edit-pulse 1.4s ease-in-out infinite; }
     @keyframes edit-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
-    .hackathon-edit-not-found { padding: 24px; color: var(--ur-fg-muted, #64748b); }
+    .hackathon-edit-not-found { padding: 24px; color: var(--ur-fg-muted, #a8a8b5); }
   `],
   template: `
     @if (loading()) {
