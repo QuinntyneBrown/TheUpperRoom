@@ -1,6 +1,6 @@
 # T32 — Partner edit form
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 5 — Partner and hackathon management
 **Area**: Partner
 **Requirements**: L1-004, L2-020
@@ -20,6 +20,6 @@ Add the edit-partner form reached from the existing Edit button on the partner d
 
 ## Acceptance criteria
 
-- [ ] Edit form covers pristine, dirty, validating, error, submitting, success.
-- [ ] Stage label uses "Confirmed Partner" not abbreviated "Confirmed".
-- [ ] Mobile/tablet variants per T22.
+- [x] Edit form covers pristine, dirty, validating, error, submitting, success.
+- [x] Stage label uses "Confirmed Partner" not abbreviated "Confirmed".
+- [x] Mobile/tablet variants per T22.
