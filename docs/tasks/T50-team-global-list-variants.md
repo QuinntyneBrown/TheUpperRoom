@@ -1,6 +1,6 @@
 # T50 — Global teams list, detail, public/admin variants
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 6 — Team administration and authorization
 **Area**: Team, Authorization
 **Requirements**: L1-002, L1-006, L2-008, L2-030
@@ -20,6 +20,6 @@ Expand the existing "Cities and other teams" summary card into a full global tea
 
 ## Acceptance criteria
 
-- [ ] List, public-detail, and admin-detail screens designed.
-- [ ] Pagination designed.
-- [ ] Mobile/tablet variants per T17.
+- [x] List, public-detail, and admin-detail screens designed.
+- [x] Pagination designed.
+- [x] Mobile/tablet variants per T17.
