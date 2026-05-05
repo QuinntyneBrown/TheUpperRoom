@@ -1,6 +1,6 @@
 # T34 — Partner stage-change control
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 5 — Partner and hackathon management
 **Area**: Partner
 **Requirements**: L1-004, L2-017
@@ -20,6 +20,6 @@ Provide an explicit control on partner detail to move a partner between Lead, In
 
 ## Acceptance criteria
 
-- [ ] Control exists on partner detail and reflects the current stage clearly.
-- [ ] Backward-move confirmation designed.
-- [ ] State emits a stage-history entry (links to T35).
+- [x] Control exists on partner detail and reflects the current stage clearly.
+- [x] Backward-move confirmation designed.
+- [x] State emits a stage-history entry (links to T35).
