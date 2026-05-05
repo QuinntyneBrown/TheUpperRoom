@@ -53,6 +53,22 @@ import { MatIconModule } from '@angular/material/icon';
     }
   `,
   styles: [`
+    .hackathon-list-page { display: flex; flex-direction: column; height: 100%; }
+    .hackathon-list-page__header {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+      padding: 16px 20px; border-bottom: 1px solid var(--ur-border-subtle, #334155);
+      background: var(--ur-bg-surface, #1e293b);
+    }
+    .hackathon-list-page__header h1 { margin: 0; font-size: 1.125rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); }
+    .hackathon-card {
+      display: flex; flex-direction: column; gap: 4px; padding: 14px 20px;
+      border-bottom: 1px solid var(--ur-border-subtle, #334155);
+      text-decoration: none; color: inherit; background: transparent;
+      transition: background 0.15s ease;
+    }
+    .hackathon-card:hover { background: var(--ur-bg-elevated, #0f172a); }
+    .hackathon-card strong { font-size: 0.9375rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); }
+    .hackathon-card__meta { font-size: 0.8125rem; color: var(--ur-fg-secondary, #94a3b8); }
     .hackathon-list-error {
       display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 8px; margin: 16px 0;
       background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
