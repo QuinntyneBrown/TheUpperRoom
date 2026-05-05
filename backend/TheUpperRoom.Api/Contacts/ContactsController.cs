@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TheUpperRoom.Api.Infrastructure;
+using TheUpperRoom.Api.Notes;
 
 namespace TheUpperRoom.Api.Contacts;
 
@@ -49,7 +50,17 @@ public class ContactsController(IMediator mediator) : ControllerBase
         if (!found) return NotFound(new { error = "not_found" });
         return NoContent();
     }
+
+    [HttpPost("{id:guid}/notes")]
+    public async Task<IActionResult> AddNote(Guid id, [FromBody] AddNoteRequest req)
+    {
+        var dto = await mediator.Send(new AddNoteCommand("Contact", id, req.Body));
+        if (dto is null) return NotFound(new { error = "not_found" });
+        return CreatedAtAction(nameof(AddNote), new { id }, dto);
+    }
 }
+
+public record AddNoteRequest(string Body);
 
 public record UpdateContactRequest(
     string FirstName,

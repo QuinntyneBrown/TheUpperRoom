@@ -49,6 +49,9 @@ export interface IContactService {
   getById(id: string): Observable<ContactDto>;
   update(id: string, req: UpdateContactRequest): Observable<void>;
   delete(id: string): Observable<void>;
+  addNote(contactId: string, body: string): Observable<NoteDto>;
+  updateNote(noteId: string, body: string): Observable<void>;
+  deleteNote(noteId: string): Observable<void>;
 }
 
 export const CONTACT_SERVICE = new InjectionToken<IContactService>('CONTACT_SERVICE');
@@ -71,5 +74,17 @@ export class ContactService implements IContactService {
 
   delete(id: string): Observable<void> {
     return this.http.delete<void>(`/api/contacts/${id}`);
+  }
+
+  addNote(contactId: string, body: string): Observable<NoteDto> {
+    return this.http.post<NoteDto>(`/api/contacts/${contactId}/notes`, { body });
+  }
+
+  updateNote(noteId: string, body: string): Observable<void> {
+    return this.http.put<void>(`/api/notes/${noteId}`, { body });
+  }
+
+  deleteNote(noteId: string): Observable<void> {
+    return this.http.delete<void>(`/api/notes/${noteId}`);
   }
 }

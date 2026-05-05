@@ -8,6 +8,7 @@ public interface ICurrentUser
     Guid? TeamId { get; }
     bool IsAdmin { get; }
     bool IsAuthenticated { get; }
+    bool IsInRole(string role);
 }
 
 public class CurrentUser(IHttpContextAccessor httpContextAccessor) : ICurrentUser
@@ -23,4 +24,6 @@ public class CurrentUser(IHttpContextAccessor httpContextAccessor) : ICurrentUse
     public bool IsAdmin => User?.IsInRole(Roles.Admin) ?? false;
 
     public bool IsAuthenticated => User?.Identity?.IsAuthenticated ?? false;
+
+    public bool IsInRole(string role) => User?.IsInRole(role) ?? false;
 }

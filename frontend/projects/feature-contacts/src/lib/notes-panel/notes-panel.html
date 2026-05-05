@@ -1,0 +1,58 @@
+<section class="notes-panel" data-testid="contact-notes-section">
+  <h2>Notes</h2>
+
+  <form class="notes-panel__add" data-testid="add-note-form" (ngSubmit)="addNote()">
+    <textarea
+      class="notes-panel__textarea"
+      placeholder="Add a note…"
+      [value]="newBody()"
+      (input)="newBody.set($any($event.target).value)"
+      rows="3"
+      maxlength="4000"
+      aria-label="New note"
+    ></textarea>
+    <ur-button type="submit" [disabled]="adding() || !newBody().trim()">
+      {{ adding() ? 'Saving…' : 'Add note' }}
+    </ur-button>
+  </form>
+
+  @if (notes().length === 0) {
+    <p class="notes-panel__empty">No notes yet.</p>
+  } @else {
+    @for (note of notes(); track note.id) {
+      <div class="note-card" [attr.data-testid]="'note-' + note.id">
+        @if (editingId() === note.id) {
+          <textarea
+            class="notes-panel__textarea"
+            [value]="editBody()"
+            (input)="editBody.set($any($event.target).value)"
+            rows="3"
+            maxlength="4000"
+            aria-label="Edit note"
+          ></textarea>
+          <div class="note-card__actions">
+            <ur-button (click)="saveEdit(note.id)">Save</ur-button>
+            <ur-button variant="ghost" (click)="cancelEdit()">Cancel</ur-button>
+          </div>
+        } @else if (deletingId() === note.id) {
+          <p class="note-card__confirm">Delete this note?</p>
+          <div class="note-card__actions">
+            <ur-button variant="danger" (click)="doDelete(note.id)">Delete</ur-button>
+            <ur-button variant="ghost" (click)="cancelDelete()">Cancel</ur-button>
+          </div>
+        } @else {
+          <p class="note-card__body">{{ note.body }}</p>
+          <div class="note-card__meta">
+            <time>{{ note.createdAt | date:'mediumDate' }}</time>
+            @if (isOwn(note)) {
+              <div class="note-card__actions">
+                <ur-button variant="ghost" (click)="startEdit(note)" aria-label="Edit note">Edit</ur-button>
+                <ur-button variant="ghost" (click)="confirmDelete(note.id)" aria-label="Delete note">Delete</ur-button>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    }
+  }
+</section>

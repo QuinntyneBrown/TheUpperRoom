@@ -40,19 +40,11 @@
         }
       </section>
 
-      <section class="contact-detail__notes" data-testid="contact-notes-section">
-        <h2>Notes</h2>
-        @if (contact()!.notes.length === 0) {
-          <p class="empty-notes">No notes yet.</p>
-        } @else {
-          @for (note of contact()!.notes; track note.id) {
-            <div class="note-card">
-              <p>{{ note.body }}</p>
-              <time>{{ note.createdAt | date:'mediumDate' }}</time>
-            </div>
-          }
-        }
-      </section>
+      <ur-notes-panel
+        [contactId]="contact()!.id"
+        [initialNotes]="contact()!.notes"
+        [currentUserId]="currentUserId()"
+      />
     </div>
   </div>
 } @else {

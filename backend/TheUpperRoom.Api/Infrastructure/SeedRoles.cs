@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace TheUpperRoom.Api.Infrastructure;
 
@@ -10,8 +11,15 @@ public class SeedRolesService(IServiceScopeFactory scopeFactory) : IHostedServic
         var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
         foreach (var role in Roles.All)
         {
-            if (!await roleManager.RoleExistsAsync(role))
+            if (await roleManager.RoleExistsAsync(role)) continue;
+            try
+            {
                 await roleManager.CreateAsync(new IdentityRole<Guid>(role));
+            }
+            catch (DbUpdateException)
+            {
+                // Concurrent WAF instances may race to seed the same roles; ignore duplicates.
+            }
         }
     }
 
