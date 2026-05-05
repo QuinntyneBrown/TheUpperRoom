@@ -1,6 +1,6 @@
 # T157 — Dashboard empty state missing "Welcome, [name]" intro section
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 
