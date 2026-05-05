@@ -45085,6 +45085,583 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "kMQVk",
+      "x": 0,
+      "y": 45003,
+      "name": "Mobile / New Partner Sheet",
+      "clip": true,
+      "width": 375,
+      "height": 812,
+      "fill": "$bg-base",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "SwPhJ",
+          "name": "topBar",
+          "width": "fill_container",
+          "height": 48,
+          "fill": "$bg-elevated",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border-subtle"
+          },
+          "padding": [
+            "$sp-4",
+            "$sp-3"
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "XJ1IT",
+              "name": "left",
+              "gap": "$sp-2",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "WCGxX",
+                  "width": 18,
+                  "height": 18,
+                  "iconFontName": "x",
+                  "iconFontFamily": "lucide",
+                  "fill": "$fg-secondary"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "QjoI5",
+              "fill": "$fg-primary",
+              "content": "New partner",
+              "fontFamily": "$font-heading",
+              "fontSize": "$fs-base",
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "r3PMt",
+              "fill": "$accent-primary",
+              "content": "Save",
+              "fontFamily": "$font-body",
+              "fontSize": "$fs-sm",
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "st2WU",
+          "name": "form",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": "$sp-3",
+          "padding": "$sp-4",
+          "children": [
+            {
+              "type": "text",
+              "id": "t5S3YU",
+              "fill": "$fg-disabled",
+              "content": "Tab to cycle · Esc closes the sheet",
+              "fontFamily": "$font-mono",
+              "fontSize": "$fs-xs",
+              "fontWeight": "normal"
+            },
+            {
+              "id": "PC7R0",
+              "type": "ref",
+              "ref": "kTdXr",
+              "width": "fill_container",
+              "descendants": {
+                "LCJBW": {
+                  "content": "Partner name *"
+                },
+                "ZHHVY": {
+                  "content": "Mountain Top Church",
+                  "fill": "$fg-primary"
+                }
+              }
+            },
+            {
+              "id": "VFyBN",
+              "type": "ref",
+              "ref": "kTdXr",
+              "width": "fill_container",
+              "descendants": {
+                "LCJBW": {
+                  "content": "Primary contact"
+                },
+                "ZHHVY": {
+                  "content": "Search contacts..."
+                }
+              }
+            },
+            {
+              "id": "T0Ag7e",
+              "type": "ref",
+              "ref": "kTdXr",
+              "width": "fill_container",
+              "descendants": {
+                "LCJBW": {
+                  "content": "Stage"
+                },
+                "ZHHVY": {
+                  "content": "Discovery"
+                }
+              }
+            },
+            {
+              "id": "kyS5O",
+              "type": "ref",
+              "ref": "kTdXr",
+              "width": "fill_container",
+              "descendants": {
+                "LCJBW": {
+                  "content": "City"
+                },
+                "ZHHVY": {
+                  "content": "Toronto"
+                }
+              }
+            },
+            {
+              "id": "vQTdf",
+              "type": "ref",
+              "ref": "NUFyM",
+              "width": "fill_container"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "E8k5ST",
+          "name": "keyboardSpacer",
+          "width": "fill_container",
+          "height": 200,
+          "fill": "$bg-elevated",
+          "stroke": {
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$border-subtle"
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "NCD8q",
+      "x": 425,
+      "y": 45003,
+      "name": "Mobile / Add Note Sheet",
+      "clip": true,
+      "width": 375,
+      "height": 812,
+      "fill": "$bg-base",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "ix8AM",
+          "name": "topBar",
+          "width": "fill_container",
+          "height": 48,
+          "fill": "$bg-elevated",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border-subtle"
+          },
+          "padding": [
+            "$sp-4",
+            "$sp-3"
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "d6XK08",
+              "width": 18,
+              "height": 18,
+              "iconFontName": "x",
+              "iconFontFamily": "lucide",
+              "fill": "$fg-secondary"
+            },
+            {
+              "type": "text",
+              "id": "xuqHo",
+              "fill": "$fg-primary",
+              "content": "Add note · Sam Reyes",
+              "fontFamily": "$font-heading",
+              "fontSize": "$fs-base",
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "R8yqy",
+              "fill": "$accent-primary",
+              "content": "Save",
+              "fontFamily": "$font-body",
+              "fontSize": "$fs-sm",
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "DdTjb",
+          "name": "form",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": "$sp-3",
+          "padding": "$sp-4",
+          "children": [
+            {
+              "type": "frame",
+              "id": "waxuS",
+              "name": "chips",
+              "gap": "$sp-2",
+              "children": [
+                {
+                  "id": "W2kcM",
+                  "type": "ref",
+                  "ref": "qMNTM",
+                  "descendants": {
+                    "AgVoe": {
+                      "content": "Call"
+                    }
+                  }
+                },
+                {
+                  "id": "kM2iv",
+                  "type": "ref",
+                  "ref": "X4IrLm",
+                  "descendants": {
+                    "Fwf1D": {
+                      "content": "Email"
+                    }
+                  }
+                },
+                {
+                  "id": "F9tWm",
+                  "type": "ref",
+                  "ref": "vP7Pn",
+                  "descendants": {
+                    "SFr3c": {
+                      "content": "Meeting"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "l0Gvi",
+              "name": "textarea",
+              "width": "fill_container",
+              "height": 200,
+              "fill": "$bg-input",
+              "cornerRadius": "$radius-md",
+              "stroke": {
+                "thickness": 1,
+                "fill": "$accent-primary"
+              },
+              "layout": "vertical",
+              "gap": "$sp-2",
+              "padding": "$sp-3",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "KkM5y",
+                  "fill": "$fg-primary",
+                  "content": "Confirmed venue, AV checklist by Friday|",
+                  "fontFamily": "$font-body",
+                  "fontSize": "$fs-sm",
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "N8St27",
+              "name": "helper",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "eertE",
+                  "fill": "$fg-disabled",
+                  "content": "Visible to your team",
+                  "fontFamily": "$font-body",
+                  "fontSize": "$fs-xs",
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "XNFCE",
+                  "fill": "$fg-disabled",
+                  "content": "38 / 240",
+                  "fontFamily": "$font-mono",
+                  "fontSize": "$fs-xs",
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "UNX8G",
+          "name": "keyboardSpacer",
+          "width": "fill_container",
+          "height": 280,
+          "fill": "$bg-elevated",
+          "stroke": {
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$border-subtle"
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "JhbxX",
+      "x": 850,
+      "y": 45003,
+      "name": "Mobile / Delete Confirmation Sheet",
+      "clip": true,
+      "width": 375,
+      "height": 812,
+      "fill": "$bg-base",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "rectangle",
+          "id": "ZODtC",
+          "layoutPosition": "absolute",
+          "x": 0,
+          "y": 0,
+          "name": "scrim",
+          "fill": "#0A0A0FB3",
+          "width": 375,
+          "height": 812
+        },
+        {
+          "type": "frame",
+          "id": "eXlhs",
+          "layoutPosition": "absolute",
+          "x": 0,
+          "y": 480,
+          "name": "sheet",
+          "width": 375,
+          "height": 332,
+          "fill": "$bg-elevated",
+          "cornerRadius": [
+            "$radius-2xl",
+            "$radius-2xl",
+            0,
+            0
+          ],
+          "stroke": {
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$border-default"
+          },
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "y5np30",
+              "name": "grabber",
+              "width": "fill_container",
+              "padding": "$sp-3",
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": "$radius-full",
+                  "id": "VtyCY",
+                  "fill": "$border-default",
+                  "width": 48,
+                  "height": 4
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "z29SC",
+              "name": "content",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": "$sp-4",
+              "padding": [
+                "$sp-6",
+                "$sp-3"
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "gUR9e",
+                  "name": "ic",
+                  "width": 56,
+                  "height": 56,
+                  "fill": "$danger-soft",
+                  "cornerRadius": "$radius-full",
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$danger"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "pKs5S",
+                      "width": 24,
+                      "height": 24,
+                      "iconFontName": "trash-2",
+                      "iconFontFamily": "lucide",
+                      "fill": "$danger"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "CmjO8",
+                  "name": "titleBox",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-2",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "I5BnC",
+                      "fill": "$fg-primary",
+                      "content": "Delete Sam Reyes?",
+                      "fontFamily": "$font-heading",
+                      "fontSize": "$fs-base",
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ivE04",
+                      "fill": "$fg-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "This contact will be removed from all partners and hackathons. You can restore from the audit log within 30 days.",
+                      "lineHeight": 1.5,
+                      "textAlign": "center",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-sm",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "q0ftHk",
+              "name": "actions",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": "$sp-2",
+              "padding": "$sp-3",
+              "children": [
+                {
+                  "id": "bnvhR",
+                  "type": "ref",
+                  "ref": "jn0Od",
+                  "width": "fill_container",
+                  "descendants": {
+                    "R3uTZO": {
+                      "content": "Delete contact"
+                    }
+                  }
+                },
+                {
+                  "id": "T8p3W",
+                  "type": "ref",
+                  "ref": "j1vsZ",
+                  "width": "fill_container",
+                  "descendants": {
+                    "KSqo0": {
+                      "content": "Cancel"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "GAxsg",
+      "x": 1275,
+      "y": 45003,
+      "name": "Mobile / Manage Roles Sheet",
+      "clip": true,
+      "width": 375,
+      "height": 812,
+      "fill": "$bg-base",
+      "layout": "vertical"
+    },
+    {
+      "type": "frame",
+      "id": "YudNr",
+      "x": 1700,
+      "y": 45003,
+      "name": "Mobile / Session Expired",
+      "clip": true,
+      "width": 375,
+      "height": 812,
+      "fill": "$bg-base",
+      "layout": "vertical"
+    },
+    {
+      "type": "frame",
+      "id": "SmzaX",
+      "x": 2125,
+      "y": 45003,
+      "name": "Tablet / New Partner Modal",
+      "clip": true,
+      "width": 768,
+      "height": 1024,
+      "fill": "$bg-base",
+      "layout": "vertical"
+    },
+    {
+      "type": "frame",
+      "id": "h1ULTF",
+      "x": 3025,
+      "y": 45003,
+      "name": "Tablet / Delete Confirmation Modal",
+      "clip": true,
+      "width": 768,
+      "height": 1024,
+      "fill": "$bg-base",
+      "layout": "vertical"
     }
   ],
   "variables": {
