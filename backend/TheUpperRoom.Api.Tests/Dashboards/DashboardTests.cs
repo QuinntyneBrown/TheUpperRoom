@@ -121,4 +121,20 @@ public class DashboardTests(WebApplicationFactory<Program> factory)
         var body = await getResp.Content.ReadFromJsonAsync<Dictionary<string, object>>();
         Assert.Equal(layout2, body!["json"].ToString());
     }
+
+    [Fact]
+    public async Task SaveDashboard_PayloadOver16KB_Returns400()
+    {
+        var email = $"db+{Guid.NewGuid():N}@example.com";
+        var cookie = await RegisterAndSignIn(email);
+        var bigJson = "{\"items\":[" + string.Join(",", Enumerable.Range(0, 500).Select(i => $"{{\"id\":\"{Guid.NewGuid()}\",\"x\":{i},\"y\":0,\"cols\":2,\"rows\":2,\"type\":\"kpi\"}}")) + "]}";
+
+        var client = factory.CreateClient();
+        var req = new HttpRequestMessage(HttpMethod.Put, "/api/dashboards/me");
+        req.Headers.Add("Cookie", cookie);
+        req.Content = JsonContent.Create(new { json = bigJson });
+        var response = await client.SendAsync(req);
+
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+    }
 }
