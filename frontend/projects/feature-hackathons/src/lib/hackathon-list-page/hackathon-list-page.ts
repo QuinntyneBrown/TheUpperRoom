@@ -88,26 +88,26 @@ import { MatIconModule } from '@angular/material/icon';
     }
     .hackathon-list-error {
       display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 8px; margin: 16px 0;
-      background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
-      border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
+      background: color-mix(in srgb, var(--ur-danger, #f87171) 12%, transparent); color: var(--ur-danger, #f87171);
+      border: 1px solid color-mix(in srgb, var(--ur-danger, #f87171) 40%, transparent); font-size: 0.875rem;
     }
     .hackathon-list-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
     .hackathon-list-loading { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
-    .hackathon-list-loading__card { padding: 16px; border-radius: 8px; border: 1px solid var(--ur-border-subtle, #e2e8f0); display: flex; flex-direction: column; gap: 8px; }
-    .hackathon-list-loading__title { height: 18px; width: 55%; border-radius: 4px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hl-pulse 1.4s ease-in-out infinite; }
-    .hackathon-list-loading__meta { height: 13px; width: 70%; border-radius: 4px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hl-pulse 1.4s ease-in-out infinite; }
+    .hackathon-list-loading__card { padding: 16px; border-radius: 8px; border: 1px solid var(--ur-border-subtle, #222233); display: flex; flex-direction: column; gap: 8px; }
+    .hackathon-list-loading__title { height: 18px; width: 55%; border-radius: 4px; background: var(--ur-border-default, #2a2a3a); animation: hl-pulse 1.4s ease-in-out infinite; }
+    .hackathon-list-loading__meta { height: 13px; width: 70%; border-radius: 4px; background: var(--ur-border-default, #2a2a3a); animation: hl-pulse 1.4s ease-in-out infinite; }
     @keyframes hl-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
     .hackathon-list-toast {
       position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
       display: flex; align-items: center; gap: 10px; padding: 12px 16px;
       border-radius: 8px; z-index: 1000;
-      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
+      background: var(--ur-bg-surface, #16161f); color: #fff; font-size: 0.875rem; font-weight: 500;
       border: 1px solid var(--ur-success, #22c55e); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
     .hackathon-list-toast mat-icon { color: var(--ur-success, #22c55e); font-size: 18px; width: 18px; height: 18px; }
     .hackathon-list-page__empty {
       display: flex; flex-direction: column; align-items: center; gap: 12px;
-      padding: 48px 24px; text-align: center; color: var(--ur-fg-muted, #64748b);
+      padding: 48px 24px; text-align: center; color: var(--ur-fg-muted, #a8a8b5);
     }
     .hackathon-list-page__empty mat-icon { font-size: 48px; width: 48px; height: 48px; opacity: 0.4; }
     .hackathon-list-page__empty p { margin: 0; font-size: 0.9375rem; }

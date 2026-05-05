@@ -25,17 +25,17 @@ import { UrButtonComponent, UrDialogComponent } from 'components';
     .hackathon-form__field input:focus { border-color: var(--ur-accent-primary, #6366f1); }
     .hackathon-form__row { display: flex; gap: 16px; }
     .hackathon-form__row .hackathon-form__field { flex: 1; }
-    .hackathon-form__error { font-size: 0.75rem; color: var(--ur-error-fg, #dc2626); }
+    .hackathon-form__error { font-size: 0.75rem; color: var(--ur-danger, #f87171); }
     .hackathon-form__partners { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
     .hackathon-form__partner-opt { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--ur-fg-primary, #f1f5f9); cursor: pointer; }
     .hackathon-form__actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
     .create-error-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
       gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
-      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
-      border: 1px solid var(--ur-error-fg, #dc2626); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      background: var(--ur-bg-surface, #16161f); color: #fff; font-size: 0.875rem; font-weight: 500;
+      border: 1px solid var(--ur-danger, #f87171); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
-    .create-error-toast mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
+    .create-error-toast mat-icon { color: var(--ur-danger, #f87171); font-size: 18px; width: 18px; height: 18px; }
   `],
 })
 export class HackathonCreatePageComponent implements OnInit, OnDestroy {
