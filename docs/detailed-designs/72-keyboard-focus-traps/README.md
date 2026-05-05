@@ -4,6 +4,9 @@
 
 Vertical slice: a visible focus ring on every focusable element, logical tab order on every page, and a shared focus trap for modal dialogs.
 
+## Status
+Accepted
+
 ## Components
 
 - Frontend `app-shell/styles/focus.scss` — `:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }`. Removes the default browser outline only when a custom one replaces it.

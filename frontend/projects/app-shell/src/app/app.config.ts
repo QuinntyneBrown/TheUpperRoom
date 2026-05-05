@@ -2,6 +2,7 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/
 import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { LayoutTestComponent } from './test/layout-test';
+import { DialogTestComponent } from './test/dialog-test';
 import { DashboardPageComponent } from './dashboard/dashboard-page';
 
 export const appConfig: ApplicationConfig = {
@@ -11,6 +12,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter([
       { path: 'dashboard', component: DashboardPageComponent },
       { path: 'test/layout', component: LayoutTestComponent },
+      { path: 'test/dialog', component: DialogTestComponent },
     ]),
   ],
 };

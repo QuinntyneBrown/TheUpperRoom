@@ -4,6 +4,9 @@
   role="dialog"
   aria-modal="true"
   [attr.aria-labelledby]="id + '-title'"
+  cdkTrapFocus
+  cdkTrapFocusAutoCapture="true"
+  (keydown.escape)="close()"
 >
   <header class="ur-dialog__header">
     <ng-content select="[ur-dialog-header-start]" />
