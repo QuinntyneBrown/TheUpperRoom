@@ -26,7 +26,7 @@ test.describe('Dashboard load behaviour', () => {
     // Wait for any debounced saves to complete
     await page.waitForTimeout(800);
 
-    const toast = page.locator('[data-testid=dashboard-saved-toast]');
+    const toast = page.locator('[data-testid=layout-saved-toast]');
     await expect(toast).not.toBeVisible();
     expect(saveCalled).toBe(false);
   });
