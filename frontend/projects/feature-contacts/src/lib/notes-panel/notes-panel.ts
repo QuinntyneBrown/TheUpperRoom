@@ -35,11 +35,13 @@ export class NotesPanelComponent implements OnDestroy {
   newBody = signal('');
   adding = signal(false);
   addNoteError = signal(false);
+  noteOperationError = signal(false);
   editingId = signal<string | null>(null);
   editBody = signal('');
   deletingId = signal<string | null>(null);
 
   private addNoteErrorTimer?: ReturnType<typeof setTimeout>;
+  private noteOperationErrorTimer?: ReturnType<typeof setTimeout>;
 
   constructor() {
     effect(() => {
@@ -86,6 +88,11 @@ export class NotesPanelComponent implements OnDestroy {
         );
         this.editingId.set(null);
       },
+      error: () => {
+        clearTimeout(this.noteOperationErrorTimer);
+        this.noteOperationError.set(true);
+        this.noteOperationErrorTimer = setTimeout(() => this.noteOperationError.set(false), 4000);
+      },
     });
   }
 
@@ -107,11 +114,18 @@ export class NotesPanelComponent implements OnDestroy {
         this.notes.update((ns) => ns.filter((n) => n.id !== noteId));
         this.deletingId.set(null);
       },
+      error: () => {
+        this.deletingId.set(null);
+        clearTimeout(this.noteOperationErrorTimer);
+        this.noteOperationError.set(true);
+        this.noteOperationErrorTimer = setTimeout(() => this.noteOperationError.set(false), 4000);
+      },
     });
   }
 
   ngOnDestroy(): void {
     clearTimeout(this.addNoteErrorTimer);
+    clearTimeout(this.noteOperationErrorTimer);
   }
 
   isOwn(note: NoteDto): boolean {

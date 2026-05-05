@@ -64,3 +64,10 @@
     <button mat-button (click)="addNote()">Retry</button>
   </div>
 }
+
+@if (noteOperationError()) {
+  <div class="note-error-toast" role="alert" data-testid="note-operation-error-toast">
+    <mat-icon>error_outline</mat-icon>
+    <span>Operation failed. Please try again.</span>
+  </div>
+}

@@ -18,6 +18,13 @@ import { RoleChipEditorComponent } from '../role-chip-editor/role-chip-editor';
       border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
     }
     .team-load-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
+    .team-error-toast {
+      position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
+      gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
+      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
+      border: 1px solid var(--ur-error-fg, #dc2626); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .team-error-toast mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
   `],
 })
 export class LocalTeamPageComponent implements OnInit, OnDestroy {
@@ -26,9 +33,12 @@ export class LocalTeamPageComponent implements OnInit, OnDestroy {
 
   members = signal<TeamMemberDto[]>([]);
   loadError = signal(false);
+  removeError = signal(false);
   showInvite = signal(false);
   removingMember = signal<TeamMemberDto | null>(null);
   currentRoles = signal<string[]>([]);
+
+  private removeErrorTimer?: ReturnType<typeof setTimeout>;
 
   canEdit = computed(() =>
     this.currentRoles().includes('Admin') || this.currentRoles().includes('CityLead')
@@ -39,7 +49,9 @@ export class LocalTeamPageComponent implements OnInit, OnDestroy {
     this.loadTeam();
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    clearTimeout(this.removeErrorTimer);
+  }
 
   loadTeam(): void {
     this.loadError.set(false);
@@ -61,6 +73,12 @@ export class LocalTeamPageComponent implements OnInit, OnDestroy {
       next: () => {
         this.removingMember.set(null);
         this.loadTeam();
+      },
+      error: () => {
+        this.removingMember.set(null);
+        clearTimeout(this.removeErrorTimer);
+        this.removeError.set(true);
+        this.removeErrorTimer = setTimeout(() => this.removeError.set(false), 4000);
       },
     });
   }
