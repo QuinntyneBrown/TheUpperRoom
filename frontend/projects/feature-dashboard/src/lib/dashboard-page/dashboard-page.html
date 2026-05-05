@@ -39,4 +39,19 @@
       }
     </gridster>
   }
+
+  @if (removedWidget()) {
+    <div class="dashboard-snackbar" role="status" data-testid="undo-snackbar">
+      <mat-icon class="dashboard-snackbar__icon">delete</mat-icon>
+      <span class="dashboard-snackbar__text">Widget removed</span>
+      <button mat-button (click)="undoRemove()" data-testid="undo-remove-btn">Undo</button>
+    </div>
+  }
+
+  @if (savedToast()) {
+    <div class="dashboard-toast dashboard-toast--saved" role="status" data-testid="layout-saved-toast">
+      <mat-icon>check_circle</mat-icon>
+      <span>Layout saved</span>
+    </div>
+  }
 </div>
