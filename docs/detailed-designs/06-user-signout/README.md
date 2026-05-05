@@ -2,6 +2,9 @@
 
 **Traces to:** L2-005 (L1-001).
 
+## Status
+Accepted
+
 ## Components
 
 - Backend `AuthController.SignOut` → `POST /api/auth/sign-out`. Calls `SignInManager.SignOutAsync()` and emits an audit log.
