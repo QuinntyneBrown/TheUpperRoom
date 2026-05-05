@@ -83,8 +83,8 @@ export class ContactsPage {
     return this.page.getByTestId('contact-notes-section');
   }
 
-  contactCard(name: string) {
-    return this.page.getByTestId(`contact-card-${name}`);
+  contactCard(id: string) {
+    return this.page.getByTestId(`contact-card-${id}`);
   }
 
   searchInput() {

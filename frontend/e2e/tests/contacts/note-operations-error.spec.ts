@@ -26,7 +26,7 @@ test.describe('Notes panel operation errors', () => {
     });
 
     await page.getByTestId('note-edit-btn').first().click();
-    await page.getByRole('textbox').last().fill('Updated note');
+    await page.getByLabel('Edit note').fill('Updated note');
     await page.getByTestId('note-save-btn').last().click();
     await expect(page.getByTestId('note-operation-error-toast')).toBeVisible({ timeout: 3000 });
   });
