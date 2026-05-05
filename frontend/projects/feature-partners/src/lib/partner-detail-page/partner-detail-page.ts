@@ -144,7 +144,7 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
 
   showStageDialog = signal(false);
   pendingStage = signal<PartnerStage | null>(null);
-  stageReason = signal('');
+  stageReason = '';
 
   private stageToastTimer?: ReturnType<typeof setTimeout>;
   private linkedToastTimer?: ReturnType<typeof setTimeout>;
@@ -218,7 +218,7 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
 
   openStageDialog(stage: PartnerStage): void {
     this.pendingStage.set(stage);
-    this.stageReason.set('');
+    this.stageReason = '';
     this.showStageDialog.set(true);
   }
 
