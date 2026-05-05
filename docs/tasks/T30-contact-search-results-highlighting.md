@@ -1,5 +1,6 @@
 # T30 — Contact-specific search results with highlighting
 
+**Status**: Accepted
 **Phase**: 4 — Contact lifecycle
 **Area**: Contacts, Search
 **Requirements**: L1-011, L2-014, L2-043
