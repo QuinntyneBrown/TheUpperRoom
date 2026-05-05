@@ -1,5 +1,6 @@
 # T63 — E2E acceptance flow inventory
 
+**Status**: Accepted
 **Phase**: 10 — Component mapping and acceptance traceability
 **Area**: QA, Architecture
 **Requirements**: L2-063, L2-064
