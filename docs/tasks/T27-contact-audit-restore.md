@@ -1,5 +1,6 @@
 # T27 — Contact audit and restore state
 
+**Status**: Accepted
 **Phase**: 4 — Contact lifecycle
 **Area**: Contacts
 **Requirements**: L1-003, L2-012
