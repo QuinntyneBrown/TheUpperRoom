@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { HACKATHON_SERVICE, HackathonDetailDto, HackathonStage, REALTIME_SERVICE } from 'api';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { UrButtonComponent, UrDialogComponent } from 'components';
 import { ProductsSectionComponent } from '../products-section/products-section';
 import { Subscription } from 'rxjs';
@@ -20,7 +21,7 @@ const STAGES: { value: HackathonStage; label: string }[] = [
   selector: 'ur-hackathon-detail-page',
   templateUrl: './hackathon-detail-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule, UrButtonComponent, UrDialogComponent, ProductsSectionComponent],
+  imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule, MatMenuModule, UrButtonComponent, UrDialogComponent, ProductsSectionComponent],
   styles: [`
     .hackathon-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;

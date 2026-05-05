@@ -56,7 +56,8 @@ export class HackathonsPage {
   }
 
   async delete() {
-    await this.page.getByTestId('hackathon-delete-btn').click();
+    await this.page.getByTestId('hackathon-more-btn').click();
+    await this.page.getByTestId('hackathon-delete-menu-item').click();
     await this.page.getByTestId('confirm-delete-hackathon-btn').click();
     await this.page.waitForURL(/\/hackathons$/);
   }
