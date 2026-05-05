@@ -1,5 +1,6 @@
 # T20 — Mobile full-screen global search
 
+**Status**: Accepted
 **Phase**: 3 — Responsive coverage and clipping fixes
 **Area**: Search, Responsive
 **Requirements**: L1-011, L1-009, L2-043, L2-039
