@@ -3,7 +3,7 @@
 **Traces to:** L2-045 AC1, AC3. L1-011.
 
 ## Status
-Accepted
+Complete
 
 Vertical slice: any unhandled frontend error reaches the backend within 5 s with sanitized context.
 
