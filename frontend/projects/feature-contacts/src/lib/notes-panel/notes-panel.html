@@ -56,3 +56,11 @@
     }
   }
 </section>
+
+@if (addNoteError()) {
+  <div class="note-error-toast" role="alert" data-testid="note-save-error-toast">
+    <mat-icon>error</mat-icon>
+    <span>Couldn't save note · Draft preserved</span>
+    <button mat-button (click)="addNote()">Retry</button>
+  </div>
+}

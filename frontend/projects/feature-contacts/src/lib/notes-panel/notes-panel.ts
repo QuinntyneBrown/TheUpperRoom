@@ -1,16 +1,28 @@
-import { ChangeDetectionStrategy, Component, effect, inject, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, input, OnDestroy, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { CONTACT_SERVICE, PARTNER_SERVICE, NoteDto } from 'api';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { UrButtonComponent } from 'components';
 
 @Component({
   selector: 'ur-notes-panel',
   templateUrl: './notes-panel.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, DatePipe, UrButtonComponent],
+  imports: [FormsModule, DatePipe, MatButtonModule, MatIconModule, UrButtonComponent],
+  styles: [`
+    .note-error-toast {
+      position: fixed; bottom: 24px; right: 24px; display: flex; align-items: center;
+      gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
+      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
+      border: 1px solid var(--ur-danger, #ef4444);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .note-error-toast mat-icon { color: var(--ur-danger, #ef4444); font-size: 18px; width: 18px; height: 18px; }
+  `],
 })
-export class NotesPanelComponent {
+export class NotesPanelComponent implements OnDestroy {
   targetId = input.required<string>();
   targetType = input<'Contact' | 'Partner'>('Contact');
   initialNotes = input<NoteDto[]>([]);
@@ -22,9 +34,12 @@ export class NotesPanelComponent {
   notes = signal<NoteDto[]>([]);
   newBody = signal('');
   adding = signal(false);
+  addNoteError = signal(false);
   editingId = signal<string | null>(null);
   editBody = signal('');
   deletingId = signal<string | null>(null);
+
+  private addNoteErrorTimer?: ReturnType<typeof setTimeout>;
 
   constructor() {
     effect(() => {
@@ -47,7 +62,12 @@ export class NotesPanelComponent {
         this.newBody.set('');
         this.adding.set(false);
       },
-      error: () => this.adding.set(false),
+      error: () => {
+        this.adding.set(false);
+        clearTimeout(this.addNoteErrorTimer);
+        this.addNoteError.set(true);
+        this.addNoteErrorTimer = setTimeout(() => this.addNoteError.set(false), 5000);
+      },
     });
   }
 
@@ -88,6 +108,10 @@ export class NotesPanelComponent {
         this.deletingId.set(null);
       },
     });
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.addNoteErrorTimer);
   }
 
   isOwn(note: NoteDto): boolean {
