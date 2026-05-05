@@ -1,6 +1,6 @@
 # T113 — Invite dialog role checkboxes show raw enum values
 
-**Status:** Open
+**Status:** Fixed
 
 **Route:** `/team` (invite dialog)
 
