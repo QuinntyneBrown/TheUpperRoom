@@ -10,7 +10,7 @@ test.describe('Partner edit generic save error', () => {
   test('shows error toast when save fails with 500', async ({ auth, partners, page }) => {
     await auth.signInAs('city-lead');
     await partners.create({ name: 'Edit Error Partner' });
-    await partners.page.getByRole('link', { name: /edit/i }).click();
+    await partners.page.getByTestId('partner-edit-link').click();
     await partners.page.waitForURL(/\/partners\/[a-f0-9-]+\/edit/);
 
     await page.route('**/api/partners/*', (route) => {

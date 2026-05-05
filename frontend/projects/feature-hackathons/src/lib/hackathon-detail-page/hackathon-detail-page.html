@@ -15,7 +15,7 @@
         <p class="hackathon-detail__meta">{{ h.hostCity }} · {{ h.startDate | date:'mediumDate' }} – {{ h.endDate | date:'mediumDate' }}</p>
       </div>
       <div class="hackathon-detail__header-actions">
-        <a mat-stroked-button [routerLink]="['/hackathons', h.id, 'edit']">Edit</a>
+        <a mat-stroked-button [routerLink]="['/hackathons', h.id, 'edit']" data-testid="hackathon-edit-link">Edit</a>
         <ur-button variant="danger" (click)="showDeleteDialog.set(true)" data-testid="hackathon-delete-btn">Delete</ur-button>
       </div>
     </header>

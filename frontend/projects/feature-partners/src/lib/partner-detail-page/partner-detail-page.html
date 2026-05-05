@@ -19,7 +19,7 @@
         <span data-testid="partner-name" aria-current="page">{{ p.name }}</span>
       </nav>
       <div class="partner-detail__header-actions">
-        <a mat-stroked-button [routerLink]="['/partners', p.id, 'edit']">Edit</a>
+        <a mat-stroked-button [routerLink]="['/partners', p.id, 'edit']" data-testid="partner-edit-link">Edit</a>
         <ur-button variant="danger" [disabled]="!canDelete()" (click)="canDelete() && showDeleteDialog.set(true)" data-testid="partner-delete-btn">Delete</ur-button>
       </div>
       @if (!canDelete()) {

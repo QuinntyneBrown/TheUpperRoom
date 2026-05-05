@@ -60,7 +60,7 @@ export class PartnersPage {
   }
 
   async update(opts: { name: string }) {
-    await this.page.getByRole('link', { name: /edit/i }).click();
+    await this.page.getByTestId('partner-edit-link').click();
     await this.page.waitForURL(/\/partners\/[a-f0-9-]+\/edit/);
     await this.page.getByTestId('partner-name-input').fill(opts.name);
     await this.page.getByTestId('partner-edit-save-btn').click();

@@ -11,7 +11,7 @@ test.describe('Hackathon edit generic save error', () => {
     await auth.signInAs('city-lead');
     await hackathons.create({ title: 'Edit Error Hackathon', startDate: '2026-09-01', endDate: '2026-09-03', hostCity: 'Toronto' });
     await hackathons.assertOnDetail('Edit Error Hackathon');
-    await page.getByRole('link', { name: /edit/i }).click();
+    await page.getByTestId('hackathon-edit-link').click();
     await page.waitForURL(/\/hackathons\/[a-f0-9-]+\/edit/);
 
     await page.route('**/api/hackathons/*', (route) => {

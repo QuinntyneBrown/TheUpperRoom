@@ -50,7 +50,7 @@ export class ContactsPage {
   }
 
   async update(opts: { name: string }) {
-    await this.page.getByRole('link', { name: /edit/i }).click();
+    await this.page.getByTestId('contact-edit-link').click();
     await this.page.waitForURL(/\/contacts\/[a-f0-9-]+\/edit/);
     await this.page.getByLabel('First name').clear();
     await this.page.getByLabel('First name').fill(opts.name);

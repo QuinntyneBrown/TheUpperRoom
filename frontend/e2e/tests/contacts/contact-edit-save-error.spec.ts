@@ -10,7 +10,7 @@ test.describe('Contact edit generic save error', () => {
   test('shows error toast when save fails with 500', async ({ auth, contacts, page }) => {
     await auth.signInAs('city-lead');
     await contacts.create({ name: 'Edit Error Contact' });
-    await contacts.page.getByRole('link', { name: /edit/i }).click();
+    await contacts.page.getByTestId('contact-edit-link').click();
     await contacts.page.waitForURL(/\/contacts\/[a-f0-9-]+\/edit/);
 
     await page.route('**/api/contacts/*', (route) => {

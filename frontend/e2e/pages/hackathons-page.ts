@@ -35,7 +35,7 @@ export class HackathonsPage {
   }
 
   async update(opts: { title: string }) {
-    await this.page.getByRole('link', { name: /edit/i }).click();
+    await this.page.getByTestId('hackathon-edit-link').click();
     await this.page.waitForURL(/\/hackathons\/[a-f0-9-]+\/edit/);
     await this.page.getByLabel('Title').fill(opts.title);
     await this.page.getByTestId('hackathon-edit-save-btn').click();

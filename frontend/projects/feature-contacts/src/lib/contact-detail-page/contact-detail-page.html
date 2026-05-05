@@ -15,7 +15,7 @@
     <header class="contact-detail__header">
       <h1 data-testid="contact-name">{{ contact()!.firstName }} {{ contact()!.lastName }}</h1>
       <div class="contact-detail__actions">
-        <a mat-stroked-button [routerLink]="['/contacts', contact()!.id, 'edit']">Edit</a>
+        <a mat-stroked-button [routerLink]="['/contacts', contact()!.id, 'edit']" data-testid="contact-edit-link">Edit</a>
         <ur-button variant="danger" [disabled]="!canDelete()" (click)="canDelete() && showDeleteDialog.set(true)" data-testid="contact-delete-btn">Delete</ur-button>
       </div>
       @if (!canDelete()) {

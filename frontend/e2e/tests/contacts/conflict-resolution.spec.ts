@@ -10,7 +10,7 @@ test.describe('Contact conflict resolution', () => {
   test('409 on save shows conflict resolution dialog', async ({ auth, contacts, page }) => {
     await auth.signInAs('city-lead');
     await contacts.create({ name: 'Conflict Test Contact' });
-    await contacts.page.getByRole('link', { name: /edit/i }).click();
+    await contacts.page.getByTestId('contact-edit-link').click();
     await contacts.page.waitForURL(/\/contacts\/[a-f0-9-]+\/edit/);
 
     await page.route('**/api/contacts/*', (route) => {
@@ -29,7 +29,7 @@ test.describe('Contact conflict resolution', () => {
   test('conflict dialog shows your changes vs server version labels', async ({ auth, contacts, page }) => {
     await auth.signInAs('city-lead');
     await contacts.create({ name: 'Conflict Dialog Test' });
-    await contacts.page.getByRole('link', { name: /edit/i }).click();
+    await contacts.page.getByTestId('contact-edit-link').click();
     await contacts.page.waitForURL(/\/contacts\/[a-f0-9-]+\/edit/);
 
     await page.route('**/api/contacts/*', (route) => {
@@ -51,7 +51,7 @@ test.describe('Contact conflict resolution', () => {
   test('discard button navigates back to contact detail', async ({ auth, contacts, page }) => {
     await auth.signInAs('city-lead');
     await contacts.create({ name: 'Conflict Discard Test' });
-    await contacts.page.getByRole('link', { name: /edit/i }).click();
+    await contacts.page.getByTestId('contact-edit-link').click();
     await contacts.page.waitForURL(/\/contacts\/[a-f0-9-]+\/edit/);
 
     await page.route('**/api/contacts/*', (route) => {
