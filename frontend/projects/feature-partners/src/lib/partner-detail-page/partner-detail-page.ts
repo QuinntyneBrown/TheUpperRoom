@@ -101,7 +101,7 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
     if (!p) return;
     this.deleting.set(true);
     this.partners.delete(p.id).subscribe({
-      next: () => this.router.navigateByUrl('/partners'),
+      next: () => this.router.navigate(['/partners'], { queryParams: { deleted: '1' } }),
       error: () => this.deleting.set(false),
     });
   }

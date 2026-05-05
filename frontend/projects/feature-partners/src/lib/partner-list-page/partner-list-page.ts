@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { PARTNER_SERVICE, PartnerListRow, PartnerStage } from 'api';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 import { toggleStage, parseStages } from './stage-filter.utils';
 
 const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
@@ -13,7 +14,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
 
 @Component({
   selector: 'ur-partner-list-page',
-  imports: [RouterLink, MatButtonModule, MatChipsModule],
+  imports: [RouterLink, MatButtonModule, MatChipsModule, MatIconModule],
   template: `
     <div class="partner-list-page" data-perf-ready="partners">
       <div class="partner-list-page__header">
@@ -43,10 +44,27 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
         }
       </div>
     </div>
+    @if (deletedToast()) {
+      <div class="partner-list-toast" role="status" data-testid="partner-deleted-toast">
+        <mat-icon>check_circle</mat-icon>
+        <span>Partner deleted</span>
+      </div>
+    }
   `,
+  styles: [`
+    .partner-list-toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 10px; padding: 12px 16px;
+      border-radius: 8px; z-index: 1000;
+      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
+      border: 1px solid var(--ur-success, #22c55e);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .partner-list-toast mat-icon { color: var(--ur-success, #22c55e); font-size: 18px; width: 18px; height: 18px; }
+  `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PartnerListPageComponent {
+export class PartnerListPageComponent implements OnInit, OnDestroy {
   private partnerSvc = inject(PARTNER_SERVICE);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
@@ -54,8 +72,11 @@ export class PartnerListPageComponent {
   readonly stages = ALL_STAGES;
   private allRows = signal<PartnerListRow[]>([]);
   loading = signal(true);
+  deletedToast = signal(false);
 
   activeStages = signal<PartnerStage[]>([]);
+
+  private deletedToastTimer?: ReturnType<typeof setTimeout>;
 
   filtered = computed(() => {
     const active = this.activeStages();
@@ -68,6 +89,18 @@ export class PartnerListPageComponent {
       this.activeStages.set(parseStages(params.get('stage')));
     });
     this.partnerSvc.list().subscribe({ next: rows => { this.allRows.set(rows); this.loading.set(false); }, error: () => this.loading.set(false) });
+  }
+
+  ngOnInit(): void {
+    if (this.route.snapshot.queryParamMap.get('deleted') === '1') {
+      this.deletedToast.set(true);
+      this.deletedToastTimer = setTimeout(() => this.deletedToast.set(false), 3000);
+      this.router.navigate([], { replaceUrl: true, relativeTo: this.route, queryParams: {} });
+    }
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.deletedToastTimer);
   }
 
   toggle(stage: PartnerStage): void {
