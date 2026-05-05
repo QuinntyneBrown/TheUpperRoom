@@ -1,16 +1,23 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, signal } from '@angular/core';
 import { HACKATHON_SERVICE, DeletedHackathonDto } from 'api';
 import { DatePipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'lib-deleted-hackathons-page',
-  imports: [DatePipe, MatButtonModule, MatTableModule],
+  imports: [DatePipe, MatButtonModule, MatIconModule, MatTableModule],
   template: `
     <div class="deleted-hackathons-page">
       <h1>Deleted Hackathons</h1>
-      @if (rows().length === 0) {
+      @if (loadError()) {
+        <div class="admin-error" data-testid="deleted-hackathons-error" role="alert">
+          <mat-icon>error_outline</mat-icon>
+          <span>Failed to load deleted hackathons.</span>
+          <button mat-stroked-button data-testid="deleted-hackathons-retry-btn" (click)="load()">Retry</button>
+        </div>
+      } @else if (rows().length === 0) {
         <p>No deleted hackathons.</p>
       } @else {
         <table mat-table [dataSource]="rows()">
@@ -25,7 +32,9 @@ import { MatTableModule } from '@angular/material/table';
           <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let row">
-              <button mat-button (click)="restore(row.id)">Restore</button>
+              <button mat-button [disabled]="restoring() === row.id" (click)="restore(row.id)">
+                {{ restoring() === row.id ? 'Restoring…' : 'Restore' }}
+              </button>
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="columns"></tr>
@@ -33,21 +42,70 @@ import { MatTableModule } from '@angular/material/table';
         </table>
       }
     </div>
+    @if (restoreError()) {
+      <div class="admin-toast admin-toast--error" data-testid="restore-error-toast" role="alert">
+        <mat-icon>error_outline</mat-icon>
+        <span>Restore failed. Please try again.</span>
+      </div>
+    }
   `,
+  styles: [`
+    .admin-error {
+      display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 8px; margin: 16px 0;
+      background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
+      border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
+    }
+    .admin-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
+    .admin-toast {
+      position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
+      gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
+      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .admin-toast--error { border: 1px solid var(--ur-error-fg, #dc2626); }
+    .admin-toast--error mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
+  `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DeletedHackathonsPageComponent {
+export class DeletedHackathonsPageComponent implements OnDestroy {
   private hackathonSvc = inject(HACKATHON_SERVICE);
   readonly columns = ['title', 'deletedAt', 'actions'];
   rows = signal<DeletedHackathonDto[]>([]);
+  loadError = signal(false);
+  restoring = signal<string | null>(null);
+  restoreError = signal(false);
+
+  private restoreErrorTimer?: ReturnType<typeof setTimeout>;
 
   constructor() {
-    this.hackathonSvc.listDeleted().subscribe(data => this.rows.set(data));
+    this.load();
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.restoreErrorTimer);
+  }
+
+  load(): void {
+    this.loadError.set(false);
+    this.hackathonSvc.listDeleted().subscribe({
+      next: data => this.rows.set(data),
+      error: () => this.loadError.set(true),
+    });
   }
 
   restore(id: string): void {
-    this.hackathonSvc.restore(id).subscribe(() =>
-      this.rows.update(r => r.filter(h => h.id !== id))
-    );
+    this.restoring.set(id);
+    this.hackathonSvc.restore(id).subscribe({
+      next: () => {
+        this.rows.update(r => r.filter(h => h.id !== id));
+        this.restoring.set(null);
+      },
+      error: () => {
+        this.restoring.set(null);
+        clearTimeout(this.restoreErrorTimer);
+        this.restoreError.set(true);
+        this.restoreErrorTimer = setTimeout(() => this.restoreError.set(false), 4000);
+      },
+    });
   }
 }
