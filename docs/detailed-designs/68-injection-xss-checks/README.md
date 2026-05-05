@@ -3,7 +3,7 @@
 **Traces to:** L2-052, L2-053. L1-014.
 
 ## Status
-Accepted
+Complete
 
 Vertical slice: combine input/output abuse checks into one verification suite.
 
