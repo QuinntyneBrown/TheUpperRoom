@@ -5,7 +5,7 @@
 Vertical slice: a visible focus ring on every focusable element, logical tab order on every page, and a shared focus trap for modal dialogs.
 
 ## Status
-Accepted
+Complete
 
 ## Components
 
