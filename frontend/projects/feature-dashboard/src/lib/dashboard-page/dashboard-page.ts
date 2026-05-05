@@ -3,6 +3,7 @@ import { DASHBOARD_SERVICE, DashboardItem } from 'api';
 import { Gridster, GridsterItem } from 'angular-gridster2';
 import { debounceTime, Subject } from 'rxjs';
 import { WidgetCatalogDialogComponent } from '../widget-catalog-dialog/widget-catalog-dialog';
+import { buildGridsterOptions } from './gridster-options';
 
 @Component({
   selector: 'ur-dashboard-page',
@@ -18,13 +19,7 @@ export class DashboardPageComponent implements OnInit {
 
   private save$ = new Subject<void>();
 
-  options = signal({
-    draggable: { enabled: true },
-    resizable: { enabled: true },
-    pushItems: true,
-    itemChangeCallback: () => this.save$.next(),
-    itemResizeCallback: () => this.save$.next(),
-  });
+  options = buildGridsterOptions(() => this.save$.next());
 
   ngOnInit(): void {
     this.dashboardSvc.get().subscribe({
