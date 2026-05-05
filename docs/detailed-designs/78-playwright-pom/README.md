@@ -2,6 +2,9 @@
 
 **Traces to:** L2-063. L1-009.
 
+## Status
+Accepted
+
 Vertical slice: directory layout, base fixtures, mailbox fixture, selector rules. No flow tests in this slice — each E2E flow slice depends on this.
 
 ## Components

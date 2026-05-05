@@ -121,7 +121,7 @@ These slices were derived from the gaps identified in [`docs/missing-detailed-de
 | 75 | [Component library public API enforcement](75-component-library-public-api/README.md) | L2-060 | Complete |
 | 76 | [API library injection-token contract](76-api-injection-tokens/README.md) | L2-061 | Complete |
 | 77 | [Backend CQRS/MediatR enforcement](77-cqrs-mediatr-enforcement/README.md) | L2-062 | Complete |
-| 78 | [Playwright Page Object foundation](78-playwright-pom/README.md) | L2-063 | Draft |
+| 78 | [Playwright Page Object foundation](78-playwright-pom/README.md) | L2-063 | Accepted |
 | 79 | [E2E auth and session flow](79-e2e-auth-session/README.md) | L2-063, L2-064 | Draft |
 | 80 | [E2E contact management flow](80-e2e-contact-flow/README.md) | L2-063, L2-064 | Draft |
 | 81 | [E2E partner management flow](81-e2e-partner-flow/README.md) | L2-063, L2-064 | Draft |
