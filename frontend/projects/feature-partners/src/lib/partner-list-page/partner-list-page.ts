@@ -69,6 +69,23 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
     }
   `,
   styles: [`
+    .partner-list-page { display: flex; flex-direction: column; height: 100%; }
+    .partner-list-page__header {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+      padding: 16px 20px; border-bottom: 1px solid var(--ur-border-subtle, #334155);
+      background: var(--ur-bg-surface, #1e293b);
+    }
+    .partner-list-page__header h1 { margin: 0; font-size: 1.125rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); }
+    .partner-list-page__list { display: flex; flex-direction: column; padding: 0; }
+    .partner-card {
+      display: flex; flex-direction: column; gap: 4px; padding: 14px 20px;
+      border-bottom: 1px solid var(--ur-border-subtle, #334155);
+      text-decoration: none; color: inherit; background: transparent;
+      transition: background 0.15s ease;
+    }
+    .partner-card:hover { background: var(--ur-bg-elevated, #0f172a); }
+    .partner-card strong { font-size: 0.9375rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); }
+    .partner-card__meta { font-size: 0.8125rem; color: var(--ur-fg-secondary, #94a3b8); }
     .partner-load-error {
       display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 8px; margin: 16px 0;
       background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
