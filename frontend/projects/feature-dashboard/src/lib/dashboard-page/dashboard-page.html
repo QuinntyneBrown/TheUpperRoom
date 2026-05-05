@@ -24,8 +24,11 @@
 
   @if (items().length === 0 && !loadError()) {
     <div class="dashboard-page__empty" data-testid="dashboard-empty">
-      <p>No widgets yet.</p>
+      <mat-icon class="dashboard-page__empty-icon">dashboard_customize</mat-icon>
+      <h2>Drop widgets here to start</h2>
+      <p>Choose from charts, KPI cards, recent activity, and more. Drag to rearrange. Resize from the corner.</p>
       <button mat-raised-button data-testid="add-widget-cta" (click)="showCatalog.set(true)">+ Add widget</button>
+      <span class="dashboard-page__empty-hint">Or press W to open the catalog</span>
     </div>
   } @else {
     <gridster [options]="options">
