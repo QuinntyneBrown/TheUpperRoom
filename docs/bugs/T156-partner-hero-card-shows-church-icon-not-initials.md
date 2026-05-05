@@ -1,6 +1,6 @@
 # T156 — Partner hero card shows church icon instead of partner name initials
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 
