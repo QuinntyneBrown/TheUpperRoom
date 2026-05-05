@@ -1,6 +1,6 @@
 # T130 — Auth pages render inside app shell with sidebar; auth-card has no CSS
 
-**Status**: Fixed
+**Status**: Fixed ✓
 
 ## Description
 
