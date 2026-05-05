@@ -78,7 +78,6 @@ export class App implements OnInit {
   readonly globalItems = GLOBAL_ITEMS;
   readonly bottomNavItems = BOTTOM_NAV_ITEMS;
 
-  healthStatus = signal('...');
   resolving = signal(true);
 
   private firstNavDone = false;
@@ -118,10 +117,7 @@ export class App implements OnInit {
         this.resolving.set(false);
       }
     });
-    this.healthService.get().subscribe({
-      next: (r) => this.healthStatus.set(r.status.toUpperCase()),
-      error: () => this.healthStatus.set('ERROR'),
-    });
+    this.healthService.get().subscribe();
     this.realtimeSvc.connect();
   }
 }
