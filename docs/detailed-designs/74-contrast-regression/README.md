@@ -4,6 +4,9 @@
 
 Vertical slice: an automated gate that recomputes WCAG contrast for every text token pair, every focus/error/icon pair, and every chart pair on every PR.
 
+## Status
+Accepted
+
 ## Components
 
 - Test `tests/a11y/contrast.spec.ts` — for each pair `(foreground, background)` enumerated from the token file:
