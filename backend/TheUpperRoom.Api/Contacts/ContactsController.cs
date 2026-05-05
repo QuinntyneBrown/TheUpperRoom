@@ -26,7 +26,11 @@ public class ContactsController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> List([FromQuery] string? search)
+    public async Task<IActionResult> List(
+        [FromQuery] string? search,
+        [FromQuery] int page = 1,
+        [FromQuery] int size = 25,
+        [FromQuery] string sort = "lastName:asc")
     {
         if (!string.IsNullOrWhiteSpace(search))
         {
@@ -34,7 +38,8 @@ public class ContactsController(IMediator mediator) : ControllerBase
             var results = await mediator.Send(new SearchContactsQuery(search));
             return Ok(results);
         }
-        return Ok(Array.Empty<object>());
+        var list = await mediator.Send(new ListContactsQuery(page, size, sort));
+        return Ok(list);
     }
 
     [HttpGet("{id:guid}")]

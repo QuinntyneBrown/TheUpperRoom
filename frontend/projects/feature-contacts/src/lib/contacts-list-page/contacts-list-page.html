@@ -16,31 +16,76 @@
     />
   </div>
 
-  @if (searching()) {
-    <p class="contacts-list-page__status" role="status">Searching…</p>
+  @if (loading()) {
+    <p class="contacts-list-page__status" role="status">Loading…</p>
   }
 
-  @if (term().length >= 2 && !searching()) {
-    @if (results().length === 0) {
-      <p class="contacts-list-page__empty">No contacts found.</p>
-    } @else {
-      <ul class="contacts-list-page__results" data-testid="search-results-list">
-        @for (r of results(); track r.id) {
-          <li class="contact-result-card">
-            <a [routerLink]="['/contacts', r.id]" class="contact-result-card__link">
-              <span class="contact-result-card__name">
-                <span [innerHTML]="r.firstName + ' ' + r.lastName | highlight:term()"></span>
-              </span>
-              @if (r.city) {
-                <span class="contact-result-card__city">{{ r.city }}</span>
-              }
-              @if (r.snippet) {
-                <span class="contact-result-card__snippet" [innerHTML]="r.snippet | highlight:term()"></span>
-              }
-            </a>
-          </li>
-        }
-      </ul>
+  @if (isSearching) {
+    @if (!loading()) {
+      @if (searchResults().length === 0) {
+        <p class="contacts-list-page__empty">No contacts found.</p>
+      } @else {
+        <ul class="contacts-list-page__results" data-testid="search-results-list">
+          @for (r of searchResults(); track r.id) {
+            <li class="contact-result-card">
+              <a [routerLink]="['/contacts', r.id]" class="contact-result-card__link">
+                <span class="contact-result-card__name"
+                  [innerHTML]="r.firstName + ' ' + r.lastName | highlight:term()"></span>
+                @if (r.city) {
+                  <span class="contact-result-card__city">{{ r.city }}</span>
+                }
+                @if (r.snippet) {
+                  <span class="contact-result-card__snippet"
+                    [innerHTML]="r.snippet | highlight:term()"></span>
+                }
+              </a>
+            </li>
+          }
+        </ul>
+      }
+    }
+  } @else {
+    <div class="contacts-list-page__table-wrap">
+      <table class="contacts-table" data-testid="contacts-table">
+        <thead>
+          <tr>
+            <th>
+              <button (click)="toggleSort('firstName')" class="sort-btn"
+                [attr.aria-label]="'Sort by first name ' + (sortField() === 'firstName' ? sortDir() : 'asc')">
+                First name
+                @if (sortField() === 'firstName') { <span>{{ sortDir() === 'asc' ? '↑' : '↓' }}</span> }
+              </button>
+            </th>
+            <th>
+              <button (click)="toggleSort('lastName')" class="sort-btn"
+                [attr.aria-label]="'Sort by last name ' + (sortField() === 'lastName' ? sortDir() : 'asc')">
+                Last name
+                @if (sortField() === 'lastName') { <span>{{ sortDir() === 'asc' ? '↑' : '↓' }}</span> }
+              </button>
+            </th>
+            <th>Email</th>
+            <th>City</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of listResult().rows; track row.id) {
+            <tr class="contacts-table__row" [attr.data-testid]="'contact-card-' + row.firstName + ' ' + row.lastName">
+              <td><a [routerLink]="['/contacts', row.id]">{{ row.firstName }}</a></td>
+              <td>{{ row.lastName }}</td>
+              <td>{{ row.email ?? '—' }}</td>
+              <td>{{ row.city ?? '—' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    @if (totalPages > 1) {
+      <nav class="contacts-pagination" aria-label="Pagination">
+        <button [disabled]="page() === 1" (click)="goToPage(page() - 1)">Previous</button>
+        <span>Page {{ page() }} of {{ totalPages }}</span>
+        <button [disabled]="page() === totalPages" (click)="goToPage(page() + 1)">Next</button>
+      </nav>
     }
   }
 </div>

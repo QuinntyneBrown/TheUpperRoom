@@ -1,4 +1,4 @@
-# 14 — List & Paginate Contacts ✅ Accepted
+# 14 — List & Paginate Contacts ✅ Complete
 
 **Traces to:** L2-015 (L1-003).
 
