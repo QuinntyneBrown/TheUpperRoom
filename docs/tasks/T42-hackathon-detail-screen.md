@@ -1,6 +1,6 @@
 # T42 — Hackathon detail screen
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 5 — Partner and hackathon management
 **Area**: Hackathon
 **Requirements**: L1-005, L2-025
@@ -19,6 +19,6 @@ Add a dedicated detail screen for a single hackathon, beyond the current overvie
 
 ## Acceptance criteria
 
-- [ ] `Desktop / Hackathon Detail` exists and links to the components above.
-- [ ] Mobile collapsible variant per T18/T21.
-- [ ] Snapshot reports no clipping.
+- [x] `Desktop / Hackathon Detail` exists and links to the components above.
+- [x] Mobile collapsible variant per T18/T21.
+- [x] Snapshot reports no clipping.
