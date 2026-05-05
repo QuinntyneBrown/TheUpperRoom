@@ -24,11 +24,17 @@
 
   @if (items().length === 0 && !loadError()) {
     <div class="dashboard-page__empty" data-testid="dashboard-empty">
-      <mat-icon class="dashboard-page__empty-icon">dashboard_customize</mat-icon>
-      <h2>Drop widgets here to start</h2>
-      <p>Choose from charts, KPI cards, recent activity, and more. Drag to rearrange. Resize from the corner.</p>
-      <button mat-raised-button data-testid="add-widget-cta" (click)="showCatalog.set(true)">+ Add widget</button>
-      <span class="dashboard-page__empty-hint">Or press W to open the catalog</span>
+      <div class="dashboard-page__empty-intro" data-testid="dashboard-empty-intro">
+        <h2>Welcome, {{ displayName() || 'there' }}</h2>
+        <p>Your dashboard is empty. Add widgets to track partners, hackathons, and your local team.</p>
+      </div>
+      <div class="dashboard-page__empty-zone">
+        <mat-icon class="dashboard-page__empty-icon">dashboard_customize</mat-icon>
+        <h3>Drop widgets here to start</h3>
+        <p>Choose from charts, KPI cards, recent activity, and more. Drag to rearrange. Resize from the corner.</p>
+        <button mat-raised-button data-testid="add-widget-cta" (click)="showCatalog.set(true)">+ Add widget</button>
+        <span class="dashboard-page__empty-hint">Or press W to open the catalog</span>
+      </div>
     </div>
   } @else {
     <gridster [options]="options">

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { DASHBOARD_SERVICE, DashboardItem } from 'api';
+import { AUTH_SERVICE, DASHBOARD_SERVICE, DashboardItem } from 'api';
 import { Gridster, GridsterItem } from 'angular-gridster2';
 import { debounceTime, filter, Subject } from 'rxjs';
 import { WidgetCatalogDialogComponent } from '../widget-catalog-dialog/widget-catalog-dialog';
@@ -20,7 +20,11 @@ const UNDO_MS = 8000;
     .dashboard-page { display: flex; flex-direction: column; height: 100%; }
     .dashboard-page__header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid var(--ur-border-subtle, #e2e8f0); }
     .dashboard-page__header h1 { margin: 0; font-size: 1.25rem; font-weight: 600; }
-    .dashboard-page__empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; color: var(--ur-fg-muted, #888); }
+    .dashboard-page__empty { flex: 1; display: flex; flex-direction: column; gap: 24px; padding: 32px; }
+    .dashboard-page__empty-intro { display: flex; flex-direction: column; gap: 8px; }
+    .dashboard-page__empty-intro h2 { margin: 0; font-size: 1.875rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); }
+    .dashboard-page__empty-intro p { margin: 0; font-size: 1rem; color: var(--ur-fg-secondary, #94a3b8); }
+    .dashboard-page__empty-zone { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; border-radius: 16px; border: 1px solid var(--ur-border-default, #334155); background: var(--ur-bg-surface, #1e293b); padding: 48px; color: var(--ur-fg-muted, #888); }
     .dashboard-widget { display: flex; flex-direction: column; height: 100%; background: var(--ur-bg-surface, #101018); border-radius: 8px; border: 1px solid var(--ur-accent-primary, #9f86ff); overflow: hidden; }
     .dashboard-widget__header { display: flex; align-items: center; justify-content: space-between; padding: 6px 6px 6px 8px; background: var(--ur-accent-soft, #1a1432); }
     .dashboard-widget__drag-handle { font-size: 18px; width: 18px; height: 18px; color: var(--ur-accent-primary, #9f86ff); cursor: grab; margin-right: 4px; flex-shrink: 0; }
@@ -46,7 +50,9 @@ const UNDO_MS = 8000;
 })
 export class DashboardPageComponent implements OnInit {
   private dashboardSvc = inject(DASHBOARD_SERVICE);
+  private auth = inject(AUTH_SERVICE);
 
+  displayName = signal('');
   items = signal<DashboardItem[]>([]);
   showCatalog = signal(false);
   removedWidget = signal<DashboardItem | null>(null);
@@ -65,6 +71,7 @@ export class DashboardPageComponent implements OnInit {
   ngOnInit(): void {
     this.save$.pipe(debounceTime(300), filter(() => !this.suppressSave)).subscribe(() => this.persist());
     this.loadLayout();
+    this.auth.me().subscribe({ next: (u) => this.displayName.set(u.displayName) });
   }
 
   loadLayout(): void {
