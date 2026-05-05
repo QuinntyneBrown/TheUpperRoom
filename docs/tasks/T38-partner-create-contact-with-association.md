@@ -1,6 +1,6 @@
 # T38 — Create-and-associate contact from partner
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 5 — Partner and hackathon management
 **Area**: Partner, Contacts
 **Requirements**: L1-004, L2-018
@@ -18,6 +18,6 @@ Allow the user to create a new contact from within partner context, automaticall
 
 ## Acceptance criteria
 
-- [ ] Entry point and pre-filled-locked partner field designed.
-- [ ] Save behavior documented (creates contact + association atomically).
-- [ ] Mobile variant per T21.
+- [x] Entry point and pre-filled-locked partner field designed.
+- [x] Save behavior documented (creates contact + association atomically).
+- [x] Mobile variant per T21.
