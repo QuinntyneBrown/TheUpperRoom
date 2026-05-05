@@ -1,6 +1,6 @@
 # T30 — Contact-specific search results with highlighting
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 4 — Contact lifecycle
 **Area**: Contacts, Search
 **Requirements**: L1-011, L2-014, L2-043
@@ -26,6 +26,6 @@ Within both the contacts list and the global search dialog, contact results shou
 
 ## Acceptance criteria
 
-- [ ] Contact result variant designed for both contacts list search and global search.
-- [ ] Highlight style meets AA contrast on the dark theme.
-- [ ] Multi-match snippet behavior documented (truncation, ellipsis).
+- [x] Contact result variant designed for both contacts list search and global search.
+- [x] Highlight style meets AA contrast on the dark theme.
+- [x] Multi-match snippet behavior documented (truncation, ellipsis).
