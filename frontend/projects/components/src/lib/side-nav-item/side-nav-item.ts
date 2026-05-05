@@ -6,12 +6,13 @@ import {
   Output,
   booleanAttribute,
 } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'ur-side-nav-item',
-  imports: [MatIconModule, MatListModule],
+  imports: [RouterLink, RouterLinkActive, MatIconModule, MatListModule],
   templateUrl: './side-nav-item.html',
   styleUrl: './side-nav-item.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
