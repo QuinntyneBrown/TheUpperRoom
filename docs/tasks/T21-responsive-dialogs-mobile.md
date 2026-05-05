@@ -1,6 +1,6 @@
 # T21 — Mobile dialog variants
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 3 — Responsive coverage and clipping fixes
 **Area**: Dialogs, Responsive
 **Requirements**: L1-009, L2-039, L2-040
@@ -27,6 +27,6 @@ Convert dialogs that exist only at desktop width into mobile bottom sheets or fu
 
 ## Acceptance criteria
 
-- [ ] Each existing or planned dialog has a mobile variant defined.
-- [ ] Sheet headers include a clear close affordance.
-- [ ] Focus is trapped inside the sheet/dialog.
+- [x] Each existing or planned dialog has a mobile variant defined.
+- [x] Sheet headers include a clear close affordance.
+- [x] Focus is trapped inside the sheet/dialog.
