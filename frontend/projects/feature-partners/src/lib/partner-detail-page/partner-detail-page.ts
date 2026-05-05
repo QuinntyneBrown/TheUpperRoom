@@ -91,6 +91,9 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
+    clearTimeout(this.stageToastTimer);
+    clearTimeout(this.linkedToastTimer);
+    clearTimeout(this.savedToastTimer);
   }
 
   confirmDelete(): void {
