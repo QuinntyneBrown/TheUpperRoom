@@ -35,9 +35,35 @@ public class PartnersController(IMediator mediator) : ControllerBase
         if (!found) return NotFound(new { error = "not_found" });
         return Ok();
     }
+
+    [HttpPost("{id:guid}/contacts")]
+    public async Task<IActionResult> AddContact(Guid id, [FromBody] AddContactRequest req)
+    {
+        var found = await mediator.Send(new AddPartnerContactCommand(id, req.ContactId));
+        if (!found) return NotFound(new { error = "not_found" });
+        return Ok();
+    }
+
+    [HttpDelete("{id:guid}/contacts/{contactId:guid}")]
+    public async Task<IActionResult> RemoveContact(Guid id, Guid contactId)
+    {
+        var found = await mediator.Send(new RemovePartnerContactCommand(id, contactId));
+        if (!found) return NotFound(new { error = "not_found" });
+        return NoContent();
+    }
+
+    [HttpPost("{id:guid}/contacts/new")]
+    public async Task<IActionResult> CreateAndLinkContact(Guid id, [FromBody] CreateContactForPartnerRequest req)
+    {
+        var contactId = await mediator.Send(new CreateContactForPartnerCommand(id, req.FirstName, req.LastName, req.Email, req.Phone));
+        if (contactId is null) return NotFound(new { error = "not_found" });
+        return CreatedAtAction(nameof(CreateAndLinkContact), new { id, contactId }, new { contactId });
+    }
 }
 
 public record ChangeStageRequest(string ToStage);
+public record AddContactRequest(Guid ContactId);
+public record CreateContactForPartnerRequest(string FirstName, string LastName, string? Email, string? Phone);
 
 public record CreatePartnerRequest(
     string Name,

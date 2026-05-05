@@ -12,6 +12,8 @@ public record PartnerStageHistoryDto(
     Guid ChangedById,
     DateTime ChangedAt);
 
+public record PartnerContactDto(Guid Id, string FirstName, string LastName, string? Email);
+
 public record PartnerDetailDto(
     Guid Id,
     Guid TeamId,
@@ -21,7 +23,8 @@ public record PartnerDetailDto(
     string Stage,
     string? Description,
     int Version,
-    List<PartnerStageHistoryDto> History);
+    List<PartnerStageHistoryDto> History,
+    List<PartnerContactDto> Contacts);
 
 public record GetPartnerQuery(Guid Id) : IRequest<PartnerDetailDto?>;
 
@@ -40,8 +43,15 @@ public class GetPartnerQueryHandler(AppDbContext db, ICurrentUser currentUser)
             .Select(h => new PartnerStageHistoryDto(h.Id, h.FromStage.ToString(), h.ToStage.ToString(), h.ChangedById, h.ChangedAt))
             .ToListAsync(ct);
 
+        var contacts = await (
+            from pc in db.PartnerContacts
+            join c in db.Contacts on pc.ContactId equals c.Id
+            where pc.PartnerId == partner.Id
+            select new PartnerContactDto(c.Id, c.FirstName, c.LastName, c.Email))
+            .ToListAsync(ct);
+
         return new PartnerDetailDto(
             partner.Id, partner.TeamId, partner.Name, partner.Website, partner.City,
-            partner.Stage.ToString(), partner.Description, partner.Version, history);
+            partner.Stage.ToString(), partner.Description, partner.Version, history, contacts);
     }
 }
