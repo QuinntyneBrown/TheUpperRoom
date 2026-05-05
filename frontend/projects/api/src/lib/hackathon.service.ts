@@ -89,13 +89,23 @@ export interface UpdateHackathonRequest {
   partnerIds: string[];
 }
 
+export interface DeletedHackathonDto {
+  id: string;
+  title: string;
+  deletedAt: string;
+  teamId: string;
+}
+
 export interface IHackathonService {
   list(): Observable<HackathonListRow[]>;
   create(req: CreateHackathonRequest): Observable<CreateHackathonResponse>;
   getById(id: string): Observable<HackathonDetailDto>;
   update(id: string, req: UpdateHackathonRequest): Observable<void>;
+  delete(id: string): Observable<void>;
   changeStage(id: string, toStage: HackathonStage): Observable<void>;
   addProduct(hackathonId: string, req: AddProductRequest): Observable<AddProductResponse>;
+  listDeleted(): Observable<DeletedHackathonDto[]>;
+  restore(id: string): Observable<void>;
 }
 
 export const HACKATHON_SERVICE = new InjectionToken<IHackathonService>('HACKATHON_SERVICE');
@@ -120,11 +130,23 @@ export class HackathonService implements IHackathonService {
     return this.http.put<void>(`/api/hackathons/${id}`, req);
   }
 
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`/api/hackathons/${id}`);
+  }
+
   changeStage(id: string, toStage: HackathonStage): Observable<void> {
     return this.http.post<void>(`/api/hackathons/${id}/stage`, { toStage });
   }
 
   addProduct(hackathonId: string, req: AddProductRequest): Observable<AddProductResponse> {
     return this.http.post<AddProductResponse>(`/api/hackathons/${hackathonId}/products`, req);
+  }
+
+  listDeleted(): Observable<DeletedHackathonDto[]> {
+    return this.http.get<DeletedHackathonDto[]>('/api/admin/hackathons/deleted');
+  }
+
+  restore(id: string): Observable<void> {
+    return this.http.post<void>(`/api/admin/hackathons/${id}/restore`, {});
   }
 }

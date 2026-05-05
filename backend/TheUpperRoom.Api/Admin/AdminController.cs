@@ -21,4 +21,16 @@ public class AdminController(IMediator mediator) : ControllerBase
         if (!found) return NotFound(new { error = "not_found" });
         return Ok(new { message = "Contact restored." });
     }
+
+    [HttpGet("hackathons/deleted")]
+    public async Task<IActionResult> ListDeletedHackathons() =>
+        Ok(await mediator.Send(new ListDeletedHackathonsQuery()));
+
+    [HttpPost("hackathons/{id:guid}/restore")]
+    public async Task<IActionResult> RestoreHackathon(Guid id)
+    {
+        var found = await mediator.Send(new RestoreHackathonCommand(id));
+        if (!found) return NotFound(new { error = "not_found" });
+        return Ok();
+    }
 }

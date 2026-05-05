@@ -70,6 +70,14 @@ public class HackathonsController(IMediator mediator) : ControllerBase
         return CreatedAtAction(nameof(AddProduct), new { id, productId }, new { id = productId });
     }
 
+    [HttpDelete("{id:guid}")]
+    [Authorize(Roles = $"{Roles.Admin},{Roles.CityLead}")]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        var found = await mediator.Send(new DeleteHackathonCommand(id));
+        return found ? NoContent() : NotFound(new { error = "not_found" });
+    }
+
     [HttpPost("{id:guid}/stage")]
     public async Task<IActionResult> AdvanceStage(Guid id, [FromBody] AdvanceStageRequest req)
     {
