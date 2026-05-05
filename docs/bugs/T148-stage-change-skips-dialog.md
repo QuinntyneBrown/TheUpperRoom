@@ -1,6 +1,6 @@
 # T148 — Stage advance/revert button skips confirmation dialog
 
-**Status**: Open
+**Status**: Fixed ✓
 
 ## Description
 
