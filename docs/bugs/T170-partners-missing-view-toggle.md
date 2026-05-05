@@ -1,6 +1,6 @@
 # T170 — Partners: missing list/board view toggle in header
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 

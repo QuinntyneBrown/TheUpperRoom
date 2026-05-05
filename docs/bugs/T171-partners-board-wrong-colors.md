@@ -1,6 +1,6 @@
 # T171 — Partners board: wrong color tokens (Slate/light fallbacks instead of design palette)
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 
