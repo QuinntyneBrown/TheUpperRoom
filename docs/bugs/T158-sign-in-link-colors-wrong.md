@@ -1,6 +1,6 @@
 # T158 — Sign-in page link colours use browser default blue instead of accent-primary
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 

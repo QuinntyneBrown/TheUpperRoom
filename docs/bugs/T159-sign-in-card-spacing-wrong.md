@@ -1,6 +1,6 @@
 # T159 — Sign-in card section spacing off — elements run together without gap
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 
