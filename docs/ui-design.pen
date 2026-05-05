@@ -24384,7 +24384,315 @@
       "clip": true,
       "width": 1440,
       "height": 1024,
-      "fill": "$bg-base"
+      "fill": "$bg-base",
+      "children": [
+        {
+          "type": "frame",
+          "id": "CVZyT",
+          "layoutPosition": "absolute",
+          "x": -200,
+          "y": 200,
+          "name": "bg",
+          "width": 1840,
+          "height": 600,
+          "layout": "none",
+          "children": [
+            {
+              "type": "ellipse",
+              "id": "Uitqv",
+              "x": 200,
+              "y": 0,
+              "opacity": 0.6,
+              "fill": "$accent-soft",
+              "width": 600,
+              "height": 600,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "ZOqv8",
+              "x": 1100,
+              "y": 100,
+              "opacity": 0.15,
+              "fill": "$accent-secondary",
+              "width": 500,
+              "height": 500,
+              "effect": {
+                "type": "blur",
+                "radius": 200
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "aS7YZ",
+          "name": "center",
+          "width": "fill_container",
+          "height": "fill_container",
+          "padding": "$sp-12",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "d66tl5",
+              "name": "card",
+              "width": 480,
+              "fill": "$bg-surface",
+              "cornerRadius": "$radius-2xl",
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "layout": "vertical",
+              "gap": "$sp-8",
+              "padding": "$sp-12",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "j2BUN",
+                  "name": "head",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-3",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "zrt5k",
+                      "name": "logoBox",
+                      "gap": "$sp-2",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "V96glN",
+                          "name": "logoMark",
+                          "width": 36,
+                          "height": 36,
+                          "fill": "$accent-primary",
+                          "cornerRadius": "$radius-md",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "zuHKS",
+                              "width": 22,
+                              "height": 22,
+                              "iconFontName": "church",
+                              "iconFontFamily": "Material Symbols Outlined",
+                              "fill": "$fg-on-accent"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "n7nI6X",
+                          "fill": "$fg-primary",
+                          "content": "The Upper Room",
+                          "fontFamily": "$font-heading",
+                          "fontSize": "$fs-xl",
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MzcVj",
+                  "name": "iconWrap",
+                  "width": "fill_container",
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "fasRE",
+                      "name": "iconCircle",
+                      "width": 72,
+                      "height": 72,
+                      "fill": "$accent-soft",
+                      "cornerRadius": "$radius-full",
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$border-default"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "e4nLxZ",
+                          "width": 36,
+                          "height": 36,
+                          "iconFontName": "mail-check",
+                          "iconFontFamily": "lucide",
+                          "fill": "$accent-primary"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "j1IlUe",
+                  "name": "titleBox",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$sp-2",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "P4Sju",
+                      "fill": "$fg-primary",
+                      "content": "Check your inbox",
+                      "fontFamily": "$font-heading",
+                      "fontSize": "$fs-2xl",
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "A0MXhC",
+                      "fill": "$fg-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "If an account exists for that address, we have sent reset instructions to it.",
+                      "lineHeight": 1.5,
+                      "textAlign": "center",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-base",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "a4Q6dv",
+                  "name": "emailRow",
+                  "width": "fill_container",
+                  "fill": "$bg-input",
+                  "cornerRadius": "$radius-md",
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border-default"
+                  },
+                  "gap": "$sp-2",
+                  "padding": "$sp-3",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "Ee4eR",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "send",
+                      "iconFontFamily": "lucide",
+                      "fill": "$fg-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Pg3ZJ",
+                      "fill": "$fg-primary",
+                      "content": "name@church.org",
+                      "fontFamily": "$font-mono",
+                      "fontSize": "$fs-sm",
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "kjHyu",
+                  "name": "help",
+                  "fill": "$fg-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "The link expires in 30 minutes. Check your spam folder if you don't see it.",
+                  "lineHeight": 1.5,
+                  "textAlign": "center",
+                  "fontFamily": "$font-body",
+                  "fontSize": "$fs-sm",
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "G5eBg",
+                  "name": "resendBox",
+                  "width": "fill_container",
+                  "fill": "$bg-input",
+                  "cornerRadius": "$radius-md",
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border-subtle"
+                  },
+                  "layout": "vertical",
+                  "gap": "$sp-2",
+                  "padding": "$sp-3",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "lZH4t",
+                      "name": "resendRow",
+                      "gap": "$sp-2",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "Upft2",
+                          "width": 14,
+                          "height": 14,
+                          "iconFontName": "timer",
+                          "iconFontFamily": "lucide",
+                          "fill": "$fg-disabled"
+                        },
+                        {
+                          "type": "text",
+                          "id": "aHFaM",
+                          "fill": "$fg-disabled",
+                          "content": "Resend instructions in 0:54",
+                          "fontFamily": "$font-body",
+                          "fontSize": "$fs-sm",
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "O3xXuQ",
+                      "fill": "$fg-muted",
+                      "content": "Up to 3 emails per hour",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-xs",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "mEnaM",
+                  "fill": "$accent-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Back to sign in",
+                  "textAlign": "center",
+                  "fontFamily": "$font-body",
+                  "fontSize": "$fs-sm",
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "variables": {
