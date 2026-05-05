@@ -13,7 +13,7 @@
     </div>
   }
   @if (error()) {
-    <div role="alert" class="auth-error">{{ error() }}</div>
+    <div role="alert" class="auth-error" data-testid="sign-in-error">{{ error() }}</div>
   }
   <form (ngSubmit)="submit()" novalidate>
     <ur-input

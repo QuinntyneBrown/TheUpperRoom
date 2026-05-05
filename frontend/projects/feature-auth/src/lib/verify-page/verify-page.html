@@ -1,5 +1,5 @@
 @if (status() === 'verifying') {
   <p>Verifying your email…</p>
 } @else {
-  <p role="alert">The verification link is invalid, expired, or has already been used. <a href="/auth/register">Register again</a>.</p>
+  <p role="alert" data-testid="verify-error">The verification link is invalid, expired, or has already been used. <a href="/auth/register">Register again</a>.</p>
 }

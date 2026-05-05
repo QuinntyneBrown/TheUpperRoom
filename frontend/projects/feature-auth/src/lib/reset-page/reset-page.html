@@ -1,7 +1,7 @@
 <div class="auth-card">
   <h1>Reset password</h1>
   @if (error()) {
-    <div role="alert" class="auth-error">{{ error() }}</div>
+    <div role="alert" class="auth-error" data-testid="reset-error">{{ error() }}</div>
   }
   <form (ngSubmit)="submit()" novalidate>
     <ur-input
