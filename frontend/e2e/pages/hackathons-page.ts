@@ -25,7 +25,7 @@ export class HackathonsPage {
         if (await checkbox.count() > 0) await checkbox.check();
       }
     }
-    await this.page.getByRole('button', { name: /plan hackathon/i }).click();
+    await this.page.getByTestId('plan-hackathon-btn').click();
     await this.page.waitForURL(/\/hackathons\/[a-f0-9-]+$/);
   }
 
@@ -38,7 +38,7 @@ export class HackathonsPage {
     await this.page.getByRole('link', { name: /edit/i }).click();
     await this.page.waitForURL(/\/hackathons\/[a-f0-9-]+\/edit/);
     await this.page.getByLabel('Title').fill(opts.title);
-    await this.page.getByRole('button', { name: /^save$/i }).click();
+    await this.page.getByTestId('hackathon-edit-save-btn').click();
     await this.page.waitForURL(/\/hackathons\/[a-f0-9-]+$/);
   }
 
@@ -56,8 +56,8 @@ export class HackathonsPage {
   }
 
   async delete() {
-    await this.page.getByRole('button', { name: /^delete$/i }).click();
-    await this.page.getByRole('button', { name: /delete hackathon/i }).click();
+    await this.page.getByTestId('hackathon-delete-btn').click();
+    await this.page.getByTestId('confirm-delete-hackathon-btn').click();
     await this.page.waitForURL(/\/hackathons$/);
   }
 

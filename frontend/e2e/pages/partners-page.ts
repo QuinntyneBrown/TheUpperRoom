@@ -11,7 +11,7 @@ export class PartnersPage {
     await this.page.goto('/partners/new');
     await this.page.getByLabel('Organization name').fill(opts.name);
     await this.page.getByLabel('City').fill(opts.city ?? 'Test City');
-    await this.page.getByRole('button', { name: /add partner/i }).click();
+    await this.page.getByTestId('add-partner-btn').click();
     await this.page.waitForURL(/\/partners\/[a-f0-9-]+$/);
   }
 
@@ -27,7 +27,7 @@ export class PartnersPage {
 
   async addNote(body: string) {
     await this.page.getByLabel('New note').fill(body);
-    await this.page.getByRole('button', { name: /add note/i }).click();
+    await this.page.getByTestId('add-note-btn').click();
     await expect(this.page.getByText(body)).toBeVisible();
   }
 
@@ -63,14 +63,14 @@ export class PartnersPage {
     await this.page.getByRole('link', { name: /edit/i }).click();
     await this.page.waitForURL(/\/partners\/[a-f0-9-]+\/edit/);
     await this.page.getByTestId('partner-name-input').fill(opts.name);
-    await this.page.getByRole('button', { name: /^save$/i }).click();
+    await this.page.getByTestId('partner-edit-save-btn').click();
     await this.page.waitForURL(/\/partners\/[a-f0-9-]+$/);
   }
 
   async delete(partnerName: string) {
     await expect(this.page.getByTestId('partner-name')).toContainText(partnerName);
-    await this.page.getByRole('button', { name: /delete/i }).first().click();
-    await this.page.getByRole('button', { name: /delete partner/i }).click();
+    await this.page.getByTestId('partner-delete-btn').click();
+    await this.page.getByTestId('confirm-delete-partner-btn').click();
     await this.page.waitForURL(/\/partners$/);
   }
 

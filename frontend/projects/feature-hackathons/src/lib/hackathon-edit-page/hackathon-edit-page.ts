@@ -56,7 +56,7 @@ import { UrButtonComponent } from 'components';
           <input type="text" [value]="hostCity()" (input)="hostCity.set($any($event.target).value)" />
         </label>
         <div class="form-actions">
-          <ur-button type="submit" [disabled]="saving()">Save</ur-button>
+          <ur-button type="submit" [disabled]="saving()" data-testid="hackathon-edit-save-btn">Save</ur-button>
           <ur-button variant="secondary" type="button" (click)="cancel()">Cancel</ur-button>
         </div>
       </form>

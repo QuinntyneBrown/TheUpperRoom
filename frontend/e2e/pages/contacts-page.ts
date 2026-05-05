@@ -28,7 +28,7 @@ export class ContactsPage {
   }
 
   async submit() {
-    await this.page.getByRole('button', { name: /save|create/i }).click();
+    await this.page.getByTestId('contact-form-submit-btn').click();
   }
 
   async gotoDetail(id: string) {
@@ -60,13 +60,13 @@ export class ContactsPage {
 
   async addNote(body: string) {
     await this.page.getByLabel('New note').fill(body);
-    await this.page.getByRole('button', { name: /add note/i }).click();
+    await this.page.getByTestId('add-note-btn').click();
     await expect(this.page.getByText(body)).toBeVisible();
   }
 
   async delete() {
-    await this.page.getByRole('button', { name: /delete/i }).first().click();
-    await this.page.getByRole('button', { name: /delete contact/i }).click();
+    await this.page.getByTestId('contact-delete-btn').click();
+    await this.page.getByTestId('confirm-delete-contact-btn').click();
     await this.page.waitForURL(/\/contacts$/);
   }
 

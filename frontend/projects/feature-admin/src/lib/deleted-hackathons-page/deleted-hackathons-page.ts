@@ -45,7 +45,7 @@ import { MatTableModule } from '@angular/material/table';
           <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let row">
-              <button mat-button [disabled]="restoring() === row.id" (click)="restore(row.id)">
+              <button mat-button [disabled]="restoring() === row.id" (click)="restore(row.id)" [attr.data-testid]="'restore-hackathon-' + row.id">
                 {{ restoring() === row.id ? 'Restoring…' : 'Restore' }}
               </button>
             </td>
