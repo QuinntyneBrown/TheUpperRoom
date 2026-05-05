@@ -1,5 +1,6 @@
 # T17 — Mobile team screen
 
+**Status**: Accepted
 **Phase**: 3 — Responsive coverage and clipping fixes
 **Area**: Team, Responsive
 **Requirements**: L1-006, L1-009, L2-026, L2-039
