@@ -75,7 +75,7 @@ These slices were derived from the gaps identified in [`docs/missing-detailed-de
 | 54 | [List and detail responsive route patterns](54-list-detail-responsive/README.md) | L2-039, L2-040 | Complete |
 | 55 | [Dashboard responsive grid](55-dashboard-responsive-grid/README.md) | L2-041, L2-033 | Complete |
 | 56 | [Dark theme token system](56-dark-theme-tokens/README.md) | L2-042, L2-059 | Complete |
-| 57 | [Chart and non-text contrast validation](57-chart-contrast/README.md) | L2-042, L2-059 | Draft |
+| 57 | [Chart and non-text contrast validation](57-chart-contrast/README.md) | L2-042, L2-059 | Accepted |
 
 ### Observability slices
 

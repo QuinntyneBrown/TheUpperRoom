@@ -4,6 +4,9 @@
 
 Vertical slice: ensure chart series, focus rings, error states, and meaningful icons meet 3:1 non-text contrast.
 
+## Status
+Accepted
+
 ## Components
 
 - Frontend `feature-dashboard/line-chart-widget` (and any other Chart.js use) reads colors only from `--chart-*` tokens.
