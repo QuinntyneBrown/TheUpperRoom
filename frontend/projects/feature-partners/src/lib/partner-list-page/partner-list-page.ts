@@ -56,7 +56,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
         @for (row of filtered(); track row.id) {
           <a class="partner-card" [routerLink]="['/partners', row.id]" [attr.data-testid]="'partner-card-' + row.id">
             <strong>{{ row.name }}</strong>
-            <span class="partner-card__meta">{{ row.city }} · {{ row.stage }}</span>
+            <span class="partner-card__meta">{{ row.city }} · {{ stageLabel(row.stage) }}</span>
           </a>
         }
       </div>
@@ -145,6 +145,10 @@ export class PartnerListPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     clearTimeout(this.deletedToastTimer);
+  }
+
+  stageLabel(stage: PartnerStage): string {
+    return ALL_STAGES.find(s => s.stage === stage)?.label ?? stage;
   }
 
   toggle(stage: PartnerStage): void {

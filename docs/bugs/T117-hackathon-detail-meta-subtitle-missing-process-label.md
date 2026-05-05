@@ -1,6 +1,6 @@
 # T117 — Hackathon Detail: meta subtitle missing "FaithTech 4 D's process" label
 
-**Status**: Open
+**Status**: Fixed
 
 ## Description
 
