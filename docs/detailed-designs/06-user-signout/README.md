@@ -3,7 +3,7 @@
 **Traces to:** L2-005 (L1-001).
 
 ## Status
-Accepted
+Complete
 
 ## Components
 

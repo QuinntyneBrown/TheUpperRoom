@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 
@@ -21,6 +22,18 @@ public class AuthController(IMediator mediator) : ControllerBase
         var result = await mediator.Send(new VerifyEmailCommand(token));
         if (!result.Success) return BadRequest(new { error = result.Error });
         return Redirect("/auth/sign-in");
+    }
+
+    [Authorize]
+    [HttpGet("me")]
+    public IActionResult Me() => Ok(new { email = User.Identity?.Name });
+
+    [Authorize]
+    [HttpPost("sign-out")]
+    public async Task<IActionResult> SignOut()
+    {
+        await mediator.Send(new SignOutCommand());
+        return Ok(new { message = "Signed out." });
     }
 
     [HttpPost("sign-in")]

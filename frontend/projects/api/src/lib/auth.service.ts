@@ -26,6 +26,7 @@ export interface IAuthService {
   register(req: RegisterRequest): Observable<RegisterResponse>;
   verify(token: string): Observable<void>;
   signIn(req: SignInRequest): Observable<SignInResponse>;
+  signOut(): Observable<void>;
 }
 
 export const AUTH_SERVICE = new InjectionToken<IAuthService>('AUTH_SERVICE');
@@ -44,5 +45,9 @@ export class AuthService implements IAuthService {
 
   signIn(req: SignInRequest): Observable<SignInResponse> {
     return this.http.post<SignInResponse>('/api/auth/sign-in', req);
+  }
+
+  signOut(): Observable<void> {
+    return this.http.post<void>('/api/auth/sign-out', {});
   }
 }
