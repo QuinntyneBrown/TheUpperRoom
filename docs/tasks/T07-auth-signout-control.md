@@ -1,5 +1,6 @@
 # T07 — Sign-out control and signed-out redirect
 
+**Status**: Accepted
 **Phase**: 1 — Authentication and session edge states
 **Area**: Authentication
 **Requirements**: L1-001, L2-005
