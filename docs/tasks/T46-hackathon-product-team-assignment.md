@@ -1,5 +1,6 @@
 # T46 — Hackathon product team assignment
 
+**Status**: Accepted
 **Phase**: 5 — Partner and hackathon management
 **Area**: Hackathon, Team
 **Requirements**: L1-005, L1-006, L2-024
