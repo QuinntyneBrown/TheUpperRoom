@@ -33,7 +33,9 @@ export class RealtimeService implements IRealtimeService, OnDestroy {
   }
 
   private registerHandlers(): void {
-    this.hub.on('partnerStageChanged', (payload: RealtimeEvent) => this.events$.next(payload));
+    const forward = (payload: RealtimeEvent) => this.events$.next(payload);
+    this.hub.on('partnerStageChanged', forward);
+    this.hub.on('metricInvalidated', forward);
   }
 
   async connect(): Promise<void> {

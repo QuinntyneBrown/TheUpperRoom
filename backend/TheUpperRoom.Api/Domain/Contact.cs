@@ -13,4 +13,5 @@ public class Contact
     public DateTime? UpdatedAt { get; set; }
     public Guid? UpdatedById { get; set; }
     public DateTime? DeletedAt { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }
