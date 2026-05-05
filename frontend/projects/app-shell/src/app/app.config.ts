@@ -10,7 +10,7 @@ import { DashboardPageComponent } from 'feature-dashboard';
 import { HackathonCreatePageComponent, HackathonDetailPageComponent } from 'feature-hackathons';
 import { GlobalTeamsPageComponent, LocalTeamPageComponent } from 'feature-team';
 import { DeletedContactsPageComponent } from 'feature-admin';
-import { PartnerCreatePageComponent, PartnerDetailPageComponent, PartnerEditPageComponent, PartnersBoardPageComponent } from 'feature-partners';
+import { PartnerCreatePageComponent, PartnerDetailPageComponent, PartnerEditPageComponent, PartnerListPageComponent, PartnersBoardPageComponent } from 'feature-partners';
 import { NoAccessPageComponent, RecoverPageComponent, RegisterPageComponent, ResetPageComponent, SignInPageComponent, VerifyPageComponent } from 'feature-auth';
 import { GlobalErrorHandler } from './global-error-handler';
 import { LayoutTestComponent } from './test/layout-test';
@@ -39,7 +39,8 @@ export const appConfig: ApplicationConfig = {
       { path: 'teams', component: GlobalTeamsPageComponent },
       { path: 'hackathons/new', component: HackathonCreatePageComponent },
       { path: 'hackathons/:id', component: HackathonDetailPageComponent },
-      { path: 'partners', component: PartnersBoardPageComponent },
+      { path: 'partners', component: PartnerListPageComponent },
+      { path: 'partners/board', component: PartnersBoardPageComponent },
       { path: 'partners/new', component: PartnerCreatePageComponent },
       { path: 'partners/:id', component: PartnerDetailPageComponent },
       { path: 'partners/:id/edit', component: PartnerEditPageComponent },
