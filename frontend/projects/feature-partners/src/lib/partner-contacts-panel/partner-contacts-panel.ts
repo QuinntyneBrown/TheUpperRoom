@@ -31,8 +31,10 @@ export class PartnerContactsPanelComponent implements OnInit, OnDestroy {
   showNewForm = signal(false);
   saving = signal(false);
   removeError = signal(false);
+  createLinkError = signal(false);
 
   private removeErrorTimer?: ReturnType<typeof setTimeout>;
+  private createLinkErrorTimer?: ReturnType<typeof setTimeout>;
 
   firstName = signal('');
   lastName = signal('');
@@ -44,6 +46,7 @@ export class PartnerContactsPanelComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     clearTimeout(this.removeErrorTimer);
+    clearTimeout(this.createLinkErrorTimer);
   }
 
   openNewForm(): void {
@@ -77,7 +80,12 @@ export class PartnerContactsPanelComponent implements OnInit, OnDestroy {
         this.saving.set(false);
         this.contactLinked.emit(res.contactId);
       },
-      error: () => this.saving.set(false),
+      error: () => {
+        this.saving.set(false);
+        clearTimeout(this.createLinkErrorTimer);
+        this.createLinkError.set(true);
+        this.createLinkErrorTimer = setTimeout(() => this.createLinkError.set(false), 4000);
+      },
     });
   }
 

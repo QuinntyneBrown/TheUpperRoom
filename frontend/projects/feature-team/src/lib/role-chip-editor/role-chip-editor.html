@@ -10,4 +10,10 @@
       (click)="toggle(role)"
     >{{ role }}</button>
   }
+  @if (toggleError()) {
+    <div class="role-chip-error" data-testid="role-toggle-error" role="alert">
+      <mat-icon>error_outline</mat-icon>
+      <span>Failed to update role. Please try again.</span>
+    </div>
+  }
 </div>

@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, inject, input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, OnDestroy, output, signal } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { TEAM_SERVICE } from 'api';
 
 const SUBORDINATE_ROLES = ['PrayerLead', 'EventLead', 'CommunicationLead'] as const;
@@ -8,8 +9,16 @@ type SubRole = (typeof SUBORDINATE_ROLES)[number];
   selector: 'ur-role-chip-editor',
   templateUrl: './role-chip-editor.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatIconModule],
+  styles: [`
+    .role-chip-error {
+      display: flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 0.8rem;
+      color: var(--ur-error-fg, #dc2626);
+    }
+    .role-chip-error mat-icon { font-size: 14px; width: 14px; height: 14px; flex-shrink: 0; }
+  `],
 })
-export class RoleChipEditorComponent {
+export class RoleChipEditorComponent implements OnDestroy {
   private team = inject(TEAM_SERVICE);
 
   memberId = input.required<string>();
@@ -19,8 +28,15 @@ export class RoleChipEditorComponent {
   changed = output<void>();
 
   saving = signal(false);
+  toggleError = signal(false);
+
+  private toggleErrorTimer?: ReturnType<typeof setTimeout>;
 
   readonly roles: SubRole[] = [...SUBORDINATE_ROLES];
+
+  ngOnDestroy(): void {
+    clearTimeout(this.toggleErrorTimer);
+  }
 
   hasRole(role: SubRole): boolean {
     return this.memberRoles().includes(role);
@@ -32,7 +48,12 @@ export class RoleChipEditorComponent {
     this.saving.set(true);
     this.team.assignRole(this.memberId(), { role, action }).subscribe({
       next: () => { this.saving.set(false); this.changed.emit(); },
-      error: () => this.saving.set(false),
+      error: () => {
+        this.saving.set(false);
+        clearTimeout(this.toggleErrorTimer);
+        this.toggleError.set(true);
+        this.toggleErrorTimer = setTimeout(() => this.toggleError.set(false), 4000);
+      },
     });
   }
 }
