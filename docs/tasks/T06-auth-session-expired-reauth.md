@@ -1,5 +1,6 @@
 # T06 — Session-expired and re-authentication state
 
+**Status**: Accepted
 **Phase**: 1 — Authentication and session edge states
 **Area**: Authentication, Authorization
 **Requirements**: L1-001, L1-002, L2-004, L2-007
