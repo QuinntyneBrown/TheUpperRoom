@@ -1,5 +1,6 @@
 # T03 — Password recovery sent-confirmation state
 
+**Status**: Accepted
 **Phase**: 1 — Authentication and session edge states
 **Area**: Authentication
 **Requirements**: L1-001, L2-003
