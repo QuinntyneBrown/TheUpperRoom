@@ -1,5 +1,6 @@
 # T50 — Global teams list, detail, public/admin variants
 
+**Status**: Accepted
 **Phase**: 6 — Team administration and authorization
 **Area**: Team, Authorization
 **Requirements**: L1-002, L1-006, L2-008, L2-030
