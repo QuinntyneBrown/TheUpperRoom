@@ -2,6 +2,9 @@
 
 **Traces to:** L2-044 AC3. L1-011, L1-002.
 
+## Status
+Accepted
+
 Vertical slice: a single audit helper called from sign-in, sign-out, role assignment, delete, restore, lockout, and throttle paths.
 
 ## Components
