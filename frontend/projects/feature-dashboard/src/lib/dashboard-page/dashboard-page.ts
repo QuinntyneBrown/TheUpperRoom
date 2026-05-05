@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { DASHBOARD_SERVICE, DashboardItem } from 'api';
 import { Gridster, GridsterItem } from 'angular-gridster2';
-import { debounceTime, Subject } from 'rxjs';
+import { debounceTime, filter, Subject } from 'rxjs';
 import { WidgetCatalogDialogComponent } from '../widget-catalog-dialog/widget-catalog-dialog';
 import { LineChartWidgetComponent } from '../widgets/line-chart-widget/line-chart-widget';
 import { buildGridsterOptions } from './gridster-options';
@@ -55,6 +55,7 @@ export class DashboardPageComponent implements OnInit {
   loadError = signal(false);
 
   private save$ = new Subject<void>();
+  private suppressSave = true;
   private undoTimer?: ReturnType<typeof setTimeout>;
   private savedTimer?: ReturnType<typeof setTimeout>;
   private saveErrorTimer?: ReturnType<typeof setTimeout>;
@@ -62,11 +63,12 @@ export class DashboardPageComponent implements OnInit {
   options = buildGridsterOptions(() => this.save$.next());
 
   ngOnInit(): void {
+    this.save$.pipe(debounceTime(300), filter(() => !this.suppressSave)).subscribe(() => this.persist());
     this.loadLayout();
-    this.save$.pipe(debounceTime(300)).subscribe(() => this.persist());
   }
 
   loadLayout(): void {
+    this.suppressSave = true;
     this.loadError.set(false);
     this.dashboardSvc.get().subscribe({
       next: ({ json }) => {
@@ -74,8 +76,9 @@ export class DashboardPageComponent implements OnInit {
           const layout = JSON.parse(json) as { items: DashboardItem[] };
           this.items.set(layout.items ?? []);
         } catch { /* use empty */ }
+        setTimeout(() => { this.suppressSave = false; }, 500);
       },
-      error: () => this.loadError.set(true),
+      error: () => { this.loadError.set(true); this.suppressSave = false; },
     });
   }
 
