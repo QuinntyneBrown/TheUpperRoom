@@ -3,7 +3,7 @@
 **Traces to:** L2-013 (L1-003). Same `Note` entity will be reused for partners (slice 18).
 
 ## Components
-- Backend `Notes/AddNote.cs` — `AddNoteCommand { TargetType: "Contact", TargetId, Body }`. Handler inserts a `Note`, returns `NoteDto`.
+- Backend `Notes/AddNote.cs` — `AddNoteCommand { TargetType: "Contact", TargetId, Body }`. Handler verifies the target belongs to the current user's team, inserts a `Note`, publishes `noteAdded` using the standard realtime envelope, and returns `NoteDto`.
 - Backend `Notes/UpdateNote.cs` / `DeleteNote.cs` — author-only or Admin/CityLead override.
 - Backend `NotesController` — `POST /api/contacts/{id}/notes`, `PUT /api/notes/{noteId}`, `DELETE /api/notes/{noteId}`. (Partners reuse via `POST /api/partners/{id}/notes`.)
 - Frontend `feature-contacts/notes-panel` component (smart): list ordered desc, inline `add-note` form, edit-in-place, delete confirm. Shown on contact-detail page.
@@ -29,6 +29,8 @@
 - Non-author non-Admin/CityLead → 403.
 - Admin or CityLead can edit/delete any note in their team.
 - 4001-char body → 400.
+- Adding a note on another team's contact is rejected by team scope.
+- The `noteAdded` event includes `eventType`, `entityId`, `actorId`, and `timestamp`.
 
 ## Radical simplicity notes
 - One `Note` table for both contact and partner notes — same edit/delete rules apply (L2-013 ≡ L2-019).

@@ -6,7 +6,7 @@
 
 ## Components introduced
 
-- Backend: `TheUpperRoom.Api` project under `backend/TheUpperRoom.Api/`, `Program.cs`, `AppDbContext` with one trivial `HealthRecord` entity to prove EF Core wiring (or omit the entity entirely — see Open Questions).
+- Backend: `TheUpperRoom.Api` project under `backend/TheUpperRoom.Api/`, `Program.cs`, `AppDbContext` configuration only. No health-check table is needed.
 - Backend: `Health/GetHealth.cs` — MediatR query returning `{ status: "ok", version, time }`.
 - Backend: `HealthController : ControllerBase` with one action.
 - Frontend: `app-shell` standalone Angular app under `frontend/projects/app-shell/`, with a single root component that renders an empty page plus a footer.
@@ -40,5 +40,5 @@ test('shows healthy status', async ({ page }) => {
 - No service interface in `api` lib for `HealthService` — the injection token *is* the seam.
 - No abstraction layer in the controller — direct `mediator.Send`.
 
-## Open Questions
-- Do we need a real DB row at this stage? Default: no — `GetHealth` returns a constant. Wire EF Core configuration but defer migrations until 02.
+## Decision
+- The health check does not require a real DB row. `GetHealth` returns a constant and verifies app boot. EF Core configuration is wired here, but migrations start in slice 02.

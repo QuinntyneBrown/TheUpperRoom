@@ -8,6 +8,7 @@ participant "TeamsController" as C
 participant "InviteHandler" as H
 database "DB" as DB
 participant "EmailSender" as ES
+participant "TeamHub" as Hub
 
 CL -> D: email + roles
 D -> C: POST /api/teams/local/invitations
@@ -23,5 +24,6 @@ Recipient -> "RegisterPage" as RP: open ?invite=token, fill form
 RP -> "AuthController" as AC: POST /api/auth/register?invite=token
 AC -> "RegisterHandler" as RH: RegisterCommand{InviteToken}
 RH -> DB: lookup Invitation, INSERT User on TeamId, assign roles, mark Invitation.AcceptedAt
+RH -> Hub: SendAsync("teamMemberAdded", {eventType, userId, actorId, timestamp})
 RH --> AC: ok
 @enduml

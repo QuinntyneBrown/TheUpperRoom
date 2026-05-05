@@ -15,10 +15,10 @@ A -> PA: select toStage=Confirmed
 PA -> C: POST /api/partners/{id}/stage
 C -> H: ChangePartnerStageCommand
 H -> DB: UPDATE Partner.Stage; INSERT StageHistory
-H -> Hub: Group(team).SendAsync("partnerStageChanged", payload)
+H -> Hub: SendAsync("partnerStageChanged", {eventType, partnerId, actorId, timestamp, fromStage, toStage})
 H --> C: ok
 C --> PA: 200
 
-Hub --> PB: partnerStageChanged
+Hub --> PB: partnerStageChanged envelope
 PB --> B: chip + history update (no reload)
 @enduml

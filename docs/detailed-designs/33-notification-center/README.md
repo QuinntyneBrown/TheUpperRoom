@@ -4,7 +4,7 @@
 
 ## Components
 - New entity `Notification` (already in 00-architecture domain): per-user row, with `Kind`, `EntityType/Id`, `ActorId`, `CreatedAt`, `ReadAt?`.
-- Backend `Notifications/Persist.cs` — single helper called by every realtime publisher (slices 08, 16, 22, 26, 27, 28). For each recipient on the team (excluding the actor), insert a `Notification` row. The realtime broadcast also continues to fire.
+- Backend `Notifications/Persist.cs` — single helper called by every realtime publisher (slices 08, 12, 16, 18, 22, 26, 27, 28). For each recipient on the team (excluding the actor), insert a `Notification` row using the same event envelope fields (`eventType`, `entityId`, `actorId`, `timestamp`). The realtime broadcast also continues to fire.
 - Backend `Notifications/List.cs` — `ListNotificationsQuery`. Returns latest 50, unread-first.
 - Backend `Notifications/MarkRead.cs` — `MarkReadCommand { NotificationId? — null = mark-all }`.
 - Backend `NotificationsController` — `GET /api/notifications`, `POST /api/notifications/{id}/read`, `POST /api/notifications/read-all`.

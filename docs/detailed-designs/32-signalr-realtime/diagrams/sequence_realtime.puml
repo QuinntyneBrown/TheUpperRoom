@@ -20,9 +20,9 @@ Hub -> Hub: AddToGroupAsync team:{teamId}
 
 == A creates a contact ==
 A -> H: POST /api/contacts
-H -> Hub: Group(team).SendAsync("contactCreated")
-Hub --> RA: contactCreated (echo)
-Hub --> RB: contactCreated
+H -> Hub: Group(team).SendAsync("contactCreated", {eventType, entityId, actorId, timestamp, data})
+Hub --> RA: contactCreated envelope (echo)
+Hub --> RB: contactCreated envelope
 RB --> B: notify subscribers
 
 == A signs out ==

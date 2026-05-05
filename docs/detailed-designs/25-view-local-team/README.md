@@ -3,7 +3,7 @@
 **Traces to:** L2-026 (L1-006).
 
 ## Components
-- Backend `Teams/GetLocalTeam.cs` — returns members of `CurrentUser.TeamId`: name, role(s), email, active status.
+- Backend `Teams/GetLocalTeam.cs` — returns members of `CurrentUser.TeamId`: name, role(s), email, active status. Query orders by role priority, then last name.
 - Backend `TeamsController.Local` — `GET /api/teams/local`.
 - Frontend `feature-team/local-team-page` — table on ≥576 px (matches `ui-design.pen` `Desktop / Team`), card list on <576 px.
 

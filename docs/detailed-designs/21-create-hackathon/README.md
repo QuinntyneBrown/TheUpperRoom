@@ -13,6 +13,7 @@
 ## Validation
 - `Title`: 1–200 chars.
 - `StartDate ≤ EndDate` (cross-field).
+- `HostCity`: required, ≤100 chars.
 - Each `PartnerId` belongs to user's team (verified in handler before insert).
 
 ## API

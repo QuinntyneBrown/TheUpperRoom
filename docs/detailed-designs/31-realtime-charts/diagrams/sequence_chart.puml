@@ -20,7 +20,7 @@ W --> User: render Chart.js
 
 == domain change in another tab ==
 note over Hub: contact created (slice 08 handler also publishes)
-Hub --> RT: metricInvalidated:contactsCreatedDaily
+Hub --> RT: metricInvalidated:contactsCreatedDaily envelope
 RT --> W: notify
 W -> C: GET /api/metrics/...
 C --> W: refreshed series

@@ -39,13 +39,19 @@ Each design below is a small vertical slice intended to be implemented end-to-en
 | 32 | [SignalR connection lifecycle & push events](32-signalr-realtime/README.md) | L2-036, L2-037, L2-048 | Draft |
 | 33 | [Notification center](33-notification-center/README.md) | L2-038 | Draft |
 | 34 | [Global search](34-global-search/README.md) | L2-043 | Draft |
+| 35 | [Responsive layouts and dark theme](35-responsive-theme/README.md) | L2-039, L2-040, L2-041, L2-042, L2-059 | Draft |
+| 36 | [Logging and observability](36-observability/README.md) | L2-044, L2-045 | Draft |
+| 37 | [Performance and scalability](37-performance/README.md) | L2-046, L2-047 | Draft |
+| 38 | [Data protection and application security](38-security/README.md) | L2-049, L2-050, L2-051, L2-052, L2-053, L2-054, L2-055, L2-056 | Draft |
+| 39 | [Accessibility](39-accessibility/README.md) | L2-057, L2-058, L2-059 | Draft |
+| 40 | [Component, API, CQRS, and E2E test architecture](40-architecture-testing/README.md) | L2-060, L2-061, L2-062, L2-063, L2-064 | Draft |
 
-## Slices intentionally not authored
+## Cross-cutting slices
 
-These L2 requirements are cross-cutting and addressed in `00-architecture/` rather than as separate vertical slices: L2-039, L2-040, L2-041 (responsive layouts — applied on every slice), L2-042 (theme — applied app-wide), L2-044, L2-045 (logging — pipeline behavior + global error handler), L2-046, L2-047, L2-048 (perf budgets — verified by Lighthouse and load tests), L2-049 through L2-056 (security — applied app-wide), L2-057, L2-058, L2-059 (a11y — verified per slice during E2E + Lighthouse), L2-060, L2-061, L2-062 (component library / api library / MediatR architecture — covered in `00-architecture/`), L2-063, L2-064 (E2E test framework — every slice contributes Playwright tests).
+Requirements L2-039 through L2-064 are cross-cutting. They now have dedicated design slices (35-40) and are also referenced from `00-architecture/` where the baseline architecture depends on them.
 
 ## Suggested implementation order
 
-01 → 02 → 03 → 05 → 06 → 04 → 07 → 32 → 08 → 09 → 14 → 12 → 10 → 11 → 13 → 33 → 15 → 19 → 18 → 17 → 16 → 20 → 21 → 24 → 22 → 23 → 25 → 28 → 26 → 27 → 29 → 30 → 31 → 34.
+01 → 35 → 36 → 37 → 38 → 39 → 40 → 02 → 03 → 05 → 06 → 04 → 07 → 32 → 08 → 09 → 14 → 12 → 10 → 11 → 13 → 33 → 15 → 19 → 18 → 17 → 16 → 20 → 21 → 24 → 22 → 23 → 25 → 28 → 26 → 27 → 29 → 30 → 31 → 34.
 
 Realtime infrastructure (32) lands early because nine later slices publish events through it. Notification center (33) lands as soon as the first publisher exists.

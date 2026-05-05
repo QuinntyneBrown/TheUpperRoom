@@ -11,6 +11,7 @@
 ![Sequence](diagrams/sequence_signout.png)
 
 ## Acceptance tests (L2-005)
+- Clicking sign-out invalidates the backend session, clears the cookie, disconnects SignalR, and redirects to `/auth/sign-in` within 1 second.
 - After sign-out, replaying the prior cookie returns 401.
 - After sign-out, the SignalR hub is disconnected.
 

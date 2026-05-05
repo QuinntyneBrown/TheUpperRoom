@@ -8,12 +8,17 @@ participant "ContactsController" as C
 participant "MediatR" as M
 participant "CreateContactHandler" as H
 database "DB" as DB
+participant "TeamHub" as Hub
 
 User -> F: fill + submit
-F -> C: POST /api/contacts
+F -> C: POST /api/contacts {contact, notes?}
 C -> M: Send(CreateContactCommand{TeamId=current})
 M -> H: handle
 H -> DB: INSERT Contact
+alt notes present
+  H -> DB: INSERT Note(TargetType=Contact)
+end
+H -> Hub: SendAsync("contactCreated", {eventType, contactId, actorId, timestamp})
 H --> M: id
 M --> C: id
 C --> F: 201 { id }

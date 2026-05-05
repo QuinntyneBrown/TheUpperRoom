@@ -64,5 +64,11 @@ test('register, verify, sign in', async ({ page, mailbox }) => {
 });
 ```
 
-## Open Questions
-- How is mail captured during E2E? Default: a `MailHog`-style capture container in dev/CI; the `mailbox` fixture polls its API.
+Additional acceptance coverage:
+- Registration sends a verification email within 30 seconds.
+- Duplicate email returns the same generic confirmation and does not create a duplicate user.
+- Weak password fails with a field-level validation message and no pending account is created.
+- Verification links older than 24 hours or already used are rejected and leave the account inactive.
+
+## Decision
+- E2E captures mail through a MailHog-style dev/CI container. The Playwright `mailbox` fixture polls its API for verification and reset links.

@@ -8,7 +8,7 @@ The Upper Room is a single web application: an Angular 18 SPA backed by a single
 
 The architecture is deliberately the smallest thing that satisfies all 18 L1 requirements. There are no microservices, no separate read/write databases, no event bus, no DDD building blocks beyond entities and a few domain enums, no service interfaces with single implementations.
 
-**Actors.** City Leads, Prayer Leads, Event Leads, Communication Leads (per team), and Administrators (cross-team).
+**Actors.** City Leads, Prayer Leads, Event Leads, Communication Leads (per team), and Administrators (cross-team). The internal role constant is `Admin`; user-facing copy uses `Administrator`.
 
 **Scope boundary.** Everything in `frontend/` and `backend/`. Email delivery is the only external dependency.
 
@@ -92,19 +92,18 @@ A single relational schema. No join tables beyond the obvious (`UserRole`, `Part
 
 | Concern | Approach |
 |---|---|
-| Logging (L2-044, L2-045) | Serilog JSON sink, correlation id from `X-Correlation-Id` header, audit category for sign-in/out/role changes/deletes. Frontend forwards via `POST /api/logs`. |
-| Validation (L2-051) | FluentValidation per request, MediatR behavior. |
-| Injection prevention (L2-052) | EF Core only; no raw SQL. |
-| XSS (L2-053) | Angular default escaping; no `bypassSecurityTrust*`. |
-| CSRF (L2-054) | SameSite=Lax cookie + anti-forgery token on state-changing endpoints. |
-| Rate limiting (L2-055) | ASP.NET Core rate limiter middleware, fixed-window per IP and per email on `/api/auth/*`. |
-| Secrets (L2-056) | Env vars or `appsettings.{Environment}.json` not committed; production uses environment variables. |
+| Logging (L2-044, L2-045) | Detailed in `36-observability/`: Serilog JSON request/response/exception/audit logs, frontend error forwarding, correlation IDs, sanitization, and acceptance tests. |
+| Responsive + theme (L2-039 through L2-042, L2-059) | Detailed in `35-responsive-theme/`: breakpoint rules, hit targets, max width, 12-column dashboard grid, dark monochromatic tokens, Material overrides, and contrast validation. |
+| Performance (L2-046, L2-047) | Detailed in `37-performance/`: Lighthouse/Slow 4G budgets, API percentile tests, and search/load data volumes. |
+| Security (L2-049 through L2-056) | Detailed in `38-security/`: TLS, password hashing, validation/request limits, injection/XSS/CSRF, rate limits, and secrets scanning. |
+| Accessibility (L2-057 through L2-059) | Detailed in `39-accessibility/`: keyboard, focus trap, accessible names, live regions, and contrast checks. |
+| Component/API/CQRS/E2E (L2-060 through L2-064) | Detailed in `40-architecture-testing/`: component import enforcement, API token tests, MediatR structure checks, Page Object Model, and multi-viewport matrix. |
 
 ## 7. Test Strategy
 
 - **Backend**: xUnit + WebApplicationFactory + SQLite-in-memory. One acceptance test per L2 acceptance criterion, header-commented with the L2 ID.
 - **Frontend component**: Angular `TestBed` for each feature lib's smart components.
-- **E2E (L2-063, L2-064)**: Playwright with Page Object Model under `frontend/e2e/`, run against the integrated server.
+- **E2E (L2-063, L2-064)**: Playwright with Page Object Model under `frontend/e2e/`, run against the integrated server. The concrete project and viewport matrix is in `40-architecture-testing/`.
 
 ## 8. Open Questions
 

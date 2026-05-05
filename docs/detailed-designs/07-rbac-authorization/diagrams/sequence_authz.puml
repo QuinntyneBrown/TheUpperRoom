@@ -16,7 +16,7 @@ TS -> CU: Id, TeamId=A, IsAdmin=false
 alt non-admin and req.TargetTeamId != CU.TeamId
   TS --> P: throw ForbiddenException
   P --> C: 403 + audit log
-else allowed
+else admin or same-team request
   TS -> H: continue
   H --> P: result
   P --> C: 200

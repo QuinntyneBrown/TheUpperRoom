@@ -11,10 +11,10 @@ participant "NotificationCenter" as NC
 participant "NotificationsController" as C
 participant "Handler" as H
 
-MH -> P: Persist + Broadcast
+MH -> P: Persist + Broadcast envelope
 P -> DB: INSERT Notification per team member (except actor)
-P -> Hub: SendAsync("eventName")
-Hub --> NC: live event
+P -> Hub: SendAsync("eventName", {eventType, entityId, actorId, timestamp})
+Hub --> NC: live event envelope
 NC -> NC: badge++
 B -> NC: open
 NC -> C: GET /api/notifications

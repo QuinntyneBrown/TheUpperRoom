@@ -7,11 +7,13 @@ participant "NotesPanel" as NP
 participant "NotesController" as C
 participant "Handler" as H
 database "DB" as DB
+participant "TeamHub" as Hub
 
 User -> NP: type body
 NP -> C: POST /api/contacts/{id}/notes
 C -> H: AddNoteCommand
 H -> DB: INSERT Note
+H -> Hub: SendAsync("noteAdded", {eventType, noteId, actorId, timestamp, target})
 H --> C: NoteDto
 C --> NP: 201
 NP --> User: prepend to list

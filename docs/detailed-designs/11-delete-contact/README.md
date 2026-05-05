@@ -7,6 +7,7 @@
 - Backend `ContactsController.Delete` — `DELETE /api/contacts/{id}`.
 - Backend `AppDbContext` global query filter: `entity.HasQueryFilter(c => c.DeletedAt == null)` so default reads exclude soft-deleted rows.
 - Backend `Admin/RestoreContact.cs` (Admin-only) — `POST /api/admin/contacts/{id}/restore` for L2-012 AC3. Uses `IgnoreQueryFilters()` to find deleted rows.
+- Frontend `feature-admin/deleted-contacts-page` — Administrator-only audit/restore view showing soft-deleted contacts with deleted-at timestamp, original team/city, and a Restore action.
 - Frontend `confirm-delete` dialog reused from `components` lib (pattern matches `ui-design.pen` `confirmDel`). Triggered from contact detail's overflow menu.
 
 ## Workflow

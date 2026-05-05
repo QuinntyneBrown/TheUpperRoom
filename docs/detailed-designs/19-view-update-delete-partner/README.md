@@ -18,4 +18,4 @@
 - Lower roles deleting → 403.
 
 ## Radical simplicity notes
-- "Detach but not delete" associated contacts is a single `DELETE FROM PartnerContact WHERE PartnerId = ?` inside the same handler — no event/saga.
+- "Detach but not delete" associated contacts is a single parameterized EF Core `ExecuteDelete`/tracked-remove operation on `PartnerContact` rows inside the same handler — no event/saga and no concatenated SQL.

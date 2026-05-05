@@ -10,9 +10,14 @@ database "DB" as DB
 
 User -> P: open /hackathons/{id}
 P -> C: GET /api/hackathons/{id}
-C -> H: GetHackathonQuery
-H -> DB: SELECT Hackathon + Partners + Products(+Members) + History
-H --> C: HackathonDto
-C --> P: 200
-P --> User: render sections
+C -> DB: resolve Hackathon.TeamId
+alt non-admin and other team
+  C --> P: 404
+else allowed
+  C -> H: GetHackathonQuery{TargetTeamId}
+  H -> DB: SELECT dates + city + current stage + Partners + Products(+Members) + History
+  H --> C: HackathonDto
+  C --> P: 200
+  P --> User: render sections
+end
 @enduml

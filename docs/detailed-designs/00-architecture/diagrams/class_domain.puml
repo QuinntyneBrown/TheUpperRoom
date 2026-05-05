@@ -17,7 +17,8 @@ class User {
     +DisplayName: string
     +PasswordHash: string
     +EmailVerified: bool
-    +TeamId: Guid
+    +TeamId: Guid?
+    +IsActive: bool
 }
 
 class Role {
@@ -41,8 +42,20 @@ class Contact {
     +CreatedAt: DateTime
     +UpdatedAt: DateTime
     +CreatedById: Guid
+    +UpdatedById: Guid?
     +DeletedAt: DateTime?
     +Version: int
+}
+
+class Invitation {
+    +Id: Guid
+    +Email: string
+    +TeamId: Guid
+    +RoleNamesCsv: string
+    +TokenHash: string
+    +CreatedById: Guid
+    +ExpiresAt: DateTime
+    +AcceptedAt: DateTime?
 }
 
 class Partner {
@@ -54,6 +67,7 @@ class Partner {
     +Stage: PartnerStage
     +Description: string?
     +DeletedAt: DateTime?
+    +Version: int
 }
 
 enum PartnerStage {
@@ -71,6 +85,11 @@ class PartnerStageHistory {
     +At: DateTime
 }
 
+class PartnerContact {
+    +PartnerId: Guid
+    +ContactId: Guid
+}
+
 class Hackathon {
     +Id: Guid
     +TeamId: Guid
@@ -79,6 +98,11 @@ class Hackathon {
     +EndDate: Date
     +HostCity: string
     +Stage: FourDStage
+}
+
+class HackathonPartner {
+    +HackathonId: Guid
+    +PartnerId: Guid
 }
 
 enum FourDStage {
@@ -104,6 +128,12 @@ class Product {
     +Description: string?
     +RepoUrl: string?
     +DemoUrl: string?
+}
+
+class ProductMember {
+    +ProductId: Guid
+    +UserId: Guid?
+    +ContactId: Guid?
 }
 
 class Note {
@@ -134,14 +164,18 @@ class Notification {
 }
 
 Team "1" -- "*" User
+Team "1" -- "*" Invitation
 User "*" -- "*" Role
 Team "1" -- "*" Contact
 Team "1" -- "*" Partner
 Team "1" -- "*" Hackathon
-Partner "*" -- "*" Contact
+Partner "1" -- "*" PartnerContact
+Contact "1" -- "*" PartnerContact
 Partner "1" -- "*" PartnerStageHistory
-Partner "*" -- "*" Hackathon
+Hackathon "1" -- "*" HackathonPartner
+Partner "1" -- "*" HackathonPartner
 Hackathon "1" -- "*" Product
+Product "1" -- "*" ProductMember
 Hackathon "1" -- "*" HackathonStageHistory
 
 @enduml

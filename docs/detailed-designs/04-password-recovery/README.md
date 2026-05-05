@@ -38,3 +38,9 @@ test('reset password and sign in', async ({ page, mailbox }) => {
   await expect(page).toHaveURL(/\/dashboard/);
 });
 ```
+
+Additional acceptance coverage:
+- Requesting recovery for a registered or unregistered email displays the same generic message.
+- The recovery email is sent within 30 seconds when the account exists and rate limits allow it.
+- Used or older-than-60-minute recovery links return "expired or already used".
+- More than 3 recovery requests for the same email in 15 minutes returns the generic message but sends no additional email.

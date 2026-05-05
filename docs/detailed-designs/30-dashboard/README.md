@@ -5,7 +5,7 @@
 ## Components
 - New entity `DashboardLayout { UserId (PK), Json: string, UpdatedAt }`. The JSON is the literal gridster v2 layout config (`{ items: [{ id, x, y, cols, rows, type, config }] }`).
 - Backend `Dashboards/GetMyDashboard.cs` — returns layout for `CurrentUser.Id`, or empty if absent.
-- Backend `Dashboards/SaveMyDashboard.cs` — `SaveDashboardCommand { Json }` upserts the row. Last-write-wins (L2-035 AC2).
+- Backend `Dashboards/SaveMyDashboard.cs` — `SaveDashboardCommand { Json }` validates that the payload parses as JSON, is ≤16 KB, and has an `items` array, then upserts the row. Last-write-wins (L2-035 AC2).
 - Backend `DashboardsController` — `GET /api/dashboards/me`, `PUT /api/dashboards/me`.
 - Frontend `feature-dashboard/dashboard-page` — renders `<gridster>` from `angular-gridster2`. Drop-zone empty state shown when `items.length === 0` with an "Add widget" CTA (per `ui-design.pen` empty state).
 - Frontend `feature-dashboard/widget-catalog-dialog` — list of available widget types (initially: `kpi`, `line-chart`).
@@ -29,6 +29,4 @@
 ## Radical simplicity notes
 - The layout is opaque JSON in one column. The backend doesn't model widgets; only the frontend understands them. New widget types ship with no schema migration.
 - Last-write-wins is just `INSERT ... ON CONFLICT (UserId) DO UPDATE`. No version field, no merge.
-
-## Open Questions
-- Should backend validate JSON shape? Default: validate that it parses and that `items` is an array under a max size (≤16 KB). Beyond that, frontend owns the schema.
+- `INSERT ... ON CONFLICT` describes the EF Core upsert intent; implementation uses provider-supported EF APIs or parameterized SQL only.

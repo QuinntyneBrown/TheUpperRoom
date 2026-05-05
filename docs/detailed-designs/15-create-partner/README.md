@@ -23,7 +23,7 @@
 - `Stage`: enum.
 
 ## Acceptance tests (L2-016)
-- New partner persists, defaults stage to Lead.
+- New partner persists within 1 second, defaults stage to Lead, and is attributed to the actor's local team.
 - Malformed website rejected with field-level error.
 
 ## Radical simplicity notes

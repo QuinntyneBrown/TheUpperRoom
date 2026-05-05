@@ -22,6 +22,7 @@
 ## Acceptance tests
 - 2-char term returns matches across all five fields, ≤500 ms over 10 k contacts.
 - 1-char term: no request fires (asserted on the network log).
+- Each result displays first name, last name, city, and a matched-field snippet with the term highlighted.
 
 ## Radical simplicity notes
 - Snippet generation is in-handler `string.Concat(left, body[hit..hit+term.Length], right)`. No Lucene, no separate search service.

@@ -39,5 +39,11 @@ test('signs in and redirects to dashboard', async ({ page }) => {
 });
 ```
 
+Additional acceptance coverage:
+- Unverified accounts receive the "verification required" message and no session.
+- Invalid credentials always receive the generic "invalid email or password" message.
+- Five failed attempts within 15 minutes lock the account for 15 minutes; the sixth attempt is rejected and an audit/throttle event is logged.
+- More than 10 sign-in requests from one IP within 1 minute returns 429.
+
 ## Open Questions
 None.

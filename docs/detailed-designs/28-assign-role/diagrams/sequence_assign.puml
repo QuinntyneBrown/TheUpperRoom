@@ -14,7 +14,7 @@ E -> C: POST /api/teams/local/members/{u}/roles {role:"EventLead", action:"add"}
 C -> H: AssignRoleCommand
 alt CL & role in {Prayer,Event,Communication}
   H -> DB: INSERT/DELETE UserRole
-  H -> Hub: SendAsync("roleChanged")
+  H -> Hub: SendAsync("roleChanged", {eventType, userId, actorId, timestamp, roles})
   H --> C: ok
   C --> E: 200
 else CL trying to assign Admin/CityLead

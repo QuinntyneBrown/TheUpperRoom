@@ -16,9 +16,9 @@ C -> H: RemoveMemberCommand
 alt CL trying to remove peer/admin
   H --> C: 403
 else allowed
-  H -> DB: revoke roles, set TeamId=null
+  H -> DB: revoke roles, set TeamId=null, IsActive=false
   H -> UM: UpdateSecurityStampAsync (kills sessions)
-  H -> Hub: SendAsync("teamMemberRemoved")
+  H -> Hub: SendAsync("teamMemberRemoved", {eventType, userId, actorId, timestamp})
   H --> C: ok
   C --> D: 204
 end

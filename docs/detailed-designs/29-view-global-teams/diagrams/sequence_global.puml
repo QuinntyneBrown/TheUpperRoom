@@ -12,7 +12,7 @@ User -> P: open /teams
 P -> C: GET /api/teams?page=1&size=25
 C -> H: ListGlobalTeamsQuery
 H -> DB: SELECT Team + counts (role/hackathon/partner)
-H --> C: rows
+H --> C: public summary rows only
 C --> P: 200
 
 User -> P: open team summary
@@ -21,7 +21,7 @@ C -> H: GetGlobalTeamQuery
 alt isAdmin
   H -> DB: SELECT full detail
 else
-  H -> DB: SELECT summary only
+  H -> DB: SELECT public summary only (no contacts/notes)
 end
 H --> C: TeamDto
 C --> P: 200

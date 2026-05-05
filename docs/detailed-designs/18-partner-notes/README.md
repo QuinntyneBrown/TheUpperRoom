@@ -14,7 +14,12 @@ Reuses the `Note` entity, controller actions from slice 12; only routes and the 
 | POST | `/api/partners/{id}/notes` | body `{ body }` |
 
 ## Acceptance tests (L2-019)
-Same shape as L2-013, applied to a partner.
+- Add a 1–4000 character note to a partner in the actor's team; it appears at the top immediately.
+- Author can edit/delete their own partner note.
+- Non-author non-Admin/CityLead editing/deleting another user's partner note receives 403.
+- Admin or CityLead can edit/delete any partner note in their team.
+- Adding a note to a partner outside the actor's team is rejected by team scope.
+- The `noteAdded` event includes event type, entity ID, actor ID, and timestamp.
 
 ## Radical simplicity notes
 - One polymorphic `Note` table, one panel component, one set of edit/delete rules. The "Partner notes feature" is essentially three new lines: a route, a component-input switch, and a controller action.

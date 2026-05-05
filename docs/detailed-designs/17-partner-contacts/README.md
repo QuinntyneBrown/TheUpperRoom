@@ -17,6 +17,7 @@
 - Add existing contact; appears within 1 s.
 - Add via new-contact form on partner page; one submission creates + associates.
 - Remove association; contact remains in team's contact list.
+- Associating a contact or partner outside the actor's team is rejected by team scope.
 
 ## Radical simplicity notes
 - Composite "create + associate" reuses the slice 08 handler — no duplicated validation. The composite handler simply sends two MediatR requests inside one DB transaction.

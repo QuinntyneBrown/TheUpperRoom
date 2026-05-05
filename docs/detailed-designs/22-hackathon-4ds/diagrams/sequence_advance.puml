@@ -13,7 +13,7 @@ User -> P: click next stage
 P -> C: POST /api/hackathons/{id}/stage
 C -> H: AdvanceHackathonStageCommand
 H -> DB: UPDATE Hackathon.Stage; INSERT StageHistory
-H -> Hub: SendAsync("hackathonStageChanged")
+H -> Hub: SendAsync("hackathonStageChanged", {eventType, hackathonId, actorId, timestamp, fromStage, toStage})
 H --> C: ok
 C --> P: 200
 @enduml
