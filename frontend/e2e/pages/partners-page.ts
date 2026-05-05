@@ -69,7 +69,8 @@ export class PartnersPage {
 
   async delete(partnerName: string) {
     await expect(this.page.getByTestId('partner-name')).toContainText(partnerName);
-    await this.page.getByTestId('partner-delete-btn').click();
+    await this.page.getByTestId('partner-more-btn').click();
+    await this.page.getByTestId('partner-delete-menu-item').click();
     await this.page.getByTestId('confirm-delete-partner-btn').click();
     await this.page.waitForURL(/\/partners$/);
   }

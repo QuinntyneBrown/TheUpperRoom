@@ -21,7 +21,8 @@ test.describe('Partner delete error', () => {
       }
     });
 
-    await page.getByTestId('partner-delete-btn').click();
+    await page.getByTestId('partner-more-btn').click();
+    await page.getByTestId('partner-delete-menu-item').click();
     await page.getByTestId('confirm-delete-partner-btn').click();
     await expect(page.getByTestId('partner-delete-error-toast')).toBeVisible({ timeout: 3000 });
   });
