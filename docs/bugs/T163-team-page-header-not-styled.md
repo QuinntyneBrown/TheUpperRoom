@@ -1,6 +1,6 @@
 # T163 — Team page: header not styled, title and actions not in a topbar row
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 

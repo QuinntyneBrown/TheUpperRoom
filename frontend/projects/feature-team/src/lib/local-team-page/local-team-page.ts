@@ -12,6 +12,16 @@ import { RoleChipEditorComponent } from '../role-chip-editor/role-chip-editor';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatButtonModule, MatIconModule, UrButtonComponent, UrDialogComponent, InviteDialogComponent, RoleChipEditorComponent],
   styles: [`
+    .team-page { display: flex; flex-direction: column; height: 100%; }
+    .team-page__header {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; padding: 0 16px 0 24px; flex-shrink: 0;
+      background: var(--ur-bg-elevated, #101018);
+      border-bottom: 1px solid var(--ur-border-subtle, #222233);
+    }
+    .team-page__title { margin: 0; font-size: 1.125rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); font-family: var(--ur-font-heading, 'Geist', sans-serif); }
+    .team-page__header-actions { display: flex; align-items: center; gap: 12px; }
+    .team-page__content { flex: 1; overflow-y: auto; padding: 24px; }
     .team-load-error {
       display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 8px; margin: 16px 0;
       background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
