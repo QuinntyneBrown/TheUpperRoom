@@ -1,5 +1,6 @@
 # T48 — Team remove member confirmation
 
+**Status**: Accepted
 **Phase**: 6 — Team administration and authorization
 **Area**: Team
 **Requirements**: L1-006, L2-028
