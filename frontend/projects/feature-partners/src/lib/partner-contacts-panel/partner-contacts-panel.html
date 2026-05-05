@@ -34,12 +34,14 @@
       <div class="partner-contacts__new-row">
         <input
           placeholder="First name *"
+          aria-label="First name"
           [value]="firstName()"
           (input)="firstName.set($any($event.target).value)"
           data-testid="new-contact-first-name"
         />
         <input
           placeholder="Last name *"
+          aria-label="Last name"
           [value]="lastName()"
           (input)="lastName.set($any($event.target).value)"
           data-testid="new-contact-last-name"
@@ -48,6 +50,7 @@
       <input
         type="email"
         placeholder="Email"
+        aria-label="Email address"
         [value]="email()"
         (input)="email.set($any($event.target).value)"
         data-testid="new-contact-email"
