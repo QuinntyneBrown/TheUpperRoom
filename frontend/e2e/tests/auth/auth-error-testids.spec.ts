@@ -13,9 +13,9 @@ test.describe('Auth error data-testid', () => {
     });
 
     await page.goto('/auth/sign-in');
-    await page.locator('ur-input[label="Email"] input, input[type="email"]').first().fill('bad@example.com');
-    await page.locator('ur-input[label="Password"] input, input[type="password"]').first().fill('wrongpass');
-    await page.locator('ur-button[type="submit"] button, button[type="submit"]').first().click();
+    await page.getByLabel('Email').fill('bad@example.com');
+    await page.getByLabel('Password').fill('wrongpass');
+    await page.getByTestId('sign-in-submit-btn').click();
 
     await expect(page.getByTestId('sign-in-error')).toBeVisible({ timeout: 3000 });
   });

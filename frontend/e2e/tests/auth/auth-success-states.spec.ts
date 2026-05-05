@@ -13,8 +13,8 @@ test.describe('Auth success confirmation states', () => {
     });
 
     await page.goto('/auth/forgot-password');
-    await page.locator('ur-input[label="Email"] input').fill('user@example.com');
-    await page.locator('ur-button[type="submit"] button').click();
+    await page.getByLabel('Email').fill('user@example.com');
+    await page.getByTestId('forgot-password-submit-btn').click();
 
     await expect(page.getByTestId('recover-success')).toBeVisible({ timeout: 3000 });
   });
@@ -25,11 +25,11 @@ test.describe('Auth success confirmation states', () => {
     });
 
     await page.goto('/auth/register');
-    await page.locator('ur-input[label="Display name"] input').fill('Alice Smith');
-    await page.locator('ur-input[label="Email"] input').fill('alice@example.com');
-    await page.locator('ur-input[label="Password"] input').fill('SecurePass1!');
-    await page.locator('ur-input[label="City"] input').fill('Toronto');
-    await page.locator('ur-button[type="submit"] button').click();
+    await page.getByLabel('Display name').fill('Alice Smith');
+    await page.getByLabel('Email').fill('alice@example.com');
+    await page.getByLabel('Password').fill('SecurePass1!');
+    await page.getByLabel('City').fill('Toronto');
+    await page.getByTestId('register-submit-btn').click();
 
     await expect(page.getByTestId('register-success')).toBeVisible({ timeout: 3000 });
   });
