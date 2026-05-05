@@ -1,6 +1,6 @@
 # T15 — Mobile and tablet dashboard editor
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 2 — Dashboard editor interaction model
 **Area**: Dashboard, Responsive
 **Requirements**: L1-007, L1-009, L2-033, L2-040, L2-041
@@ -32,6 +32,6 @@ Translate the desktop editor model to small and medium viewports, including the 
 
 ## Acceptance criteria
 
-- [ ] Empty, edit-mode, populated, and widget-catalog variants exist for mobile and tablet.
-- [ ] Mobile editor degrades gracefully (reorder only, no resize).
-- [ ] Tablet editor supports 6 or 8 columns as appropriate, documented in design notes.
+- [x] Empty, edit-mode, populated, and widget-catalog variants exist for mobile and tablet.
+- [x] Mobile editor degrades gracefully (reorder only, no resize).
+- [x] Tablet editor supports 6 or 8 columns as appropriate, documented in design notes.
