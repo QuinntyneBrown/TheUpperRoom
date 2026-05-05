@@ -1,0 +1,43 @@
+@if (notFound()) {
+  <div class="not-found">
+    <h1>Contact not found</h1>
+    <a routerLink="/contacts">Back to contacts</a>
+  </div>
+} @else if (contact()) {
+  <div class="contact-detail" data-testid="contact-detail">
+    <header class="contact-detail__header">
+      <h1 data-testid="contact-name">{{ contact()!.firstName }} {{ contact()!.lastName }}</h1>
+      <a [routerLink]="['/contacts', contact()!.id, 'edit']">Edit</a>
+    </header>
+
+    <div class="contact-detail__body">
+      <section class="contact-detail__summary">
+        @if (contact()!.email) {
+          <p><strong>Email:</strong> {{ contact()!.email }}</p>
+        }
+        @if (contact()!.phone) {
+          <p><strong>Phone:</strong> {{ contact()!.phone }}</p>
+        }
+        @if (contact()!.city) {
+          <p><strong>City:</strong> {{ contact()!.city }}</p>
+        }
+      </section>
+
+      <section class="contact-detail__notes" data-testid="contact-notes-section">
+        <h2>Notes</h2>
+        @if (contact()!.notes.length === 0) {
+          <p class="empty-notes">No notes yet.</p>
+        } @else {
+          @for (note of contact()!.notes; track note.id) {
+            <div class="note-card">
+              <p>{{ note.body }}</p>
+              <time>{{ note.createdAt | date:'mediumDate' }}</time>
+            </div>
+          }
+        }
+      </section>
+    </div>
+  </div>
+} @else {
+  <div class="loading" role="status">Loading…</div>
+}

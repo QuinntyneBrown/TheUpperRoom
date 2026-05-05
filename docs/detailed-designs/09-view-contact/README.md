@@ -3,7 +3,7 @@
 **Traces to:** L2-010 (L1-003).
 
 ## Status
-Accepted
+Complete
 
 Single-screen contact detail with notes section (notes feature lands in slice 12; here we only render an empty notes panel).
 

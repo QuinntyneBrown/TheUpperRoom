@@ -4,7 +4,7 @@ import { provideRouter } from '@angular/router';
 import { csrfInterceptor } from './services/csrf.interceptor';
 import { errorLoggingInterceptor } from './services/error-logging.interceptor';
 import { AUTH_SERVICE, AuthService, CONTACT_SERVICE, ContactService, HEALTH_SERVICE, HealthService } from 'api';
-import { ContactCreatePageComponent } from 'feature-contacts';
+import { ContactCreatePageComponent, ContactDetailPageComponent } from 'feature-contacts';
 import { NoAccessPageComponent, RecoverPageComponent, RegisterPageComponent, ResetPageComponent, SignInPageComponent, VerifyPageComponent } from 'feature-auth';
 import { GlobalErrorHandler } from './global-error-handler';
 import { LayoutTestComponent } from './test/layout-test';
@@ -23,6 +23,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter([
       { path: 'dashboard', component: DashboardPageComponent },
       { path: 'contacts/new', component: ContactCreatePageComponent },
+      { path: 'contacts/:id', component: ContactDetailPageComponent },
       { path: 'no-access', component: NoAccessPageComponent },
       { path: 'auth/forgot-password', component: RecoverPageComponent },
       { path: 'auth/register', component: RegisterPageComponent },

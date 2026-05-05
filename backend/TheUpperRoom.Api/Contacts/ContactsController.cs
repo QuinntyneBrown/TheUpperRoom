@@ -21,7 +21,15 @@ public class ContactsController(IMediator mediator) : ControllerBase
             req.Phone,
             req.City,
             req.Notes));
-        return CreatedAtAction(nameof(Create), new { id }, new { id });
+        return CreatedAtAction(nameof(Get), new { id }, new { id });
+    }
+
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> Get(Guid id)
+    {
+        var dto = await mediator.Send(new GetContactQuery(id));
+        if (dto is null) return NotFound(new { error = "not_found" });
+        return Ok(dto);
     }
 }
 
