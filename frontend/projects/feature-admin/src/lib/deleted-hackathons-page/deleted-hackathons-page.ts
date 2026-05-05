@@ -11,7 +11,9 @@ import { MatTableModule } from '@angular/material/table';
   template: `
     <div class="deleted-hackathons-page">
       <h1>Deleted Hackathons</h1>
-      @if (loadError()) {
+      @if (loading()) {
+        <p class="admin-loading" data-testid="deleted-hackathons-loading" aria-busy="true">Loading…</p>
+      } @else if (loadError()) {
         <div class="admin-error" data-testid="deleted-hackathons-error" role="alert">
           <mat-icon>error_outline</mat-icon>
           <span>Failed to load deleted hackathons.</span>
@@ -56,6 +58,7 @@ import { MatTableModule } from '@angular/material/table';
       border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
     }
     .admin-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
+    .admin-loading { color: var(--ur-fg-muted, #64748b); font-size: 0.875rem; margin: 16px 0; }
     .admin-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
       gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
@@ -71,6 +74,7 @@ export class DeletedHackathonsPageComponent implements OnDestroy {
   private hackathonSvc = inject(HACKATHON_SERVICE);
   readonly columns = ['title', 'deletedAt', 'actions'];
   rows = signal<DeletedHackathonDto[]>([]);
+  loading = signal(true);
   loadError = signal(false);
   restoring = signal<string | null>(null);
   restoreError = signal(false);
@@ -87,9 +91,10 @@ export class DeletedHackathonsPageComponent implements OnDestroy {
 
   load(): void {
     this.loadError.set(false);
+    this.loading.set(true);
     this.hackathonSvc.listDeleted().subscribe({
-      next: data => this.rows.set(data),
-      error: () => this.loadError.set(true),
+      next: data => { this.rows.set(data); this.loading.set(false); },
+      error: () => { this.loading.set(false); this.loadError.set(true); },
     });
   }
 

@@ -37,6 +37,16 @@ const BADGE_CONFIG: Record<string, { label: string; icon: string }> = {
       font-size: 0.875rem; text-align: center; border-radius: 4px;
     }
     .chart-load-error mat-icon { font-size: 24px; width: 24px; height: 24px; }
+    .chart-loading {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: var(--ur-bg-surface, #fff); border-radius: 4px;
+    }
+    .chart-loading__spinner {
+      width: 28px; height: 28px; border: 3px solid var(--ur-border-subtle, #e2e8f0);
+      border-top-color: var(--ur-accent, #8b5cf6); border-radius: 50%;
+      animation: chart-spin 0.8s linear infinite;
+    }
+    @keyframes chart-spin { to { transform: rotate(360deg); } }
   `],
 })
 export class LineChartWidgetComponent implements AfterViewInit, OnDestroy {
@@ -51,6 +61,7 @@ export class LineChartWidgetComponent implements AfterViewInit, OnDestroy {
   readonly badgeConfig = BADGE_CONFIG;
 
   loadError = signal(false);
+  loading = signal(false);
 
   private chart: Chart | null = null;
   private sub: Subscription | null = null;
@@ -77,9 +88,10 @@ export class LineChartWidgetComponent implements AfterViewInit, OnDestroy {
     const to = new Date();
     const from = new Date(to.getTime() - 30 * 24 * 60 * 60 * 1000);
     this.loadError.set(false);
+    this.loading.set(true);
     this.metricSvc.get(this.metric(), from, to).subscribe({
-      next: (dto) => this.renderChart(dto.series.map((p) => p.label), dto.series.map((p) => p.value)),
-      error: () => this.loadError.set(true),
+      next: (dto) => { this.loading.set(false); this.renderChart(dto.series.map((p) => p.label), dto.series.map((p) => p.value)); },
+      error: () => { this.loading.set(false); this.loadError.set(true); },
     });
   }
 
