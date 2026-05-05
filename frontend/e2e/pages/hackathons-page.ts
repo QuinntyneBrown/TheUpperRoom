@@ -48,10 +48,10 @@ export class HackathonsPage {
   }
 
   async addProduct(opts: { title: string; description?: string }) {
-    await this.page.getByRole('button', { name: /\+ add product/i }).click();
+    await this.page.getByTestId('add-product-btn').click();
     await this.page.getByLabel('Name').fill(opts.title);
     if (opts.description) await this.page.getByLabel(/description/i).fill(opts.description);
-    await this.page.getByRole('button', { name: /^add product$/i }).click();
+    await this.page.getByTestId('submit-product-btn').click();
     await expect(this.page.getByText(opts.title)).toBeVisible();
   }
 

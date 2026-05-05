@@ -1,11 +1,11 @@
 <section class="products-section" aria-label="Products">
   <div class="products-section__header">
     <h2 class="products-section__title">Products</h2>
-    <ur-button variant="secondary" (click)="openForm()">+ Add product</ur-button>
+    <ur-button variant="secondary" (click)="openForm()" data-testid="add-product-btn">+ Add product</ur-button>
   </div>
 
   @if (products().length === 0) {
-    <div class="products-section__empty">
+    <div class="products-section__empty" data-testid="products-section-empty">
       <mat-icon>inventory_2</mat-icon>
       <p>No products yet.</p>
     </div>
@@ -63,7 +63,7 @@
       </div>
       <div class="product-form__actions">
         <ur-button type="button" variant="ghost" (click)="cancelForm()">Cancel</ur-button>
-        <ur-button type="submit" [disabled]="saving()">{{ saving() ? 'Saving…' : 'Add product' }}</ur-button>
+        <ur-button type="submit" [disabled]="saving()" data-testid="submit-product-btn">{{ saving() ? 'Saving…' : 'Add product' }}</ur-button>
       </div>
       @if (saveError()) {
         <div class="products-save-error" data-testid="products-save-error" role="alert">
