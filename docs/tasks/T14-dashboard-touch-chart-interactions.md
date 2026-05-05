@@ -1,5 +1,6 @@
 # T14 — Touch chart interactions
 
+**Status**: Accepted
 **Phase**: 2 — Dashboard editor interaction model
 **Area**: Dashboard, Responsive
 **Requirements**: L1-007, L1-009, L2-034, L2-039
