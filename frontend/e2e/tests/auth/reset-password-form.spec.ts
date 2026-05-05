@@ -16,14 +16,14 @@ test.describe('Reset password form', () => {
   });
 
   test('submit is disabled when passwords do not match', async ({ page }) => {
-    await page.getByTestId('reset-new-password-input').fill('Password123!');
-    await page.getByTestId('reset-confirm-password-input').fill('Different1!');
+    await page.getByLabel('New password').fill('Password123!');
+    await page.getByLabel('Confirm new password').fill('Different1!');
     await expect(page.getByTestId('reset-password-submit-btn')).toBeDisabled();
   });
 
   test('shows mismatch error when passwords differ', async ({ page }) => {
-    await page.getByTestId('reset-new-password-input').fill('Password123!');
-    await page.getByTestId('reset-confirm-password-input').fill('Different1!');
+    await page.getByLabel('New password').fill('Password123!');
+    await page.getByLabel('Confirm new password').fill('Different1!');
     await expect(page.getByTestId('reset-password-mismatch-error')).toBeVisible();
   });
 });
