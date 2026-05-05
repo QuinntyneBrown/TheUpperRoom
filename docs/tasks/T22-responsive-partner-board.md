@@ -1,5 +1,6 @@
 # T22 — Partner board responsive variants
 
+**Status**: Accepted
 **Phase**: 3 — Responsive coverage and clipping fixes
 **Area**: Partner, Responsive
 **Requirements**: L1-004, L1-009, L2-021, L2-039, L2-040, L2-041
