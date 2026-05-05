@@ -1,6 +1,6 @@
 # T119 — Dashboard: header missing "Welcome to your workspace" subtitle
 
-**Status**: Open
+**Status**: Fixed
 
 ## Description
 
