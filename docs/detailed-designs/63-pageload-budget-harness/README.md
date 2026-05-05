@@ -2,6 +2,9 @@
 
 **Traces to:** L2-046. L1-013.
 
+## Status
+Accepted
+
 Vertical slice: a CI harness that runs Playwright with Chromium under Slow 4G + 4× CPU throttle and asserts page-load budgets per primary screen.
 
 ## Components
