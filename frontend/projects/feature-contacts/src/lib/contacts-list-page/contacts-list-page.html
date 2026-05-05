@@ -23,7 +23,11 @@
   @if (isSearching) {
     @if (!loading()) {
       @if (searchResults().length === 0) {
-        <p class="contacts-list-page__empty">No contacts found.</p>
+        <div class="contacts-list-page__no-results" data-testid="search-no-results">
+          <mat-icon>search_off</mat-icon>
+          <p>No contacts match "{{ term() }}"</p>
+          <button mat-stroked-button data-testid="search-clear-btn" (click)="clearSearch()">Clear search</button>
+        </div>
       } @else {
         <ul class="contacts-list-page__results" data-testid="search-results-list">
           @for (r of searchResults(); track r.id) {

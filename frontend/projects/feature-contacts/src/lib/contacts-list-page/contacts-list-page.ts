@@ -25,6 +25,12 @@ type SortDir = 'asc' | 'desc';
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
     .contact-toast mat-icon { color: var(--ur-success, #22c55e); font-size: 18px; width: 18px; height: 18px; }
+    .contacts-list-page__no-results {
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+      padding: 48px 24px; text-align: center; color: var(--ur-fg-muted, #64748b);
+    }
+    .contacts-list-page__no-results mat-icon { font-size: 40px; width: 40px; height: 40px; opacity: 0.6; }
+    .contacts-list-page__no-results p { margin: 0; font-size: 1rem; font-weight: 500; }
   `],
 })
 export class ContactsListPageComponent implements OnInit, OnDestroy {
@@ -100,6 +106,12 @@ export class ContactsListPageComponent implements OnInit, OnDestroy {
     this.term.set(value);
     if (value.length < 2) this.searchResults.set([]);
     this.search$.next(value);
+  }
+
+  clearSearch(): void {
+    this.term.set('');
+    this.searchResults.set([]);
+    this.search$.next('');
   }
 
   toggleSort(field: SortField): void {
