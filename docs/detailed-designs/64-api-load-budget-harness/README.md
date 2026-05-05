@@ -2,6 +2,12 @@
 
 **Traces to:** L2-047. L1-013.
 
+## Status
+Accepted
+
+## Design note
+k6/bombardier require external tooling. Per radical simplicity, the harness is a .NET integration test using `WebApplicationFactory<Program>` + `Task.WhenAll` to fire concurrent requests and assert p95 latency from in-process timing. Endpoints that are not yet implemented are marked `[Fact(Skip = "...")]`.
+
 Vertical slice: a CI harness that seeds expected production volume and asserts API percentile budgets for GET, mutation, and search.
 
 ## Components
