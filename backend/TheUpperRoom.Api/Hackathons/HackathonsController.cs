@@ -28,6 +28,10 @@ public record AddProductRequest(
 [Authorize(Roles = $"{Roles.Admin},{Roles.CityLead},{Roles.PrayerLead},{Roles.EventLead},{Roles.CommunicationLead}")]
 public class HackathonsController(IMediator mediator) : ControllerBase
 {
+    [HttpGet]
+    public async Task<IActionResult> List() =>
+        Ok(await mediator.Send(new ListHackathonsQuery()));
+
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> Get(Guid id)
     {

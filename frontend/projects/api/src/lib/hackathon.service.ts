@@ -72,7 +72,17 @@ export interface CreateHackathonResponse {
   id: string;
 }
 
+export interface HackathonListRow {
+  id: string;
+  title: string;
+  startDate: string;
+  endDate: string;
+  hostCity: string;
+  currentStage: string;
+}
+
 export interface IHackathonService {
+  list(): Observable<HackathonListRow[]>;
   create(req: CreateHackathonRequest): Observable<CreateHackathonResponse>;
   getById(id: string): Observable<HackathonDetailDto>;
   changeStage(id: string, toStage: HackathonStage): Observable<void>;
@@ -84,6 +94,10 @@ export const HACKATHON_SERVICE = new InjectionToken<IHackathonService>('HACKATHO
 @Injectable({ providedIn: 'root' })
 export class HackathonService implements IHackathonService {
   private http = inject(HttpClient);
+
+  list(): Observable<HackathonListRow[]> {
+    return this.http.get<HackathonListRow[]>('/api/hackathons');
+  }
 
   create(req: CreateHackathonRequest): Observable<CreateHackathonResponse> {
     return this.http.post<CreateHackathonResponse>('/api/hackathons', req);
