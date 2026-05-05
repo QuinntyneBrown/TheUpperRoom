@@ -26,10 +26,10 @@ interface PerfScreen {
 
 const SCREENS: PerfScreen[] = [
   { name: 'dashboard', path: '/dashboard', readyAttr: 'dashboard', implemented: true },
-  { name: 'contacts', path: '/contacts', readyAttr: 'contacts', implemented: false },
-  { name: 'partners', path: '/partners', readyAttr: 'partners', implemented: false },
+  { name: 'contacts', path: '/contacts', readyAttr: 'contacts', implemented: true },
+  { name: 'partners', path: '/partners', readyAttr: 'partners', implemented: true },
   { name: 'partner-board', path: '/partners/board', readyAttr: 'partner-board', implemented: false },
-  { name: 'hackathons', path: '/hackathons', readyAttr: 'hackathons', implemented: false },
+  { name: 'hackathons', path: '/hackathons', readyAttr: 'hackathons', implemented: true },
   { name: 'search', path: '/', readyAttr: 'search', implemented: false },
 ];
 
