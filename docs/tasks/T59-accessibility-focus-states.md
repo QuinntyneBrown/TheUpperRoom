@@ -1,5 +1,6 @@
 # T59 — Focus state coverage
 
+**Status**: Accepted
 **Phase**: 9 — Accessibility annotations
 **Area**: Accessibility
 **Requirements**: L1-015, L2-057, L2-059
