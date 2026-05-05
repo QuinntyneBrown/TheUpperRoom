@@ -1,3 +1,5 @@
+<a href="#main-content" class="shell__skip-link">Skip to content</a>
+
 @if (resolving()) {
   <div class="shell__resolving" data-testid="resolving-session-screen" role="status" aria-label="Resolving your session">
     <mat-icon class="shell__resolving-logo">church</mat-icon>
@@ -92,7 +94,7 @@
       </mat-toolbar>
     }
 
-    <main class="shell__content">
+    <main id="main-content" class="shell__content">
       <router-outlet />
     </main>
 
