@@ -1,6 +1,6 @@
 # T43 — Hackathon stage advance/retreat control
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 5 — Partner and hackathon management
 **Area**: Hackathon
 **Requirements**: L1-005, L2-023
@@ -19,6 +19,6 @@ Provide explicit controls to move a hackathon between Discover, Design, Develop,
 
 ## Acceptance criteria
 
-- [ ] Control exists on hackathon detail showing the current stage.
-- [ ] Retreat confirmation dialog designed.
-- [ ] Emits stage-history entry (T44).
+- [x] Control exists on hackathon detail showing the current stage.
+- [x] Retreat confirmation dialog designed.
+- [x] Emits stage-history entry (T44).
