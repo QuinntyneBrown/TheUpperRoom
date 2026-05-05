@@ -1,6 +1,6 @@
 # T40 — Partner validation and permission states
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 5 — Partner and hackathon management
 **Area**: Partner
 **Requirements**: L1-002, L1-004, L2-016, L2-019, L2-020, L2-051
@@ -18,5 +18,5 @@ Cover validation outcomes for partner forms and the role-gated states across par
 
 ## Acceptance criteria
 
-- [ ] All listed validation states represented as form/component variants.
-- [ ] Permission-gated states documented for: edit partner, delete partner, change stage, manage notes, manage associations.
+- [x] All listed validation states represented as form/component variants.
+- [x] Permission-gated states documented for: edit partner, delete partner, change stage, manage notes, manage associations.
