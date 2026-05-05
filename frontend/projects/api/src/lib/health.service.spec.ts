@@ -31,11 +31,11 @@ describe('HEALTH_SERVICE injection token', () => {
     expect(svc).toBe(mockSvc);
   });
 
-  it('stub returns the configured response', (done) => {
+  it('stub returns the configured response', async () => {
     const fixture = TestBed.createComponent(TestHealthConsumerComponent);
-    fixture.componentInstance.svc.get().subscribe((r) => {
-      expect(r.status).toBe('stub');
-      done();
-    });
+    const result = await new Promise<{ status: string }>((resolve) =>
+      fixture.componentInstance.svc.get().subscribe(resolve)
+    );
+    expect(result.status).toBe('stub');
   });
 });

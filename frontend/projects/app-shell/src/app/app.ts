@@ -15,7 +15,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
-import { HealthService } from 'api';
+import { HEALTH_SERVICE } from 'api';
 import { UrSideNavItemComponent, UrBottomNavItemComponent, UrLiveRegionComponent } from 'components';
 
 const WORKSPACE_ITEMS = [
@@ -59,7 +59,7 @@ const BOTTOM_NAV_ITEMS = [
 })
 export class App implements OnInit {
   private bpo = inject(BreakpointObserver);
-  private healthService = inject(HealthService);
+  private healthService = inject(HEALTH_SERVICE);
 
   readonly workspaceItems = WORKSPACE_ITEMS;
   readonly globalItems = GLOBAL_ITEMS;
