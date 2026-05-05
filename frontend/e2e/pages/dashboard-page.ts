@@ -18,4 +18,28 @@ export class DashboardPage {
   widget(id: string) {
     return this.page.getByTestId(`widget-${id}`);
   }
+
+  emptyState() {
+    return this.page.getByTestId('dashboard-empty');
+  }
+
+  addWidgetCta() {
+    return this.page.getByTestId('add-widget-cta');
+  }
+
+  addWidgetHeaderBtn() {
+    return this.page.getByTestId('add-widget-btn');
+  }
+
+  catalogDialog() {
+    return this.page.getByTestId('widget-catalog-dialog');
+  }
+
+  catalogItem(type: string) {
+    return this.page.getByTestId(`widget-type-${type}`);
+  }
+
+  anyWidget() {
+    return this.page.locator('[data-testid^="widget-"]').first();
+  }
 }
