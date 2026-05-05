@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { HACKATHON_SERVICE, HackathonListRow } from 'api';
 import { MatButtonModule } from '@angular/material/button';
@@ -45,6 +45,12 @@ import { MatIconModule } from '@angular/material/icon';
         </a>
       }
     </div>
+    @if (deletedToast()) {
+      <div class="hackathon-list-toast" role="status" data-testid="hackathon-deleted-toast">
+        <mat-icon>check_circle</mat-icon>
+        <span>Hackathon deleted</span>
+      </div>
+    }
   `,
   styles: [`
     .hackathon-list-error {
@@ -58,6 +64,14 @@ import { MatIconModule } from '@angular/material/icon';
     .hackathon-list-loading__title { height: 18px; width: 55%; border-radius: 4px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hl-pulse 1.4s ease-in-out infinite; }
     .hackathon-list-loading__meta { height: 13px; width: 70%; border-radius: 4px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hl-pulse 1.4s ease-in-out infinite; }
     @keyframes hl-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
+    .hackathon-list-toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 10px; padding: 12px 16px;
+      border-radius: 8px; z-index: 1000;
+      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
+      border: 1px solid var(--ur-success, #22c55e); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .hackathon-list-toast mat-icon { color: var(--ur-success, #22c55e); font-size: 18px; width: 18px; height: 18px; }
     .hackathon-list-page__empty {
       display: flex; flex-direction: column; align-items: center; gap: 12px;
       padding: 48px 24px; text-align: center; color: var(--ur-fg-muted, #64748b);
@@ -67,14 +81,32 @@ import { MatIconModule } from '@angular/material/icon';
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HackathonListPageComponent {
+export class HackathonListPageComponent implements OnInit, OnDestroy {
   private hackathonSvc = inject(HACKATHON_SERVICE);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+
   rows = signal<HackathonListRow[]>([]);
   loading = signal(true);
   loadError = signal(false);
+  deletedToast = signal(false);
+
+  private deletedToastTimer?: ReturnType<typeof setTimeout>;
 
   constructor() {
     this.load();
+  }
+
+  ngOnInit(): void {
+    if (this.route.snapshot.queryParamMap.get('deleted') === '1') {
+      this.deletedToast.set(true);
+      this.deletedToastTimer = setTimeout(() => this.deletedToast.set(false), 3000);
+      this.router.navigate([], { replaceUrl: true, relativeTo: this.route, queryParams: {} });
+    }
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.deletedToastTimer);
   }
 
   load(): void {

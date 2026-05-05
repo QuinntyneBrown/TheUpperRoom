@@ -94,7 +94,7 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
     if (!h) return;
     this.deleting.set(true);
     this.hackathons.delete(h.id).subscribe({
-      next: () => this.router.navigateByUrl('/hackathons'),
+      next: () => this.router.navigate(['/hackathons'], { queryParams: { deleted: '1' } }),
       error: () => {
         this.deleting.set(false);
         this.showDeleteDialog.set(false);
