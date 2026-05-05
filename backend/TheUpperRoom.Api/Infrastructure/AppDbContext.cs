@@ -12,6 +12,12 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
     public DbSet<Contact> Contacts => Set<Contact>();
     public DbSet<Note> Notes => Set<Note>();
 
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+        builder.Entity<Contact>().HasQueryFilter(c => c.DeletedAt == null);
+    }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)

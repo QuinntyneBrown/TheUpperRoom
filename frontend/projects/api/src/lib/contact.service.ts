@@ -48,6 +48,7 @@ export interface IContactService {
   create(req: CreateContactRequest): Observable<CreateContactResponse>;
   getById(id: string): Observable<ContactDto>;
   update(id: string, req: UpdateContactRequest): Observable<void>;
+  delete(id: string): Observable<void>;
 }
 
 export const CONTACT_SERVICE = new InjectionToken<IContactService>('CONTACT_SERVICE');
@@ -66,5 +67,9 @@ export class ContactService implements IContactService {
 
   update(id: string, req: UpdateContactRequest): Observable<void> {
     return this.http.put<void>(`/api/contacts/${id}`, req);
+  }
+
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`/api/contacts/${id}`);
   }
 }

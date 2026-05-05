@@ -40,6 +40,15 @@ public class ContactsController(IMediator mediator) : ControllerBase
         if (!found) return NotFound(new { error = "not_found" });
         return Ok();
     }
+
+    [HttpDelete("{id:guid}")]
+    [Authorize(Roles = $"{Roles.Admin},{Roles.CityLead}")]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        var found = await mediator.Send(new DeleteContactCommand(id));
+        if (!found) return NotFound(new { error = "not_found" });
+        return NoContent();
+    }
 }
 
 public record UpdateContactRequest(
