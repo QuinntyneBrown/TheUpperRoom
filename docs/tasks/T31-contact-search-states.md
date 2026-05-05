@@ -1,5 +1,6 @@
 # T31 — Contact search loading/empty/error states
 
+**Status**: Accepted
 **Phase**: 4 — Contact lifecycle
 **Area**: Contacts, Search
 **Requirements**: L1-011, L2-014
