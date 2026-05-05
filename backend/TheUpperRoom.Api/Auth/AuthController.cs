@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace TheUpperRoom.Api.Auth;
 
@@ -20,5 +21,18 @@ public class AuthController(IMediator mediator) : ControllerBase
         var result = await mediator.Send(new VerifyEmailCommand(token));
         if (!result.Success) return BadRequest(new { error = result.Error });
         return Redirect("/auth/sign-in");
+    }
+
+    [HttpPost("sign-in")]
+    [EnableRateLimiting("sign-in-ip")]
+    public async Task<IActionResult> SignIn([FromBody] SignInCommand cmd)
+    {
+        var result = await mediator.Send(cmd);
+        return result.Status switch
+        {
+            SignInResultStatus.Ok => Ok(new { message = "Signed in." }),
+            SignInResultStatus.VerificationRequired => StatusCode(403, new { error = "verification_required" }),
+            _ => Unauthorized(new { error = "invalid_credentials" }),
+        };
     }
 }

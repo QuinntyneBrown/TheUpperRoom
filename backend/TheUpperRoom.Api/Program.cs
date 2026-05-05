@@ -59,6 +59,8 @@ builder.Services.AddMediatR(cfg =>
     cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 });
 builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme)
+    .AddIdentityCookies();
 builder.Services.AddIdentityCore<User>(o =>
     {
         o.Password.RequiredLength = 12;
@@ -66,9 +68,13 @@ builder.Services.AddIdentityCore<User>(o =>
         o.Password.RequireUppercase = true;
         o.Password.RequireDigit = true;
         o.Password.RequireNonAlphanumeric = true;
+        o.Lockout.MaxFailedAccessAttempts = 5;
+        o.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
     })
     .AddRoles<IdentityRole<Guid>>()
-    .AddEntityFrameworkStores<AppDbContext>();
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddSignInManager()
+    .AddDefaultTokenProviders();
 builder.Services.AddSingleton<ApiMetrics>();
 builder.Services.AddSingleton<EmailSender>();
 builder.Services.AddHttpContextAccessor();
@@ -89,6 +95,8 @@ app.UseRateLimiter();
 app.UseCors();
 app.UseHsts();
 app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 app.Run();
 

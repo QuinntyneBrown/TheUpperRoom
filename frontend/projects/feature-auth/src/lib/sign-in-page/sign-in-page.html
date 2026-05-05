@@ -1,0 +1,29 @@
+<div class="auth-card">
+  <h1>Sign in</h1>
+  @if (error()) {
+    <div role="alert" class="auth-error">{{ error() }}</div>
+  }
+  <form (ngSubmit)="submit()" novalidate>
+    <ur-input
+      label="Email"
+      type="email"
+      [value]="email()"
+      autocomplete="email"
+      required
+      (valueChange)="email.set($event)"
+    />
+    <ur-input
+      label="Password"
+      type="password"
+      [value]="password()"
+      autocomplete="current-password"
+      required
+      (valueChange)="password.set($event)"
+    />
+    <ur-button type="submit" [disabled]="loading()" fullWidth>
+      {{ loading() ? 'Signing in…' : 'Sign in' }}
+    </ur-button>
+  </form>
+  <p><a routerLink="/auth/register">Create an account</a></p>
+  <p><a routerLink="/auth/forgot-password">Forgot password?</a></p>
+</div>

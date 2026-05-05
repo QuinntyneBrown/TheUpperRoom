@@ -3,7 +3,7 @@
 **Traces to:** L2-002 (L1-001), with lockout per L2-055.
 
 ## Status
-Accepted
+Complete
 
 Authenticate by email + password, issue an Identity cookie session, redirect to `/dashboard`.
 
