@@ -1,5 +1,6 @@
 # T24 — Contact edit form
 
+**Status**: Accepted
 **Phase**: 4 — Contact lifecycle
 **Area**: Contacts
 **Requirements**: L1-003, L2-011
