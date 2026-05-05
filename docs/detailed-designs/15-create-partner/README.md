@@ -1,4 +1,4 @@
-# 15 — Create Partner ✅ Accepted
+# 15 — Create Partner ✅ Complete
 
 **Traces to:** L2-016 (L1-004).
 

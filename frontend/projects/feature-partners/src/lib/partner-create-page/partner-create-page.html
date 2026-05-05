@@ -1,0 +1,84 @@
+<ur-dialog
+  title="Add partner"
+  closeLabel="Cancel"
+  (closed)="cancel()"
+  data-testid="partner-create-form"
+>
+  <form (ngSubmit)="submit()" class="partner-form">
+    <div class="partner-form__field">
+      <label for="partnerName">Organization name</label>
+      <input
+        id="partnerName"
+        type="text"
+        placeholder="e.g. FaithTech Toronto"
+        [value]="name()"
+        (input)="name.set($any($event.target).value)"
+        autocomplete="organization"
+      />
+      @if (errors()['name']) {
+        <span class="partner-form__error">{{ errors()['name'] }}</span>
+      }
+    </div>
+
+    <div class="partner-form__row">
+      <div class="partner-form__field">
+        <label for="partnerCity">City</label>
+        <input
+          id="partnerCity"
+          type="text"
+          placeholder="e.g. Toronto, ON"
+          [value]="city()"
+          (input)="city.set($any($event.target).value)"
+        />
+        @if (errors()['city']) {
+          <span class="partner-form__error">{{ errors()['city'] }}</span>
+        }
+      </div>
+      <div class="partner-form__field">
+        <label for="partnerWebsite">Website</label>
+        <input
+          id="partnerWebsite"
+          type="url"
+          placeholder="https://"
+          [value]="website()"
+          (input)="website.set($any($event.target).value)"
+        />
+        @if (errors()['website']) {
+          <span class="partner-form__error">{{ errors()['website'] }}</span>
+        }
+      </div>
+    </div>
+
+    <div class="partner-form__field">
+      <span class="partner-form__label">Status</span>
+      <div class="partner-form__stage-opts">
+        @for (s of stages; track s.value) {
+          <button
+            type="button"
+            class="partner-form__stage-opt"
+            [class.partner-form__stage-opt--selected]="stage() === s.value"
+            (click)="stage.set(s.value)"
+          >{{ s.label }}</button>
+        }
+      </div>
+    </div>
+
+    <div class="partner-form__field">
+      <label for="partnerNote">First note (optional)</label>
+      <textarea
+        id="partnerNote"
+        placeholder="Add context, prayer requests, action items…"
+        [value]="description()"
+        (input)="description.set($any($event.target).value)"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="partner-form__actions">
+      <ur-button type="button" variant="ghost" (click)="cancel()">Cancel</ur-button>
+      <ur-button type="submit" [disabled]="saving()">
+        {{ saving() ? 'Saving…' : 'Add partner' }}
+      </ur-button>
+    </div>
+  </form>
+</ur-dialog>
