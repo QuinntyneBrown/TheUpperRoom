@@ -1,5 +1,6 @@
 # T51 — Global teams search
 
+**Status**: Accepted
 **Phase**: 6 — Team administration and authorization
 **Area**: Team, Search
 **Requirements**: L1-006, L1-011, L2-031
