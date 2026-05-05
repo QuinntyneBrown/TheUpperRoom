@@ -1,6 +1,6 @@
 # T168 — Notes panel: edit and delete always call contact service, ignoring targetType
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 
