@@ -7,7 +7,8 @@
       "api": ["./dist/api"],
       "components": ["./dist/components"],
       "feature-auth": ["./dist/feature-auth"],
-      "feature-contacts": ["./dist/feature-contacts"]
+      "feature-contacts": ["./dist/feature-contacts"],
+      "feature-partners": ["./dist/feature-partners"]
     },
     "strict": true,
     "noImplicitOverride": true,
@@ -58,6 +59,12 @@
     },
     {
       "path": "./projects/feature-contacts/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/feature-partners/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/feature-partners/tsconfig.spec.json"
     }
   ]
 }
