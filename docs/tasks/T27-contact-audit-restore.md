@@ -1,6 +1,6 @@
 # T27 — Contact audit and restore state
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 4 — Contact lifecycle
 **Area**: Contacts
 **Requirements**: L1-003, L2-012
@@ -20,6 +20,6 @@ Provide an Administrator-only view that lists soft-deleted contacts with an audi
 
 ## Acceptance criteria
 
-- [ ] Archive list, restore confirmation, and empty state exist.
-- [ ] Visible only to Administrator role (annotated).
-- [ ] Mobile variant per T16.
+- [x] Archive list, restore confirmation, and empty state exist.
+- [x] Visible only to Administrator role (annotated).
+- [x] Mobile variant per T16.
