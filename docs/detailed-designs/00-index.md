@@ -84,7 +84,7 @@ These slices were derived from the gaps identified in [`docs/missing-detailed-de
 | 58 | [Backend correlation and request logging](58-correlation-request-logging/README.md) | L2-044 AC1 | Complete |
 | 59 | [Backend exception handling and error counter](59-error-middleware-counter/README.md) | L2-044 AC2 | Complete |
 | 60 | [Audit logging for sensitive domain events](60-audit-logging/README.md) | L2-044 AC3 | Complete |
-| 61 | [Frontend global error logging](61-frontend-error-logging/README.md) | L2-045 AC1, AC3 | Draft |
+| 61 | [Frontend global error logging](61-frontend-error-logging/README.md) | L2-045 AC1, AC3 | Accepted |
 | 62 | [HTTP error logging and sanitization](62-http-error-logging/README.md) | L2-045 AC2, AC3 | Draft |
 
 ### Performance slices
