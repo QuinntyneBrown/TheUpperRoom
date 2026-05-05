@@ -1,6 +1,6 @@
 # T172 — Team page: layout is flat table; design calls for role-based card grid
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 

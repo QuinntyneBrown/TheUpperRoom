@@ -1,6 +1,6 @@
 # T173 — Team page: wrong color tokens (light-mode fallbacks in dark theme)
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 
