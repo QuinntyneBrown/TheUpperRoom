@@ -1,5 +1,6 @@
 # T23 — Layout clipping fixes and verification
 
+**Status**: Accepted
 **Phase**: 3 — Responsive coverage and clipping fixes
 **Area**: Responsive, QA
 **Requirements**: L1-009, L2-039, L2-040, L2-041
