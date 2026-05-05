@@ -30,7 +30,7 @@ test.describe('Partner detail feedback toasts', () => {
     await partners.page.getByTestId('new-contact-last-name').fill('Contact');
     await partners.page.getByTestId('create-link-btn').click();
     await expect(partners.linkedToast()).toBeVisible();
-    await expect(partners.linkedToast().getByRole('link', { name: /open/i })).toBeVisible();
+    await expect(partners.linkedToast().getByTestId('linked-contact-link')).toBeVisible();
   });
 
   test('edit partner save shows saved toast on detail page', async ({ auth, partners }) => {
