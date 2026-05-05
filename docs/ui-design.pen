@@ -73102,6 +73102,493 @@
       "width": 375,
       "height": 812,
       "fill": "$bg-base",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "oUNI9",
+          "name": "topBar",
+          "width": "fill_container",
+          "height": 48,
+          "fill": "$bg-elevated",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border-subtle"
+          },
+          "padding": [
+            "$sp-4",
+            "$sp-3"
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "w4riG",
+              "name": "l",
+              "gap": "$sp-2",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "sjEt0",
+                  "width": 18,
+                  "height": 18,
+                  "iconFontName": "chevron-left",
+                  "iconFontFamily": "lucide",
+                  "fill": "$accent-primary"
+                },
+                {
+                  "type": "text",
+                  "id": "z8NBfg",
+                  "fill": "$accent-primary",
+                  "content": "Hackathons",
+                  "fontFamily": "$font-body",
+                  "fontSize": "$fs-sm",
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "icon_font",
+              "id": "y6BDo1",
+              "width": 18,
+              "height": 18,
+              "iconFontName": "ellipsis",
+              "iconFontFamily": "lucide",
+              "fill": "$fg-secondary"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "AJuzy",
+          "name": "hero",
+          "width": "fill_container",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border-subtle"
+          },
+          "layout": "vertical",
+          "gap": "$sp-3",
+          "padding": "$sp-4",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "CXCaL",
+              "name": "ic",
+              "width": 48,
+              "height": 48,
+              "fill": "$accent-primary",
+              "cornerRadius": "$radius-md",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "Bv1do",
+                  "width": 24,
+                  "height": 24,
+                  "iconFontName": "rocket",
+                  "iconFontFamily": "lucide",
+                  "fill": "$fg-on-accent"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "JA1yU",
+              "fill": "$fg-primary",
+              "content": "East Side Spring Build",
+              "fontFamily": "$font-heading",
+              "fontSize": "$fs-base",
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "T3Xbee",
+              "fill": "$fg-secondary",
+              "content": "May 15 — May 17, 2026 · Toronto",
+              "fontFamily": "$font-body",
+              "fontSize": "$fs-xs",
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "K3nbl",
+              "name": "stageBadge",
+              "fill": "$accent-soft",
+              "cornerRadius": "$radius-full",
+              "stroke": {
+                "thickness": 1,
+                "fill": "$accent-primary"
+              },
+              "gap": "$sp-2",
+              "padding": [
+                "$sp-3",
+                "$sp-1"
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "iffll",
+                  "fill": "$accent-primary",
+                  "width": 6,
+                  "height": 6
+                },
+                {
+                  "type": "text",
+                  "id": "qPN7r",
+                  "fill": "$accent-primary",
+                  "content": "DESIGN · 2 of 4",
+                  "fontFamily": "$font-mono",
+                  "fontSize": "$fs-xs",
+                  "fontWeight": "600",
+                  "letterSpacing": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "oSPRp",
+          "name": "list",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": "$sp-2",
+          "padding": "$sp-3",
+          "children": [
+            {
+              "type": "frame",
+              "id": "o9dE0",
+              "name": "sec1_open",
+              "width": "fill_container",
+              "fill": "$bg-surface",
+              "cornerRadius": "$radius-lg",
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "EAawT",
+                  "name": "hd",
+                  "width": "fill_container",
+                  "gap": "$sp-3",
+                  "padding": "$sp-3",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "Z7psP",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "chevron-down",
+                      "iconFontFamily": "lucide",
+                      "fill": "$fg-primary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "WCl1C",
+                      "fill": "$fg-primary",
+                      "content": "Products",
+                      "fontFamily": "$font-body",
+                      "fontSize": "$fs-sm",
+                      "fontWeight": "600"
+                    },
+                    {
+                      "id": "B9yqvN",
+                      "type": "ref",
+                      "ref": "X4IrLm",
+                      "descendants": {
+                        "Fwf1D": {
+                          "content": "4"
+                        }
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "naxc3",
+                      "width": "fill_container",
+                      "height": 1
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "IPdPZ",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "plus",
+                      "iconFontFamily": "lucide",
+                      "fill": "$accent-primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "XP5f0",
+                  "name": "items",
+                  "width": "fill_container",
+                  "stroke": {
+                    "thickness": {
+                      "top": 1
+                    },
+                    "fill": "$border-subtle"
+                  },
+                  "layout": "vertical",
+                  "padding": "$sp-2",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "albYC",
+                      "name": "i1",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$sp-1",
+                      "padding": "$sp-3",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "V3pjIt",
+                          "fill": "$fg-primary",
+                          "content": "Pulse · Team Phoenix",
+                          "fontFamily": "$font-body",
+                          "fontSize": "$fs-sm",
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "gRdHI",
+                          "fill": "$fg-secondary",
+                          "content": "Real-time prayer dashboard",
+                          "fontFamily": "$font-body",
+                          "fontSize": "$fs-xs",
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "YlwY2",
+                      "fill": "$border-subtle",
+                      "width": "fill_container",
+                      "height": 1
+                    },
+                    {
+                      "type": "frame",
+                      "id": "CjRsb",
+                      "name": "i2",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$sp-1",
+                      "padding": "$sp-3",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "CWnBG",
+                          "fill": "$fg-primary",
+                          "content": "Pathway · Team Sycamore",
+                          "fontFamily": "$font-body",
+                          "fontSize": "$fs-sm",
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "uBefA",
+                          "fill": "$fg-secondary",
+                          "content": "Volunteer onboarding flow",
+                          "fontFamily": "$font-body",
+                          "fontSize": "$fs-xs",
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "iGAmb",
+              "name": "sec2_collapsed",
+              "width": "fill_container",
+              "fill": "$bg-surface",
+              "cornerRadius": "$radius-lg",
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "gap": "$sp-3",
+              "padding": "$sp-3",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "tdqFj",
+                  "width": 14,
+                  "height": 14,
+                  "iconFontName": "chevron-right",
+                  "iconFontFamily": "lucide",
+                  "fill": "$fg-primary"
+                },
+                {
+                  "type": "text",
+                  "id": "b71iPL",
+                  "fill": "$fg-primary",
+                  "content": "Sponsoring partners",
+                  "fontFamily": "$font-body",
+                  "fontSize": "$fs-sm",
+                  "fontWeight": "600"
+                },
+                {
+                  "id": "h3fWuc",
+                  "type": "ref",
+                  "ref": "qMNTM",
+                  "descendants": {
+                    "AgVoe": {
+                      "content": "2"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "rGKtO",
+              "name": "sec3_collapsed",
+              "width": "fill_container",
+              "fill": "$bg-surface",
+              "cornerRadius": "$radius-lg",
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "gap": "$sp-3",
+              "padding": "$sp-3",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "zYmLB",
+                  "width": 14,
+                  "height": 14,
+                  "iconFontName": "chevron-right",
+                  "iconFontFamily": "lucide",
+                  "fill": "$fg-primary"
+                },
+                {
+                  "type": "text",
+                  "id": "lhqQg",
+                  "fill": "$fg-primary",
+                  "content": "Stage history",
+                  "fontFamily": "$font-body",
+                  "fontSize": "$fs-sm",
+                  "fontWeight": "600"
+                },
+                {
+                  "id": "mmyyR",
+                  "type": "ref",
+                  "ref": "X4IrLm",
+                  "descendants": {
+                    "Fwf1D": {
+                      "content": "2"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "LAKzr",
+              "name": "sec4_collapsed",
+              "width": "fill_container",
+              "fill": "$bg-surface",
+              "cornerRadius": "$radius-lg",
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "gap": "$sp-3",
+              "padding": "$sp-3",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "d3ft2",
+                  "width": 14,
+                  "height": 14,
+                  "iconFontName": "chevron-right",
+                  "iconFontFamily": "lucide",
+                  "fill": "$fg-primary"
+                },
+                {
+                  "type": "text",
+                  "id": "ja6ic",
+                  "fill": "$fg-primary",
+                  "content": "Notes",
+                  "fontFamily": "$font-body",
+                  "fontSize": "$fs-sm",
+                  "fontWeight": "600"
+                },
+                {
+                  "id": "qx7Lg",
+                  "type": "ref",
+                  "ref": "X4IrLm",
+                  "descendants": {
+                    "Fwf1D": {
+                      "content": "3"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "a7vit",
+      "x": 0,
+      "y": 70707,
+      "name": "Desktop / Hackathon Detail - Stage Stepper",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base",
+      "layout": "vertical"
+    },
+    {
+      "type": "frame",
+      "id": "qfN35",
+      "x": 1540,
+      "y": 70707,
+      "name": "Dialog / Hackathon Stage - Advance",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base",
+      "layout": "vertical"
+    },
+    {
+      "type": "frame",
+      "id": "srgDW",
+      "x": 3080,
+      "y": 70707,
+      "name": "Dialog / Hackathon Stage - Retreat",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$bg-base",
       "layout": "vertical"
     }
   ],
