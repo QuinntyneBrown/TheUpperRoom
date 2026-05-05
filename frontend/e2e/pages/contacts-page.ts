@@ -31,6 +31,18 @@ export class ContactsPage {
     await this.page.getByRole('button', { name: /save|create/i }).click();
   }
 
+  async gotoDetail(id: string) {
+    await this.page.goto(`/contacts/${id}`);
+  }
+
+  contactName() {
+    return this.page.getByTestId('contact-name');
+  }
+
+  notesSection() {
+    return this.page.getByTestId('contact-notes-section');
+  }
+
   contactCard(name: string) {
     return this.page.getByTestId(`contact-card-${name}`);
   }
