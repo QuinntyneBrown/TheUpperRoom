@@ -1,4 +1,4 @@
-# 79 — E2E Auth and Session Flow ✅ Accepted
+# 79 — E2E Auth and Session Flow ✅ Complete
 
 **Traces to:** L2-063, L2-064. L1-001, L1-002.
 

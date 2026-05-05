@@ -16,6 +16,7 @@ import { GlobalErrorHandler } from './global-error-handler';
 import { LayoutTestComponent } from './test/layout-test';
 import { DialogTestComponent } from './test/dialog-test';
 import { FormTestComponent } from './test/form-test';
+import { authGuard } from './route-guards/auth.guard';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -34,7 +35,7 @@ export const appConfig: ApplicationConfig = {
     { provide: SEARCH_SERVICE, useClass: SearchService },
     { provide: REALTIME_SERVICE, useClass: RealtimeService },
     provideRouter([
-      { path: 'dashboard', component: DashboardPageComponent },
+      { path: 'dashboard', component: DashboardPageComponent, canActivate: [authGuard] },
       { path: 'team', component: LocalTeamPageComponent },
       { path: 'teams', component: GlobalTeamsPageComponent },
       { path: 'hackathons', component: HackathonListPageComponent },

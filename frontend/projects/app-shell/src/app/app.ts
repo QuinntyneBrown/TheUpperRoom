@@ -7,7 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -15,7 +15,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
-import { HEALTH_SERVICE, REALTIME_SERVICE } from 'api';
+import { MatMenuModule } from '@angular/material/menu';
+import { AUTH_SERVICE, HEALTH_SERVICE, REALTIME_SERVICE } from 'api';
 import { UrSideNavItemComponent, UrBottomNavItemComponent, UrLiveRegionComponent } from 'components';
 
 const WORKSPACE_ITEMS = [
@@ -52,6 +53,7 @@ const BOTTOM_NAV_ITEMS = [
     UrSideNavItemComponent,
     UrBottomNavItemComponent,
     UrLiveRegionComponent,
+    MatMenuModule,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -61,6 +63,8 @@ export class App implements OnInit {
   private bpo = inject(BreakpointObserver);
   private healthService = inject(HEALTH_SERVICE);
   private realtimeSvc = inject(REALTIME_SERVICE);
+  private authSvc = inject(AUTH_SERVICE);
+  private router = inject(Router);
 
   readonly workspaceItems = WORKSPACE_ITEMS;
   readonly globalItems = GLOBAL_ITEMS;
@@ -87,6 +91,13 @@ export class App implements OnInit {
   );
 
   sidenavOpened = computed(() => this.isDesktop());
+
+  doSignOut() {
+    this.authSvc.signOut().subscribe({
+      next: () => this.router.navigateByUrl('/auth/sign-in'),
+      error: () => this.router.navigateByUrl('/auth/sign-in'),
+    });
+  }
 
   ngOnInit() {
     this.healthService.get().subscribe({
