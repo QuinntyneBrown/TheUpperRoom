@@ -21,6 +21,16 @@ const STAGES: { value: HackathonStage; label: string }[] = [
   templateUrl: './hackathon-detail-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule, UrButtonComponent, UrDialogComponent, ProductsSectionComponent],
+  styles: [`
+    .hackathon-toast {
+      position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
+      gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
+      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .hackathon-toast--error { border: 1px solid var(--ur-error-fg, #dc2626); }
+    .hackathon-toast--error mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
+  `],
 })
 export class HackathonDetailPageComponent implements OnInit, OnDestroy {
   private hackathons = inject(HACKATHON_SERVICE);
@@ -33,7 +43,10 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
   changingStage = signal(false);
   showDeleteDialog = signal(false);
   deleting = signal(false);
+  deleteError = signal(false);
   stages = STAGES;
+
+  private deleteErrorTimer?: ReturnType<typeof setTimeout>;
 
   stageIndex = computed(() => {
     const h = this.hackathon();
@@ -60,6 +73,7 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
+    clearTimeout(this.deleteErrorTimer);
   }
 
   confirmDelete(): void {
@@ -68,7 +82,13 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
     this.deleting.set(true);
     this.hackathons.delete(h.id).subscribe({
       next: () => this.router.navigateByUrl('/hackathons'),
-      error: () => this.deleting.set(false),
+      error: () => {
+        this.deleting.set(false);
+        this.showDeleteDialog.set(false);
+        clearTimeout(this.deleteErrorTimer);
+        this.deleteError.set(true);
+        this.deleteErrorTimer = setTimeout(() => this.deleteError.set(false), 4000);
+      },
     });
   }
 
