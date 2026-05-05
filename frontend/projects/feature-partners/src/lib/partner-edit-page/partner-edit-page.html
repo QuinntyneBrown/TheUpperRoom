@@ -14,7 +14,6 @@
   <div class="partner-edit" data-testid="partner-edit">
     <header class="partner-edit__header">
       <a [routerLink]="['/partners', p.id]" class="partner-edit__back"><mat-icon aria-hidden="true">arrow_back</mat-icon> Back</a>
-      <h1>Edit partner</h1>
     </header>
 
     @if (conflict()) {
@@ -23,65 +22,70 @@
       </div>
     }
 
-    <form class="partner-edit__form" (ngSubmit)="save()">
-      <div class="partner-edit__field">
-        <label for="partnerName">Name</label>
-        <input
-          id="partnerName"
-          type="text"
-          [value]="name()"
-          (input)="name.set($any($event.target).value)"
-          data-testid="partner-name-input"
-          aria-describedby="partnerName-error"
-        />
-        @if (errors()['name']) {
-          <span id="partnerName-error" class="partner-edit__error">{{ errors()['name'] }}</span>
-        }
-      </div>
+    <div class="partner-edit__center">
+      <div class="partner-edit__card">
+        <form (ngSubmit)="save()">
+          <div class="partner-edit__field">
+            <label for="partnerName">Organization name *</label>
+            <input
+              id="partnerName"
+              type="text"
+              [value]="name()"
+              (input)="name.set($any($event.target).value)"
+              data-testid="partner-name-input"
+              aria-describedby="partnerName-error"
+            />
+            @if (errors()['name']) {
+              <span id="partnerName-error" class="partner-edit__error">{{ errors()['name'] }}</span>
+            }
+          </div>
 
-      <div class="partner-edit__field">
-        <label for="partnerCity">City</label>
-        <input
-          id="partnerCity"
-          type="text"
-          [value]="city()"
-          (input)="city.set($any($event.target).value)"
-          data-testid="partner-city-input"
-          aria-describedby="partnerCity-error"
-        />
-        @if (errors()['city']) {
-          <span id="partnerCity-error" class="partner-edit__error">{{ errors()['city'] }}</span>
-        }
-      </div>
+          <div class="partner-edit__row">
+            <div class="partner-edit__field">
+              <label for="partnerCity">City</label>
+              <input
+                id="partnerCity"
+                type="text"
+                [value]="city()"
+                (input)="city.set($any($event.target).value)"
+                data-testid="partner-city-input"
+                aria-describedby="partnerCity-error"
+              />
+              @if (errors()['city']) {
+                <span id="partnerCity-error" class="partner-edit__error">{{ errors()['city'] }}</span>
+              }
+            </div>
+            <div class="partner-edit__field">
+              <label for="partnerWebsite">Website</label>
+              <input
+                id="partnerWebsite"
+                type="url"
+                placeholder="https://"
+                [value]="website()"
+                (input)="website.set($any($event.target).value)"
+              />
+            </div>
+          </div>
 
-      <div class="partner-edit__field">
-        <label for="partnerWebsite">Website</label>
-        <input
-          id="partnerWebsite"
-          type="url"
-          placeholder="https://"
-          [value]="website()"
-          (input)="website.set($any($event.target).value)"
-        />
-      </div>
+          <div class="partner-edit__field">
+            <label for="partnerDescription">Description</label>
+            <textarea
+              id="partnerDescription"
+              [value]="description()"
+              (input)="description.set($any($event.target).value)"
+              rows="4"
+            ></textarea>
+          </div>
 
-      <div class="partner-edit__field">
-        <label for="partnerDescription">Description</label>
-        <textarea
-          id="partnerDescription"
-          [value]="description()"
-          (input)="description.set($any($event.target).value)"
-          rows="4"
-        ></textarea>
+          <div class="partner-edit__actions">
+            <ur-button type="button" variant="ghost" (click)="cancel()">Cancel</ur-button>
+            <ur-button type="submit" [disabled]="saving()" data-testid="partner-edit-save-btn">
+              {{ saving() ? 'Saving…' : 'Save changes' }}
+            </ur-button>
+          </div>
+        </form>
       </div>
-
-      <div class="partner-edit__actions">
-        <ur-button type="button" variant="ghost" (click)="cancel()">Cancel</ur-button>
-        <ur-button type="submit" [disabled]="saving()" data-testid="partner-edit-save-btn">
-          {{ saving() ? 'Saving…' : 'Save' }}
-        </ur-button>
-      </div>
-    </form>
+    </div>
   </div>
 }
 
