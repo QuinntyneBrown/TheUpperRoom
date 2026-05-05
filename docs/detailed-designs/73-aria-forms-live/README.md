@@ -5,7 +5,7 @@
 Vertical slice: shared form components produce screen-reader-correct labels and error wiring; a single live region announces realtime notifications.
 
 ## Status
-Accepted
+Complete
 
 ## Components
 

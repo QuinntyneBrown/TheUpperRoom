@@ -111,7 +111,7 @@ These slices were derived from the gaps identified in [`docs/missing-detailed-de
 | # | Slice | L2 traces | Status |
 |---|-------|-----------|--------|
 | 72 | [Keyboard focus and dialog trap baseline](72-keyboard-focus-traps/README.md) | L2-057 | Complete |
-| 73 | [Accessible names, form errors, and live regions](73-aria-forms-live/README.md) | L2-058 | Accepted |
+| 73 | [Accessible names, form errors, and live regions](73-aria-forms-live/README.md) | L2-058 | Complete |
 | 74 | [Contrast regression checks](74-contrast-regression/README.md) | L2-059 | Draft |
 
 ### Architecture and E2E slices
