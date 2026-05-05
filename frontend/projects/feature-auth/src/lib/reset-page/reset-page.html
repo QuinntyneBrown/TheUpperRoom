@@ -10,10 +10,23 @@
       [value]="newPassword()"
       autocomplete="new-password"
       required
+      data-testid="reset-new-password-input"
       (valueChange)="newPassword.set($event)"
     />
-    <ur-button type="submit" [disabled]="loading()" fullWidth data-testid="reset-password-submit-btn">
-      {{ loading() ? 'Resetting…' : 'Reset password' }}
+    <ur-input
+      label="Confirm new password"
+      type="password"
+      [value]="confirmPassword()"
+      autocomplete="new-password"
+      required
+      data-testid="reset-confirm-password-input"
+      (valueChange)="confirmPassword.set($event)"
+    />
+    @if (!passwordsMatch()) {
+      <div role="alert" class="auth-error" data-testid="reset-password-mismatch-error">Passwords do not match.</div>
+    }
+    <ur-button type="submit" [disabled]="!canSubmit()" fullWidth data-testid="reset-password-submit-btn">
+      {{ loading() ? 'Saving…' : 'Set new password' }}
     </ur-button>
   </form>
 </div>
