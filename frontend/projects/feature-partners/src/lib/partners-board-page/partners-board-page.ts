@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { PARTNER_SERVICE, PartnerListRow, PartnerStage } from 'api';
 
@@ -14,7 +15,7 @@ const COLUMNS: { stage: PartnerStage; label: string }[] = [
   selector: 'ur-partners-board-page',
   templateUrl: './partners-board-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, DragDropModule, MatIconModule],
+  imports: [RouterLink, DragDropModule, MatButtonModule, MatIconModule],
 })
 export class PartnersBoardPageComponent implements OnInit {
   private partners = inject(PARTNER_SERVICE);
