@@ -81,10 +81,19 @@ export interface HackathonListRow {
   currentStage: string;
 }
 
+export interface UpdateHackathonRequest {
+  title: string;
+  startDate: string;
+  endDate: string;
+  hostCity: string;
+  partnerIds: string[];
+}
+
 export interface IHackathonService {
   list(): Observable<HackathonListRow[]>;
   create(req: CreateHackathonRequest): Observable<CreateHackathonResponse>;
   getById(id: string): Observable<HackathonDetailDto>;
+  update(id: string, req: UpdateHackathonRequest): Observable<void>;
   changeStage(id: string, toStage: HackathonStage): Observable<void>;
   addProduct(hackathonId: string, req: AddProductRequest): Observable<AddProductResponse>;
 }
@@ -105,6 +114,10 @@ export class HackathonService implements IHackathonService {
 
   getById(id: string): Observable<HackathonDetailDto> {
     return this.http.get<HackathonDetailDto>(`/api/hackathons/${id}`);
+  }
+
+  update(id: string, req: UpdateHackathonRequest): Observable<void> {
+    return this.http.put<void>(`/api/hackathons/${id}`, req);
   }
 
   changeStage(id: string, toStage: HackathonStage): Observable<void> {

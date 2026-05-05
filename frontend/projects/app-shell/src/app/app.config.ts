@@ -7,7 +7,7 @@ import { errorLoggingInterceptor } from './services/error-logging.interceptor';
 import { AUTH_SERVICE, AuthService, CONTACT_SERVICE, ContactService, DASHBOARD_SERVICE, DashboardService, HACKATHON_SERVICE, HackathonService, HEALTH_SERVICE, HealthService, METRIC_SERVICE, MetricService, NOTIFICATION_SERVICE, NotificationService, PARTNER_SERVICE, PartnerService, REALTIME_SERVICE, RealtimeService, SEARCH_SERVICE, SearchService, TEAM_SERVICE, TeamService } from 'api';
 import { ContactCreatePageComponent, ContactDetailPageComponent, ContactEditPageComponent, ContactsListPageComponent } from 'feature-contacts';
 import { DashboardPageComponent } from 'feature-dashboard';
-import { HackathonCreatePageComponent, HackathonDetailPageComponent, HackathonListPageComponent } from 'feature-hackathons';
+import { HackathonCreatePageComponent, HackathonDetailPageComponent, HackathonEditPageComponent, HackathonListPageComponent } from 'feature-hackathons';
 import { GlobalTeamsPageComponent, LocalTeamPageComponent } from 'feature-team';
 import { DeletedContactsPageComponent } from 'feature-admin';
 import { PartnerCreatePageComponent, PartnerDetailPageComponent, PartnerEditPageComponent, PartnerListPageComponent, PartnersBoardPageComponent } from 'feature-partners';
@@ -40,6 +40,7 @@ export const appConfig: ApplicationConfig = {
       { path: 'hackathons', component: HackathonListPageComponent },
       { path: 'hackathons/new', component: HackathonCreatePageComponent },
       { path: 'hackathons/:id', component: HackathonDetailPageComponent },
+      { path: 'hackathons/:id/edit', component: HackathonEditPageComponent },
       { path: 'partners', component: PartnerListPageComponent },
       { path: 'partners/board', component: PartnersBoardPageComponent },
       { path: 'partners/new', component: PartnerCreatePageComponent },
