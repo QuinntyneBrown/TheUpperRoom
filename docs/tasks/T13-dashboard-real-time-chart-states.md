@@ -1,5 +1,6 @@
 # T13 — Real-time chart refresh states
 
+**Status**: Accepted
 **Phase**: 2 — Dashboard editor interaction model
 **Area**: Dashboard, Real-time
 **Requirements**: L1-007, L1-008, L2-034, L2-037
