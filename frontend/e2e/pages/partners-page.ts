@@ -7,10 +7,10 @@ export class PartnersPage {
     await this.page.goto('/partners');
   }
 
-  async create(opts: { name: string; city: string }) {
+  async create(opts: { name: string; city?: string }) {
     await this.page.goto('/partners/new');
     await this.page.getByLabel('Organization name').fill(opts.name);
-    await this.page.getByLabel('City').fill(opts.city);
+    await this.page.getByLabel('City').fill(opts.city ?? 'Test City');
     await this.page.getByRole('button', { name: /add partner/i }).click();
     await this.page.waitForURL(/\/partners\/[a-f0-9-]+$/);
   }

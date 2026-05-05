@@ -1,4 +1,4 @@
-# 86 — E2E Global Search Flow ✅ Accepted
+# 86 — E2E Global Search Flow ✅ Complete
 
 **Traces to:** L2-063, L2-064. L1-012.
 
