@@ -1,3 +1,17 @@
-<div class="line-chart-widget" data-testid="line-chart-widget">
+<div class="line-chart-widget" [class.line-chart-widget--dimmed]="connectionState() !== 'connected'" data-testid="line-chart-widget">
+  <div class="chart-header">
+    <span
+      class="chart-badge"
+      [class.chart-badge--connected]="connectionState() === 'connected'"
+      [class.chart-badge--connecting]="connectionState() === 'connecting'"
+      [class.chart-badge--disconnected]="connectionState() === 'disconnected'"
+      [attr.data-state]="connectionState()"
+      data-testid="chart-connection-badge"
+      role="status"
+    >
+      <span class="material-symbols-outlined">{{ badgeConfig[connectionState()].icon }}</span>
+      {{ badgeConfig[connectionState()].label }}
+    </span>
+  </div>
   <canvas #canvas aria-label="{{ metric() }} chart" role="img"></canvas>
 </div>
