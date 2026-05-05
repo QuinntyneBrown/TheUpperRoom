@@ -1,5 +1,6 @@
 # T58 — Monochromatic accent/semantic/chart/focus color audit
 
+**Status**: Accepted
 **Phase**: 8 — Theme and contrast audit
 **Area**: Theming, Accessibility
 **Requirements**: L1-010, L1-015, L2-042, L2-059
