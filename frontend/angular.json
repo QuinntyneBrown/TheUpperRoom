@@ -285,6 +285,32 @@
           }
         }
       }
+    },
+    "feature-notifications": {
+      "projectType": "library",
+      "root": "projects/feature-notifications",
+      "sourceRoot": "projects/feature-notifications/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/feature-notifications/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/feature-notifications/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/feature-notifications/tsconfig.spec.json"
+          }
+        }
+      }
     }
   }
 }

@@ -10,6 +10,7 @@
       "feature-contacts": ["./dist/feature-contacts"],
       "feature-dashboard": ["./dist/feature-dashboard"],
       "feature-partners": ["./dist/feature-partners"],
+      "feature-notifications": ["./dist/feature-notifications"],
       "feature-hackathons": ["./dist/feature-hackathons"],
       "feature-team": ["./dist/feature-team"]
     },
@@ -86,6 +87,12 @@
     },
     {
       "path": "./projects/feature-dashboard/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/feature-notifications/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/feature-notifications/tsconfig.spec.json"
     }
   ]
 }

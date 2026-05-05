@@ -1,4 +1,4 @@
-# 33 — Notification Center ✅ Accepted
+# 33 — Notification Center ✅ Complete
 
 **Traces to:** L2-037 (persistence aspect), L2-038 (L1-008).
 
