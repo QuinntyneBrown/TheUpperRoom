@@ -2,6 +2,9 @@
 
 **Traces to:** L2-054. L1-014.
 
+## Status
+Accepted
+
 Vertical slice: the SPA receives a CSRF token cookie and echoes it on every state-changing request.
 
 ## Components
