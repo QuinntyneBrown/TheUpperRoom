@@ -1,5 +1,6 @@
 # T43 — Hackathon stage advance/retreat control
 
+**Status**: Accepted
 **Phase**: 5 — Partner and hackathon management
 **Area**: Hackathon
 **Requirements**: L1-005, L2-023
