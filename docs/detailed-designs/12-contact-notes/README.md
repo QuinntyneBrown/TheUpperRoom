@@ -1,4 +1,4 @@
-# 12 — Contact Notes
+# 12 — Contact Notes ✅ Complete
 
 **Traces to:** L2-013 (L1-003). Same `Note` entity will be reused for partners (slice 18).
 

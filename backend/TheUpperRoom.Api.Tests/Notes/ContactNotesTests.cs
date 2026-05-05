@@ -99,6 +99,21 @@ public class ContactNotesTests(WebApplicationFactory<Program> factory)
     }
 
     [Fact]
+    public async Task AddNote_CrossTeamContact_Returns404()
+    {
+        var (cookie, _) = await SignInAsTeamMember(Guid.NewGuid());
+        var contactId = await SeedContact(Guid.NewGuid()); // different team
+
+        var client = factory.CreateClient();
+        var req = new HttpRequestMessage(HttpMethod.Post, $"/api/contacts/{contactId}/notes");
+        req.Headers.Add("Cookie", cookie);
+        req.Content = JsonContent.Create(new { body = "Sneaky note" });
+        var response = await client.SendAsync(req);
+
+        Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+    }
+
+    [Fact]
     public async Task DeleteNote_NonAuthorNonAdmin_Returns403()
     {
         var teamId = Guid.NewGuid();
