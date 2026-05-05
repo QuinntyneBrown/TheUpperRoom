@@ -32,54 +32,23 @@
       <p>No team members found.</p>
     </div>
   } @else {
-    <table class="team-table" aria-label="Team members">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Roles</th>
-          <th>Email</th>
-          <th>Status</th>
-          @if (canEdit()) { <th></th> }
-        </tr>
-      </thead>
-      <tbody>
-        @for (m of members(); track m.id) {
-          <tr [attr.data-testid]="'member-row-' + m.id">
-            <td>{{ m.displayName }}</td>
-            <td>
-              <ur-role-chip-editor
-                [memberId]="m.id"
-                [memberRoles]="m.roles"
-                [canEdit]="canEdit()"
-                (changed)="loadTeam()"
-              ></ur-role-chip-editor>
-            </td>
-            <td>{{ m.email }}</td>
-            <td>{{ m.isActive ? 'Active' : 'Inactive' }}</td>
-            @if (canEdit()) {
-              <td>
+    <div class="team-role-grid" data-testid="team-role-grid" aria-label="Team members by role">
+      @for (card of roleCards; track card.key) {
+        <div class="team-role-card" [attr.data-testid]="'role-card-' + card.key">
+          <div class="team-role-card__header">
+            <span class="team-role-card__label">{{ card.label }}</span>
+            <span class="team-role-card__count">{{ membersByRole()[card.key].length }}</span>
+          </div>
+          @if (membersByRole()[card.key].length === 0) {
+            <div class="team-role-card__empty">No members yet</div>
+          }
+          @for (m of membersByRole()[card.key]; track m.id) {
+            <div class="team-role-card__member" [attr.data-testid]="'member-row-' + m.id">
+              <span class="team-role-card__member-name">{{ m.displayName }}</span>
+              @if (canEdit()) {
                 <ur-button variant="ghost" (click)="removingMember.set(m)" aria-label="Remove member" data-testid="remove-member-btn">Remove</ur-button>
-              </td>
-            }
-          </tr>
-        }
-      </tbody>
-    </table>
-
-    <div class="team-cards" aria-label="Team members">
-      @for (m of members(); track m.id) {
-        <div class="team-card" [attr.data-testid]="'member-card-' + m.id">
-          <p class="team-card__name">{{ m.displayName }}</p>
-          <ur-role-chip-editor
-            [memberId]="m.id"
-            [memberRoles]="m.roles"
-            [canEdit]="canEdit()"
-            (changed)="loadTeam()"
-          ></ur-role-chip-editor>
-          <p class="team-card__email">{{ m.email }}</p>
-          <span class="team-card__status">{{ m.isActive ? 'Active' : 'Inactive' }}</span>
-          @if (canEdit()) {
-            <ur-button variant="ghost" (click)="removingMember.set(m)" aria-label="Remove member" data-testid="remove-member-btn">Remove</ur-button>
+              }
+            </div>
           }
         </div>
       }

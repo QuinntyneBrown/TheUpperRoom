@@ -90,6 +90,13 @@ export class LocalTeamPageComponent implements OnInit, OnDestroy {
   private team = inject(TEAM_SERVICE);
   private auth = inject(AUTH_SERVICE);
 
+  readonly roleCards = [
+    { key: 'CityLead', label: 'City Lead' },
+    { key: 'PrayerLead', label: 'Prayer Lead' },
+    { key: 'EventLead', label: 'Event Lead' },
+    { key: 'CommunicationLead', label: 'Communication Lead' },
+  ];
+
   members = signal<TeamMemberDto[]>([]);
   loading = signal(true);
   loadError = signal(false);
@@ -105,6 +112,18 @@ export class LocalTeamPageComponent implements OnInit, OnDestroy {
   canEdit = computed(() =>
     this.currentRoles().includes('Admin') || this.currentRoles().includes('CityLead')
   );
+
+  membersByRole = computed(() => {
+    const all = this.members();
+    const map: Record<string, TeamMemberDto[]> = {};
+    for (const card of this.roleCards) map[card.key] = [];
+    for (const m of all) {
+      for (const r of m.roles) {
+        if (map[r]) map[r].push(m);
+      }
+    }
+    return map;
+  });
 
   ngOnInit(): void {
     this.auth.me().subscribe({
