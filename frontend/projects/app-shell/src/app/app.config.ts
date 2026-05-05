@@ -57,7 +57,7 @@ export const appConfig: ApplicationConfig = {
       { path: 'no-access', title: 'No Access – The Upper Room', component: NoAccessPageComponent },
       { path: 'auth/forgot-password', title: 'Forgot Password – The Upper Room', component: RecoverPageComponent },
       { path: 'auth/register', title: 'Register – The Upper Room', component: RegisterPageComponent },
-      { path: 'auth/reset', title: 'Reset Password – The Upper Room', component: ResetPageComponent },
+      { path: 'auth/reset-password', title: 'Reset Password – The Upper Room', component: ResetPageComponent },
       { path: 'auth/sign-in', title: 'Sign in – The Upper Room', component: SignInPageComponent },
       { path: 'auth/verify', title: 'Verify Email – The Upper Room', component: VerifyPageComponent },
       { path: 'prayer', title: 'Prayer – The Upper Room', component: PlaceholderPageComponent },

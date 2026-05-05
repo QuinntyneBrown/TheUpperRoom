@@ -83,8 +83,8 @@ export class PartnersPage {
     return this.page.getByTestId('partner-create-form');
   }
 
-  partnerCard(name: string) {
-    return this.page.getByTestId(`partner-card-${name}`);
+  partnerCard(id: string) {
+    return this.page.getByTestId(`partner-card-${id}`);
   }
 
   board() {

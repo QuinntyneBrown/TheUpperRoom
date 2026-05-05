@@ -70,8 +70,8 @@ export class HackathonsPage {
     return this.page.getByTestId('hackathon-create-form');
   }
 
-  hackathonCard(name: string) {
-    return this.page.getByTestId(`hackathon-card-${name}`);
+  hackathonCard(id: string) {
+    return this.page.getByTestId(`hackathon-card-${id}`);
   }
 
   savedToast() {
