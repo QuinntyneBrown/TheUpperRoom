@@ -1,5 +1,6 @@
 # T52 — Administrator role management view
 
+**Status**: Accepted
 **Phase**: 6 — Team administration and authorization
 **Area**: Authorization
 **Requirements**: L1-002, L2-006
