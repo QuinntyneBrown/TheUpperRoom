@@ -5,7 +5,7 @@
 Vertical slice: feature libraries import UI primitives only from `components`. Direct Material imports are blocked.
 
 ## Status
-Accepted
+Complete
 
 ## Components
 
