@@ -22,6 +22,6 @@ export const WIDGET_CATALOG: CatalogEntry[] = [
     description: 'Visualise a metric trend over time.',
     cols: 4,
     rows: 3,
-    defaultConfig: { metric: 'contacts.created', range: '7d' },
+    defaultConfig: { metric: 'contactsCreatedDaily', range: '7d' },
   },
 ];

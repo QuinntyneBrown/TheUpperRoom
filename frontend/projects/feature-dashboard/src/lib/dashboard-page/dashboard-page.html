@@ -25,8 +25,17 @@
       @for (item of items(); track item.id) {
         <gridster-item [item]="item">
           <div class="dashboard-widget" [attr.data-testid]="'widget-' + item.id">
-            <span class="dashboard-widget__type">{{ item.type }}</span>
-            <button class="dashboard-widget__remove" (click)="removeWidget(item)" aria-label="Remove widget">✕</button>
+            <header class="dashboard-widget__header">
+              <span class="dashboard-widget__type">{{ item.type }}</span>
+              <button class="dashboard-widget__remove" (click)="removeWidget(item)" aria-label="Remove widget">
+                <mat-icon>close</mat-icon>
+              </button>
+            </header>
+            <div class="dashboard-widget__body">
+              @if (item.type === 'line-chart') {
+                <ur-line-chart-widget [metric]="$any(item.config?.['metric']) ?? 'contactsCreatedDaily'" />
+              }
+            </div>
           </div>
         </gridster-item>
       }
