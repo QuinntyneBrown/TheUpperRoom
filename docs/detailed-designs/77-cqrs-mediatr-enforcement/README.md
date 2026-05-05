@@ -4,6 +4,14 @@
 
 Vertical slice: controllers are one-liners that dispatch a single MediatR request. Architecture tests catch violations at build time.
 
+## Status
+Complete
+
+## Design update (2026-05-05)
+Roslyn syntax-tree body inspection requires Microsoft.CodeAnalysis which adds significant complexity. Using reflection instead:
+- Controllers: inspect constructor parameters via `ActivatorUtilities` or `GetConstructors()`
+- Handlers: use `GetTypes()` to find `IRequestHandler<>` implementations
+
 ## Components
 
 - Backend convention: every action method body is `=> Mediator.Send(request)` or `=> Mediator.Send(new TRequest(...))`. No `_db`, `_service`, or other field access.
