@@ -7,13 +7,28 @@ export class ContactsPage {
     await this.page.goto('/contacts');
   }
 
-  async openCreateForm() {
-    await this.goto();
-    await this.page.getByTestId('create-contact-button').click();
+  async gotoCreate() {
+    await this.page.goto('/contacts/new');
   }
 
-  createForm() {
-    return this.page.getByTestId('contact-create-form');
+  async fillForm(opts: {
+    firstName: string;
+    lastName: string;
+    email?: string;
+    phone?: string;
+    city?: string;
+    notes?: string;
+  }) {
+    await this.page.getByLabel('First name').fill(opts.firstName);
+    await this.page.getByLabel('Last name').fill(opts.lastName);
+    if (opts.email) await this.page.getByLabel('Email').fill(opts.email);
+    if (opts.phone) await this.page.getByLabel('Phone').fill(opts.phone);
+    if (opts.city) await this.page.getByLabel('City').fill(opts.city);
+    if (opts.notes) await this.page.getByLabel('Notes').fill(opts.notes);
+  }
+
+  async submit() {
+    await this.page.getByRole('button', { name: /save|create/i }).click();
   }
 
   contactCard(name: string) {
