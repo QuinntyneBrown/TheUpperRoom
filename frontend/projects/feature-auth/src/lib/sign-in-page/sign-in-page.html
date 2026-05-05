@@ -1,5 +1,17 @@
 <div class="auth-card">
   <h1>Sign in</h1>
+  @if (showReturnToast()) {
+    <div class="sign-in-return-toast" role="status" data-testid="sign-in-return-toast">
+      <mat-icon>info</mat-icon>
+      <div class="sign-in-return-toast__body">
+        <span>Please sign in to continue</span>
+        <span class="sign-in-return-toast__sub">We'll bring you back to where you were.</span>
+      </div>
+      <button class="sign-in-return-toast__dismiss" (click)="showReturnToast.set(false)" aria-label="Dismiss">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  }
   @if (error()) {
     <div role="alert" class="auth-error">{{ error() }}</div>
   }

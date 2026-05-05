@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AUTH_SERVICE } from 'api';
+import { MatIconModule } from '@angular/material/icon';
 import { UrButtonComponent, UrInputComponent } from 'components';
 
 @Component({
@@ -8,16 +9,25 @@ import { UrButtonComponent, UrInputComponent } from 'components';
   templateUrl: './sign-in-page.html',
   styleUrl: './sign-in-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [UrButtonComponent, UrInputComponent, RouterLink],
+  imports: [UrButtonComponent, UrInputComponent, RouterLink, MatIconModule],
 })
-export class SignInPageComponent {
+export class SignInPageComponent implements OnInit {
   private auth = inject(AUTH_SERVICE);
   private router = inject(Router);
+  private route = inject(ActivatedRoute);
 
   email = signal('');
   password = signal('');
   error = signal('');
   loading = signal(false);
+  returnUrl = signal('');
+  showReturnToast = signal(false);
+
+  ngOnInit(): void {
+    const url = this.route.snapshot.queryParamMap.get('returnUrl') ?? '';
+    this.returnUrl.set(url);
+    if (url) this.showReturnToast.set(true);
+  }
 
   submit(): void {
     this.loading.set(true);
@@ -26,7 +36,7 @@ export class SignInPageComponent {
     this.auth.signIn({ email: this.email(), password: this.password() }).subscribe({
       next: () => {
         this.loading.set(false);
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl(this.returnUrl() || '/dashboard');
       },
       error: (err: { status: number }) => {
         this.loading.set(false);
