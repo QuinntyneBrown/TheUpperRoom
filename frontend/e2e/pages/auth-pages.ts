@@ -66,4 +66,24 @@ export class AuthPages {
     await this.signIn(email, password);
     await this.assertOnDashboard();
   }
+
+  async acceptInvitation(link: string, opts: { displayName: string; password: string }) {
+    await this.page.goto(link);
+    await this.page.getByLabel('Display name').fill(opts.displayName);
+    await this.page.getByLabel('Password').fill(opts.password);
+    await this.page.getByLabel('City').fill('Test City');
+    await this.page.getByRole('button', { name: /create account/i }).click();
+    await this.page.waitForURL(/\/dashboard/);
+  }
+
+  async tryToSignIn(email: string, password: string) {
+    await this.page.goto('/auth/sign-in');
+    await this.page.getByLabel('Email').fill(email);
+    await this.page.getByLabel('Password').fill(password);
+    await this.page.getByRole('button', { name: /sign in/i }).click();
+  }
+
+  async assertSignInRejected() {
+    await this.page.waitForSelector('[role="alert"]');
+  }
 }

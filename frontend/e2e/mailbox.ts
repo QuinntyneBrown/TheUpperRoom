@@ -43,6 +43,14 @@ export class Mailbox {
     return match[0].replace(/&amp;/g, '&');
   }
 
+  async firstInvitationLink(email: string, timeoutMs = 15_000): Promise<string> {
+    const msg = await this.waitForEmail(email, timeoutMs);
+    const text = msg.Text ?? msg.HTML ?? '';
+    const match = text.match(/https?:\/\/\S+\/auth\/register\?invite=\S+/);
+    if (!match) throw new Error(`No invitation link found in email to ${email}`);
+    return match[0].replace(/&amp;/g, '&');
+  }
+
   async deleteAll() {
     await fetch(`${BASE}/api/v1/messages`, { method: 'DELETE' });
   }
