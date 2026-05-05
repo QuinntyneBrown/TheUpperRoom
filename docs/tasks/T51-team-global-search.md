@@ -1,6 +1,6 @@
 # T51 — Global teams search
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 6 — Team administration and authorization
 **Area**: Team, Search
 **Requirements**: L1-006, L1-011, L2-031
@@ -19,6 +19,6 @@ Add a city/team search affordance scoped to the global teams list.
 
 ## Acceptance criteria
 
-- [ ] Search input and all states designed on the global teams list.
-- [ ] Highlighting consistent with T30.
-- [ ] Mobile variant per T17.
+- [x] Search input and all states designed on the global teams list.
+- [x] Highlighting consistent with T30.
+- [x] Mobile variant per T17.
