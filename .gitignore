@@ -16,6 +16,11 @@ backend/**/appsettings.Production.json
 .env
 .env.*
 
+# SQLite dev databases
+**/*.db
+**/*.db-shm
+**/*.db-wal
+
 # OS
 .DS_Store
 Thumbs.db

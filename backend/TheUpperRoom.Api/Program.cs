@@ -57,6 +57,7 @@ builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssemblyContaining<Program>();
     cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+    cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(TeamScopeBehavior<,>));
 });
 builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme)
@@ -94,6 +95,9 @@ builder.Services.AddIdentityCore<User>(o =>
 builder.Services.AddSingleton<ApiMetrics>();
 builder.Services.AddSingleton<EmailSender>();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ICurrentUser, CurrentUser>();
+builder.Services.AddScoped<IUserClaimsPrincipalFactory<User>, AppUserClaimsPrincipalFactory>();
+builder.Services.AddHostedService<SeedRolesService>();
 builder.Services.AddScoped<IAuditLog, AuditLog>();
 builder.Services.AddCors(options =>
     options.AddDefaultPolicy(policy =>

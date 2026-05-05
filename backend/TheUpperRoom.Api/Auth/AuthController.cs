@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,20 @@ public class AuthController(IMediator mediator) : ControllerBase
 
     [Authorize]
     [HttpGet("me")]
-    public IActionResult Me() => Ok(new { email = User.Identity?.Name });
+    public IActionResult Me()
+    {
+        var roles = User.Claims
+            .Where(c => c.Type == ClaimTypes.Role)
+            .Select(c => c.Value)
+            .ToArray();
+        return Ok(new
+        {
+            id = User.FindFirstValue(ClaimTypes.NameIdentifier),
+            email = User.Identity?.Name,
+            displayName = User.FindFirstValue("DisplayName") ?? "",
+            roles
+        });
+    }
 
     [Authorize]
     [HttpPost("sign-out")]

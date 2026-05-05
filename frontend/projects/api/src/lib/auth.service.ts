@@ -22,11 +22,19 @@ export interface SignInResponse {
   message: string;
 }
 
+export interface MeResponse {
+  id: string;
+  email: string;
+  displayName: string;
+  roles: string[];
+}
+
 export interface IAuthService {
   register(req: RegisterRequest): Observable<RegisterResponse>;
   verify(token: string): Observable<void>;
   signIn(req: SignInRequest): Observable<SignInResponse>;
   signOut(): Observable<void>;
+  me(): Observable<MeResponse>;
   requestRecovery(email: string): Observable<{ message: string }>;
   resetPassword(req: { email: string; token: string; newPassword: string }): Observable<{ message: string }>;
 }
@@ -51,6 +59,10 @@ export class AuthService implements IAuthService {
 
   signOut(): Observable<void> {
     return this.http.post<void>('/api/auth/sign-out', {});
+  }
+
+  me(): Observable<MeResponse> {
+    return this.http.get<MeResponse>('/api/auth/me');
   }
 
   requestRecovery(email: string): Observable<{ message: string }> {

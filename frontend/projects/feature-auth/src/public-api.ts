@@ -1,3 +1,4 @@
+export * from './lib/no-access-page/no-access-page';
 export * from './lib/recover-page/recover-page';
 export * from './lib/register-page/register-page';
 export * from './lib/reset-page/reset-page';
