@@ -25,6 +25,18 @@ public class ContactsController(IMediator mediator) : ControllerBase
         return CreatedAtAction(nameof(Get), new { id }, new { id });
     }
 
+    [HttpGet]
+    public async Task<IActionResult> List([FromQuery] string? search)
+    {
+        if (!string.IsNullOrWhiteSpace(search))
+        {
+            if (search.Length < 2) return Ok(Array.Empty<object>());
+            var results = await mediator.Send(new SearchContactsQuery(search));
+            return Ok(results);
+        }
+        return Ok(Array.Empty<object>());
+    }
+
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> Get(Guid id)
     {

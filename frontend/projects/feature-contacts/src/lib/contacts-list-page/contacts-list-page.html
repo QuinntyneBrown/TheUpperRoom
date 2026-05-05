@@ -1,0 +1,46 @@
+<div class="contacts-list-page">
+  <header class="contacts-list-page__header">
+    <h1>Contacts</h1>
+    <a routerLink="/contacts/new" class="contacts-list-page__new-btn">New contact</a>
+  </header>
+
+  <div class="contacts-list-page__search">
+    <input
+      type="search"
+      class="contacts-list-page__input"
+      placeholder="Search contacts…"
+      [value]="term()"
+      (input)="onSearch($any($event.target).value)"
+      aria-label="Search contacts"
+      data-testid="contact-search-input"
+    />
+  </div>
+
+  @if (searching()) {
+    <p class="contacts-list-page__status" role="status">Searching…</p>
+  }
+
+  @if (term().length >= 2 && !searching()) {
+    @if (results().length === 0) {
+      <p class="contacts-list-page__empty">No contacts found.</p>
+    } @else {
+      <ul class="contacts-list-page__results" data-testid="search-results-list">
+        @for (r of results(); track r.id) {
+          <li class="contact-result-card">
+            <a [routerLink]="['/contacts', r.id]" class="contact-result-card__link">
+              <span class="contact-result-card__name">
+                <span [innerHTML]="r.firstName + ' ' + r.lastName | highlight:term()"></span>
+              </span>
+              @if (r.city) {
+                <span class="contact-result-card__city">{{ r.city }}</span>
+              }
+              @if (r.snippet) {
+                <span class="contact-result-card__snippet" [innerHTML]="r.snippet | highlight:term()"></span>
+              }
+            </a>
+          </li>
+        }
+      </ul>
+    }
+  }
+</div>

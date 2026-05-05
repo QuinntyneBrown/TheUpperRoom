@@ -1,4 +1,5 @@
 export * from './alert/alert';
+export * from './highlight/highlight.pipe';
 export * from './detail-two-column/detail-two-column';
 export * from './icon-button/icon-button';
 export * from './list-card-list/list-card-list';

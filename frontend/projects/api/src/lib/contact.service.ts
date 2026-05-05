@@ -44,11 +44,21 @@ export interface UpdateContactRequest {
   city?: string;
 }
 
+export interface ContactSearchResult {
+  id: string;
+  firstName: string;
+  lastName: string;
+  city?: string;
+  snippet: string;
+  matchedField: string;
+}
+
 export interface IContactService {
   create(req: CreateContactRequest): Observable<CreateContactResponse>;
   getById(id: string): Observable<ContactDto>;
   update(id: string, req: UpdateContactRequest): Observable<void>;
   delete(id: string): Observable<void>;
+  search(term: string): Observable<ContactSearchResult[]>;
   addNote(contactId: string, body: string): Observable<NoteDto>;
   updateNote(noteId: string, body: string): Observable<void>;
   deleteNote(noteId: string): Observable<void>;
@@ -74,6 +84,10 @@ export class ContactService implements IContactService {
 
   delete(id: string): Observable<void> {
     return this.http.delete<void>(`/api/contacts/${id}`);
+  }
+
+  search(term: string): Observable<ContactSearchResult[]> {
+    return this.http.get<ContactSearchResult[]>(`/api/contacts?search=${encodeURIComponent(term)}`);
   }
 
   addNote(contactId: string, body: string): Observable<NoteDto> {

@@ -1,4 +1,4 @@
-# 13 — Search Contacts ✅ Accepted
+# 13 — Search Contacts ✅ Complete
 
 **Traces to:** L2-014 (L1-003, L1-011).
 
