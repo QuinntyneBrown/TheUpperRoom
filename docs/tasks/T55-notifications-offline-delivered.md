@@ -1,5 +1,6 @@
 # T55 — Offline-delivered notification state
 
+**Status**: Accepted
 **Phase**: 7 — Notifications and real-time lifecycle
 **Area**: Notifications
 **Requirements**: L1-008, L2-037, L2-038
