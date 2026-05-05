@@ -46,12 +46,104 @@ Each design below is a small vertical slice intended to be implemented end-to-en
 | 39 | [Accessibility](39-accessibility/README.md) | L2-057, L2-058, L2-059 | Draft |
 | 40 | [Component, API, CQRS, and E2E test architecture](40-architecture-testing/README.md) | L2-060, L2-061, L2-062, L2-063, L2-064 | Draft |
 
+## Vertical refinements (small slices)
+
+These slices were derived from the gaps identified in [`docs/missing-detailed-designs.md`](../missing-detailed-designs.md). Each refines a piece of one of the bundled designs above into a small, independently testable vertical slice. Implementing these in order replaces the bundled designs with focused, ATDD-friendly contexts.
+
+### Functional product slices
+
+| # | Slice | L2 traces | Status |
+|---|-------|-----------|--------|
+| 41 | [Contact audit and restore view](41-contact-audit-restore/README.md) | L2-012 | Draft |
+| 42 | [Partner list stage filtering](42-partner-list-stage-filter/README.md) | L2-021, L2-046 | Draft |
+| 43 | [Hackathon list and navigation](43-hackathon-list/README.md) | L2-025, L2-046, L2-063 | Draft |
+| 44 | [Update hackathon details](44-update-hackathon/README.md) | L2-063, supports L2-022/L2-025 | Draft |
+| 45 | [Delete and restore hackathon](45-delete-restore-hackathon/README.md) | L2-063, L2-008, L2-044 | Draft |
+| 46 | [Dashboard empty state and first widget](46-dashboard-empty-first-widget/README.md) | L2-032 | Draft |
+| 47 | [Dashboard widget catalog add/remove](47-dashboard-catalog-add-remove/README.md) | L2-033 | Draft |
+| 48 | [Dashboard drag and resize persistence](48-dashboard-drag-resize/README.md) | L2-033 | Draft |
+| 49 | [Dashboard layout restore and last-write-wins](49-dashboard-restore-lww/README.md) | L2-035 | Draft |
+| 50 | [SignalR connection lifecycle](50-signalr-lifecycle/README.md) | L2-036 | Draft |
+| 51 | [Team event envelope contract](51-team-event-envelope/README.md) | L2-037 | Draft |
+| 52 | [Realtime latency budget harness](52-realtime-latency-harness/README.md) | L2-048 | Draft |
+
+### Responsive and theme slices
+
+| # | Slice | L2 traces | Status |
+|---|-------|-----------|--------|
+| 53 | [App shell responsive navigation](53-shell-responsive-nav/README.md) | L2-039, L2-040, L2-041 | Draft |
+| 54 | [List and detail responsive route patterns](54-list-detail-responsive/README.md) | L2-039, L2-040 | Draft |
+| 55 | [Dashboard responsive grid](55-dashboard-responsive-grid/README.md) | L2-041, L2-033 | Draft |
+| 56 | [Dark theme token system](56-dark-theme-tokens/README.md) | L2-042, L2-059 | Draft |
+| 57 | [Chart and non-text contrast validation](57-chart-contrast/README.md) | L2-042, L2-059 | Draft |
+
+### Observability slices
+
+| # | Slice | L2 traces | Status |
+|---|-------|-----------|--------|
+| 58 | [Backend correlation and request logging](58-correlation-request-logging/README.md) | L2-044 AC1 | Draft |
+| 59 | [Backend exception handling and error counter](59-error-middleware-counter/README.md) | L2-044 AC2 | Draft |
+| 60 | [Audit logging for sensitive domain events](60-audit-logging/README.md) | L2-044 AC3 | Draft |
+| 61 | [Frontend global error logging](61-frontend-error-logging/README.md) | L2-045 AC1, AC3 | Draft |
+| 62 | [HTTP error logging and sanitization](62-http-error-logging/README.md) | L2-045 AC2, AC3 | Draft |
+
+### Performance slices
+
+| # | Slice | L2 traces | Status |
+|---|-------|-----------|--------|
+| 63 | [Page-load performance budget harness](63-pageload-budget-harness/README.md) | L2-046 | Draft |
+| 64 | [API load and seeded data budget harness](64-api-load-budget-harness/README.md) | L2-047 | Draft |
+
+### Security slices
+
+| # | Slice | L2 traces | Status |
+|---|-------|-----------|--------|
+| 65 | [Production HTTPS and TLS enforcement](65-https-tls/README.md) | L2-049 | Draft |
+| 66 | [Password hashing storage proof](66-password-hashing/README.md) | L2-050 | Draft |
+| 67 | [Request validation and body-size limits](67-validation-body-limits/README.md) | L2-051 | Draft |
+| 68 | [Injection and stored-XSS hardening checks](68-injection-xss-checks/README.md) | L2-052, L2-053 | Draft |
+| 69 | [CSRF token flow](69-csrf-token/README.md) | L2-054 | Draft |
+| 70 | [Sensitive endpoint rate limiting](70-rate-limiting/README.md) | L2-055 | Draft |
+| 71 | [Secrets scanning and runtime configuration](71-secrets-runtime/README.md) | L2-056 | Draft |
+
+### Accessibility slices
+
+| # | Slice | L2 traces | Status |
+|---|-------|-----------|--------|
+| 72 | [Keyboard focus and dialog trap baseline](72-keyboard-focus-traps/README.md) | L2-057 | Draft |
+| 73 | [Accessible names, form errors, and live regions](73-aria-forms-live/README.md) | L2-058 | Draft |
+| 74 | [Contrast regression checks](74-contrast-regression/README.md) | L2-059 | Draft |
+
+### Architecture and E2E slices
+
+| # | Slice | L2 traces | Status |
+|---|-------|-----------|--------|
+| 75 | [Component library public API enforcement](75-component-library-public-api/README.md) | L2-060 | Draft |
+| 76 | [API library injection-token contract](76-api-injection-tokens/README.md) | L2-061 | Draft |
+| 77 | [Backend CQRS/MediatR enforcement](77-cqrs-mediatr-enforcement/README.md) | L2-062 | Draft |
+| 78 | [Playwright Page Object foundation](78-playwright-pom/README.md) | L2-063 | Draft |
+| 79 | [E2E auth and session flow](79-e2e-auth-session/README.md) | L2-063, L2-064 | Draft |
+| 80 | [E2E contact management flow](80-e2e-contact-flow/README.md) | L2-063, L2-064 | Draft |
+| 81 | [E2E partner management flow](81-e2e-partner-flow/README.md) | L2-063, L2-064 | Draft |
+| 82 | [E2E hackathon management flow](82-e2e-hackathon-flow/README.md) | L2-063, L2-064 | Draft |
+| 83 | [E2E team management flow](83-e2e-team-flow/README.md) | L2-063 | Draft |
+| 84 | [E2E dashboard widget flow](84-e2e-dashboard-flow/README.md) | L2-063, L2-064 | Draft |
+| 85 | [E2E realtime notification flow](85-e2e-realtime-flow/README.md) | L2-063 | Draft |
+| 86 | [E2E global search flow](86-e2e-search-flow/README.md) | L2-063, L2-064 | Draft |
+| 87 | [Multi-viewport smoke matrix](87-viewport-matrix/README.md) | L2-064 | Draft |
+
 ## Cross-cutting slices
 
-Requirements L2-039 through L2-064 are cross-cutting. They now have dedicated design slices (35-40) and are also referenced from `00-architecture/` where the baseline architecture depends on them.
+Requirements L2-039 through L2-064 are cross-cutting. They are addressed by the bundled designs (35-40) and refined into the small vertical slices listed above (41-87).
 
 ## Suggested implementation order
 
-01 → 35 → 36 → 37 → 38 → 39 → 40 → 02 → 03 → 05 → 06 → 04 → 07 → 32 → 08 → 09 → 14 → 12 → 10 → 11 → 13 → 33 → 15 → 19 → 18 → 17 → 16 → 20 → 21 → 24 → 22 → 23 → 25 → 28 → 26 → 27 → 29 → 30 → 31 → 34.
+Foundations first (architecture, observability, security, theme):
 
-Realtime infrastructure (32) lands early because nine later slices publish events through it. Notification center (33) lands as soon as the first publisher exists.
+01 → 56 → 53 → 54 → 55 → 72 → 73 → 74 → 57 → 75 → 76 → 77 → 78 → 58 → 59 → 60 → 61 → 62 → 65 → 66 → 67 → 68 → 69 → 70 → 71 → 63 → 64 → 87.
+
+Then auth and product:
+
+02 → 03 → 05 → 06 → 04 → 07 → 50 → 51 → 52 → 79 → 08 → 09 → 14 → 12 → 10 → 11 → 41 → 13 → 80 → 33 → 15 → 19 → 18 → 17 → 16 → 42 → 20 → 81 → 21 → 43 → 24 → 44 → 22 → 23 → 45 → 82 → 25 → 28 → 26 → 27 → 83 → 29 → 46 → 47 → 48 → 49 → 30 → 31 → 84 → 85 → 34 → 86.
+
+Realtime infrastructure (50, 51) lands early because nine later slices publish events through it. Notification center (33) lands as soon as the first publisher exists.

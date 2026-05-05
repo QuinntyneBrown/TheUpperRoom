@@ -1,5 +1,6 @@
 # T02 — Registration error and duplicate-email states
 
+**Status**: Accepted
 **Phase**: 1 — Authentication and session edge states
 **Area**: Authentication
 **Requirements**: L1-001, L2-001, L2-051, L2-055
