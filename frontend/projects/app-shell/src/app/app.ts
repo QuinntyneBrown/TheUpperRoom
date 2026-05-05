@@ -1,16 +1,86 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterOutlet } from '@angular/router';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { map } from 'rxjs';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
 import { HealthService } from 'api';
+import { UrSideNavItemComponent, UrBottomNavItemComponent } from 'components';
+
+const WORKSPACE_ITEMS = [
+  { icon: 'dashboard', label: 'Dashboard', route: '/dashboard' },
+  { icon: 'handshake', label: 'Partners', route: '/partners' },
+  { icon: 'contacts', label: 'Contacts', route: '/contacts' },
+  { icon: 'rocket_launch', label: 'Hackathons', route: '/hackathons' },
+  { icon: 'group', label: 'Team', route: '/team' },
+  { icon: 'church', label: 'Prayer', route: '/prayer' },
+];
+
+const GLOBAL_ITEMS = [
+  { icon: 'location_city', label: 'Cities', route: '/cities' },
+  { icon: 'bar_chart', label: 'Reports', route: '/reports' },
+  { icon: 'settings', label: 'Settings', route: '/settings' },
+];
+
+const BOTTOM_NAV_ITEMS = [
+  { icon: 'home', label: 'Home', route: '/dashboard' },
+  { icon: 'handshake', label: 'Partners', route: '/partners' },
+  { icon: 'rocket_launch', label: 'Hacks', route: '/hackathons' },
+  { icon: 'more_horiz', label: 'More', route: '/more' },
+];
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [
+    RouterOutlet,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatListModule,
+    UrSideNavItemComponent,
+    UrBottomNavItemComponent,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App implements OnInit {
+  private bpo = inject(BreakpointObserver);
   private healthService = inject(HealthService);
+
+  readonly workspaceItems = WORKSPACE_ITEMS;
+  readonly globalItems = GLOBAL_ITEMS;
+  readonly bottomNavItems = BOTTOM_NAV_ITEMS;
+
   healthStatus = signal('...');
+
+  isDesktop = toSignal(
+    this.bpo.observe('(min-width: 1280px)').pipe(map((r) => r.matches)),
+    { initialValue: window.matchMedia('(min-width: 1280px)').matches }
+  );
+
+  isMobile = toSignal(
+    this.bpo.observe('(max-width: 767px)').pipe(map((r) => r.matches)),
+    { initialValue: window.matchMedia('(max-width: 767px)').matches }
+  );
+
+  sidenavMode = computed<'side' | 'over'>(() =>
+    this.isDesktop() ? 'side' : 'over'
+  );
+
+  sidenavOpened = computed(() => this.isDesktop());
 
   ngOnInit() {
     this.healthService.get().subscribe({

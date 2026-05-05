@@ -1,6 +1,70 @@
-<main>
-  <router-outlet />
-</main>
-<footer>
-  <span data-testid="health-status">{{ healthStatus() }}</span>
-</footer>
+<mat-sidenav-container class="shell">
+  <mat-sidenav
+    #sidenav
+    class="shell__sidenav"
+    [mode]="sidenavMode()"
+    [opened]="sidenavOpened()"
+    data-testid="side-nav"
+  >
+    <div class="shell__brand">
+      <mat-icon class="shell__brand-icon">church</mat-icon>
+      <span class="shell__brand-name">The Upper Room</span>
+    </div>
+
+    <p class="shell__section-label">WORKSPACE</p>
+    <mat-nav-list>
+      @for (item of workspaceItems; track item.route) {
+        <ur-side-nav-item [icon]="item.icon" [label]="item.label" [href]="item.route" />
+      }
+    </mat-nav-list>
+
+    <p class="shell__section-label">GLOBAL</p>
+    <mat-nav-list>
+      @for (item of globalItems; track item.route) {
+        <ur-side-nav-item [icon]="item.icon" [label]="item.label" [href]="item.route" />
+      }
+    </mat-nav-list>
+
+    <div class="shell__sidenav-footer">
+      <span data-testid="health-status" class="shell__api-status">{{ healthStatus() }}</span>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="shell__body">
+    @if (!isDesktop()) {
+      <mat-toolbar class="shell__topbar">
+        @if (!isMobile()) {
+          <button
+            mat-icon-button
+            data-testid="hamburger"
+            aria-label="Open navigation"
+            (click)="sidenav.toggle()"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+        }
+        <mat-icon class="shell__topbar-logo">church</mat-icon>
+        <span class="shell__topbar-title">The Upper Room</span>
+        <span class="shell__spacer"></span>
+        <button mat-icon-button aria-label="Notifications">
+          <mat-icon>notifications</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Profile">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+      </mat-toolbar>
+    }
+
+    <div class="shell__content">
+      <router-outlet />
+    </div>
+
+    @if (isMobile()) {
+      <nav class="shell__bottom-nav" data-testid="bottom-nav">
+        @for (item of bottomNavItems; track item.route) {
+          <ur-bottom-nav-item [icon]="item.icon" [label]="item.label" />
+        }
+      </nav>
+    }
+  </mat-sidenav-content>
+</mat-sidenav-container>
