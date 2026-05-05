@@ -5,6 +5,11 @@ using TheUpperRoom.Api.Observability;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.AddHsts(options =>
+{
+    options.MaxAge = TimeSpan.FromDays(365);
+    options.IncludeSubDomains = true;
+});
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
 builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddSingleton<ApiMetrics>();
@@ -20,6 +25,9 @@ app.UseMiddleware<CorrelationMiddleware>();
 app.UseMiddleware<ErrorMiddleware>();
 app.UseMiddleware<RequestLoggingMiddleware>();
 app.UseCors();
+app.UseHsts();
 app.UseHttpsRedirection();
 app.MapControllers();
 app.Run();
+
+public partial class Program { }

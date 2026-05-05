@@ -2,6 +2,9 @@
 
 **Traces to:** L2-049. L1-014.
 
+## Status
+Accepted
+
 Vertical slice: production refuses plaintext HTTP and uses TLS 1.2/1.3 with an approved cipher allowlist.
 
 ## Components
