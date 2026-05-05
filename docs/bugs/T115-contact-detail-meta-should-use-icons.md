@@ -1,6 +1,6 @@
 # T115 — Contact Detail: meta fields (email/phone/city) should use icons, not bold labels
 
-**Status**: Open
+**Status**: Fixed
 
 ## Description
 
