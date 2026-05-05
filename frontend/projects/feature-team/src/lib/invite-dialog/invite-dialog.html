@@ -9,9 +9,10 @@
         [value]="email()"
         (input)="email.set($any($event.target).value)"
         autocomplete="email"
+        aria-describedby="inviteEmail-error"
       />
       @if (errors()['email']) {
-        <span class="invite-form__error">{{ errors()['email'] }}</span>
+        <span id="inviteEmail-error" class="invite-form__error">{{ errors()['email'] }}</span>
       }
     </div>
 

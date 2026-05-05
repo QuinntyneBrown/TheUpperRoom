@@ -14,9 +14,10 @@
         [value]="name()"
         (input)="name.set($any($event.target).value)"
         autocomplete="organization"
+        aria-describedby="partnerName-error"
       />
       @if (errors()['name']) {
-        <span class="partner-form__error">{{ errors()['name'] }}</span>
+        <span id="partnerName-error" class="partner-form__error">{{ errors()['name'] }}</span>
       }
     </div>
 
@@ -29,9 +30,10 @@
           placeholder="e.g. Toronto, ON"
           [value]="city()"
           (input)="city.set($any($event.target).value)"
+          aria-describedby="partnerCity-error"
         />
         @if (errors()['city']) {
-          <span class="partner-form__error">{{ errors()['city'] }}</span>
+          <span id="partnerCity-error" class="partner-form__error">{{ errors()['city'] }}</span>
         }
       </div>
       <div class="partner-form__field">
@@ -42,9 +44,10 @@
           placeholder="https://"
           [value]="website()"
           (input)="website.set($any($event.target).value)"
+          aria-describedby="partnerWebsite-error"
         />
         @if (errors()['website']) {
-          <span class="partner-form__error">{{ errors()['website'] }}</span>
+          <span id="partnerWebsite-error" class="partner-form__error">{{ errors()['website'] }}</span>
         }
       </div>
     </div>

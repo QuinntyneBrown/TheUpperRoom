@@ -13,9 +13,10 @@
         placeholder="e.g. Spring Hackathon 2026"
         [value]="title()"
         (input)="title.set($any($event.target).value)"
+        aria-describedby="hackathonTitle-error"
       />
       @if (errors()['title']) {
-        <span class="hackathon-form__error">{{ errors()['title'] }}</span>
+        <span id="hackathonTitle-error" class="hackathon-form__error">{{ errors()['title'] }}</span>
       }
     </div>
 
@@ -27,9 +28,10 @@
         placeholder="e.g. Toronto, ON"
         [value]="hostCity()"
         (input)="hostCity.set($any($event.target).value)"
+        aria-describedby="hackathonHostCity-error"
       />
       @if (errors()['hostCity']) {
-        <span class="hackathon-form__error">{{ errors()['hostCity'] }}</span>
+        <span id="hackathonHostCity-error" class="hackathon-form__error">{{ errors()['hostCity'] }}</span>
       }
     </div>
 
@@ -41,9 +43,10 @@
           type="date"
           [value]="startDate()"
           (input)="startDate.set($any($event.target).value)"
+          aria-describedby="hackathonStart-error"
         />
         @if (errors()['startDate']) {
-          <span class="hackathon-form__error">{{ errors()['startDate'] }}</span>
+          <span id="hackathonStart-error" class="hackathon-form__error">{{ errors()['startDate'] }}</span>
         }
       </div>
       <div class="hackathon-form__field">
@@ -53,9 +56,10 @@
           type="date"
           [value]="endDate()"
           (input)="endDate.set($any($event.target).value)"
+          aria-describedby="hackathonEnd-error"
         />
         @if (errors()['endDate']) {
-          <span class="hackathon-form__error">{{ errors()['endDate'] }}</span>
+          <span id="hackathonEnd-error" class="hackathon-form__error">{{ errors()['endDate'] }}</span>
         }
       </div>
     </div>

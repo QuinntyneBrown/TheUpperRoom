@@ -39,8 +39,8 @@ import { UrButtonComponent } from 'components';
       <form (ngSubmit)="submit()">
         <label>
           Title
-          <input type="text" [value]="title()" (input)="title.set($any($event.target).value)" />
-          @if (errors()['title']) { <span class="error">{{ errors()['title'] }}</span> }
+          <input id="editTitle" type="text" [value]="title()" (input)="title.set($any($event.target).value)" aria-describedby="editTitle-error" />
+          @if (errors()['title']) { <span id="editTitle-error" class="error">{{ errors()['title'] }}</span> }
         </label>
         <label>
           Start Date
@@ -48,8 +48,8 @@ import { UrButtonComponent } from 'components';
         </label>
         <label>
           End Date
-          <input type="date" [value]="endDate()" (input)="endDate.set($any($event.target).value)" />
-          @if (errors()['endDate']) { <span class="error">{{ errors()['endDate'] }}</span> }
+          <input id="editEndDate" type="date" [value]="endDate()" (input)="endDate.set($any($event.target).value)" aria-describedby="editEndDate-error" />
+          @if (errors()['endDate']) { <span id="editEndDate-error" class="error">{{ errors()['endDate'] }}</span> }
         </label>
         <label>
           Host City
