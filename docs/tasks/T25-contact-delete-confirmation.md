@@ -1,5 +1,6 @@
 # T25 — Contact delete confirmation
 
+**Status**: Accepted
 **Phase**: 4 — Contact lifecycle
 **Area**: Contacts
 **Requirements**: L1-003, L2-012
