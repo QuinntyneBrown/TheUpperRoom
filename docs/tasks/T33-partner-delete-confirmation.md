@@ -1,6 +1,6 @@
 # T33 — Partner delete confirmation
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 5 — Partner and hackathon management
 **Area**: Partner
 **Requirements**: L1-004, L2-020
@@ -19,6 +19,6 @@ Add a destructive-action confirmation dialog for deleting a partner.
 
 ## Acceptance criteria
 
-- [ ] Dialog frame exists with destructive button styling.
-- [ ] Side effects listed in copy match L2-020.
-- [ ] Mobile bottom-sheet variant per T21.
+- [x] Dialog frame exists with destructive button styling.
+- [x] Side effects listed in copy match L2-020.
+- [x] Mobile bottom-sheet variant per T21.
