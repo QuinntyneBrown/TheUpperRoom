@@ -1,8 +1,8 @@
 <div class="dashboard-page" data-testid="dashboard-page">
   <header class="dashboard-page__header">
     <h1>Dashboard</h1>
-    <button class="dashboard-page__add-btn" data-testid="add-widget-btn" (click)="showCatalog.set(true)">
-      + Add widget
+    <button mat-raised-button data-testid="add-widget-btn" (click)="showCatalog.set(true)">
+      <mat-icon>add</mat-icon> Add widget
     </button>
   </header>
 
@@ -16,9 +16,7 @@
   @if (items().length === 0) {
     <div class="dashboard-page__empty" data-testid="dashboard-empty">
       <p>No widgets yet.</p>
-      <button class="dashboard-page__add-cta" data-testid="add-widget-cta" (click)="showCatalog.set(true)">
-        Add widget
-      </button>
+      <button mat-raised-button data-testid="add-widget-cta" (click)="showCatalog.set(true)">Add widget</button>
     </div>
   } @else {
     <gridster [options]="options">
@@ -27,7 +25,7 @@
           <div class="dashboard-widget" [attr.data-testid]="'widget-' + item.id">
             <header class="dashboard-widget__header">
               <span class="dashboard-widget__type">{{ item.type }}</span>
-              <button class="dashboard-widget__remove" (click)="removeWidget(item)" aria-label="Remove widget">
+              <button mat-icon-button (click)="removeWidget(item)" aria-label="Remove widget">
                 <mat-icon>close</mat-icon>
               </button>
             </header>

@@ -18,7 +18,7 @@
       <header class="notification-center__panel-header">
         <h2>Notifications</h2>
         @if (unreadCount() > 0) {
-          <button class="notification-center__mark-all" data-testid="mark-all-read" (click)="markAllRead()">Mark all read</button>
+          <button mat-button data-testid="mark-all-read" (click)="markAllRead()">Mark all read</button>
         }
       </header>
       @if (notifications().length === 0) {
@@ -30,7 +30,7 @@
               <span class="notification-center__kind">{{ n.kind }}</span>
               <span class="notification-center__time">{{ n.createdAt | date:'short' }}</span>
               @if (!n.isRead) {
-                <button class="notification-center__read-btn" (click)="markRead(n.id)" [attr.aria-label]="'Mark ' + n.kind + ' read'"><mat-icon>check</mat-icon></button>
+                <button mat-icon-button (click)="markRead(n.id)" [attr.aria-label]="'Mark ' + n.kind + ' read'"><mat-icon>check</mat-icon></button>
               }
             </li>
           }

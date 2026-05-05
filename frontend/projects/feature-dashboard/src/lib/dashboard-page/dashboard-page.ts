@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { DASHBOARD_SERVICE, DashboardItem } from 'api';
 import { Gridster, GridsterItem } from 'angular-gridster2';
@@ -11,7 +12,7 @@ import { buildGridsterOptions } from './gridster-options';
   selector: 'ur-dashboard-page',
   templateUrl: './dashboard-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Gridster, GridsterItem, WidgetCatalogDialogComponent, LineChartWidgetComponent, MatIconModule],
+  imports: [Gridster, GridsterItem, WidgetCatalogDialogComponent, LineChartWidgetComponent, MatButtonModule, MatIconModule],
 })
 export class DashboardPageComponent implements OnInit {
   private dashboardSvc = inject(DASHBOARD_SERVICE);
