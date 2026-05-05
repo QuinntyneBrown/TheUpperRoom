@@ -3,9 +3,10 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { csrfInterceptor } from './services/csrf.interceptor';
 import { errorLoggingInterceptor } from './services/error-logging.interceptor';
-import { AUTH_SERVICE, AuthService, CONTACT_SERVICE, ContactService, HACKATHON_SERVICE, HackathonService, HEALTH_SERVICE, HealthService, PARTNER_SERVICE, PartnerService, REALTIME_SERVICE, RealtimeService } from 'api';
+import { AUTH_SERVICE, AuthService, CONTACT_SERVICE, ContactService, HACKATHON_SERVICE, HackathonService, HEALTH_SERVICE, HealthService, PARTNER_SERVICE, PartnerService, REALTIME_SERVICE, RealtimeService, TEAM_SERVICE, TeamService } from 'api';
 import { ContactCreatePageComponent, ContactDetailPageComponent, ContactEditPageComponent, ContactsListPageComponent } from 'feature-contacts';
 import { HackathonCreatePageComponent, HackathonDetailPageComponent } from 'feature-hackathons';
+import { LocalTeamPageComponent } from 'feature-team';
 import { PartnerCreatePageComponent, PartnerDetailPageComponent, PartnerEditPageComponent, PartnersBoardPageComponent } from 'feature-partners';
 import { NoAccessPageComponent, RecoverPageComponent, RegisterPageComponent, ResetPageComponent, SignInPageComponent, VerifyPageComponent } from 'feature-auth';
 import { GlobalErrorHandler } from './global-error-handler';
@@ -24,9 +25,11 @@ export const appConfig: ApplicationConfig = {
     { provide: CONTACT_SERVICE, useClass: ContactService },
     { provide: PARTNER_SERVICE, useClass: PartnerService },
     { provide: HACKATHON_SERVICE, useClass: HackathonService },
+    { provide: TEAM_SERVICE, useClass: TeamService },
     { provide: REALTIME_SERVICE, useClass: RealtimeService },
     provideRouter([
       { path: 'dashboard', component: DashboardPageComponent },
+      { path: 'team', component: LocalTeamPageComponent },
       { path: 'hackathons/new', component: HackathonCreatePageComponent },
       { path: 'hackathons/:id', component: HackathonDetailPageComponent },
       { path: 'partners', component: PartnersBoardPageComponent },

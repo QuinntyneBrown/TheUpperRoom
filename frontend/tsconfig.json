@@ -9,7 +9,8 @@
       "feature-auth": ["./dist/feature-auth"],
       "feature-contacts": ["./dist/feature-contacts"],
       "feature-partners": ["./dist/feature-partners"],
-      "feature-hackathons": ["./dist/feature-hackathons"]
+      "feature-hackathons": ["./dist/feature-hackathons"],
+      "feature-team": ["./dist/feature-team"]
     },
     "strict": true,
     "noImplicitOverride": true,
@@ -72,6 +73,12 @@
     },
     {
       "path": "./projects/feature-hackathons/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/feature-team/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/feature-team/tsconfig.spec.json"
     }
   ]
 }

@@ -208,6 +208,32 @@
         }
       }
     },
+    "feature-team": {
+      "projectType": "library",
+      "root": "projects/feature-team",
+      "sourceRoot": "projects/feature-team/src",
+      "prefix": "ur",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/feature-team/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/feature-team/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/feature-team/tsconfig.spec.json"
+          }
+        }
+      }
+    },
     "feature-hackathons": {
       "projectType": "library",
       "root": "projects/feature-hackathons",

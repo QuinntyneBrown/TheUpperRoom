@@ -1,0 +1,41 @@
+<div class="team-page" data-testid="local-team-page">
+  <header class="team-page__header">
+    <h1 class="team-page__title">Team</h1>
+  </header>
+
+  @if (members().length === 0) {
+    <p class="team-page__empty">No team members found.</p>
+  } @else {
+    <table class="team-table" aria-label="Team members">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Email</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (m of members(); track m.id) {
+          <tr [attr.data-testid]="'member-row-' + m.id">
+            <td>{{ m.displayName }}</td>
+            <td>{{ m.role }}</td>
+            <td>{{ m.email }}</td>
+            <td>{{ m.isActive ? 'Active' : 'Inactive' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    <div class="team-cards" aria-label="Team members">
+      @for (m of members(); track m.id) {
+        <div class="team-card" [attr.data-testid]="'member-card-' + m.id">
+          <p class="team-card__name">{{ m.displayName }}</p>
+          <p class="team-card__role">{{ m.role }}</p>
+          <p class="team-card__email">{{ m.email }}</p>
+          <span class="team-card__status">{{ m.isActive ? 'Active' : 'Inactive' }}</span>
+        </div>
+      }
+    </div>
+  }
+</div>

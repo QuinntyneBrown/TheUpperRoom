@@ -1,4 +1,4 @@
-# 25 — View Local Team ✅ Accepted
+# 25 — View Local Team ✅ Complete
 
 **Traces to:** L2-026 (L1-006).
 
