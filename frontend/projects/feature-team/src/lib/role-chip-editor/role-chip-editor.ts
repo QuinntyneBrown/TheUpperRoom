@@ -31,7 +31,7 @@ const ROLE_LABELS: Record<SubRole, string> = {
     .role-chip--disabled { opacity: 0.6; cursor: default; }
     .role-chip-error {
       display: flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 0.8rem;
-      color: var(--ur-error-fg, #dc2626);
+      color: var(--ur-danger, #f87171);
     }
     .role-chip-error mat-icon { font-size: 14px; width: 14px; height: 14px; flex-shrink: 0; }
   `],

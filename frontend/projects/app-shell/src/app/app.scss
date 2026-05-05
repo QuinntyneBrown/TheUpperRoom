@@ -141,18 +141,18 @@
   gap: 10px;
   padding: 12px 20px;
   border-radius: 8px;
-  background: var(--ur-bg-overlay, #1e293b);
+  background: var(--ur-bg-surface, #16161f);
   color: #fff;
   font-size: 0.875rem;
   font-weight: 500;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  border-left: 3px solid var(--ur-error-fg, #dc2626);
+  border-left: 3px solid var(--ur-danger, #f87171);
 
   mat-icon {
     font-size: 18px;
     width: 18px;
     height: 18px;
-    color: var(--ur-error-fg, #dc2626);
+    color: var(--ur-danger, #f87171);
     flex-shrink: 0;
   }
 }

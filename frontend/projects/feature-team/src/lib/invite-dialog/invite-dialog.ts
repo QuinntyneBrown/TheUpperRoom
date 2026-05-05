@@ -19,8 +19,8 @@ const ROLE_LABELS: Record<string, string> = {
   styles: [`
     .invite-save-error {
       display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 6px; margin-bottom: 12px;
-      background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
-      border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
+      background: color-mix(in srgb, var(--ur-danger, #f87171) 12%, transparent); color: var(--ur-danger, #f87171);
+      border: 1px solid color-mix(in srgb, var(--ur-danger, #f87171) 40%, transparent); font-size: 0.875rem;
     }
     .invite-save-error mat-icon { font-size: 16px; width: 16px; height: 16px; flex-shrink: 0; }
     .invite-form { display: flex; flex-direction: column; gap: 16px; }
@@ -38,7 +38,7 @@ const ROLE_LABELS: Record<string, string> = {
     .invite-form__roles { display: flex; flex-wrap: wrap; gap: 8px 16px; }
     .invite-form__role-opt { display: flex; align-items: center; gap: 6px; font-size: 0.875rem; color: var(--ur-fg-primary, #f1f5f9); cursor: pointer; }
     .invite-form__actions { display: flex; justify-content: flex-end; gap: 8px; }
-    .invite-form__error { font-size: 0.75rem; color: var(--ur-error-fg, #dc2626); }
+    .invite-form__error { font-size: 0.75rem; color: var(--ur-danger, #f87171); }
   `],
 })
 export class InviteDialogComponent implements OnDestroy {

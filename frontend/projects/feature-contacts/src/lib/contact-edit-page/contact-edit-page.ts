@@ -32,13 +32,13 @@ import { ContactFormComponent, ContactFormInitial, ContactFormValue } from '../c
     .edit-error-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
       gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 500;
-      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
-      border: 1px solid var(--ur-error-fg, #dc2626); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      background: var(--ur-bg-surface, #16161f); color: #fff; font-size: 0.875rem; font-weight: 500;
+      border: 1px solid var(--ur-danger, #f87171); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
-    .edit-error-toast mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
+    .edit-error-toast mat-icon { color: var(--ur-danger, #f87171); font-size: 18px; width: 18px; height: 18px; }
     .contact-edit-loading { display: flex; flex-direction: column; gap: 16px; padding: 24px 0; }
-    .contact-edit-loading__title { height: 24px; width: 30%; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: ce-pulse 1.4s ease-in-out infinite; }
-    .contact-edit-loading__field { height: 48px; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: ce-pulse 1.4s ease-in-out infinite; }
+    .contact-edit-loading__title { height: 24px; width: 30%; border-radius: 6px; background: var(--ur-border-default, #2a2a3a); animation: ce-pulse 1.4s ease-in-out infinite; }
+    .contact-edit-loading__field { height: 48px; border-radius: 6px; background: var(--ur-border-default, #2a2a3a); animation: ce-pulse 1.4s ease-in-out infinite; }
     @keyframes ce-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
   `],
 })

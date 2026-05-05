@@ -24,7 +24,7 @@ const STAGES: { value: PartnerStage; label: string }[] = [
     .partner-form__error { font-size: 0.75rem; color: var(--ur-danger, #ef4444); }
     .partner-form__stage-opts { display: flex; gap: 8px; flex-wrap: wrap; }
     .partner-form__stage-opt {
-      padding: 6px 16px; border-radius: 6px; border: 1px solid var(--ur-border-default, #334155);
+      padding: 6px 16px; border-radius: 6px; border: 1px solid var(--ur-border-default, #2a2a3a);
       background: var(--ur-bg-input, #0f172a); color: var(--ur-fg-secondary, #a1a1aa);
       font-size: 0.875rem; cursor: pointer;
     }
@@ -33,7 +33,7 @@ const STAGES: { value: PartnerStage; label: string }[] = [
       color: #fff; font-weight: 600;
     }
     .partner-form textarea {
-      background: var(--ur-bg-input, #0f172a); border: 1px solid var(--ur-border-default, #334155);
+      background: var(--ur-bg-input, #0f172a); border: 1px solid var(--ur-border-default, #2a2a3a);
       border-radius: 6px; color: var(--ur-fg-primary, #f1f5f9); font-size: 0.875rem; font-family: inherit;
       padding: 10px 12px; outline: none; width: 100%; box-sizing: border-box; resize: vertical;
     }
@@ -42,10 +42,10 @@ const STAGES: { value: PartnerStage; label: string }[] = [
     .create-error-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
       gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
-      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
-      border: 1px solid var(--ur-error-fg, #dc2626); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      background: var(--ur-bg-surface, #16161f); color: #fff; font-size: 0.875rem; font-weight: 500;
+      border: 1px solid var(--ur-danger, #f87171); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
-    .create-error-toast mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
+    .create-error-toast mat-icon { color: var(--ur-danger, #f87171); font-size: 18px; width: 18px; height: 18px; }
   `],
 })
 export class PartnerCreatePageComponent implements OnDestroy {

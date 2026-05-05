@@ -20,7 +20,7 @@ const NOTIFICATION_EVENTS = new Set([
       padding: 12px 16px; display: flex; flex-direction: column; gap: 6px; border-bottom: 1px solid var(--ur-border, #e2e8f0);
     }
     .notification-skeleton-row__line {
-      height: 12px; border-radius: 4px; background: var(--ur-skeleton, #e2e8f0);
+      height: 12px; border-radius: 4px; background: var(--ur-border-default, #2a2a3a);
       animation: notif-shimmer 1.4s ease-in-out infinite;
     }
     .notification-skeleton-row__line--wide { width: 70%; }

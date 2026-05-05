@@ -20,8 +20,8 @@ type SortDir = 'asc' | 'desc';
     .contacts-list-page { display: flex; flex-direction: column; height: 100%; }
     .contacts-list-page__header {
       display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-      padding: 12px 20px; border-bottom: 1px solid var(--ur-border-subtle, #334155);
-      background: var(--ur-bg-surface, #1e293b);
+      padding: 12px 20px; border-bottom: 1px solid var(--ur-border-subtle, #222233);
+      background: var(--ur-bg-surface, #16161f);
     }
     .contacts-list-page__header h1 { margin: 0; font-size: 1.125rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); }
     .contacts-list-page__header-left { display: flex; flex-direction: column; gap: 2px; }
@@ -37,21 +37,21 @@ type SortDir = 'asc' | 'desc';
     .contacts-list-page__table-wrap { flex: 1; overflow: auto; padding: 20px; }
     .contacts-table {
       width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden;
-      background: var(--ur-bg-surface, #1e293b); border: 1px solid var(--ur-border-subtle, #334155);
+      background: var(--ur-bg-surface, #16161f); border: 1px solid var(--ur-border-subtle, #222233);
     }
     .contacts-table thead { background: var(--ur-bg-elevated, #0f172a); }
     .contacts-table th, .contacts-table td { padding: 10px 16px; text-align: left; font-size: 0.875rem; }
-    .contacts-table th { color: var(--ur-fg-secondary, #94a3b8); font-weight: 500; border-bottom: 1px solid var(--ur-border-subtle, #334155); }
-    .contacts-table td { color: var(--ur-fg-primary, #f1f5f9); border-bottom: 1px solid var(--ur-border-subtle, #334155); }
+    .contacts-table th { color: var(--ur-fg-secondary, #94a3b8); font-weight: 500; border-bottom: 1px solid var(--ur-border-subtle, #222233); }
+    .contacts-table td { color: var(--ur-fg-primary, #f1f5f9); border-bottom: 1px solid var(--ur-border-subtle, #222233); }
     .contacts-table tbody tr:last-child td { border-bottom: none; }
     .contacts-table tbody tr:hover { background: var(--ur-bg-elevated, #0f172a); }
     .contacts-table td a { color: var(--ur-accent-primary, #6366f1); text-decoration: none; }
     .contacts-table td a:hover { text-decoration: underline; }
     .sort-btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 4px; color: var(--ur-fg-secondary, #94a3b8); font-size: 0.875rem; font-weight: 500; padding: 0; }
     .sort-icon { font-size: 14px; width: 14px; height: 14px; }
-    .contacts-pagination { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 12px 20px; border-top: 1px solid var(--ur-border-subtle, #334155); font-size: 0.875rem; color: var(--ur-fg-secondary, #94a3b8); }
+    .contacts-pagination { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 12px 20px; border-top: 1px solid var(--ur-border-subtle, #222233); font-size: 0.875rem; color: var(--ur-fg-secondary, #94a3b8); }
     .contacts-list-page__results { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
-    .contact-result-card { border-bottom: 1px solid var(--ur-border-subtle, #334155); }
+    .contact-result-card { border-bottom: 1px solid var(--ur-border-subtle, #222233); }
     .contact-result-card__link { display: flex; flex-direction: column; gap: 2px; padding: 12px 20px; text-decoration: none; }
     .contact-result-card__link:hover { background: var(--ur-bg-elevated, #0f172a); }
     .contact-result-card__name { font-size: 0.9375rem; font-weight: 500; color: var(--ur-fg-primary, #f1f5f9); }
@@ -59,15 +59,15 @@ type SortDir = 'asc' | 'desc';
     .contact-result-card__snippet { font-size: 0.8125rem; color: var(--ur-fg-muted, #64748b); }
     .contacts-load-error {
       display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 8px; margin: 16px 0;
-      background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
-      border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
+      background: color-mix(in srgb, var(--ur-danger, #f87171) 12%, transparent); color: var(--ur-danger, #f87171);
+      border: 1px solid color-mix(in srgb, var(--ur-danger, #f87171) 40%, transparent); font-size: 0.875rem;
     }
     .contacts-load-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
     .contact-toast {
       position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
       display: flex; align-items: center; gap: 10px; padding: 12px 16px;
       border-radius: 8px; z-index: 1000;
-      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
+      background: var(--ur-bg-surface, #16161f); color: #fff; font-size: 0.875rem; font-weight: 500;
       border: 1px solid var(--ur-success, #22c55e);
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
@@ -80,12 +80,12 @@ type SortDir = 'asc' | 'desc';
     .contacts-list-page__no-results p { margin: 0; font-size: 1rem; font-weight: 500; }
     .contact-search-skeleton { padding: 8px 0; }
     .contact-skeleton-row { padding: 10px 16px; display: flex; flex-direction: column; gap: 6px; }
-    .contact-skeleton-row__line { height: 12px; border-radius: 4px; background: var(--ur-skeleton, #e2e8f0); animation: contact-shimmer 1.4s ease-in-out infinite; }
+    .contact-skeleton-row__line { height: 12px; border-radius: 4px; background: var(--ur-border-default, #2a2a3a); animation: contact-shimmer 1.4s ease-in-out infinite; }
     .contact-skeleton-row__line--name { width: 55%; }
     .contact-skeleton-row__line--meta { width: 35%; }
     @keyframes contact-shimmer { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
     .contacts-list-loading { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
-    .contacts-list-loading__row { height: 44px; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: contact-shimmer 1.4s ease-in-out infinite; }
+    .contacts-list-loading__row { height: 44px; border-radius: 6px; background: var(--ur-border-default, #2a2a3a); animation: contact-shimmer 1.4s ease-in-out infinite; }
     .contacts-list-page__overlay { position: fixed; inset: 0; background: rgba(10,10,15,0.7); display: flex; align-items: flex-start; justify-content: center; padding-top: 120px; z-index: 1000; }
     .contacts-list-page__overlay ur-new-contact-dialog { width: 640px; max-width: calc(100vw - 48px); }
   `],

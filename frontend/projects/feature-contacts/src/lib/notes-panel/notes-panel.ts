@@ -15,7 +15,7 @@ import { UrButtonComponent } from 'components';
     .note-error-toast {
       position: fixed; bottom: 24px; right: 24px; display: flex; align-items: center;
       gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
-      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
+      background: var(--ur-bg-surface, #16161f); color: #fff; font-size: 0.875rem; font-weight: 500;
       border: 1px solid var(--ur-danger, #ef4444);
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
@@ -36,7 +36,7 @@ import { UrButtonComponent } from 'components';
     }
     .notes-panel__empty mat-icon { font-size: 18px; width: 18px; height: 18px; opacity: 0.6; }
     .notes-panel__empty p { margin: 0; }
-    .note-card { padding: 12px 0; border-bottom: 1px solid var(--ur-border-subtle, #334155); }
+    .note-card { padding: 12px 0; border-bottom: 1px solid var(--ur-border-subtle, #222233); }
     .note-card:last-child { border-bottom: none; }
     .note-card__body { margin: 0 0 6px; font-size: 0.875rem; color: var(--ur-fg-primary, #f1f5f9); white-space: pre-wrap; }
     .note-card__meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; }

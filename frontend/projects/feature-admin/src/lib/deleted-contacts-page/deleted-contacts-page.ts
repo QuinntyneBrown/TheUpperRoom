@@ -65,8 +65,8 @@ import { MatTableModule } from '@angular/material/table';
   styles: [`
     .admin-error {
       display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 8px; margin: 16px 0;
-      background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
-      border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
+      background: color-mix(in srgb, var(--ur-danger, #f87171) 12%, transparent); color: var(--ur-danger, #f87171);
+      border: 1px solid color-mix(in srgb, var(--ur-danger, #f87171) 40%, transparent); font-size: 0.875rem;
     }
     .admin-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
     @keyframes dcp-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
@@ -92,11 +92,11 @@ import { MatTableModule } from '@angular/material/table';
     .admin-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
       gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
-      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
+      background: var(--ur-bg-surface, #16161f); color: #fff; font-size: 0.875rem; font-weight: 500;
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
-    .admin-toast--error { border: 1px solid var(--ur-error-fg, #dc2626); }
-    .admin-toast--error mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
+    .admin-toast--error { border: 1px solid var(--ur-danger, #f87171); }
+    .admin-toast--error mat-icon { color: var(--ur-danger, #f87171); font-size: 18px; width: 18px; height: 18px; }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

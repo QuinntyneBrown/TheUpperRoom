@@ -33,7 +33,7 @@ const BADGE_CONFIG: Record<string, { label: string; icon: string }> = {
     .chart-body { position: relative; flex: 1; }
     .chart-load-error {
       position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 8px; background: var(--ur-bg-surface, #fff); color: var(--ur-error-fg, #dc2626);
+      gap: 8px; background: var(--ur-bg-surface, #fff); color: var(--ur-danger, #f87171);
       font-size: 0.875rem; text-align: center; border-radius: 4px;
     }
     .chart-load-error mat-icon { font-size: 24px; width: 24px; height: 24px; }

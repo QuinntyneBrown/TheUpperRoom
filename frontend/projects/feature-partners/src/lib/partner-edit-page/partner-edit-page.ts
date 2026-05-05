@@ -13,7 +13,7 @@ import { UrButtonComponent } from 'components';
   imports: [FormsModule, RouterLink, MatButtonModule, MatIconModule, UrButtonComponent],
   styles: [`
     .partner-edit { display: flex; flex-direction: column; height: 100%; }
-    .partner-edit__header { display: flex; align-items: center; gap: 8px; padding: 12px 24px; border-bottom: 1px solid var(--ur-border-subtle, #334155); background: var(--ur-bg-elevated, #0f172a); height: 56px; }
+    .partner-edit__header { display: flex; align-items: center; gap: 8px; padding: 12px 24px; border-bottom: 1px solid var(--ur-border-subtle, #222233); background: var(--ur-bg-elevated, #0f172a); height: 56px; }
     .partner-edit__back { display: flex; align-items: center; gap: 6px; color: var(--ur-accent-primary, #9f86ff); font-size: 0.875rem; font-weight: 500; text-decoration: none; }
     .partner-edit__back:hover { text-decoration: underline; }
     .partner-edit__back mat-icon { font-size: 18px; width: 18px; height: 18px; }
@@ -24,7 +24,7 @@ import { UrButtonComponent } from 'components';
     .partner-edit__field { display: flex; flex-direction: column; gap: 6px; }
     .partner-edit__field label { font-size: 0.8125rem; font-weight: 500; color: var(--ur-fg-secondary, #94a3b8); }
     .partner-edit__field input, .partner-edit__field textarea {
-      background: var(--ur-bg-input, #0f172a); border: 1px solid var(--ur-border-default, #334155);
+      background: var(--ur-bg-input, #0f172a); border: 1px solid var(--ur-border-default, #2a2a3a);
       border-radius: 6px; color: var(--ur-fg-primary, #f1f5f9); font-size: 0.875rem; font-family: inherit;
       padding: 10px 12px; outline: none; width: 100%; box-sizing: border-box; resize: vertical;
     }
@@ -35,13 +35,13 @@ import { UrButtonComponent } from 'components';
     .edit-error-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
       gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
-      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
-      border: 1px solid var(--ur-error-fg, #dc2626); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      background: var(--ur-bg-surface, #16161f); color: #fff; font-size: 0.875rem; font-weight: 500;
+      border: 1px solid var(--ur-danger, #f87171); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
-    .edit-error-toast mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
+    .edit-error-toast mat-icon { color: var(--ur-danger, #f87171); font-size: 18px; width: 18px; height: 18px; }
     .partner-edit-loading { display: flex; flex-direction: column; gap: 16px; padding: 24px; }
-    .partner-edit-loading__title { height: 24px; width: 30%; border-radius: 6px; background: var(--ur-skeleton-bg, #1e293b); animation: pe-pulse 1.4s ease-in-out infinite; }
-    .partner-edit-loading__field { height: 48px; border-radius: 6px; background: var(--ur-skeleton-bg, #1e293b); animation: pe-pulse 1.4s ease-in-out infinite; }
+    .partner-edit-loading__title { height: 24px; width: 30%; border-radius: 6px; background: var(--ur-border-default, #2a2a3a); animation: pe-pulse 1.4s ease-in-out infinite; }
+    .partner-edit-loading__field { height: 48px; border-radius: 6px; background: var(--ur-border-default, #2a2a3a); animation: pe-pulse 1.4s ease-in-out infinite; }
     @keyframes pe-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
   `],
 })

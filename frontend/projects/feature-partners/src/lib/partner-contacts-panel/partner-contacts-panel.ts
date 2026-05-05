@@ -19,7 +19,7 @@ import { UrButtonComponent } from 'components';
     }
     .partner-contacts__empty mat-icon { font-size: 18px; width: 18px; height: 18px; opacity: 0.6; }
     .partner-contacts__empty p { margin: 0; }
-    .partner-contacts__row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--ur-border-subtle, #334155); }
+    .partner-contacts__row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--ur-border-subtle, #222233); }
     .partner-contacts__row:last-of-type { border-bottom: none; }
     .partner-contacts__avatar {
       width: 32px; height: 32px; border-radius: 50%; background: var(--ur-accent-primary, #6366f1);
@@ -45,8 +45,8 @@ import { UrButtonComponent } from 'components';
     .partner-contacts__new-actions { display: flex; justify-content: flex-end; gap: 8px; }
     .contacts-remove-error {
       display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 6px; margin-top: 8px;
-      background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
-      border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
+      background: color-mix(in srgb, var(--ur-danger, #f87171) 12%, transparent); color: var(--ur-danger, #f87171);
+      border: 1px solid color-mix(in srgb, var(--ur-danger, #f87171) 40%, transparent); font-size: 0.875rem;
     }
     .contacts-remove-error mat-icon { font-size: 16px; width: 16px; height: 16px; flex-shrink: 0; }
   `],
