@@ -37,6 +37,21 @@ import { RoleChipEditorComponent } from '../role-chip-editor/role-chip-editor';
     }
     .team-page__empty mat-icon { font-size: 48px; width: 48px; height: 48px; opacity: 0.4; }
     .team-page__empty p { margin: 0; font-size: 0.9375rem; }
+    .team-table {
+      width: 100%; border-collapse: collapse; font-size: 0.875rem;
+      th { text-align: left; padding: 10px 12px; color: var(--ur-fg-muted, #64748b); font-weight: 500; border-bottom: 1px solid var(--ur-border-subtle, #334155); }
+      td { padding: 12px; vertical-align: middle; border-bottom: 1px solid var(--ur-border-subtle, #334155); color: var(--ur-fg-primary, #f1f5f9); }
+      tr:last-child td { border-bottom: none; }
+    }
+    .team-cards { display: none; }
+    @media (max-width: 767px) {
+      .team-table { display: none; }
+      .team-cards { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+      .team-card { padding: 16px; border-radius: 8px; background: var(--ur-bg-surface, #1e293b); border: 1px solid var(--ur-border-subtle, #334155); }
+      .team-card__name { margin: 0 0 8px; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); }
+      .team-card__email { margin: 6px 0; font-size: 0.8125rem; color: var(--ur-fg-secondary, #94a3b8); }
+      .team-card__status { font-size: 0.75rem; color: var(--ur-fg-muted, #64748b); }
+    }
   `],
 })
 export class LocalTeamPageComponent implements OnInit, OnDestroy {
