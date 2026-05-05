@@ -32,7 +32,7 @@
       required
       (valueChange)="password.set($event)"
     />
-    <ur-button type="submit" [disabled]="loading()" fullWidth>
+    <ur-button type="submit" [disabled]="loading()" fullWidth data-testid="sign-in-submit-btn">
       {{ loading() ? 'Signing in…' : 'Sign in' }}
     </ur-button>
   </form>

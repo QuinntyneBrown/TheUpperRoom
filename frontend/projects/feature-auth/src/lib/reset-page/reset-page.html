@@ -12,7 +12,7 @@
       required
       (valueChange)="newPassword.set($event)"
     />
-    <ur-button type="submit" [disabled]="loading()" fullWidth>
+    <ur-button type="submit" [disabled]="loading()" fullWidth data-testid="reset-password-submit-btn">
       {{ loading() ? 'Resetting…' : 'Reset password' }}
     </ur-button>
   </form>

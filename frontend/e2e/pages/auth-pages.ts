@@ -9,7 +9,7 @@ export class AuthPages {
     await this.page.getByLabel('Email').fill(opts.email);
     await this.page.getByLabel('Password').fill(opts.password);
     await this.page.getByLabel('City').fill(opts.city ?? opts.teamName ?? 'Test City');
-    await this.page.getByRole('button', { name: /create account/i }).click();
+    await this.page.getByTestId('register-submit-btn').click();
   }
 
   async signUp(opts: { email: string; password: string; displayName: string; city: string }) {
@@ -24,7 +24,7 @@ export class AuthPages {
     await this.page.goto('/auth/sign-in');
     await this.page.getByLabel('Email').fill(email);
     await this.page.getByLabel('Password').fill(password);
-    await this.page.getByRole('button', { name: /sign in/i }).click();
+    await this.page.getByTestId('sign-in-submit-btn').click();
   }
 
   async signOut() {
@@ -73,7 +73,7 @@ export class AuthPages {
     await this.page.getByLabel('Email').fill(opts.email);
     await this.page.getByLabel('Password').fill(opts.password);
     await this.page.getByLabel('City').fill('Test City');
-    await this.page.getByRole('button', { name: /create account/i }).click();
+    await this.page.getByTestId('register-submit-btn').click();
     await this.page.waitForURL(/\/dashboard/);
   }
 
@@ -81,7 +81,7 @@ export class AuthPages {
     await this.page.goto('/auth/sign-in');
     await this.page.getByLabel('Email').fill(email);
     await this.page.getByLabel('Password').fill(password);
-    await this.page.getByRole('button', { name: /sign in/i }).click();
+    await this.page.getByTestId('sign-in-submit-btn').click();
   }
 
   async assertSignInRejected() {

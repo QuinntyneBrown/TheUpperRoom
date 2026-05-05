@@ -16,7 +16,7 @@
         required
         (valueChange)="email.set($event)"
       />
-      <ur-button type="submit" [disabled]="loading()" fullWidth>
+      <ur-button type="submit" [disabled]="loading()" fullWidth data-testid="forgot-password-submit-btn">
         {{ loading() ? 'Sending…' : 'Send reset link' }}
       </ur-button>
     </form>
