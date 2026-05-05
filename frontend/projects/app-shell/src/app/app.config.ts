@@ -1,6 +1,7 @@
 import { ApplicationConfig, ErrorHandler, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
+import { errorLoggingInterceptor } from './services/error-logging.interceptor';
 import { HEALTH_SERVICE, HealthService } from 'api';
 import { GlobalErrorHandler } from './global-error-handler';
 import { LayoutTestComponent } from './test/layout-test';
@@ -11,7 +12,7 @@ import { DashboardPageComponent } from './dashboard/dashboard-page';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([errorLoggingInterceptor])),
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     { provide: HEALTH_SERVICE, useClass: HealthService },
     provideRouter([
