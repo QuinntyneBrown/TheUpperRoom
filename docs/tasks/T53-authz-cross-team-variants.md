@@ -1,6 +1,6 @@
 # T53 — Cross-team restricted/public/admin variants
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 6 — Team administration and authorization
 **Area**: Authorization
 **Requirements**: L1-002, L2-006, L2-007, L2-008
@@ -54,6 +54,6 @@ These pair with the in-team detail screens already covered by T24/T32/T17 and th
 
 ## Acceptance criteria
 
-- [ ] Restricted, public, and admin variants designed for at least: partner detail, contact detail, team detail.
-- [ ] Hidden/disabled standard documented in design notes.
-- [ ] Tooltip copy is consistent across the app.
+- [x] Restricted, public, and admin variants designed for at least: partner detail, contact detail, team detail.
+- [x] Hidden/disabled standard documented in design notes.
+- [x] Tooltip copy is consistent across the app.
