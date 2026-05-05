@@ -40,7 +40,7 @@ export class ContactsPage {
     const lastName = rest.join(' ') || 'Contact';
     await this.gotoCreate();
     await this.fillForm({ firstName, lastName, email: opts.email, phone: opts.phone });
-    await this.page.getByRole('button', { name: /create contact/i }).click();
+    await this.page.getByTestId('contact-form-submit-btn').click();
     await this.page.waitForURL(/\/contacts\/[a-f0-9-]+$/);
   }
 
@@ -54,7 +54,7 @@ export class ContactsPage {
     await this.page.waitForURL(/\/contacts\/[a-f0-9-]+\/edit/);
     await this.page.getByLabel('First name').clear();
     await this.page.getByLabel('First name').fill(opts.name);
-    await this.page.getByRole('button', { name: /save changes/i }).click();
+    await this.page.getByTestId('contact-form-submit-btn').click();
     await this.page.waitForURL(/\/contacts\/[a-f0-9-]+$/);
   }
 
