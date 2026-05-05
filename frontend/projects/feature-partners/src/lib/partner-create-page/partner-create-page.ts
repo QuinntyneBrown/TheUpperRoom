@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PARTNER_SERVICE, PartnerStage } from 'api';
+import { MatIconModule } from '@angular/material/icon';
 import { UrButtonComponent, UrDialogComponent } from 'components';
 
 const STAGES: { value: PartnerStage; label: string }[] = [
@@ -14,9 +15,18 @@ const STAGES: { value: PartnerStage; label: string }[] = [
   selector: 'ur-partner-create-page',
   templateUrl: './partner-create-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, UrButtonComponent, UrDialogComponent],
+  imports: [FormsModule, MatIconModule, UrButtonComponent, UrDialogComponent],
+  styles: [`
+    .create-error-toast {
+      position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
+      gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
+      background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
+      border: 1px solid var(--ur-error-fg, #dc2626); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .create-error-toast mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
+  `],
 })
-export class PartnerCreatePageComponent {
+export class PartnerCreatePageComponent implements OnDestroy {
   private partners = inject(PARTNER_SERVICE);
   private router = inject(Router);
 
@@ -27,7 +37,14 @@ export class PartnerCreatePageComponent {
   stage = signal<PartnerStage>('Lead');
   description = signal('');
   saving = signal(false);
+  saveError = signal(false);
   errors = signal<Record<string, string>>({});
+
+  private saveErrorTimer?: ReturnType<typeof setTimeout>;
+
+  ngOnDestroy(): void {
+    clearTimeout(this.saveErrorTimer);
+  }
 
   submit(): void {
     const errs: Record<string, string> = {};
@@ -55,7 +72,12 @@ export class PartnerCreatePageComponent {
       description: this.description().trim() || undefined,
     }).subscribe({
       next: (res) => this.router.navigate(['/partners', res.id]),
-      error: () => this.saving.set(false),
+      error: () => {
+        this.saving.set(false);
+        clearTimeout(this.saveErrorTimer);
+        this.saveError.set(true);
+        this.saveErrorTimer = setTimeout(() => this.saveError.set(false), 4000);
+      },
     });
   }
 

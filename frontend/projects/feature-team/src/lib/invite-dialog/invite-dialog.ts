@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, inject, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, output, signal } from '@angular/core';
 import { TEAM_SERVICE } from 'api';
+import { MatIconModule } from '@angular/material/icon';
 import { UrButtonComponent, UrDialogComponent } from 'components';
 
 const ALL_ROLES = ['CityLead', 'PrayerLead', 'EventLead', 'CommunicationLead'];
@@ -8,9 +9,17 @@ const ALL_ROLES = ['CityLead', 'PrayerLead', 'EventLead', 'CommunicationLead'];
   selector: 'ur-invite-dialog',
   templateUrl: './invite-dialog.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [UrButtonComponent, UrDialogComponent],
+  imports: [MatIconModule, UrButtonComponent, UrDialogComponent],
+  styles: [`
+    .invite-save-error {
+      display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 6px; margin-bottom: 12px;
+      background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
+      border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
+    }
+    .invite-save-error mat-icon { font-size: 16px; width: 16px; height: 16px; flex-shrink: 0; }
+  `],
 })
-export class InviteDialogComponent {
+export class InviteDialogComponent implements OnDestroy {
   private team = inject(TEAM_SERVICE);
 
   closed = output<void>();
@@ -20,7 +29,14 @@ export class InviteDialogComponent {
   email = signal('');
   selectedRoles = signal<Set<string>>(new Set());
   saving = signal(false);
+  saveError = signal(false);
   errors = signal<Record<string, string>>({});
+
+  private saveErrorTimer?: ReturnType<typeof setTimeout>;
+
+  ngOnDestroy(): void {
+    clearTimeout(this.saveErrorTimer);
+  }
 
   toggleRole(role: string): void {
     this.selectedRoles.update(s => {
@@ -46,7 +62,12 @@ export class InviteDialogComponent {
         this.saving.set(false);
         this.invited.emit();
       },
-      error: () => this.saving.set(false),
+      error: () => {
+        this.saving.set(false);
+        clearTimeout(this.saveErrorTimer);
+        this.saveError.set(true);
+        this.saveErrorTimer = setTimeout(() => this.saveError.set(false), 4000);
+      },
     });
   }
 }

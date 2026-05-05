@@ -34,6 +34,13 @@
       }
     </div>
 
+    @if (saveError()) {
+      <div class="invite-save-error" data-testid="invite-save-error" role="alert">
+        <mat-icon>error_outline</mat-icon>
+        <span>Invite failed. Please try again.</span>
+      </div>
+    }
+
     <div class="invite-form__actions">
       <ur-button type="button" variant="ghost" (click)="closed.emit()">Cancel</ur-button>
       <ur-button type="submit" [disabled]="saving()">
