@@ -24,7 +24,8 @@ test.describe('Contact delete dialog', () => {
     await page.goto('/contacts/c1');
     await expect(page.getByTestId('contact-detail')).toBeVisible({ timeout: 3000 });
 
-    await page.getByTestId('contact-delete-btn').click();
+    await page.getByTestId('contact-more-btn').click();
+    await page.getByTestId('contact-delete-menu-item').click();
     await expect(page.getByTestId('contact-delete-dialog')).toBeVisible({ timeout: 2000 });
     await expect(page.getByTestId('confirm-delete-contact-btn')).toBeVisible();
   });
