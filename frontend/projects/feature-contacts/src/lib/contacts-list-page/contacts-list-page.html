@@ -16,12 +16,21 @@
     />
   </div>
 
-  @if (loading()) {
+  @if (!isSearching && loading()) {
     <p class="contacts-list-page__status" role="status">Loading…</p>
   }
 
   @if (isSearching) {
-    @if (!loading()) {
+    @if (loading()) {
+      <div class="contact-search-skeleton" data-testid="search-loading-skeleton" aria-busy="true" aria-label="Searching contacts">
+        @for (i of [1,2,3]; track i) {
+          <div class="contact-skeleton-row">
+            <div class="contact-skeleton-row__line contact-skeleton-row__line--name"></div>
+            <div class="contact-skeleton-row__line contact-skeleton-row__line--meta"></div>
+          </div>
+        }
+      </div>
+    } @else {
       @if (searchResults().length === 0) {
         <div class="contacts-list-page__no-results" data-testid="search-no-results">
           <mat-icon>search_off</mat-icon>

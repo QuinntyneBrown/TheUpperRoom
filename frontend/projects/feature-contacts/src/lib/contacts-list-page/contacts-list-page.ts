@@ -31,6 +31,12 @@ type SortDir = 'asc' | 'desc';
     }
     .contacts-list-page__no-results mat-icon { font-size: 40px; width: 40px; height: 40px; opacity: 0.6; }
     .contacts-list-page__no-results p { margin: 0; font-size: 1rem; font-weight: 500; }
+    .contact-search-skeleton { padding: 8px 0; }
+    .contact-skeleton-row { padding: 10px 16px; display: flex; flex-direction: column; gap: 6px; }
+    .contact-skeleton-row__line { height: 12px; border-radius: 4px; background: var(--ur-skeleton, #e2e8f0); animation: contact-shimmer 1.4s ease-in-out infinite; }
+    .contact-skeleton-row__line--name { width: 55%; }
+    .contact-skeleton-row__line--meta { width: 35%; }
+    @keyframes contact-shimmer { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
   `],
 })
 export class ContactsListPageComponent implements OnInit, OnDestroy {
