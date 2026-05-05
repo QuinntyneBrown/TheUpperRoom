@@ -35,3 +35,5 @@ ng build app-shell --configuration=development
 ```
 
 ## Fixed
+
+Rebuilt components library (`ng build components`) — dist now exposes the updated `UrBottomNavItemComponent` with `href` input and anchor rendering. Unit test added in `bottom-nav-item.spec.ts`. `ng build app-shell --configuration=development` succeeds.
