@@ -131,7 +131,7 @@ export class HackathonEditPageComponent implements OnDestroy {
       hostCity: this.hostCity().trim(),
       partnerIds: this.partnerIds(),
     }).subscribe({
-      next: () => this.router.navigate(['/hackathons', this.id]),
+      next: () => this.router.navigate(['/hackathons', this.id], { queryParams: { saved: '1' } }),
       error: () => {
         this.saving.set(false);
         clearTimeout(this.saveErrorTimer);
