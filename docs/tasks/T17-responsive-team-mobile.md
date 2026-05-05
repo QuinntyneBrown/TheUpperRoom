@@ -1,6 +1,6 @@
 # T17 — Mobile team screen
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 3 — Responsive coverage and clipping fixes
 **Area**: Team, Responsive
 **Requirements**: L1-006, L1-009, L2-026, L2-039
@@ -18,6 +18,6 @@ Create the mobile variant of the local team screen, including the role cards, in
 
 ## Acceptance criteria
 
-- [ ] `Mobile / Team` exists at standard mobile width.
-- [ ] Email lines are not clipped (links to T23).
-- [ ] Touch targets meet hit-target requirements.
+- [x] `Mobile / Team` exists at standard mobile width.
+- [x] Email lines are not clipped (links to T23).
+- [x] Touch targets meet hit-target requirements.
