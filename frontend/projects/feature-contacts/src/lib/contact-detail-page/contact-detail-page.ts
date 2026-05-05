@@ -21,6 +21,12 @@ import { NotesPanelComponent } from '../notes-panel/notes-panel';
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
     .contact-toast mat-icon { color: var(--ur-success, #22c55e); font-size: 18px; width: 18px; height: 18px; }
+    .contact-detail__permission-banner {
+      display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 6px; margin-top: 8px;
+      background: var(--ur-info-bg, #eff6ff); color: var(--ur-info-fg, #1d4ed8);
+      border: 1px solid var(--ur-info-border, #bfdbfe); font-size: 0.875rem;
+    }
+    .contact-detail__permission-banner mat-icon { font-size: 16px; width: 16px; height: 16px; flex-shrink: 0; }
   `],
 })
 export class ContactDetailPageComponent implements OnInit, OnDestroy {
@@ -35,6 +41,7 @@ export class ContactDetailPageComponent implements OnInit, OnDestroy {
   showDeleteDialog = signal(false);
   deleting = signal(false);
   savedToast = signal(false);
+  canDelete = signal(false);
 
   private savedToastTimer?: ReturnType<typeof setTimeout>;
 
@@ -44,7 +51,12 @@ export class ContactDetailPageComponent implements OnInit, OnDestroy {
       next: (c) => this.contact.set(c),
       error: () => this.notFound.set(true),
     });
-    this.auth.me().subscribe({ next: (u) => this.currentUserId.set(u.id) });
+    this.auth.me().subscribe({
+      next: (u) => {
+        this.currentUserId.set(u.id);
+        this.canDelete.set(u.roles.includes('Admin') || u.roles.includes('CityLead'));
+      },
+    });
 
     if (this.route.snapshot.queryParamMap.get('saved') === '1') {
       this.savedToast.set(true);
