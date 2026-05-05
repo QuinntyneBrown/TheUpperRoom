@@ -1,5 +1,6 @@
 # T61 — Screen reader and live-region annotations
 
+**Status**: Accepted
 **Phase**: 9 — Accessibility annotations
 **Area**: Accessibility
 **Requirements**: L1-015, L2-058
