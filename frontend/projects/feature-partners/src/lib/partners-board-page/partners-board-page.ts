@@ -29,6 +29,11 @@ const COLUMNS: { stage: PartnerStage; label: string }[] = [
       border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
     }
     .board-drop-error mat-icon { font-size: 16px; width: 16px; height: 16px; flex-shrink: 0; }
+    .board-loading { display: flex; gap: 16px; margin-top: 8px; }
+    .board-loading__col { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .board-loading__header { height: 32px; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); }
+    .board-loading__card { height: 72px; border-radius: 8px; background: var(--ur-skeleton-bg, #f1f5f9); animation: board-pulse 1.4s ease-in-out infinite; }
+    @keyframes board-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
   `],
 })
 export class PartnersBoardPageComponent implements OnInit, OnDestroy {
@@ -38,6 +43,7 @@ export class PartnersBoardPageComponent implements OnInit, OnDestroy {
   rows = signal<PartnerListRow[]>([]);
   loadError = signal(false);
   dropError = signal(false);
+  loading = signal(true);
 
   private dropErrorTimer?: ReturnType<typeof setTimeout>;
 
@@ -58,9 +64,10 @@ export class PartnersBoardPageComponent implements OnInit, OnDestroy {
 
   loadBoard(): void {
     this.loadError.set(false);
+    this.loading.set(true);
     this.partners.list().subscribe({
-      next: (rows) => this.rows.set(rows),
-      error: () => this.loadError.set(true),
+      next: (rows) => { this.rows.set(rows); this.loading.set(false); },
+      error: () => { this.loading.set(false); this.loadError.set(true); },
     });
   }
 
