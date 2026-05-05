@@ -1,4 +1,4 @@
-# 81 — E2E Partner Management Flow ✅ Accepted
+# 81 — E2E Partner Management Flow ✅ Complete
 
 **Traces to:** L2-063, L2-064. L1-005.
 
