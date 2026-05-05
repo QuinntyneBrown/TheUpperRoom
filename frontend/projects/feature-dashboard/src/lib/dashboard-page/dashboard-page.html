@@ -24,7 +24,7 @@
   @if (items().length === 0 && !loadError()) {
     <div class="dashboard-page__empty" data-testid="dashboard-empty">
       <p>No widgets yet.</p>
-      <button mat-raised-button data-testid="add-widget-cta" (click)="showCatalog.set(true)">Add widget</button>
+      <button mat-raised-button data-testid="add-widget-cta" (click)="showCatalog.set(true)">+ Add widget</button>
     </div>
   } @else {
     <gridster [options]="options">
