@@ -1,6 +1,6 @@
 # T44 — Hackathon stage history
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 5 — Partner and hackathon management
 **Area**: Hackathon
 **Requirements**: L1-005, L2-023, L2-025
@@ -19,5 +19,5 @@ Show a chronological audit of stage transitions for a hackathon.
 
 ## Acceptance criteria
 
-- [ ] Timeline designed with sample entries and empty state.
-- [ ] Mobile variant collapsible per T42.
+- [x] Timeline designed with sample entries and empty state.
+- [x] Mobile variant collapsible per T42.
