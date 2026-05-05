@@ -1,4 +1,4 @@
-# 29 — View & Search Global Teams
+# 29 — View & Search Global Teams ✅ Accepted
 
 **Traces to:** L2-030, L2-031 (L1-006, L1-011).
 
