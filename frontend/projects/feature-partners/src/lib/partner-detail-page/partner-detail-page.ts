@@ -37,6 +37,13 @@ const STAGES: { value: PartnerStage; label: string }[] = [
       border: 1px solid var(--ur-info-border, #bfdbfe); font-size: 0.875rem;
     }
     .partner-detail__permission-banner mat-icon { font-size: 16px; width: 16px; height: 16px; flex-shrink: 0; }
+    .partner-detail-loading { display: flex; flex-direction: column; gap: 16px; padding: 24px 0; }
+    .partner-detail-loading__title { height: 28px; width: 40%; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: pd-pulse 1.4s ease-in-out infinite; }
+    .partner-detail-loading__line { height: 16px; border-radius: 4px; background: var(--ur-skeleton-bg, #f1f5f9); animation: pd-pulse 1.4s ease-in-out infinite; }
+    .partner-detail-loading__line--wide { width: 60%; }
+    .partner-detail-loading__line--medium { width: 45%; }
+    .partner-detail-loading__line--narrow { width: 30%; }
+    @keyframes pd-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
   `],
 })
 export class PartnerDetailPageComponent implements OnInit, OnDestroy {
@@ -47,6 +54,7 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
   private router = inject(Router);
 
   partner = signal<PartnerDetailDto | null>(null);
+  loading = signal(true);
   notFound = signal(false);
   changingStage = signal(false);
   currentUserId = signal('');
@@ -83,8 +91,8 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')!;
     this.partners.getById(id).subscribe({
-      next: (p) => this.partner.set(p),
-      error: () => this.notFound.set(true),
+      next: (p) => { this.partner.set(p); this.loading.set(false); },
+      error: () => { this.notFound.set(true); this.loading.set(false); },
     });
     this.auth.me().subscribe({
       next: (u) => {

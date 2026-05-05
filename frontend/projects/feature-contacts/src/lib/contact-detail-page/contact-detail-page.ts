@@ -29,6 +29,13 @@ import { NotesPanelComponent } from '../notes-panel/notes-panel';
       border: 1px solid var(--ur-info-border, #bfdbfe); font-size: 0.875rem;
     }
     .contact-detail__permission-banner mat-icon { font-size: 16px; width: 16px; height: 16px; flex-shrink: 0; }
+    .contact-detail-loading { display: flex; flex-direction: column; gap: 16px; padding: 24px 0; }
+    .contact-detail-loading__title { height: 28px; width: 40%; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: cd-pulse 1.4s ease-in-out infinite; }
+    .contact-detail-loading__line { height: 16px; border-radius: 4px; background: var(--ur-skeleton-bg, #f1f5f9); animation: cd-pulse 1.4s ease-in-out infinite; }
+    .contact-detail-loading__line--wide { width: 60%; }
+    .contact-detail-loading__line--medium { width: 45%; }
+    .contact-detail-loading__line--narrow { width: 30%; }
+    @keyframes cd-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
   `],
 })
 export class ContactDetailPageComponent implements OnInit, OnDestroy {
@@ -38,6 +45,7 @@ export class ContactDetailPageComponent implements OnInit, OnDestroy {
   private router = inject(Router);
 
   contact = signal<ContactDto | null>(null);
+  loading = signal(true);
   currentUserId = signal('');
   notFound = signal(false);
   showDeleteDialog = signal(false);
@@ -52,8 +60,8 @@ export class ContactDetailPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')!;
     this.contacts.getById(id).subscribe({
-      next: (c) => this.contact.set(c),
-      error: () => this.notFound.set(true),
+      next: (c) => { this.contact.set(c); this.loading.set(false); },
+      error: () => { this.notFound.set(true); this.loading.set(false); },
     });
     this.auth.me().subscribe({
       next: (u) => {

@@ -17,7 +17,11 @@
   </div>
 
   @if (!isSearching && loading()) {
-    <p class="contacts-list-page__status" role="status">Loading…</p>
+    <div class="contacts-list-loading" data-testid="contacts-list-loading" aria-busy="true" aria-label="Loading contacts">
+      @for (_ of [1,2,3,4,5]; track $index) {
+        <div class="contacts-list-loading__row"></div>
+      }
+    </div>
   }
   @if (!isSearching && loadError()) {
     <div class="contacts-load-error" data-testid="contacts-load-error" role="alert">

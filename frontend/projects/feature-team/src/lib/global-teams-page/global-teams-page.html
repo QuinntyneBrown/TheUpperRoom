@@ -8,6 +8,7 @@
       class="global-teams-page__search-input"
       type="search"
       placeholder="Search by city or name (min 2 chars)"
+      aria-label="Search teams by city or name"
       [ngModel]="searchTerm()"
       (ngModelChange)="onSearch($event)"
       data-testid="team-search-input"

@@ -1,4 +1,11 @@
-@if (notFound()) {
+@if (loading()) {
+  <div class="contact-detail-loading" data-testid="contact-detail-loading" aria-busy="true" aria-label="Loading contact">
+    <div class="contact-detail-loading__title"></div>
+    <div class="contact-detail-loading__line contact-detail-loading__line--wide"></div>
+    <div class="contact-detail-loading__line contact-detail-loading__line--medium"></div>
+    <div class="contact-detail-loading__line contact-detail-loading__line--narrow"></div>
+  </div>
+} @else if (notFound()) {
   <div class="not-found">
     <h1>Contact not found</h1>
     <a routerLink="/contacts">Back to contacts</a>
@@ -53,8 +60,6 @@
       />
     </div>
   </div>
-} @else {
-  <div class="loading" role="status">Loading…</div>
 }
 
 @if (savedToast()) {

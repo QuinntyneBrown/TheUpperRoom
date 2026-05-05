@@ -43,6 +43,8 @@ type SortDir = 'asc' | 'desc';
     .contact-skeleton-row__line--name { width: 55%; }
     .contact-skeleton-row__line--meta { width: 35%; }
     @keyframes contact-shimmer { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+    .contacts-list-loading { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+    .contacts-list-loading__row { height: 44px; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: contact-shimmer 1.4s ease-in-out infinite; }
   `],
 })
 export class ContactsListPageComponent implements OnInit, OnDestroy {
@@ -57,7 +59,7 @@ export class ContactsListPageComponent implements OnInit, OnDestroy {
   page = signal(1);
   sortField = signal<SortField>('lastName');
   sortDir = signal<SortDir>('asc');
-  loading = signal(false);
+  loading = signal(true);
   loadError = signal(false);
   deletedToast = signal(false);
 
