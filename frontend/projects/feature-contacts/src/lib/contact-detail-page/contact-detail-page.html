@@ -13,10 +13,23 @@
 } @else if (contact()) {
   <div class="contact-detail" data-testid="contact-detail">
     <header class="contact-detail__header">
-      <h1 data-testid="contact-name">{{ contact()!.firstName }} {{ contact()!.lastName }}</h1>
+      <div class="contact-detail__breadcrumb">
+        <mat-icon class="contact-detail__back-icon">arrow_back</mat-icon>
+        <a routerLink="/contacts" class="contact-detail__breadcrumb-link" data-testid="contact-breadcrumb-link">Contacts</a>
+        <span class="contact-detail__breadcrumb-sep">/</span>
+        <span class="contact-detail__breadcrumb-name" data-testid="contact-breadcrumb-name">{{ contact()!.firstName }} {{ contact()!.lastName }}</span>
+      </div>
       <div class="contact-detail__actions">
         <a mat-stroked-button [routerLink]="['/contacts', contact()!.id, 'edit']" data-testid="contact-edit-link">Edit</a>
-        <ur-button variant="danger" [disabled]="!canDelete()" (click)="canDelete() && showDeleteDialog.set(true)" data-testid="contact-delete-btn">Delete</ur-button>
+        <button mat-icon-button [matMenuTriggerFor]="moreMenu" data-testid="contact-more-btn" aria-label="More options">
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+        <mat-menu #moreMenu="matMenu">
+          <button mat-menu-item [disabled]="!canDelete()" (click)="canDelete() && showDeleteDialog.set(true)" data-testid="contact-delete-menu-item">
+            <mat-icon>delete</mat-icon>
+            Delete contact
+          </button>
+        </mat-menu>
       </div>
       @if (!canDelete()) {
         <div class="contact-detail__permission-banner" data-testid="delete-permission-denied-banner" role="note">

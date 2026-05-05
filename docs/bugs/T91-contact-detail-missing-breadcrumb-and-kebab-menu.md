@@ -1,6 +1,6 @@
 # T91: Contact Detail — missing breadcrumb and explicit Delete button (should be kebab menu)
 
-**Status:** Open
+**Status:** Fixed
 
 ## Description
 
@@ -29,3 +29,12 @@ Design reference: `docs/ui-design.pen` → "Desktop / Contact Detail" (node `FBy
   - Add `MatMenuModule` to imports
 - `frontend/e2e/tests/contacts/contact-delete-dialog.spec.ts`
   - Update to open kebab menu before clicking delete
+
+## Fixed
+
+- Added `← Contacts / {name}` breadcrumb row to header with `data-testid="contact-breadcrumb-link"` (link) and `data-testid="contact-breadcrumb-name"` (text)
+- Replaced explicit Delete button with `mat-icon-button` (`data-testid="contact-more-btn"`) opening a `mat-menu`
+- Delete option moved into menu with `data-testid="contact-delete-menu-item"`
+- Added `MatMenuModule` to component imports
+- Added breadcrumb CSS styles to component
+- Updated `contact-delete-dialog.spec.ts` to click kebab → delete menu item

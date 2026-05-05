@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AUTH_SERVICE, CONTACT_SERVICE, ContactDto } from 'api';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { UrButtonComponent, UrDialogComponent } from 'components';
 import { NotesPanelComponent } from '../notes-panel/notes-panel';
 
@@ -11,7 +12,7 @@ import { NotesPanelComponent } from '../notes-panel/notes-panel';
   selector: 'ur-contact-detail-page',
   templateUrl: './contact-detail-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, MatButtonModule, MatIconModule, UrButtonComponent, UrDialogComponent, NotesPanelComponent],
+  imports: [RouterLink, MatButtonModule, MatIconModule, MatMenuModule, UrButtonComponent, UrDialogComponent, NotesPanelComponent],
   styles: [`
     .contact-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
@@ -23,6 +24,14 @@ import { NotesPanelComponent } from '../notes-panel/notes-panel';
     .contact-toast mat-icon { color: var(--ur-success, #22c55e); font-size: 18px; width: 18px; height: 18px; }
     .contact-toast--error { border-color: var(--ur-error-fg, #dc2626); }
     .contact-toast--error mat-icon { color: var(--ur-error-fg, #dc2626); }
+    .contact-detail__header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 16px 20px; border-bottom: 1px solid var(--ur-border-subtle); background: var(--ur-bg-surface); }
+    .contact-detail__breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--ur-fg-secondary); }
+    .contact-detail__back-icon { font-size: 18px; width: 18px; height: 18px; color: var(--ur-fg-secondary); }
+    .contact-detail__breadcrumb-link { color: var(--ur-fg-secondary); text-decoration: none; }
+    .contact-detail__breadcrumb-link:hover { text-decoration: underline; }
+    .contact-detail__breadcrumb-sep { color: var(--ur-fg-muted); }
+    .contact-detail__breadcrumb-name { color: var(--ur-fg-primary); font-weight: 500; }
+    .contact-detail__actions { display: flex; align-items: center; gap: 8px; }
     .contact-detail__permission-banner {
       display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 6px; margin-top: 8px;
       background: var(--ur-info-bg, #eff6ff); color: var(--ur-info-fg, #1d4ed8);
