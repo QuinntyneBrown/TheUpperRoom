@@ -1,4 +1,4 @@
-# 27 — Remove Team Member
+# 27 — Remove Team Member ✅ Accepted
 
 **Traces to:** L2-028 (L1-006).
 
