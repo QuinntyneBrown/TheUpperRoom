@@ -1,6 +1,6 @@
 # T55 — Offline-delivered notification state
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 7 — Notifications and real-time lifecycle
 **Area**: Notifications
 **Requirements**: L1-008, L2-037, L2-038
@@ -19,5 +19,5 @@ Show how notifications that arrived while the user was offline are surfaced when
 
 ## Acceptance criteria
 
-- [ ] Grouping, marker, and reconnect toast designed.
-- [ ] Mobile variant per T18.
+- [x] Grouping, marker, and reconnect toast designed.
+- [x] Mobile variant per T18.
