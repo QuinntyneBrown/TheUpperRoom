@@ -5,9 +5,13 @@
   </header>
   <ul class="widget-catalog-dialog__list">
     @for (wt of widgetTypes; track wt.type) {
-      <li>
+      <li class="widget-catalog-dialog__entry">
+        <div class="widget-catalog-dialog__info">
+          <span class="widget-catalog-dialog__label">{{ wt.label }}</span>
+          <span class="widget-catalog-dialog__desc">{{ wt.description }}</span>
+        </div>
         <button class="widget-catalog-dialog__item" [attr.data-testid]="'widget-type-' + wt.type" (click)="pick(wt)">
-          {{ wt.label }}
+          Add
         </button>
       </li>
     }

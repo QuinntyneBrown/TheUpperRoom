@@ -1,4 +1,4 @@
-# 47 — Dashboard Widget Catalog Add/Remove ✅ Accepted
+# 47 — Dashboard Widget Catalog Add/Remove ✅ Complete
 
 **Traces to:** L2-033 (catalog and remove portion). L1-007.
 

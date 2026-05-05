@@ -1,10 +1,6 @@
 import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 import { DashboardItem } from 'api';
-
-const WIDGET_TYPES: Array<{ type: string; label: string; cols: number; rows: number }> = [
-  { type: 'kpi', label: 'KPI', cols: 3, rows: 2 },
-  { type: 'line-chart', label: 'Line Chart', cols: 6, rows: 3 },
-];
+import { WIDGET_CATALOG } from './widget-catalog';
 
 @Component({
   selector: 'ur-widget-catalog-dialog',
@@ -15,9 +11,9 @@ export class WidgetCatalogDialogComponent {
   closed = output<void>();
   selected = output<DashboardItem>();
 
-  readonly widgetTypes = WIDGET_TYPES;
+  readonly widgetTypes = WIDGET_CATALOG;
 
-  pick(wt: (typeof WIDGET_TYPES)[number]): void {
+  pick(wt: (typeof WIDGET_CATALOG)[number]): void {
     this.selected.emit({
       id: crypto.randomUUID(),
       x: 0,
@@ -25,6 +21,7 @@ export class WidgetCatalogDialogComponent {
       cols: wt.cols,
       rows: wt.rows,
       type: wt.type,
+      config: { ...wt.defaultConfig },
     });
     this.closed.emit();
   }
