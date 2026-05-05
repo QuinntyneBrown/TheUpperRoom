@@ -14,3 +14,13 @@ body {
   font-family: var(--ur-font-body);
   margin: 0;
 }
+
+.auth-card {
+  width: 480px;
+  max-width: calc(100vw - 32px);
+  margin: auto;
+  background: var(--ur-bg-surface, #1e293b);
+  border: 1px solid var(--ur-border-subtle, #334155);
+  border-radius: 1.5rem;
+  padding: 48px;
+}

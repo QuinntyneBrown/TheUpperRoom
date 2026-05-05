@@ -9,7 +9,7 @@ import {
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationCancel, NavigationEnd, NavigationError, Router, RouterOutlet } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { map } from 'rxjs';
+import { filter, map, startWith } from 'rxjs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -100,7 +100,17 @@ export class App implements OnInit {
     this.isDesktop() ? 'side' : 'over'
   );
 
-  sidenavOpened = computed(() => this.isDesktop());
+  private currentUrl = toSignal(
+    this.router.events.pipe(
+      filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+      map((e) => e.urlAfterRedirects),
+      startWith(this.router.url)
+    )
+  );
+
+  private isAuthRoute = computed(() => (this.currentUrl() ?? '').startsWith('/auth'));
+
+  sidenavOpened = computed(() => this.isDesktop() && !this.isAuthRoute());
 
   doSignOut() {
     this.authSvc.signOut().subscribe({
