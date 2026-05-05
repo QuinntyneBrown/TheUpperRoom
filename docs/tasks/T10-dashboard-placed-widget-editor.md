@@ -1,6 +1,6 @@
 # T10 — Placed-widget editor state
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 2 — Dashboard editor interaction model
 **Area**: Dashboard
 **Requirements**: L1-007, L2-033
@@ -19,7 +19,7 @@ Show the dashboard with widgets placed and the editor "edit mode" engaged: chrom
 
 ## Acceptance criteria
 
-- [ ] `Desktop / Dashboard - Edit Mode` exists alongside the populated dashboard.
-- [ ] Each widget shows the editor chrome.
-- [ ] Save and Cancel actions are visible.
-- [ ] AA contrast on edit-mode chrome verified.
+- [x] `Desktop / Dashboard - Edit Mode` exists alongside the populated dashboard.
+- [x] Each widget shows the editor chrome.
+- [x] Save and Cancel actions are visible.
+- [x] AA contrast on edit-mode chrome verified.
