@@ -11,6 +11,12 @@ builder.WebHost.ConfigureKestrel(o =>
     o.Limits.MaxRequestBodySize = 1 * 1024 * 1024); // 1 MB
 
 builder.Services.AddControllers(o => o.Filters.Add<ValidationExceptionFilter>());
+builder.Services.AddAntiforgery(o =>
+{
+    o.HeaderName = "X-CSRF-TOKEN";
+    o.Cookie.Name = "XSRF-TOKEN";
+    o.Cookie.SameSite = SameSiteMode.Strict;
+});
 builder.Services.AddHsts(options =>
 {
     options.MaxAge = TimeSpan.FromDays(365);

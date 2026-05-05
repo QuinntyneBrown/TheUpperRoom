@@ -1,28 +1,26 @@
 // Traces to: 69 - CSRF token flow
-// L2-054: interceptor adds X-CSRF-TOKEN header on non-GET requests
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { addCsrfHeader, XSRF_COOKIE } from '../services/csrf.utils';
+// L2-054: CSRF token is read from cookie string and added as request header
+import { describe, it, expect } from 'vitest';
+import { parseCsrfToken, XSRF_COOKIE } from '../services/csrf.utils';
 
-describe('addCsrfHeader', () => {
-  beforeEach(() => {
-    Object.defineProperty(document, 'cookie', {
-      writable: true,
-      value: `${XSRF_COOKIE}=test-token-123`,
-    });
-  });
-
-  afterEach(() => {
-    Object.defineProperty(document, 'cookie', { writable: true, value: '' });
-  });
-
-  it('returns the token from cookie', () => {
-    const token = addCsrfHeader();
+describe('parseCsrfToken', () => {
+  it('returns the token from cookie string', () => {
+    const token = parseCsrfToken(`${XSRF_COOKIE}=test-token-123`);
     expect(token).toBe('test-token-123');
   });
 
+  it('handles multiple cookies', () => {
+    const token = parseCsrfToken(`session=abc; ${XSRF_COOKIE}=my-csrf-value; theme=dark`);
+    expect(token).toBe('my-csrf-value');
+  });
+
   it('returns null when cookie is absent', () => {
-    Object.defineProperty(document, 'cookie', { writable: true, value: '' });
-    const token = addCsrfHeader();
+    const token = parseCsrfToken('session=abc; theme=dark');
+    expect(token).toBeNull();
+  });
+
+  it('returns null for empty cookie string', () => {
+    const token = parseCsrfToken('');
     expect(token).toBeNull();
   });
 });
