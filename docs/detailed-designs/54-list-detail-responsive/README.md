@@ -5,7 +5,7 @@
 Vertical slice: shared list-card pattern and detail two-column pattern that every feature route consumes verbatim.
 
 ## Status
-Accepted
+Complete
 
 ## Components
 

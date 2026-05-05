@@ -72,7 +72,7 @@ These slices were derived from the gaps identified in [`docs/missing-detailed-de
 | # | Slice | L2 traces | Status |
 |---|-------|-----------|--------|
 | 53 | [App shell responsive navigation](53-shell-responsive-nav/README.md) | L2-039, L2-040, L2-041 | Complete |
-| 54 | [List and detail responsive route patterns](54-list-detail-responsive/README.md) | L2-039, L2-040 | Accepted |
+| 54 | [List and detail responsive route patterns](54-list-detail-responsive/README.md) | L2-039, L2-040 | Complete |
 | 55 | [Dashboard responsive grid](55-dashboard-responsive-grid/README.md) | L2-041, L2-033 | Draft |
 | 56 | [Dark theme token system](56-dark-theme-tokens/README.md) | L2-042, L2-059 | Complete |
 | 57 | [Chart and non-text contrast validation](57-chart-contrast/README.md) | L2-042, L2-059 | Draft |
