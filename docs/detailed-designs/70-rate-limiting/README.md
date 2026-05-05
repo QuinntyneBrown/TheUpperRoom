@@ -3,7 +3,7 @@
 **Traces to:** L2-055. L1-014.
 
 ## Status
-Accepted
+Complete
 
 ## Design update (2026-05-05)
 The `sign-in-account` and `recovery-email` keyed policies depend on reading the request body (username/email). These will be wired to their respective endpoints in the auth slices (02/04). This slice establishes the rate limiter infrastructure and the IP-based `sign-in-ip` policy.
