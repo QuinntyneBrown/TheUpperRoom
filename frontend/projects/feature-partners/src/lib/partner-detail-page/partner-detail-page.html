@@ -131,6 +131,13 @@
           [partnerId]="p.id"
           [initialContacts]="p.contacts"
         />
+
+        <ur-notes-panel
+          [targetId]="p.id"
+          targetType="Partner"
+          [initialNotes]="[]"
+          [currentUserId]="currentUserId()"
+        />
       </div>
     </div>
   </div>

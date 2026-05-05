@@ -22,12 +22,17 @@ public class AddNoteCommandHandler(AppDbContext db, ICurrentUser currentUser)
 {
     public async Task<NoteDto?> Handle(AddNoteCommand cmd, CancellationToken ct)
     {
-        // Verify target contact belongs to user's team
         if (cmd.TargetType == "Contact")
         {
             var contact = await db.Contacts.FirstOrDefaultAsync(c => c.Id == cmd.TargetId, ct);
             if (contact is null) return null;
             if (!currentUser.IsAdmin && currentUser.TeamId != contact.TeamId) return null;
+        }
+        else if (cmd.TargetType == "Partner")
+        {
+            var partner = await db.Partners.FirstOrDefaultAsync(p => p.Id == cmd.TargetId, ct);
+            if (partner is null) return null;
+            if (!currentUser.IsAdmin && currentUser.TeamId != partner.TeamId) return null;
         }
 
         var note = new Note

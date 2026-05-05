@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TheUpperRoom.Api.Domain;
 using TheUpperRoom.Api.Infrastructure;
+using TheUpperRoom.Api.Notes;
 
 namespace TheUpperRoom.Api.Partners;
 
@@ -59,9 +60,18 @@ public class PartnersController(IMediator mediator) : ControllerBase
         if (contactId is null) return NotFound(new { error = "not_found" });
         return CreatedAtAction(nameof(CreateAndLinkContact), new { id, contactId }, new { contactId });
     }
+
+    [HttpPost("{id:guid}/notes")]
+    public async Task<IActionResult> AddNote(Guid id, [FromBody] AddPartnerNoteRequest req)
+    {
+        var note = await mediator.Send(new AddNoteCommand("Partner", id, req.Body));
+        if (note is null) return NotFound(new { error = "not_found" });
+        return Ok(note);
+    }
 }
 
 public record ChangeStageRequest(string ToStage);
+public record AddPartnerNoteRequest(string Body);
 public record AddContactRequest(Guid ContactId);
 public record CreateContactForPartnerRequest(string FirstName, string LastName, string? Email, string? Phone);
 

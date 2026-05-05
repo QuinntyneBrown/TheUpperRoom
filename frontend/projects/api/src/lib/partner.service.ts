@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
+import { NoteDto } from './contact.service';
 
 export type PartnerStage = 'Lead' | 'InFunnel' | 'Confirmed';
 
@@ -62,6 +63,7 @@ export interface IPartnerService {
   addContact(partnerId: string, contactId: string): Observable<void>;
   removeContact(partnerId: string, contactId: string): Observable<void>;
   createAndLinkContact(partnerId: string, req: CreateContactForPartnerRequest): Observable<CreateContactForPartnerResponse>;
+  addNote(partnerId: string, body: string): Observable<NoteDto>;
 }
 
 export const PARTNER_SERVICE = new InjectionToken<IPartnerService>('PARTNER_SERVICE');
@@ -92,5 +94,9 @@ export class PartnerService implements IPartnerService {
 
   createAndLinkContact(partnerId: string, req: CreateContactForPartnerRequest): Observable<CreateContactForPartnerResponse> {
     return this.http.post<CreateContactForPartnerResponse>(`/api/partners/${partnerId}/contacts/new`, req);
+  }
+
+  addNote(partnerId: string, body: string): Observable<NoteDto> {
+    return this.http.post<NoteDto>(`/api/partners/${partnerId}/notes`, { body });
   }
 }

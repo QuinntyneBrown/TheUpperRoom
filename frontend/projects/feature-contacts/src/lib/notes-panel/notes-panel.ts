@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, effect, inject, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { CONTACT_SERVICE, NoteDto } from 'api';
+import { CONTACT_SERVICE, PARTNER_SERVICE, NoteDto } from 'api';
 import { UrButtonComponent } from 'components';
 
 @Component({
@@ -11,11 +11,13 @@ import { UrButtonComponent } from 'components';
   imports: [FormsModule, DatePipe, UrButtonComponent],
 })
 export class NotesPanelComponent {
-  contactId = input.required<string>();
+  targetId = input.required<string>();
+  targetType = input<'Contact' | 'Partner'>('Contact');
   initialNotes = input<NoteDto[]>([]);
   currentUserId = input<string>('');
 
   private contacts = inject(CONTACT_SERVICE);
+  private partners = inject(PARTNER_SERVICE);
 
   notes = signal<NoteDto[]>([]);
   newBody = signal('');
@@ -36,7 +38,10 @@ export class NotesPanelComponent {
     const body = this.newBody().trim();
     if (!body) return;
     this.adding.set(true);
-    this.contacts.addNote(this.contactId(), body).subscribe({
+    const add$ = this.targetType() === 'Partner'
+      ? this.partners.addNote(this.targetId(), body)
+      : this.contacts.addNote(this.targetId(), body);
+    add$.subscribe({
       next: (note) => {
         this.notes.update((ns) => [note, ...ns]);
         this.newBody.set('');

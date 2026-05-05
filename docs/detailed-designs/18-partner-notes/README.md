@@ -1,4 +1,4 @@
-# 18 — Partner Notes
+# 18 — Partner Notes ✅ Complete
 
 **Traces to:** L2-019 (L1-004).
 

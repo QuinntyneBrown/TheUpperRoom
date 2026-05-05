@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { PARTNER_SERVICE, PartnerDetailDto, PartnerStage, REALTIME_SERVICE } from 'api';
+import { AUTH_SERVICE, PARTNER_SERVICE, PartnerDetailDto, PartnerStage, REALTIME_SERVICE } from 'api';
 import { UrButtonComponent } from 'components';
+import { NotesPanelComponent } from 'feature-contacts';
 import { PartnerContactsPanelComponent } from '../partner-contacts-panel/partner-contacts-panel';
 import { Subscription } from 'rxjs';
 
@@ -16,16 +17,18 @@ const STAGES: { value: PartnerStage; label: string }[] = [
   selector: 'ur-partner-detail-page',
   templateUrl: './partner-detail-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, DatePipe, UrButtonComponent, PartnerContactsPanelComponent],
+  imports: [RouterLink, DatePipe, UrButtonComponent, NotesPanelComponent, PartnerContactsPanelComponent],
 })
 export class PartnerDetailPageComponent implements OnInit, OnDestroy {
   private partners = inject(PARTNER_SERVICE);
   private realtime = inject(REALTIME_SERVICE);
+  private auth = inject(AUTH_SERVICE);
   private route = inject(ActivatedRoute);
 
   partner = signal<PartnerDetailDto | null>(null);
   notFound = signal(false);
   changingStage = signal(false);
+  currentUserId = signal('');
   stages = STAGES;
 
   stageIndex = computed(() => {
@@ -46,6 +49,7 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
       next: (p) => this.partner.set(p),
       error: () => this.notFound.set(true),
     });
+    this.auth.me().subscribe({ next: (u) => this.currentUserId.set(u.id) });
 
     this.realtime.connect().catch(() => {});
     this.sub = this.realtime.events$.subscribe((event) => {
