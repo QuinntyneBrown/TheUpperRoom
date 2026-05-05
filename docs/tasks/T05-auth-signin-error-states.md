@@ -1,5 +1,6 @@
 # T05 — Sign-in invalid/unverified/locked/loading states
 
+**Status**: Accepted
 **Phase**: 1 — Authentication and session edge states
 **Area**: Authentication
 **Requirements**: L1-001, L2-002, L2-055
