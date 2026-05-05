@@ -1,6 +1,6 @@
 # T160 — Partner edit form: unstyled native inputs, no card container, wrong save button text
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 

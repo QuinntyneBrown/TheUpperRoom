@@ -1,6 +1,6 @@
 # T161 — Sign-in card not vertically centred on desktop
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 
