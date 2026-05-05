@@ -1,5 +1,6 @@
 # T19 — Mobile and tablet settings
 
+**Status**: Accepted
 **Phase**: 3 — Responsive coverage and clipping fixes
 **Area**: Settings, Responsive
 **Requirements**: L1-009, L2-039, L2-040
