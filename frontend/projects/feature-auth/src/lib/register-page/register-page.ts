@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AUTH_SERVICE } from 'api';
+import { MatIconModule } from '@angular/material/icon';
 import { UrButtonComponent, UrInputComponent } from 'components';
 
 @Component({
@@ -8,9 +9,9 @@ import { UrButtonComponent, UrInputComponent } from 'components';
   templateUrl: './register-page.html',
   styleUrl: './register-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [UrButtonComponent, UrInputComponent, RouterLink],
+  imports: [UrButtonComponent, UrInputComponent, RouterLink, MatIconModule],
 })
-export class RegisterPageComponent {
+export class RegisterPageComponent implements OnDestroy {
   private auth = inject(AUTH_SERVICE);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
@@ -24,6 +25,13 @@ export class RegisterPageComponent {
   errors = signal<Record<string, string[]>>({});
   submitted = signal(false);
   loading = signal(false);
+  submitError = signal(false);
+
+  private submitErrorTimer?: ReturnType<typeof setTimeout>;
+
+  ngOnDestroy(): void {
+    clearTimeout(this.submitErrorTimer);
+  }
 
   submit(): void {
     this.loading.set(true);
@@ -48,6 +56,10 @@ export class RegisterPageComponent {
         this.loading.set(false);
         if (err.status === 400 && err.error?.fields) {
           this.errors.set(err.error.fields);
+        } else {
+          clearTimeout(this.submitErrorTimer);
+          this.submitError.set(true);
+          this.submitErrorTimer = setTimeout(() => this.submitError.set(false), 4000);
         }
       },
     });

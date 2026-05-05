@@ -60,11 +60,13 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
   linkedContactId = signal<string | null>(null);
   savedToast = signal(false);
   deleteError = signal(false);
+  changeStageError = signal(false);
 
   private stageToastTimer?: ReturnType<typeof setTimeout>;
   private linkedToastTimer?: ReturnType<typeof setTimeout>;
   private savedToastTimer?: ReturnType<typeof setTimeout>;
   private deleteErrorTimer?: ReturnType<typeof setTimeout>;
+  private changeStageErrorTimer?: ReturnType<typeof setTimeout>;
 
   stageIndex = computed(() => {
     const p = this.partner();
@@ -111,6 +113,7 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
     clearTimeout(this.linkedToastTimer);
     clearTimeout(this.savedToastTimer);
     clearTimeout(this.deleteErrorTimer);
+    clearTimeout(this.changeStageErrorTimer);
   }
 
   confirmDelete(): void {
@@ -148,7 +151,12 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
         this.stageToast.set(true);
         this.stageToastTimer = setTimeout(() => this.stageToast.set(false), 3000);
       },
-      error: () => this.changingStage.set(false),
+      error: () => {
+        this.changingStage.set(false);
+        clearTimeout(this.changeStageErrorTimer);
+        this.changeStageError.set(true);
+        this.changeStageErrorTimer = setTimeout(() => this.changeStageError.set(false), 4000);
+      },
     });
   }
 

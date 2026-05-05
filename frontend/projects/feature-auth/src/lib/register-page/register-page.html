@@ -47,6 +47,12 @@
       <ur-button type="submit" [disabled]="loading()" fullWidth>
         {{ loading() ? 'Creating account…' : 'Create account' }}
       </ur-button>
+      @if (submitError()) {
+        <div class="auth-error" data-testid="register-submit-error" role="alert">
+          <mat-icon>error_outline</mat-icon>
+          <span>Registration failed. Please try again.</span>
+        </div>
+      }
     </form>
     <p>Already have an account? <a routerLink="/auth/sign-in">Sign in</a></p>
   </div>

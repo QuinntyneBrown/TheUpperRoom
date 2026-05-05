@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,14 +23,23 @@ const COLUMNS: { stage: PartnerStage; label: string }[] = [
       border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
     }
     .board-load-error mat-icon { font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
+    .board-drop-error {
+      display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 6px; margin-top: 8px;
+      background: var(--ur-error-bg, #fef2f2); color: var(--ur-error-fg, #dc2626);
+      border: 1px solid var(--ur-error-border, #fecaca); font-size: 0.875rem;
+    }
+    .board-drop-error mat-icon { font-size: 16px; width: 16px; height: 16px; flex-shrink: 0; }
   `],
 })
-export class PartnersBoardPageComponent implements OnInit {
+export class PartnersBoardPageComponent implements OnInit, OnDestroy {
   private partners = inject(PARTNER_SERVICE);
 
   columns = COLUMNS;
   rows = signal<PartnerListRow[]>([]);
   loadError = signal(false);
+  dropError = signal(false);
+
+  private dropErrorTimer?: ReturnType<typeof setTimeout>;
 
   byStage = computed(() => {
     const all = this.rows();
@@ -41,6 +50,10 @@ export class PartnersBoardPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadBoard();
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.dropErrorTimer);
   }
 
   loadBoard(): void {
@@ -56,7 +69,12 @@ export class PartnersBoardPageComponent implements OnInit {
     if (row.stage === toStage) return;
     this.rows.update(rs => rs.map(r => r.id === row.id ? { ...r, stage: toStage } : r));
     this.partners.changeStage(row.id, toStage).subscribe({
-      error: () => this.rows.update(rs => rs.map(r => r.id === row.id ? { ...r, stage: row.stage } : r)),
+      error: () => {
+        this.rows.update(rs => rs.map(r => r.id === row.id ? { ...r, stage: row.stage } : r));
+        clearTimeout(this.dropErrorTimer);
+        this.dropError.set(true);
+        this.dropErrorTimer = setTimeout(() => this.dropError.set(false), 4000);
+      },
     });
   }
 }

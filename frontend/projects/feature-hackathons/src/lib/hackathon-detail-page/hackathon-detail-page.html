@@ -91,3 +91,10 @@
     <span>Delete failed. Please try again.</span>
   </div>
 }
+
+@if (changeStageError()) {
+  <div class="hackathon-toast hackathon-toast--error" data-testid="hackathon-stage-error-toast" role="alert">
+    <mat-icon>error_outline</mat-icon>
+    <span>Stage update failed. Please try again.</span>
+  </div>
+}

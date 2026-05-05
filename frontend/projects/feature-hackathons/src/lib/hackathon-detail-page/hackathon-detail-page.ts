@@ -44,9 +44,11 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
   showDeleteDialog = signal(false);
   deleting = signal(false);
   deleteError = signal(false);
+  changeStageError = signal(false);
   stages = STAGES;
 
   private deleteErrorTimer?: ReturnType<typeof setTimeout>;
+  private changeStageErrorTimer?: ReturnType<typeof setTimeout>;
 
   stageIndex = computed(() => {
     const h = this.hackathon();
@@ -74,6 +76,7 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
     clearTimeout(this.deleteErrorTimer);
+    clearTimeout(this.changeStageErrorTimer);
   }
 
   confirmDelete(): void {
@@ -108,7 +111,12 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
         } : current);
         this.changingStage.set(false);
       },
-      error: () => this.changingStage.set(false),
+      error: () => {
+        this.changingStage.set(false);
+        clearTimeout(this.changeStageErrorTimer);
+        this.changeStageError.set(true);
+        this.changeStageErrorTimer = setTimeout(() => this.changeStageError.set(false), 4000);
+      },
     });
   }
 }

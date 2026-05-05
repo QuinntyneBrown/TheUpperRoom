@@ -197,3 +197,10 @@
     <span>Delete failed. Please try again.</span>
   </div>
 }
+
+@if (changeStageError()) {
+  <div class="partner-toast partner-toast--error" role="alert" data-testid="partner-stage-error-toast">
+    <mat-icon>error_outline</mat-icon>
+    <span>Stage update failed. Please try again.</span>
+  </div>
+}
