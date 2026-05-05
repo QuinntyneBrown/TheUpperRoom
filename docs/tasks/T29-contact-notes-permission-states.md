@@ -1,5 +1,6 @@
 # T29 — Contact notes permission and over-limit states
 
+**Status**: Accepted
 **Phase**: 4 — Contact lifecycle
 **Area**: Contacts
 **Requirements**: L1-003, L2-013, L2-051
