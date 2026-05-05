@@ -1,6 +1,6 @@
 # T13 — Real-time chart refresh states
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 2 — Dashboard editor interaction model
 **Area**: Dashboard, Real-time
 **Requirements**: L1-007, L1-008, L2-034, L2-037
@@ -19,6 +19,6 @@ Show how Chart.js cards behave when SignalR pushes new data, when the connection
 
 ## Acceptance criteria
 
-- [ ] Live, updating, stale, and offline chart variants exist as component states.
-- [ ] States compose with the dashboard widget chrome from T10.
-- [ ] Indicator semantics are reflected in the legend or tooltip.
+- [x] Live, updating, stale, and offline chart variants exist as component states.
+- [x] States compose with the dashboard widget chrome from T10.
+- [x] Indicator semantics are reflected in the legend or tooltip.
