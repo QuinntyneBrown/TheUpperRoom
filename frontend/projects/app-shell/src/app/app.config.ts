@@ -6,7 +6,7 @@ import { errorLoggingInterceptor } from './services/error-logging.interceptor';
 import { AUTH_SERVICE, AuthService, CONTACT_SERVICE, ContactService, HACKATHON_SERVICE, HackathonService, HEALTH_SERVICE, HealthService, PARTNER_SERVICE, PartnerService, REALTIME_SERVICE, RealtimeService, TEAM_SERVICE, TeamService } from 'api';
 import { ContactCreatePageComponent, ContactDetailPageComponent, ContactEditPageComponent, ContactsListPageComponent } from 'feature-contacts';
 import { HackathonCreatePageComponent, HackathonDetailPageComponent } from 'feature-hackathons';
-import { LocalTeamPageComponent } from 'feature-team';
+import { GlobalTeamsPageComponent, LocalTeamPageComponent } from 'feature-team';
 import { PartnerCreatePageComponent, PartnerDetailPageComponent, PartnerEditPageComponent, PartnersBoardPageComponent } from 'feature-partners';
 import { NoAccessPageComponent, RecoverPageComponent, RegisterPageComponent, ResetPageComponent, SignInPageComponent, VerifyPageComponent } from 'feature-auth';
 import { GlobalErrorHandler } from './global-error-handler';
@@ -30,6 +30,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter([
       { path: 'dashboard', component: DashboardPageComponent },
       { path: 'team', component: LocalTeamPageComponent },
+      { path: 'teams', component: GlobalTeamsPageComponent },
       { path: 'hackathons/new', component: HackathonCreatePageComponent },
       { path: 'hackathons/:id', component: HackathonDetailPageComponent },
       { path: 'partners', component: PartnersBoardPageComponent },

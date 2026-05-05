@@ -16,6 +16,20 @@ public record AssignRoleRequest(string Role, string Action);
 [Authorize(Roles = $"{Roles.Admin},{Roles.CityLead},{Roles.PrayerLead},{Roles.EventLead},{Roles.CommunicationLead}")]
 public class TeamsController(IMediator mediator, IHubContext<TeamHub> hub, ICurrentUser currentUser) : ControllerBase
 {
+    [HttpGet]
+    [Authorize(Roles = Roles.Admin)]
+    public async Task<IActionResult> List([FromQuery] int page = 1, [FromQuery] int size = 25, [FromQuery] string? search = null)
+    {
+        return Ok(await mediator.Send(new ListGlobalTeamsQuery(page, size, search)));
+    }
+
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetTeam(Guid id)
+    {
+        var result = await mediator.Send(new GetGlobalTeamQuery(id));
+        return result is null ? NotFound(new { error = "not_found" }) : Ok(result);
+    }
+
     [HttpGet("local")]
     public async Task<IActionResult> Local()
     {

@@ -1,0 +1,60 @@
+<div class="global-teams-page" data-testid="global-teams-page">
+  <header class="global-teams-page__header">
+    <h1 class="global-teams-page__title">All Teams</h1>
+  </header>
+
+  <div class="global-teams-page__search">
+    <input
+      class="global-teams-page__search-input"
+      type="search"
+      placeholder="Search by city or name (min 2 chars)"
+      [ngModel]="searchTerm()"
+      (ngModelChange)="onSearch($event)"
+      data-testid="team-search-input"
+    />
+  </div>
+
+  @if (teams().length === 0) {
+    <p class="global-teams-page__empty">No teams found.</p>
+  } @else {
+    <table class="teams-table" aria-label="All teams">
+      <thead>
+        <tr>
+          <th>City</th>
+          <th>Members</th>
+          <th>Prayer Leads</th>
+          <th>Event Leads</th>
+          <th>Comm. Leads</th>
+          <th>Active Hackathons</th>
+          <th>Partners</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (t of teams(); track t.id) {
+          <tr [attr.data-testid]="'team-row-' + t.id">
+            <td>{{ t.city }}</td>
+            <td>{{ t.memberCount }}</td>
+            <td>{{ t.prayerLeadCount }}</td>
+            <td>{{ t.eventLeadCount }}</td>
+            <td>{{ t.communicationLeadCount }}</td>
+            <td>{{ t.activeHackathonCount }}</td>
+            <td>{{ t.partnerCount }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    <div class="teams-cards" aria-label="All teams">
+      @for (t of teams(); track t.id) {
+        <div class="team-card" [attr.data-testid]="'team-card-' + t.id">
+          <p class="team-card__city">{{ t.city }}</p>
+          <p class="team-card__members">{{ t.memberCount }} members</p>
+          <p class="team-card__hackathons">{{ t.activeHackathonCount }} active hackathons</p>
+          <p class="team-card__partners">{{ t.partnerCount }} partners</p>
+        </div>
+      }
+    </div>
+
+    <p class="global-teams-page__total">Showing {{ teams().length }} of {{ total() }}</p>
+  }
+</div>
