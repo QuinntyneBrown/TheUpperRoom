@@ -16,7 +16,7 @@
         aria-label="Search contacts"
         data-testid="contact-search-input"
       />
-      <a mat-raised-button routerLink="/contacts/new" data-testid="new-contact-btn">+ New contact</a>
+      <button mat-raised-button (click)="showNewContact.set(true)" data-testid="new-contact-btn">+ New contact</button>
     </div>
   </header>
 
@@ -122,5 +122,11 @@
   <div class="contact-toast contact-toast--deleted" role="status" data-testid="contact-deleted-toast">
     <mat-icon>check_circle</mat-icon>
     <span>Contact deleted</span>
+  </div>
+}
+
+@if (showNewContact()) {
+  <div class="contacts-list-page__overlay">
+    <ur-new-contact-dialog (closed)="showNewContact.set(false)" />
   </div>
 }

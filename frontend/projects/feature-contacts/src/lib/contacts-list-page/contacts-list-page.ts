@@ -6,6 +6,7 @@ import { debounceTime, distinctUntilChanged, filter, Subject, switchMap, of } fr
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CONTACT_SERVICE, ContactListRow, ContactListResult, ContactSearchResult, REALTIME_SERVICE } from 'api';
 import { HighlightPipe, UrSearchComponent } from 'components';
+import { NewContactDialogComponent } from '../new-contact-dialog/new-contact-dialog';
 
 type SortField = 'firstName' | 'lastName';
 type SortDir = 'asc' | 'desc';
@@ -14,7 +15,7 @@ type SortDir = 'asc' | 'desc';
   selector: 'ur-contacts-list-page',
   templateUrl: './contacts-list-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, MatButtonModule, MatIconModule, UrSearchComponent, HighlightPipe],
+  imports: [RouterLink, MatButtonModule, MatIconModule, UrSearchComponent, HighlightPipe, NewContactDialogComponent],
   styles: [`
     .contacts-list-page { display: flex; flex-direction: column; height: 100%; }
     .contacts-list-page__header {
@@ -85,6 +86,8 @@ type SortDir = 'asc' | 'desc';
     @keyframes contact-shimmer { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
     .contacts-list-loading { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
     .contacts-list-loading__row { height: 44px; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: contact-shimmer 1.4s ease-in-out infinite; }
+    .contacts-list-page__overlay { position: fixed; inset: 0; background: rgba(10,10,15,0.7); display: flex; align-items: flex-start; justify-content: center; padding-top: 120px; z-index: 1000; }
+    .contacts-list-page__overlay ur-new-contact-dialog { width: 640px; max-width: calc(100vw - 48px); }
   `],
 })
 export class ContactsListPageComponent implements OnInit, OnDestroy {
@@ -93,6 +96,7 @@ export class ContactsListPageComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
 
+  showNewContact = signal(false);
   term = signal('');
   searchResults = signal<ContactSearchResult[]>([]);
   listResult = signal<ContactListResult>({ rows: [], total: 0 });

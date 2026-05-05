@@ -1,0 +1,37 @@
+<ur-dialog title="New contact" (closed)="closed.emit()" data-testid="new-contact-dialog">
+  <form id="new-contact-form" class="ncd-form" (ngSubmit)="save()" novalidate>
+    <div class="ncd-row">
+      <ur-input label="First name" required
+        [value]="firstName()" [error]="fieldError('firstName')"
+        (valueChange)="firstName.set($event)" />
+      <ur-input label="Last name" required
+        [value]="lastName()" [error]="fieldError('lastName')"
+        (valueChange)="lastName.set($event)" />
+    </div>
+    <ur-input label="Email" type="email" required
+      autocomplete="email"
+      [value]="email()" [error]="fieldError('email')"
+      (valueChange)="email.set($event)" />
+    <div class="ncd-row">
+      <ur-input label="Phone" type="tel"
+        autocomplete="tel"
+        [value]="phone()" [error]="fieldError('phone')"
+        (valueChange)="phone.set($event)" />
+      <ur-input label="City"
+        [value]="city()" [error]="fieldError('city')"
+        (valueChange)="city.set($event)" />
+    </div>
+    <p class="ncd-hint">
+      <mat-icon aria-hidden="true">info</mat-icon>
+      Fill required fields (*) to enable Save
+    </p>
+  </form>
+
+  <div ur-dialog-actions>
+    <ur-button variant="ghost" type="button" (click)="closed.emit()" data-testid="new-contact-dialog-cancel">Cancel</ur-button>
+    <button mat-raised-button color="primary" type="submit" form="new-contact-form"
+      [disabled]="!canSave()" data-testid="new-contact-dialog-submit">
+      {{ loading() ? 'Saving…' : 'Save contact' }}
+    </button>
+  </div>
+</ur-dialog>
