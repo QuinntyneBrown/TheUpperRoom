@@ -31,7 +31,24 @@ public class ContactsController(IMediator mediator) : ControllerBase
         if (dto is null) return NotFound(new { error = "not_found" });
         return Ok(dto);
     }
+
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> Update(Guid id, [FromBody] UpdateContactRequest req)
+    {
+        var found = await mediator.Send(new UpdateContactCommand(
+            id, req.FirstName, req.LastName, req.Email, req.Phone, req.City, req.Version));
+        if (!found) return NotFound(new { error = "not_found" });
+        return Ok();
+    }
 }
+
+public record UpdateContactRequest(
+    string FirstName,
+    string LastName,
+    int Version,
+    string? Email,
+    string? Phone,
+    string? City);
 
 public record CreateContactRequest(
     string FirstName,

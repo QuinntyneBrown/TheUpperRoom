@@ -9,5 +9,8 @@ public class Contact
     public string? Email { get; set; }
     public string? Phone { get; set; }
     public string? City { get; set; }
+    public int Version { get; set; }
+    public DateTime? UpdatedAt { get; set; }
+    public Guid? UpdatedById { get; set; }
     public List<Note> Notes { get; set; } = [];
 }

@@ -14,6 +14,8 @@ public record ContactDto(
     string? Email,
     string? Phone,
     string? City,
+    int Version,
+    DateTime? UpdatedAt,
     NoteDto[] Notes);
 
 public record GetContactQuery(Guid Id) : IRequest<ContactDto?>;
@@ -39,6 +41,8 @@ public class GetContactQueryHandler(AppDbContext db, ICurrentUser currentUser)
             contact.Email,
             contact.Phone,
             contact.City,
+            contact.Version,
+            contact.UpdatedAt,
             contact.Notes
                 .OrderByDescending(n => n.CreatedAt)
                 .Select(n => new NoteDto(n.Id, n.Body, n.AuthorId, n.CreatedAt))

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, input, output, signal } from '@angular/core';
 import { UrButtonComponent, UrInputComponent, UrTextareaComponent } from 'components';
 
 export interface ContactFormValue {
@@ -8,6 +8,14 @@ export interface ContactFormValue {
   phone?: string;
   city?: string;
   notes?: string;
+}
+
+export interface ContactFormInitial {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  phone?: string;
+  city?: string;
 }
 
 @Component({
@@ -21,6 +29,7 @@ export class ContactFormComponent {
   loading = input(false);
   showNotes = input(true);
   submitLabel = input('Save');
+  initial = input<ContactFormInitial | null>(null);
 
   formSubmit = output<ContactFormValue>();
 
@@ -30,6 +39,19 @@ export class ContactFormComponent {
   phone = signal('');
   city = signal('');
   notes = signal('');
+
+  constructor() {
+    effect(() => {
+      const v = this.initial();
+      if (v) {
+        this.firstName.set(v.firstName ?? '');
+        this.lastName.set(v.lastName ?? '');
+        this.email.set(v.email ?? '');
+        this.phone.set(v.phone ?? '');
+        this.city.set(v.city ?? '');
+      }
+    });
+  }
 
   fieldError(field: string): string {
     return this.errors()[field]?.[0] ?? '';

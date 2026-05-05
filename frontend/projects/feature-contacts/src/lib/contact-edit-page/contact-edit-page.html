@@ -1,0 +1,26 @@
+@if (notFound()) {
+  <div class="not-found">
+    <h1>Contact not found</h1>
+    <a routerLink="/contacts">Back to contacts</a>
+  </div>
+} @else if (contact()) {
+  <div class="page-container">
+    <h1>Edit contact</h1>
+    @if (conflict()) {
+      <div class="alert-conflict" role="alert">
+        This contact was modified by someone else. Please
+        <a [routerLink]="['/contacts', contact()!.id]">refresh</a> and try again.
+      </div>
+    }
+    <ur-contact-form
+      [initial]="initial()"
+      [errors]="errors()"
+      [loading]="loading()"
+      [showNotes]="false"
+      submitLabel="Save changes"
+      (formSubmit)="save($event)"
+    />
+  </div>
+} @else {
+  <div class="loading" role="status">Loading…</div>
+}

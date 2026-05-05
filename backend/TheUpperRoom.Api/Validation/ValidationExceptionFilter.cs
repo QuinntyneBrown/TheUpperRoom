@@ -1,6 +1,7 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using TheUpperRoom.Api.Contacts;
 
 namespace TheUpperRoom.Api.Validation;
 
@@ -25,6 +26,10 @@ public class ValidationExceptionFilter : IExceptionFilter
                 break;
             case KeyNotFoundException:
                 context.Result = new NotFoundObjectResult(new { error = "not_found" });
+                context.ExceptionHandled = true;
+                break;
+            case ConflictException ex:
+                context.Result = new ObjectResult(new { error = "conflict", message = ex.Message }) { StatusCode = 409 };
                 context.ExceptionHandled = true;
                 break;
         }
