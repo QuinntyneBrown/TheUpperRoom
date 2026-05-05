@@ -1,6 +1,6 @@
 # T12 — Saved, restored, and conflict layout states
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 2 — Dashboard editor interaction model
 **Area**: Dashboard
 **Requirements**: L1-007, L2-035
@@ -19,6 +19,6 @@ Cover what the user sees when their dashboard layout persists, when it is restor
 
 ## Acceptance criteria
 
-- [ ] Toast and dialog frames exist for saved, restored, and conflict.
-- [ ] Failure-to-save toast covers the offline/error case.
-- [ ] Conflict dialog explains the trade-off and lets the user choose.
+- [x] Toast and dialog frames exist for saved, restored, and conflict.
+- [x] Failure-to-save toast covers the offline/error case.
+- [x] Conflict dialog explains the trade-off and lets the user choose.
