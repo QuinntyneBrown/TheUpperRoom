@@ -17,8 +17,8 @@ test.describe('Invite team member error', () => {
     await page.goto('/team');
     await page.getByTestId('invite-member-button').click();
     await page.getByLabel(/email/i).fill('test@example.com');
-    await page.getByRole('button', { name: /city lead/i }).click();
-    await page.getByRole('button', { name: /send invite/i }).click();
+    await page.getByTestId('invite-role-CityLead').check();
+    await page.getByTestId('send-invite-btn').click();
     await expect(page.getByTestId('invite-save-error')).toBeVisible({ timeout: 3000 });
   });
 });

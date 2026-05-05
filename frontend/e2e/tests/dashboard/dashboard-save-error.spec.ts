@@ -36,6 +36,6 @@ test.describe('Dashboard save failed toast', () => {
     });
 
     await dashboard.addFirstWidget();
-    await expect(dashboard.saveErrorToast().getByRole('button', { name: /retry/i })).toBeVisible({ timeout: 3000 });
+    await expect(dashboard.saveErrorToast().getByTestId('layout-save-retry-btn')).toBeVisible({ timeout: 3000 });
   });
 });

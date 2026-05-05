@@ -19,9 +19,8 @@ test.describe('Remove team member error', () => {
     });
 
     await page.goto('/team');
-    const removeBtn = page.getByRole('button', { name: /remove/i }).first();
-    await removeBtn.click();
-    await page.getByRole('button', { name: /confirm/i }).click();
+    await page.getByTestId('remove-member-btn').first().click();
+    await page.getByTestId('confirm-remove-btn').click();
     await expect(page.getByTestId('remove-member-error-toast')).toBeVisible({ timeout: 3000 });
   });
 });

@@ -19,7 +19,7 @@ test.describe('Remove member dialog testids', () => {
     await page.goto('/team');
     await expect(page.getByTestId('local-team-page')).toBeVisible({ timeout: 3000 });
 
-    await page.getByRole('button', { name: /remove/i }).first().click();
+    await page.getByTestId('remove-member-btn').first().click();
     await expect(page.getByTestId('remove-member-dialog')).toBeVisible({ timeout: 2000 });
     await expect(page.getByTestId('confirm-remove-btn')).toBeVisible();
   });
@@ -41,7 +41,7 @@ test.describe('Remove member dialog testids', () => {
 
     await page.goto('/team');
     await expect(page.getByTestId('local-team-page')).toBeVisible({ timeout: 3000 });
-    await page.getByRole('button', { name: /remove/i }).first().click();
+    await page.getByTestId('remove-member-btn').first().click();
     await page.getByTestId('confirm-remove-btn').click();
     await expect(page.getByTestId('remove-member-success-toast')).toBeVisible({ timeout: 3000 });
   });
