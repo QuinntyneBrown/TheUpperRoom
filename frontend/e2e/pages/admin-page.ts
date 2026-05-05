@@ -24,4 +24,17 @@ export class AdminPage {
       await expect(row).not.toBeVisible();
     },
   };
+
+  deletedHackathons = {
+    assertContains: async (title: string) => {
+      await this.page.goto('/admin/hackathons/deleted');
+      await expect(this.page.getByRole('row').filter({ hasText: title }).first()).toBeVisible();
+    },
+    restore: async (title: string) => {
+      await this.page.goto('/admin/hackathons/deleted');
+      const row = this.page.getByRole('row').filter({ hasText: title }).first();
+      await row.getByRole('button', { name: /restore/i }).click();
+      await expect(row).not.toBeVisible();
+    },
+  };
 }

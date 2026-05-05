@@ -5,10 +5,28 @@
     <header class="hackathon-detail__header">
       <div>
         <a routerLink="/hackathons" class="hackathon-detail__back">← Hackathons</a>
-        <h1 class="hackathon-detail__title">{{ h.title }}</h1>
+        <h1 class="hackathon-detail__title" data-testid="hackathon-title">{{ h.title }}</h1>
         <p class="hackathon-detail__meta">{{ h.hostCity }} · {{ h.startDate | date:'mediumDate' }} – {{ h.endDate | date:'mediumDate' }}</p>
       </div>
+      <div class="hackathon-detail__header-actions">
+        <a [routerLink]="['/hackathons', h.id, 'edit']" class="hackathon-detail__edit-link">Edit</a>
+        <ur-button variant="danger" (click)="showDeleteDialog.set(true)">Delete</ur-button>
+      </div>
     </header>
+
+    @if (showDeleteDialog()) {
+      <ur-dialog
+        title="Delete hackathon"
+        subtitle="This hackathon will be removed. An admin can restore it later."
+        variant="danger"
+        closeLabel="Cancel"
+        (closed)="showDeleteDialog.set(false)"
+      >
+        <ur-button variant="danger" [disabled]="deleting()" (click)="confirmDelete()">
+          {{ deleting() ? 'Deleting…' : 'Delete hackathon' }}
+        </ur-button>
+      </ur-dialog>
+    }
 
     <div class="hackathon-detail__body">
       <section class="hackathon-detail__stage-section" aria-label="4 D's stage">

@@ -1,10 +1,64 @@
-import { Page } from '@playwright/test';
+import { expect, Page } from '@playwright/test';
 
 export class HackathonsPage {
   constructor(private page: Page) {}
 
   async goto() {
     await this.page.goto('/hackathons');
+  }
+
+  async create(opts: {
+    title: string;
+    startDate: string;
+    endDate: string;
+    hostCity: string;
+    partnerNames?: string[];
+  }) {
+    await this.page.goto('/hackathons/new');
+    await this.page.getByLabel('Title').fill(opts.title);
+    await this.page.getByLabel('Host city').fill(opts.hostCity);
+    await this.page.getByLabel('Start date').fill(opts.startDate);
+    await this.page.getByLabel('End date').fill(opts.endDate);
+    if (opts.partnerNames) {
+      for (const name of opts.partnerNames) {
+        const checkbox = this.page.getByLabel(name);
+        if (await checkbox.count() > 0) await checkbox.check();
+      }
+    }
+    await this.page.getByRole('button', { name: /plan hackathon/i }).click();
+    await this.page.waitForURL(/\/hackathons\/[a-f0-9-]+$/);
+  }
+
+  async assertOnDetail(title: string) {
+    await this.page.waitForURL(/\/hackathons\/[a-f0-9-]+$/);
+    await expect(this.page.getByTestId('hackathon-title')).toContainText(title);
+  }
+
+  async update(opts: { title: string }) {
+    await this.page.getByRole('link', { name: /edit/i }).click();
+    await this.page.waitForURL(/\/hackathons\/[a-f0-9-]+\/edit/);
+    await this.page.getByLabel('Title').fill(opts.title);
+    await this.page.getByRole('button', { name: /^save$/i }).click();
+    await this.page.waitForURL(/\/hackathons\/[a-f0-9-]+$/);
+  }
+
+  async changeStage(stage: string) {
+    await this.page.getByTestId(`stage-step-${stage}`).click();
+    await expect(this.page.getByTestId(`stage-step-${stage}`)).toHaveAttribute('aria-current', 'step');
+  }
+
+  async addProduct(opts: { title: string; description?: string }) {
+    await this.page.getByRole('button', { name: /\+ add product/i }).click();
+    await this.page.getByLabel('Name').fill(opts.title);
+    if (opts.description) await this.page.getByLabel(/description/i).fill(opts.description);
+    await this.page.getByRole('button', { name: /^add product$/i }).click();
+    await expect(this.page.getByText(opts.title)).toBeVisible();
+  }
+
+  async delete() {
+    await this.page.getByRole('button', { name: /^delete$/i }).click();
+    await this.page.getByRole('button', { name: /delete hackathon/i }).click();
+    await this.page.waitForURL(/\/hackathons$/);
   }
 
   async openCreateForm() {

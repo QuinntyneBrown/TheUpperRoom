@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { HACKATHON_SERVICE, HackathonDetailDto, HackathonStage, REALTIME_SERVICE } from 'api';
-import { UrButtonComponent } from 'components';
+import { UrButtonComponent, UrDialogComponent } from 'components';
 import { ProductsSectionComponent } from '../products-section/products-section';
 import { Subscription } from 'rxjs';
 
@@ -18,16 +18,19 @@ const STAGES: { value: HackathonStage; label: string }[] = [
   selector: 'ur-hackathon-detail-page',
   templateUrl: './hackathon-detail-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, DatePipe, UrButtonComponent, ProductsSectionComponent],
+  imports: [RouterLink, DatePipe, UrButtonComponent, UrDialogComponent, ProductsSectionComponent],
 })
 export class HackathonDetailPageComponent implements OnInit, OnDestroy {
   private hackathons = inject(HACKATHON_SERVICE);
   private realtime = inject(REALTIME_SERVICE);
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
 
   hackathon = signal<HackathonDetailDto | null>(null);
   notFound = signal(false);
   changingStage = signal(false);
+  showDeleteDialog = signal(false);
+  deleting = signal(false);
   stages = STAGES;
 
   stageIndex = computed(() => {
@@ -55,6 +58,16 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
+  }
+
+  confirmDelete(): void {
+    const h = this.hackathon();
+    if (!h) return;
+    this.deleting.set(true);
+    this.hackathons.delete(h.id).subscribe({
+      next: () => this.router.navigateByUrl('/hackathons'),
+      error: () => this.deleting.set(false),
+    });
   }
 
   changeStage(stage: HackathonStage): void {
