@@ -27,15 +27,6 @@
         (valueChange)="email.set($event)"
       />
       <ur-input
-        label="Password"
-        type="password"
-        [value]="password()"
-        [error]="fieldError('password')"
-        autocomplete="new-password"
-        required
-        (valueChange)="password.set($event)"
-      />
-      <ur-input
         label="City"
         type="text"
         [value]="city()"
@@ -44,6 +35,16 @@
         required
         (valueChange)="city.set($event)"
       />
+      <ur-input
+        label="Password"
+        type="password"
+        [value]="password()"
+        [error]="fieldError('password')"
+        autocomplete="new-password"
+        required
+        (valueChange)="password.set($event)"
+      />
+      <p class="auth-hint" data-testid="register-password-hint">Use 12+ characters with a mix of letters, numbers, symbols.</p>
       <ur-button type="submit" [disabled]="loading()" fullWidth data-testid="register-submit-btn">
         {{ loading() ? 'Creating account…' : 'Create account' }}
       </ur-button>
