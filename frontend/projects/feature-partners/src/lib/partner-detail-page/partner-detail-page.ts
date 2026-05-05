@@ -64,8 +64,12 @@ const STAGES: { value: PartnerStage; label: string }[] = [
       border: 1px solid var(--ur-border-subtle, #334155); text-align: center;
     }
     .partner-hero-card__icon {
-      width: 56px; height: 56px; border-radius: 12px; background: var(--ur-accent-primary, #6366f1);
-      display: flex; align-items: center; justify-content: center; color: #fff; font-size: 28px;
+      width: 72px; height: 72px; border-radius: 12px;
+      background: var(--ur-accent-soft, rgba(99,102,241,0.15));
+      border: 1px solid var(--ur-accent-primary, #6366f1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--ur-accent-primary, #6366f1); font-size: 1.5rem; font-weight: 600;
+      text-transform: uppercase; user-select: none;
     }
     .partner-hero-card__name { margin: 0; font-size: 1.125rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); }
     .partner-hero-card__meta { margin: 4px 0 0; font-size: 0.875rem; color: var(--ur-fg-secondary, #94a3b8); }
@@ -156,6 +160,13 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
     const p = this.partner();
     if (!p) return 0;
     return this.stages.findIndex(s => s.value === p.stage);
+  });
+
+  partnerInitials = computed(() => {
+    const words = (this.partner()?.name ?? '').trim().split(/\s+/).filter(Boolean);
+    if (words.length === 0) return '';
+    if (words.length === 1) return words[0][0].toUpperCase();
+    return (words[0][0] + words[words.length - 1][0]).toUpperCase();
   });
 
   getEntryForStage(stageValue: string) {

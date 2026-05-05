@@ -80,8 +80,8 @@
     <div class="partner-detail__body">
       <aside class="partner-detail__left">
         <div class="partner-hero-card">
-          <div class="partner-hero-card__icon">
-            <span class="material-symbols-outlined">church</span>
+          <div class="partner-hero-card__icon" data-testid="partner-hero-initials" aria-hidden="true">
+            {{ partnerInitials() }}
           </div>
           <div class="partner-hero-card__ident">
             <p class="partner-hero-card__name">{{ p.name }}</p>
