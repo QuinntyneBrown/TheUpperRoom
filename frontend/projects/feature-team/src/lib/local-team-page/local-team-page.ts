@@ -25,6 +25,9 @@ import { RoleChipEditorComponent } from '../role-chip-editor/role-chip-editor';
       border: 1px solid var(--ur-error-fg, #dc2626); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
     .team-error-toast mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
+    .team-loading { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+    .team-loading__row { height: 48px; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: team-pulse 1.4s ease-in-out infinite; }
+    @keyframes team-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
   `],
 })
 export class LocalTeamPageComponent implements OnInit, OnDestroy {
@@ -32,6 +35,7 @@ export class LocalTeamPageComponent implements OnInit, OnDestroy {
   private auth = inject(AUTH_SERVICE);
 
   members = signal<TeamMemberDto[]>([]);
+  loading = signal(true);
   loadError = signal(false);
   removeError = signal(false);
   showInvite = signal(false);
@@ -58,9 +62,10 @@ export class LocalTeamPageComponent implements OnInit, OnDestroy {
 
   loadTeam(): void {
     this.loadError.set(false);
+    this.loading.set(true);
     this.team.getLocalTeam().subscribe({
-      next: (m) => this.members.set(m),
-      error: () => this.loadError.set(true),
+      next: (m) => { this.members.set(m); this.loading.set(false); },
+      error: () => { this.loading.set(false); this.loadError.set(true); },
     });
   }
 

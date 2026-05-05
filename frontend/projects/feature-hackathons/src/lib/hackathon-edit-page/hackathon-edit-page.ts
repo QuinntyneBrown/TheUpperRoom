@@ -15,8 +15,25 @@ import { UrButtonComponent } from 'components';
       border: 1px solid var(--ur-error-fg, #dc2626); box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
     .edit-error-toast mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
+    .hackathon-edit-loading { display: flex; flex-direction: column; gap: 14px; padding: 24px; max-width: 480px; }
+    .hackathon-edit-loading__title { height: 32px; width: 60%; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: edit-pulse 1.4s ease-in-out infinite; }
+    .hackathon-edit-loading__field { height: 48px; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: edit-pulse 1.4s ease-in-out infinite; }
+    @keyframes edit-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
+    .hackathon-edit-not-found { padding: 24px; color: var(--ur-fg-muted, #64748b); }
   `],
   template: `
+    @if (loading()) {
+      <div class="hackathon-edit-loading" data-testid="hackathon-edit-loading" aria-busy="true">
+        <div class="hackathon-edit-loading__title"></div>
+        <div class="hackathon-edit-loading__field"></div>
+        <div class="hackathon-edit-loading__field"></div>
+        <div class="hackathon-edit-loading__field"></div>
+      </div>
+    } @else if (notFound()) {
+      <div class="hackathon-edit-not-found" data-testid="hackathon-edit-not-found" role="alert">
+        <p>Hackathon not found.</p>
+      </div>
+    } @else {
     <div class="hackathon-edit-page">
       <h1>Edit Hackathon</h1>
       <form (ngSubmit)="submit()">
@@ -44,6 +61,7 @@ import { UrButtonComponent } from 'components';
         </div>
       </form>
     </div>
+    }
     @if (saveError()) {
       <div class="edit-error-toast" data-testid="edit-save-error-toast" role="alert">
         <mat-icon>error_outline</mat-icon>
@@ -66,6 +84,8 @@ export class HackathonEditPageComponent implements OnDestroy {
   hostCity = signal('');
   saving = signal(false);
   saveError = signal(false);
+  loading = signal(true);
+  notFound = signal(false);
   errors = signal<Record<string, string>>({});
   private partnerIds = signal<string[]>([]);
   allPartners = signal<PartnerListRow[]>([]);
@@ -77,14 +97,21 @@ export class HackathonEditPageComponent implements OnDestroy {
   }
 
   constructor() {
-    this.hackathonSvc.getById(this.id).subscribe(h => {
-      this.title.set(h.title);
-      this.startDate.set(h.startDate);
-      this.endDate.set(h.endDate);
-      this.hostCity.set(h.hostCity);
-      this.partnerIds.set(h.partners.map(p => p.id));
+    this.hackathonSvc.getById(this.id).subscribe({
+      next: (h) => {
+        this.title.set(h.title);
+        this.startDate.set(h.startDate);
+        this.endDate.set(h.endDate);
+        this.hostCity.set(h.hostCity);
+        this.partnerIds.set(h.partners.map(p => p.id));
+        this.loading.set(false);
+      },
+      error: () => { this.loading.set(false); this.notFound.set(true); },
     });
-    this.partnerSvc.list().subscribe(rows => this.allPartners.set(rows));
+    this.partnerSvc.list().subscribe({
+      next: (rows) => this.allPartners.set(rows),
+      error: () => { /* partners are optional in edit */ },
+    });
   }
 
   submit(): void {
