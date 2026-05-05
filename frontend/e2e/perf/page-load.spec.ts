@@ -5,6 +5,10 @@ import type { CDPSession } from '@playwright/test';
 
 const LCP_BUDGET_MS = 2500;
 
+// Throttling only applied when running against a production build (CI or PERF_THROTTLE=true).
+// Dev-server bundles are too large to meet budgets under Slow 4G.
+const THROTTLE_ENABLED = process.env['CI'] === 'true' || process.env['PERF_THROTTLE'] === 'true';
+
 // Slow 4G network conditions (Chrome DevTools preset)
 const SLOW_4G = {
   offline: false,
@@ -30,6 +34,7 @@ const SCREENS: PerfScreen[] = [
 ];
 
 async function applyThrottle(cdp: CDPSession): Promise<void> {
+  if (!THROTTLE_ENABLED) return;
   await cdp.send('Network.enable');
   await cdp.send('Network.emulateNetworkConditions', SLOW_4G);
   await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });

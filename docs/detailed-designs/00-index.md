@@ -91,7 +91,7 @@ These slices were derived from the gaps identified in [`docs/missing-detailed-de
 
 | # | Slice | L2 traces | Status |
 |---|-------|-----------|--------|
-| 63 | [Page-load performance budget harness](63-pageload-budget-harness/README.md) | L2-046 | Accepted |
+| 63 | [Page-load performance budget harness](63-pageload-budget-harness/README.md) | L2-046 | Complete |
 | 64 | [API load and seeded data budget harness](64-api-load-budget-harness/README.md) | L2-047 | Draft |
 
 ### Security slices
