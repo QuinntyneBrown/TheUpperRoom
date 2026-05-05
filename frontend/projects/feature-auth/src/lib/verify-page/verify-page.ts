@@ -14,12 +14,15 @@ export class VerifyPageComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
 
-  status = signal<'verifying' | 'error'>('verifying');
+  status = signal<'verifying' | 'verified' | 'error'>('verifying');
 
   ngOnInit(): void {
     const token = this.route.snapshot.queryParamMap.get('token') ?? '';
     this.auth.verify(token).subscribe({
-      next: () => this.router.navigateByUrl('/auth/sign-in'),
+      next: () => {
+        this.status.set('verified');
+        setTimeout(() => this.router.navigateByUrl('/auth/sign-in'), 3000);
+      },
       error: () => this.status.set('error'),
     });
   }
