@@ -1,6 +1,6 @@
 # T54 — SignalR connected/offline/retry-exhausted states
 
-**Status**: Accepted
+**Status**: Complete
 **Phase**: 7 — Notifications and real-time lifecycle
 **Area**: Real-time, Notifications
 **Requirements**: L1-008, L2-036
@@ -20,6 +20,6 @@ Define the visible app state for each phase of the SignalR connection lifecycle.
 
 ## Acceptance criteria
 
-- [ ] Connected, reconnecting, offline, retry-exhausted, and reconnected states designed.
-- [ ] Banner is dismissible only when state is "connected".
-- [ ] Mobile variants per T18.
+- [x] Connected, reconnecting, offline, retry-exhausted, and reconnected states designed.
+- [x] Banner is dismissible only when state is "connected".
+- [x] Mobile variants per T18.
