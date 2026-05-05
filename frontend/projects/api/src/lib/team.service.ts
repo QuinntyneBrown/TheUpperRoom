@@ -49,6 +49,7 @@ export interface ITeamService {
   getLocalTeam(): Observable<TeamMemberDto[]>;
   invite(req: InviteMemberRequest): Observable<void>;
   assignRole(userId: string, req: AssignRoleRequest): Observable<void>;
+  removeMember(userId: string): Observable<void>;
   listGlobalTeams(page?: number, size?: number, search?: string): Observable<GlobalTeamsResult>;
   getGlobalTeam(id: string): Observable<GlobalTeamDetailDto>;
 }
@@ -69,6 +70,10 @@ export class TeamService implements ITeamService {
 
   assignRole(userId: string, req: AssignRoleRequest): Observable<void> {
     return this.http.post<void>(`/api/teams/local/members/${userId}/roles`, req);
+  }
+
+  removeMember(userId: string): Observable<void> {
+    return this.http.delete<void>(`/api/teams/local/members/${userId}`);
   }
 
   listGlobalTeams(page = 1, size = 25, search?: string): Observable<GlobalTeamsResult> {

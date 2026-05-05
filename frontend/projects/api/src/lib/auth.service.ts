@@ -7,6 +7,7 @@ export interface RegisterRequest {
   password: string;
   displayName: string;
   city: string;
+  inviteToken?: string;
 }
 
 export interface RegisterResponse {

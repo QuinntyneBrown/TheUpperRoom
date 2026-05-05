@@ -23,7 +23,7 @@ export class TeamPage {
 
   async assertSelfRole(role: string) {
     await this.goto();
-    await expect(this.page.getByTestId(`role-chip-${role}`).filter({ hasAttribute: 'aria-pressed', value: 'true' }).first()).toBeVisible();
+    await expect(this.page.getByTestId(`role-chip-${role}`).first()).toHaveAttribute('aria-pressed', 'true');
   }
 
   async assignRole(email: string, role: string) {

@@ -20,6 +20,7 @@
           <th>Roles</th>
           <th>Email</th>
           <th>Status</th>
+          @if (canEdit()) { <th></th> }
         </tr>
       </thead>
       <tbody>
@@ -36,6 +37,11 @@
             </td>
             <td>{{ m.email }}</td>
             <td>{{ m.isActive ? 'Active' : 'Inactive' }}</td>
+            @if (canEdit()) {
+              <td>
+                <button class="team-table__remove-btn" (click)="removingMember.set(m)" aria-label="Remove member">Remove</button>
+              </td>
+            }
           </tr>
         }
       </tbody>
@@ -53,8 +59,21 @@
           ></ur-role-chip-editor>
           <p class="team-card__email">{{ m.email }}</p>
           <span class="team-card__status">{{ m.isActive ? 'Active' : 'Inactive' }}</span>
+          @if (canEdit()) {
+            <button class="team-card__remove-btn" (click)="removingMember.set(m)" aria-label="Remove member">Remove</button>
+          }
         </div>
       }
     </div>
+  }
+
+  @if (removingMember()) {
+    <ur-dialog title="Remove member" closeLabel="Cancel" (closed)="removingMember.set(null)">
+      <p>Remove {{ removingMember()!.displayName }} from the team? This cannot be undone.</p>
+      <div class="dialog-actions">
+        <ur-button variant="ghost" (click)="removingMember.set(null)">Cancel</ur-button>
+        <ur-button variant="danger" (click)="confirmRemove()">Confirm remove</ur-button>
+      </div>
+    </ur-dialog>
   }
 </div>

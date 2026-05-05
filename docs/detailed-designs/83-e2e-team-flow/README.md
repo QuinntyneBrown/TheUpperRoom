@@ -11,7 +11,7 @@ test('team invite, role lifecycle, removal', async ({ auth, mailbox, team }) => 
   await auth.signInAs('city-lead');
   await team.invite('newuser@test.com'); // invites with PrayerLead role
   const link = await mailbox.firstInvitationLink('newuser@test.com');
-  await auth.acceptInvitation(link, { displayName: 'New User', password: 'Str0ng!Pass#00' });
+  await auth.acceptInvitation(link, { email: 'newuser@test.com', displayName: 'New User', password: 'Str0ng!Pass#00' });
   await auth.signIn('newuser@test.com', 'Str0ng!Pass#00');
   await auth.assertOnDashboard();
   await auth.signInAs('city-lead');

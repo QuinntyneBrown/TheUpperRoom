@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AUTH_SERVICE } from 'api';
 import { UrButtonComponent, UrInputComponent } from 'components';
 
@@ -13,6 +13,9 @@ import { UrButtonComponent, UrInputComponent } from 'components';
 export class RegisterPageComponent {
   private auth = inject(AUTH_SERVICE);
   private router = inject(Router);
+  private route = inject(ActivatedRoute);
+
+  private inviteToken = this.route.snapshot.queryParamMap.get('invite') ?? undefined;
 
   email = signal('');
   password = signal('');
@@ -31,10 +34,15 @@ export class RegisterPageComponent {
       password: this.password(),
       displayName: this.displayName(),
       city: this.city(),
+      inviteToken: this.inviteToken,
     }).subscribe({
       next: () => {
         this.loading.set(false);
-        this.submitted.set(true);
+        if (this.inviteToken) {
+          this.router.navigateByUrl('/dashboard');
+        } else {
+          this.submitted.set(true);
+        }
       },
       error: (err: { status: number; error?: { fields?: Record<string, string[]> } }) => {
         this.loading.set(false);
