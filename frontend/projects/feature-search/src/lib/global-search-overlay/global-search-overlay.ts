@@ -11,6 +11,17 @@ import { debounceTime, distinctUntilChanged, Subject, switchMap, of } from 'rxjs
   templateUrl: './global-search-overlay.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormsModule, MatIconModule, MatButtonModule],
+  styles: [`
+    .search-overlay__hint, .search-overlay__loading, .search-overlay__no-results {
+      display: flex; align-items: center; gap: 10px; padding: 20px 16px;
+      color: var(--ur-fg-muted, #64748b); font-size: 0.875rem;
+    }
+    .search-overlay__no-results { flex-direction: column; align-items: center; padding: 32px 16px; }
+    .search-overlay__no-results mat-icon, .search-overlay__hint mat-icon { font-size: 20px; width: 20px; height: 20px; }
+    .search-overlay__no-results p { margin: 0; font-size: 0.9rem; font-weight: 500; }
+    .search-overlay__spinner { animation: overlay-spin 1s linear infinite; font-size: 20px; width: 20px; height: 20px; }
+    @keyframes overlay-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  `],
 })
 export class GlobalSearchOverlayComponent implements OnInit {
   private searchSvc = inject(SEARCH_SERVICE);
@@ -19,6 +30,7 @@ export class GlobalSearchOverlayComponent implements OnInit {
   open = signal(false);
   term = signal('');
   results = signal<GlobalSearchResult | null>(null);
+  searching = signal(false);
 
   private search$ = new Subject<string>();
 
@@ -35,8 +47,15 @@ export class GlobalSearchOverlayComponent implements OnInit {
     this.search$.pipe(
       debounceTime(250),
       distinctUntilChanged(),
-      switchMap((q) => q.length >= 2 ? this.searchSvc.search(q) : of(null))
-    ).subscribe({ next: (r) => this.results.set(r) });
+      switchMap((q) => {
+        if (q.length < 2) { this.searching.set(false); return of(null); }
+        this.searching.set(true);
+        return this.searchSvc.search(q);
+      })
+    ).subscribe({
+      next: (r) => { this.results.set(r); this.searching.set(false); },
+      error: () => this.searching.set(false),
+    });
   }
 
   onInput(value: string): void {

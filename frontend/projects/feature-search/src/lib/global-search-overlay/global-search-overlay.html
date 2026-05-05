@@ -22,7 +22,17 @@
         data-testid="search-input"
         aria-label="Search"
       />
-      @if (allGroups().length > 0) {
+      @if (term().length > 0 && term().length < 2) {
+        <div class="search-overlay__hint" data-testid="search-min-length-hint">
+          <mat-icon>keyboard</mat-icon>
+          <span>Keep typing… (need at least 2 characters)</span>
+        </div>
+      } @else if (searching()) {
+        <div class="search-overlay__loading" data-testid="search-loading" role="status" aria-label="Searching">
+          <mat-icon class="search-overlay__spinner">progress_activity</mat-icon>
+          <span>Searching…</span>
+        </div>
+      } @else if (allGroups().length > 0) {
         <div class="search-overlay__results" data-testid="search-results">
           @for (group of allGroups(); track group.label) {
             <section class="search-overlay__group">
@@ -41,8 +51,11 @@
             </section>
           }
         </div>
-      } @else if (term().length >= 2) {
-        <p class="search-overlay__empty">No results found.</p>
+      } @else if (term().length >= 2 && results() !== null) {
+        <div class="search-overlay__no-results" data-testid="search-no-results">
+          <mat-icon>search_off</mat-icon>
+          <p>No results for "{{ term() }}"</p>
+        </div>
       }
     </div>
   </div>
