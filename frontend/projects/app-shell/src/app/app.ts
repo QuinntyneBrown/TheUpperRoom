@@ -20,6 +20,7 @@ import { AUTH_SERVICE, HEALTH_SERVICE, REALTIME_SERVICE } from 'api';
 import { UrSideNavItemComponent, UrBottomNavItemComponent, UrLiveRegionComponent } from 'components';
 import { NotificationCenterComponent } from 'feature-notifications';
 import { GlobalSearchOverlayComponent } from 'feature-search';
+import { GlobalToastService } from './services/global-toast.service';
 
 const WORKSPACE_ITEMS = [
   { icon: 'home', label: 'Dashboard', route: '/dashboard' },
@@ -69,6 +70,9 @@ export class App implements OnInit {
   private realtimeSvc = inject(REALTIME_SERVICE);
   private authSvc = inject(AUTH_SERVICE);
   private router = inject(Router);
+  private toastSvc = inject(GlobalToastService);
+
+  errorToast = toSignal(this.toastSvc.error$, { initialValue: null });
 
   readonly workspaceItems = WORKSPACE_ITEMS;
   readonly globalItems = GLOBAL_ITEMS;

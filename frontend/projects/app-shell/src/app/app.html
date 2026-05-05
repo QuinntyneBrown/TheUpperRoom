@@ -108,3 +108,10 @@
   </mat-sidenav-content>
 </mat-sidenav-container>
 <ur-live-region />
+
+@if (errorToast()) {
+  <div class="shell__error-toast" role="alert" data-testid="global-error-toast">
+    <mat-icon>error_outline</mat-icon>
+    <span>{{ errorToast() }}</span>
+  </div>
+}
