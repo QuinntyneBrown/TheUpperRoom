@@ -22,15 +22,32 @@ const STAGES: { value: HackathonStage; label: string; marker: string; descriptio
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule, MatMenuModule, UrButtonComponent, UrDialogComponent, ProductsSectionComponent],
   styles: [`
+    .hackathon-detail { display: flex; flex-direction: column; height: 100%; }
+    .hackathon-detail__header { display: flex; align-items: flex-start; justify-content: space-between; padding: 32px 32px 0; }
+    .hackathon-detail__back { display: inline-flex; align-items: center; gap: 4px; font-size: 0.875rem; color: var(--ur-accent-primary, #9f86ff); text-decoration: none; margin-bottom: 12px; }
+    .hackathon-detail__back-icon { font-size: 18px; width: 18px; height: 18px; }
+    .hackathon-detail__title { margin: 0 0 6px; font-size: 1.875rem; font-weight: 600; color: var(--ur-fg-primary, #fff); }
+    .hackathon-detail__meta { margin: 0; font-size: 1rem; color: var(--ur-fg-secondary, #a1a1aa); }
+    .hackathon-detail__header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; padding-top: 4px; }
+    .hackathon-detail__body { display: flex; flex-direction: column; gap: 24px; padding: 24px 32px 32px; }
+    .hackathon-detail__section-title { margin: 0 0 12px; font-size: 0.875rem; font-weight: 600; color: var(--ur-fg-secondary, #a1a1aa); text-transform: uppercase; letter-spacing: 0.05em; }
+    .hackathon-partners { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    .hackathon-partners__item { font-size: 0.875rem; color: var(--ur-fg-primary, #fff); padding: 8px 12px; border-radius: 6px; background: var(--ur-bg-surface, #101018); border: 1px solid var(--ur-border-subtle, #222233); }
+    .hackathon-history { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    .hackathon-history__item { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; padding: 8px 12px; border-radius: 6px; background: var(--ur-bg-surface, #101018); border: 1px solid var(--ur-border-subtle, #222233); }
+    .hackathon-history__from { color: var(--ur-fg-secondary, #a1a1aa); }
+    .hackathon-history__arrow { font-size: 16px; width: 16px; height: 16px; color: var(--ur-fg-muted, #a8a8b5); }
+    .hackathon-history__to { color: var(--ur-fg-primary, #fff); font-weight: 500; }
+    .hackathon-history__time { margin-left: auto; color: var(--ur-fg-muted, #a8a8b5); font-size: 0.75rem; }
     .hackathon-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
       gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
       background: var(--ur-bg-overlay, #1e293b); color: #fff; font-size: 0.875rem; font-weight: 500;
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
-    .hackathon-toast mat-icon { font-size: 18px; width: 18px; height: 18px; color: var(--ur-success-fg, #16a34a); }
-    .hackathon-toast--error { border: 1px solid var(--ur-error-fg, #dc2626); }
-    .hackathon-toast--error mat-icon { color: var(--ur-error-fg, #dc2626); font-size: 18px; width: 18px; height: 18px; }
+    .hackathon-toast mat-icon { font-size: 18px; width: 18px; height: 18px; color: var(--ur-success, #34d399); }
+    .hackathon-toast--error { border: 1px solid var(--ur-danger, #f87171); }
+    .hackathon-toast--error mat-icon { color: var(--ur-danger, #f87171); font-size: 18px; width: 18px; height: 18px; }
     .hackathon-detail-loading { display: flex; flex-direction: column; gap: 16px; padding: 24px 0; }
     .hackathon-detail-loading__title { height: 28px; width: 50%; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hd-pulse 1.4s ease-in-out infinite; }
     .hackathon-detail-loading__meta { height: 16px; width: 35%; border-radius: 4px; background: var(--ur-skeleton-bg, #f1f5f9); animation: hd-pulse 1.4s ease-in-out infinite; }
