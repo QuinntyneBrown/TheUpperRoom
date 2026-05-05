@@ -34,6 +34,31 @@ const COLUMNS: { stage: PartnerStage; label: string }[] = [
     .board-loading__header { height: 32px; border-radius: 6px; background: var(--ur-skeleton-bg, #f1f5f9); }
     .board-loading__card { height: 72px; border-radius: 8px; background: var(--ur-skeleton-bg, #f1f5f9); animation: board-pulse 1.4s ease-in-out infinite; }
     @keyframes board-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
+    .partner-board__columns { display: flex; gap: 16px; overflow-x: auto; height: calc(100vh - 140px); }
+    .partner-board__column {
+      flex: 1 1 0; min-width: 260px; display: flex; flex-direction: column; gap: 12px;
+      padding: 12px; border-radius: 12px; background: var(--ur-bg-surface, #1e293b);
+      border: 1px solid var(--ur-border-subtle, #334155);
+    }
+    .partner-board__col-header { display: flex; align-items: center; justify-content: space-between; padding: 4px 4px 8px; }
+    .partner-board__col-label { font-weight: 600; font-size: 0.875rem; color: var(--ur-fg-primary, #f1f5f9); }
+    .partner-board__col-count {
+      min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px; display: flex; align-items: center; justify-content: center;
+      background: var(--ur-bg-elevated, #334155); color: var(--ur-fg-secondary, #94a3b8); font-size: 0.75rem; font-weight: 600;
+    }
+    .partner-board__drop-zone { display: flex; flex-direction: column; gap: 8px; flex: 1; min-height: 120px; }
+    .partner-card {
+      display: flex; align-items: flex-start; gap: 8px; padding: 12px;
+      border-radius: 8px; background: var(--ur-bg-elevated, #334155);
+      border: 1px solid var(--ur-border-default, #475569); cursor: pointer;
+      text-decoration: none; color: inherit;
+    }
+    .partner-card:hover { border-color: var(--ur-accent-primary, #6366f1); }
+    .partner-card__drag-handle { color: var(--ur-fg-disabled, #64748b); cursor: grab; padding-top: 2px; flex-shrink: 0; }
+    .partner-card__body { display: flex; flex-direction: column; gap: 4px; }
+    .partner-card__name { margin: 0; font-size: 0.875rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); }
+    .partner-card__city { margin: 0; font-size: 0.75rem; color: var(--ur-fg-secondary, #94a3b8); }
+    .partner-board__empty { display: flex; align-items: center; justify-content: center; padding: 24px; font-size: 0.875rem; color: var(--ur-fg-disabled, #64748b); border: 1px dashed var(--ur-border-default, #475569); border-radius: 8px; }
   `],
 })
 export class PartnersBoardPageComponent implements OnInit, OnDestroy {
