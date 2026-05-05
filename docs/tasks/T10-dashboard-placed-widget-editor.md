@@ -1,5 +1,6 @@
 # T10 — Placed-widget editor state
 
+**Status**: Accepted
 **Phase**: 2 — Dashboard editor interaction model
 **Area**: Dashboard
 **Requirements**: L1-007, L2-033
