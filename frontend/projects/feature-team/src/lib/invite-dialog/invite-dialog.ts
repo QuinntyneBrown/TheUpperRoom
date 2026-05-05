@@ -4,6 +4,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { UrButtonComponent, UrDialogComponent } from 'components';
 
 const ALL_ROLES = ['CityLead', 'PrayerLead', 'EventLead', 'CommunicationLead'];
+const ROLE_LABELS: Record<string, string> = {
+  CityLead: 'City Lead',
+  PrayerLead: 'Prayer Lead',
+  EventLead: 'Event Lead',
+  CommunicationLead: 'Communication Lead',
+};
 
 @Component({
   selector: 'ur-invite-dialog',
@@ -26,6 +32,7 @@ export class InviteDialogComponent implements OnDestroy {
   invited = output<void>();
 
   allRoles = ALL_ROLES;
+  roleLabel = (role: string) => ROLE_LABELS[role] ?? role;
   email = signal('');
   selectedRoles = signal<Set<string>>(new Set());
   saving = signal(false);
