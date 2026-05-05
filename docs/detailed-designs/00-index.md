@@ -5,7 +5,7 @@ Each design below is a small vertical slice intended to be implemented end-to-en
 | # | Slice | L2 traces | Status |
 |---|-------|-----------|--------|
 | 00 | [Architecture overview](00-architecture/README.md) | shared baseline | Draft |
-| 01 | [Project skeleton & health check](01-project-skeleton/README.md) | bootstraps everything | Draft |
+| 01 | [Project skeleton & health check](01-project-skeleton/README.md) | bootstraps everything | Accepted |
 | 02 | [User registration](02-user-registration/README.md) | L2-001 | Draft |
 | 03 | [User sign-in](03-user-signin/README.md) | L2-002 | Draft |
 | 04 | [Password recovery](04-password-recovery/README.md) | L2-003 | Draft |
