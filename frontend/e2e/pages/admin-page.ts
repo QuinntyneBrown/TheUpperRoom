@@ -20,7 +20,7 @@ export class AdminPage {
     restore: async (name: string) => {
       await this.page.goto('/admin/contacts/deleted');
       const row = this.page.getByRole('row').filter({ hasText: name }).first();
-      await row.getByRole('button', { name: /restore/i }).click();
+      await row.locator('[data-testid^="restore-contact-"]').click();
       await expect(row).not.toBeVisible();
     },
   };
@@ -33,7 +33,7 @@ export class AdminPage {
     restore: async (title: string) => {
       await this.page.goto('/admin/hackathons/deleted');
       const row = this.page.getByRole('row').filter({ hasText: title }).first();
-      await row.getByRole('button', { name: /restore/i }).click();
+      await row.locator('[data-testid^="restore-hackathon-"]').click();
       await expect(row).not.toBeVisible();
     },
   };

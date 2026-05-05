@@ -12,7 +12,7 @@ export class TeamPage {
     await this.page.getByTestId('invite-member-button').click();
     await this.page.getByLabel('Email address').fill(email);
     await this.page.getByLabel('PrayerLead').check();
-    await this.page.getByRole('button', { name: /send invite/i }).click();
+    await this.page.getByTestId('send-invite-btn').click();
     await expect(this.page.getByTestId('invite-dialog')).not.toBeVisible();
   }
 
@@ -46,7 +46,7 @@ export class TeamPage {
 
   async remove(email: string) {
     const row = await this.memberRowByEmail(email);
-    await row.getByRole('button', { name: /remove/i }).click();
+    await row.getByTestId('remove-member-btn').click();
     await this.page.getByTestId('confirm-remove-btn').click();
     await expect(this.page.getByRole('row').filter({ hasText: email })).not.toBeVisible();
   }
