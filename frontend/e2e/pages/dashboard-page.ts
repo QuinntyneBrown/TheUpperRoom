@@ -1,10 +1,37 @@
-import { Page } from '@playwright/test';
+import { expect, Page } from '@playwright/test';
 
 export class DashboardPage {
   constructor(private page: Page) {}
 
   async goto() {
     await this.page.goto('/dashboard');
+  }
+
+  async assertEmpty() {
+    await expect(this.page.getByTestId('dashboard-empty')).toBeVisible();
+  }
+
+  async addWidget(type: string) {
+    await this.page.getByTestId('add-widget-btn').click();
+    await this.page.getByTestId(`widget-type-${type}`).click();
+    await expect(this.page.getByTestId('widget-catalog-dialog')).not.toBeVisible();
+  }
+
+  private widgetByType(type: string) {
+    return this.page.locator('[data-testid^="widget-"]').filter({ hasText: type });
+  }
+
+  async removeWidget(type: string) {
+    await this.widgetByType(type).getByRole('button', { name: /remove widget/i }).click();
+    await expect(this.widgetByType(type)).not.toBeVisible();
+  }
+
+  async assertHasWidget(type: string) {
+    await expect(this.widgetByType(type)).toBeVisible();
+  }
+
+  async assertNoWidget(type: string) {
+    await expect(this.widgetByType(type)).not.toBeVisible();
   }
 
   grid() {
