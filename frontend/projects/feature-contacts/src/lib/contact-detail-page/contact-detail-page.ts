@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@ang
 import { RouterLink } from '@angular/router';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AUTH_SERVICE, CONTACT_SERVICE, ContactDto } from 'api';
+import { MatButtonModule } from '@angular/material/button';
 import { UrButtonComponent, UrDialogComponent } from 'components';
 import { NotesPanelComponent } from '../notes-panel/notes-panel';
 
@@ -9,7 +10,7 @@ import { NotesPanelComponent } from '../notes-panel/notes-panel';
   selector: 'ur-contact-detail-page',
   templateUrl: './contact-detail-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, UrButtonComponent, UrDialogComponent, NotesPanelComponent],
+  imports: [RouterLink, MatButtonModule, UrButtonComponent, UrDialogComponent, NotesPanelComponent],
 })
 export class ContactDetailPageComponent implements OnInit {
   private contacts = inject(CONTACT_SERVICE);

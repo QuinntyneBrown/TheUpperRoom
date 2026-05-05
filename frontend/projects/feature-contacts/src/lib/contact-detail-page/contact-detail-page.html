@@ -8,7 +8,7 @@
     <header class="contact-detail__header">
       <h1 data-testid="contact-name">{{ contact()!.firstName }} {{ contact()!.lastName }}</h1>
       <div class="contact-detail__actions">
-        <a [routerLink]="['/contacts', contact()!.id, 'edit']">Edit</a>
+        <a mat-stroked-button [routerLink]="['/contacts', contact()!.id, 'edit']">Edit</a>
         <ur-button variant="danger" (click)="showDeleteDialog.set(true)">Delete</ur-button>
       </div>
     </header>
