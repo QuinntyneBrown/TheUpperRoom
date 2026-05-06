@@ -148,7 +148,7 @@
                       <span class="partner-history__from">{{ stageLabel(entry.fromStage) }}</span>
                       <mat-icon class="partner-history__arrow" aria-hidden="true">arrow_forward</mat-icon>
                       <span class="partner-history__to">{{ stageLabel(entry.toStage) }}</span>
-                      <span class="partner-history__date">· {{ entry.changedAt | date:'MMM d' }}</span>
+                      <time class="partner-history__date" [attr.datetime]="entry.changedAt">· {{ entry.changedAt | date:'MMM d' }}</time>
                     </div>
                   </div>
                 </li>
