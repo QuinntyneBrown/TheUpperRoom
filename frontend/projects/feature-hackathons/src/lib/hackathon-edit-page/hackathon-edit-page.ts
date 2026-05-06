@@ -23,7 +23,7 @@ import { UrButtonComponent } from 'components';
   `],
   template: `
     @if (loading()) {
-      <div class="hackathon-edit-loading" data-testid="hackathon-edit-loading" aria-busy="true">
+      <div class="hackathon-edit-loading" data-testid="hackathon-edit-loading" aria-busy="true" aria-label="Loading hackathon">
         <div class="hackathon-edit-loading__title"></div>
         <div class="hackathon-edit-loading__field"></div>
         <div class="hackathon-edit-loading__field"></div>
