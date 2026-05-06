@@ -12,7 +12,7 @@
     <a routerLink="/contacts" data-testid="contact-not-found-back-link">Back to contacts</a>
   </div>
 } @else if (contact()) {
-  <div class="contact-detail" data-testid="contact-detail">
+  <article class="contact-detail" data-testid="contact-detail" aria-labelledby="contact-summary-name">
     <header class="contact-detail__header">
       <nav class="contact-detail__breadcrumb" aria-label="Breadcrumb">
         <mat-icon class="contact-detail__back-icon" aria-hidden="true">arrow_back</mat-icon>
@@ -48,7 +48,7 @@
         <div class="contact-detail__avatar" aria-hidden="true" data-testid="contact-avatar">
           {{ contact()!.firstName[0] }}{{ contact()!.lastName[0] }}
         </div>
-        <h2 class="contact-detail__name" data-testid="contact-summary-name">{{ contact()!.firstName }} {{ contact()!.lastName }}</h2>
+        <h2 id="contact-summary-name" class="contact-detail__name" data-testid="contact-summary-name">{{ contact()!.firstName }} {{ contact()!.lastName }}</h2>
         <ul class="contact-detail__meta" aria-label="Contact details">
           @if (contact()!.email) {
             <li class="contact-detail__meta-row" data-testid="contact-meta-email">
@@ -77,7 +77,7 @@
         [currentUserId]="currentUserId()"
       />
     </div>
-  </div>
+  </article>
 }
 
 @if (savedToast()) {
