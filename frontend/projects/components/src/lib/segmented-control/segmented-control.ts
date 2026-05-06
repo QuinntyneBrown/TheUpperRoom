@@ -15,6 +15,7 @@ export interface UrSegmentedControlOption {
   count?: number;
   icon?: string;
   disabled?: boolean;
+  testId?: string;
 }
 
 @Component({

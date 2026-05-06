@@ -10,6 +10,7 @@
       class="ur-segmented-control__option"
       [value]="option.value"
       [disabled]="option.disabled"
+      [attr.data-testid]="option.testId || null"
     >
       @if (option.icon) {
         <mat-icon class="ur-segmented-control__icon" aria-hidden="true">{{ option.icon }}</mat-icon>
