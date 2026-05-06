@@ -7,15 +7,18 @@
       }
     </div>
     <div class="contacts-list-page__header-right">
-      <input
-        type="search"
-        class="contacts-list-page__input"
-        placeholder="Search contacts…"
-        [value]="term()"
-        (input)="onSearch($any($event.target).value)"
-        aria-label="Search contacts"
-        data-testid="contact-search-input"
-      />
+      <label class="contacts-list-page__search">
+        <mat-icon class="contacts-list-page__search-icon" data-testid="contact-search-icon" aria-hidden="true">search</mat-icon>
+        <input
+          type="search"
+          class="contacts-list-page__input"
+          placeholder="Search contacts…"
+          [value]="term()"
+          (input)="onSearch($any($event.target).value)"
+          aria-label="Search contacts"
+          data-testid="contact-search-input"
+        />
+      </label>
       <ur-button (pressed)="onNewContactClick()" data-testid="new-contact-btn">+ New contact</ur-button>
     </div>
   </header>
