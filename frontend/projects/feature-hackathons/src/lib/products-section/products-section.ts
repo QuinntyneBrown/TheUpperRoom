@@ -12,7 +12,7 @@ import { AddProductDialogComponent, AddProductDialogData } from '../add-product-
   styles: [`
     .products-section__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
     .products-section__title { margin: 0; font-size: 1rem; font-weight: 600; color: var(--ur-fg-primary, #fff); }
-    .products-section__list { display: flex; flex-direction: column; gap: 8px; }
+    .products-section__list { display: flex; flex-direction: column; gap: 8px; list-style: none; margin: 0; padding: 0; }
     .product-card { padding: 14px 16px; border-radius: 8px; background: var(--ur-bg-surface, #101018); border: 1px solid var(--ur-border-subtle, #222233); }
     .product-card__name { margin: 0 0 4px; font-size: 0.9375rem; font-weight: 600; color: var(--ur-fg-primary, #fff); }
     .product-card__desc { margin: 0 0 8px; font-size: 0.875rem; color: var(--ur-fg-secondary, #a1a1aa); }

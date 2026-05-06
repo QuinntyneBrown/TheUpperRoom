@@ -12,9 +12,9 @@
       <h3 data-testid="products-empty-title">No products yet</h3>
     </div>
   } @else {
-    <div class="products-section__list">
+    <ul class="products-section__list" aria-label="Products">
       @for (p of products(); track p.id) {
-        <div class="product-card" [attr.data-testid]="'product-card-' + p.id">
+        <li class="product-card" [attr.data-testid]="'product-card-' + p.id">
           <h3 class="product-card__name">{{ p.name }}</h3>
           @if (p.description) {
             <p class="product-card__desc">{{ p.description }}</p>
@@ -27,8 +27,8 @@
               <a [href]="p.demoUrl" target="_blank" rel="noopener" class="product-card__link">Demo</a>
             }
           </div>
-        </div>
+        </li>
       }
-    </div>
+    </ul>
   }
 </section>
