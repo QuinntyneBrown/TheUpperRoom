@@ -30,7 +30,7 @@ import { MatTableModule } from '@angular/material/table';
       } @else if (rows().length === 0) {
         <div class="admin-empty" data-testid="deleted-contacts-empty">
           <mat-icon>person_off</mat-icon>
-          <p>No deleted contacts.</p>
+          <h2 data-testid="deleted-contacts-empty-title">No deleted contacts.</h2>
         </div>
       } @else {
         <table mat-table [dataSource]="rows()" aria-label="Deleted contacts">
