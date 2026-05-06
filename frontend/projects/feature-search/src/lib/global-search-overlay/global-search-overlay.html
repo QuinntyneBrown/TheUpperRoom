@@ -32,7 +32,10 @@
       } @else if (term().length > 0 && term().length < 2) {
         <div class="search-overlay__hint" data-testid="search-min-length-hint">
           <mat-icon>keyboard</mat-icon>
-          <span>Keep typing… (need at least 2 characters)</span>
+          <div class="search-overlay__hint-copy">
+            <h2 data-testid="search-min-length-title">Keep typing…</h2>
+            <p data-testid="search-min-length-subtitle">Search needs at least 2 characters.</p>
+          </div>
         </div>
       } @else if (searching()) {
         <div class="search-overlay__loading" data-testid="search-loading" role="status" aria-label="Searching">
