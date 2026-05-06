@@ -8,7 +8,7 @@
 } @else if (notFound()) {
   <div class="not-found" data-testid="partner-edit-not-found">
     <h1 data-testid="partner-edit-not-found-title">Partner not found</h1>
-    <a routerLink="/partners">Back to partners</a>
+    <a routerLink="/partners" data-testid="partner-edit-not-found-back-link">Back to partners</a>
   </div>
 } @else if (partner(); as p) {
   <div class="partner-edit" data-testid="partner-edit">
