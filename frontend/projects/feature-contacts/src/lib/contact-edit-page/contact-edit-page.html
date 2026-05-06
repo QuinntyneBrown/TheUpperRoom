@@ -12,7 +12,7 @@
   </div>
 } @else if (contact()) {
   <div class="page-container">
-    <h1>Edit contact</h1>
+    <h1 data-testid="contact-edit-title">Edit contact</h1>
     <ur-contact-form
       [initial]="initial()"
       [errors]="errors()"
