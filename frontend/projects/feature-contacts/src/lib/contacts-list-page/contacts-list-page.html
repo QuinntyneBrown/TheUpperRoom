@@ -56,7 +56,9 @@
     } @else {
       @if (searchResults().length === 0) {
         <div class="contacts-list-page__no-results" data-testid="search-no-results">
-          <mat-icon aria-hidden="true">search_off</mat-icon>
+          <div class="contacts-list-page__no-results-icon-wrap" data-testid="contacts-search-no-results-icon-wrap" aria-hidden="true">
+            <mat-icon aria-hidden="true">search_off</mat-icon>
+          </div>
           <h2 data-testid="search-no-results-title">No contacts match "{{ term() }}"</h2>
           <p data-testid="search-no-results-subtitle">Try a different keyword, broaden filters, or invite this contact to The Upper Room.</p>
           <ur-button variant="secondary" (pressed)="clearSearch()" data-testid="search-clear-btn">Clear search</ur-button>
