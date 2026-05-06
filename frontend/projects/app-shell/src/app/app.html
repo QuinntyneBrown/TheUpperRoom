@@ -22,9 +22,9 @@
     [opened]="sidenavOpened()"
     data-testid="side-nav"
   >
-    <div class="shell__brand">
+    <div class="shell__brand" data-testid="sidenav-brand">
       <mat-icon class="shell__brand-icon" aria-hidden="true">church</mat-icon>
-      <span class="shell__brand-name">The Upper Room</span>
+      <span class="shell__brand-name" data-testid="sidenav-brand-name">The Upper Room</span>
     </div>
 
     <p id="sidenav-workspace-label" class="shell__section-label" data-testid="sidenav-workspace-label">WORKSPACE</p>
@@ -91,7 +91,7 @@
           </button>
         }
         <mat-icon class="shell__topbar-logo" aria-hidden="true">church</mat-icon>
-        <span class="shell__topbar-title">The Upper Room</span>
+        <span class="shell__topbar-title" data-testid="topbar-title">The Upper Room</span>
         <span class="shell__spacer"></span>
         <ur-global-search-overlay />
         <ur-notification-center />
