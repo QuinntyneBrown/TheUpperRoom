@@ -7,7 +7,7 @@
 >
   <form (submit)="$event.preventDefault(); submit()" class="hackathon-form">
     <div class="hackathon-form__field">
-      <label for="hackathonTitle">Title *</label>
+      <label for="hackathonTitle">Title <span aria-hidden="true">*</span></label>
       <input
         id="hackathonTitle"
         type="text"
@@ -23,7 +23,7 @@
     </div>
 
     <div class="hackathon-form__field">
-      <label for="hackathonHostCity">Host city *</label>
+      <label for="hackathonHostCity">Host city <span aria-hidden="true">*</span></label>
       <input
         id="hackathonHostCity"
         type="text"
