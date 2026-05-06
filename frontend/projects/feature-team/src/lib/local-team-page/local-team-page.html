@@ -40,7 +40,10 @@
           }
           @for (m of membersByRole()[card.key]; track m.id) {
             <div class="team-role-card__member" [attr.data-testid]="'member-row-' + m.id">
-              <span class="team-role-card__member-name">{{ m.displayName }}</span>
+              <div class="team-role-card__member-info">
+                <span class="team-role-card__member-name">{{ m.displayName }}</span>
+                <span class="team-role-card__member-email">{{ m.email }}</span>
+              </div>
               @if (canEdit()) {
                 <ur-button variant="ghost" (click)="onRemoveClick(m)" aria-label="Remove member" data-testid="remove-member-btn">Remove</ur-button>
               }

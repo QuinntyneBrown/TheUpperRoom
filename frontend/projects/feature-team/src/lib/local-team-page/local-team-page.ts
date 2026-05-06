@@ -79,7 +79,9 @@ import { RoleChipEditorComponent } from '../role-chip-editor/role-chip-editor';
       display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 6px;
       background: var(--ur-bg-surface, #16161f);
     }
-    .team-role-card__member-name { font-size: 0.875rem; font-weight: 500; color: var(--ur-fg-primary, #fff); flex: 1; }
+    .team-role-card__member-info { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+    .team-role-card__member-name { font-size: 0.875rem; font-weight: 500; color: var(--ur-fg-primary, #fff); }
+    .team-role-card__member-email { font-size: 0.75rem; color: var(--ur-fg-secondary, #a1a1aa); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .team-role-card__empty {
       display: flex; align-items: center; justify-content: center; padding: 24px;
       font-size: 0.75rem; color: var(--ur-fg-muted, #a8a8b5); border: 1px dashed var(--ur-border-default, #2a2a3a);

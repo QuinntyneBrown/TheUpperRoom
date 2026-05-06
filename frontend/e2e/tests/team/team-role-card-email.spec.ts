@@ -12,7 +12,7 @@ test.describe('Team role cards show member email', () => {
     await page.route('**/api/teams/local', (r) => r.fulfill({
       status: 200, contentType: 'application/json',
       body: JSON.stringify([
-        { id: 'm1', displayName: 'Quinntyne Brown', email: 'quinntynebrown@upperroom.app', roles: ['city-lead'], isActive: true },
+        { id: 'm1', displayName: 'Quinntyne Brown', email: 'quinntynebrown@upperroom.app', roles: ['CityLead'], isActive: true },
       ]),
     }));
     await page.goto('/team');
