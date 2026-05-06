@@ -46,6 +46,10 @@
         <mat-icon>account_circle</mat-icon>
       </button>
       <mat-menu #profileMenu="matMenu">
+        <a mat-menu-item data-testid="profile-menu-settings" routerLink="/settings">
+          <mat-icon>settings</mat-icon>
+          Workspace settings
+        </a>
         <button mat-menu-item data-testid="sign-out-button" (click)="doSignOut()">
           <mat-icon>logout</mat-icon>
           Sign out
@@ -84,6 +88,10 @@
           <mat-icon>account_circle</mat-icon>
         </button>
         <mat-menu #topbarProfileMenu="matMenu">
+          <a mat-menu-item routerLink="/settings">
+            <mat-icon>settings</mat-icon>
+            Workspace settings
+          </a>
           <button mat-menu-item (click)="doSignOut()">
             <mat-icon>logout</mat-icon>
             Sign out

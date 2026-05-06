@@ -7,7 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { NavigationCancel, NavigationEnd, NavigationError, Router, RouterOutlet } from '@angular/router';
+import { NavigationCancel, NavigationEnd, NavigationError, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { filter, map, startWith } from 'rxjs';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -48,6 +48,7 @@ const BOTTOM_NAV_ITEMS = [
   selector: 'app-root',
   imports: [
     RouterOutlet,
+    RouterLink,
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
