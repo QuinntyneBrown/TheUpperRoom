@@ -88,10 +88,10 @@
           <ol class="hackathon-history">
             @for (entry of h.history; track entry.id) {
               <li class="hackathon-history__item">
-                <span class="hackathon-history__from">{{ entry.fromStage }}</span>
+                <span class="hackathon-history__from" data-testid="hackathon-history-entry-from">{{ entry.fromStage }}</span>
                 <mat-icon class="hackathon-history__arrow" aria-hidden="true">arrow_forward</mat-icon>
-                <span class="hackathon-history__to">{{ entry.toStage }}</span>
-                <time class="hackathon-history__time" [attr.datetime]="entry.changedAt">{{ entry.changedAt | date:'short' }}</time>
+                <span class="hackathon-history__to" data-testid="hackathon-history-entry-to">{{ entry.toStage }}</span>
+                <time class="hackathon-history__time" data-testid="hackathon-history-entry-time" [attr.datetime]="entry.changedAt">{{ entry.changedAt | date:'short' }}</time>
               </li>
             }
           </ol>
