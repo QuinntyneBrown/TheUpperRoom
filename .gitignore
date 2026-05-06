@@ -9,6 +9,12 @@ frontend/.angular/
 # Playwright
 frontend/playwright-report/
 frontend/test-results/
+.playwright-cli/
+**/.playwright-cli/
+frontend/login-recording/
+
+# Logs
+*.log
 
 # Secrets — never commit
 appsettings.Production.json
