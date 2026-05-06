@@ -4,26 +4,31 @@
       <ur-input label="First name" required
         [value]="firstName()" [error]="fieldError('firstName')"
         errorTestId="new-contact-firstName-error"
+        inputTestId="new-contact-firstName-input"
         (valueChange)="firstName.set($event)" />
       <ur-input label="Last name" required
         [value]="lastName()" [error]="fieldError('lastName')"
         errorTestId="new-contact-lastName-error"
+        inputTestId="new-contact-lastName-input"
         (valueChange)="lastName.set($event)" />
     </div>
     <ur-input label="Email" type="email" required
       autocomplete="email"
       [value]="email()" [error]="fieldError('email')"
       errorTestId="new-contact-email-error"
+      inputTestId="new-contact-email-input"
       (valueChange)="email.set($event)" />
     <div class="ncd-row">
       <ur-input label="Phone" type="tel"
         autocomplete="tel"
         [value]="phone()" [error]="fieldError('phone')"
         errorTestId="new-contact-phone-error"
+        inputTestId="new-contact-phone-input"
         (valueChange)="phone.set($event)" />
       <ur-input label="City"
         [value]="city()" [error]="fieldError('city')"
         errorTestId="new-contact-city-error"
+        inputTestId="new-contact-city-input"
         (valueChange)="city.set($event)" />
     </div>
     <p class="ncd-hint" data-testid="new-contact-dialog-hint">
