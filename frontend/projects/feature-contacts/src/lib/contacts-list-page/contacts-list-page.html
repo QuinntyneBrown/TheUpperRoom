@@ -98,6 +98,7 @@
           <tr>
             <th [attr.aria-sort]="ariaSortFor('firstName')">
               <button (click)="toggleSort('firstName')" class="sort-btn"
+                data-testid="contacts-sort-firstName-btn"
                 [attr.aria-label]="'Sort by first name ' + (sortField() === 'firstName' ? sortDir() : 'asc')">
                 First name
                 @if (sortField() === 'firstName') { <mat-icon class="sort-icon" aria-hidden="true">{{ sortDir() === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon> }
@@ -105,6 +106,7 @@
             </th>
             <th [attr.aria-sort]="ariaSortFor('lastName')">
               <button (click)="toggleSort('lastName')" class="sort-btn"
+                data-testid="contacts-sort-lastName-btn"
                 [attr.aria-label]="'Sort by last name ' + (sortField() === 'lastName' ? sortDir() : 'asc')">
                 Last name
                 @if (sortField() === 'lastName') { <mat-icon class="sort-icon" aria-hidden="true">{{ sortDir() === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon> }
