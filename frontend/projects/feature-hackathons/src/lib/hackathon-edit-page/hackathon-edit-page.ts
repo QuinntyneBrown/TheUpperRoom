@@ -45,7 +45,7 @@ import { UrButtonComponent } from 'components';
         <label>
           Title <span aria-hidden="true">*</span>
           <input id="editTitle" type="text" required [value]="title()" (input)="title.set($any($event.target).value)" aria-describedby="editTitle-error" />
-          @if (errors()['title']) { <span id="editTitle-error" class="error">{{ errors()['title'] }}</span> }
+          @if (errors()['title']) { <span id="editTitle-error" class="error" data-testid="hackathon-edit-title-error">{{ errors()['title'] }}</span> }
         </label>
         <label>
           Start date
@@ -54,7 +54,7 @@ import { UrButtonComponent } from 'components';
         <label>
           End date
           <input id="editEndDate" type="date" [value]="endDate()" (input)="endDate.set($any($event.target).value)" aria-describedby="editEndDate-error" />
-          @if (errors()['endDate']) { <span id="editEndDate-error" class="error">{{ errors()['endDate'] }}</span> }
+          @if (errors()['endDate']) { <span id="editEndDate-error" class="error" data-testid="hackathon-edit-endDate-error">{{ errors()['endDate'] }}</span> }
         </label>
         <label>
           Host city <span aria-hidden="true">*</span>
