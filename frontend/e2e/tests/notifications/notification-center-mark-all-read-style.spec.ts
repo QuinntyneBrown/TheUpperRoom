@@ -12,11 +12,12 @@ test.describe('Notification-center mark-all-read button style', () => {
       status: 200, contentType: 'application/json',
       body: JSON.stringify({ json: JSON.stringify({ items: [] }) }),
     }));
-    await page.route('**/api/notifications**', (r) => r.fulfill({
+    await page.route('**/api/notifications', (r) => r.fulfill({
       status: 200, contentType: 'application/json',
-      body: JSON.stringify([
-        { id: 'n1', kind: 'PartnerStageChanged', isRead: false, createdAt: '2026-05-01T00:00:00Z' },
-      ]),
+      body: JSON.stringify({
+        rows: [{ id: 'n1', kind: 'PartnerStageChanged', entityType: '', entityId: '', actorId: '', isRead: false, createdAt: '2026-05-01T00:00:00Z' }],
+        unreadCount: 1,
+      }),
     }));
     await page.goto('/dashboard');
     await page.getByTestId('notification-bell').click();
