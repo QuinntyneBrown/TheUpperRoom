@@ -24,7 +24,7 @@
     />
 
     @if (error) {
-      <mat-error [id]="id + '-error'">{{ error }}</mat-error>
+      <mat-error [id]="id + '-error'" [attr.data-testid]="errorTestId || null">{{ error }}</mat-error>
     } @else if (hint) {
       <mat-hint [id]="id + '-hint'">{{ hint }}</mat-hint>
     }

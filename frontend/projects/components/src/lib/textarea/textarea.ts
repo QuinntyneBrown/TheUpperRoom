@@ -26,6 +26,7 @@ export class UrTextareaComponent {
   @Input() value = '';
   @Input() hint = '';
   @Input() error = '';
+  @Input() errorTestId = '';
   @Input({ transform: numberAttribute }) rows = 5;
   @Input({ transform: booleanAttribute }) disabled = false;
   @Input({ transform: booleanAttribute }) readonly = false;

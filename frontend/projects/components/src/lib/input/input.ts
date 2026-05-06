@@ -26,6 +26,7 @@ export class UrInputComponent {
   @Input() type = 'text';
   @Input() hint = '';
   @Input() error = '';
+  @Input() errorTestId = '';
   @Input() autocomplete = 'off';
   @Input({ transform: booleanAttribute }) disabled = false;
   @Input({ transform: booleanAttribute }) readonly = false;
