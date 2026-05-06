@@ -96,7 +96,7 @@
       <table class="contacts-table" data-testid="contacts-table" aria-label="Contacts">
         <thead>
           <tr>
-            <th [attr.aria-sort]="ariaSortFor('firstName')">
+            <th scope="col" [attr.aria-sort]="ariaSortFor('firstName')">
               <button (click)="toggleSort('firstName')" class="sort-btn"
                 data-testid="contacts-sort-firstName-btn"
                 [attr.aria-label]="'Sort by first name ' + (sortField() === 'firstName' ? sortDir() : 'asc')">
@@ -104,7 +104,7 @@
                 @if (sortField() === 'firstName') { <mat-icon class="sort-icon" aria-hidden="true">{{ sortDir() === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon> }
               </button>
             </th>
-            <th [attr.aria-sort]="ariaSortFor('lastName')">
+            <th scope="col" [attr.aria-sort]="ariaSortFor('lastName')">
               <button (click)="toggleSort('lastName')" class="sort-btn"
                 data-testid="contacts-sort-lastName-btn"
                 [attr.aria-label]="'Sort by last name ' + (sortField() === 'lastName' ? sortDir() : 'asc')">
@@ -112,8 +112,8 @@
                 @if (sortField() === 'lastName') { <mat-icon class="sort-icon" aria-hidden="true">{{ sortDir() === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon> }
               </button>
             </th>
-            <th>Email</th>
-            <th>City</th>
+            <th scope="col">Email</th>
+            <th scope="col">City</th>
           </tr>
         </thead>
         <tbody>
