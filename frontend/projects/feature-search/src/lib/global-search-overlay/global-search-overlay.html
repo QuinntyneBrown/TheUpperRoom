@@ -58,7 +58,7 @@
       } @else if (term().length >= 2 && results() !== null) {
         <div class="search-overlay__no-results" data-testid="search-no-results">
           <mat-icon>search_off</mat-icon>
-          <p>No results for "{{ term() }}"</p>
+          <h2 data-testid="search-no-results-title">No results for "{{ term() }}"</h2>
         </div>
       }
       <footer class="search-overlay__keyboard-hint" data-testid="search-keyboard-hint">
