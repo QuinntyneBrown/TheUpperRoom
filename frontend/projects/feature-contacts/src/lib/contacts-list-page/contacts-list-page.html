@@ -1,7 +1,7 @@
-<div class="contacts-list-page" data-perf-ready="contacts">
+<section class="contacts-list-page" data-perf-ready="contacts" aria-labelledby="contacts-list-title">
   <header class="contacts-list-page__header">
     <div class="contacts-list-page__header-left">
-      <h1 data-testid="contacts-list-title">Contacts</h1>
+      <h1 id="contacts-list-title" data-testid="contacts-list-title">Contacts</h1>
       @if (listResult().total > 0) {
         <p class="contacts-list-page__subtitle" data-testid="contacts-count-subtitle">{{ listResult().total }} contacts</p>
       }
@@ -143,7 +143,7 @@
       </nav>
     }
   }
-</div>
+</section>
 
 @if (deletedToast()) {
   <div class="contact-toast contact-toast--deleted" role="status" data-testid="contact-deleted-toast">
