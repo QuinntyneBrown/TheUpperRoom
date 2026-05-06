@@ -22,7 +22,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
       <div class="partner-list-page__header">
         <div class="partner-list-page__title-row">
           <div class="partner-list-page__title-block">
-            <h1>Partners</h1>
+            <h1 data-testid="partners-list-title">Partners</h1>
             <p class="partner-list-page__count" data-testid="partners-count-subtitle">{{ allRows().length }} organizations · {{ leadCount() }} leads · {{ confirmedCount() }} confirmed</p>
           </div>
           <div class="partners-view-toggle">
