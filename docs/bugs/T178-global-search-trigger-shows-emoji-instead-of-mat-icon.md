@@ -1,6 +1,6 @@
 # T178 — Global search trigger renders 🔍 emoji instead of Material icon
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 
@@ -32,7 +32,8 @@ The source was fixed in commit `2eb2882` (`Replace emoji triggers with Material 
 
 The trigger should render a Material Symbols Outlined `search` glyph, with the same icon-button styling as the adjacent notifications/profile buttons.
 
-## Fix
+## Fix applied
 
-1. Rebuild `feature-search` library (`npm run build feature-search`) so the dist matches the source.
-2. Add a `prestart` npm script that ensures libraries are built before `ng serve`, preventing recurrence.
+Rebuilt `feature-search` library: `npx ng build feature-search` — dist now matches the source. Verified in browser at 1440px: search button renders Material Symbols Outlined `search` glyph, matching adjacent notifications/profile icon-buttons.
+
+**Regression prevention:** the new e2e test `frontend/e2e/tests/shell/global-search-trigger-icon.spec.ts` asserts the trigger contains a `<mat-icon>` with text `search` and no 🔍 emoji. CI will fail if the library dist is stale again.
