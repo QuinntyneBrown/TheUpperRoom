@@ -8,6 +8,7 @@
     [disabled]="disabled"
     [attr.aria-label]="ariaLabel || 'Action'"
     [class]="buttonClass"
+    [attr.data-testid]="testId || null"
     (click)="onClick($event)"
   >
     <mat-icon aria-hidden="true">{{ icon || 'add' }}</mat-icon>
@@ -20,6 +21,7 @@
     [disabled]="disabled"
     [attr.aria-label]="ariaLabel || 'Action'"
     [class]="buttonClass"
+    [attr.data-testid]="testId || null"
     (click)="onClick($event)"
   >
     <mat-icon aria-hidden="true">{{ icon || 'more_horiz' }}</mat-icon>
@@ -32,6 +34,7 @@
     [disabled]="disabled"
     [attr.aria-label]="ariaLabel || null"
     [class]="buttonClass"
+    [attr.data-testid]="testId || null"
     (click)="onClick($event)"
   >
     @if (icon && iconPosition === 'start') {
@@ -50,6 +53,7 @@
     [disabled]="disabled"
     [attr.aria-label]="ariaLabel || null"
     [class]="buttonClass"
+    [attr.data-testid]="testId || null"
     (click)="onClick($event)"
   >
     @if (icon && iconPosition === 'start') {
@@ -68,6 +72,7 @@
     [disabled]="disabled"
     [attr.aria-label]="ariaLabel || null"
     [class]="buttonClass"
+    [attr.data-testid]="testId || null"
     (click)="onClick($event)"
   >
     @if (icon && iconPosition === 'start') {

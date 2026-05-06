@@ -34,6 +34,7 @@ export class UrButtonComponent {
   @Input() icon = '';
   @Input() iconPosition: 'start' | 'end' = 'start';
   @Input() ariaLabel = '';
+  @Input() testId = '';
   @Input({ transform: booleanAttribute }) disabled = false;
   @Input({ transform: booleanAttribute }) fullWidth = false;
 
