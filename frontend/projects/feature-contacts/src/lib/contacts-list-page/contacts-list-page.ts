@@ -182,6 +182,11 @@ export class ContactsListPageComponent implements OnInit, OnDestroy {
     this.search$.next('');
   }
 
+  ariaSortFor(field: SortField): 'ascending' | 'descending' | 'none' {
+    if (this.sortField() !== field) return 'none';
+    return this.sortDir() === 'asc' ? 'ascending' : 'descending';
+  }
+
   toggleSort(field: SortField): void {
     if (this.sortField() === field) {
       this.sortDir.update((d) => (d === 'asc' ? 'desc' : 'asc'));

@@ -20,13 +20,13 @@ test.describe('Contacts table aria-sort', () => {
     await expect(page.getByTestId('contacts-table')).toBeVisible({ timeout: 10000 });
   });
 
-  test('default sort: First name th has aria-sort="ascending"', async ({ page }) => {
-    const th = page.locator('th').filter({ hasText: 'First name' });
+  test('default sort: Last name th has aria-sort="ascending"', async ({ page }) => {
+    const th = page.locator('th').filter({ hasText: 'Last name' });
     await expect(th).toHaveAttribute('aria-sort', 'ascending');
   });
 
   test('non-active column has aria-sort="none"', async ({ page }) => {
-    const th = page.locator('th').filter({ hasText: 'Last name' });
+    const th = page.locator('th').filter({ hasText: 'First name' });
     await expect(th).toHaveAttribute('aria-sort', 'none');
   });
 });
