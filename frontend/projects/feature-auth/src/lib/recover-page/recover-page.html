@@ -1,6 +1,6 @@
 <div class="auth-page">
 @if (submitted()) {
-  <div class="auth-card" role="status" data-testid="recover-success">
+  <section class="auth-card" role="status" data-testid="recover-success" aria-labelledby="recover-success-title">
     <div class="auth-card__wordmark" data-testid="recover-success-wordmark">
       <mat-icon class="auth-card__wordmark-logo" aria-hidden="true">church</mat-icon>
       <span class="auth-card__wordmark-name">The Upper Room</span>
@@ -8,7 +8,7 @@
     <div class="recover-success__icon-wrap" data-testid="recover-success-icon-wrap" aria-hidden="true">
       <mat-icon class="recover-success__icon" data-testid="recover-success-icon" aria-hidden="true">mark_email_read</mat-icon>
     </div>
-    <h1 data-testid="recover-success-title">Check your inbox</h1>
+    <h1 id="recover-success-title" data-testid="recover-success-title">Check your inbox</h1>
     <p data-testid="recover-success-subtitle">If an account exists for that address, we have sent reset instructions to it.</p>
     <div class="recover-success__email-row" data-testid="recover-success-email-row">
       <mat-icon class="recover-success__email-icon" aria-hidden="true">send</mat-icon>
@@ -16,14 +16,14 @@
     </div>
     <p data-testid="recover-success-help">The link expires in 30 minutes. Check your spam folder if you don't see it.</p>
     <a routerLink="/auth/sign-in" data-testid="recover-success-back-link">Back to sign in</a>
-  </div>
+  </section>
 } @else {
-  <div class="auth-card">
+  <section class="auth-card" aria-labelledby="recover-heading">
     <div class="auth-card__wordmark" data-testid="recover-wordmark">
       <mat-icon class="auth-card__wordmark-logo" aria-hidden="true">church</mat-icon>
       <span class="auth-card__wordmark-name">The Upper Room</span>
     </div>
-    <h1 data-testid="recover-heading">Reset password</h1>
+    <h1 id="recover-heading" data-testid="recover-heading">Reset password</h1>
     <p class="auth-subtitle" data-testid="recover-subtitle">We will email a recovery link if an account matches.</p>
     <form (ngSubmit)="submit()" novalidate>
       <ur-input
@@ -49,7 +49,7 @@
       <span data-testid="recover-footer-prompt">Remembered it?</span>
       <a routerLink="/auth/sign-in" data-testid="recover-form-back-link">Back to sign in</a>
     </p>
-  </div>
+  </section>
 }
 
 </div>
