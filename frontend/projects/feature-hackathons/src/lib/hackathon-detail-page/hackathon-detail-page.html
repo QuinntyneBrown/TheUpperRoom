@@ -74,9 +74,11 @@
         </section>
       }
 
-      @if (h.history.length > 0) {
-        <section class="hackathon-detail__history" aria-label="Stage history">
-          <h2 class="hackathon-detail__section-title">Stage history</h2>
+      <section class="hackathon-detail__history" aria-label="Stage history">
+        <h2 class="hackathon-detail__section-title">Stage history</h2>
+        @if (h.history.length === 0) {
+          <h2 class="hackathon-history__empty" data-testid="hackathon-history-empty-title">No stage changes yet.</h2>
+        } @else {
           <ul class="hackathon-history">
             @for (entry of h.history; track entry.id) {
               <li class="hackathon-history__item">
@@ -87,8 +89,8 @@
               </li>
             }
           </ul>
-        </section>
-      }
+        }
+      </section>
     </div>
   </div>
 }
