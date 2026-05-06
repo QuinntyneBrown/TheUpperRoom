@@ -2,15 +2,16 @@ import { ChangeDetectionStrategy, Component, computed, inject, OnDestroy, OnInit
 import { AUTH_SERVICE, TEAM_SERVICE, TeamMemberDto } from 'api';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { UrButtonComponent, UrDialogComponent } from 'components';
+import { DialogService, UrButtonComponent } from 'components';
 import { InviteDialogComponent } from '../invite-dialog/invite-dialog';
+import { RemoveMemberDialogComponent } from '../remove-member-dialog/remove-member-dialog';
 import { RoleChipEditorComponent } from '../role-chip-editor/role-chip-editor';
 
 @Component({
   selector: 'ur-local-team-page',
   templateUrl: './local-team-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, MatIconModule, UrButtonComponent, UrDialogComponent, InviteDialogComponent, RoleChipEditorComponent],
+  imports: [MatButtonModule, MatIconModule, UrButtonComponent, InviteDialogComponent, RoleChipEditorComponent],
   styles: [`
     .team-page { display: flex; flex-direction: column; height: 100%; }
     .team-page__header {
@@ -89,6 +90,7 @@ import { RoleChipEditorComponent } from '../role-chip-editor/role-chip-editor';
 export class LocalTeamPageComponent implements OnInit, OnDestroy {
   private team = inject(TEAM_SERVICE);
   private auth = inject(AUTH_SERVICE);
+  private dialog = inject(DialogService);
 
   readonly roleCards = [
     { key: 'CityLead', label: 'City Lead' },
@@ -103,7 +105,6 @@ export class LocalTeamPageComponent implements OnInit, OnDestroy {
   removeError = signal(false);
   removeSuccess = signal(false);
   showInvite = signal(false);
-  removingMember = signal<TeamMemberDto | null>(null);
   currentRoles = signal<string[]>([]);
 
   private removeErrorTimer?: ReturnType<typeof setTimeout>;
@@ -152,19 +153,24 @@ export class LocalTeamPageComponent implements OnInit, OnDestroy {
     this.loadTeam();
   }
 
-  confirmRemove(): void {
-    const m = this.removingMember();
-    if (!m) return;
-    this.team.removeMember(m.id).subscribe({
+  onRemoveClick(member: TeamMemberDto): void {
+    this.dialog.open<RemoveMemberDialogComponent, boolean, { member: TeamMemberDto }>(
+      RemoveMemberDialogComponent,
+      { data: { member }, ariaLabel: 'Remove team member' },
+    ).closed$.subscribe(confirmed => {
+      if (confirmed === true) this.confirmRemove(member);
+    });
+  }
+
+  private confirmRemove(member: TeamMemberDto): void {
+    this.team.removeMember(member.id).subscribe({
       next: () => {
-        this.removingMember.set(null);
         clearTimeout(this.removeSuccessTimer);
         this.removeSuccess.set(true);
         this.removeSuccessTimer = setTimeout(() => this.removeSuccess.set(false), 3000);
         this.loadTeam();
       },
       error: () => {
-        this.removingMember.set(null);
         clearTimeout(this.removeErrorTimer);
         this.removeError.set(true);
         this.removeErrorTimer = setTimeout(() => this.removeError.set(false), 4000);

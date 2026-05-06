@@ -1,6 +1,15 @@
 # T180 — Migrate "Remove team member" confirm to DialogService
 
-**Status:** ACCEPTED
+**Status:** COMPLETE
+
+## Implementation notes (radically simple)
+
+- New tiny component `frontend/projects/feature-team/src/lib/remove-member-dialog/remove-member-dialog.ts` — a `<ur-dialog>` wrapper that injects `UR_DIALOG_DATA` for the member and `UrDialogRef<boolean>` to close. Inline template, no separate `.html` / `.scss` (radically simple).
+- `local-team-page.ts`: dropped `UrDialogComponent` import + `removingMember` signal + the old confirmRemove() that read from the signal. Added `DialogService` injection; new `onRemoveClick(member)` opens the dialog and routes the boolean result to a private `confirmRemove(member)` that does the same service call as before.
+- `local-team-page.html`: deleted the `@if (removingMember()) { <ur-dialog>…</ur-dialog> }` block; the row's Remove button now calls `onRemoveClick(m)`.
+- `feature-team` public-api re-exports `RemoveMemberDialogComponent` for completeness.
+- All `data-testid` values preserved (`remove-member-dialog`, `confirm-remove-btn`, `remove-member-btn`, `remove-member-success-toast`) — Playwright `getByTestId` queries the whole document including `.cdk-overlay-container`, so the existing e2e specs (`e2e/tests/team/remove-member-*.spec.ts`) need no changes.
+- Pencil .pen update deferred — repo build environment has missing deps (`@microsoft/signalr`, no `dist/api`) so a full visual verification loop is not feasible right now; the migrated dialog conforms to the same `<ur-dialog>` chrome it had before, just rendered through the CDK overlay backdrop introduced in T179.
 **Type:** Refactor
 **Blocked by:** T179
 **Source:** `docs/inline-dialog-audit.md` (item #1)
