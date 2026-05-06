@@ -1,6 +1,14 @@
 # T186 — Migrate "Add product" dialog to DialogService
 
-**Status:** ACCEPTED
+**Status:** COMPLETE
+
+## Implementation notes (radically simple)
+
+- New `AddProductDialogComponent` at `frontend/projects/feature-hackathons/src/lib/add-product-dialog/add-product-dialog.ts` — owns the entire add-product form, validation, save state, and the network call. Receives `{ hackathonId }` via `UR_DIALOG_DATA`, closes with the new `ProductDto` on success via `UrDialogRef<ProductDto>`. The form CSS moved with it (the page no longer needs those styles).
+- `products-section.ts`: now a thin section component that holds only the products list and an `onAddClick()` that opens the dialog. Dropped `HACKATHON_SERVICE` injection, `UrDialogComponent` import, and all form state signals (`name`, `description`, `repoUrl`, `demoUrl`, `saving`, `saveError`, `errors`, `showForm`) plus `openForm`/`cancelForm`/`submit`/`ngOnDestroy` (no longer needed). On dialog close with a product result, the section appends the product to its list signal.
+- `products-section.html`: stripped the bottom `@if (showForm()) { <ur-dialog>…</ur-dialog> }` block. The "+ Add product" trigger now calls `(click)="onAddClick()"` instead of `openForm()`.
+- All `data-testid` values preserved (`add-product-btn`, `add-product-dialog`, `submit-product-btn`, `products-save-error`, `products-section-empty`, `product-card-*`) — `e2e/tests/hackathons/products-section-*.spec.ts` need no updates.
+- Pencil .pen update deferred — same reasoning as T180–T185.
 **Type:** Refactor
 **Blocked by:** T179
 **Source:** `docs/inline-dialog-audit.md` (item #10)

@@ -1,7 +1,7 @@
 <section class="products-section" aria-label="Products">
   <div class="products-section__header">
     <h2 class="products-section__title">Products</h2>
-    <ur-button variant="secondary" (click)="openForm()" data-testid="add-product-btn">+ Add product</ur-button>
+    <ur-button variant="secondary" (click)="onAddClick()" data-testid="add-product-btn">+ Add product</ur-button>
   </div>
 
   @if (products().length === 0) {
@@ -30,47 +30,3 @@
     </div>
   }
 </section>
-
-@if (showForm()) {
-  <ur-dialog title="Add product" closeLabel="Cancel" (closed)="cancelForm()" data-testid="add-product-dialog">
-    <form (submit)="$event.preventDefault(); submit()" class="product-form">
-      <div class="product-form__field">
-        <label for="productName">Name</label>
-        <input id="productName" type="text" [value]="name()" (input)="name.set($any($event.target).value)" aria-describedby="productName-error" />
-        @if (errors()['name']) {
-          <span id="productName-error" class="product-form__error">{{ errors()['name'] }}</span>
-        }
-      </div>
-      <div class="product-form__field">
-        <label for="productDesc">Description (optional)</label>
-        <textarea id="productDesc" rows="2" [value]="description()" (input)="description.set($any($event.target).value)"></textarea>
-      </div>
-      <div class="product-form__row">
-        <div class="product-form__field">
-          <label for="productRepo">Repo URL (optional)</label>
-          <input id="productRepo" type="url" [value]="repoUrl()" (input)="repoUrl.set($any($event.target).value)" aria-describedby="productRepo-error" />
-          @if (errors()['repoUrl']) {
-            <span id="productRepo-error" class="product-form__error">{{ errors()['repoUrl'] }}</span>
-          }
-        </div>
-        <div class="product-form__field">
-          <label for="productDemo">Demo URL (optional)</label>
-          <input id="productDemo" type="url" [value]="demoUrl()" (input)="demoUrl.set($any($event.target).value)" aria-describedby="productDemo-error" />
-          @if (errors()['demoUrl']) {
-            <span id="productDemo-error" class="product-form__error">{{ errors()['demoUrl'] }}</span>
-          }
-        </div>
-      </div>
-      <div class="product-form__actions">
-        <ur-button type="button" variant="ghost" (click)="cancelForm()">Cancel</ur-button>
-        <ur-button type="submit" [disabled]="saving()" data-testid="submit-product-btn">{{ saving() ? 'Saving…' : 'Add product' }}</ur-button>
-      </div>
-      @if (saveError()) {
-        <div class="products-save-error" data-testid="products-save-error" role="alert">
-          <mat-icon>error_outline</mat-icon>
-          <span>Failed to save product. Please try again.</span>
-        </div>
-      }
-    </form>
-  </ur-dialog>
-}
