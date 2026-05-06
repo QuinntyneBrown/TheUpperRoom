@@ -31,6 +31,13 @@ import { ContactFormComponent, ContactFormInitial, ContactFormValue } from '../c
     .conflict-field__label { font-size: 0.7rem; color: var(--ur-fg-muted, #64748b); text-transform: uppercase; }
     .conflict-field__value { font-size: 0.875rem; padding: 4px 0; min-height: 20px; }
     .conflict-dialog__actions { display: flex; justify-content: flex-end; gap: 12px; }
+    .contact-edit__back {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--ur-fg-secondary, #94a3b8); font-size: 0.875rem;
+      text-decoration: none; margin-bottom: 12px;
+    }
+    .contact-edit__back:hover { color: var(--ur-fg-primary, #f1f5f9); }
+    .contact-edit__back mat-icon { font-size: 18px; width: 18px; height: 18px; }
     .edit-error-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
       gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 500;

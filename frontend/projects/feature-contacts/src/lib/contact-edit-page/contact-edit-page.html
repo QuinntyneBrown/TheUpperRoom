@@ -12,6 +12,9 @@
   </div>
 } @else if (contact()) {
   <div class="page-container">
+    <a [routerLink]="['/contacts', contact()!.id]" class="contact-edit__back" data-testid="contact-edit-back-link">
+      <mat-icon aria-hidden="true">arrow_back</mat-icon> Back
+    </a>
     <h1 data-testid="contact-edit-title">Edit contact</h1>
     <ur-contact-form
       [initial]="initial()"
