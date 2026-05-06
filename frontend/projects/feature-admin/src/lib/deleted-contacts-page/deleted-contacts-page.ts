@@ -46,7 +46,7 @@ import { UrButtonComponent } from 'components';
           <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let row">
-              <ur-button [disabled]="restoring() === row.id" (pressed)="restore(row.id)" [attr.data-testid]="'restore-contact-' + row.id">
+              <ur-button variant="ghost" [disabled]="restoring() === row.id" (pressed)="restore(row.id)" [attr.data-testid]="'restore-contact-' + row.id">
                 {{ restoring() === row.id ? 'Restoring…' : 'Restore' }}
               </ur-button>
             </td>
