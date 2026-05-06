@@ -50,8 +50,8 @@
       </thead>
       <tbody>
         @for (t of teams(); track t.id) {
-          <tr [attr.data-testid]="'team-row-' + t.id" [routerLink]="['/teams', t.id]" style="cursor:pointer">
-            <td>{{ t.city }}</td>
+          <tr [attr.data-testid]="'team-row-' + t.id">
+            <td><a [routerLink]="['/teams', t.id]">{{ t.city }}</a></td>
             <td>{{ t.memberCount }}</td>
             <td>{{ t.prayerLeadCount }}</td>
             <td>{{ t.eventLeadCount }}</td>
