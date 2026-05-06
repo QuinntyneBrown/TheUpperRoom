@@ -19,7 +19,9 @@
       <mat-icon class="auth-card__wordmark-logo" aria-hidden="true">church</mat-icon>
       <span class="auth-card__wordmark-name">The Upper Room</span>
     </div>
-    <mat-icon class="verify-error__icon" data-testid="verify-error-icon" aria-hidden="true">link_off</mat-icon>
+    <div class="verify-error__icon-wrap" data-testid="verify-error-icon-wrap" aria-hidden="true">
+      <mat-icon class="verify-error__icon" data-testid="verify-error-icon" aria-hidden="true">link_off</mat-icon>
+    </div>
     <h2 data-testid="verify-error-heading">This link can't be used</h2>
     <p>The verification link is expired or has already been used. Request a new one and we'll send it right over.</p>
     <ur-alert

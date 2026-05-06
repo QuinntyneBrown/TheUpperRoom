@@ -16,3 +16,22 @@
   height: 36px;
   color: var(--ur-success, #22c55e);
 }
+
+.verify-error__icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 9999px;
+  background: var(--ur-danger-soft, rgba(248, 113, 113, 0.12));
+  border: 1px solid var(--ur-danger, #f87171);
+  align-self: center;
+}
+
+.verify-error__icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  color: var(--ur-danger, #f87171);
+}
