@@ -82,7 +82,7 @@
           <button
             mat-icon-button
             data-testid="hamburger"
-            aria-label="Open navigation"
+            [attr.aria-label]="sidenav.opened ? 'Close navigation' : 'Open navigation'"
             (click)="sidenav.toggle()"
           >
             <mat-icon aria-hidden="true">menu</mat-icon>
