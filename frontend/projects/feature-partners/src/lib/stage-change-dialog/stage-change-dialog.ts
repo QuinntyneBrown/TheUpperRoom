@@ -32,7 +32,7 @@ export interface StageChangeDialogData {
       </mat-form-field>
       <div ur-dialog-actions style="display:flex;gap:8px">
         <ur-button variant="ghost" (pressed)="ref.close()" data-testid="stage-change-cancel-btn">Cancel</ur-button>
-        <ur-button (click)="ref.close({ reason })" data-testid="stage-change-confirm-btn">
+        <ur-button [variant]="confirmVariant" (click)="ref.close({ reason })" data-testid="stage-change-confirm-btn">
           {{ confirmLabel }}
         </ur-button>
       </div>
@@ -54,5 +54,9 @@ export class StageChangeDialogComponent {
     return this.data.direction === 'revert'
       ? `Move to ${this.data.stageLabel}`
       : 'Advance partner';
+  }
+
+  get confirmVariant(): 'primary' | 'danger' {
+    return this.data.direction === 'revert' ? 'danger' : 'primary';
   }
 }
