@@ -91,7 +91,8 @@
       color: var(--ur-fg-primary);
     }
 
-    ur-notification-center {
+    ur-notification-center,
+    ur-global-search-overlay {
       display: inline-flex;
       align-items: center;
       position: relative;
@@ -111,6 +112,46 @@
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
       z-index: 1000;
     }
+  }
+
+  ::ng-deep .search-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 80px;
+  }
+  ::ng-deep .search-overlay__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  ::ng-deep .search-overlay__panel {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    max-height: 70vh;
+    overflow-y: auto;
+    background: var(--ur-bg-elevated, #16161f);
+    border: 1px solid var(--ur-border-default, #2a2a3a);
+    border-radius: 8px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    padding: 12px;
+  }
+  ::ng-deep .search-overlay__input {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--ur-bg-input, #0e0e16);
+    color: var(--ur-fg-primary, #fff);
+    border: 1px solid var(--ur-border-default, #2a2a3a);
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+  }
+  ::ng-deep .search-overlay__input:focus {
+    border-color: var(--ur-accent-primary, #9F86FF);
   }
 
   &__spacer {
