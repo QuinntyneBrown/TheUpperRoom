@@ -65,12 +65,12 @@
 
     <div class="teams-cards" aria-label="All teams">
       @for (t of teams(); track t.id) {
-        <div class="team-card" [attr.data-testid]="'team-card-' + t.id" [routerLink]="['/teams', t.id]" style="cursor:pointer">
+        <a class="team-card" [attr.data-testid]="'team-card-' + t.id" [routerLink]="['/teams', t.id]">
           <p class="team-card__city">{{ t.city }}</p>
           <p class="team-card__members">{{ t.memberCount }} members</p>
           <p class="team-card__hackathons">{{ t.activeHackathonCount }} active hackathons</p>
           <p class="team-card__partners">{{ t.partnerCount }} partners</p>
-        </div>
+        </a>
       }
     </div>
 
