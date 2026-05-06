@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { AUTH_SERVICE } from 'api';
 import { UrAlertComponent, UrButtonComponent } from 'components';
@@ -9,7 +9,7 @@ import { UrAlertComponent, UrButtonComponent } from 'components';
   templateUrl: './verify-page.html',
   styleUrl: './verify-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatIconModule, UrAlertComponent, UrButtonComponent],
+  imports: [MatIconModule, RouterLink, UrAlertComponent, UrButtonComponent],
 })
 export class VerifyPageComponent implements OnInit {
   private auth = inject(AUTH_SERVICE);
