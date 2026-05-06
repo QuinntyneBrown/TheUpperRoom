@@ -38,9 +38,9 @@ import { UrButtonComponent } from 'components';
         <a routerLink="/hackathons" data-testid="hackathon-edit-not-found-back-link">Back to hackathons</a>
       </div>
     } @else {
-    <div class="hackathon-edit-page">
+    <article class="hackathon-edit-page" aria-labelledby="hackathon-edit-title">
       <a [routerLink]="['/hackathons', id]" class="hackathon-edit__back" data-testid="hackathon-edit-back-link"><mat-icon aria-hidden="true">arrow_back</mat-icon> Back</a>
-      <h1 data-testid="hackathon-edit-title">Edit hackathon</h1>
+      <h1 id="hackathon-edit-title" data-testid="hackathon-edit-title">Edit hackathon</h1>
       <form (ngSubmit)="submit()">
         <label>
           Title <span aria-hidden="true">*</span>
@@ -67,7 +67,7 @@ import { UrButtonComponent } from 'components';
           </ur-button>
         </div>
       </form>
-    </div>
+    </article>
     }
     @if (saveError()) {
       <div class="edit-error-toast" data-testid="edit-save-error-toast" role="alert">
