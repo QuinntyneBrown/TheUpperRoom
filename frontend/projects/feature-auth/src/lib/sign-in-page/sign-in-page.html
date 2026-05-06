@@ -37,10 +37,11 @@
     <div class="auth-opts-row">
       <label class="auth-opts-row__remember">
         <input
+          #remember
           type="checkbox"
           data-testid="sign-in-remember-me"
           [checked]="rememberMe()"
-          (change)="rememberMe.set($any($event.target).checked)"
+          (change)="rememberMe.set(remember.checked)"
         />
         Remember me
       </label>

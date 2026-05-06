@@ -82,6 +82,7 @@ body {
   font-size: 0.75rem;
   color: var(--ur-fg-secondary, #a1a1aa);
   cursor: pointer;
+  accent-color: var(--ur-accent-primary, #9f86ff);
 }
 
 .auth-opts-row__forgot {
