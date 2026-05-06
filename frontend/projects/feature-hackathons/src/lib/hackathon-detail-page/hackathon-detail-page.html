@@ -5,7 +5,10 @@
     <div class="hackathon-detail-loading__block"></div>
   </div>
 } @else if (notFound()) {
-  <div class="hackathon-detail__not-found" data-testid="hackathon-not-found">Hackathon not found.</div>
+  <div class="hackathon-detail__not-found" data-testid="hackathon-not-found">
+    <h1>Hackathon not found</h1>
+    <a routerLink="/hackathons">Back to hackathons</a>
+  </div>
 } @else if (hackathon(); as h) {
   <div class="hackathon-detail" data-testid="hackathon-detail">
     <header class="hackathon-detail__header">
