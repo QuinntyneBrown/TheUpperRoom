@@ -29,8 +29,13 @@
       </button>
     </div>
   }
-  @if (error()) {
-    <div role="alert" class="auth-error" data-testid="sign-in-error">{{ error() }}</div>
+  @if (error(); as e) {
+    <ur-alert
+      data-testid="sign-in-error"
+      variant="danger"
+      [title]="e.title"
+      [message]="e.message"
+    />
   }
   <form (ngSubmit)="submit()" novalidate>
     <ur-input

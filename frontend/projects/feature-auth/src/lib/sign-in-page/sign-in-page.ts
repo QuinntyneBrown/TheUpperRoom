@@ -3,14 +3,14 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AUTH_SERVICE } from 'api';
 import { MatIconModule } from '@angular/material/icon';
-import { UrButtonComponent, UrInputComponent } from 'components';
+import { UrAlertComponent, UrButtonComponent, UrInputComponent } from 'components';
 
 @Component({
   selector: 'ur-sign-in-page',
   templateUrl: './sign-in-page.html',
   styleUrl: './sign-in-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, UrButtonComponent, UrInputComponent, RouterLink, MatIconModule],
+  imports: [FormsModule, UrAlertComponent, UrButtonComponent, UrInputComponent, RouterLink, MatIconModule],
 })
 export class SignInPageComponent implements OnInit {
   private auth = inject(AUTH_SERVICE);
@@ -20,7 +20,7 @@ export class SignInPageComponent implements OnInit {
   email = signal('');
   password = signal('');
   rememberMe = signal(false);
-  error = signal('');
+  error = signal<{ title: string; message: string } | null>(null);
   loading = signal(false);
   returnUrl = signal('');
   showReturnToast = signal(false);
@@ -36,7 +36,7 @@ export class SignInPageComponent implements OnInit {
 
   submit(): void {
     this.loading.set(true);
-    this.error.set('');
+    this.error.set(null);
 
     this.auth.signIn({ email: this.email(), password: this.password() }).subscribe({
       next: () => {
@@ -46,9 +46,15 @@ export class SignInPageComponent implements OnInit {
       error: (err: { status: number }) => {
         this.loading.set(false);
         if (err.status === 403) {
-          this.error.set('Please verify your email before signing in.');
+          this.error.set({
+            title: 'Verify your email to continue',
+            message: 'Open the verification link we sent to your inbox before signing in.',
+          });
         } else {
-          this.error.set('Invalid email or password.');
+          this.error.set({
+            title: 'Email or password is incorrect',
+            message: 'Double-check your details and try again.',
+          });
         }
       },
     });
