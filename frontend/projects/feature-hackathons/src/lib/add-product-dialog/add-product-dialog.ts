@@ -63,7 +63,7 @@ export interface AddProductDialogData {
           </div>
         </div>
         <div class="product-form__actions">
-          <ur-button type="button" variant="ghost" (click)="ref.close()">Cancel</ur-button>
+          <ur-button type="button" variant="ghost" (click)="ref.close()" data-testid="add-product-cancel-btn">Cancel</ur-button>
           <ur-button type="submit" [disabled]="saving()" data-testid="submit-product-btn">{{ saving() ? 'Saving…' : 'Add product' }}</ur-button>
         </div>
         @if (saveError()) {

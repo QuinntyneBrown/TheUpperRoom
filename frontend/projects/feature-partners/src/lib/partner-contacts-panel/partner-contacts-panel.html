@@ -62,7 +62,7 @@
         data-testid="new-contact-email"
       />
       <div class="partner-contacts__new-actions">
-        <ur-button variant="ghost" (click)="cancelNew()">Cancel</ur-button>
+        <ur-button variant="ghost" (click)="cancelNew()" data-testid="new-contact-cancel-btn">Cancel</ur-button>
         <ur-button [disabled]="saving()" (click)="createAndLink()" data-testid="create-link-btn">
           {{ saving() ? 'Saving…' : 'Create & link contact' }}
         </ur-button>
