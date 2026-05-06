@@ -117,7 +117,7 @@
 @if (deleteError()) {
   <div class="hackathon-toast hackathon-toast--error" data-testid="hackathon-delete-error-toast" role="alert">
     <mat-icon aria-hidden="true">error_outline</mat-icon>
-    <span>Delete failed. Please try again.</span>
+    <span data-testid="hackathon-delete-error-toast-message">Delete failed. Please try again.</span>
   </div>
 }
 
