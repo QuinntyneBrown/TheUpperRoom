@@ -27,14 +27,14 @@
       <span class="shell__brand-name">The Upper Room</span>
     </div>
 
-    <p id="sidenav-workspace-label" class="shell__section-label">WORKSPACE</p>
+    <p id="sidenav-workspace-label" class="shell__section-label" data-testid="sidenav-workspace-label">WORKSPACE</p>
     <mat-nav-list aria-labelledby="sidenav-workspace-label">
       @for (item of workspaceItems; track item.route) {
         <ur-side-nav-item [icon]="item.icon" [label]="item.label" [href]="item.route" [testId]="item.testId" />
       }
     </mat-nav-list>
 
-    <p id="sidenav-global-label" class="shell__section-label">GLOBAL</p>
+    <p id="sidenav-global-label" class="shell__section-label" data-testid="sidenav-global-label">GLOBAL</p>
     <mat-nav-list aria-labelledby="sidenav-global-label">
       @for (item of globalItems; track item.route) {
         <ur-side-nav-item [icon]="item.icon" [label]="item.label" [href]="item.route" [testId]="item.testId" />
