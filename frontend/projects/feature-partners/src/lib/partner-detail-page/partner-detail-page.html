@@ -66,7 +66,7 @@
           <div class="partner-stepper" data-testid="stage-stepper">
             @for (s of stages; track s.value; let i = $index) {
               @if (i > 0) {
-                <div class="partner-stepper__divider"></div>
+                <div class="partner-stepper__divider" aria-hidden="true"></div>
               }
               <div class="partner-stepper__step"
                    [class.partner-stepper__step--complete]="stageIndex() > i"
@@ -77,9 +77,9 @@
                   @if (stageIndex() > i) {
                     <span class="material-symbols-outlined partner-stepper__check" aria-hidden="true">check</span>
                   } @else if (stageIndex() === i) {
-                    <span class="partner-stepper__dot partner-stepper__dot--current"></span>
+                    <span class="partner-stepper__dot partner-stepper__dot--current" aria-hidden="true"></span>
                   } @else {
-                    <span class="partner-stepper__dot partner-stepper__dot--future"></span>
+                    <span class="partner-stepper__dot partner-stepper__dot--future" aria-hidden="true"></span>
                   }
                   <span class="partner-stepper__name">{{ s.label }}</span>
                 </div>
