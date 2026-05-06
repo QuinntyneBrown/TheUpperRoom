@@ -7,11 +7,11 @@
 
   <div class="ur-empty-state__body">
     @if (title) {
-      <h2 class="ur-empty-state__title">{{ title }}</h2>
+      <h2 class="ur-empty-state__title" [attr.data-testid]="titleTestId || null">{{ title }}</h2>
     }
 
     @if (message) {
-      <p class="ur-empty-state__message">{{ message }}</p>
+      <p class="ur-empty-state__message" [attr.data-testid]="messageTestId || null">{{ message }}</p>
     }
 
     <ng-content />

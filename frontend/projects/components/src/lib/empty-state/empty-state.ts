@@ -13,4 +13,6 @@ export class UrEmptyStateComponent {
   @Input() icon = 'inventory_2';
   @Input() title = '';
   @Input() message = '';
+  @Input() titleTestId = '';
+  @Input() messageTestId = '';
 }
