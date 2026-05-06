@@ -45,8 +45,8 @@
               @for (m of membersByRole()[card.key]; track m.id) {
                 <li class="team-role-card__member" [attr.data-testid]="'member-row-' + m.id">
                   <div class="team-role-card__member-info">
-                    <span class="team-role-card__member-name">{{ m.displayName }}</span>
-                    <a class="team-role-card__member-email" [href]="'mailto:' + m.email">{{ m.email }}</a>
+                    <span class="team-role-card__member-name" data-testid="member-name">{{ m.displayName }}</span>
+                    <a class="team-role-card__member-email" data-testid="member-email" [href]="'mailto:' + m.email">{{ m.email }}</a>
                   </div>
                   @if (canEdit()) {
                     <ur-button variant="ghost" (click)="onRemoveClick(m)" [ariaLabel]="'Remove ' + m.displayName" data-testid="remove-member-btn">Remove</ur-button>
