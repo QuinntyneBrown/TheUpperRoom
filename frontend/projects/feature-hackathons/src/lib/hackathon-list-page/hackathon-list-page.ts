@@ -38,6 +38,7 @@ import { HackathonCreatePageComponent } from '../hackathon-create-page/hackathon
               <mat-icon aria-hidden="true">rocket_launch</mat-icon>
             </div>
             <h2 data-testid="hackathons-empty-title">No hackathons yet</h2>
+            <p data-testid="hackathons-empty-subtitle">Plan your first hackathon to bring your team together.</p>
             <ur-button (pressed)="onCreateClick()" data-testid="hackathons-empty-create-btn">Create first hackathon</ur-button>
           </div>
         } @else {
