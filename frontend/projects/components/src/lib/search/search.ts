@@ -24,6 +24,7 @@ export class UrSearchComponent {
   @Input() placeholder = 'Search';
   @Input() value = '';
   @Input() ariaLabel = 'Search';
+  @Input() inputTestId = '';
   @Input({ transform: booleanAttribute }) disabled = false;
 
   @Output() valueChange = new EventEmitter<string>();

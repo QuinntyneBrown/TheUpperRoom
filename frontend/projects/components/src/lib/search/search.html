@@ -8,6 +8,7 @@
     [placeholder]="placeholder"
     [disabled]="disabled"
     [attr.aria-label]="ariaLabel"
+    [attr.data-testid]="inputTestId || null"
     (input)="onInput($event)"
     (keydown.enter)="onSubmit()"
   />
