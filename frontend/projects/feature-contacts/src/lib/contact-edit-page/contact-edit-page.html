@@ -14,7 +14,7 @@
 } @else if (contact()) {
   <article class="page-container" aria-labelledby="contact-edit-title">
     <a [routerLink]="['/contacts', contact()!.id]" class="contact-edit__back" data-testid="contact-edit-back-link">
-      <mat-icon aria-hidden="true">arrow_back</mat-icon> Back
+      <mat-icon data-testid="contact-edit-back-arrow" aria-hidden="true">arrow_back</mat-icon> Back
     </a>
     <h1 id="contact-edit-title" data-testid="contact-edit-title">Edit contact</h1>
     <ur-contact-form
