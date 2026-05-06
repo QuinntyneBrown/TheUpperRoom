@@ -58,7 +58,10 @@
   @if (removedWidget()) {
     <div class="dashboard-snackbar" role="status" data-testid="undo-snackbar">
       <mat-icon class="dashboard-snackbar__icon">delete</mat-icon>
-      <span class="dashboard-snackbar__text">Widget removed</span>
+      <div class="dashboard-snackbar__copy">
+        <span class="dashboard-snackbar__text">Widget removed</span>
+        <span class="dashboard-snackbar__subtitle" data-testid="undo-snackbar-subtitle">Undo within 8 seconds</span>
+      </div>
       <button mat-button (click)="undoRemove()" data-testid="undo-remove-btn">Undo</button>
     </div>
   }
