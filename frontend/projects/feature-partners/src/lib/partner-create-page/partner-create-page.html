@@ -7,8 +7,9 @@
 >
   <form (ngSubmit)="submit()" class="partner-form">
     <ur-input
-      label="Partner name *"
+      label="Partner name"
       type="text"
+      required
       placeholder="e.g. FaithTech Toronto"
       [value]="name()"
       autocomplete="organization"
