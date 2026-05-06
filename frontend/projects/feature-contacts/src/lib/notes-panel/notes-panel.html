@@ -1,5 +1,5 @@
 <section class="notes-panel" [attr.data-testid]="targetType() === 'Partner' ? 'partner-notes-section' : 'contact-notes-section'">
-  <h2>Notes</h2>
+  <h2 data-testid="notes-panel-title">Notes</h2>
 
   <form class="notes-panel__add" data-testid="add-note-form" (ngSubmit)="addNote()">
     <textarea
