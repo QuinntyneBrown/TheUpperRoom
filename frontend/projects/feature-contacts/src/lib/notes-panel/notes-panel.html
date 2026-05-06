@@ -68,7 +68,7 @@
   <div class="note-error-toast" role="alert" data-testid="note-save-error-toast">
     <mat-icon>error</mat-icon>
     <span>Couldn't save note · Draft preserved</span>
-    <button mat-button data-testid="note-save-retry-btn" (click)="addNote()">Retry</button>
+    <ur-button variant="ghost" data-testid="note-save-retry-btn" (pressed)="addNote()">Retry</ur-button>
   </div>
 }
 
