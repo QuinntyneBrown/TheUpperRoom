@@ -91,7 +91,7 @@
                 } @else if (stageIndex() === i) {
                   <span class="partner-stepper__current-badge" data-testid="current-stage-label">Current</span>
                 } @else {
-                  <span class="partner-stepper__not-reached">Not yet reached</span>
+                  <span class="partner-stepper__not-reached" [attr.data-testid]="'stage-not-reached-' + s.value">Not yet reached</span>
                 }
               </li>
             }
