@@ -79,7 +79,7 @@ const STAGES: { value: HackathonStage; label: string; marker: string; descriptio
       border: 1px solid var(--ur-border-default, #2a2a3a);
       color: var(--ur-fg-muted, #a8a8b5);
     }
-    .d-card__label { font-family: var(--ur-font-heading, inherit); font-size: 1.125rem; font-weight: 600; color: var(--ur-fg-primary, #fff); }
+    .d-card__label { margin: 0; font-family: var(--ur-font-heading, inherit); font-size: 1.125rem; font-weight: 600; color: var(--ur-fg-primary, #fff); }
     .d-card__badge {
       padding: 2px 8px; border-radius: 999px; font-size: 0.75rem; font-weight: 500; border: none; cursor: pointer;
     }
