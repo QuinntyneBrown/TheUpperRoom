@@ -28,7 +28,7 @@
         <h3 data-testid="dashboard-empty-zone-title">Drop widgets here to start</h3>
         <p>Choose from charts, KPI cards, recent activity, and more. Drag to rearrange. Resize from the corner.</p>
         <ur-button data-testid="add-widget-cta" (pressed)="onAddWidget()">+ Add widget</ur-button>
-        <span class="dashboard-page__empty-hint">Or press W to open the catalog</span>
+        <span class="dashboard-page__empty-hint" data-testid="dashboard-empty-hint">Or press W to open the catalog</span>
       </div>
     </div>
   } @else {
