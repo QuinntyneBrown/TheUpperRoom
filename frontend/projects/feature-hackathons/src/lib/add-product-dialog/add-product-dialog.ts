@@ -39,7 +39,7 @@ export interface AddProductDialogData {
           <label for="productName">Name *</label>
           <input id="productName" type="text" required [value]="name()" (input)="name.set($any($event.target).value)" aria-describedby="productName-error" />
           @if (errors()['name']) {
-            <span id="productName-error" class="product-form__error">{{ errors()['name'] }}</span>
+            <span id="productName-error" class="product-form__error" data-testid="add-product-name-error">{{ errors()['name'] }}</span>
           }
         </div>
         <div class="product-form__field">
@@ -51,14 +51,14 @@ export interface AddProductDialogData {
             <label for="productRepo">Repo URL (optional)</label>
             <input id="productRepo" type="url" [value]="repoUrl()" (input)="repoUrl.set($any($event.target).value)" aria-describedby="productRepo-error" />
             @if (errors()['repoUrl']) {
-              <span id="productRepo-error" class="product-form__error">{{ errors()['repoUrl'] }}</span>
+              <span id="productRepo-error" class="product-form__error" data-testid="add-product-repoUrl-error">{{ errors()['repoUrl'] }}</span>
             }
           </div>
           <div class="product-form__field">
             <label for="productDemo">Demo URL (optional)</label>
             <input id="productDemo" type="url" [value]="demoUrl()" (input)="demoUrl.set($any($event.target).value)" aria-describedby="productDemo-error" />
             @if (errors()['demoUrl']) {
-              <span id="productDemo-error" class="product-form__error">{{ errors()['demoUrl'] }}</span>
+              <span id="productDemo-error" class="product-form__error" data-testid="add-product-demoUrl-error">{{ errors()['demoUrl'] }}</span>
             }
           </div>
         </div>
