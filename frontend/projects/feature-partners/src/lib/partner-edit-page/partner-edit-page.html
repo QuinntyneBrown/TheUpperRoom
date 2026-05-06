@@ -38,7 +38,7 @@
               aria-describedby="partnerName-error"
             />
             @if (errors()['name']) {
-              <span id="partnerName-error" class="partner-edit__error">{{ errors()['name'] }}</span>
+              <span id="partnerName-error" class="partner-edit__error" data-testid="partner-edit-name-error">{{ errors()['name'] }}</span>
             }
           </div>
 
@@ -54,7 +54,7 @@
                 aria-describedby="partnerCity-error"
               />
               @if (errors()['city']) {
-                <span id="partnerCity-error" class="partner-edit__error">{{ errors()['city'] }}</span>
+                <span id="partnerCity-error" class="partner-edit__error" data-testid="partner-edit-city-error">{{ errors()['city'] }}</span>
               }
             </div>
             <div class="partner-edit__field">
