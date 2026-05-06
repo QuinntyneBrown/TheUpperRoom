@@ -40,7 +40,8 @@ const NOTIFICATION_EVENTS = new Set([
       display: flex; flex-direction: column; align-items: center; gap: 8px;
       padding: 32px 16px; text-align: center; color: var(--ur-text-muted, #64748b);
     }
-    .notification-center__empty mat-icon { font-size: 32px; width: 32px; height: 32px; opacity: 0.4; }
+    .notification-center__empty mat-icon { font-size: 32px; width: 32px; height: 32px; color: var(--ur-accent-primary, #9f86ff); }
+    .notification-center__empty-icon-wrap { display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; border-radius: 9999px; background: var(--ur-accent-soft, rgba(159, 134, 255, 0.12)); border: 1px solid var(--ur-accent-primary, #9f86ff); }
     .notification-center__empty p { margin: 0; font-size: 0.875rem; }
   `],
 })

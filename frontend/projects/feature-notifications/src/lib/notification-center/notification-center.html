@@ -39,7 +39,9 @@
         </div>
       } @else if (notifications().length === 0) {
         <div class="notification-center__empty" data-testid="notifications-empty">
-          <mat-icon aria-hidden="true">notifications_none</mat-icon>
+          <div class="notification-center__empty-icon-wrap" data-testid="notifications-empty-icon-wrap" aria-hidden="true">
+            <mat-icon aria-hidden="true">notifications_none</mat-icon>
+          </div>
           <h2 data-testid="notifications-empty-title">You're all caught up</h2>
           <p data-testid="notifications-empty-subtitle">New activity from your team will appear here.</p>
         </div>
