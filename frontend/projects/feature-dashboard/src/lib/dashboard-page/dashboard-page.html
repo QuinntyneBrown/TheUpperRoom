@@ -83,7 +83,7 @@
         <span>Couldn't save your layout</span>
         <span class="dashboard-toast__subtitle" data-testid="layout-save-error-toast-subtitle">You're offline. We saved a copy locally and will retry when you're back online.</span>
       </div>
-      <button mat-button (click)="retrySave()" data-testid="layout-save-retry-btn">Retry</button>
+      <ur-button variant="ghost" (pressed)="retrySave()" data-testid="layout-save-retry-btn">Retry</ur-button>
     </div>
   }
 </div>
