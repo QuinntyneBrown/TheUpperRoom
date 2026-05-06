@@ -120,10 +120,10 @@
           </p>
         </div>
 
-        <div class="partner-history" id="stage-history" data-testid="stage-history">
+        <section class="partner-history" id="stage-history" data-testid="stage-history" aria-labelledby="stage-history-section-title">
           <div class="partner-history__hd">
             <div class="partner-history__hd-left">
-              <h2 class="partner-history__label" data-testid="stage-history-section-title">STAGE HISTORY</h2>
+              <h2 id="stage-history-section-title" class="partner-history__label" data-testid="stage-history-section-title">STAGE HISTORY</h2>
               <span class="partner-history__live">
                 <span class="partner-history__live-dot" aria-hidden="true"></span>
                 LIVE
@@ -155,7 +155,7 @@
               }
             </ol>
           }
-        </div>
+        </section>
 
         <ur-partner-contacts-panel
           [partnerId]="p.id"
