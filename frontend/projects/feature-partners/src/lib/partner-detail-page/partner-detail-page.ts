@@ -216,9 +216,11 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
   }
 
   onDeleteClick(): void {
-    if (!this.canDelete() || !this.partner()) return;
+    const p = this.partner();
+    if (!this.canDelete() || !p) return;
     this.dialog.open<DeletePartnerDialogComponent, boolean>(DeletePartnerDialogComponent, {
       ariaLabel: 'Delete partner',
+      data: { partnerName: p.name },
     }).closed$.subscribe(confirmed => { if (confirmed === true) this.confirmDelete(); });
   }
 
