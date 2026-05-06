@@ -68,7 +68,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
         }
         @for (row of filtered(); track row.id) {
           <a class="partner-card" [routerLink]="['/partners', row.id]" [attr.data-testid]="'partner-card-' + row.id">
-            <strong>{{ row.name }}</strong>
+            <h3 class="partner-card__name">{{ row.name }}</h3>
             <span class="partner-card__meta">{{ row.city }} · {{ stageLabel(row.stage) }}</span>
           </a>
         }
@@ -110,7 +110,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
       text-decoration: none; color: inherit; transition: border-color 0.15s;
     }
     .partner-card:hover { border-color: var(--ur-accent-primary, #9f86ff); }
-    .partner-card strong { font-size: 0.875rem; font-weight: 500; color: var(--ur-fg-primary, #fff); flex: 1; min-width: 0; }
+    .partner-card__name { margin: 0; font-size: 0.875rem; font-weight: 500; color: var(--ur-fg-primary, #fff); flex: 1; min-width: 0; }
     .partner-card__meta { font-size: 0.875rem; color: var(--ur-fg-secondary, #a1a1aa); white-space: nowrap; }
     .partner-load-error {
       display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 8px; margin: 16px 0;
