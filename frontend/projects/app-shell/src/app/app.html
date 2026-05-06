@@ -118,7 +118,7 @@
     </main>
 
     @if (isMobile()) {
-      <nav class="shell__bottom-nav" data-testid="bottom-nav">
+      <nav class="shell__bottom-nav" data-testid="bottom-nav" aria-label="Mobile navigation">
         @for (item of bottomNavItems; track item.route) {
           <ur-bottom-nav-item [icon]="item.icon" [label]="item.label" [href]="item.route" />
         }
