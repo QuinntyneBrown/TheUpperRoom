@@ -35,10 +35,10 @@
     <gridster [options]="options">
       @for (item of items(); track item.id) {
         <gridster-item [item]="item">
-          <div class="dashboard-widget" [attr.data-testid]="'widget-' + item.id">
+          <section class="dashboard-widget" [attr.data-testid]="'widget-' + item.id" [attr.aria-labelledby]="'widget-label-' + item.id">
             <header class="dashboard-widget__header">
               <mat-icon class="dashboard-widget__drag-handle" aria-hidden="true">drag_indicator</mat-icon>
-              <h3 class="dashboard-widget__label" [attr.data-testid]="'widget-label-' + item.type">{{ widgetLabel(item.type) }}</h3>
+              <h3 class="dashboard-widget__label" [attr.id]="'widget-label-' + item.id" [attr.data-testid]="'widget-label-' + item.type">{{ widgetLabel(item.type) }}</h3>
               <button mat-icon-button (click)="removeWidget(item)" [attr.aria-label]="'Remove ' + widgetLabel(item.type)" [attr.data-testid]="'remove-widget-' + item.id">
                 <mat-icon aria-hidden="true">close</mat-icon>
               </button>
@@ -51,7 +51,7 @@
             <div class="dashboard-widget__resize-hint" data-testid="widget-resize-hint">
               <mat-icon aria-hidden="true">open_in_full</mat-icon>
             </div>
-          </div>
+          </section>
         </gridster-item>
       }
     </gridster>
