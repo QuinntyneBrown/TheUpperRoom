@@ -1,7 +1,18 @@
-.verify-success__check {
-  font-size: 48px;
-  width: 48px;
-  height: 48px;
-  color: var(--ur-success, #22c55e);
+.verify-success__icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 9999px;
+  background: var(--ur-success-soft, rgba(34, 197, 94, 0.12));
+  border: 1px solid var(--ur-success, #22c55e);
   align-self: center;
+}
+
+.verify-success__check {
+  font-size: 36px;
+  width: 36px;
+  height: 36px;
+  color: var(--ur-success, #22c55e);
 }
