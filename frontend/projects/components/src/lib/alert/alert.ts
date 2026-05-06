@@ -21,6 +21,10 @@ export class UrAlertComponent {
     return ['ur-alert', `ur-alert--${this.variant}`].join(' ');
   }
 
+  get ariaRole(): 'alert' | 'status' {
+    return this.variant === 'danger' || this.variant === 'warning' ? 'alert' : 'status';
+  }
+
   get resolvedIcon(): string {
     if (this.icon) {
       return this.icon;
