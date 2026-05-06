@@ -133,9 +133,9 @@
           @if (p.history.length === 0) {
             <p class="partner-history__empty" data-testid="stage-history-empty-title">No stage changes yet</p>
           } @else {
-            <div class="partner-history__timeline">
+            <ol class="partner-history__timeline" aria-label="Stage history">
               @for (entry of p.history; track entry.id; let last = $last) {
-                <div class="partner-history__entry">
+                <li class="partner-history__entry">
                   <div class="partner-history__marker">
                     <div class="partner-history__dot" aria-hidden="true"></div>
                     @if (!last) {
@@ -150,9 +150,9 @@
                       <span class="partner-history__date">· {{ entry.changedAt | date:'MMM d' }}</span>
                     </div>
                   </div>
-                </div>
+                </li>
               }
-            </div>
+            </ol>
           }
         </div>
 

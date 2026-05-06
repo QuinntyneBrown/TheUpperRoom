@@ -121,7 +121,7 @@ const STAGES: { value: PartnerStage; label: string }[] = [
     .partner-history__live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ur-accent-primary, #6366f1); animation: live-pulse 1.5s ease-in-out infinite; }
     @keyframes live-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
     .partner-history__empty { margin: 0; font-size: 0.875rem; color: var(--ur-fg-disabled, #64748b); }
-    .partner-history__timeline { display: flex; flex-direction: column; gap: 12px; }
+    .partner-history__timeline { display: flex; flex-direction: column; gap: 12px; list-style: none; margin: 0; padding: 0; }
     .partner-history__entry { display: flex; align-items: flex-start; gap: 12px; }
     .partner-history__marker { display: flex; flex-direction: column; align-items: center; }
     .partner-history__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--ur-accent-primary, #6366f1); flex-shrink: 0; margin-top: 4px; }
