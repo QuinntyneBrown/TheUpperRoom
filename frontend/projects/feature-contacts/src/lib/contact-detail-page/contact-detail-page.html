@@ -21,7 +21,7 @@
       </nav>
       <div class="contact-detail__actions">
         <a mat-stroked-button [routerLink]="['/contacts', contact()!.id, 'edit']" data-testid="contact-edit-link">Edit</a>
-        <button mat-icon-button [matMenuTriggerFor]="moreMenu" data-testid="contact-more-btn" aria-label="More options">
+        <button mat-icon-button [matMenuTriggerFor]="moreMenu" data-testid="contact-more-btn" [attr.aria-label]="'More options for ' + contact()!.firstName + ' ' + contact()!.lastName">
           <mat-icon aria-hidden="true">more_horiz</mat-icon>
         </button>
         <mat-menu #moreMenu="matMenu">
