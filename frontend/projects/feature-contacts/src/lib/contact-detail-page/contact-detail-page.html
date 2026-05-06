@@ -15,7 +15,7 @@
   <article class="contact-detail" data-testid="contact-detail" aria-labelledby="contact-summary-name">
     <header class="contact-detail__header">
       <nav class="contact-detail__breadcrumb" aria-label="Breadcrumb">
-        <mat-icon class="contact-detail__back-icon" aria-hidden="true">arrow_back</mat-icon>
+        <mat-icon class="contact-detail__back-icon" data-testid="contact-breadcrumb-back-arrow" aria-hidden="true">arrow_back</mat-icon>
         <a routerLink="/contacts" class="contact-detail__breadcrumb-link" data-testid="contact-breadcrumb-link">Contacts</a>
         <span class="contact-detail__breadcrumb-sep" aria-hidden="true">/</span>
         <span class="contact-detail__breadcrumb-name" data-testid="contact-breadcrumb-name" aria-current="page">{{ contact()!.firstName }} {{ contact()!.lastName }}</span>
