@@ -6,7 +6,7 @@
   </div>
 } @else if (notFound()) {
   <div class="hackathon-detail__not-found" data-testid="hackathon-not-found">
-    <h1>Hackathon not found</h1>
+    <h1 data-testid="hackathon-not-found-title">Hackathon not found</h1>
     <a routerLink="/hackathons">Back to hackathons</a>
   </div>
 } @else if (hackathon(); as h) {
