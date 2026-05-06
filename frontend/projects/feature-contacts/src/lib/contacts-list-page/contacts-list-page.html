@@ -121,14 +121,14 @@
             <tr class="contacts-table__row" [attr.data-testid]="'contact-card-' + row.id">
               <td data-testid="contacts-row-firstName"><a [routerLink]="['/contacts', row.id]">{{ row.firstName }}</a></td>
               <td data-testid="contacts-row-lastName"><a [routerLink]="['/contacts', row.id]">{{ row.lastName }}</a></td>
-              <td>
+              <td data-testid="contacts-row-email">
                 @if (row.email) {
                   <a [href]="'mailto:' + row.email">{{ row.email }}</a>
                 } @else {
                   —
                 }
               </td>
-              <td>{{ row.city ?? '—' }}</td>
+              <td data-testid="contacts-row-city">{{ row.city ?? '—' }}</td>
             </tr>
           }
         </tbody>
