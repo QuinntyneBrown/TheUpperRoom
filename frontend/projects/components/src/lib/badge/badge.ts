@@ -13,6 +13,7 @@ export type UrBadgeVariant = 'default' | 'success' | 'warning' | 'danger' | 'inf
 export class UrBadgeComponent {
   @Input() variant: UrBadgeVariant = 'default';
   @Input() ariaLabel = '';
+  @Input() testId = '';
   @Input({ transform: booleanAttribute }) disabled = false;
 
   get badgeClass(): string {
