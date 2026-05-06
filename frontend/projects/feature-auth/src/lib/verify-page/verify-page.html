@@ -20,6 +20,12 @@
     <mat-icon class="verify-error__icon" data-testid="verify-error-icon">link_off</mat-icon>
     <h2 data-testid="verify-error-heading">This link can't be used</h2>
     <p>The verification link is expired or has already been used. Request a new one and we'll send it right over.</p>
+    <ur-alert
+      data-testid="verify-error-alert"
+      variant="warning"
+      title="Verification link expired"
+      message="For your security, links expire after 30 minutes."
+    />
     <a href="/auth/sign-in">Back to sign in</a>
   </div>
 }
