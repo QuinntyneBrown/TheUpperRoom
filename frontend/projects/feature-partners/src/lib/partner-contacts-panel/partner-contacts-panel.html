@@ -22,7 +22,7 @@
           <span class="partner-contacts__email">{{ c.email }}</span>
         }
       </div>
-      <button mat-icon-button (click)="remove(c.id)" aria-label="Remove"><mat-icon aria-hidden="true">close</mat-icon></button>
+      <button mat-icon-button (click)="remove(c.id)" [attr.aria-label]="'Remove ' + c.firstName + ' ' + c.lastName"><mat-icon aria-hidden="true">close</mat-icon></button>
     </div>
   }
 
