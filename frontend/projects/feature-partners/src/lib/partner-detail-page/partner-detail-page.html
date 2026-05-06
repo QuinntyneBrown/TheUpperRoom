@@ -58,9 +58,9 @@
       </aside>
 
       <div class="partner-detail__right">
-        <div class="partner-stage-card" data-testid="stage-card">
+        <section class="partner-stage-card" data-testid="stage-card" aria-labelledby="partnership-stage-section-title">
           <div class="partner-stage-card__hd">
-            <h2 class="partner-stage-card__label" data-testid="partnership-stage-section-title">PARTNERSHIP STAGE</h2>
+            <h2 id="partnership-stage-section-title" class="partner-stage-card__label" data-testid="partnership-stage-section-title">PARTNERSHIP STAGE</h2>
             <a href="#stage-history" class="partner-stage-card__history-link" data-testid="view-stage-history-link">View history</a>
           </div>
 
@@ -118,7 +118,7 @@
           <p class="partner-stage-card__hint">
             Stage changes are recorded in stage history with the actor and an optional reason.
           </p>
-        </div>
+        </section>
 
         <section class="partner-history" id="stage-history" data-testid="stage-history" aria-labelledby="stage-history-section-title">
           <div class="partner-history__hd">
