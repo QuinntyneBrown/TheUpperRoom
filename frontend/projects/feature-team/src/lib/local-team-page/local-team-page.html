@@ -35,8 +35,8 @@
       @for (card of roleCards; track card.key) {
         <section class="team-role-card" [attr.data-testid]="'role-card-' + card.key" [attr.aria-labelledby]="'role-card-label-' + card.key">
           <div class="team-role-card__header">
-            <h3 class="team-role-card__label" [attr.id]="'role-card-label-' + card.key">{{ card.label }}</h3>
-            <span class="team-role-card__count" [attr.aria-label]="membersByRole()[card.key].length + (membersByRole()[card.key].length === 1 ? ' member' : ' members')">{{ membersByRole()[card.key].length }}</span>
+            <h3 class="team-role-card__label" [attr.id]="'role-card-label-' + card.key" [attr.data-testid]="'role-card-label-' + card.key">{{ card.label }}</h3>
+            <span class="team-role-card__count" [attr.data-testid]="'role-card-count-' + card.key" [attr.aria-label]="membersByRole()[card.key].length + (membersByRole()[card.key].length === 1 ? ' member' : ' members')">{{ membersByRole()[card.key].length }}</span>
           </div>
           @if (membersByRole()[card.key].length === 0) {
             <div class="team-role-card__empty" [attr.data-testid]="'role-card-empty-' + card.key">No members yet</div>
