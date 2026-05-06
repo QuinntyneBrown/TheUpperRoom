@@ -74,7 +74,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
     </div>
     @if (deletedToast()) {
       <div class="partner-list-toast" role="status" data-testid="partner-deleted-toast">
-        <mat-icon>check_circle</mat-icon>
+        <mat-icon aria-hidden="true">check_circle</mat-icon>
         <span>Partner deleted</span>
       </div>
     }

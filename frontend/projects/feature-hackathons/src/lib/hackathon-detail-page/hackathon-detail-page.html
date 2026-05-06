@@ -99,14 +99,14 @@
 
 @if (savedToast()) {
   <div class="hackathon-toast" role="status" data-testid="hackathon-saved-toast">
-    <mat-icon>check_circle</mat-icon>
+    <mat-icon aria-hidden="true">check_circle</mat-icon>
     <span>Hackathon saved</span>
   </div>
 }
 
 @if (stageToast()) {
   <div class="hackathon-toast" role="status" data-testid="hackathon-stage-success-toast">
-    <mat-icon>check_circle</mat-icon>
+    <mat-icon aria-hidden="true">check_circle</mat-icon>
     <span>Stage updated</span>
   </div>
 }
