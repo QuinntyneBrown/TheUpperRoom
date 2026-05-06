@@ -66,6 +66,7 @@
                 placeholder="https://"
                 [value]="website()"
                 (input)="website.set($any($event.target).value)"
+                data-testid="partner-website-input"
               />
             </div>
           </div>
@@ -77,6 +78,7 @@
               [value]="description()"
               (input)="description.set($any($event.target).value)"
               rows="4"
+              data-testid="partner-description-input"
             ></textarea>
           </div>
 
