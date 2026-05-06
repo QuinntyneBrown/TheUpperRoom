@@ -183,8 +183,14 @@
     &-wordmark { display: flex; align-items: center; gap: 8px; }
     &-logo { font-size: 22px; width: 22px; height: 22px; color: var(--ur-accent-primary, #818cf8); }
     &-name { font-size: 1rem; font-weight: 600; color: var(--ur-fg-primary, #fff); }
+    &-spinner-wrap {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 64px; height: 64px; border-radius: 9999px;
+      background: var(--ur-bg-surface, #16161f);
+      border: 1px solid var(--ur-border-default, #2a2a3a);
+    }
     &-spinner {
-      font-size: 36px; width: 36px; height: 36px; color: var(--ur-accent-primary, #818cf8);
+      font-size: 32px; width: 32px; height: 32px; color: var(--ur-accent-primary, #818cf8);
       animation: shell-spin 1s linear infinite;
     }
     &-heading { margin: 0; font-size: 1.25rem; font-weight: 600; }
