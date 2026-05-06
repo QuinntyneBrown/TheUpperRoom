@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, signal } from '@angular/core';
 import { HACKATHON_SERVICE, DeletedHackathonDto } from 'api';
 import { DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
@@ -8,7 +9,7 @@ import { UrButtonComponent } from 'components';
 
 @Component({
   selector: 'lib-deleted-hackathons-page',
-  imports: [DatePipe, MatButtonModule, MatIconModule, MatTableModule, UrButtonComponent],
+  imports: [DatePipe, RouterLink, MatButtonModule, MatIconModule, MatTableModule, UrButtonComponent],
   template: `
     <div class="deleted-hackathons-page">
       <h1 data-testid="deleted-hackathons-title">Deleted hackathons</h1>
@@ -35,6 +36,7 @@ import { UrButtonComponent } from 'components';
           </div>
           <h2 data-testid="deleted-hackathons-empty-title">No deleted hackathons</h2>
           <p data-testid="deleted-hackathons-empty-subtitle">Soft-deleted hackathons show up here for 30 days before being purged.</p>
+          <a routerLink="/hackathons" data-testid="deleted-hackathons-empty-back-link">Back to active hackathons</a>
         </div>
       } @else {
         <table mat-table [dataSource]="rows()" aria-label="Deleted hackathons" data-testid="deleted-hackathons-table">
