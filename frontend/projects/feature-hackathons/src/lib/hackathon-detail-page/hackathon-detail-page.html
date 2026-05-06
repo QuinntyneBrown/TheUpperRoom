@@ -63,16 +63,18 @@
 
       <ur-products-section [hackathonId]="h.id" [initialProducts]="h.products"></ur-products-section>
 
-      @if (h.partners.length > 0) {
-        <section class="hackathon-detail__partners" aria-label="Partners">
-          <h2 class="hackathon-detail__section-title">Partners</h2>
+      <section class="hackathon-detail__partners" aria-label="Partners">
+        <h2 class="hackathon-detail__section-title">Partners</h2>
+        @if (h.partners.length === 0) {
+          <h2 class="hackathon-partners__empty" data-testid="hackathon-partners-empty-title">No partners linked yet.</h2>
+        } @else {
           <ul class="hackathon-partners">
             @for (p of h.partners; track p.id) {
               <li class="hackathon-partners__item">{{ p.name }} · {{ p.city }}</li>
             }
           </ul>
-        </section>
-      }
+        }
+      </section>
 
       <section class="hackathon-detail__history" aria-label="Stage history">
         <h2 class="hackathon-detail__section-title">Stage history</h2>
