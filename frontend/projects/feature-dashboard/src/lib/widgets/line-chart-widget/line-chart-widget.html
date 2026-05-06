@@ -9,7 +9,7 @@
       data-testid="chart-connection-badge"
       role="status"
     >
-      <span class="material-symbols-outlined">{{ badgeConfig[connectionState()].icon }}</span>
+      <span class="material-symbols-outlined" aria-hidden="true">{{ badgeConfig[connectionState()].icon }}</span>
       {{ badgeConfig[connectionState()].label }}
     </span>
   </div>
