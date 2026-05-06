@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { A11yModule } from '@angular/cdk/a11y';
 import { SEARCH_SERVICE, GlobalSearchResult, SearchResultItem } from 'api';
 import { catchError, debounceTime, distinctUntilChanged, Subject, switchMap, of } from 'rxjs';
 
@@ -10,7 +11,7 @@ import { catchError, debounceTime, distinctUntilChanged, Subject, switchMap, of 
   selector: 'ur-global-search-overlay',
   templateUrl: './global-search-overlay.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, MatIconModule, MatButtonModule],
+  imports: [FormsModule, MatIconModule, MatButtonModule, A11yModule],
   styles: [`
     .search-overlay__hint, .search-overlay__loading, .search-overlay__no-results {
       display: flex; align-items: center; gap: 10px; padding: 20px 16px;
