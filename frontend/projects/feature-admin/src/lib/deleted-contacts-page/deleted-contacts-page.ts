@@ -30,7 +30,9 @@ import { UrButtonComponent } from 'components';
         </div>
       } @else if (rows().length === 0) {
         <div class="admin-empty" data-testid="deleted-contacts-empty">
-          <mat-icon aria-hidden="true">archive</mat-icon>
+          <div class="admin-empty__icon-wrap" data-testid="deleted-contacts-empty-icon-wrap" aria-hidden="true">
+            <mat-icon aria-hidden="true">archive</mat-icon>
+          </div>
           <h2 data-testid="deleted-contacts-empty-title">Nothing in the archive</h2>
           <p data-testid="deleted-contacts-empty-subtitle">Soft-deleted contacts show up here for 30 days before being purged.</p>
         </div>
@@ -89,7 +91,8 @@ import { UrButtonComponent } from 'components';
       display: flex; flex-direction: column; align-items: center; gap: 12px;
       padding: 48px 24px; color: var(--ur-fg-muted, #64748b); text-align: center;
     }
-    .admin-empty mat-icon { font-size: 48px; width: 48px; height: 48px; opacity: 0.4; }
+    .admin-empty mat-icon { font-size: 36px; width: 36px; height: 36px; color: var(--ur-accent-primary, #9f86ff); }
+    .admin-empty__icon-wrap { display: inline-flex; align-items: center; justify-content: center; width: 72px; height: 72px; border-radius: 9999px; background: var(--ur-accent-soft, rgba(159, 134, 255, 0.12)); border: 1px solid var(--ur-accent-primary, #9f86ff); }
     .admin-empty p { margin: 0; font-size: 0.9rem; }
     .admin-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
