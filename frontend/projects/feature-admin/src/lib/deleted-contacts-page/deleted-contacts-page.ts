@@ -4,10 +4,11 @@ import { DatePipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { UrButtonComponent } from 'components';
 
 @Component({
   selector: 'lib-deleted-contacts-page',
-  imports: [DatePipe, MatButtonModule, MatIconModule, MatTableModule],
+  imports: [DatePipe, MatButtonModule, MatIconModule, MatTableModule, UrButtonComponent],
   template: `
     <div class="deleted-contacts-page">
       <h1>Deleted Contacts</h1>
@@ -25,7 +26,7 @@ import { MatTableModule } from '@angular/material/table';
         <div class="admin-error" data-testid="deleted-contacts-error" role="alert">
           <mat-icon>error_outline</mat-icon>
           <span>Failed to load deleted contacts.</span>
-          <button mat-stroked-button data-testid="deleted-contacts-retry-btn" (click)="load()">Retry</button>
+          <ur-button variant="secondary" (pressed)="load()" data-testid="deleted-contacts-retry-btn">Retry</ur-button>
         </div>
       } @else if (rows().length === 0) {
         <div class="admin-empty" data-testid="deleted-contacts-empty">

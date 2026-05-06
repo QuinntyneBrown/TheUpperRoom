@@ -55,7 +55,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
           <div class="partner-load-error" data-testid="partners-load-error" role="alert">
             <mat-icon>error_outline</mat-icon>
             <span>Failed to load partners.</span>
-            <button mat-stroked-button data-testid="partners-retry-btn" (click)="loadPartners()">Retry</button>
+            <ur-button variant="secondary" (pressed)="loadPartners()" data-testid="partners-retry-btn">Retry</ur-button>
           </div>
         } @else if (filtered().length === 0) {
           <div class="partner-list-page__empty" data-testid="partners-empty">

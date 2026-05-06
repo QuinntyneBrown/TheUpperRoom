@@ -4,13 +4,14 @@ import { RouterModule } from '@angular/router';
 import { TEAM_SERVICE, GlobalTeamSummaryDto } from 'api';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { UrButtonComponent } from 'components';
 import { catchError, debounceTime, distinctUntilChanged, of, Subject, switchMap } from 'rxjs';
 
 @Component({
   selector: 'ur-global-teams-page',
   templateUrl: './global-teams-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, RouterModule, MatButtonModule, MatIconModule],
+  imports: [FormsModule, RouterModule, MatButtonModule, MatIconModule, UrButtonComponent],
   styles: [`
     .global-teams-page { display: flex; flex-direction: column; height: 100%; }
     .global-teams-page__header {

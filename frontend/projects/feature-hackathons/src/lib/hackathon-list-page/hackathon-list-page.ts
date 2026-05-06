@@ -30,7 +30,7 @@ import { HackathonCreatePageComponent } from '../hackathon-create-page/hackathon
           <div class="hackathon-list-error" data-testid="hackathons-error" role="alert">
             <mat-icon>error_outline</mat-icon>
             <span>Failed to load hackathons.</span>
-            <button mat-stroked-button data-testid="hackathons-retry-btn" (click)="load()">Retry</button>
+            <ur-button variant="secondary" (pressed)="load()" data-testid="hackathons-retry-btn">Retry</ur-button>
           </div>
         } @else if (rows().length === 0) {
           <div class="hackathon-list-page__empty" data-testid="hackathons-empty">
