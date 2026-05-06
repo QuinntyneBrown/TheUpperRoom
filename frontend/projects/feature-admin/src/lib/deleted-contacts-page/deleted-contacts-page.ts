@@ -39,17 +39,17 @@ import { UrButtonComponent } from 'components';
           <a routerLink="/contacts" data-testid="deleted-contacts-empty-back-link">Back to active contacts</a>
         </div>
       } @else {
-        <table mat-table [dataSource]="rows()" aria-label="Deleted contacts">
+        <table mat-table [dataSource]="rows()" aria-label="Deleted contacts" data-testid="deleted-contacts-table">
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <th mat-header-cell *matHeaderCellDef scope="col">Name</th>
             <td mat-cell *matCellDef="let row">{{ row.name }}</td>
           </ng-container>
           <ng-container matColumnDef="deletedAt">
-            <th mat-header-cell *matHeaderCellDef>Deleted</th>
+            <th mat-header-cell *matHeaderCellDef scope="col">Deleted</th>
             <td mat-cell *matCellDef="let row">{{ row.deletedAt | date:'short' }}</td>
           </ng-container>
           <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef></th>
+            <th mat-header-cell *matHeaderCellDef scope="col"></th>
             <td mat-cell *matCellDef="let row">
               <ur-button variant="ghost" [disabled]="restoring() === row.id" (pressed)="restore(row.id)" [attr.data-testid]="'restore-contact-' + row.id">
                 {{ restoring() === row.id ? 'Restoring…' : 'Restore' }}

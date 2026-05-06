@@ -36,17 +36,17 @@ import { UrButtonComponent } from 'components';
           <h2 data-testid="deleted-hackathons-empty-title">No deleted hackathons</h2>
         </div>
       } @else {
-        <table mat-table [dataSource]="rows()" aria-label="Deleted hackathons">
+        <table mat-table [dataSource]="rows()" aria-label="Deleted hackathons" data-testid="deleted-hackathons-table">
           <ng-container matColumnDef="title">
-            <th mat-header-cell *matHeaderCellDef>Title</th>
+            <th mat-header-cell *matHeaderCellDef scope="col">Title</th>
             <td mat-cell *matCellDef="let row">{{ row.title }}</td>
           </ng-container>
           <ng-container matColumnDef="deletedAt">
-            <th mat-header-cell *matHeaderCellDef>Deleted</th>
+            <th mat-header-cell *matHeaderCellDef scope="col">Deleted</th>
             <td mat-cell *matCellDef="let row">{{ row.deletedAt | date:'short' }}</td>
           </ng-container>
           <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef></th>
+            <th mat-header-cell *matHeaderCellDef scope="col"></th>
             <td mat-cell *matCellDef="let row">
               <ur-button variant="ghost" [disabled]="restoring() === row.id" (pressed)="restore(row.id)" [attr.data-testid]="'restore-hackathon-' + row.id">
                 {{ restoring() === row.id ? 'Restoring…' : 'Restore' }}
