@@ -38,9 +38,9 @@
   } @else {
     <div class="partner-board__columns">
       @for (col of columns; track col.stage) {
-        <div class="partner-board__column" [attr.data-testid]="'column-' + col.stage">
+        <section class="partner-board__column" [attr.data-testid]="'column-' + col.stage" [attr.aria-labelledby]="'col-label-' + col.stage">
           <div class="partner-board__col-header">
-            <h3 class="partner-board__col-label">{{ col.label }}</h3>
+            <h3 class="partner-board__col-label" [attr.id]="'col-label-' + col.stage">{{ col.label }}</h3>
             <span class="partner-board__col-count" [attr.data-testid]="'column-count-' + col.stage" [attr.aria-label]="byStage()[col.stage].length + (byStage()[col.stage].length === 1 ? ' partner' : ' partners')">{{ byStage()[col.stage].length }}</span>
           </div>
 
@@ -72,7 +72,7 @@
               <h3 class="partner-board__empty" [attr.data-testid]="'board-empty-' + col.stage">No partners yet</h3>
             }
           </div>
-        </div>
+        </section>
       }
     </div>
   }
