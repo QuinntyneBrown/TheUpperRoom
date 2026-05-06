@@ -21,7 +21,13 @@
       <ur-button type="submit" [disabled]="loading()" fullWidth data-testid="forgot-password-submit-btn">
         {{ loading() ? 'Sending…' : 'Send recovery link' }}
       </ur-button>
-      <p class="auth-hint" data-testid="recover-security-notice">For security, we respond the same way whether or not the email is registered.</p>
+      <ur-alert
+        data-testid="recover-security-notice"
+        variant="info"
+        icon="shield"
+        title="For security"
+        message="We respond the same way whether or not the email is registered."
+      />
     </form>
     <p><a routerLink="/auth/sign-in">Back to sign in</a></p>
   </div>

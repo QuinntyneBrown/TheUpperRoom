@@ -11,8 +11,7 @@ test.describe('Recovery security alert', () => {
 
   test('renders the security notice as a ur-alert with shield icon and title', async ({ page }) => {
     const alert = page.getByTestId('recover-security-notice');
-    await expect(alert).toBeVisible();
-    await expect(alert.locator('ur-alert')).toBeVisible();
+    await expect(alert).toHaveJSProperty('tagName', 'UR-ALERT');
     await expect(alert).toContainText('For security');
     await expect(alert.locator('mat-icon')).toContainText('shield');
   });
