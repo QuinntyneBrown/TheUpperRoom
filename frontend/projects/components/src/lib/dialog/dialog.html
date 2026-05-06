@@ -3,7 +3,7 @@
   appearance="outlined"
   role="dialog"
   aria-modal="true"
-  [attr.aria-labelledby]="id + '-title'"
+  [attr.aria-labelledby]="title ? id + '-title' : null"
   cdkTrapFocus
   cdkTrapFocusAutoCapture="true"
   (keydown.escape)="close()"
