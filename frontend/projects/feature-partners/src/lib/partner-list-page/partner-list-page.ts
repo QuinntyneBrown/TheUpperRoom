@@ -63,6 +63,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
               <mat-icon aria-hidden="true">handshake</mat-icon>
             </div>
             <h2 data-testid="partners-empty-title">No partners found</h2>
+            <p data-testid="partners-empty-subtitle">Add your first partner organization to start building your network.</p>
             <ur-button (pressed)="onCreateClick()" data-testid="partners-empty-create-btn">Add first partner</ur-button>
           </div>
         }
