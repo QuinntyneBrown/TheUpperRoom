@@ -45,7 +45,7 @@
                 <span class="team-role-card__member-email">{{ m.email }}</span>
               </div>
               @if (canEdit()) {
-                <ur-button variant="ghost" (click)="onRemoveClick(m)" aria-label="Remove member" data-testid="remove-member-btn">Remove</ur-button>
+                <ur-button variant="ghost" (click)="onRemoveClick(m)" [attr.aria-label]="'Remove ' + m.displayName" data-testid="remove-member-btn">Remove</ur-button>
               }
             </div>
           }
