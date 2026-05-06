@@ -72,17 +72,6 @@ type SortDir = 'asc' | 'desc';
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
     .contact-toast mat-icon { color: var(--ur-success, #22c55e); font-size: 18px; width: 18px; height: 18px; }
-    .contacts-list-page__empty {
-      display: flex; flex-direction: column; align-items: center; gap: 12px;
-      padding: 48px 24px; text-align: center; color: var(--ur-fg-muted, #64748b);
-    }
-    .contacts-list-page__empty-icon-wrap {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 96px; height: 96px; border-radius: 9999px;
-      background: var(--ur-bg-input, #1a1a25);
-      border: 1px solid var(--ur-border-default, #2a2a3a);
-    }
-    .contacts-list-page__empty-icon-wrap mat-icon { font-size: 40px; width: 40px; height: 40px; color: var(--ur-fg-muted, #7a7a87); }
     .contacts-list-page__no-results {
       display: flex; flex-direction: column; align-items: center; gap: 12px;
       padding: 48px 24px; text-align: center; color: var(--ur-fg-muted, #64748b);
