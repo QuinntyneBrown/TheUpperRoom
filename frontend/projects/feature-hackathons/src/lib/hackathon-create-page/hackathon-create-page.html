@@ -18,7 +18,7 @@
         aria-describedby="hackathonTitle-error"
       />
       @if (errors()['title']) {
-        <span id="hackathonTitle-error" class="hackathon-form__error">{{ errors()['title'] }}</span>
+        <span id="hackathonTitle-error" class="hackathon-form__error" data-testid="hackathon-create-title-error">{{ errors()['title'] }}</span>
       }
     </div>
 
@@ -34,7 +34,7 @@
         aria-describedby="hackathonHostCity-error"
       />
       @if (errors()['hostCity']) {
-        <span id="hackathonHostCity-error" class="hackathon-form__error">{{ errors()['hostCity'] }}</span>
+        <span id="hackathonHostCity-error" class="hackathon-form__error" data-testid="hackathon-create-hostCity-error">{{ errors()['hostCity'] }}</span>
       }
     </div>
 
@@ -49,7 +49,7 @@
           aria-describedby="hackathonStart-error"
         />
         @if (errors()['startDate']) {
-          <span id="hackathonStart-error" class="hackathon-form__error">{{ errors()['startDate'] }}</span>
+          <span id="hackathonStart-error" class="hackathon-form__error" data-testid="hackathon-create-startDate-error">{{ errors()['startDate'] }}</span>
         }
       </div>
       <div class="hackathon-form__field">
@@ -62,7 +62,7 @@
           aria-describedby="hackathonEnd-error"
         />
         @if (errors()['endDate']) {
-          <span id="hackathonEnd-error" class="hackathon-form__error">{{ errors()['endDate'] }}</span>
+          <span id="hackathonEnd-error" class="hackathon-form__error" data-testid="hackathon-create-endDate-error">{{ errors()['endDate'] }}</span>
         }
       </div>
     </div>
