@@ -1,4 +1,4 @@
-<span mat-card-avatar [class]="avatarClass">
+<span mat-card-avatar [class]="avatarClass" [attr.data-testid]="testId || null">
   @if (imageUrl) {
     <img class="ur-avatar__image" [src]="imageUrl" [alt]="alt" />
   } @else {

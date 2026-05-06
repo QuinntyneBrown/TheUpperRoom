@@ -17,6 +17,7 @@ export class UrAvatarComponent {
   @Input() alt = '';
   @Input() size: UrAvatarSize = 'md';
   @Input() tone: UrAvatarTone = 'accent';
+  @Input() testId = '';
 
   get avatarClass(): string {
     return ['ur-avatar', `ur-avatar--${this.size}`, `ur-avatar--${this.tone}`].join(' ');
