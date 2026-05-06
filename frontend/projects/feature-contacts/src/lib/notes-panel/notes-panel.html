@@ -39,7 +39,7 @@
             <ur-button variant="ghost" (click)="cancelEdit()" data-testid="note-cancel-edit-btn">Cancel</ur-button>
           </div>
         } @else if (deletingId() === note.id) {
-          <p class="note-card__confirm">Delete this note?</p>
+          <p class="note-card__confirm" data-testid="note-confirm-delete-message">Delete this note?</p>
           <div class="note-card__actions">
             <ur-button variant="danger" (click)="doDelete(note.id)" data-testid="note-confirm-delete-btn">Delete</ur-button>
             <ur-button variant="ghost" (click)="cancelDelete()" data-testid="note-cancel-delete-btn">Cancel</ur-button>
