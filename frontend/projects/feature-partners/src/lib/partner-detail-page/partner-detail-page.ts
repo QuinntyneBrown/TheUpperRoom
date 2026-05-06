@@ -286,6 +286,11 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
     this.linkedToastTimer = setTimeout(() => this.linkedToast.set(false), 4000);
   }
 
+  openLinkedContact(): void {
+    const id = this.linkedContactId();
+    if (id) this.router.navigate(['/contacts', id]);
+  }
+
   stageLabel(stage: string): string {
     return this.stages.find(s => s.value === stage)?.label ?? stage;
   }

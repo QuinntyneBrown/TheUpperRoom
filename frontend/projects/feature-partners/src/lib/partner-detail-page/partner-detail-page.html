@@ -182,7 +182,7 @@
   <div class="partner-toast" role="status" data-testid="linked-toast">
     <mat-icon>link</mat-icon>
     <span>Contact created &amp; linked</span>
-    <a [routerLink]="['/contacts', linkedContactId()]" mat-button data-testid="linked-contact-link">Open</a>
+    <ur-button variant="ghost" (pressed)="openLinkedContact()" data-testid="linked-contact-link">Open</ur-button>
   </div>
 }
 
