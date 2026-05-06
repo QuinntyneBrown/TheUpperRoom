@@ -35,7 +35,8 @@ import { catchError, debounceTime, distinctUntilChanged, of, Subject, switchMap 
     .teams-table th { color: var(--ur-fg-secondary, #94a3b8); font-weight: 500; }
     .teams-table td { color: var(--ur-fg-primary, #f1f5f9); }
     .teams-table tbody tr:hover { background: var(--ur-bg-elevated, #0f172a); }
-    .teams-cards { display: none; flex-direction: column; gap: 12px; padding: 20px; }
+    .teams-cards { display: none; flex-direction: column; gap: 12px; padding: 20px; list-style: none; margin: 0; }
+    .teams-cards > li { display: contents; }
     .team-card {
       padding: 16px; border-radius: 8px; background: var(--ur-bg-surface, #16161f);
       border: 1px solid var(--ur-border-subtle, #222233); display: flex; flex-direction: column; gap: 4px;
