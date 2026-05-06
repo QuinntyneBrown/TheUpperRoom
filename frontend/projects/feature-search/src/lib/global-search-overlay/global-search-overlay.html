@@ -40,7 +40,12 @@
         <div class="search-overlay__results" data-testid="search-results">
           @for (group of allGroups(); track group.label) {
             <section class="search-overlay__group">
-              <h3 class="search-overlay__group-label">{{ group.label }}</h3>
+              <header class="search-overlay__group-header">
+                <h3 class="search-overlay__group-label">{{ group.label }}</h3>
+                <span class="search-overlay__group-count" [attr.data-testid]="'section-count-' + group.label">
+                  {{ group.items.length }} {{ group.items.length === 1 ? 'result' : 'results' }}
+                </span>
+              </header>
               <ul class="search-overlay__group-items">
                 @for (item of group.items; track item.id) {
                   <li>

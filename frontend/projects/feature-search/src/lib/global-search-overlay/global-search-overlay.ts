@@ -26,6 +26,8 @@ import { catchError, debounceTime, distinctUntilChanged, Subject, switchMap, of 
       border-top: 1px solid var(--ur-border-subtle, #222233);
       font-size: 0.75rem; color: var(--ur-fg-muted, #7a7a87);
     }
+    .search-overlay__group-header { display: flex; align-items: baseline; justify-content: space-between; }
+    .search-overlay__group-count { font-size: 0.75rem; color: var(--ur-fg-muted, #7a7a87); }
     .search-overlay__item { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; }
     .search-overlay__item-icon { color: var(--ur-fg-muted, #7a7a87); font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
     .search-overlay__keyboard-hint kbd {
