@@ -18,7 +18,7 @@ import { UrButtonComponent } from 'components';
       color: var(--ur-fg-muted, #64748b); font-size: 0.875rem;
     }
     .partner-contacts__empty mat-icon { font-size: 18px; width: 18px; height: 18px; opacity: 0.6; }
-    .partner-contacts__empty p { margin: 0; }
+    .partner-contacts__empty p, .partner-contacts__empty h3 { margin: 0; font-size: inherit; font-weight: inherit; }
     .partner-contacts__list { list-style: none; margin: 0; padding: 0; }
     .partner-contacts__row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--ur-border-subtle, #222233); }
     .partner-contacts__row:last-of-type { border-bottom: none; }
