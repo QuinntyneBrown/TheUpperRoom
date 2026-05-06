@@ -7,6 +7,7 @@
 } @else if (notFound()) {
   <div class="hackathon-detail__not-found" data-testid="hackathon-not-found">
     <h1 data-testid="hackathon-not-found-title">Hackathon not found</h1>
+    <p data-testid="hackathon-not-found-subtitle">This hackathon may have been deleted or you may not have access to view it.</p>
     <a routerLink="/hackathons" data-testid="hackathon-not-found-back-link">Back to hackathons</a>
   </div>
 } @else if (hackathon(); as h) {
