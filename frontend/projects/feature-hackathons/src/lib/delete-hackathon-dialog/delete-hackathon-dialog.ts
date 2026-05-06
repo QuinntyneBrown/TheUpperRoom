@@ -14,6 +14,7 @@ export interface DeleteHackathonDialogData {
       [title]="title"
       subtitle="This hackathon will be removed. An admin can restore it later."
       variant="danger"
+      icon="delete"
       closeLabel="Cancel"
       (closed)="ref.close()"
       data-testid="hackathon-delete-dialog"
