@@ -30,7 +30,9 @@ import { UrButtonComponent } from 'components';
         </div>
       } @else if (rows().length === 0) {
         <div class="admin-empty" data-testid="deleted-hackathons-empty">
-          <mat-icon aria-hidden="true">rocket_launch</mat-icon>
+          <div class="admin-empty__icon-wrap" data-testid="deleted-hackathons-empty-icon-wrap" aria-hidden="true">
+            <mat-icon aria-hidden="true">rocket_launch</mat-icon>
+          </div>
           <h2 data-testid="deleted-hackathons-empty-title">No deleted hackathons</h2>
         </div>
       } @else {
@@ -88,7 +90,13 @@ import { UrButtonComponent } from 'components';
       display: flex; flex-direction: column; align-items: center; gap: 12px;
       padding: 48px 24px; color: var(--ur-fg-muted, #64748b); text-align: center;
     }
-    .admin-empty mat-icon { font-size: 48px; width: 48px; height: 48px; opacity: 0.4; }
+    .admin-empty__icon-wrap {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 96px; height: 96px; border-radius: 9999px;
+      background: var(--ur-bg-input, #1a1a25);
+      border: 1px solid var(--ur-border-default, #2a2a3a);
+    }
+    .admin-empty__icon-wrap mat-icon { font-size: 40px; width: 40px; height: 40px; color: var(--ur-fg-muted, #7a7a87); }
     .admin-empty p { margin: 0; font-size: 0.9rem; }
     .admin-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
