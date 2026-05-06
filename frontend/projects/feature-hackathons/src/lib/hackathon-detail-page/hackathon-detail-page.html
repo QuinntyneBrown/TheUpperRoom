@@ -71,7 +71,7 @@
         } @else {
           <ul class="hackathon-partners">
             @for (p of h.partners; track p.id) {
-              <li class="hackathon-partners__item">
+              <li class="hackathon-partners__item" [attr.data-testid]="'hackathon-partner-item-' + p.id">
                 <a [routerLink]="['/partners', p.id]">{{ p.name }}</a>
                 · {{ p.city }}
               </li>
