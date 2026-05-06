@@ -18,6 +18,11 @@
         (ngModelChange)="searchTerm.set($event)"
       />
     </label>
+    @if (sections().length === 0) {
+      <p class="widget-catalog-dialog__no-results" data-testid="widget-catalog-no-results">
+        No widgets match "{{ searchTerm() }}"
+      </p>
+    }
     @for (section of sections(); track section.label) {
       <div class="widget-catalog-dialog__section">
         <p class="widget-catalog-dialog__section-label">{{ section.label }}</p>
