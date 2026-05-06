@@ -81,6 +81,6 @@
 @if (saveError()) {
   <div class="create-error-toast" data-testid="create-save-error-toast" role="alert">
     <mat-icon aria-hidden="true">error_outline</mat-icon>
-    <span>Save failed. Please try again.</span>
+    <span data-testid="partner-create-save-error-message">Save failed. Please try again.</span>
   </div>
 }
