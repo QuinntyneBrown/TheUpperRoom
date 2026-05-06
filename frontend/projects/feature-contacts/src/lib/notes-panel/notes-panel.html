@@ -47,7 +47,7 @@
         } @else {
           <p class="note-card__body">{{ note.body }}</p>
           <div class="note-card__meta">
-            <time>{{ note.createdAt | date:'mediumDate' }}</time>
+            <time [attr.datetime]="note.createdAt">{{ note.createdAt | date:'mediumDate' }}</time>
             @if (isOwn(note)) {
               <div class="note-card__actions">
                 <button mat-icon-button (click)="startEdit(note)" aria-label="Edit note" data-testid="note-edit-btn">
