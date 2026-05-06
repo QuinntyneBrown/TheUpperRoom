@@ -24,6 +24,7 @@ export class UrListItemComponent {
   @Input() href = '';
   @Input() meta = '';
   @Input() actionIcon = 'chevron_right';
+  @Input() testId = '';
   @Input({ transform: booleanAttribute }) disabled = false;
 
   @Output() selected = new EventEmitter<MouseEvent>();

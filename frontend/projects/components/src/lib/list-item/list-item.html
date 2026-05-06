@@ -1,5 +1,5 @@
 @if (href) {
-  <a mat-list-item [href]="href" [class]="itemClass" (click)="onSelect($event)">
+  <a mat-list-item [href]="href" [class]="itemClass" [attr.data-testid]="testId || null" (click)="onSelect($event)">
     <ng-container *ngTemplateOutlet="itemContent" />
   </a>
 } @else {
@@ -8,6 +8,7 @@
     type="button"
     [disabled]="disabled"
     [class]="itemClass"
+    [attr.data-testid]="testId || null"
     (click)="onSelect($event)"
   >
     <ng-container *ngTemplateOutlet="itemContent" />
