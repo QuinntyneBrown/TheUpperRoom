@@ -8,7 +8,7 @@ import { errorLoggingInterceptor } from './services/error-logging.interceptor';
 import { AUTH_SERVICE, AuthService, CONTACT_SERVICE, ContactService, DASHBOARD_SERVICE, DashboardService, HACKATHON_SERVICE, HackathonService, HEALTH_SERVICE, HealthService, METRIC_SERVICE, MetricService, NOTIFICATION_SERVICE, NotificationService, PARTNER_SERVICE, PartnerService, REALTIME_SERVICE, RealtimeService, SEARCH_SERVICE, SearchService, TEAM_SERVICE, TeamService } from 'api';
 import { ContactCreatePageComponent, ContactDetailPageComponent, ContactEditPageComponent, ContactsListPageComponent } from 'feature-contacts';
 import { DashboardPageComponent } from 'feature-dashboard';
-import { HackathonCreatePageComponent, HackathonDetailPageComponent, HackathonEditPageComponent, HackathonListPageComponent } from 'feature-hackathons';
+import { HackathonDetailPageComponent, HackathonEditPageComponent, HackathonListPageComponent } from 'feature-hackathons';
 import { GlobalTeamDetailPageComponent, GlobalTeamsPageComponent, LocalTeamPageComponent } from 'feature-team';
 import { DeletedContactsPageComponent, DeletedHackathonsPageComponent } from 'feature-admin';
 import { PartnerDetailPageComponent, PartnerEditPageComponent, PartnerListPageComponent, PartnersBoardPageComponent } from 'feature-partners';
@@ -43,7 +43,7 @@ export const appConfig: ApplicationConfig = {
       { path: 'teams', title: 'All Teams – The Upper Room', component: GlobalTeamsPageComponent },
       { path: 'teams/:id', title: 'Team – The Upper Room', component: GlobalTeamDetailPageComponent },
       { path: 'hackathons', title: 'Hackathons – The Upper Room', component: HackathonListPageComponent },
-      { path: 'hackathons/new', title: 'New Hackathon – The Upper Room', component: HackathonCreatePageComponent },
+      { path: 'hackathons/new', title: 'New Hackathon – The Upper Room', component: HackathonListPageComponent, data: { openCreate: true } },
       { path: 'hackathons/:id', title: 'Hackathon – The Upper Room', component: HackathonDetailPageComponent },
       { path: 'hackathons/:id/edit', title: 'Edit Hackathon – The Upper Room', component: HackathonEditPageComponent },
       { path: 'partners', title: 'Partners – The Upper Room', component: PartnerListPageComponent },

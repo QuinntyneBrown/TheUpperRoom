@@ -4,6 +4,8 @@ import { DatePipe } from '@angular/common';
 import { HACKATHON_SERVICE, HackathonListRow } from 'api';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { DialogService } from 'components';
+import { HackathonCreatePageComponent } from '../hackathon-create-page/hackathon-create-page';
 
 @Component({
   selector: 'ur-hackathon-list-page',
@@ -12,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
     <div class="hackathon-list-page" data-perf-ready="hackathons">
       <div class="hackathon-list-page__header">
         <h1>Hackathons</h1>
-        <a mat-raised-button routerLink="/hackathons/new" data-testid="new-hackathon-btn">+ Plan hackathon</a>
+        <button mat-raised-button (click)="onCreateClick()" data-testid="new-hackathon-btn">+ Plan hackathon</button>
       </div>
       <div class="hackathon-list-page__scroll">
         @if (loading()) {
@@ -34,7 +36,7 @@ import { MatIconModule } from '@angular/material/icon';
           <div class="hackathon-list-page__empty" data-testid="hackathons-empty">
             <mat-icon>rocket_launch</mat-icon>
             <p>No hackathons yet.</p>
-            <a mat-stroked-button routerLink="/hackathons/new" data-testid="hackathons-empty-create-btn">Create first hackathon</a>
+            <button mat-stroked-button (click)="onCreateClick()" data-testid="hackathons-empty-create-btn">Create first hackathon</button>
           </div>
         } @else {
           @for (row of rows(); track row.id) {
@@ -118,6 +120,7 @@ export class HackathonListPageComponent implements OnInit, OnDestroy {
   private hackathonSvc = inject(HACKATHON_SERVICE);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private dialog = inject(DialogService);
 
   rows = signal<HackathonListRow[]>([]);
   loading = signal(true);
@@ -136,6 +139,20 @@ export class HackathonListPageComponent implements OnInit, OnDestroy {
       this.deletedToastTimer = setTimeout(() => this.deletedToast.set(false), 3000);
       this.router.navigate([], { replaceUrl: true, relativeTo: this.route, queryParams: {} });
     }
+    if (this.route.snapshot.data['openCreate']) {
+      this.onCreateClick();
+    }
+  }
+
+  onCreateClick(): void {
+    this.dialog.open<HackathonCreatePageComponent, { id: string }>(HackathonCreatePageComponent, { ariaLabel: 'Plan hackathon' })
+      .closed$.subscribe(result => {
+        if (result?.id) {
+          this.router.navigate(['/hackathons', result.id], { queryParams: { saved: '1' } });
+        } else if (this.route.snapshot.data['openCreate']) {
+          this.router.navigateByUrl('/hackathons');
+        }
+      });
   }
 
   ngOnDestroy(): void {

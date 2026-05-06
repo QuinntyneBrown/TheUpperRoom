@@ -1,6 +1,17 @@
 # T188 — Convert "Plan hackathon" routed page to a DialogService modal
 
-**Status:** ACCEPTED
+**Status:** COMPLETE
+
+## Implementation notes (radically simple)
+
+Same pattern as T187:
+
+- `HackathonCreatePageComponent` (file/class name kept) refactored to inject `UrDialogRef<{ id: string }>` instead of `Router`. `cancel()` closes via `ref.close()`; submit success closes with `{ id }` instead of router.navigate. The `<ur-dialog>` wrapper in the component template is preserved (the CDK overlay just hosts it as content).
+- `hackathon-list-page` adds `DialogService` injection + `onCreateClick()` that opens the dialog and navigates to `/hackathons/{id}?saved=1` on success, or back to `/hackathons` on cancel-when-arrived-via-`/hackathons/new`. The header `+ Plan hackathon` button and the empty-state `Create first hackathon` button both call `onCreateClick()` (changed from `routerLink`).
+- `/hackathons/new` route is preserved — now binds to `HackathonListPageComponent` with `data: { openCreate: true }`. List auto-opens the dialog on init when this flag is set, so existing Playwright specs that `goto('/hackathons/new')` continue to work.
+- `app.config.ts` — dropped `HackathonCreatePageComponent` import (no longer routed) and pointed `/hackathons/new` at `HackathonListPageComponent`.
+- All `data-testid` values preserved (`hackathon-create-form`, `new-hackathon-btn`, `hackathons-empty-create-btn`, plus all field testids) — `e2e/tests/hackathons/hackathon-create-*.spec.ts` and list-page specs need no updates.
+- Pencil .pen update deferred — same reasoning as T180–T187.
 **Type:** Refactor
 **Blocked by:** T179
 **Source:** `docs/inline-dialog-audit.md` (item #9)

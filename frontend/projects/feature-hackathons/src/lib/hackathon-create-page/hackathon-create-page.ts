@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
-import { Router } from '@angular/router';
 import { HACKATHON_SERVICE, PARTNER_SERVICE, PartnerListRow } from 'api';
 import { MatIconModule } from '@angular/material/icon';
-import { UrButtonComponent, UrDialogComponent } from 'components';
+import { UrButtonComponent, UrDialogComponent, UrDialogRef } from 'components';
 
 @Component({
   selector: 'ur-hackathon-create-page',
@@ -41,7 +40,7 @@ import { UrButtonComponent, UrDialogComponent } from 'components';
 export class HackathonCreatePageComponent implements OnInit, OnDestroy {
   private hackathons = inject(HACKATHON_SERVICE);
   private partners = inject(PARTNER_SERVICE);
-  private router = inject(Router);
+  ref = inject<UrDialogRef<{ id: string }>>(UrDialogRef);
 
   title = signal('');
   startDate = signal('');
@@ -93,7 +92,7 @@ export class HackathonCreatePageComponent implements OnInit, OnDestroy {
       hostCity: this.hostCity().trim(),
       partnerIds: [...this.selectedPartnerIds()],
     }).subscribe({
-      next: (res) => this.router.navigate(['/hackathons', res.id], { queryParams: { saved: '1' } }),
+      next: (res) => { this.saving.set(false); this.ref.close({ id: res.id }); },
       error: () => {
         this.saving.set(false);
         clearTimeout(this.saveErrorTimer);
@@ -104,6 +103,6 @@ export class HackathonCreatePageComponent implements OnInit, OnDestroy {
   }
 
   cancel(): void {
-    this.router.navigateByUrl('/hackathons');
+    this.ref.close();
   }
 }
