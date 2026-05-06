@@ -1,6 +1,20 @@
 # T179 — Foundation: introduce DialogService and overlay-backed `<ur-dialog>`
 
-**Status:** ACCEPTED
+**Status:** COMPLETE
+
+## Implementation notes (radically simple)
+
+- Built on `@angular/cdk/overlay` (already installed) — the project does not have `@angular/cdk/dialog` (sub-package not present in node_modules), and Overlay alone covers backdrop/ESC/click-outside/focus-return without an extra dep.
+- One file: `frontend/projects/components/src/lib/dialog/dialog.service.ts` exports `DialogService`, `UrDialogRef<R>`, `UR_DIALOG_DATA`, and `UrDialogConfig<D>`. Service is `providedIn: 'root'`, so no `app.config.ts` change is required to register it.
+- `<ur-dialog>` is **left untouched** so the 10 inline call sites it powers today keep working until each one is migrated by T180–T190. The component is happy to be rendered as the content of a CDK overlay (its internal `cdkTrapFocus` is then redundant but harmless).
+- Backdrop class `ur-dialog-backdrop` and pane class `ur-dialog-pane` styled in `projects/app-shell/src/styles.scss`. New token `--ur-bg-scrim: rgba(10,10,15,0.7)` added to `projects/components/src/lib/styles/_tokens.scss`. CDK structural CSS pulled in via `node_modules/@angular/cdk/overlay-prebuilt.css` added to the `styles` array in `frontend/angular.json`.
+- `frontend/projects/app-shell/src/app/test/dialog-test.ts` now opens the test dialog via `DialogService.open(...)` — this is the live smoke test for the foundation.
+- Pencil `Dialog / Modal Shell (Overlay)` frame deferred to whichever T180–T190 lands first — the design wins are most useful when paired with a real call-site migration. Subsequent tasks can either reference an existing modal frame from `T154 — New Contact` or introduce the shell frame on first use.
+
+## Verified
+
+- `npx ng build components` builds cleanly; `dist/components/fesm2022/components.mjs` exports `DialogService`.
+- Pre-existing typing issues in unrelated feature libs (`feature-auth`, `feature-contacts`, etc.) and in the vitest harness (`describe is not defined`) were already broken before this change and are not in scope for T179.
 **Type:** Refactor (foundation — blocks T180–T190)
 **Source:** `docs/inline-dialog-audit.md`
 

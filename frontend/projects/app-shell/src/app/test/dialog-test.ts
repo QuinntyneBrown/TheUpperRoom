@@ -1,25 +1,26 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { UrDialogComponent } from 'components';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { DialogService, UrDialogComponent, UrDialogRef } from 'components';
 
 @Component({
-  selector: 'ur-dialog-test',
+  selector: 'ur-dialog-test-content',
   imports: [UrDialogComponent],
   template: `
-    <button data-testid="dialog-trigger" (click)="open()">Open Dialog</button>
-    @if (isOpen()) {
-      <ur-dialog
-        data-testid="dialog-content"
-        title="Test Dialog"
-        (closed)="close()"
-      >
-        <p>Dialog content</p>
-      </ur-dialog>
-    }
+    <ur-dialog data-testid="dialog-content" title="Test Dialog" (closed)="ref.close()">
+      <p>Dialog content</p>
+    </ur-dialog>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+export class DialogTestContentComponent {
+  ref = inject<UrDialogRef<void>>(UrDialogRef);
+}
+
+@Component({
+  selector: 'ur-dialog-test',
+  template: `<button data-testid="dialog-trigger" (click)="open()">Open Dialog</button>`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
 export class DialogTestComponent {
-  isOpen = signal(false);
-  open(): void { this.isOpen.set(true); }
-  close(): void { this.isOpen.set(false); }
+  private dialog = inject(DialogService);
+  open(): void { this.dialog.open(DialogTestContentComponent, { ariaLabel: 'Test Dialog' }); }
 }

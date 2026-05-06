@@ -8,6 +8,20 @@
   box-sizing: border-box;
 }
 
+.ur-dialog-backdrop {
+  background: var(--ur-bg-scrim, rgba(10, 10, 15, 0.7));
+}
+
+.cdk-overlay-pane.ur-dialog-pane {
+  display: flex;
+  max-width: min(640px, calc(100vw - 32px));
+  max-height: calc(100vh - 64px);
+
+  > * {
+    width: 100%;
+  }
+}
+
 body {
   background-color: var(--ur-bg-base);
   color: var(--ur-fg-primary);

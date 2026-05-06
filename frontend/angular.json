@@ -84,7 +84,7 @@
                 "input": "projects/app-shell/public"
               }
             ],
-            "styles": ["projects/app-shell/src/styles.scss"]
+            "styles": ["node_modules/@angular/cdk/overlay-prebuilt.css", "projects/app-shell/src/styles.scss"]
           },
           "configurations": {
             "production": {
