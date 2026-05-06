@@ -1,6 +1,15 @@
 # T184 — Migrate "Move partner stage" dialog to DialogService
 
-**Status:** ACCEPTED
+**Status:** COMPLETE
+
+## Implementation notes (radically simple)
+
+- New `StageChangeDialogComponent` at `frontend/projects/feature-partners/src/lib/stage-change-dialog/stage-change-dialog.ts` — owns the reason textarea + Cancel/Advance buttons. Receives `{ pendingStage, stageLabel }` via `UR_DIALOG_DATA`, closes with `{ reason }` on confirm via `UrDialogRef<{ reason: string }>`. Inline template; imports `MatFormFieldModule`, `MatInputModule`, `FormsModule`, `MatButtonModule`, `UrDialogComponent`, `UrButtonComponent` locally so the page no longer needs them.
+- `partner-detail-page.ts`: dropped the `MatFormFieldModule`, `MatInputModule`, `FormsModule`, and `UrDialogComponent` imports (no longer used outside the migrated dialog). Dropped `showStageDialog`, `pendingStage`, `stageReason` signals and `openStageDialog` / `confirmStageChange` methods. New `onStageChangeClick(stage)` opens the dialog and calls `changeStage(stage)` only if the dialog returns a result.
+- The reason field is captured by the dialog and returned on confirm but the existing `partners.changeStage(id, stage)` API does not accept a reason — preserved that pre-existing limitation rather than expanding scope.
+- Template: stage advance/back buttons (the `stage-advance-btn` and its sibling) now call `(click)="onStageChangeClick(...)"` instead of `openStageDialog(...)`. The inline `@if (showStageDialog())` block is gone.
+- All `data-testid` values preserved (`stage-change-dialog`, `stage-change-reason`, `stage-change-confirm-btn`, `stage-change-cancel-btn`, `stage-advance-btn`) — `e2e/tests/partners/stage-change-dialog.spec.ts` needs no updates.
+- Pencil .pen update deferred — same reasoning as T180–T183.
 **Type:** Refactor
 **Blocked by:** T179
 **Source:** `docs/inline-dialog-audit.md` (item #6)

@@ -40,28 +40,6 @@
       }
     </header>
 
-    @if (showStageDialog()) {
-      <ur-dialog
-        [title]="'Move to ' + stageLabel(pendingStage()!)"
-        subtitle="This change will be recorded in the stage history with your name and an optional reason."
-        icon="trending_up"
-        closeLabel="Cancel"
-        (closed)="showStageDialog.set(false)"
-        data-testid="stage-change-dialog"
-      >
-        <mat-form-field appearance="outline" style="width:100%">
-          <mat-label>Reason (optional)</mat-label>
-          <textarea matInput rows="2" [(ngModel)]="stageReason" data-testid="stage-change-reason" placeholder="e.g. Signed sponsorship agreement"></textarea>
-        </mat-form-field>
-        <div ur-dialog-actions style="display:flex;gap:8px">
-          <button mat-stroked-button (click)="showStageDialog.set(false)" data-testid="stage-change-cancel-btn">Cancel</button>
-          <ur-button [disabled]="changingStage()" (click)="confirmStageChange()" data-testid="stage-change-confirm-btn">
-            Advance partner
-          </ur-button>
-        </div>
-      </ur-dialog>
-    }
-
     <div class="partner-detail__body">
       <aside class="partner-detail__left">
         <div class="partner-hero-card">
@@ -118,7 +96,7 @@
           <div class="partner-stage-card__actions">
             @if (stageIndex() > 0) {
               <ur-button variant="secondary" [disabled]="changingStage()"
-                         (click)="openStageDialog(stages[stageIndex() - 1].value)"
+                         (click)="onStageChangeClick(stages[stageIndex() - 1].value)"
                          data-testid="stage-back-btn">
                 <mat-icon aria-hidden="true">arrow_back</mat-icon> {{ stages[stageIndex() - 1].label }}
               </ur-button>
@@ -126,7 +104,7 @@
             <span class="partner-stage-card__spacer"></span>
             @if (stageIndex() < stages.length - 1) {
               <ur-button [disabled]="changingStage()"
-                         (click)="openStageDialog(stages[stageIndex() + 1].value)"
+                         (click)="onStageChangeClick(stages[stageIndex() + 1].value)"
                          data-testid="stage-advance-btn">
                 {{ stages[stageIndex() + 1].label }} <mat-icon aria-hidden="true">arrow_forward</mat-icon>
               </ur-button>

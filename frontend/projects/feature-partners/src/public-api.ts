@@ -1,5 +1,6 @@
 export * from './lib/partner-contacts-panel/partner-contacts-panel';
 export * from './lib/delete-partner-dialog/delete-partner-dialog';
+export * from './lib/stage-change-dialog/stage-change-dialog';
 export * from './lib/partner-create-page/partner-create-page';
 export * from './lib/partner-detail-page/partner-detail-page';
 export * from './lib/partner-edit-page/partner-edit-page';

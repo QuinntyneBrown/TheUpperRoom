@@ -5,13 +5,11 @@ import { AUTH_SERVICE, PARTNER_SERVICE, PartnerDetailDto, PartnerStage, REALTIME
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
-import { DialogService, UrButtonComponent, UrDialogComponent } from 'components';
+import { DialogService, UrButtonComponent } from 'components';
 import { NotesPanelComponent } from 'feature-contacts';
 import { PartnerContactsPanelComponent } from '../partner-contacts-panel/partner-contacts-panel';
 import { DeletePartnerDialogComponent } from '../delete-partner-dialog/delete-partner-dialog';
+import { StageChangeDialogComponent, StageChangeDialogData } from '../stage-change-dialog/stage-change-dialog';
 import { Subscription } from 'rxjs';
 
 const STAGES: { value: PartnerStage; label: string }[] = [
@@ -24,7 +22,7 @@ const STAGES: { value: PartnerStage; label: string }[] = [
   selector: 'ur-partner-detail-page',
   templateUrl: './partner-detail-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule, MatMenuModule, MatFormFieldModule, MatInputModule, FormsModule, UrButtonComponent, UrDialogComponent, NotesPanelComponent, PartnerContactsPanelComponent],
+  imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule, MatMenuModule, UrButtonComponent, NotesPanelComponent, PartnerContactsPanelComponent],
   styles: [`
     .partner-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
@@ -156,10 +154,6 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
   deleteError = signal(false);
   changeStageError = signal(false);
 
-  showStageDialog = signal(false);
-  pendingStage = signal<PartnerStage | null>(null);
-  stageReason = '';
-
   private stageToastTimer?: ReturnType<typeof setTimeout>;
   private linkedToastTimer?: ReturnType<typeof setTimeout>;
   private savedToastTimer?: ReturnType<typeof setTimeout>;
@@ -243,17 +237,12 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  openStageDialog(stage: PartnerStage): void {
-    this.pendingStage.set(stage);
-    this.stageReason = '';
-    this.showStageDialog.set(true);
-  }
-
-  confirmStageChange(): void {
-    const stage = this.pendingStage();
-    if (!stage) return;
-    this.showStageDialog.set(false);
-    this.changeStage(stage);
+  onStageChangeClick(stage: PartnerStage): void {
+    if (!this.partner() || this.partner()!.stage === stage) return;
+    this.dialog.open<StageChangeDialogComponent, { reason: string }, StageChangeDialogData>(
+      StageChangeDialogComponent,
+      { data: { pendingStage: stage, stageLabel: this.stageLabel(stage) }, ariaLabel: 'Change partner stage' },
+    ).closed$.subscribe(result => { if (result) this.changeStage(stage); });
   }
 
   changeStage(stage: PartnerStage): void {
