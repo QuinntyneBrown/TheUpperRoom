@@ -54,7 +54,7 @@
       @if (searchResults().length === 0) {
         <div class="contacts-list-page__no-results" data-testid="search-no-results">
           <mat-icon>search_off</mat-icon>
-          <p>No contacts match "{{ term() }}"</p>
+          <h2 data-testid="search-no-results-title">No contacts match "{{ term() }}"</h2>
           <p data-testid="search-no-results-subtitle">Try a different keyword, broaden filters, or invite this contact to The Upper Room.</p>
           <button mat-stroked-button data-testid="search-clear-btn" (click)="clearSearch()">Clear search</button>
         </div>
