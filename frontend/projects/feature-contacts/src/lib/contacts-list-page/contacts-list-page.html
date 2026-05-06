@@ -119,7 +119,13 @@
             <tr class="contacts-table__row" [attr.data-testid]="'contact-card-' + row.id">
               <td><a [routerLink]="['/contacts', row.id]">{{ row.firstName }}</a></td>
               <td>{{ row.lastName }}</td>
-              <td>{{ row.email ?? '—' }}</td>
+              <td>
+                @if (row.email) {
+                  <a [href]="'mailto:' + row.email">{{ row.email }}</a>
+                } @else {
+                  —
+                }
+              </td>
               <td>{{ row.city ?? '—' }}</td>
             </tr>
           }
