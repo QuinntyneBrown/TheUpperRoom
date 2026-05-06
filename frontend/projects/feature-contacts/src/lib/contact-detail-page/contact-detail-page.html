@@ -76,14 +76,14 @@
 
 @if (savedToast()) {
   <div class="contact-toast" role="status" data-testid="contact-saved-toast">
-    <mat-icon>check_circle</mat-icon>
+    <mat-icon aria-hidden="true">check_circle</mat-icon>
     <span>Contact saved</span>
   </div>
 }
 
 @if (deleteError()) {
   <div class="contact-toast contact-toast--error" role="alert" data-testid="contact-delete-error-toast">
-    <mat-icon>error_outline</mat-icon>
+    <mat-icon aria-hidden="true">error_outline</mat-icon>
     <span>Delete failed. Please try again.</span>
   </div>
 }
