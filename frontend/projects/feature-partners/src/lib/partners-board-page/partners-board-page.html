@@ -69,7 +69,7 @@
             }
 
             @if (byStage()[col.stage].length === 0) {
-              <div class="partner-board__empty">No partners yet</div>
+              <h3 class="partner-board__empty" [attr.data-testid]="'board-empty-' + col.stage">No partners yet</h3>
             }
           </div>
         </div>
