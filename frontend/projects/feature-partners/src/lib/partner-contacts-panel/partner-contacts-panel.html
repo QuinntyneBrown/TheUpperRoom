@@ -11,19 +11,23 @@
     </div>
   }
 
-  @for (c of contacts(); track c.id) {
-    <div class="partner-contacts__row" [attr.data-testid]="'contact-row-' + c.id">
-      <div class="partner-contacts__avatar" aria-hidden="true">{{ initials(c) }}</div>
-      <div class="partner-contacts__body">
-        <a [routerLink]="['/contacts', c.id]" class="partner-contacts__name">
-          {{ c.firstName }} {{ c.lastName }}
-        </a>
-        @if (c.email) {
-          <a class="partner-contacts__email" [href]="'mailto:' + c.email">{{ c.email }}</a>
-        }
-      </div>
-      <button mat-icon-button (click)="remove(c.id)" [attr.aria-label]="'Remove ' + c.firstName + ' ' + c.lastName"><mat-icon aria-hidden="true">close</mat-icon></button>
-    </div>
+  @if (contacts().length > 0) {
+    <ul class="partner-contacts__list" aria-label="Linked contacts">
+      @for (c of contacts(); track c.id) {
+        <li class="partner-contacts__row" [attr.data-testid]="'contact-row-' + c.id">
+          <div class="partner-contacts__avatar" aria-hidden="true">{{ initials(c) }}</div>
+          <div class="partner-contacts__body">
+            <a [routerLink]="['/contacts', c.id]" class="partner-contacts__name">
+              {{ c.firstName }} {{ c.lastName }}
+            </a>
+            @if (c.email) {
+              <a class="partner-contacts__email" [href]="'mailto:' + c.email">{{ c.email }}</a>
+            }
+          </div>
+          <button mat-icon-button (click)="remove(c.id)" [attr.aria-label]="'Remove ' + c.firstName + ' ' + c.lastName"><mat-icon aria-hidden="true">close</mat-icon></button>
+        </li>
+      }
+    </ul>
   }
 
   @if (showNewForm()) {
