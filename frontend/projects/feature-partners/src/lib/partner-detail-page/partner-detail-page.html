@@ -12,7 +12,7 @@
     <a routerLink="/partners" data-testid="partner-not-found-back-link">Back to partners</a>
   </div>
 } @else if (partner(); as p) {
-  <div class="partner-detail" data-testid="partner-detail">
+  <article class="partner-detail" data-testid="partner-detail" aria-labelledby="partner-hero-name">
     <header class="partner-detail__header">
       <nav class="partner-detail__breadcrumb" aria-label="Breadcrumb">
         <mat-icon class="partner-detail__back-icon" data-testid="partner-breadcrumb-back-arrow" aria-hidden="true">arrow_back</mat-icon>
@@ -51,7 +51,7 @@
             {{ partnerInitials() }}
           </div>
           <div class="partner-hero-card__ident">
-            <h2 class="partner-hero-card__name" data-testid="partner-hero-name">{{ p.name }}</h2>
+            <h2 id="partner-hero-name" class="partner-hero-card__name" data-testid="partner-hero-name">{{ p.name }}</h2>
             <p class="partner-hero-card__meta">{{ p.city }}</p>
           </div>
         </div>
@@ -172,7 +172,7 @@
         />
       </div>
     </div>
-  </div>
+  </article>
 }
 
 @if (stageToast()) {
