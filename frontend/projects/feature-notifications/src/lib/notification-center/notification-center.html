@@ -7,7 +7,7 @@
     [attr.aria-expanded]="open()"
     mat-icon-button
   >
-    <mat-icon>notifications</mat-icon>
+    <mat-icon aria-hidden="true">notifications</mat-icon>
     @if (unreadCount() > 0) {
       <span class="notification-center__badge" data-testid="unread-badge" aria-live="polite">{{ unreadCount() }}</span>
     }
@@ -32,14 +32,14 @@
         </div>
       } @else if (loadError()) {
         <div class="notification-center__error" data-testid="notifications-error" role="alert">
-          <mat-icon>wifi_off</mat-icon>
+          <mat-icon aria-hidden="true">wifi_off</mat-icon>
           <h2 data-testid="notifications-error-title">Couldn't load notifications</h2>
           <p class="notification-center__error-hint">Check your connection and try again.</p>
           <ur-button (pressed)="load()" data-testid="notifications-retry-btn">Retry</ur-button>
         </div>
       } @else if (notifications().length === 0) {
         <div class="notification-center__empty" data-testid="notifications-empty">
-          <mat-icon>notifications_none</mat-icon>
+          <mat-icon aria-hidden="true">notifications_none</mat-icon>
           <h2 data-testid="notifications-empty-title">You're all caught up</h2>
           <p data-testid="notifications-empty-subtitle">New activity from your team will appear here.</p>
         </div>
@@ -50,7 +50,7 @@
               <span class="notification-center__kind">{{ n.kind }}</span>
               <span class="notification-center__time">{{ n.createdAt | date:'short' }}</span>
               @if (!n.isRead) {
-                <button mat-icon-button (click)="markRead(n.id)" [attr.aria-label]="'Mark ' + n.kind + ' read'"><mat-icon>check</mat-icon></button>
+                <button mat-icon-button (click)="markRead(n.id)" [attr.aria-label]="'Mark ' + n.kind + ' read'"><mat-icon aria-hidden="true">check</mat-icon></button>
               }
             </li>
           }

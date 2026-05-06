@@ -30,7 +30,7 @@ import { UrButtonComponent } from 'components';
         </div>
       } @else if (rows().length === 0) {
         <div class="admin-empty" data-testid="deleted-hackathons-empty">
-          <mat-icon>rocket_launch</mat-icon>
+          <mat-icon aria-hidden="true">rocket_launch</mat-icon>
           <h2 data-testid="deleted-hackathons-empty-title">No deleted hackathons.</h2>
         </div>
       } @else {

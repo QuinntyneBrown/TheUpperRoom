@@ -5,7 +5,7 @@
   (click)="open.set(true)"
   mat-icon-button
 >
-  <mat-icon>search</mat-icon>
+  <mat-icon aria-hidden="true">search</mat-icon>
 </button>
 
 @if (open()) {
@@ -31,7 +31,7 @@
         </p>
       } @else if (term().length > 0 && term().length < 2) {
         <div class="search-overlay__hint" data-testid="search-min-length-hint">
-          <mat-icon>keyboard</mat-icon>
+          <mat-icon aria-hidden="true">keyboard</mat-icon>
           <div class="search-overlay__hint-copy">
             <h2 data-testid="search-min-length-title">Keep typing…</h2>
             <p data-testid="search-min-length-subtitle">Search needs at least 2 characters.</p>
@@ -71,7 +71,7 @@
         </div>
       } @else if (term().length >= 2 && results() !== null) {
         <div class="search-overlay__no-results" data-testid="search-no-results">
-          <mat-icon>search_off</mat-icon>
+          <mat-icon aria-hidden="true">search_off</mat-icon>
           <h2 data-testid="search-no-results-title">No matches for "{{ term() }}"</h2>
           <p data-testid="search-no-results-subtitle">Try a different keyword, or browse a category below.</p>
           <div class="search-overlay__no-results-ctas">

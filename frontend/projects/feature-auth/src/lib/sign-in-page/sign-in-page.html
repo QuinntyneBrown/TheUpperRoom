@@ -7,13 +7,13 @@
   <p class="auth-subtitle" data-testid="sign-in-subtitle">Sign in to your City Lead workspace</p>
   @if (showReturnToast()) {
     <div class="sign-in-return-toast" role="status" data-testid="sign-in-return-toast">
-      <mat-icon>info</mat-icon>
+      <mat-icon aria-hidden="true">info</mat-icon>
       <div class="sign-in-return-toast__body">
         <span>Please sign in to continue</span>
         <span class="sign-in-return-toast__sub">We'll bring you back to where you were.</span>
       </div>
       <button class="sign-in-return-toast__dismiss" (click)="showReturnToast.set(false)" aria-label="Dismiss">
-        <mat-icon>close</mat-icon>
+        <mat-icon aria-hidden="true">close</mat-icon>
       </button>
     </div>
   }

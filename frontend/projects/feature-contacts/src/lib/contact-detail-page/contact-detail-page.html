@@ -22,18 +22,18 @@
       <div class="contact-detail__actions">
         <a mat-stroked-button [routerLink]="['/contacts', contact()!.id, 'edit']" data-testid="contact-edit-link">Edit</a>
         <button mat-icon-button [matMenuTriggerFor]="moreMenu" data-testid="contact-more-btn" aria-label="More options">
-          <mat-icon>more_horiz</mat-icon>
+          <mat-icon aria-hidden="true">more_horiz</mat-icon>
         </button>
         <mat-menu #moreMenu="matMenu">
           <button mat-menu-item [disabled]="!canDelete()" (click)="onDeleteClick()" data-testid="contact-delete-menu-item">
-            <mat-icon>delete</mat-icon>
+            <mat-icon aria-hidden="true">delete</mat-icon>
             Delete contact
           </button>
         </mat-menu>
       </div>
       @if (!canDelete()) {
         <div class="contact-detail__permission-banner" data-testid="delete-permission-denied-banner" role="note">
-          <mat-icon>info</mat-icon>
+          <mat-icon aria-hidden="true">info</mat-icon>
           <span>You don't have permission to delete contacts.</span>
         </div>
       }
@@ -47,19 +47,19 @@
         <h2 class="contact-detail__name" data-testid="contact-summary-name">{{ contact()!.firstName }} {{ contact()!.lastName }}</h2>
         @if (contact()!.email) {
           <div class="contact-detail__meta-row" data-testid="contact-meta-email">
-            <mat-icon>mail</mat-icon>
+            <mat-icon aria-hidden="true">mail</mat-icon>
             <span>{{ contact()!.email }}</span>
           </div>
         }
         @if (contact()!.phone) {
           <div class="contact-detail__meta-row" data-testid="contact-meta-phone">
-            <mat-icon>call</mat-icon>
+            <mat-icon aria-hidden="true">call</mat-icon>
             <span>{{ contact()!.phone }}</span>
           </div>
         }
         @if (contact()!.city) {
           <div class="contact-detail__meta-row" data-testid="contact-meta-city">
-            <mat-icon>location_on</mat-icon>
+            <mat-icon aria-hidden="true">location_on</mat-icon>
             <span>{{ contact()!.city }}</span>
           </div>
         }

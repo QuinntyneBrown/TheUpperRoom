@@ -34,7 +34,7 @@ import { HackathonCreatePageComponent } from '../hackathon-create-page/hackathon
           </div>
         } @else if (rows().length === 0) {
           <div class="hackathon-list-page__empty" data-testid="hackathons-empty">
-            <mat-icon>rocket_launch</mat-icon>
+            <mat-icon aria-hidden="true">rocket_launch</mat-icon>
             <h2 data-testid="hackathons-empty-title">No hackathons yet.</h2>
             <ur-button (pressed)="onCreateClick()" data-testid="hackathons-empty-create-btn">Create first hackathon</ur-button>
           </div>

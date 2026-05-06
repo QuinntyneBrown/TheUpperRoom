@@ -59,7 +59,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
           </div>
         } @else if (filtered().length === 0) {
           <div class="partner-list-page__empty" data-testid="partners-empty">
-            <mat-icon>handshake</mat-icon>
+            <mat-icon aria-hidden="true">handshake</mat-icon>
             <h2 data-testid="partners-empty-title">No partners found.</h2>
             <ur-button (pressed)="onCreateClick()" data-testid="partners-empty-create-btn">Add first partner</ur-button>
           </div>

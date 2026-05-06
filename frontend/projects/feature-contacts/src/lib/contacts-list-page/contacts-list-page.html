@@ -56,7 +56,7 @@
     } @else {
       @if (searchResults().length === 0) {
         <div class="contacts-list-page__no-results" data-testid="search-no-results">
-          <mat-icon>search_off</mat-icon>
+          <mat-icon aria-hidden="true">search_off</mat-icon>
           <h2 data-testid="search-no-results-title">No contacts match "{{ term() }}"</h2>
           <p data-testid="search-no-results-subtitle">Try a different keyword, broaden filters, or invite this contact to The Upper Room.</p>
           <ur-button variant="secondary" (pressed)="clearSearch()" data-testid="search-clear-btn">Clear search</ur-button>
@@ -83,7 +83,7 @@
     }
   } @else if (!loading() && listResult().total === 0) {
     <div class="contacts-list-page__empty" data-testid="contacts-empty">
-      <mat-icon>contacts</mat-icon>
+      <mat-icon aria-hidden="true">contacts</mat-icon>
       <h2 data-testid="contacts-empty-title">No contacts yet.</h2>
       <ur-button (pressed)="onNewContactClick()" data-testid="contacts-empty-create-btn">+ Add first contact</ur-button>
     </div>

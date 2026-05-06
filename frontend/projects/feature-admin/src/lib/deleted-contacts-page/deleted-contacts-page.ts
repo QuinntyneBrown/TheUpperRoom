@@ -30,7 +30,7 @@ import { UrButtonComponent } from 'components';
         </div>
       } @else if (rows().length === 0) {
         <div class="admin-empty" data-testid="deleted-contacts-empty">
-          <mat-icon>person_off</mat-icon>
+          <mat-icon aria-hidden="true">person_off</mat-icon>
           <h2 data-testid="deleted-contacts-empty-title">No deleted contacts.</h2>
         </div>
       } @else {

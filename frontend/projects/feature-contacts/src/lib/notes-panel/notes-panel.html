@@ -18,7 +18,7 @@
 
   @if (notes().length === 0) {
     <div class="notes-panel__empty" data-testid="notes-empty">
-      <mat-icon>note</mat-icon>
+      <mat-icon aria-hidden="true">note</mat-icon>
       <h2 data-testid="notes-empty-title">No notes yet.</h2>
     </div>
   } @else {
@@ -50,10 +50,10 @@
             @if (isOwn(note)) {
               <div class="note-card__actions">
                 <button mat-icon-button (click)="startEdit(note)" aria-label="Edit note" data-testid="note-edit-btn">
-                  <mat-icon>edit</mat-icon>
+                  <mat-icon aria-hidden="true">edit</mat-icon>
                 </button>
                 <button mat-icon-button (click)="confirmDelete(note.id)" aria-label="Delete note" data-testid="note-delete-btn">
-                  <mat-icon>delete</mat-icon>
+                  <mat-icon aria-hidden="true">delete</mat-icon>
                 </button>
               </div>
             }
@@ -66,7 +66,7 @@
 
 @if (addNoteError()) {
   <div class="note-error-toast" role="alert" data-testid="note-save-error-toast">
-    <mat-icon>error</mat-icon>
+    <mat-icon aria-hidden="true">error</mat-icon>
     <span>Couldn't save note · Draft preserved</span>
     <ur-button variant="ghost" data-testid="note-save-retry-btn" (pressed)="addNote()">Retry</ur-button>
   </div>
@@ -74,7 +74,7 @@
 
 @if (noteOperationError()) {
   <div class="note-error-toast" role="alert" data-testid="note-operation-error-toast">
-    <mat-icon>error_outline</mat-icon>
+    <mat-icon aria-hidden="true">error_outline</mat-icon>
     <span>Operation failed. Please try again.</span>
   </div>
 }

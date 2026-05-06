@@ -38,7 +38,7 @@
               <mat-icon class="dashboard-widget__drag-handle">drag_indicator</mat-icon>
               <span class="dashboard-widget__label">{{ widgetLabel(item.type) }}</span>
               <button mat-icon-button (click)="removeWidget(item)" aria-label="Remove widget" data-testid="remove-widget-btn">
-                <mat-icon>close</mat-icon>
+                <mat-icon aria-hidden="true">close</mat-icon>
               </button>
             </header>
             <div class="dashboard-widget__body">
@@ -47,7 +47,7 @@
               }
             </div>
             <div class="dashboard-widget__resize-hint" data-testid="widget-resize-hint">
-              <mat-icon>open_in_full</mat-icon>
+              <mat-icon aria-hidden="true">open_in_full</mat-icon>
             </div>
           </div>
         </gridster-item>

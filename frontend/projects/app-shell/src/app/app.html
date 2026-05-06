@@ -46,23 +46,23 @@
               data-testid="profile-menu-trigger"
               [matMenuTriggerFor]="profileMenu"
               aria-label="Profile menu">
-        <mat-icon>account_circle</mat-icon>
+        <mat-icon aria-hidden="true">account_circle</mat-icon>
       </button>
       <mat-menu #profileMenu="matMenu">
         <a mat-menu-item data-testid="profile-menu-profile" routerLink="/profile">
-          <mat-icon>person</mat-icon>
+          <mat-icon aria-hidden="true">person</mat-icon>
           Profile &amp; preferences
         </a>
         <a mat-menu-item data-testid="profile-menu-settings" routerLink="/settings">
-          <mat-icon>settings</mat-icon>
+          <mat-icon aria-hidden="true">settings</mat-icon>
           Workspace settings
         </a>
         <a mat-menu-item data-testid="profile-menu-help" routerLink="/help">
-          <mat-icon>help_outline</mat-icon>
+          <mat-icon aria-hidden="true">help_outline</mat-icon>
           Help &amp; support
         </a>
         <button mat-menu-item data-testid="sign-out-button" (click)="doSignOut()">
-          <mat-icon>logout</mat-icon>
+          <mat-icon aria-hidden="true">logout</mat-icon>
           Sign out
         </button>
       </mat-menu>
@@ -85,7 +85,7 @@
             aria-label="Open navigation"
             (click)="sidenav.toggle()"
           >
-            <mat-icon>menu</mat-icon>
+            <mat-icon aria-hidden="true">menu</mat-icon>
           </button>
         }
         <mat-icon class="shell__topbar-logo">church</mat-icon>
@@ -96,15 +96,15 @@
         <button mat-icon-button
                 aria-label="Profile menu"
                 [matMenuTriggerFor]="topbarProfileMenu">
-          <mat-icon>account_circle</mat-icon>
+          <mat-icon aria-hidden="true">account_circle</mat-icon>
         </button>
         <mat-menu #topbarProfileMenu="matMenu">
           <a mat-menu-item routerLink="/settings">
-            <mat-icon>settings</mat-icon>
+            <mat-icon aria-hidden="true">settings</mat-icon>
             Workspace settings
           </a>
           <button mat-menu-item (click)="doSignOut()">
-            <mat-icon>logout</mat-icon>
+            <mat-icon aria-hidden="true">logout</mat-icon>
             Sign out
           </button>
         </mat-menu>
