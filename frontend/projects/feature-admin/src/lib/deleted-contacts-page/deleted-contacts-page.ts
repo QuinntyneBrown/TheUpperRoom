@@ -25,7 +25,7 @@ import { UrButtonComponent } from 'components';
       } @else if (loadError()) {
         <div class="admin-error" data-testid="deleted-contacts-error" role="alert">
           <mat-icon aria-hidden="true">error_outline</mat-icon>
-          <span>Failed to load deleted contacts.</span>
+          <span data-testid="deleted-contacts-load-error-message">Failed to load deleted contacts.</span>
           <ur-button variant="secondary" (pressed)="load()" data-testid="deleted-contacts-retry-btn">Retry</ur-button>
         </div>
       } @else if (rows().length === 0) {
