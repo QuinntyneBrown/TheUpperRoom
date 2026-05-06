@@ -51,13 +51,13 @@
         @if (contact()!.email) {
           <div class="contact-detail__meta-row" data-testid="contact-meta-email">
             <mat-icon aria-hidden="true">mail</mat-icon>
-            <span>{{ contact()!.email }}</span>
+            <a [href]="'mailto:' + contact()!.email">{{ contact()!.email }}</a>
           </div>
         }
         @if (contact()!.phone) {
           <div class="contact-detail__meta-row" data-testid="contact-meta-phone">
             <mat-icon aria-hidden="true">call</mat-icon>
-            <span>{{ contact()!.phone }}</span>
+            <a [href]="'tel:' + contact()!.phone">{{ contact()!.phone }}</a>
           </div>
         }
         @if (contact()!.city) {
