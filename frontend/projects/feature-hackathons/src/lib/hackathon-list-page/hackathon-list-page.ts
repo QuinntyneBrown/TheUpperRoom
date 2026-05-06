@@ -36,7 +36,7 @@ import { HackathonCreatePageComponent } from '../hackathon-create-page/hackathon
           <div class="hackathon-list-page__empty" data-testid="hackathons-empty">
             <mat-icon>rocket_launch</mat-icon>
             <p>No hackathons yet.</p>
-            <button mat-stroked-button (click)="onCreateClick()" data-testid="hackathons-empty-create-btn">Create first hackathon</button>
+            <ur-button (pressed)="onCreateClick()" data-testid="hackathons-empty-create-btn">Create first hackathon</ur-button>
           </div>
         } @else {
           @for (row of rows(); track row.id) {
