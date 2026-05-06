@@ -28,6 +28,7 @@ export class UrDialogComponent implements OnInit, OnDestroy {
   @Input() id = `ur-dialog-${nextDialogId++}`;
   @Input() title = '';
   @Input() subtitle = '';
+  @Input() titleTestId = '';
   @Input() subtitleTestId = '';
   @Input() icon = '';
   @Input() variant: UrDialogVariant = 'default';

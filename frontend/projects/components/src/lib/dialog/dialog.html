@@ -19,7 +19,7 @@
 
     <div class="ur-dialog__heading">
       @if (title) {
-        <h2 class="ur-dialog__title" [id]="id + '-title'">{{ title }}</h2>
+        <h2 class="ur-dialog__title" [id]="id + '-title'" [attr.data-testid]="titleTestId || null">{{ title }}</h2>
       }
 
       @if (subtitle) {
