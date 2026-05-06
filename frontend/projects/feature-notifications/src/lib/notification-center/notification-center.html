@@ -52,7 +52,7 @@
           @for (n of notifications(); track n.id) {
             <li class="notification-center__item" [class.notification-center__item--unread]="!n.isRead" [attr.data-testid]="'notification-' + n.id">
               <span class="notification-center__kind">{{ n.kind }}</span>
-              <span class="notification-center__time">{{ n.createdAt | date:'short' }}</span>
+              <time class="notification-center__time" [attr.datetime]="n.createdAt">{{ n.createdAt | date:'short' }}</time>
               @if (!n.isRead) {
                 <button mat-icon-button (click)="markRead(n.id)" [attr.aria-label]="'Mark ' + n.kind + ' read'" [attr.data-testid]="'mark-notification-read-' + n.id"><mat-icon aria-hidden="true">check</mat-icon></button>
               }
