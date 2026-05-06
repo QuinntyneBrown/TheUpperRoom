@@ -33,7 +33,7 @@ export interface AddProductDialogData {
     .products-save-error mat-icon { font-size: 16px; width: 16px; height: 16px; flex-shrink: 0; }
   `],
   template: `
-    <ur-dialog title="Add product" icon="rocket_launch" closeLabel="Cancel" (closed)="ref.close()" data-testid="add-product-dialog">
+    <ur-dialog title="Add product" titleTestId="add-product-dialog-title" icon="rocket_launch" closeLabel="Cancel" (closed)="ref.close()" data-testid="add-product-dialog">
       <form (submit)="$event.preventDefault(); submit()" class="product-form">
         <div class="product-form__field">
           <label for="productName">Name *</label>
