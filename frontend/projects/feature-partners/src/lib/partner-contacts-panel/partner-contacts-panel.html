@@ -1,6 +1,6 @@
-<div class="partner-contacts" data-testid="partner-contacts-panel">
+<section class="partner-contacts" data-testid="partner-contacts-panel" aria-labelledby="partner-contacts-section-title">
   <div class="partner-contacts__hd">
-    <h2 class="partner-contacts__label" data-testid="partner-contacts-section-title">CONTACTS</h2>
+    <h2 id="partner-contacts-section-title" class="partner-contacts__label" data-testid="partner-contacts-section-title">CONTACTS</h2>
     <ur-button variant="ghost" (click)="openNewForm()" data-testid="add-contact-btn">+ Associate</ur-button>
   </div>
 
@@ -86,4 +86,4 @@
       <span data-testid="contacts-remove-error-message">Failed to remove contact. Please try again.</span>
     </div>
   }
-</div>
+</section>
