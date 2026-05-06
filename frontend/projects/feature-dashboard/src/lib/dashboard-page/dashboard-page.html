@@ -38,7 +38,7 @@
           <div class="dashboard-widget" [attr.data-testid]="'widget-' + item.id">
             <header class="dashboard-widget__header">
               <mat-icon class="dashboard-widget__drag-handle" aria-hidden="true">drag_indicator</mat-icon>
-              <h3 class="dashboard-widget__label">{{ widgetLabel(item.type) }}</h3>
+              <h3 class="dashboard-widget__label" [attr.data-testid]="'widget-label-' + item.type">{{ widgetLabel(item.type) }}</h3>
               <button mat-icon-button (click)="removeWidget(item)" [attr.aria-label]="'Remove ' + widgetLabel(item.type)" [attr.data-testid]="'remove-widget-' + item.id">
                 <mat-icon aria-hidden="true">close</mat-icon>
               </button>
