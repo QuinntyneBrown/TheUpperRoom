@@ -24,8 +24,8 @@
   gap: 8px;
   padding: 12px;
   border-radius: 6px;
-  background: #0E0E16;
-  border: 1px solid #2a2a3a;
+  background: var(--ur-surface-2, #0e0e16);
+  border: 1px solid var(--ur-border-default, #2a2a3a);
   align-self: stretch;
 }
 
@@ -40,5 +40,5 @@
   font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 12px;
   font-weight: 500;
-  color: #ffffff;
+  color: var(--ur-text-primary, #ffffff);
 }
