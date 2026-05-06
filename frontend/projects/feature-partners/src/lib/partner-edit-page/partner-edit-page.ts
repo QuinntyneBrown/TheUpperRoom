@@ -19,6 +19,7 @@ import { UrButtonComponent } from 'components';
     .partner-edit__back mat-icon { font-size: 18px; width: 18px; height: 18px; }
     .partner-edit__center { flex: 1; display: flex; justify-content: center; padding: 48px; }
     .partner-edit__card { width: 100%; max-width: 760px; background: var(--ur-bg-surface, #101018); border: 1px solid var(--ur-border-subtle, #222233); border-radius: 1.5rem; padding: 48px; display: flex; flex-direction: column; gap: 24px; }
+    .partner-edit__heading { margin: 0; font-size: 1.125rem; font-weight: 600; color: var(--ur-fg-primary, #fff); }
     .partner-edit__card form { display: flex; flex-direction: column; gap: 24px; }
     .partner-edit__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .partner-edit__field { display: flex; flex-direction: column; gap: 6px; }
