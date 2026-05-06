@@ -19,7 +19,7 @@
           {{ c.firstName }} {{ c.lastName }}
         </a>
         @if (c.email) {
-          <span class="partner-contacts__email">{{ c.email }}</span>
+          <a class="partner-contacts__email" [href]="'mailto:' + c.email">{{ c.email }}</a>
         }
       </div>
       <button mat-icon-button (click)="remove(c.id)" [attr.aria-label]="'Remove ' + c.firstName + ' ' + c.lastName"><mat-icon aria-hidden="true">close</mat-icon></button>
