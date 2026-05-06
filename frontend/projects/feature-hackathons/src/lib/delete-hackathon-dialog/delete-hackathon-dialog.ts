@@ -19,7 +19,7 @@ export interface DeleteHackathonDialogData {
       data-testid="hackathon-delete-dialog"
     >
       <ur-button variant="danger" (click)="ref.close(true)" data-testid="confirm-delete-hackathon-btn">
-        Delete hackathon
+        {{ confirmLabel }}
       </ur-button>
     </ur-dialog>
   `,
@@ -30,5 +30,9 @@ export class DeleteHackathonDialogComponent {
 
   get title(): string {
     return this.data?.hackathonName ? `Delete ${this.data.hackathonName}?` : 'Delete hackathon';
+  }
+
+  get confirmLabel(): string {
+    return this.data?.hackathonName ? `Delete ${this.data.hackathonName}` : 'Delete hackathon';
   }
 }
