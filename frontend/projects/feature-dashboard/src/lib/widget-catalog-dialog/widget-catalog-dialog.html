@@ -25,7 +25,7 @@
     }
     @for (section of sections(); track section.label) {
       <div class="widget-catalog-dialog__section">
-        <p class="widget-catalog-dialog__section-label">{{ section.label }}</p>
+        <h3 class="widget-catalog-dialog__section-label">{{ section.label }}</h3>
         <ul class="widget-catalog-dialog__list">
           @for (wt of section.entries; track wt.type) {
             <li class="widget-catalog-dialog__entry-item">

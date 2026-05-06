@@ -27,7 +27,8 @@ import { WIDGET_CATALOG } from './widget-catalog';
     .widget-catalog-dialog__search input::placeholder { color: var(--ur-fg-muted, #7a7a87); }
     .widget-catalog-dialog__section-label {
       font-size: 0.6875rem; font-family: var(--ur-font-mono, 'Geist Mono', monospace);
-      color: var(--ur-fg-muted, #64748b); font-weight: 400; letter-spacing: 1px; margin-bottom: 8px;
+      color: var(--ur-fg-muted, #64748b); font-weight: 400; letter-spacing: 1px;
+      margin: 0 0 8px 0;
     }
     .widget-catalog-dialog__section { display: flex; flex-direction: column; gap: 8px; }
     .widget-catalog-dialog__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
