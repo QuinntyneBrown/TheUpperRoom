@@ -5,7 +5,7 @@
   <h1 id="no-access-heading-h1" data-testid="no-access-heading">Access denied</h1>
   <p class="no-access-page__code" data-testid="no-access-code">403 · You don't have permission to view this page</p>
   <p class="no-access-page__body" data-testid="no-access-body">This area is restricted to City Lead and Administrator roles. If you need access, ask your team lead to update your role.</p>
-  <div class="no-access-page__actions">
+  <div class="no-access-page__actions" data-testid="no-access-actions">
     <ur-button variant="secondary" (pressed)="goBack()" data-testid="no-access-back-btn">Go back</ur-button>
     <ur-button (pressed)="goToDashboard()" data-testid="no-access-dashboard-btn">Go to dashboard</ur-button>
   </div>
