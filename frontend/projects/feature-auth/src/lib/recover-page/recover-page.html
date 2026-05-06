@@ -1,6 +1,10 @@
 <div class="auth-page">
 @if (submitted()) {
-  <div role="status" data-testid="recover-success">
+  <div class="auth-card" role="status" data-testid="recover-success">
+    <div class="auth-card__wordmark" data-testid="recover-success-wordmark">
+      <mat-icon class="auth-card__wordmark-logo">church</mat-icon>
+      <span class="auth-card__wordmark-name">The Upper Room</span>
+    </div>
     <h2>Check your inbox</h2>
     <p>If the email is registered, a reset link has been sent.</p>
     <p data-testid="recover-success-help">The link expires in 30 minutes. Check your spam folder if you don't see it.</p>
