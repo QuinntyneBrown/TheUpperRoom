@@ -80,7 +80,7 @@ const STAGES: { value: PartnerStage; label: string }[] = [
       border: 1px solid var(--ur-border-subtle, #222233); display: flex; flex-direction: column; gap: 16px;
     }
     .partner-stage-card__hd { display: flex; align-items: center; justify-content: space-between; }
-    .partner-stage-card__label { font-size: 0.75rem; font-weight: 600; color: var(--ur-fg-muted, #64748b); letter-spacing: 0.05em; }
+    .partner-stage-card__label { margin: 0; font-size: 0.75rem; font-weight: 600; color: var(--ur-fg-muted, #64748b); letter-spacing: 0.05em; }
     .partner-stage-card__history-link { font-size: 0.75rem; color: var(--ur-accent-primary, #6366f1); text-decoration: none; }
     .partner-stepper {
       display: flex; flex-direction: row; gap: 0;
