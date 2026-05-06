@@ -242,9 +242,12 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
   onStageChangeClick(stage: PartnerStage): void {
     const p = this.partner();
     if (!p || p.stage === stage) return;
+    const targetIdx = STAGES.findIndex(s => s.value === stage);
+    const currentIdx = STAGES.findIndex(s => s.value === p.stage);
+    const direction: 'advance' | 'revert' = targetIdx > currentIdx ? 'advance' : 'revert';
     this.dialog.open<StageChangeDialogComponent, { reason: string }, StageChangeDialogData>(
       StageChangeDialogComponent,
-      { data: { pendingStage: stage, stageLabel: this.stageLabel(stage), partnerName: p.name }, ariaLabel: 'Change partner stage' },
+      { data: { pendingStage: stage, stageLabel: this.stageLabel(stage), partnerName: p.name, direction }, ariaLabel: 'Change partner stage' },
     ).closed$.subscribe(result => { if (result) this.changeStage(stage); });
   }
 

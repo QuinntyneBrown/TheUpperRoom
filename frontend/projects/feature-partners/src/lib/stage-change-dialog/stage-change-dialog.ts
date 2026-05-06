@@ -10,6 +10,7 @@ export interface StageChangeDialogData {
   pendingStage: PartnerStage;
   stageLabel: string;
   partnerName?: string;
+  direction?: 'advance' | 'revert';
 }
 
 @Component({
@@ -32,7 +33,7 @@ export interface StageChangeDialogData {
       <div ur-dialog-actions style="display:flex;gap:8px">
         <ur-button variant="ghost" (pressed)="ref.close()" data-testid="stage-change-cancel-btn">Cancel</ur-button>
         <ur-button (click)="ref.close({ reason })" data-testid="stage-change-confirm-btn">
-          Advance partner
+          {{ confirmLabel }}
         </ur-button>
       </div>
     </ur-dialog>
@@ -47,5 +48,11 @@ export class StageChangeDialogComponent {
     return this.data.partnerName
       ? `Move ${this.data.partnerName} to ${this.data.stageLabel}?`
       : `Move to ${this.data.stageLabel}`;
+  }
+
+  get confirmLabel(): string {
+    return this.data.direction === 'revert'
+      ? `Move to ${this.data.stageLabel}`
+      : 'Advance partner';
   }
 }
