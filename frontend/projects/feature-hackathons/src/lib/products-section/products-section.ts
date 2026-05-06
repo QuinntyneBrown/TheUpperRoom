@@ -20,10 +20,17 @@ import { AddProductDialogComponent, AddProductDialogData } from '../add-product-
     .product-card__link { font-size: 0.8125rem; color: var(--ur-accent-primary, #9f86ff); text-decoration: none; }
     .product-card__link:hover { text-decoration: underline; }
     .products-section__empty {
-      display: flex; align-items: center; gap: 8px; padding: 12px 0;
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+      padding: 32px 16px; text-align: center;
       color: var(--ur-fg-muted, #a8a8b5); font-size: 0.875rem;
     }
-    .products-section__empty mat-icon { font-size: 18px; width: 18px; height: 18px; opacity: 0.6; }
+    .products-section__empty-icon-wrap {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 64px; height: 64px; border-radius: 9999px;
+      background: var(--ur-bg-input, #1a1a25);
+      border: 1px solid var(--ur-border-default, #2a2a3a);
+    }
+    .products-section__empty-icon-wrap mat-icon { font-size: 28px; width: 28px; height: 28px; color: var(--ur-fg-muted, #7a7a87); }
     .products-section__empty p { margin: 0; }
   `],
 })
