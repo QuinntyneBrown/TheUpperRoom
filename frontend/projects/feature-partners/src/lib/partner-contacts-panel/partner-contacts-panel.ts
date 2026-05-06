@@ -12,7 +12,7 @@ import { UrButtonComponent } from 'components';
   imports: [RouterLink, MatButtonModule, MatIconModule, UrButtonComponent],
   styles: [`
     .partner-contacts__hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-    .partner-contacts__label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; color: var(--ur-fg-secondary, #94a3b8); }
+    .partner-contacts__label { margin: 0; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; color: var(--ur-fg-secondary, #94a3b8); }
     .partner-contacts__empty {
       display: flex; align-items: center; gap: 8px; padding: 12px 0;
       color: var(--ur-fg-muted, #64748b); font-size: 0.875rem;
