@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, signal } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { HACKATHON_SERVICE, PARTNER_SERVICE, PartnerListRow } from 'api';
 import { MatIconModule } from '@angular/material/icon';
 import { UrButtonComponent } from 'components';
 
 @Component({
   selector: 'ur-hackathon-edit-page',
-  imports: [MatIconModule, UrButtonComponent],
+  imports: [MatIconModule, UrButtonComponent, RouterLink],
   styles: [`
     .edit-error-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
@@ -31,7 +31,8 @@ import { UrButtonComponent } from 'components';
       </div>
     } @else if (notFound()) {
       <div class="hackathon-edit-not-found" data-testid="hackathon-edit-not-found" role="alert">
-        <p>Hackathon not found.</p>
+        <h1>Hackathon not found</h1>
+        <a routerLink="/hackathons">Back to hackathons</a>
       </div>
     } @else {
     <div class="hackathon-edit-page">
