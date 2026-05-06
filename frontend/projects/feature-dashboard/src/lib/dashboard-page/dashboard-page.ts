@@ -31,7 +31,7 @@ const UNDO_MS = 8000;
     .dashboard-widget { display: flex; flex-direction: column; height: 100%; background: var(--ur-bg-surface, #101018); border-radius: 8px; border: 1px solid var(--ur-accent-primary, #9f86ff); overflow: hidden; }
     .dashboard-widget__header { display: flex; align-items: center; justify-content: space-between; padding: 6px 6px 6px 8px; background: var(--ur-accent-soft, #1a1432); }
     .dashboard-widget__drag-handle { font-size: 18px; width: 18px; height: 18px; color: var(--ur-accent-primary, #9f86ff); cursor: grab; margin-right: 4px; flex-shrink: 0; }
-    .dashboard-widget__label { font-size: 0.75rem; font-weight: 600; color: var(--ur-fg-primary, #fff); flex: 1; }
+    .dashboard-widget__label { margin: 0; font-size: 0.75rem; font-weight: 600; color: var(--ur-fg-primary, #fff); flex: 1; }
     .dashboard-widget__body { flex: 1; overflow: hidden; padding: 12px; }
     .dashboard-widget__resize-hint { display: flex; align-items: flex-end; justify-content: flex-end; padding: 2px 4px; }
     .dashboard-widget__resize-hint mat-icon { font-size: 14px; width: 14px; height: 14px; color: var(--ur-accent-primary, #9f86ff); }
