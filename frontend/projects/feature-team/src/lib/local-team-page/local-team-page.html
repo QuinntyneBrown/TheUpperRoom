@@ -24,7 +24,9 @@
     </div>
   } @else if (members().length === 0) {
     <div class="team-page__empty" data-testid="team-members-empty">
-      <mat-icon aria-hidden="true">person_add</mat-icon>
+      <div class="team-page__empty-icon-wrap" data-testid="team-empty-icon-wrap" aria-hidden="true">
+        <mat-icon aria-hidden="true">person_add</mat-icon>
+      </div>
       <h2 data-testid="team-empty-title">No team members found.</h2>
     </div>
   } @else {

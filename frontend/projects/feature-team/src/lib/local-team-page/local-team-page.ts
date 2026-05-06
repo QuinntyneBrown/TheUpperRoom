@@ -47,7 +47,8 @@ import { RoleChipEditorComponent } from '../role-chip-editor/role-chip-editor';
       display: flex; flex-direction: column; align-items: center; gap: 12px;
       padding: 48px 24px; text-align: center; color: var(--ur-fg-muted, #a8a8b5);
     }
-    .team-page__empty mat-icon { font-size: 48px; width: 48px; height: 48px; opacity: 0.4; }
+    .team-page__empty mat-icon { font-size: 36px; width: 36px; height: 36px; color: var(--ur-accent-primary, #9f86ff); }
+    .team-page__empty-icon-wrap { display: inline-flex; align-items: center; justify-content: center; width: 72px; height: 72px; border-radius: 9999px; background: var(--ur-accent-soft, rgba(159, 134, 255, 0.12)); border: 1px solid var(--ur-accent-primary, #9f86ff); }
     .team-page__empty p { margin: 0; font-size: 0.9375rem; }
     .team-table {
       width: 100%; border-collapse: collapse; font-size: 0.875rem;
