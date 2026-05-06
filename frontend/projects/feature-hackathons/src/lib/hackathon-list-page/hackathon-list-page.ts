@@ -41,17 +41,21 @@ import { HackathonCreatePageComponent } from '../hackathon-create-page/hackathon
             <ur-button (pressed)="onCreateClick()" data-testid="hackathons-empty-create-btn">Create first hackathon</ur-button>
           </div>
         } @else {
-          @for (row of rows(); track row.id) {
-            <a class="hackathon-card" [routerLink]="['/hackathons', row.id]" [attr.data-testid]="'hackathon-card-' + row.id">
-              <div class="hackathon-card__top">
-                <div class="hackathon-card__titles">
-                  <h3 class="hackathon-card__title">{{ row.title }}</h3>
-                  <span class="hackathon-card__meta">{{ row.hostCity }} · {{ row.startDate | date:'mediumDate' }}–{{ row.endDate | date:'mediumDate' }}</span>
-                </div>
-                <span class="hackathon-card__stage" data-testid="hackathon-stage-badge">{{ row.currentStage }}</span>
-              </div>
-            </a>
-          }
+          <ul class="hackathon-list-page__cards" aria-label="Hackathons">
+            @for (row of rows(); track row.id) {
+              <li>
+                <a class="hackathon-card" [routerLink]="['/hackathons', row.id]" [attr.data-testid]="'hackathon-card-' + row.id">
+                  <div class="hackathon-card__top">
+                    <div class="hackathon-card__titles">
+                      <h3 class="hackathon-card__title">{{ row.title }}</h3>
+                      <span class="hackathon-card__meta">{{ row.hostCity }} · {{ row.startDate | date:'mediumDate' }}–{{ row.endDate | date:'mediumDate' }}</span>
+                    </div>
+                    <span class="hackathon-card__stage" data-testid="hackathon-stage-badge">{{ row.currentStage }}</span>
+                  </div>
+                </a>
+              </li>
+            }
+          </ul>
         }
       </div>
     </div>
@@ -71,6 +75,7 @@ import { HackathonCreatePageComponent } from '../hackathon-create-page/hackathon
     }
     .hackathon-list-page__header h1 { margin: 0; font-size: 1.125rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); font-family: var(--ur-font-heading, 'Geist', sans-serif); }
     .hackathon-list-page__scroll { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 16px; }
+    .hackathon-list-page__cards { display: flex; flex-direction: column; gap: 16px; list-style: none; margin: 0; padding: 0; }
     .hackathon-card {
       display: block; padding: 20px; border-radius: 8px;
       border: 1px solid var(--ur-accent-primary, #9f86ff);
