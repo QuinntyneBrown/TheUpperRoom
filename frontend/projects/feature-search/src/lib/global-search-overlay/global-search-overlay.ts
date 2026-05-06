@@ -17,7 +17,14 @@ import { catchError, debounceTime, distinctUntilChanged, Subject, switchMap, of 
       color: var(--ur-fg-muted, #64748b); font-size: 0.875rem;
     }
     .search-overlay__no-results { flex-direction: column; align-items: center; padding: 32px 16px; }
-    .search-overlay__no-results mat-icon, .search-overlay__hint mat-icon { font-size: 20px; width: 20px; height: 20px; }
+    .search-overlay__no-results-icon-wrap {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 64px; height: 64px; border-radius: 9999px;
+      background: var(--ur-bg-input, #1a1a25);
+      border: 1px solid var(--ur-border-default, #2a2a3a);
+    }
+    .search-overlay__no-results-icon-wrap mat-icon { font-size: 28px; width: 28px; height: 28px; color: var(--ur-fg-muted, #7a7a87); }
+    .search-overlay__hint mat-icon { font-size: 20px; width: 20px; height: 20px; }
     .search-overlay__no-results p { margin: 0; font-size: 0.9rem; font-weight: 500; }
     .search-overlay__spinner { animation: overlay-spin 1s linear infinite; font-size: 20px; width: 20px; height: 20px; }
     @keyframes overlay-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
