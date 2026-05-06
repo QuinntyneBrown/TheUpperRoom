@@ -65,13 +65,13 @@
 @if (removeSuccess()) {
   <div class="team-success-toast" role="status" data-testid="remove-member-success-toast">
     <mat-icon aria-hidden="true">check_circle</mat-icon>
-    <span>Member removed</span>
+    <span data-testid="remove-member-success-toast-title">Member removed</span>
   </div>
 }
 
 @if (removeError()) {
   <div class="team-error-toast" data-testid="remove-member-error-toast" role="alert">
     <mat-icon aria-hidden="true">error_outline</mat-icon>
-    <span>Remove failed. Please try again.</span>
+    <span data-testid="remove-member-error-toast-message">Remove failed. Please try again.</span>
   </div>
 }
