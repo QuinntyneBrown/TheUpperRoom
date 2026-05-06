@@ -39,17 +39,20 @@
           </div>
           @if (membersByRole()[card.key].length === 0) {
             <div class="team-role-card__empty">No members yet</div>
-          }
-          @for (m of membersByRole()[card.key]; track m.id) {
-            <div class="team-role-card__member" [attr.data-testid]="'member-row-' + m.id">
-              <div class="team-role-card__member-info">
-                <span class="team-role-card__member-name">{{ m.displayName }}</span>
-                <a class="team-role-card__member-email" [href]="'mailto:' + m.email">{{ m.email }}</a>
-              </div>
-              @if (canEdit()) {
-                <ur-button variant="ghost" (click)="onRemoveClick(m)" [ariaLabel]="'Remove ' + m.displayName" data-testid="remove-member-btn">Remove</ur-button>
+          } @else {
+            <ul class="team-role-card__members" [attr.aria-label]="card.label + ' members'">
+              @for (m of membersByRole()[card.key]; track m.id) {
+                <li class="team-role-card__member" [attr.data-testid]="'member-row-' + m.id">
+                  <div class="team-role-card__member-info">
+                    <span class="team-role-card__member-name">{{ m.displayName }}</span>
+                    <a class="team-role-card__member-email" [href]="'mailto:' + m.email">{{ m.email }}</a>
+                  </div>
+                  @if (canEdit()) {
+                    <ur-button variant="ghost" (click)="onRemoveClick(m)" [ariaLabel]="'Remove ' + m.displayName" data-testid="remove-member-btn">Remove</ur-button>
+                  }
+                </li>
               }
-            </div>
+            </ul>
           }
         </div>
       }
