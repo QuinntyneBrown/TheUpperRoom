@@ -6,7 +6,7 @@
 
   @if (products().length === 0) {
     <div class="products-section__empty" data-testid="products-section-empty">
-      <mat-icon>inventory_2</mat-icon>
+      <mat-icon aria-hidden="true">inventory_2</mat-icon>
       <h3 data-testid="products-empty-title">No products yet</h3>
     </div>
   } @else {
