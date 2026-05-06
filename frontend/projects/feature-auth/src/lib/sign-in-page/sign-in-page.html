@@ -10,8 +10,8 @@
     <div class="sign-in-signed-out-toast" role="status" data-testid="sign-in-signed-out-toast">
       <mat-icon aria-hidden="true">check</mat-icon>
       <div class="sign-in-signed-out-toast__body">
-        <span class="sign-in-signed-out-toast__title">You have been signed out</span>
-        <span class="sign-in-signed-out-toast__sub">Sign back in to continue where you left off.</span>
+        <span class="sign-in-signed-out-toast__title" data-testid="sign-in-signed-out-toast-title">You have been signed out</span>
+        <span class="sign-in-signed-out-toast__sub" data-testid="sign-in-signed-out-toast-subtitle">Sign back in to continue where you left off.</span>
       </div>
       <button class="sign-in-signed-out-toast__dismiss" (click)="showSignedOutToast.set(false)" aria-label="Dismiss signed-out notice" data-testid="sign-in-signed-out-toast-dismiss">
         <mat-icon aria-hidden="true">close</mat-icon>
@@ -22,8 +22,8 @@
     <div class="sign-in-return-toast" role="status" data-testid="sign-in-return-toast">
       <mat-icon aria-hidden="true">info</mat-icon>
       <div class="sign-in-return-toast__body">
-        <span>Please sign in to continue</span>
-        <span class="sign-in-return-toast__sub">We'll bring you back to where you were.</span>
+        <span data-testid="sign-in-return-toast-title">Please sign in to continue</span>
+        <span class="sign-in-return-toast__sub" data-testid="sign-in-return-toast-subtitle">We'll bring you back to where you were.</span>
       </div>
       <button class="sign-in-return-toast__dismiss" (click)="showReturnToast.set(false)" aria-label="Dismiss return-to-sign-in notice" data-testid="sign-in-return-toast-dismiss">
         <mat-icon aria-hidden="true">close</mat-icon>
