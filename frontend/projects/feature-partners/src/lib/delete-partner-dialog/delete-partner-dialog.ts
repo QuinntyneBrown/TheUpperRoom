@@ -14,6 +14,7 @@ export interface DeletePartnerDialogData {
       [title]="title"
       subtitle="This partner will be removed and contacts will be detached. An admin can restore it."
       variant="danger"
+      icon="delete"
       closeLabel="Cancel"
       (closed)="ref.close()"
       data-testid="partner-delete-dialog"
