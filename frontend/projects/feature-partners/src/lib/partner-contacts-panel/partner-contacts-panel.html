@@ -29,7 +29,11 @@
   @if (showNewForm()) {
     <div class="partner-contacts__new-form" data-testid="new-contact-form">
       <div class="partner-contacts__new-banner">
-        Will be created and linked atomically.
+        @if (partnerName()) {
+          Will be linked to {{ partnerName() }} · Created and associated atomically.
+        } @else {
+          Will be created and linked atomically.
+        }
       </div>
       <div class="partner-contacts__new-row">
         <input

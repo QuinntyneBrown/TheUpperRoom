@@ -155,6 +155,7 @@
 
         <ur-partner-contacts-panel
           [partnerId]="p.id"
+          [partnerName]="p.name"
           [initialContacts]="p.contacts"
           (contactLinked)="onContactLinked($event)"
         />

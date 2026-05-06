@@ -55,6 +55,7 @@ export class PartnerContactsPanelComponent implements OnInit, OnDestroy {
   private partners = inject(PARTNER_SERVICE);
 
   partnerId = input.required<string>();
+  partnerName = input<string>('');
   initialContacts = input<PartnerContactDto[]>([]);
 
   contactLinked = output<string>();
