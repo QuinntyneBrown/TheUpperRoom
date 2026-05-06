@@ -39,7 +39,7 @@
             <span class="team-role-card__count">{{ membersByRole()[card.key].length }}</span>
           </div>
           @if (membersByRole()[card.key].length === 0) {
-            <div class="team-role-card__empty">No members yet</div>
+            <div class="team-role-card__empty" [attr.data-testid]="'role-card-empty-' + card.key">No members yet</div>
           } @else {
             <ul class="team-role-card__members" [attr.aria-label]="card.label + ' members'">
               @for (m of membersByRole()[card.key]; track m.id) {
