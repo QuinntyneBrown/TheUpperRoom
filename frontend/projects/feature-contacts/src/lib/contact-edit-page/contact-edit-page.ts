@@ -27,9 +27,10 @@ import { ContactFormComponent, ContactFormInitial, ContactFormValue } from '../c
     .conflict-col__heading { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 2px solid; }
     .conflict-col--yours .conflict-col__heading { color: var(--ur-accent-primary, #8b5cf6); border-color: var(--ur-accent-primary, #8b5cf6); }
     .conflict-col--server .conflict-col__heading { color: var(--ur-fg-muted, #64748b); border-color: var(--ur-border-default, #e2e8f0); }
+    .conflict-fields { margin: 0; }
     .conflict-field { margin-bottom: 8px; }
-    .conflict-field__label { font-size: 0.7rem; color: var(--ur-fg-muted, #64748b); text-transform: uppercase; }
-    .conflict-field__value { font-size: 0.875rem; padding: 4px 0; min-height: 20px; }
+    .conflict-field__label { margin: 0; font-size: 0.7rem; color: var(--ur-fg-muted, #64748b); text-transform: uppercase; }
+    .conflict-field__value { margin: 0; font-size: 0.875rem; padding: 4px 0; min-height: 20px; }
     .conflict-dialog__actions { display: flex; justify-content: flex-end; gap: 12px; }
     .contact-edit__back {
       display: inline-flex; align-items: center; gap: 6px;

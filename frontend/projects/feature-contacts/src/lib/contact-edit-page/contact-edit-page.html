@@ -37,21 +37,25 @@
         <div class="conflict-col conflict-col--yours" data-testid="conflict-your-changes">
           <div class="conflict-col__heading">Your changes</div>
           @if (pendingValue(); as mine) {
-            <div class="conflict-field"><div class="conflict-field__label">First name</div><div class="conflict-field__value">{{ mine.firstName }}</div></div>
-            <div class="conflict-field"><div class="conflict-field__label">Last name</div><div class="conflict-field__value">{{ mine.lastName }}</div></div>
-            <div class="conflict-field"><div class="conflict-field__label">Email</div><div class="conflict-field__value">{{ mine.email }}</div></div>
-            <div class="conflict-field"><div class="conflict-field__label">Phone</div><div class="conflict-field__value">{{ mine.phone }}</div></div>
-            <div class="conflict-field"><div class="conflict-field__label">City</div><div class="conflict-field__value">{{ mine.city }}</div></div>
+            <dl class="conflict-fields">
+              <div class="conflict-field"><dt class="conflict-field__label">First name</dt><dd class="conflict-field__value">{{ mine.firstName }}</dd></div>
+              <div class="conflict-field"><dt class="conflict-field__label">Last name</dt><dd class="conflict-field__value">{{ mine.lastName }}</dd></div>
+              <div class="conflict-field"><dt class="conflict-field__label">Email</dt><dd class="conflict-field__value">{{ mine.email }}</dd></div>
+              <div class="conflict-field"><dt class="conflict-field__label">Phone</dt><dd class="conflict-field__value">{{ mine.phone }}</dd></div>
+              <div class="conflict-field"><dt class="conflict-field__label">City</dt><dd class="conflict-field__value">{{ mine.city }}</dd></div>
+            </dl>
           }
         </div>
         <div class="conflict-col conflict-col--server" data-testid="conflict-server-version">
           <div class="conflict-col__heading">Server version</div>
           @if (serverContact(); as srv) {
-            <div class="conflict-field"><div class="conflict-field__label">First name</div><div class="conflict-field__value">{{ srv.firstName }}</div></div>
-            <div class="conflict-field"><div class="conflict-field__label">Last name</div><div class="conflict-field__value">{{ srv.lastName }}</div></div>
-            <div class="conflict-field"><div class="conflict-field__label">Email</div><div class="conflict-field__value">{{ srv.email }}</div></div>
-            <div class="conflict-field"><div class="conflict-field__label">Phone</div><div class="conflict-field__value">{{ srv.phone }}</div></div>
-            <div class="conflict-field"><div class="conflict-field__label">City</div><div class="conflict-field__value">{{ srv.city }}</div></div>
+            <dl class="conflict-fields">
+              <div class="conflict-field"><dt class="conflict-field__label">First name</dt><dd class="conflict-field__value">{{ srv.firstName }}</dd></div>
+              <div class="conflict-field"><dt class="conflict-field__label">Last name</dt><dd class="conflict-field__value">{{ srv.lastName }}</dd></div>
+              <div class="conflict-field"><dt class="conflict-field__label">Email</dt><dd class="conflict-field__value">{{ srv.email }}</dd></div>
+              <div class="conflict-field"><dt class="conflict-field__label">Phone</dt><dd class="conflict-field__value">{{ srv.phone }}</dd></div>
+              <div class="conflict-field"><dt class="conflict-field__label">City</dt><dd class="conflict-field__value">{{ srv.city }}</dd></div>
+            </dl>
           }
         </div>
       </div>
