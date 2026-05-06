@@ -1,6 +1,6 @@
 # T182 — Migrate "Delete contact" confirm to DialogService
 
-**Status:** Open
+**Status:** ACCEPTED
 **Type:** Refactor
 **Blocked by:** T179
 **Source:** `docs/inline-dialog-audit.md` (item #3)
