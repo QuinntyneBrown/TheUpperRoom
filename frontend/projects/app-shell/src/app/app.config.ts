@@ -65,6 +65,8 @@ export const appConfig: ApplicationConfig = {
       { path: 'auth/verify', title: 'Verify Email – The Upper Room', component: VerifyPageComponent },
       { path: 'prayer', title: 'Prayer – The Upper Room', component: PlaceholderPageComponent },
       { path: 'reports', title: 'Reports – The Upper Room', component: PlaceholderPageComponent },
+      { path: 'profile', title: 'Profile & preferences – The Upper Room', component: PlaceholderPageComponent },
+      { path: 'help', title: 'Help & support – The Upper Room', component: PlaceholderPageComponent },
       { path: 'settings', title: 'Settings – The Upper Room', component: PlaceholderPageComponent },
       { path: 'more', title: 'More – The Upper Room', component: PlaceholderPageComponent },
       { path: 'test/layout', component: LayoutTestComponent },

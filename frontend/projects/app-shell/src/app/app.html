@@ -46,9 +46,17 @@
         <mat-icon>account_circle</mat-icon>
       </button>
       <mat-menu #profileMenu="matMenu">
+        <a mat-menu-item data-testid="profile-menu-profile" routerLink="/profile">
+          <mat-icon>person</mat-icon>
+          Profile &amp; preferences
+        </a>
         <a mat-menu-item data-testid="profile-menu-settings" routerLink="/settings">
           <mat-icon>settings</mat-icon>
           Workspace settings
+        </a>
+        <a mat-menu-item data-testid="profile-menu-help" routerLink="/help">
+          <mat-icon>help_outline</mat-icon>
+          Help &amp; support
         </a>
         <button mat-menu-item data-testid="sign-out-button" (click)="doSignOut()">
           <mat-icon>logout</mat-icon>
