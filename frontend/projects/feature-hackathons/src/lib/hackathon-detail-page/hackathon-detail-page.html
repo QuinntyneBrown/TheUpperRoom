@@ -19,7 +19,7 @@
       </div>
       <div class="hackathon-detail__header-actions">
         <a mat-stroked-button [routerLink]="['/hackathons', h.id, 'edit']" data-testid="hackathon-edit-link">Edit</a>
-        <button mat-icon-button [matMenuTriggerFor]="moreMenu" data-testid="hackathon-more-btn" aria-label="More options">
+        <button mat-icon-button [matMenuTriggerFor]="moreMenu" data-testid="hackathon-more-btn" [attr.aria-label]="'More options for ' + h.title">
           <mat-icon aria-hidden="true">more_horiz</mat-icon>
         </button>
         <mat-menu #moreMenu="matMenu">
