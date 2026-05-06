@@ -4,7 +4,7 @@ import { PARTNER_SERVICE, PartnerListRow, PartnerStage } from 'api';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
-import { DialogService } from 'components';
+import { DialogService, UrButtonComponent } from 'components';
 import { PartnerCreatePageComponent } from '../partner-create-page/partner-create-page';
 import { toggleStage, parseStages } from './stage-filter.utils';
 
@@ -16,7 +16,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
 
 @Component({
   selector: 'ur-partner-list-page',
-  imports: [RouterLink, MatButtonModule, MatChipsModule, MatIconModule],
+  imports: [RouterLink, MatButtonModule, MatChipsModule, MatIconModule, UrButtonComponent],
   template: `
     <div class="partner-list-page" data-perf-ready="partners">
       <div class="partner-list-page__header">
@@ -30,7 +30,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
             <a class="partners-view-toggle__btn" routerLink="/partners/board" data-testid="partners-board-tab" aria-label="Board view">Board</a>
           </div>
         </div>
-        <button mat-raised-button (click)="onCreateClick()" data-testid="new-partner-btn">+ Add partner</button>
+        <ur-button (pressed)="onCreateClick()" data-testid="new-partner-btn">+ Add partner</ur-button>
       </div>
       <mat-chip-listbox multiple aria-label="Filter by stage">
         @for (s of stages; track s.stage) {
