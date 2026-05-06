@@ -1,6 +1,6 @@
 <div class="auth-page">
 @if (submitted()) {
-  <div class="auth-card auth-success" role="status" data-testid="register-success">
+  <section class="auth-card auth-success" role="status" data-testid="register-success" aria-labelledby="register-success-heading">
     <div class="auth-card__wordmark" data-testid="register-success-wordmark">
       <mat-icon class="auth-card__wordmark-logo" aria-hidden="true">church</mat-icon>
       <span class="auth-card__wordmark-name">The Upper Room</span>
@@ -8,18 +8,18 @@
     <div class="register-success__icon-wrap" data-testid="register-success-icon-wrap" aria-hidden="true">
       <mat-icon class="register-success__icon" data-testid="register-success-icon" aria-hidden="true">mail</mat-icon>
     </div>
-    <h1 data-testid="register-success-heading">Almost done</h1>
+    <h1 id="register-success-heading" data-testid="register-success-heading">Almost done</h1>
     <p data-testid="register-success-subtitle">If your email is new to The Upper Room, we just sent you a verification link to finish setting up your account.</p>
     <p data-testid="register-success-privacy-note">For your privacy, we show this same message whether or not the email is already in use.</p>
     <a routerLink="/auth/sign-in" data-testid="register-success-back-link">Back to sign in</a>
-  </div>
+  </section>
 } @else {
-  <div class="auth-card">
+  <section class="auth-card" aria-labelledby="register-heading">
     <div class="auth-card__wordmark" data-testid="register-wordmark">
       <mat-icon class="auth-card__wordmark-logo" aria-hidden="true">church</mat-icon>
       <span class="auth-card__wordmark-name">The Upper Room</span>
     </div>
-    <h1 class="auth-card__sr-heading" data-testid="register-heading">Create account</h1>
+    <h1 id="register-heading" class="auth-card__sr-heading" data-testid="register-heading">Create account</h1>
     <p class="auth-subtitle" data-testid="register-subtitle">Create your City Lead account</p>
     <form (ngSubmit)="submit()" novalidate>
       <ur-input
@@ -76,7 +76,7 @@
       }
     </form>
     <p><span data-testid="register-footer-prompt">Already have an account?</span> <a routerLink="/auth/sign-in" data-testid="register-footer-sign-in-link">Sign in</a></p>
-  </div>
+  </section>
 }
 
 </div>
