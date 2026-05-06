@@ -27,6 +27,7 @@
         type="text"
         [value]="displayName()"
         [error]="fieldError('displayName')"
+        errorTestId="register-displayName-error"
         autocomplete="name"
         required
         (valueChange)="displayName.set($event)"
@@ -36,6 +37,7 @@
         type="email"
         [value]="email()"
         [error]="fieldError('email')"
+        errorTestId="register-email-error"
         autocomplete="email"
         required
         (valueChange)="email.set($event)"
@@ -45,6 +47,7 @@
         type="text"
         [value]="city()"
         [error]="fieldError('city')"
+        errorTestId="register-city-error"
         autocomplete="address-level2"
         required
         (valueChange)="city.set($event)"
@@ -54,6 +57,7 @@
         type="password"
         [value]="password()"
         [error]="fieldError('password')"
+        errorTestId="register-password-error"
         autocomplete="new-password"
         required
         (valueChange)="password.set($event)"
