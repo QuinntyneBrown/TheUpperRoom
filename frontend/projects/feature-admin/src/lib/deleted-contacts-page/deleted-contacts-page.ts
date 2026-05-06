@@ -57,7 +57,7 @@ import { UrButtonComponent } from 'components';
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="columns"></tr>
-          <tr mat-row *matRowDef="let row; columns: columns"></tr>
+          <tr mat-row *matRowDef="let row; columns: columns" [attr.data-testid]="'deleted-contact-row-' + row.id"></tr>
         </table>
       }
     </div>
