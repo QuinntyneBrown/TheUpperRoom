@@ -21,7 +21,7 @@ export interface StageChangeDialogData {
     <ur-dialog
       [title]="title"
       subtitle="This change will be recorded in the stage history with your name and an optional reason."
-      icon="trending_up"
+      [icon]="iconName"
       closeLabel="Cancel"
       (closed)="ref.close()"
       data-testid="stage-change-dialog"
@@ -58,5 +58,9 @@ export class StageChangeDialogComponent {
 
   get confirmVariant(): 'primary' | 'danger' {
     return this.data.direction === 'revert' ? 'danger' : 'primary';
+  }
+
+  get iconName(): string {
+    return this.data.direction === 'revert' ? 'trending_down' : 'trending_up';
   }
 }
