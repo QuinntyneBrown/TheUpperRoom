@@ -37,7 +37,7 @@
             <header class="dashboard-widget__header">
               <mat-icon class="dashboard-widget__drag-handle" aria-hidden="true">drag_indicator</mat-icon>
               <span class="dashboard-widget__label">{{ widgetLabel(item.type) }}</span>
-              <button mat-icon-button (click)="removeWidget(item)" aria-label="Remove widget" data-testid="remove-widget-btn">
+              <button mat-icon-button (click)="removeWidget(item)" [attr.aria-label]="'Remove ' + widgetLabel(item.type)" data-testid="remove-widget-btn">
                 <mat-icon aria-hidden="true">close</mat-icon>
               </button>
             </header>
