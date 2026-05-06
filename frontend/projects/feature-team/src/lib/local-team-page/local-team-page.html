@@ -19,7 +19,7 @@
   } @else if (loadError()) {
     <div class="team-load-error" data-testid="team-load-error" role="alert">
       <mat-icon aria-hidden="true">error_outline</mat-icon>
-      <span>Failed to load team members.</span>
+      <span data-testid="team-load-error-message">Failed to load team members.</span>
       <ur-button variant="secondary" (pressed)="loadTeam()" data-testid="team-retry-btn">Retry</ur-button>
     </div>
   } @else if (members().length === 0) {
