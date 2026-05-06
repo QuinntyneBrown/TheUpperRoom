@@ -52,13 +52,13 @@
       <tbody>
         @for (t of teams(); track t.id) {
           <tr [attr.data-testid]="'team-row-' + t.id">
-            <td><a [routerLink]="['/teams', t.id]">{{ t.city }}</a></td>
-            <td>{{ t.memberCount }}</td>
-            <td>{{ t.prayerLeadCount }}</td>
-            <td>{{ t.eventLeadCount }}</td>
-            <td>{{ t.communicationLeadCount }}</td>
-            <td>{{ t.activeHackathonCount }}</td>
-            <td>{{ t.partnerCount }}</td>
+            <td data-testid="teams-row-city"><a [routerLink]="['/teams', t.id]">{{ t.city }}</a></td>
+            <td data-testid="teams-row-members">{{ t.memberCount }}</td>
+            <td data-testid="teams-row-prayer-leads">{{ t.prayerLeadCount }}</td>
+            <td data-testid="teams-row-event-leads">{{ t.eventLeadCount }}</td>
+            <td data-testid="teams-row-comm-leads">{{ t.communicationLeadCount }}</td>
+            <td data-testid="teams-row-active-hackathons">{{ t.activeHackathonCount }}</td>
+            <td data-testid="teams-row-partners">{{ t.partnerCount }}</td>
           </tr>
         }
       </tbody>
