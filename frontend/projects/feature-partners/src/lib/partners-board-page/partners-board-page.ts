@@ -60,7 +60,7 @@ const COLUMNS: { stage: PartnerStage; label: string }[] = [
       border: 1px solid var(--ur-border-subtle, #222233);
     }
     .partner-board__col-header { display: flex; align-items: center; justify-content: space-between; padding: 0 0 4px; }
-    .partner-board__col-label { font-weight: 600; font-size: 0.875rem; color: var(--ur-fg-primary, #fff); }
+    .partner-board__col-label { margin: 0; font-weight: 600; font-size: 0.875rem; color: var(--ur-fg-primary, #fff); }
     .partner-board__col-count { font-size: 0.6875rem; color: var(--ur-fg-muted, #7a7a87); font-family: 'Geist Mono', monospace; }
     .partner-board__drop-zone { display: flex; flex-direction: column; gap: 8px; flex: 1; min-height: 120px; }
     .partner-card {

@@ -40,7 +40,7 @@
       @for (col of columns; track col.stage) {
         <div class="partner-board__column" [attr.data-testid]="'column-' + col.stage">
           <div class="partner-board__col-header">
-            <span class="partner-board__col-label">{{ col.label }}</span>
+            <h3 class="partner-board__col-label">{{ col.label }}</h3>
             <span class="partner-board__col-count">{{ byStage()[col.stage].length }}</span>
           </div>
 
