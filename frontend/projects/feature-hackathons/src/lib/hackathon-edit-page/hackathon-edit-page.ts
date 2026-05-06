@@ -39,7 +39,7 @@ import { UrButtonComponent } from 'components';
       <h1 data-testid="hackathon-edit-title">Edit hackathon</h1>
       <form (ngSubmit)="submit()">
         <label>
-          Title *
+          Title <span aria-hidden="true">*</span>
           <input id="editTitle" type="text" required [value]="title()" (input)="title.set($any($event.target).value)" aria-describedby="editTitle-error" />
           @if (errors()['title']) { <span id="editTitle-error" class="error">{{ errors()['title'] }}</span> }
         </label>
@@ -53,7 +53,7 @@ import { UrButtonComponent } from 'components';
           @if (errors()['endDate']) { <span id="editEndDate-error" class="error">{{ errors()['endDate'] }}</span> }
         </label>
         <label>
-          Host city *
+          Host city <span aria-hidden="true">*</span>
           <input type="text" required [value]="hostCity()" (input)="hostCity.set($any($event.target).value)" />
         </label>
         <div class="form-actions">
