@@ -3,14 +3,14 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AUTH_SERVICE } from 'api';
 import { MatIconModule } from '@angular/material/icon';
-import { UrButtonComponent, UrInputComponent } from 'components';
+import { UrAlertComponent, UrButtonComponent, UrInputComponent } from 'components';
 
 @Component({
   selector: 'ur-register-page',
   templateUrl: './register-page.html',
   styleUrl: './register-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, UrButtonComponent, UrInputComponent, RouterLink, MatIconModule],
+  imports: [FormsModule, UrAlertComponent, UrButtonComponent, UrInputComponent, RouterLink, MatIconModule],
 })
 export class RegisterPageComponent implements OnDestroy {
   private auth = inject(AUTH_SERVICE);

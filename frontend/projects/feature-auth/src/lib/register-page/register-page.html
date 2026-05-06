@@ -63,10 +63,12 @@
         {{ loading() ? 'Creating account…' : 'Create account' }}
       </ur-button>
       @if (submitError()) {
-        <div class="auth-error" data-testid="register-submit-error" role="alert">
-          <mat-icon aria-hidden="true">error_outline</mat-icon>
-          <span>Registration failed. Please try again.</span>
-        </div>
+        <ur-alert
+          data-testid="register-submit-error"
+          variant="danger"
+          title="Registration failed"
+          message="Something went wrong. Please try again."
+        />
       }
     </form>
     <p>Already have an account? <a routerLink="/auth/sign-in" data-testid="register-footer-sign-in-link">Sign in</a></p>
