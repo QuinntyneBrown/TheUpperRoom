@@ -1,6 +1,6 @@
 # T186 — Migrate "Add product" dialog to DialogService
 
-**Status:** Open
+**Status:** ACCEPTED
 **Type:** Refactor
 **Blocked by:** T179
 **Source:** `docs/inline-dialog-audit.md` (item #10)
