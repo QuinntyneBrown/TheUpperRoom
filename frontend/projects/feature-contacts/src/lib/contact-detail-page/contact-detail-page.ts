@@ -109,9 +109,11 @@ export class ContactDetailPageComponent implements OnInit, OnDestroy {
   }
 
   onDeleteClick(): void {
-    if (!this.canDelete() || !this.contact()) return;
+    const c = this.contact();
+    if (!this.canDelete() || !c) return;
     this.dialog.open<DeleteContactDialogComponent, boolean>(DeleteContactDialogComponent, {
       ariaLabel: 'Delete contact',
+      data: { contactName: `${c.firstName} ${c.lastName}` },
     }).closed$.subscribe(confirmed => { if (confirmed === true) this.confirmDelete(); });
   }
 

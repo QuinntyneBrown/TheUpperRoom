@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { UrButtonComponent, UrDialogComponent, UrDialogRef } from 'components';
+import { UR_DIALOG_DATA, UrButtonComponent, UrDialogComponent, UrDialogRef } from 'components';
+
+export interface DeleteContactDialogData {
+  contactName: string;
+}
 
 @Component({
   selector: 'ur-delete-contact-dialog',
@@ -7,7 +11,7 @@ import { UrButtonComponent, UrDialogComponent, UrDialogRef } from 'components';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ur-dialog
-      title="Delete contact"
+      [title]="title"
       subtitle="This contact will be removed. An admin can restore it later."
       variant="danger"
       closeLabel="Cancel"
@@ -22,4 +26,9 @@ import { UrButtonComponent, UrDialogComponent, UrDialogRef } from 'components';
 })
 export class DeleteContactDialogComponent {
   ref = inject<UrDialogRef<boolean>>(UrDialogRef);
+  private data = inject<DeleteContactDialogData | null>(UR_DIALOG_DATA, { optional: true });
+
+  get title(): string {
+    return this.data?.contactName ? `Delete ${this.data.contactName}?` : 'Delete contact';
+  }
 }
