@@ -74,7 +74,7 @@
   <mat-sidenav-content class="shell__body">
     @if (isOffline()) {
       <div class="shell__offline-banner" data-testid="offline-banner" role="status" aria-live="polite">
-        You are offline. Reconnecting…
+        <span data-testid="offline-banner-message">You are offline. Reconnecting…</span>
       </div>
     }
 
