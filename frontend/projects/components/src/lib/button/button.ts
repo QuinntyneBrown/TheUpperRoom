@@ -30,6 +30,7 @@ export type UrButtonType = 'button' | 'submit' | 'reset';
 export class UrButtonComponent {
   @Input() variant: UrButtonVariant = 'primary';
   @Input() type: UrButtonType = 'button';
+  @Input() form = '';
   @Input() icon = '';
   @Input() iconPosition: 'start' | 'end' = 'start';
   @Input() ariaLabel = '';

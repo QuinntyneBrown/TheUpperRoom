@@ -29,9 +29,9 @@
 
   <div ur-dialog-actions>
     <ur-button variant="ghost" type="button" (click)="ref.close()" data-testid="new-contact-dialog-cancel">Cancel</ur-button>
-    <button mat-raised-button color="primary" type="submit" form="new-contact-form"
+    <ur-button type="submit" form="new-contact-form"
       [disabled]="!canSave()" data-testid="new-contact-dialog-submit">
       {{ loading() ? 'Saving…' : 'Create contact' }}
-    </button>
+    </ur-button>
   </div>
 </ur-dialog>
