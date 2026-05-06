@@ -180,7 +180,9 @@
     gap: 16px; background: var(--ur-bg-base, #0f172a); color: var(--ur-fg-on-dark, #f1f5f9);
     text-align: center;
 
-    &-logo { font-size: 48px; width: 48px; height: 48px; color: var(--ur-accent-primary, #818cf8); }
+    &-wordmark { display: flex; align-items: center; gap: 8px; }
+    &-logo { font-size: 22px; width: 22px; height: 22px; color: var(--ur-accent-primary, #818cf8); }
+    &-name { font-size: 1rem; font-weight: 600; color: var(--ur-fg-primary, #fff); }
     &-spinner {
       font-size: 36px; width: 36px; height: 36px; color: var(--ur-accent-primary, #818cf8);
       animation: shell-spin 1s linear infinite;
