@@ -26,6 +26,8 @@ const UNDO_MS = 8000;
     .dashboard-page__empty-intro h2 { margin: 0; font-size: 1.875rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); }
     .dashboard-page__empty-intro p { margin: 0; font-size: 1rem; color: var(--ur-fg-secondary, #94a3b8); }
     .dashboard-page__empty-zone { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; border-radius: 16px; border: 1px solid var(--ur-border-default, #2a2a3a); background: var(--ur-bg-elevated, #101018); padding: 48px; color: var(--ur-fg-muted, #888); }
+    .dashboard-page__empty-icon-wrap { display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; border-radius: 9999px; background: var(--ur-accent-soft, rgba(159, 134, 255, 0.12)); border: 1px solid var(--ur-accent-primary, #9f86ff); }
+    .dashboard-page__empty-icon { font-size: 36px; width: 36px; height: 36px; color: var(--ur-accent-primary, #9f86ff); }
     .dashboard-widget { display: flex; flex-direction: column; height: 100%; background: var(--ur-bg-surface, #101018); border-radius: 8px; border: 1px solid var(--ur-accent-primary, #9f86ff); overflow: hidden; }
     .dashboard-widget__header { display: flex; align-items: center; justify-content: space-between; padding: 6px 6px 6px 8px; background: var(--ur-accent-soft, #1a1432); }
     .dashboard-widget__drag-handle { font-size: 18px; width: 18px; height: 18px; color: var(--ur-accent-primary, #9f86ff); cursor: grab; margin-right: 4px; flex-shrink: 0; }

@@ -22,7 +22,9 @@
         <p>Your dashboard is empty. Add widgets to track partners, hackathons, and your local team.</p>
       </div>
       <div class="dashboard-page__empty-zone">
-        <mat-icon class="dashboard-page__empty-icon" aria-hidden="true">dashboard_customize</mat-icon>
+        <div class="dashboard-page__empty-icon-wrap" data-testid="dashboard-empty-icon-wrap" aria-hidden="true">
+          <mat-icon class="dashboard-page__empty-icon" aria-hidden="true">dashboard_customize</mat-icon>
+        </div>
         <h3 data-testid="dashboard-empty-zone-title">Drop widgets here to start</h3>
         <p>Choose from charts, KPI cards, recent activity, and more. Drag to rearrange. Resize from the corner.</p>
         <ur-button data-testid="add-widget-cta" (pressed)="onAddWidget()">+ Add widget</ur-button>
