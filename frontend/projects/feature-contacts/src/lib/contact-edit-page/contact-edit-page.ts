@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { A11yModule } from '@angular/cdk/a11y';
 import { CONTACT_SERVICE, ContactDto } from 'api';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,7 +11,7 @@ import { ContactFormComponent, ContactFormInitial, ContactFormValue } from '../c
   selector: 'ur-contact-edit-page',
   templateUrl: './contact-edit-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ContactFormComponent, RouterLink, MatButtonModule, MatIconModule, UrButtonComponent],
+  imports: [A11yModule, ContactFormComponent, RouterLink, MatButtonModule, MatIconModule, UrButtonComponent],
   styles: [`
     .conflict-dialog {
       position: fixed; inset: 0; z-index: 500; display: flex; align-items: center; justify-content: center;
