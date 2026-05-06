@@ -14,7 +14,7 @@
 } @else if (partner(); as p) {
   <article class="partner-edit" data-testid="partner-edit" aria-labelledby="partner-edit-heading">
     <header class="partner-edit__header">
-      <a [routerLink]="['/partners', p.id]" class="partner-edit__back" data-testid="partner-edit-back-link"><mat-icon aria-hidden="true">arrow_back</mat-icon> Back</a>
+      <a [routerLink]="['/partners', p.id]" class="partner-edit__back" data-testid="partner-edit-back-link"><mat-icon data-testid="partner-edit-back-arrow" aria-hidden="true">arrow_back</mat-icon> Back</a>
     </header>
 
     @if (conflict()) {
