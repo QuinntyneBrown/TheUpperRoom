@@ -49,7 +49,7 @@
   }
   <div class="contact-form__actions">
     @if (cancelRoute()) {
-      <a [routerLink]="cancelRoute()" data-testid="contact-create-cancel-btn">Cancel</a>
+      <ur-button variant="ghost" type="button" (pressed)="cancel()" data-testid="contact-create-cancel-btn">Cancel</ur-button>
     }
     <ur-button type="submit" [disabled]="loading()" data-testid="contact-form-submit-btn">
       {{ loading() ? 'Saving…' : submitLabel() }}

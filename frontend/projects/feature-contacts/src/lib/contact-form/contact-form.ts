@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, effect, input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, input, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { UrButtonComponent, UrInputComponent, UrTextareaComponent } from 'components';
 
 export interface ContactFormValue {
@@ -24,9 +24,11 @@ export interface ContactFormInitial {
   selector: 'ur-contact-form',
   templateUrl: './contact-form.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, UrButtonComponent, UrInputComponent, UrTextareaComponent, RouterLink],
+  imports: [FormsModule, UrButtonComponent, UrInputComponent, UrTextareaComponent],
 })
 export class ContactFormComponent {
+  private router = inject(Router);
+
   errors = input<Record<string, string[]>>({});
   loading = input(false);
   showNotes = input(true);
@@ -58,6 +60,11 @@ export class ContactFormComponent {
 
   fieldError(field: string): string {
     return this.errors()[field]?.[0] ?? '';
+  }
+
+  cancel(): void {
+    const route = this.cancelRoute();
+    if (route) this.router.navigateByUrl(route);
   }
 
   submit(): void {
