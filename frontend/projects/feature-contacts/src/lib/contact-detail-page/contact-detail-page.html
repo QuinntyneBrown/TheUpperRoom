@@ -87,6 +87,6 @@
 @if (deleteError()) {
   <div class="contact-toast contact-toast--error" role="alert" data-testid="contact-delete-error-toast">
     <mat-icon aria-hidden="true">error_outline</mat-icon>
-    <span>Delete failed. Please try again.</span>
+    <span data-testid="contact-delete-error-toast-title">Delete failed. Please try again.</span>
   </div>
 }
