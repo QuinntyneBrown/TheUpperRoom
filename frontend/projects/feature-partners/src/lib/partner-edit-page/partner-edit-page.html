@@ -31,6 +31,7 @@
             <input
               id="partnerName"
               type="text"
+              required
               [value]="name()"
               (input)="name.set($any($event.target).value)"
               data-testid="partner-name-input"
