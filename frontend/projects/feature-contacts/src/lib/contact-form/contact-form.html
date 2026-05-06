@@ -4,6 +4,7 @@
     type="text"
     [value]="firstName()"
     [error]="fieldError('firstName')"
+    errorTestId="contact-form-firstName-error"
     required
     (valueChange)="firstName.set($event)"
   />
@@ -12,6 +13,7 @@
     type="text"
     [value]="lastName()"
     [error]="fieldError('lastName')"
+    errorTestId="contact-form-lastName-error"
     required
     (valueChange)="lastName.set($event)"
   />
@@ -20,6 +22,7 @@
     type="email"
     [value]="email()"
     [error]="fieldError('email')"
+    errorTestId="contact-form-email-error"
     autocomplete="email"
     (valueChange)="email.set($event)"
   />
@@ -28,6 +31,7 @@
     type="tel"
     [value]="phone()"
     [error]="fieldError('phone')"
+    errorTestId="contact-form-phone-error"
     autocomplete="tel"
     (valueChange)="phone.set($event)"
   />
@@ -36,6 +40,7 @@
     type="text"
     [value]="city()"
     [error]="fieldError('city')"
+    errorTestId="contact-form-city-error"
     (valueChange)="city.set($event)"
   />
   @if (showNotes()) {
