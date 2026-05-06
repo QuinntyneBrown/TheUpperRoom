@@ -39,6 +39,7 @@
         <input
           placeholder="First name *"
           aria-label="First name"
+          required
           [value]="firstName()"
           (input)="firstName.set($any($event.target).value)"
           data-testid="new-contact-first-name"
@@ -46,6 +47,7 @@
         <input
           placeholder="Last name *"
           aria-label="Last name"
+          required
           [value]="lastName()"
           (input)="lastName.set($any($event.target).value)"
           data-testid="new-contact-last-name"
