@@ -8,6 +8,7 @@
 } @else if (notFound()) {
   <div class="not-found" data-testid="contact-edit-not-found">
     <h1 data-testid="contact-edit-not-found-title">Contact not found</h1>
+    <p data-testid="contact-edit-not-found-subtitle">This contact may have been deleted or you may not have access to view it.</p>
     <a routerLink="/contacts" data-testid="contact-edit-not-found-back-link">Back to contacts</a>
   </div>
 } @else if (contact()) {
