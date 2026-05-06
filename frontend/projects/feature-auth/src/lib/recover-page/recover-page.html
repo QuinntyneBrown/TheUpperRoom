@@ -10,6 +10,10 @@
     </div>
     <h1 data-testid="recover-success-title">Check your inbox</h1>
     <p data-testid="recover-success-subtitle">If an account exists for that address, we have sent reset instructions to it.</p>
+    <div class="recover-success__email-row" data-testid="recover-success-email-row">
+      <mat-icon class="recover-success__email-icon" aria-hidden="true">send</mat-icon>
+      <span class="recover-success__email-value" data-testid="recover-success-email-value">{{ email() }}</span>
+    </div>
     <p data-testid="recover-success-help">The link expires in 30 minutes. Check your spam folder if you don't see it.</p>
     <a routerLink="/auth/sign-in" data-testid="recover-success-back-link">Back to sign in</a>
   </div>
