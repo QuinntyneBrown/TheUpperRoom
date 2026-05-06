@@ -10,6 +10,11 @@ import { ContactFormComponent, ContactFormValue } from '../contact-form/contact-
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ContactFormComponent, MatIconModule],
   styles: [`
+    .page-container__subtitle {
+      margin: 4px 0 16px;
+      color: var(--ur-fg-secondary, #a1a1aa);
+      font-size: 0.875rem;
+    }
     .create-error-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
       gap: 10px; padding: 12px 16px; border-radius: 8px; z-index: 1000;
