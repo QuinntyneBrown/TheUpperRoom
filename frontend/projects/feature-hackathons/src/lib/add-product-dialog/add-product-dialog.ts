@@ -37,26 +37,26 @@ export interface AddProductDialogData {
       <form (submit)="$event.preventDefault(); submit()" class="product-form">
         <div class="product-form__field">
           <label for="productName">Name *</label>
-          <input id="productName" type="text" required [value]="name()" (input)="name.set($any($event.target).value)" aria-describedby="productName-error" />
+          <input id="productName" type="text" required [value]="name()" (input)="name.set($any($event.target).value)" aria-describedby="productName-error" data-testid="add-product-name-input" />
           @if (errors()['name']) {
             <span id="productName-error" class="product-form__error" data-testid="add-product-name-error">{{ errors()['name'] }}</span>
           }
         </div>
         <div class="product-form__field">
           <label for="productDesc">Description (optional)</label>
-          <textarea id="productDesc" rows="2" [value]="description()" (input)="description.set($any($event.target).value)"></textarea>
+          <textarea id="productDesc" rows="2" [value]="description()" (input)="description.set($any($event.target).value)" data-testid="add-product-description-input"></textarea>
         </div>
         <div class="product-form__row">
           <div class="product-form__field">
             <label for="productRepo">Repo URL (optional)</label>
-            <input id="productRepo" type="url" [value]="repoUrl()" (input)="repoUrl.set($any($event.target).value)" aria-describedby="productRepo-error" />
+            <input id="productRepo" type="url" [value]="repoUrl()" (input)="repoUrl.set($any($event.target).value)" aria-describedby="productRepo-error" data-testid="add-product-repo-url-input" />
             @if (errors()['repoUrl']) {
               <span id="productRepo-error" class="product-form__error" data-testid="add-product-repoUrl-error">{{ errors()['repoUrl'] }}</span>
             }
           </div>
           <div class="product-form__field">
             <label for="productDemo">Demo URL (optional)</label>
-            <input id="productDemo" type="url" [value]="demoUrl()" (input)="demoUrl.set($any($event.target).value)" aria-describedby="productDemo-error" />
+            <input id="productDemo" type="url" [value]="demoUrl()" (input)="demoUrl.set($any($event.target).value)" aria-describedby="productDemo-error" data-testid="add-product-demo-url-input" />
             @if (errors()['demoUrl']) {
               <span id="productDemo-error" class="product-form__error" data-testid="add-product-demoUrl-error">{{ errors()['demoUrl'] }}</span>
             }
