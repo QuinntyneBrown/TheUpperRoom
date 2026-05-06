@@ -18,7 +18,7 @@
   @if (items().length === 0 && !loadError()) {
     <div class="dashboard-page__empty" data-testid="dashboard-empty">
       <div class="dashboard-page__empty-intro" data-testid="dashboard-empty-intro">
-        <h2>Welcome, {{ displayName() || 'there' }}</h2>
+        <h2 data-testid="dashboard-welcome-title">Welcome, {{ displayName() || 'there' }}</h2>
         <p>Your dashboard is empty. Add widgets to track partners, hackathons, and your local team.</p>
       </div>
       <div class="dashboard-page__empty-zone">
