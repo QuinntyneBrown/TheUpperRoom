@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@ang
 import { DatePipe } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { UrButtonComponent } from 'components';
 import { NOTIFICATION_SERVICE, NotificationDto, REALTIME_SERVICE } from 'api';
 import { filter } from 'rxjs';
 
@@ -14,7 +15,7 @@ const NOTIFICATION_EVENTS = new Set([
   selector: 'ur-notification-center',
   templateUrl: './notification-center.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [DatePipe, MatIconModule, MatButtonModule],
+  imports: [DatePipe, MatIconModule, MatButtonModule, UrButtonComponent],
   styles: [`
     .notification-skeleton-row {
       padding: 12px 16px; display: flex; flex-direction: column; gap: 6px; border-bottom: 1px solid var(--ur-border, #e2e8f0);

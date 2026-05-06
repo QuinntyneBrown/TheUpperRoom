@@ -35,7 +35,7 @@
           <mat-icon>wifi_off</mat-icon>
           <p>Couldn't load notifications</p>
           <p class="notification-center__error-hint">Check your connection and try again.</p>
-          <button mat-raised-button (click)="load()" data-testid="notifications-retry-btn">Retry</button>
+          <ur-button (pressed)="load()" data-testid="notifications-retry-btn">Retry</ur-button>
         </div>
       } @else if (notifications().length === 0) {
         <div class="notification-center__empty" data-testid="notifications-empty">
