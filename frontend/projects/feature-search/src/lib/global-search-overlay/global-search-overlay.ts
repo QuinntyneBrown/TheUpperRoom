@@ -85,6 +85,11 @@ export class GlobalSearchOverlayComponent implements OnInit {
     this.open.set(false);
   }
 
+  browse(route: string): void {
+    this.router.navigateByUrl(route);
+    this.open.set(false);
+  }
+
   allGroups(): Array<{ label: string; items: SearchResultItem[] }> {
     const r = this.results();
     if (!r) return [];

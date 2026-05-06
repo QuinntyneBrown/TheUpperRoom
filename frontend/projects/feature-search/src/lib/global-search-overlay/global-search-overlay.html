@@ -60,6 +60,14 @@
           <mat-icon>search_off</mat-icon>
           <h2 data-testid="search-no-results-title">No matches for "{{ term() }}"</h2>
           <p data-testid="search-no-results-subtitle">Try a different keyword, or browse a category below.</p>
+          <div class="search-overlay__no-results-ctas">
+            <button mat-stroked-button data-testid="search-browse-contacts-btn" (click)="browse('/contacts')">
+              Browse all contacts
+            </button>
+            <button mat-stroked-button data-testid="search-browse-partners-btn" (click)="browse('/partners')">
+              Browse all partners
+            </button>
+          </div>
         </div>
       }
       <footer class="search-overlay__keyboard-hint" data-testid="search-keyboard-hint">
