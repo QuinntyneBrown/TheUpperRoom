@@ -30,7 +30,9 @@
     </div>
   } @else if (teams().length === 0) {
     <div class="global-teams-page__empty" data-testid="teams-empty">
-      <mat-icon aria-hidden="true">groups</mat-icon>
+      <div class="global-teams-page__empty-icon-wrap" data-testid="teams-empty-icon-wrap" aria-hidden="true">
+        <mat-icon aria-hidden="true">groups</mat-icon>
+      </div>
       <h2 data-testid="teams-empty-title">No teams found</h2>
     </div>
   } @else {

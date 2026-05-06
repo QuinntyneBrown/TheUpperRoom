@@ -60,7 +60,13 @@ import { catchError, debounceTime, distinctUntilChanged, of, Subject, switchMap 
       display: flex; flex-direction: column; align-items: center; gap: 12px;
       padding: 48px 24px; text-align: center; color: var(--ur-fg-muted, #64748b);
     }
-    .global-teams-page__empty mat-icon { font-size: 48px; width: 48px; height: 48px; opacity: 0.4; }
+    .global-teams-page__empty-icon-wrap {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 96px; height: 96px; border-radius: 9999px;
+      background: var(--ur-bg-input, #1a1a25);
+      border: 1px solid var(--ur-border-default, #2a2a3a);
+    }
+    .global-teams-page__empty-icon-wrap mat-icon { font-size: 40px; width: 40px; height: 40px; color: var(--ur-fg-muted, #7a7a87); }
     .global-teams-page__empty p { margin: 0; font-size: 0.9375rem; }
   `],
 })
