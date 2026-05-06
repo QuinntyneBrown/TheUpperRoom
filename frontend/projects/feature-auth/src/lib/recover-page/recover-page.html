@@ -12,6 +12,10 @@
   </div>
 } @else {
   <div class="auth-card">
+    <div class="auth-card__wordmark" data-testid="recover-wordmark">
+      <mat-icon class="auth-card__wordmark-logo" aria-hidden="true">church</mat-icon>
+      <span class="auth-card__wordmark-name">The Upper Room</span>
+    </div>
     <h1 data-testid="recover-heading">Reset password</h1>
     <p class="auth-subtitle" data-testid="recover-subtitle">We will email a recovery link if an account matches.</p>
     <form (ngSubmit)="submit()" novalidate>
