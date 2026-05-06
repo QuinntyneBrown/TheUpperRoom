@@ -81,6 +81,12 @@
         </ul>
       }
     }
+  } @else if (!loading() && listResult().total === 0) {
+    <div class="contacts-list-page__empty" data-testid="contacts-empty">
+      <mat-icon>contacts</mat-icon>
+      <h2 data-testid="contacts-empty-title">No contacts yet.</h2>
+      <ur-button (pressed)="onNewContactClick()" data-testid="contacts-empty-create-btn">+ Add first contact</ur-button>
+    </div>
   } @else {
     <div class="contacts-list-page__table-wrap">
       <table class="contacts-table" data-testid="contacts-table" aria-label="Contacts">
