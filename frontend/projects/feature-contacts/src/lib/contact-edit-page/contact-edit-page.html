@@ -35,8 +35,8 @@
       <h2 class="conflict-dialog__title" id="conflict-title" data-testid="conflict-dialog-title">Save conflict</h2>
       <p class="conflict-dialog__subtitle" data-testid="conflict-dialog-subtitle">Someone else saved this contact while you were editing. Choose which version to keep.</p>
       <div class="conflict-dialog__columns">
-        <div class="conflict-col conflict-col--yours" data-testid="conflict-your-changes">
-          <h3 class="conflict-col__heading">Your changes</h3>
+        <section class="conflict-col conflict-col--yours" data-testid="conflict-your-changes" aria-labelledby="conflict-your-heading">
+          <h3 id="conflict-your-heading" class="conflict-col__heading">Your changes</h3>
           @if (pendingValue(); as mine) {
             <dl class="conflict-fields">
               <div class="conflict-field"><dt class="conflict-field__label">First name</dt><dd class="conflict-field__value">{{ mine.firstName }}</dd></div>
@@ -46,9 +46,9 @@
               <div class="conflict-field"><dt class="conflict-field__label">City</dt><dd class="conflict-field__value">{{ mine.city }}</dd></div>
             </dl>
           }
-        </div>
-        <div class="conflict-col conflict-col--server" data-testid="conflict-server-version">
-          <h3 class="conflict-col__heading">Server version</h3>
+        </section>
+        <section class="conflict-col conflict-col--server" data-testid="conflict-server-version" aria-labelledby="conflict-server-heading">
+          <h3 id="conflict-server-heading" class="conflict-col__heading">Server version</h3>
           @if (serverContact(); as srv) {
             <dl class="conflict-fields">
               <div class="conflict-field"><dt class="conflict-field__label">First name</dt><dd class="conflict-field__value">{{ srv.firstName }}</dd></div>
@@ -58,7 +58,7 @@
               <div class="conflict-field"><dt class="conflict-field__label">City</dt><dd class="conflict-field__value">{{ srv.city }}</dd></div>
             </dl>
           }
-        </div>
+        </section>
       </div>
       <div class="conflict-dialog__actions">
         <ur-button variant="ghost" (pressed)="discardMine()" data-testid="conflict-discard-btn">Discard my changes</ur-button>
