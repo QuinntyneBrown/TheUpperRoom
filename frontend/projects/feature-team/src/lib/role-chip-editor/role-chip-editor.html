@@ -13,7 +13,7 @@
   @if (toggleError()) {
     <div class="role-chip-error" data-testid="role-toggle-error" role="alert">
       <mat-icon aria-hidden="true">error_outline</mat-icon>
-      <span>Failed to update role. Please try again.</span>
+      <span data-testid="role-toggle-error-message">Failed to update role. Please try again.</span>
     </div>
   }
 </div>
