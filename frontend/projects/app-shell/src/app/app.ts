@@ -23,25 +23,25 @@ import { GlobalSearchOverlayComponent } from 'feature-search';
 import { GlobalToastService } from './services/global-toast.service';
 
 const WORKSPACE_ITEMS = [
-  { icon: 'home', label: 'Dashboard', route: '/dashboard' },
-  { icon: 'handshake', label: 'Partners', route: '/partners' },
-  { icon: 'contacts', label: 'Contacts', route: '/contacts' },
-  { icon: 'rocket_launch', label: 'Hackathons', route: '/hackathons' },
-  { icon: 'diversity_3', label: 'Team', route: '/team' },
-  { icon: 'volunteer_activism', label: 'Prayer', route: '/prayer' },
+  { icon: 'home', label: 'Dashboard', route: '/dashboard', testId: 'nav-dashboard' },
+  { icon: 'handshake', label: 'Partners', route: '/partners', testId: 'nav-partners' },
+  { icon: 'contacts', label: 'Contacts', route: '/contacts', testId: 'nav-contacts' },
+  { icon: 'rocket_launch', label: 'Hackathons', route: '/hackathons', testId: 'nav-hackathons' },
+  { icon: 'diversity_3', label: 'Team', route: '/team', testId: 'nav-team' },
+  { icon: 'volunteer_activism', label: 'Prayer', route: '/prayer', testId: 'nav-prayer' },
 ];
 
 const GLOBAL_ITEMS = [
-  { icon: 'public', label: 'Cities', route: '/teams' },
-  { icon: 'insights', label: 'Reports', route: '/reports' },
-  { icon: 'settings', label: 'Settings', route: '/settings' },
+  { icon: 'public', label: 'Cities', route: '/teams', testId: 'nav-teams' },
+  { icon: 'insights', label: 'Reports', route: '/reports', testId: 'nav-reports' },
+  { icon: 'settings', label: 'Settings', route: '/settings', testId: 'nav-settings' },
 ];
 
 const BOTTOM_NAV_ITEMS = [
-  { icon: 'home', label: 'Home', route: '/dashboard' },
-  { icon: 'handshake', label: 'Partners', route: '/partners' },
-  { icon: 'rocket_launch', label: 'Hacks', route: '/hackathons' },
-  { icon: 'more_horiz', label: 'More', route: '/more' },
+  { icon: 'home', label: 'Home', route: '/dashboard', testId: 'bottom-nav-dashboard' },
+  { icon: 'handshake', label: 'Partners', route: '/partners', testId: 'bottom-nav-partners' },
+  { icon: 'rocket_launch', label: 'Hacks', route: '/hackathons', testId: 'bottom-nav-hackathons' },
+  { icon: 'more_horiz', label: 'More', route: '/more', testId: 'bottom-nav-more' },
 ];
 
 @Component({
