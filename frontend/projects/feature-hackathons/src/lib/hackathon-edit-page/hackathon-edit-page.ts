@@ -59,7 +59,7 @@ import { UrButtonComponent } from 'components';
           <ur-button type="submit" [disabled]="saving()" data-testid="hackathon-edit-save-btn">
             {{ saving() ? 'Saving…' : 'Save changes' }}
           </ur-button>
-          <ur-button variant="secondary" type="button" (click)="cancel()">Cancel</ur-button>
+          <ur-button variant="ghost" type="button" (click)="cancel()">Cancel</ur-button>
         </div>
       </form>
     </div>
