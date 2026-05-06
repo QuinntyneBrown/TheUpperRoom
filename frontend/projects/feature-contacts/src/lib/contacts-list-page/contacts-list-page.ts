@@ -83,6 +83,9 @@ type SortDir = 'asc' | 'desc';
       border: 1px solid var(--ur-border-default, #2a2a3a);
     }
     .contacts-list-page__no-results-icon-wrap mat-icon { font-size: 40px; width: 40px; height: 40px; color: var(--ur-fg-muted, #7a7a87); }
+    .contacts-list-page__empty { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 48px 24px; text-align: center; }
+    .contacts-list-page__empty-icon-wrap { display: inline-flex; align-items: center; justify-content: center; width: 72px; height: 72px; border-radius: 9999px; background: var(--ur-accent-soft, rgba(159, 134, 255, 0.12)); border: 1px solid var(--ur-accent-primary, #9f86ff); }
+    .contacts-list-page__empty-icon-wrap mat-icon { font-size: 36px; width: 36px; height: 36px; color: var(--ur-accent-primary, #9f86ff); }
     .contacts-list-page__no-results p { margin: 0; font-size: 1rem; font-weight: 500; }
     .contact-search-skeleton { padding: 8px 0; }
     .contact-skeleton-row { padding: 10px 16px; display: flex; flex-direction: column; gap: 6px; }
