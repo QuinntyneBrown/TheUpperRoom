@@ -69,7 +69,10 @@
   @if (savedToast()) {
     <div class="dashboard-toast dashboard-toast--saved" role="status" data-testid="layout-saved-toast">
       <mat-icon>check_circle</mat-icon>
-      <span>Layout saved</span>
+      <div class="dashboard-toast__copy">
+        <span>Layout saved</span>
+        <span class="dashboard-toast__subtitle" data-testid="layout-saved-toast-subtitle">Synced across your devices.</span>
+      </div>
     </div>
   }
 
