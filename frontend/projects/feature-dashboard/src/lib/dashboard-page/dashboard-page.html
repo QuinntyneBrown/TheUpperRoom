@@ -82,7 +82,7 @@
     <div class="dashboard-toast dashboard-toast--error" role="alert" data-testid="layout-save-error-toast">
       <mat-icon aria-hidden="true">wifi_off</mat-icon>
       <div class="dashboard-toast__copy">
-        <span>Couldn't save your layout</span>
+        <span data-testid="layout-save-error-toast-title">Couldn't save your layout</span>
         <span class="dashboard-toast__subtitle" data-testid="layout-save-error-toast-subtitle">You're offline. We saved a copy locally and will retry when you're back online.</span>
       </div>
       <ur-button variant="ghost" (pressed)="retrySave()" data-testid="layout-save-retry-btn">Retry</ur-button>
