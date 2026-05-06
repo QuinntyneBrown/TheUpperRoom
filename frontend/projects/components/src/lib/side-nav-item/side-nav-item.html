@@ -8,6 +8,7 @@
     #rla="routerLinkActive"
     [activated]="rla.isActive"
     [attr.aria-current]="rla.isActive ? 'page' : null"
+    [attr.data-testid]="testId || null"
   >
     @if (icon) {
       <mat-icon matListItemIcon class="ur-side-nav-item__icon" aria-hidden="true">{{ icon }}</mat-icon>
@@ -25,6 +26,7 @@
     [activated]="active"
     [class]="itemClass"
     [attr.aria-current]="active ? 'page' : null"
+    [attr.data-testid]="testId || null"
     (click)="onSelect($event)"
   >
     @if (icon) {

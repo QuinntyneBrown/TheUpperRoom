@@ -22,6 +22,7 @@ export class UrSideNavItemComponent {
   @Input() label = '';
   @Input() href = '';
   @Input() badge = '';
+  @Input() testId = '';
   @Input({ transform: booleanAttribute }) active = false;
   @Input({ transform: booleanAttribute }) disabled = false;
 
