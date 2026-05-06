@@ -84,11 +84,13 @@ const STAGES: { value: PartnerStage; label: string }[] = [
     .partner-stage-card__history-link { font-size: 0.75rem; color: var(--ur-accent-primary, #6366f1); text-decoration: none; }
     .partner-stepper {
       display: flex; flex-direction: row; gap: 0;
+      list-style: none; margin: 0; padding: 0;
       border-radius: 6px; background: var(--ur-bg-base, #0e0e16);
       border: 1px solid var(--ur-border-default, #2a2a3a); overflow: hidden;
     }
-    .partner-stepper__divider { width: 1px; background: var(--ur-border-default, #2a2a3a); flex-shrink: 0; }
+    .partner-stepper__divider { display: block; position: absolute; top: 0; bottom: 0; left: 0; width: 1px; background: var(--ur-border-default, #2a2a3a); }
     .partner-stepper__step {
+      position: relative;
       display: flex; flex-direction: column; justify-content: center; gap: 4px;
       padding: 12px; flex: 1; min-width: 0;
     }

@@ -64,16 +64,16 @@
             <a href="#stage-history" class="partner-stage-card__history-link" data-testid="view-stage-history-link">View history</a>
           </div>
 
-          <div class="partner-stepper" data-testid="stage-stepper">
+          <ol class="partner-stepper" data-testid="stage-stepper" aria-label="Partnership stages">
             @for (s of stages; track s.value; let i = $index) {
-              @if (i > 0) {
-                <div class="partner-stepper__divider" aria-hidden="true"></div>
-              }
-              <div class="partner-stepper__step"
+              <li class="partner-stepper__step"
                    [class.partner-stepper__step--complete]="stageIndex() > i"
                    [class.partner-stepper__step--current]="stageIndex() === i"
                    [class.partner-stepper__step--future]="stageIndex() < i"
                    [attr.data-testid]="'stage-step-' + s.value">
+                @if (i > 0) {
+                  <span class="partner-stepper__divider" aria-hidden="true"></span>
+                }
                 <div class="partner-stepper__step-hd">
                   @if (stageIndex() > i) {
                     <span class="material-symbols-outlined partner-stepper__check" aria-hidden="true">check</span>
@@ -93,9 +93,9 @@
                 } @else {
                   <span class="partner-stepper__not-reached">Not yet reached</span>
                 }
-              </div>
+              </li>
             }
-          </div>
+          </ol>
 
           <div class="partner-stage-card__actions">
             @if (stageIndex() > 0) {
