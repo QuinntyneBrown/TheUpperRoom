@@ -48,7 +48,7 @@
           <p data-testid="notifications-empty-subtitle">New activity from your team will appear here.</p>
         </div>
       } @else {
-        <ul class="notification-center__list">
+        <ul class="notification-center__list" aria-label="Notifications">
           @for (n of notifications(); track n.id) {
             <li class="notification-center__item" [class.notification-center__item--unread]="!n.isRead" [attr.data-testid]="'notification-' + n.id">
               <span class="notification-center__kind">{{ n.kind }}</span>
