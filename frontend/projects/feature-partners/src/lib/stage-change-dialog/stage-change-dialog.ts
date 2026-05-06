@@ -29,7 +29,7 @@ export interface StageChangeDialogData {
         <textarea matInput rows="2" [(ngModel)]="reason" data-testid="stage-change-reason" placeholder="e.g. Signed sponsorship agreement"></textarea>
       </mat-form-field>
       <div ur-dialog-actions style="display:flex;gap:8px">
-        <button mat-stroked-button (click)="ref.close()" data-testid="stage-change-cancel-btn">Cancel</button>
+        <ur-button variant="ghost" (pressed)="ref.close()" data-testid="stage-change-cancel-btn">Cancel</ur-button>
         <ur-button (click)="ref.close({ reason })" data-testid="stage-change-confirm-btn">
           Advance partner
         </ur-button>
