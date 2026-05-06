@@ -61,7 +61,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
           <div class="partner-list-page__empty" data-testid="partners-empty">
             <mat-icon>handshake</mat-icon>
             <p>No partners found.</p>
-            <button mat-stroked-button (click)="onCreateClick()" data-testid="partners-empty-create-btn">Add first partner</button>
+            <ur-button (pressed)="onCreateClick()" data-testid="partners-empty-create-btn">Add first partner</ur-button>
           </div>
         }
         @for (row of filtered(); track row.id) {
