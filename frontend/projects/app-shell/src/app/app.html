@@ -27,15 +27,15 @@
       <span class="shell__brand-name">The Upper Room</span>
     </div>
 
-    <p class="shell__section-label">WORKSPACE</p>
-    <mat-nav-list>
+    <p id="sidenav-workspace-label" class="shell__section-label">WORKSPACE</p>
+    <mat-nav-list aria-labelledby="sidenav-workspace-label">
       @for (item of workspaceItems; track item.route) {
         <ur-side-nav-item [icon]="item.icon" [label]="item.label" [href]="item.route" />
       }
     </mat-nav-list>
 
-    <p class="shell__section-label">GLOBAL</p>
-    <mat-nav-list>
+    <p id="sidenav-global-label" class="shell__section-label">GLOBAL</p>
+    <mat-nav-list aria-labelledby="sidenav-global-label">
       @for (item of globalItems; track item.route) {
         <ur-side-nav-item [icon]="item.icon" [label]="item.label" [href]="item.route" />
       }
