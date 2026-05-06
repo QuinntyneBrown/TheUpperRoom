@@ -49,24 +49,26 @@
           {{ contact()!.firstName[0] }}{{ contact()!.lastName[0] }}
         </div>
         <h2 class="contact-detail__name" data-testid="contact-summary-name">{{ contact()!.firstName }} {{ contact()!.lastName }}</h2>
-        @if (contact()!.email) {
-          <div class="contact-detail__meta-row" data-testid="contact-meta-email">
-            <mat-icon aria-hidden="true">mail</mat-icon>
-            <a [href]="'mailto:' + contact()!.email">{{ contact()!.email }}</a>
-          </div>
-        }
-        @if (contact()!.phone) {
-          <div class="contact-detail__meta-row" data-testid="contact-meta-phone">
-            <mat-icon aria-hidden="true">call</mat-icon>
-            <a [href]="'tel:' + contact()!.phone">{{ contact()!.phone }}</a>
-          </div>
-        }
-        @if (contact()!.city) {
-          <div class="contact-detail__meta-row" data-testid="contact-meta-city">
-            <mat-icon aria-hidden="true">location_on</mat-icon>
-            <span>{{ contact()!.city }}</span>
-          </div>
-        }
+        <ul class="contact-detail__meta" aria-label="Contact details">
+          @if (contact()!.email) {
+            <li class="contact-detail__meta-row" data-testid="contact-meta-email">
+              <mat-icon aria-hidden="true">mail</mat-icon>
+              <a [href]="'mailto:' + contact()!.email">{{ contact()!.email }}</a>
+            </li>
+          }
+          @if (contact()!.phone) {
+            <li class="contact-detail__meta-row" data-testid="contact-meta-phone">
+              <mat-icon aria-hidden="true">call</mat-icon>
+              <a [href]="'tel:' + contact()!.phone">{{ contact()!.phone }}</a>
+            </li>
+          }
+          @if (contact()!.city) {
+            <li class="contact-detail__meta-row" data-testid="contact-meta-city">
+              <mat-icon aria-hidden="true">location_on</mat-icon>
+              <span>{{ contact()!.city }}</span>
+            </li>
+          }
+        </ul>
       </section>
 
       <ur-notes-panel
