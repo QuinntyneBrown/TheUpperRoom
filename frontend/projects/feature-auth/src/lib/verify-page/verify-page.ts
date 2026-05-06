@@ -2,13 +2,14 @@ import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@ang
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { AUTH_SERVICE } from 'api';
+import { UrButtonComponent } from 'components';
 
 @Component({
   selector: 'ur-verify-page',
   templateUrl: './verify-page.html',
   styleUrl: './verify-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatIconModule],
+  imports: [MatIconModule, UrButtonComponent],
 })
 export class VerifyPageComponent implements OnInit {
   private auth = inject(AUTH_SERVICE);
@@ -26,5 +27,9 @@ export class VerifyPageComponent implements OnInit {
       },
       error: () => this.status.set('error'),
     });
+  }
+
+  goToSignIn(): void {
+    this.router.navigateByUrl('/auth/sign-in');
   }
 }

@@ -4,7 +4,7 @@ import { test, expect } from '../../fixtures';
 
 test.describe('Verify-email wordmark', () => {
   test('verified state shows "The Upper Room" wordmark with logo', async ({ page }) => {
-    await page.route('**/api/auth/verify', (route) => {
+    await page.route('**/api/auth/verify**', (route) => {
       route.fulfill({ status: 200, body: '{}' });
     });
     await page.goto('/auth/verify?token=good-token');
@@ -17,7 +17,7 @@ test.describe('Verify-email wordmark', () => {
   });
 
   test('error state shows "The Upper Room" wordmark with logo', async ({ page }) => {
-    await page.route('**/api/auth/verify', (route) => {
+    await page.route('**/api/auth/verify**', (route) => {
       route.fulfill({ status: 400, body: '{"message":"invalid"}' });
     });
     await page.goto('/auth/verify?token=bad-token');

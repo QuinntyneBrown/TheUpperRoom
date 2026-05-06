@@ -1,0 +1,7 @@
+.verify-success__check {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  color: var(--ur-success, #22c55e);
+  align-self: center;
+}
