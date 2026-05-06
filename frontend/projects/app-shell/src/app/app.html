@@ -102,11 +102,11 @@
           <mat-icon aria-hidden="true">account_circle</mat-icon>
         </button>
         <mat-menu #topbarProfileMenu="matMenu">
-          <a mat-menu-item routerLink="/settings">
+          <a mat-menu-item routerLink="/settings" data-testid="topbar-profile-menu-settings">
             <mat-icon aria-hidden="true">settings</mat-icon>
             Workspace settings
           </a>
-          <button mat-menu-item class="profile-menu__sign-out" (click)="doSignOut()">
+          <button mat-menu-item class="profile-menu__sign-out" (click)="doSignOut()" data-testid="topbar-profile-menu-sign-out">
             <mat-icon aria-hidden="true">logout</mat-icon>
             Sign out
           </button>
