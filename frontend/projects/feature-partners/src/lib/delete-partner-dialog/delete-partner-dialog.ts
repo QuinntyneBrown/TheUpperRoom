@@ -13,6 +13,8 @@ export interface DeletePartnerDialogData {
     <ur-dialog
       [title]="title"
       subtitle="This partner will be removed and contacts will be detached. An admin can restore it."
+      titleTestId="partner-delete-dialog-title"
+      subtitleTestId="partner-delete-dialog-subtitle"
       variant="danger"
       icon="delete"
       closeLabel="Cancel"
