@@ -13,6 +13,8 @@ export interface DeleteContactDialogData {
     <ur-dialog
       [title]="title"
       subtitle="This contact will be removed. An admin can restore it later."
+      titleTestId="contact-delete-dialog-title"
+      subtitleTestId="contact-delete-dialog-subtitle"
       variant="danger"
       icon="delete"
       closeLabel="Cancel"
