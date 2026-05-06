@@ -128,7 +128,7 @@
           </div>
 
           @if (p.history.length === 0) {
-            <p class="partner-history__empty">No stage changes yet.</p>
+            <h2 class="partner-history__empty" data-testid="stage-history-empty-title">No stage changes yet.</h2>
           } @else {
             <div class="partner-history__timeline">
               @for (entry of p.history; track entry.id; let last = $last) {
