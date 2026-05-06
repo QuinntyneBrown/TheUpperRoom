@@ -1,6 +1,6 @@
 # T187 — Convert "New partner" routed page to a DialogService modal
 
-**Status:** Open
+**Status:** ACCEPTED
 **Type:** Refactor
 **Blocked by:** T179
 **Source:** `docs/inline-dialog-audit.md` (item #7)
