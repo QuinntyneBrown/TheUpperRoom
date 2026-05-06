@@ -66,7 +66,7 @@
     <div class="teams-cards" aria-label="All teams">
       @for (t of teams(); track t.id) {
         <a class="team-card" [attr.data-testid]="'team-card-' + t.id" [routerLink]="['/teams', t.id]">
-          <p class="team-card__city">{{ t.city }}</p>
+          <h3 class="team-card__city">{{ t.city }}</h3>
           <p class="team-card__members">{{ t.memberCount }} members</p>
           <p class="team-card__hackathons">{{ t.activeHackathonCount }} active hackathons</p>
           <p class="team-card__partners">{{ t.partnerCount }} partners</p>
