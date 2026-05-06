@@ -5,6 +5,18 @@
     <span class="auth-card__wordmark-name">The Upper Room</span>
   </div>
   <p class="auth-subtitle" data-testid="sign-in-subtitle">Sign in to your City Lead workspace</p>
+  @if (showSignedOutToast()) {
+    <div class="sign-in-signed-out-toast" role="status" data-testid="sign-in-signed-out-toast">
+      <mat-icon aria-hidden="true">check</mat-icon>
+      <div class="sign-in-signed-out-toast__body">
+        <span class="sign-in-signed-out-toast__title">You have been signed out</span>
+        <span class="sign-in-signed-out-toast__sub">Sign back in to continue where you left off.</span>
+      </div>
+      <button class="sign-in-signed-out-toast__dismiss" (click)="showSignedOutToast.set(false)" aria-label="Dismiss">
+        <mat-icon aria-hidden="true">close</mat-icon>
+      </button>
+    </div>
+  }
   @if (showReturnToast()) {
     <div class="sign-in-return-toast" role="status" data-testid="sign-in-return-toast">
       <mat-icon aria-hidden="true">info</mat-icon>

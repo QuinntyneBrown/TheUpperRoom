@@ -115,8 +115,8 @@ export class App implements OnInit {
 
   doSignOut() {
     this.authSvc.signOut().subscribe({
-      next: () => this.router.navigateByUrl('/auth/sign-in'),
-      error: () => this.router.navigateByUrl('/auth/sign-in'),
+      next: () => this.router.navigateByUrl('/auth/sign-in?signedOut=1'),
+      error: () => this.router.navigateByUrl('/auth/sign-in?signedOut=1'),
     });
   }
 

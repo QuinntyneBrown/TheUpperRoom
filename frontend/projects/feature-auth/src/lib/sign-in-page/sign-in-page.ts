@@ -24,11 +24,14 @@ export class SignInPageComponent implements OnInit {
   loading = signal(false);
   returnUrl = signal('');
   showReturnToast = signal(false);
+  showSignedOutToast = signal(false);
 
   ngOnInit(): void {
-    const url = this.route.snapshot.queryParamMap.get('returnUrl') ?? '';
+    const params = this.route.snapshot.queryParamMap;
+    const url = params.get('returnUrl') ?? '';
     this.returnUrl.set(url);
     if (url) this.showReturnToast.set(true);
+    if (params.get('signedOut') === '1') this.showSignedOutToast.set(true);
   }
 
   submit(): void {
