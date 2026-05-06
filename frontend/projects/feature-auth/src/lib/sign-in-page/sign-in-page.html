@@ -65,7 +65,7 @@
         />
         Remember me
       </label>
-      <a routerLink="/auth/forgot-password" class="auth-opts-row__forgot">Forgot password?</a>
+      <a routerLink="/auth/forgot-password" class="auth-opts-row__forgot" data-testid="sign-in-forgot-password-link">Forgot password?</a>
     </div>
     <ur-button type="submit" [disabled]="loading()" fullWidth data-testid="sign-in-submit-btn">
       {{ loading() ? 'Signing in…' : 'Sign in' }}
