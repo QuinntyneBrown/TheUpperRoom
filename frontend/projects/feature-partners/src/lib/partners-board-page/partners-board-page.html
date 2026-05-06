@@ -13,7 +13,7 @@
   @if (loadError()) {
     <div class="board-load-error" data-testid="board-load-error" role="alert">
       <mat-icon aria-hidden="true">error_outline</mat-icon>
-      <span>Failed to load partners.</span>
+      <span data-testid="board-load-error-message">Failed to load partners.</span>
       <ur-button variant="secondary" (pressed)="loadBoard()" data-testid="board-load-retry-btn">Retry</ur-button>
     </div>
   }
