@@ -7,10 +7,11 @@
 >
   <form (submit)="$event.preventDefault(); submit()" class="hackathon-form">
     <div class="hackathon-form__field">
-      <label for="hackathonTitle">Title</label>
+      <label for="hackathonTitle">Title *</label>
       <input
         id="hackathonTitle"
         type="text"
+        required
         placeholder="e.g. Spring Hackathon 2026"
         [value]="title()"
         (input)="title.set($any($event.target).value)"
@@ -22,10 +23,11 @@
     </div>
 
     <div class="hackathon-form__field">
-      <label for="hackathonHostCity">Host city</label>
+      <label for="hackathonHostCity">Host city *</label>
       <input
         id="hackathonHostCity"
         type="text"
+        required
         placeholder="e.g. Toronto, ON"
         [value]="hostCity()"
         (input)="hostCity.set($any($event.target).value)"
