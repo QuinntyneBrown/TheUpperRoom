@@ -119,8 +119,8 @@
         <tbody>
           @for (row of listResult().rows; track row.id) {
             <tr class="contacts-table__row" [attr.data-testid]="'contact-card-' + row.id">
-              <td><a [routerLink]="['/contacts', row.id]">{{ row.firstName }}</a></td>
-              <td><a [routerLink]="['/contacts', row.id]">{{ row.lastName }}</a></td>
+              <td data-testid="contacts-row-firstName"><a [routerLink]="['/contacts', row.id]">{{ row.firstName }}</a></td>
+              <td data-testid="contacts-row-lastName"><a [routerLink]="['/contacts', row.id]">{{ row.lastName }}</a></td>
               <td>
                 @if (row.email) {
                   <a [href]="'mailto:' + row.email">{{ row.email }}</a>
