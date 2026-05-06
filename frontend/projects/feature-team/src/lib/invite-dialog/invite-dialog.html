@@ -17,8 +17,8 @@
       }
     </div>
 
-    <div class="invite-form__field">
-      <span class="invite-form__label">Roles</span>
+    <fieldset class="invite-form__field invite-form__roles-group">
+      <legend class="invite-form__label">Roles</legend>
       <div class="invite-form__roles">
         @for (role of allRoles; track role) {
           <label class="invite-form__role-opt">
@@ -35,7 +35,7 @@
       @if (errors()['roles']) {
         <span class="invite-form__error">{{ errors()['roles'] }}</span>
       }
-    </div>
+    </fieldset>
 
     @if (saveError()) {
       <div class="invite-save-error" data-testid="invite-save-error" role="alert">

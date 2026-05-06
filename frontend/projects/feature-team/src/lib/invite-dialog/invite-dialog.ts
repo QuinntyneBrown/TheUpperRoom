@@ -25,6 +25,8 @@ const ROLE_LABELS: Record<string, string> = {
     .invite-save-error mat-icon { font-size: 16px; width: 16px; height: 16px; flex-shrink: 0; }
     .invite-form { display: flex; flex-direction: column; gap: 16px; }
     .invite-form__field { display: flex; flex-direction: column; gap: 6px; }
+    fieldset.invite-form__field { border: 0; padding: 0; margin: 0; }
+    fieldset.invite-form__field legend { padding: 0; }
     .invite-form__field label, .invite-form__label {
       font-size: 0.875rem; font-weight: 500; color: var(--ur-fg-secondary, #94a3b8);
     }
