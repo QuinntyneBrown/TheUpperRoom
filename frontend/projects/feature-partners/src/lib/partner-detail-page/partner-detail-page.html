@@ -82,7 +82,7 @@
                   } @else {
                     <span class="partner-stepper__dot partner-stepper__dot--future" aria-hidden="true"></span>
                   }
-                  <span class="partner-stepper__name">{{ s.label }}</span>
+                  <span class="partner-stepper__name" [attr.data-testid]="'stage-name-' + s.value">{{ s.label }}</span>
                 </div>
                 @if (stageIndex() > i) {
                   @if (getEntryForStage(s.value); as entry) {
