@@ -72,8 +72,8 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
             @for (row of filtered(); track row.id) {
               <li>
                 <a class="partner-card" [routerLink]="['/partners', row.id]" [attr.data-testid]="'partner-card-' + row.id">
-                  <h3 class="partner-card__name">{{ row.name }}</h3>
-                  <span class="partner-card__meta">{{ row.city }} · {{ stageLabel(row.stage) }}</span>
+                  <h3 class="partner-card__name" data-testid="partner-list-card-name">{{ row.name }}</h3>
+                  <span class="partner-card__meta" data-testid="partner-list-card-meta">{{ row.city }} · {{ stageLabel(row.stage) }}</span>
                 </a>
               </li>
             }
