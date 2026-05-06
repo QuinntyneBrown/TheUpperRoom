@@ -17,6 +17,7 @@
         [value]="title()"
         (input)="title.set($any($event.target).value)"
         aria-describedby="hackathonTitle-error"
+        data-testid="hackathon-create-title-input"
       />
       @if (errors()['title']) {
         <span id="hackathonTitle-error" class="hackathon-form__error" data-testid="hackathon-create-title-error">{{ errors()['title'] }}</span>
@@ -33,6 +34,7 @@
         [value]="hostCity()"
         (input)="hostCity.set($any($event.target).value)"
         aria-describedby="hackathonHostCity-error"
+        data-testid="hackathon-create-host-city-input"
       />
       @if (errors()['hostCity']) {
         <span id="hackathonHostCity-error" class="hackathon-form__error" data-testid="hackathon-create-hostCity-error">{{ errors()['hostCity'] }}</span>
@@ -48,6 +50,7 @@
           [value]="startDate()"
           (input)="startDate.set($any($event.target).value)"
           aria-describedby="hackathonStart-error"
+          data-testid="hackathon-create-start-date-input"
         />
         @if (errors()['startDate']) {
           <span id="hackathonStart-error" class="hackathon-form__error" data-testid="hackathon-create-startDate-error">{{ errors()['startDate'] }}</span>
@@ -61,6 +64,7 @@
           [value]="endDate()"
           (input)="endDate.set($any($event.target).value)"
           aria-describedby="hackathonEnd-error"
+          data-testid="hackathon-create-end-date-input"
         />
         @if (errors()['endDate']) {
           <span id="hackathonEnd-error" class="hackathon-form__error" data-testid="hackathon-create-endDate-error">{{ errors()['endDate'] }}</span>
