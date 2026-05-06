@@ -13,7 +13,7 @@
         aria-describedby="inviteEmail-error"
       />
       @if (errors()['email']) {
-        <span id="inviteEmail-error" class="invite-form__error">{{ errors()['email'] }}</span>
+        <span id="inviteEmail-error" class="invite-form__error" data-testid="invite-email-error">{{ errors()['email'] }}</span>
       }
     </div>
 
@@ -33,7 +33,7 @@
         }
       </div>
       @if (errors()['roles']) {
-        <span class="invite-form__error">{{ errors()['roles'] }}</span>
+        <span class="invite-form__error" data-testid="invite-roles-error">{{ errors()['roles'] }}</span>
       }
     </fieldset>
 
