@@ -45,7 +45,7 @@ import { HackathonCreatePageComponent } from '../hackathon-create-page/hackathon
             <a class="hackathon-card" [routerLink]="['/hackathons', row.id]" [attr.data-testid]="'hackathon-card-' + row.id">
               <div class="hackathon-card__top">
                 <div class="hackathon-card__titles">
-                  <strong>{{ row.title }}</strong>
+                  <h3 class="hackathon-card__title">{{ row.title }}</h3>
                   <span class="hackathon-card__meta">{{ row.hostCity }} · {{ row.startDate | date:'mediumDate' }}–{{ row.endDate | date:'mediumDate' }}</span>
                 </div>
                 <span class="hackathon-card__stage" data-testid="hackathon-stage-badge">{{ row.currentStage }}</span>
@@ -81,7 +81,7 @@ import { HackathonCreatePageComponent } from '../hackathon-create-page/hackathon
     .hackathon-card:hover { background: var(--ur-bg-surface, #16161f); }
     .hackathon-card__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
     .hackathon-card__titles { display: flex; flex-direction: column; gap: 4px; }
-    .hackathon-card strong { font-size: 1rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); font-family: var(--ur-font-heading, 'Geist', sans-serif); }
+    .hackathon-card__title { margin: 0; font-size: 1rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); font-family: var(--ur-font-heading, 'Geist', sans-serif); }
     .hackathon-card__meta { font-size: 0.6875rem; color: var(--ur-fg-muted, #a8a8b5); font-family: var(--ur-font-mono, 'Geist Mono', monospace); }
     .hackathon-card__stage {
       flex-shrink: 0; font-size: 0.6875rem; font-family: var(--ur-font-mono, 'Geist Mono', monospace);
