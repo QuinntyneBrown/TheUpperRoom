@@ -4,7 +4,7 @@
   </a>
 
   @if (loading()) {
-    <div class="global-team-detail__loading" data-testid="global-team-loading" aria-busy="true">
+    <div class="global-team-detail__loading" data-testid="global-team-loading" aria-busy="true" aria-label="Loading team">
       @for (_ of [1,2,3]; track $index) {
         <div class="global-team-detail__loading-row"></div>
       }
