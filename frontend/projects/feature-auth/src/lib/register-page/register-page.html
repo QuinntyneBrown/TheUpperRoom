@@ -7,7 +7,11 @@
   </div>
 } @else {
   <div class="auth-card">
-    <h1>Create account</h1>
+    <div class="auth-card__wordmark" data-testid="register-wordmark">
+      <mat-icon class="auth-card__wordmark-logo">church</mat-icon>
+      <span class="auth-card__wordmark-name">The Upper Room</span>
+    </div>
+    <p class="auth-subtitle" data-testid="register-subtitle">Create your City Lead account</p>
     <form (ngSubmit)="submit()" novalidate>
       <ur-input
         label="Display name"
