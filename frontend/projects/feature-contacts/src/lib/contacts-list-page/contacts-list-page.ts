@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { debounceTime, distinctUntilChanged, filter, Subject, switchMap, of } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CONTACT_SERVICE, ContactListRow, ContactListResult, ContactSearchResult, REALTIME_SERVICE } from 'api';
-import { DialogService, HighlightPipe, UrSearchComponent } from 'components';
+import { DialogService, HighlightPipe, UrButtonComponent, UrSearchComponent } from 'components';
 import { NewContactDialogComponent } from '../new-contact-dialog/new-contact-dialog';
 
 type SortField = 'firstName' | 'lastName';
@@ -15,7 +15,7 @@ type SortDir = 'asc' | 'desc';
   selector: 'ur-contacts-list-page',
   templateUrl: './contacts-list-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, MatButtonModule, MatIconModule, UrSearchComponent, HighlightPipe],
+  imports: [RouterLink, MatButtonModule, MatIconModule, UrButtonComponent, UrSearchComponent, HighlightPipe],
   styles: [`
     .contacts-list-page { display: flex; flex-direction: column; height: 100%; }
     .contacts-list-page__header {
