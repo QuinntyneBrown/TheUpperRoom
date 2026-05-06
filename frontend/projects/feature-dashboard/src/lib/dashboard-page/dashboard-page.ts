@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AUTH_SERVICE, DASHBOARD_SERVICE, DashboardItem } from 'api';
 import { Gridster, GridsterItem } from 'angular-gridster2';
 import { debounceTime, filter, Subject } from 'rxjs';
-import { DialogService } from 'components';
+import { DialogService, UrButtonComponent } from 'components';
 import { WidgetCatalogDialogComponent } from '../widget-catalog-dialog/widget-catalog-dialog';
 import { LineChartWidgetComponent } from '../widgets/line-chart-widget/line-chart-widget';
 import { buildGridsterOptions } from './gridster-options';
@@ -16,7 +16,7 @@ const UNDO_MS = 8000;
   selector: 'ur-dashboard-page',
   templateUrl: './dashboard-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Gridster, GridsterItem, LineChartWidgetComponent, MatButtonModule, MatIconModule],
+  imports: [Gridster, GridsterItem, LineChartWidgetComponent, MatButtonModule, MatIconModule, UrButtonComponent],
   styles: [`
     .dashboard-page { display: flex; flex-direction: column; height: 100%; }
     .dashboard-page__header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid var(--ur-border-subtle, #222233); }

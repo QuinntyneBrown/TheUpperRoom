@@ -4,7 +4,7 @@
       <h1>Dashboard</h1>
       <p class="dashboard-page__header-subtitle" data-testid="dashboard-header-subtitle">Welcome to your workspace</p>
     </div>
-    <button mat-raised-button data-testid="add-widget-btn" (click)="onAddWidget()">+ Add widget</button>
+    <ur-button data-testid="add-widget-btn" (pressed)="onAddWidget()">+ Add widget</ur-button>
   </header>
 
   @if (loadError()) {
@@ -25,7 +25,7 @@
         <mat-icon class="dashboard-page__empty-icon">dashboard_customize</mat-icon>
         <h3>Drop widgets here to start</h3>
         <p>Choose from charts, KPI cards, recent activity, and more. Drag to rearrange. Resize from the corner.</p>
-        <button mat-raised-button data-testid="add-widget-cta" (click)="onAddWidget()">+ Add widget</button>
+        <ur-button data-testid="add-widget-cta" (pressed)="onAddWidget()">+ Add widget</ur-button>
         <span class="dashboard-page__empty-hint">Or press W to open the catalog</span>
       </div>
     </div>
