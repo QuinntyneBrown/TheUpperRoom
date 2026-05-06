@@ -16,19 +16,19 @@
     </div>
   } @else if (detail(); as d) {
     <h1 class="global-team-detail__title" data-testid="global-team-city">{{ d.city }}</h1>
-    <div class="global-team-detail__stats">
+    <dl class="global-team-detail__stats">
       <div class="global-team-detail__stat">
-        <p class="global-team-detail__stat-value">{{ d.memberCount ?? '—' }}</p>
-        <p class="global-team-detail__stat-label">Members</p>
+        <dd class="global-team-detail__stat-value">{{ d.memberCount ?? '—' }}</dd>
+        <dt class="global-team-detail__stat-label">Members</dt>
       </div>
       <div class="global-team-detail__stat">
-        <p class="global-team-detail__stat-value">{{ d.activeHackathonCount }}</p>
-        <p class="global-team-detail__stat-label">Active Hackathons</p>
+        <dd class="global-team-detail__stat-value">{{ d.activeHackathonCount }}</dd>
+        <dt class="global-team-detail__stat-label">Active Hackathons</dt>
       </div>
       <div class="global-team-detail__stat">
-        <p class="global-team-detail__stat-value">{{ d.partnerCount }}</p>
-        <p class="global-team-detail__stat-label">Partners</p>
+        <dd class="global-team-detail__stat-value">{{ d.partnerCount }}</dd>
+        <dt class="global-team-detail__stat-label">Partners</dt>
       </div>
-    </div>
+    </dl>
   }
 </div>
