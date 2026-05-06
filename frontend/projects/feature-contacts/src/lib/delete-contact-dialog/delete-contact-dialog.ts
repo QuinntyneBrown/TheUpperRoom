@@ -14,6 +14,7 @@ export interface DeleteContactDialogData {
       [title]="title"
       subtitle="This contact will be removed. An admin can restore it later."
       variant="danger"
+      icon="delete"
       closeLabel="Cancel"
       (closed)="ref.close()"
       data-testid="contact-delete-dialog"
