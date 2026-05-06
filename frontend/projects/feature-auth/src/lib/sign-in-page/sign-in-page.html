@@ -1,10 +1,10 @@
 <div class="auth-page">
-<div class="auth-card">
+<section class="auth-card" aria-labelledby="sign-in-heading">
   <div class="auth-card__wordmark" data-testid="sign-in-wordmark">
     <mat-icon class="auth-card__wordmark-logo" aria-hidden="true">church</mat-icon>
     <span class="auth-card__wordmark-name">The Upper Room</span>
   </div>
-  <h1 class="auth-card__sr-heading" data-testid="sign-in-heading">Sign in</h1>
+  <h1 id="sign-in-heading" class="auth-card__sr-heading" data-testid="sign-in-heading">Sign in</h1>
   <p class="auth-subtitle" data-testid="sign-in-subtitle">Sign in to your City Lead workspace</p>
   @if (showSignedOutToast()) {
     <div class="sign-in-signed-out-toast" role="status" data-testid="sign-in-signed-out-toast">
@@ -76,6 +76,6 @@
     <span>New to The Upper Room?</span>
     <a routerLink="/auth/register" data-testid="sign-in-request-access-link">Request access</a>
   </p>
-</div>
+</section>
 
 </div>
