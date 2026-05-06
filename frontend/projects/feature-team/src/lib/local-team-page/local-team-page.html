@@ -44,7 +44,7 @@
             <div class="team-role-card__member" [attr.data-testid]="'member-row-' + m.id">
               <div class="team-role-card__member-info">
                 <span class="team-role-card__member-name">{{ m.displayName }}</span>
-                <span class="team-role-card__member-email">{{ m.email }}</span>
+                <a class="team-role-card__member-email" [href]="'mailto:' + m.email">{{ m.email }}</a>
               </div>
               @if (canEdit()) {
                 <ur-button variant="ghost" (click)="onRemoveClick(m)" [ariaLabel]="'Remove ' + m.displayName" data-testid="remove-member-btn">Remove</ur-button>
