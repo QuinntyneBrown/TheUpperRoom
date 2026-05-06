@@ -240,10 +240,11 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
   }
 
   onStageChangeClick(stage: PartnerStage): void {
-    if (!this.partner() || this.partner()!.stage === stage) return;
+    const p = this.partner();
+    if (!p || p.stage === stage) return;
     this.dialog.open<StageChangeDialogComponent, { reason: string }, StageChangeDialogData>(
       StageChangeDialogComponent,
-      { data: { pendingStage: stage, stageLabel: this.stageLabel(stage) }, ariaLabel: 'Change partner stage' },
+      { data: { pendingStage: stage, stageLabel: this.stageLabel(stage), partnerName: p.name }, ariaLabel: 'Change partner stage' },
     ).closed$.subscribe(result => { if (result) this.changeStage(stage); });
   }
 

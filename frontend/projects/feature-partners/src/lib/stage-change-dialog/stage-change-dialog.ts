@@ -9,6 +9,7 @@ import { UR_DIALOG_DATA, UrButtonComponent, UrDialogComponent, UrDialogRef } fro
 export interface StageChangeDialogData {
   pendingStage: PartnerStage;
   stageLabel: string;
+  partnerName?: string;
 }
 
 @Component({
@@ -17,7 +18,7 @@ export interface StageChangeDialogData {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ur-dialog
-      [title]="'Move to ' + data.stageLabel"
+      [title]="title"
       subtitle="This change will be recorded in the stage history with your name and an optional reason."
       icon="trending_up"
       closeLabel="Cancel"
@@ -41,4 +42,10 @@ export class StageChangeDialogComponent {
   ref = inject<UrDialogRef<{ reason: string }>>(UrDialogRef);
   data = inject<StageChangeDialogData>(UR_DIALOG_DATA);
   reason = '';
+
+  get title(): string {
+    return this.data.partnerName
+      ? `Move ${this.data.partnerName} to ${this.data.stageLabel}?`
+      : `Move to ${this.data.stageLabel}`;
+  }
 }
