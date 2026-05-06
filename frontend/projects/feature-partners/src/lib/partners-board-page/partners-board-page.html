@@ -4,7 +4,7 @@
       <h1>Partners</h1>
       <div class="partners-view-toggle">
         <a class="partners-view-toggle__btn" routerLink="/partners" data-testid="partners-list-tab" aria-label="List view">List</a>
-        <a class="partners-view-toggle__btn partners-view-toggle__btn--active" routerLink="/partners/board" data-testid="partners-board-tab" aria-label="Board view">Board</a>
+        <a class="partners-view-toggle__btn partners-view-toggle__btn--active" routerLink="/partners/board" data-testid="partners-board-tab" aria-label="Board view" aria-current="page">Board</a>
       </div>
     </div>
     <ur-button (pressed)="goToCreate()" data-testid="create-partner-button">+ New partner</ur-button>

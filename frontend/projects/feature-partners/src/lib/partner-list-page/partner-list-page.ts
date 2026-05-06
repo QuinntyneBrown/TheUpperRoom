@@ -26,7 +26,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
             <p class="partner-list-page__count" data-testid="partners-count-subtitle">{{ allRows().length }} organizations · {{ leadCount() }} leads · {{ confirmedCount() }} confirmed</p>
           </div>
           <div class="partners-view-toggle">
-            <a class="partners-view-toggle__btn partners-view-toggle__btn--active" routerLink="/partners" data-testid="partners-list-tab" aria-label="List view">List</a>
+            <a class="partners-view-toggle__btn partners-view-toggle__btn--active" routerLink="/partners" data-testid="partners-list-tab" aria-label="List view" aria-current="page">List</a>
             <a class="partners-view-toggle__btn" routerLink="/partners/board" data-testid="partners-board-tab" aria-label="Board view">Board</a>
           </div>
         </div>
