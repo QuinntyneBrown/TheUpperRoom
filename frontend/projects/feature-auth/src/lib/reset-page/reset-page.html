@@ -21,7 +21,7 @@
       [value]="newPassword()"
       autocomplete="new-password"
       required
-      data-testid="reset-new-password-input"
+      inputTestId="reset-new-password-input"
       (valueChange)="newPassword.set($event)"
     />
     <ur-input
@@ -30,7 +30,7 @@
       [value]="confirmPassword()"
       autocomplete="new-password"
       required
-      data-testid="reset-confirm-password-input"
+      inputTestId="reset-confirm-password-input"
       (valueChange)="confirmPassword.set($event)"
     />
     @if (!passwordsMatch()) {
