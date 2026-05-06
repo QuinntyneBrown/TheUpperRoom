@@ -21,6 +21,18 @@ import { catchError, debounceTime, distinctUntilChanged, Subject, switchMap, of 
     .search-overlay__no-results p { margin: 0; font-size: 0.9rem; font-weight: 500; }
     .search-overlay__spinner { animation: overlay-spin 1s linear infinite; font-size: 20px; width: 20px; height: 20px; }
     @keyframes overlay-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .search-overlay__keyboard-hint {
+      display: flex; gap: 16px; padding: 10px 16px;
+      border-top: 1px solid var(--ur-border-subtle, #222233);
+      font-size: 0.75rem; color: var(--ur-fg-muted, #7a7a87);
+    }
+    .search-overlay__keyboard-hint kbd {
+      font-family: var(--ur-font-mono, monospace);
+      padding: 1px 6px; margin-right: 4px;
+      border-radius: 4px;
+      background: var(--ur-bg-elevated, #101018);
+      border: 1px solid var(--ur-border-default, #2a2a3a);
+    }
   `],
 })
 export class GlobalSearchOverlayComponent implements OnInit {
