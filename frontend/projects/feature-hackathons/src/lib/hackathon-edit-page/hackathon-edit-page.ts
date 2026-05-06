@@ -43,16 +43,16 @@ import { UrButtonComponent } from 'components';
           @if (errors()['title']) { <span id="editTitle-error" class="error">{{ errors()['title'] }}</span> }
         </label>
         <label>
-          Start Date
+          Start date
           <input type="date" [value]="startDate()" (input)="startDate.set($any($event.target).value)" />
         </label>
         <label>
-          End Date
+          End date
           <input id="editEndDate" type="date" [value]="endDate()" (input)="endDate.set($any($event.target).value)" aria-describedby="editEndDate-error" />
           @if (errors()['endDate']) { <span id="editEndDate-error" class="error">{{ errors()['endDate'] }}</span> }
         </label>
         <label>
-          Host City
+          Host city
           <input type="text" [value]="hostCity()" (input)="hostCity.set($any($event.target).value)" />
         </label>
         <div class="form-actions">
