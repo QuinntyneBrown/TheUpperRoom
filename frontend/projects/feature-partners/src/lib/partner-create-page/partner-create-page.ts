@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { PARTNER_SERVICE, PartnerStage } from 'api';
 import { MatIconModule } from '@angular/material/icon';
-import { UrButtonComponent, UrDialogComponent, UrInputComponent } from 'components';
+import { UrButtonComponent, UrDialogComponent, UrDialogRef, UrInputComponent } from 'components';
 
 const STAGES: { value: PartnerStage; label: string }[] = [
   { value: 'Lead', label: 'Lead' },
@@ -50,7 +49,7 @@ const STAGES: { value: PartnerStage; label: string }[] = [
 })
 export class PartnerCreatePageComponent implements OnDestroy {
   private partners = inject(PARTNER_SERVICE);
-  private router = inject(Router);
+  ref = inject<UrDialogRef<{ id: string }>>(UrDialogRef);
 
   stages = STAGES;
   name = signal('');
@@ -93,7 +92,10 @@ export class PartnerCreatePageComponent implements OnDestroy {
       stage: this.stage(),
       description: this.description().trim() || undefined,
     }).subscribe({
-      next: (res) => this.router.navigate(['/partners', res.id], { queryParams: { saved: '1' } }),
+      next: (res) => {
+        this.saving.set(false);
+        this.ref.close({ id: res.id });
+      },
       error: () => {
         this.saving.set(false);
         clearTimeout(this.saveErrorTimer);
@@ -104,6 +106,6 @@ export class PartnerCreatePageComponent implements OnDestroy {
   }
 
   cancel(): void {
-    this.router.navigateByUrl('/partners');
+    this.ref.close();
   }
 }

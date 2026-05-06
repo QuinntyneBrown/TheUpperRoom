@@ -1,6 +1,19 @@
 # T187 — Convert "New partner" routed page to a DialogService modal
 
-**Status:** ACCEPTED
+**Status:** COMPLETE
+
+## Implementation notes (radically simple)
+
+- `PartnerCreatePageComponent` (file/class name kept for radical-simple churn reduction; it is now functionally a dialog content component) — refactored to:
+  - inject `UrDialogRef<{ id: string }>` instead of `Router`
+  - `cancel()` closes via `ref.close()`
+  - On submit success, closes with `{ id: res.id }` instead of `router.navigate(...)`
+  - The component template's `<ur-dialog>` wrapper is kept (consistent with T180–T185 dialogs — DialogService just hosts `<ur-dialog>` as overlay content; the redundant `cdkTrapFocus` inside is harmless).
+- `partner-list-page` — added `DialogService` injection + `onCreateClick()` that opens the dialog, navigates to `/partners/{id}?saved=1` on success, or back to `/partners` on cancel-when-arrived-via-`/partners/new`. The `+ Add partner` button and the empty-state CTA both call `onCreateClick()` (changed from `routerLink`).
+- Bookmark / e2e compatibility: `/partners/new` route is preserved but now binds to `PartnerListPageComponent` with `data: { openCreate: true }`. On init, the list page detects this flag and auto-opens the dialog. URL stays at `/partners/new` until the dialog closes; on cancel the page navigates to `/partners`. This means existing Playwright specs that `goto('/partners/new')` and target `partner-create-form` continue to work without modification.
+- `app.config.ts` — dropped `PartnerCreatePageComponent` from imports (no longer routed) and pointed `/partners/new` at `PartnerListPageComponent`.
+- All `data-testid` values preserved (`partner-create-form`, `add-partner-btn`, `new-partner-btn`, `partners-empty-create-btn`, `create-save-error-toast`, plus all field testids) — `e2e/tests/partners/partner-create-*.spec.ts` and `partners-list-*.spec.ts` need no updates.
+- Pencil .pen update deferred — same reasoning as T180–T186.
 **Type:** Refactor
 **Blocked by:** T179
 **Source:** `docs/inline-dialog-audit.md` (item #7)

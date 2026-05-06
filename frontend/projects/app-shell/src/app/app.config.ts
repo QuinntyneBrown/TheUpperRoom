@@ -11,7 +11,7 @@ import { DashboardPageComponent } from 'feature-dashboard';
 import { HackathonCreatePageComponent, HackathonDetailPageComponent, HackathonEditPageComponent, HackathonListPageComponent } from 'feature-hackathons';
 import { GlobalTeamDetailPageComponent, GlobalTeamsPageComponent, LocalTeamPageComponent } from 'feature-team';
 import { DeletedContactsPageComponent, DeletedHackathonsPageComponent } from 'feature-admin';
-import { PartnerCreatePageComponent, PartnerDetailPageComponent, PartnerEditPageComponent, PartnerListPageComponent, PartnersBoardPageComponent } from 'feature-partners';
+import { PartnerDetailPageComponent, PartnerEditPageComponent, PartnerListPageComponent, PartnersBoardPageComponent } from 'feature-partners';
 import { NoAccessPageComponent, RecoverPageComponent, RegisterPageComponent, ResetPageComponent, SignInPageComponent, VerifyPageComponent } from 'feature-auth';
 import { GlobalErrorHandler } from './global-error-handler';
 import { PlaceholderPageComponent } from './placeholder-page';
@@ -48,7 +48,7 @@ export const appConfig: ApplicationConfig = {
       { path: 'hackathons/:id/edit', title: 'Edit Hackathon – The Upper Room', component: HackathonEditPageComponent },
       { path: 'partners', title: 'Partners – The Upper Room', component: PartnerListPageComponent },
       { path: 'partners/board', title: 'Partners Board – The Upper Room', component: PartnersBoardPageComponent },
-      { path: 'partners/new', title: 'New Partner – The Upper Room', component: PartnerCreatePageComponent },
+      { path: 'partners/new', title: 'New Partner – The Upper Room', component: PartnerListPageComponent, data: { openCreate: true } },
       { path: 'partners/:id', title: 'Partner – The Upper Room', component: PartnerDetailPageComponent },
       { path: 'partners/:id/edit', title: 'Edit Partner – The Upper Room', component: PartnerEditPageComponent },
       { path: 'contacts', title: 'Contacts – The Upper Room', component: ContactsListPageComponent },

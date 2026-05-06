@@ -4,6 +4,8 @@ import { PARTNER_SERVICE, PartnerListRow, PartnerStage } from 'api';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { DialogService } from 'components';
+import { PartnerCreatePageComponent } from '../partner-create-page/partner-create-page';
 import { toggleStage, parseStages } from './stage-filter.utils';
 
 const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
@@ -25,7 +27,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
             <a class="partners-view-toggle__btn" routerLink="/partners/board" data-testid="partners-board-tab" aria-label="Board view">Board</a>
           </div>
         </div>
-        <a mat-raised-button routerLink="/partners/new" data-testid="new-partner-btn">+ Add partner</a>
+        <button mat-raised-button (click)="onCreateClick()" data-testid="new-partner-btn">+ Add partner</button>
       </div>
       <mat-chip-listbox multiple aria-label="Filter by stage">
         @for (s of stages; track s.stage) {
@@ -56,7 +58,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
           <div class="partner-list-page__empty" data-testid="partners-empty">
             <mat-icon>handshake</mat-icon>
             <p>No partners found.</p>
-            <a mat-stroked-button routerLink="/partners/new" data-testid="partners-empty-create-btn">Add first partner</a>
+            <button mat-stroked-button (click)="onCreateClick()" data-testid="partners-empty-create-btn">Add first partner</button>
           </div>
         }
         @for (row of filtered(); track row.id) {
@@ -136,6 +138,7 @@ export class PartnerListPageComponent implements OnInit, OnDestroy {
   private partnerSvc = inject(PARTNER_SERVICE);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private dialog = inject(DialogService);
 
   readonly stages = ALL_STAGES;
   private allRows = signal<PartnerListRow[]>([]);
@@ -175,6 +178,20 @@ export class PartnerListPageComponent implements OnInit, OnDestroy {
       this.deletedToastTimer = setTimeout(() => this.deletedToast.set(false), 3000);
       this.router.navigate([], { replaceUrl: true, relativeTo: this.route, queryParams: {} });
     }
+    if (this.route.snapshot.data['openCreate']) {
+      this.onCreateClick();
+    }
+  }
+
+  onCreateClick(): void {
+    this.dialog.open<PartnerCreatePageComponent, { id: string }>(PartnerCreatePageComponent, { ariaLabel: 'New partner' })
+      .closed$.subscribe(result => {
+        if (result?.id) {
+          this.router.navigate(['/partners', result.id], { queryParams: { saved: '1' } });
+        } else if (this.route.snapshot.data['openCreate']) {
+          this.router.navigateByUrl('/partners');
+        }
+      });
   }
 
   ngOnDestroy(): void {
