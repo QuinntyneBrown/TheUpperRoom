@@ -19,7 +19,7 @@
   @if (notes().length === 0) {
     <div class="notes-panel__empty" data-testid="notes-empty">
       <mat-icon>note</mat-icon>
-      <p>No notes yet.</p>
+      <h2 data-testid="notes-empty-title">No notes yet.</h2>
     </div>
   } @else {
     @for (note of notes(); track note.id) {
