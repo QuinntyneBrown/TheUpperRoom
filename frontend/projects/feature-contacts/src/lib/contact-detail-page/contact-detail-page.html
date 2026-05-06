@@ -16,7 +16,7 @@
       <div class="contact-detail__breadcrumb">
         <mat-icon class="contact-detail__back-icon" aria-hidden="true">arrow_back</mat-icon>
         <a routerLink="/contacts" class="contact-detail__breadcrumb-link" data-testid="contact-breadcrumb-link">Contacts</a>
-        <span class="contact-detail__breadcrumb-sep">/</span>
+        <span class="contact-detail__breadcrumb-sep" aria-hidden="true">/</span>
         <span class="contact-detail__breadcrumb-name" data-testid="contact-breadcrumb-name">{{ contact()!.firstName }} {{ contact()!.lastName }}</span>
       </div>
       <div class="contact-detail__actions">
