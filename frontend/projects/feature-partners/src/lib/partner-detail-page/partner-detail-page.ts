@@ -8,9 +8,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
-import { UrButtonComponent, UrDialogComponent } from 'components';
+import { DialogService, UrButtonComponent, UrDialogComponent } from 'components';
 import { NotesPanelComponent } from 'feature-contacts';
 import { PartnerContactsPanelComponent } from '../partner-contacts-panel/partner-contacts-panel';
+import { DeletePartnerDialogComponent } from '../delete-partner-dialog/delete-partner-dialog';
 import { Subscription } from 'rxjs';
 
 const STAGES: { value: PartnerStage; label: string }[] = [
@@ -137,13 +138,13 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
   private auth = inject(AUTH_SERVICE);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private dialog = inject(DialogService);
 
   partner = signal<PartnerDetailDto | null>(null);
   loading = signal(true);
   notFound = signal(false);
   changingStage = signal(false);
   currentUserId = signal('');
-  showDeleteDialog = signal(false);
   deleting = signal(false);
   canDelete = signal(false);
   stages = STAGES;
@@ -220,7 +221,14 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
     clearTimeout(this.changeStageErrorTimer);
   }
 
-  confirmDelete(): void {
+  onDeleteClick(): void {
+    if (!this.canDelete() || !this.partner()) return;
+    this.dialog.open<DeletePartnerDialogComponent, boolean>(DeletePartnerDialogComponent, {
+      ariaLabel: 'Delete partner',
+    }).closed$.subscribe(confirmed => { if (confirmed === true) this.confirmDelete(); });
+  }
+
+  private confirmDelete(): void {
     const p = this.partner();
     if (!p) return;
     this.deleting.set(true);
@@ -228,7 +236,6 @@ export class PartnerDetailPageComponent implements OnInit, OnDestroy {
       next: () => this.router.navigate(['/partners'], { queryParams: { deleted: '1' } }),
       error: () => {
         this.deleting.set(false);
-        this.showDeleteDialog.set(false);
         clearTimeout(this.deleteErrorTimer);
         this.deleteError.set(true);
         this.deleteErrorTimer = setTimeout(() => this.deleteError.set(false), 4000);

@@ -1,6 +1,16 @@
 # T183 — Migrate "Delete partner" confirm to DialogService
 
-**Status:** ACCEPTED
+**Status:** COMPLETE
+
+## Implementation notes (radically simple)
+
+- New tiny `DeletePartnerDialogComponent` at `frontend/projects/feature-partners/src/lib/delete-partner-dialog/delete-partner-dialog.ts` — `<ur-dialog variant="danger">` wrapper that closes with `true` on confirm via injected `UrDialogRef<boolean>`. Inline template, no separate `.html` / `.scss`.
+- `partner-detail-page.ts`: added `DialogService` injection + `DeletePartnerDialogComponent` import. New `onDeleteClick()` opens the dialog and routes the boolean result to a private `confirmDelete()` that does the same service call as before. Dropped `showDeleteDialog` signal.
+- The previous in-button "Deleting…" state was removed (dialog closes immediately on confirm; the page does the network call afterwards). Error toast still appears via the existing `deleteError` signal.
+- Kept `UrDialogComponent` and `UrButtonComponent` in the page's `imports` — still needed for the `showStageDialog` block, which T184 will migrate.
+- Template: kebab-menu Delete item now calls `(click)="onDeleteClick()"` instead of `canDelete() && showDeleteDialog.set(true)`. The `@if (showDeleteDialog())` block is gone.
+- All `data-testid` values preserved (`partner-delete-dialog`, `confirm-delete-partner-btn`, `partner-delete-menu-item`, `partner-more-btn`, `partner-delete-permission-denied-banner`, `partner-delete-error-toast`) — `e2e/tests/partners/partner-delete-*.spec.ts` need no updates.
+- Pencil .pen update deferred — same reasoning as T180–T182.
 **Type:** Refactor
 **Blocked by:** T179
 **Source:** `docs/inline-dialog-audit.md` (item #5)
