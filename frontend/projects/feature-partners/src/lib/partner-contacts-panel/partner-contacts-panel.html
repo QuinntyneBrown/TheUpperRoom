@@ -32,7 +32,7 @@
 
   @if (showNewForm()) {
     <div class="partner-contacts__new-form" data-testid="new-contact-form">
-      <div class="partner-contacts__new-banner">
+      <div class="partner-contacts__new-banner" data-testid="partner-contacts-new-banner">
         @if (partnerName()) {
           Will be linked to {{ partnerName() }} · Created and associated atomically.
         } @else {
