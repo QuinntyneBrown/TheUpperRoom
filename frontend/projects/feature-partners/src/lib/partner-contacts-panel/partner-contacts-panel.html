@@ -13,7 +13,7 @@
 
   @for (c of contacts(); track c.id) {
     <div class="partner-contacts__row" [attr.data-testid]="'contact-row-' + c.id">
-      <div class="partner-contacts__avatar">{{ initials(c) }}</div>
+      <div class="partner-contacts__avatar" aria-hidden="true">{{ initials(c) }}</div>
       <div class="partner-contacts__body">
         <a [routerLink]="['/contacts', c.id]" class="partner-contacts__name">
           {{ c.firstName }} {{ c.lastName }}
