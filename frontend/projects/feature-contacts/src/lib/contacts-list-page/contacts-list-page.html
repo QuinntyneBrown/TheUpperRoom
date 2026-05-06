@@ -20,6 +20,11 @@
     </div>
   </header>
 
+  @if (isBelowSearchMin) {
+    <p class="contacts-list-page__min-hint" data-testid="search-min-length-hint">
+      Type at least 2 characters to search
+    </p>
+  }
   @if (!isSearching && loading()) {
     <div class="contacts-list-loading" data-testid="contacts-list-loading" aria-busy="true" aria-label="Loading contacts">
       @for (_ of [1,2,3,4,5]; track $index) {

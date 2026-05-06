@@ -205,4 +205,8 @@ export class ContactsListPageComponent implements OnInit, OnDestroy {
   get isSearching(): boolean {
     return this.term().length >= 2;
   }
+
+  get isBelowSearchMin(): boolean {
+    return this.term().length > 0 && this.term().length < 2;
+  }
 }
