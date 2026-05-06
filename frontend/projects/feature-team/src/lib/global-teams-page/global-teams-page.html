@@ -3,7 +3,8 @@
     <h1 class="global-teams-page__title">All Teams</h1>
   </header>
 
-  <div class="global-teams-page__search">
+  <label class="global-teams-page__search">
+    <mat-icon class="global-teams-page__search-icon" data-testid="team-search-icon" aria-hidden="true">search</mat-icon>
     <input
       class="global-teams-page__search-input"
       type="search"
@@ -13,7 +14,7 @@
       (ngModelChange)="onSearch($event)"
       data-testid="team-search-input"
     />
-  </div>
+  </label>
 
   @if (loading()) {
     <div class="teams-loading" data-testid="teams-loading" aria-busy="true" aria-label="Loading teams">
