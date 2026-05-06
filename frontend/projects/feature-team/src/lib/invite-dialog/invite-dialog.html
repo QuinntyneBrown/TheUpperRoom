@@ -40,7 +40,7 @@
     @if (saveError()) {
       <div class="invite-save-error" data-testid="invite-save-error" role="alert">
         <mat-icon aria-hidden="true">error_outline</mat-icon>
-        <span>Invite failed. Please try again.</span>
+        <span data-testid="invite-save-error-message">Invite failed. Please try again.</span>
       </div>
     }
 
