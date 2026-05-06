@@ -15,6 +15,7 @@
       [value]="name()"
       [error]="errors()['name'] ?? ''"
       errorTestId="partner-create-name-error"
+      inputTestId="partner-create-name-input"
       autocomplete="organization"
       (valueChange)="name.set($event)"
     />
@@ -27,6 +28,7 @@
         [value]="city()"
         [error]="errors()['city'] ?? ''"
         errorTestId="partner-create-city-error"
+        inputTestId="partner-create-city-input"
         (valueChange)="city.set($event)"
       />
       <ur-input
@@ -36,6 +38,7 @@
         [value]="website()"
         [error]="errors()['website'] ?? ''"
         errorTestId="partner-create-website-error"
+        inputTestId="partner-create-website-input"
         (valueChange)="website.set($event)"
       />
     </div>
