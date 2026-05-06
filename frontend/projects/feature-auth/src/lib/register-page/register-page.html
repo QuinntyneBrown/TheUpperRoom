@@ -28,6 +28,7 @@
         [value]="displayName()"
         [error]="fieldError('displayName')"
         errorTestId="register-displayName-error"
+        inputTestId="register-displayName-input"
         autocomplete="name"
         required
         (valueChange)="displayName.set($event)"
@@ -38,6 +39,7 @@
         [value]="email()"
         [error]="fieldError('email')"
         errorTestId="register-email-error"
+        inputTestId="register-email-input"
         autocomplete="email"
         required
         (valueChange)="email.set($event)"
@@ -48,6 +50,7 @@
         [value]="city()"
         [error]="fieldError('city')"
         errorTestId="register-city-error"
+        inputTestId="register-city-input"
         autocomplete="address-level2"
         required
         (valueChange)="city.set($event)"
@@ -58,6 +61,7 @@
         [value]="password()"
         [error]="fieldError('password')"
         errorTestId="register-password-error"
+        inputTestId="register-password-input"
         autocomplete="new-password"
         required
         (valueChange)="password.set($event)"
