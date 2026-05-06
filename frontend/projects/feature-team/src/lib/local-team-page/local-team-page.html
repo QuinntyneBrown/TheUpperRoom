@@ -18,7 +18,7 @@
     </div>
   } @else if (loadError()) {
     <div class="team-load-error" data-testid="team-load-error" role="alert">
-      <mat-icon>error_outline</mat-icon>
+      <mat-icon aria-hidden="true">error_outline</mat-icon>
       <span>Failed to load team members.</span>
       <ur-button variant="secondary" (pressed)="loadTeam()" data-testid="team-retry-btn">Retry</ur-button>
     </div>
@@ -59,14 +59,14 @@
 
 @if (removeSuccess()) {
   <div class="team-success-toast" role="status" data-testid="remove-member-success-toast">
-    <mat-icon>check_circle</mat-icon>
+    <mat-icon aria-hidden="true">check_circle</mat-icon>
     <span>Member removed</span>
   </div>
 }
 
 @if (removeError()) {
   <div class="team-error-toast" data-testid="remove-member-error-toast" role="alert">
-    <mat-icon>error_outline</mat-icon>
+    <mat-icon aria-hidden="true">error_outline</mat-icon>
     <span>Remove failed. Please try again.</span>
   </div>
 }
