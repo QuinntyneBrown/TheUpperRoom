@@ -41,7 +41,7 @@
         <div class="partner-board__column" [attr.data-testid]="'column-' + col.stage">
           <div class="partner-board__col-header">
             <h3 class="partner-board__col-label">{{ col.label }}</h3>
-            <span class="partner-board__col-count" [attr.aria-label]="byStage()[col.stage].length + (byStage()[col.stage].length === 1 ? ' partner' : ' partners')">{{ byStage()[col.stage].length }}</span>
+            <span class="partner-board__col-count" [attr.data-testid]="'column-count-' + col.stage" [attr.aria-label]="byStage()[col.stage].length + (byStage()[col.stage].length === 1 ? ' partner' : ' partners')">{{ byStage()[col.stage].length }}</span>
           </div>
 
           <div
