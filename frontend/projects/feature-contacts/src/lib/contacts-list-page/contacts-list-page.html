@@ -38,7 +38,7 @@
   @if (!isSearching && loadError()) {
     <div class="contacts-load-error" data-testid="contacts-load-error" role="alert">
       <mat-icon aria-hidden="true">error_outline</mat-icon>
-      <span>Failed to load contacts.</span>
+      <span data-testid="contacts-load-error-message">Failed to load contacts.</span>
       <ur-button variant="secondary" (pressed)="loadPage()" data-testid="contacts-retry-btn">Retry</ur-button>
     </div>
   }
