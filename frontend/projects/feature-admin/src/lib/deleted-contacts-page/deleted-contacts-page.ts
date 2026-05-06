@@ -62,7 +62,7 @@ import { UrButtonComponent } from 'components';
     @if (restoreError()) {
       <div class="admin-toast admin-toast--error" data-testid="restore-error-toast" role="alert">
         <mat-icon aria-hidden="true">error_outline</mat-icon>
-        <span>Restore failed. Please try again.</span>
+        <span data-testid="restore-error-toast-message">Restore failed. Please try again.</span>
       </div>
     }
   `,
