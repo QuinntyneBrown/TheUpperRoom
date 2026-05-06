@@ -75,7 +75,7 @@
                    [attr.data-testid]="'stage-step-' + s.value">
                 <div class="partner-stepper__step-hd">
                   @if (stageIndex() > i) {
-                    <span class="material-symbols-outlined partner-stepper__check">check</span>
+                    <span class="material-symbols-outlined partner-stepper__check" aria-hidden="true">check</span>
                   } @else if (stageIndex() === i) {
                     <span class="partner-stepper__dot partner-stepper__dot--current"></span>
                   } @else {
