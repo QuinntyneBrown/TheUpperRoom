@@ -58,7 +58,7 @@ import { HackathonCreatePageComponent } from '../hackathon-create-page/hackathon
     @if (deletedToast()) {
       <div class="hackathon-list-toast" role="status" data-testid="hackathon-deleted-toast">
         <mat-icon aria-hidden="true">check_circle</mat-icon>
-        <span>Hackathon deleted</span>
+        <span data-testid="hackathon-deleted-toast-title">Hackathon deleted</span>
       </div>
     }
   `,
