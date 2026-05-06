@@ -69,7 +69,7 @@ export interface AddProductDialogData {
         @if (saveError()) {
           <div class="products-save-error" data-testid="products-save-error" role="alert">
             <mat-icon aria-hidden="true">error_outline</mat-icon>
-            <span>Failed to save product. Please try again.</span>
+            <span data-testid="products-save-error-message">Failed to save product. Please try again.</span>
           </div>
         }
       </form>
