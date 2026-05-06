@@ -57,7 +57,7 @@
                 (click)="changeStage(s.value)"
               >{{ i < stageIndex() ? 'Done' : i === stageIndex() ? 'In progress' : 'Upcoming' }}</button>
             </div>
-            <p class="d-card__desc">{{ s.description }}</p>
+            <p class="d-card__desc" [attr.data-testid]="'d-card-desc-' + s.value">{{ s.description }}</p>
           </li>
         }
       </ol>
