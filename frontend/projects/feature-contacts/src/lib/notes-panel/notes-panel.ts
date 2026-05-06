@@ -35,7 +35,7 @@ import { UrButtonComponent } from 'components';
       color: var(--ur-fg-muted, #64748b); font-size: 0.875rem;
     }
     .notes-panel__empty mat-icon { font-size: 18px; width: 18px; height: 18px; opacity: 0.6; }
-    .notes-panel__empty p { margin: 0; }
+    .notes-panel__empty p, .notes-panel__empty h3 { margin: 0; font-size: inherit; font-weight: inherit; }
     .notes-panel__list { list-style: none; margin: 0; padding: 0; }
     .note-card { padding: 12px 0; border-bottom: 1px solid var(--ur-border-subtle, #222233); }
     .note-card:last-child { border-bottom: none; }
