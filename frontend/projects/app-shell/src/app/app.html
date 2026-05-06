@@ -3,10 +3,10 @@
 @if (resolving()) {
   <div class="shell__resolving" data-testid="resolving-session-screen" role="status" aria-label="Resolving your session">
     <div class="shell__resolving-wordmark" data-testid="resolving-session-wordmark">
-      <mat-icon class="shell__resolving-logo">church</mat-icon>
+      <mat-icon class="shell__resolving-logo" aria-hidden="true">church</mat-icon>
       <span class="shell__resolving-name">The Upper Room</span>
     </div>
-    <mat-icon class="shell__resolving-spinner">progress_activity</mat-icon>
+    <mat-icon class="shell__resolving-spinner" aria-hidden="true">progress_activity</mat-icon>
     <h2 class="shell__resolving-heading">Resolving your session…</h2>
     <p class="shell__resolving-body" data-testid="resolving-session-body">Hang tight while we verify your access. This usually takes less than a second.</p>
   </div>
@@ -21,7 +21,7 @@
     data-testid="side-nav"
   >
     <div class="shell__brand">
-      <mat-icon class="shell__brand-icon">church</mat-icon>
+      <mat-icon class="shell__brand-icon" aria-hidden="true">church</mat-icon>
       <span class="shell__brand-name">The Upper Room</span>
     </div>
 
@@ -88,7 +88,7 @@
             <mat-icon aria-hidden="true">menu</mat-icon>
           </button>
         }
-        <mat-icon class="shell__topbar-logo">church</mat-icon>
+        <mat-icon class="shell__topbar-logo" aria-hidden="true">church</mat-icon>
         <span class="shell__topbar-title">The Upper Room</span>
         <span class="shell__spacer"></span>
         <ur-global-search-overlay />

@@ -22,7 +22,7 @@
         <p>Your dashboard is empty. Add widgets to track partners, hackathons, and your local team.</p>
       </div>
       <div class="dashboard-page__empty-zone">
-        <mat-icon class="dashboard-page__empty-icon">dashboard_customize</mat-icon>
+        <mat-icon class="dashboard-page__empty-icon" aria-hidden="true">dashboard_customize</mat-icon>
         <h3>Drop widgets here to start</h3>
         <p>Choose from charts, KPI cards, recent activity, and more. Drag to rearrange. Resize from the corner.</p>
         <ur-button data-testid="add-widget-cta" (pressed)="onAddWidget()">+ Add widget</ur-button>
@@ -35,7 +35,7 @@
         <gridster-item [item]="item">
           <div class="dashboard-widget" [attr.data-testid]="'widget-' + item.id">
             <header class="dashboard-widget__header">
-              <mat-icon class="dashboard-widget__drag-handle">drag_indicator</mat-icon>
+              <mat-icon class="dashboard-widget__drag-handle" aria-hidden="true">drag_indicator</mat-icon>
               <span class="dashboard-widget__label">{{ widgetLabel(item.type) }}</span>
               <button mat-icon-button (click)="removeWidget(item)" aria-label="Remove widget" data-testid="remove-widget-btn">
                 <mat-icon aria-hidden="true">close</mat-icon>

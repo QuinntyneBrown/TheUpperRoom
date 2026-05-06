@@ -2,7 +2,7 @@
 @if (submitted()) {
   <div class="auth-card auth-success" role="status" data-testid="register-success">
     <div class="auth-card__wordmark" data-testid="register-success-wordmark">
-      <mat-icon class="auth-card__wordmark-logo">church</mat-icon>
+      <mat-icon class="auth-card__wordmark-logo" aria-hidden="true">church</mat-icon>
       <span class="auth-card__wordmark-name">The Upper Room</span>
     </div>
     <h2 data-testid="register-success-heading">Almost done</h2>
@@ -13,7 +13,7 @@
 } @else {
   <div class="auth-card">
     <div class="auth-card__wordmark" data-testid="register-wordmark">
-      <mat-icon class="auth-card__wordmark-logo">church</mat-icon>
+      <mat-icon class="auth-card__wordmark-logo" aria-hidden="true">church</mat-icon>
       <span class="auth-card__wordmark-name">The Upper Room</span>
     </div>
     <p class="auth-subtitle" data-testid="register-subtitle">Create your City Lead account</p>
