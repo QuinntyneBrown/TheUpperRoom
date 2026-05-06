@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheUpperRoom.Api", "TheUppe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheUpperRoom.Api.Tests", "TheUpperRoom.Api.Tests\TheUpperRoom.Api.Tests.csproj", "{32E7A934-DF2B-46CA-985C-45B6D8D83999}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheUpperRoom.Infrastructure", "TheUpperRoom.Infrastructure\TheUpperRoom.Infrastructure.csproj", "{3FA542D8-F33C-4245-9451-A8043D719CE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{32E7A934-DF2B-46CA-985C-45B6D8D83999}.Release|x64.Build.0 = Release|Any CPU
 		{32E7A934-DF2B-46CA-985C-45B6D8D83999}.Release|x86.ActiveCfg = Release|Any CPU
 		{32E7A934-DF2B-46CA-985C-45B6D8D83999}.Release|x86.Build.0 = Release|Any CPU
+		{3FA542D8-F33C-4245-9451-A8043D719CE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FA542D8-F33C-4245-9451-A8043D719CE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FA542D8-F33C-4245-9451-A8043D719CE6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3FA542D8-F33C-4245-9451-A8043D719CE6}.Debug|x64.Build.0 = Debug|Any CPU
+		{3FA542D8-F33C-4245-9451-A8043D719CE6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3FA542D8-F33C-4245-9451-A8043D719CE6}.Debug|x86.Build.0 = Debug|Any CPU
+		{3FA542D8-F33C-4245-9451-A8043D719CE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FA542D8-F33C-4245-9451-A8043D719CE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FA542D8-F33C-4245-9451-A8043D719CE6}.Release|x64.ActiveCfg = Release|Any CPU
+		{3FA542D8-F33C-4245-9451-A8043D719CE6}.Release|x64.Build.0 = Release|Any CPU
+		{3FA542D8-F33C-4245-9451-A8043D719CE6}.Release|x86.ActiveCfg = Release|Any CPU
+		{3FA542D8-F33C-4245-9451-A8043D719CE6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
