@@ -25,6 +25,7 @@ import { UrButtonComponent, UrDialogComponent, UrDialogRef } from 'components';
     .hackathon-form__row { display: flex; gap: 16px; }
     .hackathon-form__row .hackathon-form__field { flex: 1; }
     .hackathon-form__error { font-size: 0.75rem; color: var(--ur-danger, #f87171); }
+    .hackathon-form__required { color: var(--ur-danger, #f87171); margin-left: 2px; }
     .hackathon-form__partners { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
     .hackathon-form__partner-opt { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--ur-fg-primary, #f1f5f9); cursor: pointer; }
     .hackathon-form__actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
