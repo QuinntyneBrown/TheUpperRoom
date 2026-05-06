@@ -36,8 +36,8 @@ export interface AddProductDialogData {
     <ur-dialog title="Add product" icon="rocket_launch" closeLabel="Cancel" (closed)="ref.close()" data-testid="add-product-dialog">
       <form (submit)="$event.preventDefault(); submit()" class="product-form">
         <div class="product-form__field">
-          <label for="productName">Name</label>
-          <input id="productName" type="text" [value]="name()" (input)="name.set($any($event.target).value)" aria-describedby="productName-error" />
+          <label for="productName">Name *</label>
+          <input id="productName" type="text" required [value]="name()" (input)="name.set($any($event.target).value)" aria-describedby="productName-error" />
           @if (errors()['name']) {
             <span id="productName-error" class="product-form__error">{{ errors()['name'] }}</span>
           }
