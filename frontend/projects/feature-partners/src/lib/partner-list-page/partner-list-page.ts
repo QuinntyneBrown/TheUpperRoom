@@ -59,7 +59,9 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
           </div>
         } @else if (filtered().length === 0) {
           <div class="partner-list-page__empty" data-testid="partners-empty">
-            <mat-icon aria-hidden="true">handshake</mat-icon>
+            <div class="partner-list-page__empty-icon-wrap" data-testid="partners-empty-icon-wrap" aria-hidden="true">
+              <mat-icon aria-hidden="true">handshake</mat-icon>
+            </div>
             <h2 data-testid="partners-empty-title">No partners found.</h2>
             <ur-button (pressed)="onCreateClick()" data-testid="partners-empty-create-btn">Add first partner</ur-button>
           </div>
@@ -125,7 +127,13 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
       display: flex; flex-direction: column; align-items: center; gap: 12px;
       padding: 48px 24px; text-align: center; color: var(--ur-fg-muted, #a8a8b5);
     }
-    .partner-list-page__empty mat-icon { font-size: 48px; width: 48px; height: 48px; opacity: 0.4; }
+    .partner-list-page__empty-icon-wrap {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 96px; height: 96px; border-radius: 9999px;
+      background: var(--ur-bg-input, #1a1a25);
+      border: 1px solid var(--ur-border-default, #2a2a3a);
+    }
+    .partner-list-page__empty-icon-wrap mat-icon { font-size: 40px; width: 40px; height: 40px; color: var(--ur-fg-muted, #7a7a87); }
     .partner-list-page__empty p { margin: 0; font-size: 0.875rem; }
     .partner-list-toast {
       position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
