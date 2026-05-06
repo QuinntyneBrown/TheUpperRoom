@@ -12,7 +12,7 @@
   } @else if (loadError()) {
     <div class="global-team-detail__error" data-testid="global-team-load-error" role="alert">
       <mat-icon aria-hidden="true">error_outline</mat-icon>
-      <span>Failed to load team.</span>
+      <span data-testid="global-team-load-error-message">Failed to load team.</span>
     </div>
   } @else if (detail(); as d) {
     <h1 class="global-team-detail__title" data-testid="global-team-city">{{ d.city }}</h1>
