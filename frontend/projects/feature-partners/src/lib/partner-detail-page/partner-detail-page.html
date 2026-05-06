@@ -13,12 +13,12 @@
 } @else if (partner(); as p) {
   <div class="partner-detail" data-testid="partner-detail">
     <header class="partner-detail__header">
-      <div class="partner-detail__breadcrumb">
+      <nav class="partner-detail__breadcrumb" aria-label="Breadcrumb">
         <mat-icon class="partner-detail__back-icon" data-testid="partner-breadcrumb-back-arrow" aria-hidden="true">arrow_back</mat-icon>
         <a routerLink="/partners" class="partner-detail__breadcrumb-link" data-testid="partner-breadcrumb-link">Partners</a>
         <span class="partner-detail__sep" aria-hidden="true">/</span>
-        <span data-testid="partner-name" class="partner-detail__breadcrumb-name">{{ p.name }}</span>
-      </div>
+        <span data-testid="partner-name" class="partner-detail__breadcrumb-name" aria-current="page">{{ p.name }}</span>
+      </nav>
       <div class="partner-detail__header-actions">
         <a mat-stroked-button [routerLink]="['/partners', p.id, 'edit']" data-testid="partner-edit-link">Edit</a>
         <ur-button (pressed)="scrollToNotes()" data-testid="partner-add-note-btn">+ Add note</ur-button>
