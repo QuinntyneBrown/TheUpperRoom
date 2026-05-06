@@ -1,4 +1,4 @@
-<div class="global-team-detail" data-testid="global-team-detail">
+<article class="global-team-detail" data-testid="global-team-detail" aria-labelledby="global-team-city">
   <a routerLink="/teams" class="global-team-detail__back" data-testid="global-team-back-link">
     <mat-icon aria-hidden="true">arrow_back</mat-icon> All teams
   </a>
@@ -15,7 +15,7 @@
       <span data-testid="global-team-load-error-message">Failed to load team.</span>
     </div>
   } @else if (detail(); as d) {
-    <h1 class="global-team-detail__title" data-testid="global-team-city">{{ d.city }}</h1>
+    <h1 id="global-team-city" class="global-team-detail__title" data-testid="global-team-city">{{ d.city }}</h1>
     <dl class="global-team-detail__stats" aria-label="Team statistics">
       <div class="global-team-detail__stat">
         <dt class="global-team-detail__stat-label">Members</dt>
@@ -31,4 +31,4 @@
       </div>
     </dl>
   }
-</div>
+</article>
