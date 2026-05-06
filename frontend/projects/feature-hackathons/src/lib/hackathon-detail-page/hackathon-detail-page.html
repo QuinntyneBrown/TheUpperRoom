@@ -90,7 +90,7 @@
                 <span class="hackathon-history__from">{{ entry.fromStage }}</span>
                 <mat-icon class="hackathon-history__arrow" aria-hidden="true">arrow_forward</mat-icon>
                 <span class="hackathon-history__to">{{ entry.toStage }}</span>
-                <time class="hackathon-history__time">{{ entry.changedAt | date:'short' }}</time>
+                <time class="hackathon-history__time" [attr.datetime]="entry.changedAt">{{ entry.changedAt | date:'short' }}</time>
               </li>
             }
           </ol>
