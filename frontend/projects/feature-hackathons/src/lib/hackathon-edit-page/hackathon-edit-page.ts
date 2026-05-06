@@ -20,6 +20,9 @@ import { UrButtonComponent } from 'components';
     .hackathon-edit-loading__field { height: 48px; border-radius: 6px; background: var(--ur-border-default, #2a2a3a); animation: edit-pulse 1.4s ease-in-out infinite; }
     @keyframes edit-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
     .hackathon-edit-not-found { padding: 24px; color: var(--ur-fg-muted, #a8a8b5); }
+    .hackathon-edit__back { display: inline-flex; align-items: center; gap: 6px; color: var(--ur-accent-primary, #9f86ff); font-size: 0.875rem; font-weight: 500; text-decoration: none; margin-bottom: 12px; }
+    .hackathon-edit__back:hover { text-decoration: underline; }
+    .hackathon-edit__back mat-icon { font-size: 18px; width: 18px; height: 18px; }
   `],
   template: `
     @if (loading()) {
@@ -36,6 +39,7 @@ import { UrButtonComponent } from 'components';
       </div>
     } @else {
     <div class="hackathon-edit-page">
+      <a [routerLink]="['/hackathons', id]" class="hackathon-edit__back" data-testid="hackathon-edit-back-link"><mat-icon aria-hidden="true">arrow_back</mat-icon> Back</a>
       <h1 data-testid="hackathon-edit-title">Edit hackathon</h1>
       <form (ngSubmit)="submit()">
         <label>
@@ -79,7 +83,7 @@ export class HackathonEditPageComponent implements OnDestroy {
   private partnerSvc = inject(PARTNER_SERVICE);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
-  private id = this.route.snapshot.paramMap.get('id')!;
+  id = this.route.snapshot.paramMap.get('id')!;
 
   title = signal('');
   startDate = signal('');
