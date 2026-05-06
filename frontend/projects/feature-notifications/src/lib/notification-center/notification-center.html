@@ -18,7 +18,7 @@
       <header class="notification-center__panel-header">
         <h2>Notifications</h2>
         @if (unreadCount() > 0) {
-          <button mat-button data-testid="mark-all-read" (click)="markAllRead()">Mark all read</button>
+          <ur-button variant="ghost" data-testid="mark-all-read" (pressed)="markAllRead()">Mark all read</ur-button>
         }
       </header>
       @if (loading()) {
