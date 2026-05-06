@@ -43,6 +43,7 @@
       label="Email"
       type="email"
       [value]="email()"
+      inputTestId="sign-in-email-input"
       autocomplete="email"
       required
       (valueChange)="email.set($event)"
@@ -51,6 +52,7 @@
       label="Password"
       type="password"
       [value]="password()"
+      inputTestId="sign-in-password-input"
       autocomplete="current-password"
       required
       (valueChange)="password.set($event)"
