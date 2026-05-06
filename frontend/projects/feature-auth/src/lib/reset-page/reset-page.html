@@ -1,5 +1,9 @@
 <div class="auth-page">
 <div class="auth-card">
+  <div class="auth-card__wordmark" data-testid="reset-wordmark">
+    <mat-icon class="auth-card__wordmark-logo" aria-hidden="true">church</mat-icon>
+    <span class="auth-card__wordmark-name">The Upper Room</span>
+  </div>
   <h1 data-testid="reset-heading">Choose a new password</h1>
   @if (error()) {
     <div role="alert" class="auth-error" data-testid="reset-error">{{ error() }}</div>
