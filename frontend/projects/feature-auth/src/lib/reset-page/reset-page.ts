@@ -21,7 +21,7 @@ export class ResetPageComponent implements OnInit {
   email = '';
   newPassword = signal('');
   confirmPassword = signal('');
-  error = signal('');
+  error = signal<{ title: string; message: string } | null>(null);
   loading = signal(false);
 
   passwordsMatch = computed(() =>
@@ -42,10 +42,16 @@ export class ResetPageComponent implements OnInit {
   submit(): void {
     if (!this.canSubmit()) return;
     this.loading.set(true);
-    this.error.set('');
+    this.error.set(null);
     this.auth.resetPassword({ email: this.email, token: this.token, newPassword: this.newPassword() }).subscribe({
       next: () => this.router.navigateByUrl('/auth/sign-in'),
-      error: () => { this.loading.set(false); this.error.set('The link is expired or has already been used.'); },
+      error: () => {
+        this.loading.set(false);
+        this.error.set({
+          title: 'This link can\'t be used',
+          message: 'The recovery link is expired or has already been used. Request a new one and we\'ll send it right over.',
+        });
+      },
     });
   }
 }

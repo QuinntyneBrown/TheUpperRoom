@@ -6,8 +6,13 @@
   </div>
   <h1 data-testid="reset-heading">Choose a new password</h1>
   <p class="auth-subtitle" data-testid="reset-subtitle">Pick something you haven't used before — long, memorable, and unique to The Upper Room.</p>
-  @if (error()) {
-    <div role="alert" class="auth-error" data-testid="reset-error">{{ error() }}</div>
+  @if (error(); as e) {
+    <ur-alert
+      data-testid="reset-error"
+      variant="danger"
+      [title]="e.title"
+      [message]="e.message"
+    />
   }
   <form (ngSubmit)="submit()" novalidate>
     <ur-input
