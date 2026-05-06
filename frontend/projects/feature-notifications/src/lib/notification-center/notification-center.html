@@ -16,7 +16,7 @@
   @if (open()) {
     <div class="notification-center__panel" role="region" aria-label="Notifications panel" data-testid="notifications-panel">
       <header class="notification-center__panel-header">
-        <h2>Notifications</h2>
+        <h2 data-testid="notifications-panel-title">Notifications</h2>
         @if (unreadCount() > 0) {
           <ur-button variant="ghost" data-testid="mark-all-read" (pressed)="markAllRead()">Mark all read</ur-button>
         }
