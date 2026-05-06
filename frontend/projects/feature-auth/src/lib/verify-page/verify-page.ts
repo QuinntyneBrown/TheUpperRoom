@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 import { AUTH_SERVICE } from 'api';
 
 @Component({
@@ -7,7 +8,7 @@ import { AUTH_SERVICE } from 'api';
   templateUrl: './verify-page.html',
   styleUrl: './verify-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
+  imports: [MatIconModule],
 })
 export class VerifyPageComponent implements OnInit {
   private auth = inject(AUTH_SERVICE);
