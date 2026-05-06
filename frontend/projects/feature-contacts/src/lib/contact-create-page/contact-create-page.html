@@ -1,5 +1,5 @@
-<div class="page-container">
-  <h1 data-testid="contact-create-title">New contact</h1>
+<article class="page-container" aria-labelledby="contact-create-title">
+  <h1 id="contact-create-title" data-testid="contact-create-title">New contact</h1>
   <p class="page-container__subtitle" data-testid="new-contact-subtitle">Add someone to your city's contact directory.</p>
   <ur-contact-form
     [errors]="errors()"
@@ -9,7 +9,7 @@
     cancelRoute="/contacts"
     (formSubmit)="save($event)"
   />
-</div>
+</article>
 
 @if (saveError()) {
   <div class="create-error-toast" data-testid="create-save-error-toast" role="alert">

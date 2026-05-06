@@ -12,11 +12,11 @@
     <a routerLink="/contacts" data-testid="contact-edit-not-found-back-link">Back to contacts</a>
   </div>
 } @else if (contact()) {
-  <div class="page-container">
+  <article class="page-container" aria-labelledby="contact-edit-title">
     <a [routerLink]="['/contacts', contact()!.id]" class="contact-edit__back" data-testid="contact-edit-back-link">
       <mat-icon aria-hidden="true">arrow_back</mat-icon> Back
     </a>
-    <h1 data-testid="contact-edit-title">Edit contact</h1>
+    <h1 id="contact-edit-title" data-testid="contact-edit-title">Edit contact</h1>
     <ur-contact-form
       [initial]="initial()"
       [errors]="errors()"
@@ -26,7 +26,7 @@
       [cancelRoute]="'/contacts/' + contact()!.id"
       (formSubmit)="save($event)"
     />
-  </div>
+  </article>
 }
 
 @if (conflict()) {
