@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, inject, OnDestroy, OnInit, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { UrButtonComponent } from 'components';
 import { PARTNER_SERVICE, PartnerListRow, PartnerStage } from 'api';
 
 const COLUMNS: { stage: PartnerStage; label: string }[] = [
@@ -15,7 +16,7 @@ const COLUMNS: { stage: PartnerStage; label: string }[] = [
   selector: 'ur-partners-board-page',
   templateUrl: './partners-board-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, DragDropModule, MatButtonModule, MatIconModule],
+  imports: [RouterLink, DragDropModule, MatButtonModule, MatIconModule, UrButtonComponent],
   styles: [`
     .partner-board { display: flex; flex-direction: column; height: 100%; }
     .partner-board__header {
@@ -83,6 +84,7 @@ const COLUMNS: { stage: PartnerStage; label: string }[] = [
 })
 export class PartnersBoardPageComponent implements OnInit, OnDestroy {
   private partners = inject(PARTNER_SERVICE);
+  private router = inject(Router);
 
   columns = COLUMNS;
   rows = signal<PartnerListRow[]>([]);
@@ -101,6 +103,10 @@ export class PartnersBoardPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loadBoard();
+  }
+
+  goToCreate(): void {
+    this.router.navigateByUrl('/partners/new');
   }
 
   ngOnDestroy(): void {
