@@ -30,8 +30,9 @@ import { UrButtonComponent } from 'components';
         </div>
       } @else if (rows().length === 0) {
         <div class="admin-empty" data-testid="deleted-contacts-empty">
-          <mat-icon aria-hidden="true">person_off</mat-icon>
-          <h2 data-testid="deleted-contacts-empty-title">No deleted contacts.</h2>
+          <mat-icon aria-hidden="true">archive</mat-icon>
+          <h2 data-testid="deleted-contacts-empty-title">Nothing in the archive</h2>
+          <p data-testid="deleted-contacts-empty-subtitle">Soft-deleted contacts show up here for 30 days before being purged.</p>
         </div>
       } @else {
         <table mat-table [dataSource]="rows()" aria-label="Deleted contacts">
