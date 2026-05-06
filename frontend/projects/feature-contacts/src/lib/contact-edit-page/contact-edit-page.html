@@ -35,7 +35,7 @@
       <p class="conflict-dialog__subtitle">Someone else saved this contact while you were editing. Choose which version to keep.</p>
       <div class="conflict-dialog__columns">
         <div class="conflict-col conflict-col--yours" data-testid="conflict-your-changes">
-          <div class="conflict-col__heading">Your changes</div>
+          <h3 class="conflict-col__heading">Your changes</h3>
           @if (pendingValue(); as mine) {
             <dl class="conflict-fields">
               <div class="conflict-field"><dt class="conflict-field__label">First name</dt><dd class="conflict-field__value">{{ mine.firstName }}</dd></div>
@@ -47,7 +47,7 @@
           }
         </div>
         <div class="conflict-col conflict-col--server" data-testid="conflict-server-version">
-          <div class="conflict-col__heading">Server version</div>
+          <h3 class="conflict-col__heading">Server version</h3>
           @if (serverContact(); as srv) {
             <dl class="conflict-fields">
               <div class="conflict-field"><dt class="conflict-field__label">First name</dt><dd class="conflict-field__value">{{ srv.firstName }}</dd></div>

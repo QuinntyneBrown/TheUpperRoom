@@ -24,7 +24,7 @@ import { ContactFormComponent, ContactFormInitial, ContactFormValue } from '../c
     .conflict-dialog__title { margin: 0 0 8px; font-size: 1.125rem; font-weight: 600; }
     .conflict-dialog__subtitle { margin: 0 0 20px; color: var(--ur-fg-muted, #64748b); font-size: 0.875rem; }
     .conflict-dialog__columns { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-    .conflict-col__heading { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 2px solid; }
+    .conflict-col__heading { margin: 0 0 8px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding-bottom: 6px; border-bottom: 2px solid; }
     .conflict-col--yours .conflict-col__heading { color: var(--ur-accent-primary, #8b5cf6); border-color: var(--ur-accent-primary, #8b5cf6); }
     .conflict-col--server .conflict-col__heading { color: var(--ur-fg-muted, #64748b); border-color: var(--ur-border-default, #e2e8f0); }
     .conflict-fields { margin: 0; }
