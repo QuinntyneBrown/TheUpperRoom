@@ -22,7 +22,11 @@
         data-testid="search-input"
         aria-label="Search"
       />
-      @if (term().length > 0 && term().length < 2) {
+      @if (term().length === 0) {
+        <p class="search-overlay__empty-prompt" data-testid="search-empty-prompt">
+          Search contacts, partners, hackathons by name to get started.
+        </p>
+      } @else if (term().length > 0 && term().length < 2) {
         <div class="search-overlay__hint" data-testid="search-min-length-hint">
           <mat-icon>keyboard</mat-icon>
           <span>Keep typing… (need at least 2 characters)</span>
