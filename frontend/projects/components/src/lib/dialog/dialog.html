@@ -23,7 +23,7 @@
       }
 
       @if (subtitle) {
-        <p class="ur-dialog__subtitle">{{ subtitle }}</p>
+        <p class="ur-dialog__subtitle" [attr.data-testid]="subtitleTestId || null">{{ subtitle }}</p>
       }
     </div>
 
