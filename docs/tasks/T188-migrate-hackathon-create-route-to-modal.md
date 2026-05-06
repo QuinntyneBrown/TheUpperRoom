@@ -1,6 +1,6 @@
 # T188 — Convert "Plan hackathon" routed page to a DialogService modal
 
-**Status:** Open
+**Status:** ACCEPTED
 **Type:** Refactor
 **Blocked by:** T179
 **Source:** `docs/inline-dialog-audit.md` (item #9)
