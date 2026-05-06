@@ -45,21 +45,21 @@ import { UrButtonComponent } from 'components';
       <form (ngSubmit)="submit()">
         <label>
           Title <span aria-hidden="true">*</span>
-          <input id="editTitle" type="text" required [value]="title()" (input)="title.set($any($event.target).value)" aria-describedby="editTitle-error" />
+          <input id="editTitle" type="text" required [value]="title()" (input)="title.set($any($event.target).value)" aria-describedby="editTitle-error" data-testid="hackathon-edit-title-input" />
           @if (errors()['title']) { <span id="editTitle-error" class="error" data-testid="hackathon-edit-title-error">{{ errors()['title'] }}</span> }
         </label>
         <label>
           Start date
-          <input type="date" [value]="startDate()" (input)="startDate.set($any($event.target).value)" />
+          <input type="date" [value]="startDate()" (input)="startDate.set($any($event.target).value)" data-testid="hackathon-edit-start-date-input" />
         </label>
         <label>
           End date
-          <input id="editEndDate" type="date" [value]="endDate()" (input)="endDate.set($any($event.target).value)" aria-describedby="editEndDate-error" />
+          <input id="editEndDate" type="date" [value]="endDate()" (input)="endDate.set($any($event.target).value)" aria-describedby="editEndDate-error" data-testid="hackathon-edit-end-date-input" />
           @if (errors()['endDate']) { <span id="editEndDate-error" class="error" data-testid="hackathon-edit-endDate-error">{{ errors()['endDate'] }}</span> }
         </label>
         <label>
           Host city <span aria-hidden="true">*</span>
-          <input type="text" required [value]="hostCity()" (input)="hostCity.set($any($event.target).value)" />
+          <input type="text" required [value]="hostCity()" (input)="hostCity.set($any($event.target).value)" data-testid="hackathon-edit-host-city-input" />
         </label>
         <div class="form-actions">
           <ur-button variant="ghost" type="button" (click)="cancel()" data-testid="hackathon-edit-cancel-btn">Cancel</ur-button>
