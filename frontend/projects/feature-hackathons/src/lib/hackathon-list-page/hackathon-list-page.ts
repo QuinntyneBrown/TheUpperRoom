@@ -48,8 +48,8 @@ import { HackathonCreatePageComponent } from '../hackathon-create-page/hackathon
                 <a class="hackathon-card" [routerLink]="['/hackathons', row.id]" [attr.data-testid]="'hackathon-card-' + row.id">
                   <div class="hackathon-card__top">
                     <div class="hackathon-card__titles">
-                      <h3 class="hackathon-card__title">{{ row.title }}</h3>
-                      <span class="hackathon-card__meta">{{ row.hostCity }} · {{ row.startDate | date:'mediumDate' }}–{{ row.endDate | date:'mediumDate' }}</span>
+                      <h3 class="hackathon-card__title" data-testid="hackathon-card-title">{{ row.title }}</h3>
+                      <span class="hackathon-card__meta" data-testid="hackathon-card-meta">{{ row.hostCity }} · {{ row.startDate | date:'mediumDate' }}–{{ row.endDate | date:'mediumDate' }}</span>
                     </div>
                     <span class="hackathon-card__stage" data-testid="hackathon-stage-badge">{{ row.currentStage }}</span>
                   </div>
