@@ -36,7 +36,7 @@ import { UrButtonComponent } from 'components';
       </div>
     } @else {
     <div class="hackathon-edit-page">
-      <h1>Edit hackathon</h1>
+      <h1 data-testid="hackathon-edit-title">Edit hackathon</h1>
       <form (ngSubmit)="submit()">
         <label>
           Title
