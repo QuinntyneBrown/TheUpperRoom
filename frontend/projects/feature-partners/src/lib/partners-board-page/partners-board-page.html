@@ -53,7 +53,7 @@
             [attr.aria-label]="col.label + ' stage'"
           >
             @for (row of byStage()[col.stage]; track row.id) {
-              <div
+              <a
                 class="partner-card"
                 cdkDrag
                 [cdkDragData]="row"
@@ -65,7 +65,7 @@
                   <p class="partner-card__name">{{ row.name }}</p>
                   <p class="partner-card__city">{{ row.city }}</p>
                 </div>
-              </div>
+              </a>
             }
 
             @if (byStage()[col.stage].length === 0) {
