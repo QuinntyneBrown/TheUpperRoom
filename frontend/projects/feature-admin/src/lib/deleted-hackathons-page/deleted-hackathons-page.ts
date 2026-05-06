@@ -34,6 +34,7 @@ import { UrButtonComponent } from 'components';
             <mat-icon aria-hidden="true">rocket_launch</mat-icon>
           </div>
           <h2 data-testid="deleted-hackathons-empty-title">No deleted hackathons</h2>
+          <p data-testid="deleted-hackathons-empty-subtitle">Soft-deleted hackathons show up here for 30 days before being purged.</p>
         </div>
       } @else {
         <table mat-table [dataSource]="rows()" aria-label="Deleted hackathons" data-testid="deleted-hackathons-table">
