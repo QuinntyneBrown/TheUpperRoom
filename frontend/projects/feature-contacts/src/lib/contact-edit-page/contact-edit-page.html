@@ -52,8 +52,8 @@
         </div>
       </div>
       <div class="conflict-dialog__actions">
-        <button mat-stroked-button data-testid="conflict-discard-btn" (click)="discardMine()">Discard my changes</button>
-        <button mat-raised-button color="primary" (click)="keepMine()" data-testid="conflict-keep-mine-btn">Keep mine</button>
+        <ur-button variant="ghost" (pressed)="discardMine()" data-testid="conflict-discard-btn">Discard my changes</ur-button>
+        <ur-button (pressed)="keepMine()" data-testid="conflict-keep-mine-btn">Keep mine</ur-button>
       </div>
     </div>
   </div>
