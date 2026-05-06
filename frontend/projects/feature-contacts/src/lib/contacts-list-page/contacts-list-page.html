@@ -1,7 +1,7 @@
 <div class="contacts-list-page" data-perf-ready="contacts">
   <header class="contacts-list-page__header">
     <div class="contacts-list-page__header-left">
-      <h1>Contacts</h1>
+      <h1 data-testid="contacts-list-title">Contacts</h1>
       @if (listResult().total > 0) {
         <p class="contacts-list-page__subtitle" data-testid="contacts-count-subtitle">{{ listResult().total }} contacts</p>
       }
