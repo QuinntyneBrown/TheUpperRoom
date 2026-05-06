@@ -10,6 +10,7 @@
       rows="3"
       maxlength="4000"
       aria-label="New note"
+      data-testid="add-note-textarea"
     ></textarea>
     <ur-button type="submit" [disabled]="adding() || !newBody().trim()" data-testid="add-note-btn">
       {{ adding() ? 'Saving…' : 'Add note' }}
