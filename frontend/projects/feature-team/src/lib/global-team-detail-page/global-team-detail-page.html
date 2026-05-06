@@ -19,15 +19,15 @@
     <dl class="global-team-detail__stats" aria-label="Team statistics">
       <div class="global-team-detail__stat">
         <dt class="global-team-detail__stat-label">Members</dt>
-        <dd class="global-team-detail__stat-value">{{ d.memberCount ?? '—' }}</dd>
+        <dd class="global-team-detail__stat-value" data-testid="global-team-stat-members">{{ d.memberCount ?? '—' }}</dd>
       </div>
       <div class="global-team-detail__stat">
         <dt class="global-team-detail__stat-label">Active Hackathons</dt>
-        <dd class="global-team-detail__stat-value">{{ d.activeHackathonCount }}</dd>
+        <dd class="global-team-detail__stat-value" data-testid="global-team-stat-active-hackathons">{{ d.activeHackathonCount }}</dd>
       </div>
       <div class="global-team-detail__stat">
         <dt class="global-team-detail__stat-label">Partners</dt>
-        <dd class="global-team-detail__stat-value">{{ d.partnerCount }}</dd>
+        <dd class="global-team-detail__stat-value" data-testid="global-team-stat-partners">{{ d.partnerCount }}</dd>
       </div>
     </dl>
   }
