@@ -63,8 +63,8 @@
 
       <ur-products-section [hackathonId]="h.id" [initialProducts]="h.products"></ur-products-section>
 
-      <section class="hackathon-detail__partners" aria-label="Partners">
-        <h2 class="hackathon-detail__section-title" data-testid="hackathon-partners-section-title">Partners</h2>
+      <section class="hackathon-detail__partners" aria-labelledby="hackathon-partners-section-title">
+        <h2 id="hackathon-partners-section-title" class="hackathon-detail__section-title" data-testid="hackathon-partners-section-title">Partners</h2>
         @if (h.partners.length === 0) {
           <p class="hackathon-partners__empty" data-testid="hackathon-partners-empty-title">No partners linked yet</p>
         } @else {
@@ -79,8 +79,8 @@
         }
       </section>
 
-      <section class="hackathon-detail__history" aria-label="Stage history">
-        <h2 class="hackathon-detail__section-title" data-testid="hackathon-history-section-title">Stage history</h2>
+      <section class="hackathon-detail__history" aria-labelledby="hackathon-history-section-title">
+        <h2 id="hackathon-history-section-title" class="hackathon-detail__section-title" data-testid="hackathon-history-section-title">Stage history</h2>
         @if (h.history.length === 0) {
           <p class="hackathon-history__empty" data-testid="hackathon-history-empty-title">No stage changes yet</p>
         } @else {
