@@ -11,7 +11,7 @@ import { UrButtonComponent } from 'components';
   imports: [DatePipe, MatButtonModule, MatIconModule, MatTableModule, UrButtonComponent],
   template: `
     <div class="deleted-contacts-page">
-      <h1>Deleted Contacts</h1>
+      <h1 data-testid="deleted-contacts-title">Deleted contacts</h1>
       @if (loading()) {
         <div class="admin-skeleton" data-testid="deleted-contacts-loading" aria-busy="true" aria-label="Loading deleted contacts">
           @for (row of [1,2,3]; track row) {
