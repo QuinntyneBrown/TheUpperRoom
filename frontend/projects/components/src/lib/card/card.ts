@@ -13,4 +13,6 @@ export class UrCardComponent {
   @Input() icon = '';
   @Input() title = '';
   @Input() subtitle = '';
+  @Input() titleTestId = '';
+  @Input() subtitleTestId = '';
 }

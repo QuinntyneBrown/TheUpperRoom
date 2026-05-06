@@ -6,11 +6,11 @@
       }
 
       @if (title) {
-        <mat-card-title class="ur-card__title">{{ title }}</mat-card-title>
+        <mat-card-title class="ur-card__title" [attr.data-testid]="titleTestId || null">{{ title }}</mat-card-title>
       }
 
       @if (subtitle) {
-        <mat-card-subtitle class="ur-card__subtitle">{{ subtitle }}</mat-card-subtitle>
+        <mat-card-subtitle class="ur-card__subtitle" [attr.data-testid]="subtitleTestId || null">{{ subtitle }}</mat-card-subtitle>
       }
     </mat-card-header>
   }
