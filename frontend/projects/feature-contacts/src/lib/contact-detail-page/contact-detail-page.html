@@ -13,12 +13,12 @@
 } @else if (contact()) {
   <div class="contact-detail" data-testid="contact-detail">
     <header class="contact-detail__header">
-      <div class="contact-detail__breadcrumb">
+      <nav class="contact-detail__breadcrumb" aria-label="Breadcrumb">
         <mat-icon class="contact-detail__back-icon" aria-hidden="true">arrow_back</mat-icon>
         <a routerLink="/contacts" class="contact-detail__breadcrumb-link" data-testid="contact-breadcrumb-link">Contacts</a>
         <span class="contact-detail__breadcrumb-sep" aria-hidden="true">/</span>
-        <span class="contact-detail__breadcrumb-name" data-testid="contact-breadcrumb-name">{{ contact()!.firstName }} {{ contact()!.lastName }}</span>
-      </div>
+        <span class="contact-detail__breadcrumb-name" data-testid="contact-breadcrumb-name" aria-current="page">{{ contact()!.firstName }} {{ contact()!.lastName }}</span>
+      </nav>
       <div class="contact-detail__actions">
         <a mat-stroked-button [routerLink]="['/contacts', contact()!.id, 'edit']" data-testid="contact-edit-link">Edit</a>
         <button mat-icon-button [matMenuTriggerFor]="moreMenu" data-testid="contact-more-btn" aria-label="More options">
