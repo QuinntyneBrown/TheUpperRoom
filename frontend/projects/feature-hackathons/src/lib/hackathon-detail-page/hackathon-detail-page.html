@@ -11,11 +11,11 @@
     <a routerLink="/hackathons" data-testid="hackathon-not-found-back-link">Back to hackathons</a>
   </div>
 } @else if (hackathon(); as h) {
-  <div class="hackathon-detail" data-testid="hackathon-detail">
+  <article class="hackathon-detail" data-testid="hackathon-detail" aria-labelledby="hackathon-title">
     <header class="hackathon-detail__header">
       <div>
         <a routerLink="/hackathons" class="hackathon-detail__back" data-testid="hackathon-detail-back-link"><mat-icon class="hackathon-detail__back-icon" aria-hidden="true">arrow_back</mat-icon> Hackathons</a>
-        <h1 class="hackathon-detail__title" data-testid="hackathon-title">{{ h.title }}</h1>
+        <h1 id="hackathon-title" class="hackathon-detail__title" data-testid="hackathon-title">{{ h.title }}</h1>
         <p class="hackathon-detail__meta">FaithTech 4 D's process · {{ h.hostCity }} · {{ h.startDate | date:'mediumDate' }} – {{ h.endDate | date:'mediumDate' }}</p>
       </div>
       <div class="hackathon-detail__header-actions">
@@ -98,7 +98,7 @@
         }
       </section>
     </div>
-  </div>
+  </article>
 }
 
 @if (savedToast()) {
