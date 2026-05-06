@@ -22,8 +22,9 @@
       <p data-testid="notes-empty-title">No notes yet</p>
     </div>
   } @else {
+    <ul class="notes-panel__list" aria-label="Notes">
     @for (note of notes(); track note.id) {
-      <div class="note-card" [attr.data-testid]="'note-' + note.id">
+      <li class="note-card" [attr.data-testid]="'note-' + note.id">
         @if (editingId() === note.id) {
           <textarea
             class="notes-panel__textarea"
@@ -59,8 +60,9 @@
             }
           </div>
         }
-      </div>
+      </li>
     }
+    </ul>
   }
 </section>
 

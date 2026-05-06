@@ -36,6 +36,7 @@ import { UrButtonComponent } from 'components';
     }
     .notes-panel__empty mat-icon { font-size: 18px; width: 18px; height: 18px; opacity: 0.6; }
     .notes-panel__empty p { margin: 0; }
+    .notes-panel__list { list-style: none; margin: 0; padding: 0; }
     .note-card { padding: 12px 0; border-bottom: 1px solid var(--ur-border-subtle, #222233); }
     .note-card:last-child { border-bottom: none; }
     .note-card__body { margin: 0 0 6px; font-size: 0.875rem; color: var(--ur-fg-primary, #f1f5f9); white-space: pre-wrap; }
