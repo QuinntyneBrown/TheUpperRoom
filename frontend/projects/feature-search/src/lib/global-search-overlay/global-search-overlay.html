@@ -52,7 +52,7 @@
                   {{ group.items.length }} {{ group.items.length === 1 ? 'result' : 'results' }}
                 </span>
               </header>
-              <ul class="search-overlay__group-items">
+              <ul class="search-overlay__group-items" [attr.aria-label]="group.label + ' results'">
                 @for (item of group.items; track item.id) {
                   <li>
                     <button
