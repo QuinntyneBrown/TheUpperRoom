@@ -8,7 +8,7 @@ import { TeamMemberDto } from 'api';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ur-dialog title="Remove member" titleTestId="remove-member-dialog-title" variant="danger" icon="person_remove" closeLabel="Cancel" (closed)="ref.close()" data-testid="remove-member-dialog">
-      <p>Remove {{ data.member.displayName }} from the team? This cannot be undone.</p>
+      <p data-testid="remove-member-dialog-message">Remove {{ data.member.displayName }} from the team? This cannot be undone.</p>
       <div ur-dialog-actions style="display:flex;gap:8px">
         <ur-button variant="ghost" (click)="ref.close()" data-testid="remove-member-cancel-btn">Cancel</ur-button>
         <ur-button variant="danger" (click)="ref.close(true)" data-testid="confirm-remove-btn">Confirm remove</ur-button>
