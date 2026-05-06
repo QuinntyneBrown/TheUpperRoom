@@ -54,7 +54,7 @@ const STAGES: { value: HackathonStage; label: string; marker: string; descriptio
     .hackathon-detail-loading__meta { height: 16px; width: 35%; border-radius: 4px; background: var(--ur-border-default, #2a2a3a); animation: hd-pulse 1.4s ease-in-out infinite; }
     .hackathon-detail-loading__block { height: 80px; border-radius: 6px; background: var(--ur-border-default, #2a2a3a); animation: hd-pulse 1.4s ease-in-out infinite; }
     @keyframes hd-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
-    .four-d-cards { display: flex; flex-direction: row; gap: 16px; }
+    .four-d-cards { display: flex; flex-direction: row; gap: 16px; list-style: none; margin: 0; padding: 0; }
     .d-card {
       display: flex; flex-direction: column; gap: 16px; padding: 20px; flex: 1; min-width: 0;
       border-radius: 8px; background: var(--ur-bg-elevated, #101018);

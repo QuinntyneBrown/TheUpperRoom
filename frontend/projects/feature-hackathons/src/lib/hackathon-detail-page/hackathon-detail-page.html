@@ -32,9 +32,9 @@
     </header>
 
     <div class="hackathon-detail__body">
-      <section class="four-d-cards" aria-label="4 D's stage">
+      <ol class="four-d-cards" aria-label="4 D's stage">
         @for (s of stages; track s.value; let i = $index) {
-          <div
+          <li
             class="d-card"
             [class.d-card--done]="i < stageIndex()"
             [class.d-card--active]="i === stageIndex()"
@@ -57,9 +57,9 @@
               >{{ i < stageIndex() ? 'Done' : i === stageIndex() ? 'In progress' : 'Upcoming' }}</button>
             </div>
             <p class="d-card__desc">{{ s.description }}</p>
-          </div>
+          </li>
         }
-      </section>
+      </ol>
 
       <ur-products-section [hackathonId]="h.id" [initialProducts]="h.products"></ur-products-section>
 
