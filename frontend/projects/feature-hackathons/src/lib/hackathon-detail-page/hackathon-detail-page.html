@@ -84,7 +84,7 @@
         @if (h.history.length === 0) {
           <p class="hackathon-history__empty" data-testid="hackathon-history-empty-title">No stage changes yet</p>
         } @else {
-          <ul class="hackathon-history">
+          <ol class="hackathon-history">
             @for (entry of h.history; track entry.id) {
               <li class="hackathon-history__item">
                 <span class="hackathon-history__from">{{ entry.fromStage }}</span>
@@ -93,7 +93,7 @@
                 <time class="hackathon-history__time">{{ entry.changedAt | date:'short' }}</time>
               </li>
             }
-          </ul>
+          </ol>
         }
       </section>
     </div>
