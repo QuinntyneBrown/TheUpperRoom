@@ -50,6 +50,7 @@
             class="partner-form__stage-opt"
             [class.partner-form__stage-opt--selected]="stage() === s.value"
             [attr.aria-checked]="stage() === s.value"
+            [attr.data-testid]="'partner-create-stage-' + s.value"
             (click)="stage.set(s.value)"
           >{{ s.label }}</button>
         }
