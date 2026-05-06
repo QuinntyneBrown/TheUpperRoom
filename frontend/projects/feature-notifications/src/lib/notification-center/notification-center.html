@@ -54,7 +54,7 @@
               <span class="notification-center__kind">{{ n.kind }}</span>
               <span class="notification-center__time">{{ n.createdAt | date:'short' }}</span>
               @if (!n.isRead) {
-                <button mat-icon-button (click)="markRead(n.id)" [attr.aria-label]="'Mark ' + n.kind + ' read'"><mat-icon aria-hidden="true">check</mat-icon></button>
+                <button mat-icon-button (click)="markRead(n.id)" [attr.aria-label]="'Mark ' + n.kind + ' read'" [attr.data-testid]="'mark-notification-read-' + n.id"><mat-icon aria-hidden="true">check</mat-icon></button>
               }
             </li>
           }
