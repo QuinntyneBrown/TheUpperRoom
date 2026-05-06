@@ -31,7 +31,7 @@ import { UrButtonComponent } from 'components';
       </div>
     } @else if (notFound()) {
       <div class="hackathon-edit-not-found" data-testid="hackathon-edit-not-found" role="alert">
-        <h1>Hackathon not found</h1>
+        <h1 data-testid="hackathon-edit-not-found-title">Hackathon not found</h1>
         <a routerLink="/hackathons">Back to hackathons</a>
       </div>
     } @else {
