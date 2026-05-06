@@ -16,6 +16,11 @@
   font: var(--mat-sys-label-medium);
 }
 
+.ur-input__required {
+  color: var(--ur-danger, #f87171);
+  margin-left: 2px;
+}
+
 .ur-input__field {
   --mat-form-field-container-height: 40px;
   --mat-form-field-container-vertical-padding: 8px;

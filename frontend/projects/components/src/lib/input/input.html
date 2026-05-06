@@ -1,6 +1,11 @@
 <div class="ur-input">
   @if (label) {
-    <label class="ur-input__label" [attr.for]="id">{{ label }}</label>
+    <label class="ur-input__label" [attr.for]="id">
+      {{ label }}
+      @if (required) {
+        <span class="ur-input__required" aria-hidden="true">*</span>
+      }
+    </label>
   }
 
   <mat-form-field class="ur-input__field" appearance="outline" subscriptSizing="dynamic">
