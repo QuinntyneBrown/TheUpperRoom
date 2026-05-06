@@ -12,12 +12,11 @@
       required
       placeholder="e.g. FaithTech Toronto"
       [value]="name()"
+      [error]="errors()['name'] ?? ''"
+      errorTestId="partner-create-name-error"
       autocomplete="organization"
       (valueChange)="name.set($event)"
     />
-    @if (errors()['name']) {
-      <span class="partner-form__error">{{ errors()['name'] }}</span>
-    }
 
     <div class="partner-form__row">
       <ur-input
@@ -25,6 +24,8 @@
         type="text"
         placeholder="e.g. Toronto, ON"
         [value]="city()"
+        [error]="errors()['city'] ?? ''"
+        errorTestId="partner-create-city-error"
         (valueChange)="city.set($event)"
       />
       <ur-input
@@ -32,15 +33,11 @@
         type="url"
         placeholder="https://"
         [value]="website()"
+        [error]="errors()['website'] ?? ''"
+        errorTestId="partner-create-website-error"
         (valueChange)="website.set($event)"
       />
     </div>
-    @if (errors()['city']) {
-      <span class="partner-form__error">{{ errors()['city'] }}</span>
-    }
-    @if (errors()['website']) {
-      <span class="partner-form__error">{{ errors()['website'] }}</span>
-    }
 
     <div class="partner-form__field">
       <span id="partnerStageLabel" class="partner-form__label">Stage</span>
