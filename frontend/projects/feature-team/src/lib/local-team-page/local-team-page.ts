@@ -74,7 +74,7 @@ import { RoleChipEditorComponent } from '../role-chip-editor/role-chip-editor';
       border: 1px solid var(--ur-border-subtle, #222233);
     }
     .team-role-card__header { display: flex; align-items: center; justify-content: space-between; }
-    .team-role-card__label { font-size: 0.875rem; font-weight: 600; color: var(--ur-fg-primary, #fff); }
+    .team-role-card__label { margin: 0; font-size: 0.875rem; font-weight: 600; color: var(--ur-fg-primary, #fff); }
     .team-role-card__count { font-size: 0.6875rem; color: var(--ur-fg-muted, #a8a8b5); font-family: 'Geist Mono', monospace; }
     .team-role-card__member {
       display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 6px;

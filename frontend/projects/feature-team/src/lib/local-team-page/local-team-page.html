@@ -34,7 +34,7 @@
       @for (card of roleCards; track card.key) {
         <div class="team-role-card" [attr.data-testid]="'role-card-' + card.key">
           <div class="team-role-card__header">
-            <span class="team-role-card__label">{{ card.label }}</span>
+            <h3 class="team-role-card__label">{{ card.label }}</h3>
             <span class="team-role-card__count">{{ membersByRole()[card.key].length }}</span>
           </div>
           @if (membersByRole()[card.key].length === 0) {
