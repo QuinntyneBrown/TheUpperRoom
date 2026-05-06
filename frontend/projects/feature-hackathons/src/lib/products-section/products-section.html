@@ -15,7 +15,7 @@
     <div class="products-section__list">
       @for (p of products(); track p.id) {
         <div class="product-card" [attr.data-testid]="'product-card-' + p.id">
-          <p class="product-card__name">{{ p.name }}</p>
+          <h3 class="product-card__name">{{ p.name }}</h3>
           @if (p.description) {
             <p class="product-card__desc">{{ p.description }}</p>
           }
