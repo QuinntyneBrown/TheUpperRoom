@@ -9,7 +9,7 @@
     <div class="verify-success__icon-wrap" data-testid="verify-success-icon-wrap" aria-hidden="true">
       <mat-icon class="verify-success__check" data-testid="verify-success-icon" aria-hidden="true">check_circle</mat-icon>
     </div>
-    <h2 data-testid="verify-success-title">Email verified</h2>
+    <h1 data-testid="verify-success-title">Email verified</h1>
     <p data-testid="verify-success-body">Your account is ready to use. You can sign in below.</p>
     <ur-button (click)="goToSignIn()" fullWidth data-testid="verify-sign-in-cta">Sign in to continue</ur-button>
   </div>
@@ -22,7 +22,7 @@
     <div class="verify-error__icon-wrap" data-testid="verify-error-icon-wrap" aria-hidden="true">
       <mat-icon class="verify-error__icon" data-testid="verify-error-icon" aria-hidden="true">link_off</mat-icon>
     </div>
-    <h2 data-testid="verify-error-heading">This link can't be used</h2>
+    <h1 data-testid="verify-error-heading">This link can't be used</h1>
     <p data-testid="verify-error-body">The verification link is expired or has already been used. Request a new one and we'll send it right over.</p>
     <ur-alert
       data-testid="verify-error-alert"
