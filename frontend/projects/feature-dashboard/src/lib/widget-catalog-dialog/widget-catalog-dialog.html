@@ -28,17 +28,25 @@
         <p class="widget-catalog-dialog__section-label">{{ section.label }}</p>
         <ul class="widget-catalog-dialog__list">
           @for (wt of section.entries; track wt.type) {
-            <li class="widget-catalog-dialog__entry" [attr.data-testid]="'widget-type-' + wt.type" (click)="pick(wt)" role="button" [attr.aria-label]="'Add ' + wt.label + ' widget'">
-              <div class="widget-catalog-dialog__icon">
-                <mat-icon aria-hidden="true">{{ wt.icon }}</mat-icon>
-              </div>
-              <div class="widget-catalog-dialog__info">
-                <span class="widget-catalog-dialog__label">{{ wt.label }}</span>
-                <span class="widget-catalog-dialog__desc">{{ wt.description }}</span>
-              </div>
-              <span class="widget-catalog-dialog__add" aria-hidden="true">
-                <mat-icon aria-hidden="true">add</mat-icon>
-              </span>
+            <li class="widget-catalog-dialog__entry-item">
+              <button
+                type="button"
+                class="widget-catalog-dialog__entry"
+                [attr.data-testid]="'widget-type-' + wt.type"
+                (click)="pick(wt)"
+                [attr.aria-label]="'Add ' + wt.label + ' widget'"
+              >
+                <div class="widget-catalog-dialog__icon">
+                  <mat-icon aria-hidden="true">{{ wt.icon }}</mat-icon>
+                </div>
+                <div class="widget-catalog-dialog__info">
+                  <span class="widget-catalog-dialog__label">{{ wt.label }}</span>
+                  <span class="widget-catalog-dialog__desc">{{ wt.description }}</span>
+                </div>
+                <span class="widget-catalog-dialog__add" aria-hidden="true">
+                  <mat-icon aria-hidden="true">add</mat-icon>
+                </span>
+              </button>
             </li>
           }
         </ul>

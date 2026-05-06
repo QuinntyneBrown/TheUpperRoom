@@ -37,7 +37,9 @@ import { WIDGET_CATALOG } from './widget-catalog';
       background: var(--ur-bg-surface, #16161f);
       border: 1px solid var(--ur-border-subtle, #222233);
       cursor: pointer; transition: border-color 0.15s ease;
+      width: 100%; text-align: left; color: inherit; font: inherit;
     }
+    .widget-catalog-dialog__entry-item { list-style: none; }
     .widget-catalog-dialog__entry:hover { border-color: var(--ur-accent-primary, #9f86ff); }
     .widget-catalog-dialog__icon {
       width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0;
