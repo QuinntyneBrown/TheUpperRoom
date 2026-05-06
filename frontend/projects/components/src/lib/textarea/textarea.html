@@ -19,6 +19,7 @@
       [readonly]="readonly"
       [required]="required"
       [attr.aria-describedby]="describedBy"
+      [attr.data-testid]="inputTestId || null"
       (input)="onInput($event)"
     ></textarea>
 
