@@ -33,9 +33,9 @@
   } @else {
     <div class="team-role-grid" data-testid="team-role-grid" aria-label="Team members by role">
       @for (card of roleCards; track card.key) {
-        <div class="team-role-card" [attr.data-testid]="'role-card-' + card.key">
+        <section class="team-role-card" [attr.data-testid]="'role-card-' + card.key" [attr.aria-labelledby]="'role-card-label-' + card.key">
           <div class="team-role-card__header">
-            <h3 class="team-role-card__label">{{ card.label }}</h3>
+            <h3 class="team-role-card__label" [attr.id]="'role-card-label-' + card.key">{{ card.label }}</h3>
             <span class="team-role-card__count" [attr.aria-label]="membersByRole()[card.key].length + (membersByRole()[card.key].length === 1 ? ' member' : ' members')">{{ membersByRole()[card.key].length }}</span>
           </div>
           @if (membersByRole()[card.key].length === 0) {
@@ -55,7 +55,7 @@
               }
             </ul>
           }
-        </div>
+        </section>
       }
     </div>
   }
