@@ -15,7 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
     .global-team-detail__back mat-icon { font-size: 18px; width: 18px; height: 18px; }
     .global-team-detail__title { margin: 0 0 8px; font-size: 1.5rem; font-weight: 700; color: var(--ur-fg-primary, #f1f5f9); }
     .global-team-detail__stats { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px; }
-    .global-team-detail__stat { padding: 16px 20px; border-radius: 8px; background: var(--ur-bg-surface, #16161f); border: 1px solid var(--ur-border-subtle, #222233); min-width: 140px; }
+    .global-team-detail__stat { display: flex; flex-direction: column-reverse; padding: 16px 20px; border-radius: 8px; background: var(--ur-bg-surface, #16161f); border: 1px solid var(--ur-border-subtle, #222233); min-width: 140px; }
     .global-team-detail__stat-value { font-size: 1.75rem; font-weight: 700; color: var(--ur-fg-primary, #f1f5f9); margin: 0; }
     .global-team-detail__stat-label { font-size: 0.8125rem; color: var(--ur-fg-muted, #64748b); margin: 4px 0 0; }
     .global-team-detail__loading { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
