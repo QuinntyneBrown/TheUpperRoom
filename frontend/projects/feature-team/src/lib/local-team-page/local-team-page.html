@@ -1,6 +1,6 @@
-<div class="team-page" data-testid="local-team-page">
+<article class="team-page" data-testid="local-team-page" aria-labelledby="team-page-title">
   <header class="team-page__header">
-    <h1 class="team-page__title" data-testid="team-page-title">Team</h1>
+    <h1 id="team-page-title" class="team-page__title" data-testid="team-page-title">Team</h1>
     @if (canEdit()) {
       <div class="team-page__header-actions">
         <button mat-stroked-button data-testid="manage-roles-btn">Manage roles</button>
@@ -61,7 +61,7 @@
   }
 
   </div>
-</div>
+</article>
 
 @if (removeSuccess()) {
   <div class="team-success-toast" role="status" data-testid="remove-member-success-toast">
