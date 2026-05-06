@@ -3,7 +3,7 @@
     class="notification-center__bell"
     data-testid="notification-bell"
     (click)="toggle()"
-    aria-label="Notifications"
+    [attr.aria-label]="open() ? 'Close notifications' : 'Open notifications'"
     [attr.aria-expanded]="open()"
     mat-icon-button
   >
