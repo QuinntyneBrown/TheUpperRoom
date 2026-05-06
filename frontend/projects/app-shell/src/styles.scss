@@ -63,6 +63,15 @@ body {
   color: var(--ur-fg-primary, #f1f5f9);
 }
 
+.auth-card__sr-heading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
 .auth-card__wordmark {
   display: flex;
   align-items: center;
