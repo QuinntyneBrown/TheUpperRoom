@@ -68,8 +68,8 @@
           @for (r of searchResults(); track r.id) {
             <li class="contact-result-card">
               <a [routerLink]="['/contacts', r.id]" class="contact-result-card__link">
-                <span class="contact-result-card__name"
-                  [innerHTML]="r.firstName + ' ' + r.lastName | highlight:term()"></span>
+                <h3 class="contact-result-card__name"
+                  [innerHTML]="r.firstName + ' ' + r.lastName | highlight:term()"></h3>
                 @if (r.city) {
                   <span class="contact-result-card__city">{{ r.city }}</span>
                 }

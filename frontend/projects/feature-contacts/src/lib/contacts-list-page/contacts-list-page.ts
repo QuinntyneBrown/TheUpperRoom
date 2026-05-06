@@ -54,7 +54,7 @@ type SortDir = 'asc' | 'desc';
     .contact-result-card { border-bottom: 1px solid var(--ur-border-subtle, #222233); }
     .contact-result-card__link { display: flex; flex-direction: column; gap: 2px; padding: 12px 20px; text-decoration: none; }
     .contact-result-card__link:hover { background: var(--ur-bg-elevated, #0f172a); }
-    .contact-result-card__name { font-size: 0.9375rem; font-weight: 500; color: var(--ur-fg-primary, #f1f5f9); }
+    .contact-result-card__name { margin: 0; font-size: 0.9375rem; font-weight: 500; color: var(--ur-fg-primary, #f1f5f9); }
     .contact-result-card__city { font-size: 0.8125rem; color: var(--ur-fg-secondary, #94a3b8); }
     .contact-result-card__snippet { font-size: 0.8125rem; color: var(--ur-fg-muted, #64748b); }
     .contacts-load-error {
