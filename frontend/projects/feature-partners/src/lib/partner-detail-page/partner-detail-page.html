@@ -86,7 +86,7 @@
                 </div>
                 @if (stageIndex() > i) {
                   @if (getEntryForStage(s.value); as entry) {
-                    <span class="partner-stepper__date">{{ entry.changedAt | date:'MMM d' }}</span>
+                    <span class="partner-stepper__date" [attr.data-testid]="'stage-completed-date-' + s.value">{{ entry.changedAt | date:'MMM d' }}</span>
                   }
                 } @else if (stageIndex() === i) {
                   <span class="partner-stepper__current-badge" data-testid="current-stage-label">Current</span>
