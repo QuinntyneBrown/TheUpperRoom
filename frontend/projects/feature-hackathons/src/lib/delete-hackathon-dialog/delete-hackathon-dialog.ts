@@ -13,6 +13,8 @@ export interface DeleteHackathonDialogData {
     <ur-dialog
       [title]="title"
       subtitle="This hackathon will be removed. An admin can restore it later."
+      titleTestId="hackathon-delete-dialog-title"
+      subtitleTestId="hackathon-delete-dialog-subtitle"
       variant="danger"
       icon="delete"
       closeLabel="Cancel"
