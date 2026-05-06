@@ -45,9 +45,10 @@ export class StageChangeDialogComponent {
   reason = '';
 
   get title(): string {
+    const verb = this.data.direction === 'revert' ? 'Revert' : 'Advance';
     return this.data.partnerName
-      ? `Move ${this.data.partnerName} to ${this.data.stageLabel}?`
-      : `Move to ${this.data.stageLabel}`;
+      ? `${verb} ${this.data.partnerName} to ${this.data.stageLabel}?`
+      : `${verb} to ${this.data.stageLabel}`;
   }
 
   get confirmLabel(): string {
