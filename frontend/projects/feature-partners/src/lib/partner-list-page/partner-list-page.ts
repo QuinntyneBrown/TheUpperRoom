@@ -66,11 +66,17 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
             <ur-button (pressed)="onCreateClick()" data-testid="partners-empty-create-btn">Add first partner</ur-button>
           </div>
         }
-        @for (row of filtered(); track row.id) {
-          <a class="partner-card" [routerLink]="['/partners', row.id]" [attr.data-testid]="'partner-card-' + row.id">
-            <h3 class="partner-card__name">{{ row.name }}</h3>
-            <span class="partner-card__meta">{{ row.city }} · {{ stageLabel(row.stage) }}</span>
-          </a>
+        @if (!loading() && !loadError() && filtered().length > 0) {
+          <ul class="partner-list-page__cards" aria-label="Partners">
+            @for (row of filtered(); track row.id) {
+              <li>
+                <a class="partner-card" [routerLink]="['/partners', row.id]" [attr.data-testid]="'partner-card-' + row.id">
+                  <h3 class="partner-card__name">{{ row.name }}</h3>
+                  <span class="partner-card__meta">{{ row.city }} · {{ stageLabel(row.stage) }}</span>
+                </a>
+              </li>
+            }
+          </ul>
         }
       </div>
     </div>
@@ -103,6 +109,8 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
     }
     .partners-view-toggle__btn--active { background: var(--ur-accent-primary, #9f86ff); color: #fff; }
     .partner-list-page__list { display: flex; flex-direction: column; gap: 8px; padding: 32px; }
+    .partner-list-page__cards { display: contents; list-style: none; margin: 0; padding: 0; }
+    .partner-list-page__cards > li { display: contents; }
     .partner-card {
       display: flex; flex-direction: row; align-items: center; gap: 12px; padding: 12px;
       border-radius: 8px; border: 1px solid var(--ur-border-subtle, #222233);
