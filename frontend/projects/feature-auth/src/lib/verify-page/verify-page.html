@@ -1,7 +1,7 @@
 @if (status() === 'verifying') {
   <p data-testid="verify-pending" role="status" aria-live="polite" aria-busy="true">Verifying your email…</p>
 } @else if (status() === 'verified') {
-  <div class="auth-card" data-testid="verify-success">
+  <section class="auth-card" data-testid="verify-success" aria-labelledby="verify-success-title">
     <div class="auth-card__wordmark" data-testid="verify-wordmark">
       <mat-icon class="auth-card__wordmark-logo" aria-hidden="true">church</mat-icon>
       <span class="auth-card__wordmark-name">The Upper Room</span>
@@ -9,12 +9,12 @@
     <div class="verify-success__icon-wrap" data-testid="verify-success-icon-wrap" aria-hidden="true">
       <mat-icon class="verify-success__check" data-testid="verify-success-icon" aria-hidden="true">check_circle</mat-icon>
     </div>
-    <h1 data-testid="verify-success-title">Email verified</h1>
+    <h1 id="verify-success-title" data-testid="verify-success-title">Email verified</h1>
     <p data-testid="verify-success-body">Your account is ready to use. You can sign in below.</p>
     <ur-button (click)="goToSignIn()" fullWidth data-testid="verify-sign-in-cta">Sign in to continue</ur-button>
-  </div>
+  </section>
 } @else {
-  <div class="auth-card" data-testid="verify-error">
+  <section class="auth-card" data-testid="verify-error" aria-labelledby="verify-error-heading">
     <div class="auth-card__wordmark" data-testid="verify-wordmark">
       <mat-icon class="auth-card__wordmark-logo" aria-hidden="true">church</mat-icon>
       <span class="auth-card__wordmark-name">The Upper Room</span>
@@ -22,7 +22,7 @@
     <div class="verify-error__icon-wrap" data-testid="verify-error-icon-wrap" aria-hidden="true">
       <mat-icon class="verify-error__icon" data-testid="verify-error-icon" aria-hidden="true">link_off</mat-icon>
     </div>
-    <h1 data-testid="verify-error-heading">This link can't be used</h1>
+    <h1 id="verify-error-heading" data-testid="verify-error-heading">This link can't be used</h1>
     <p data-testid="verify-error-body">The verification link is expired or has already been used. Request a new one and we'll send it right over.</p>
     <ur-alert
       data-testid="verify-error-alert"
@@ -31,5 +31,5 @@
       message="For your security, links expire after 30 minutes."
     />
     <a routerLink="/auth/sign-in" data-testid="verify-error-back-link">Back to sign in</a>
-  </div>
+  </section>
 }
