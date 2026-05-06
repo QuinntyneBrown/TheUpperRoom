@@ -21,7 +21,10 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
     <div class="partner-list-page" data-perf-ready="partners">
       <div class="partner-list-page__header">
         <div class="partner-list-page__title-row">
-          <h1>Partners</h1>
+          <div class="partner-list-page__title-block">
+            <h1>Partners</h1>
+            <p class="partner-list-page__count" data-testid="partners-count-subtitle">{{ allRows().length }} partners</p>
+          </div>
           <div class="partners-view-toggle">
             <a class="partners-view-toggle__btn partners-view-toggle__btn--active" routerLink="/partners" data-testid="partners-list-tab" aria-label="List view">List</a>
             <a class="partners-view-toggle__btn" routerLink="/partners/board" data-testid="partners-board-tab" aria-label="Board view">Board</a>
@@ -84,7 +87,9 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
       background: var(--ur-bg-elevated, #101018);
     }
     .partner-list-page__title-row { display: flex; align-items: center; gap: 12px; }
+    .partner-list-page__title-block { display: flex; flex-direction: column; gap: 2px; }
     .partner-list-page__header h1 { margin: 0; font-size: 1.125rem; font-weight: 600; color: var(--ur-fg-primary, #fff); }
+    .partner-list-page__count { margin: 0; font-size: 0.75rem; color: var(--ur-fg-secondary, #a1a1aa); }
     .partners-view-toggle {
       display: flex; align-items: center; border-radius: 6px;
       background: var(--ur-bg-base, #0e0e16); border: 1px solid var(--ur-border-default, #2a2a3a);
@@ -141,7 +146,7 @@ export class PartnerListPageComponent implements OnInit, OnDestroy {
   private dialog = inject(DialogService);
 
   readonly stages = ALL_STAGES;
-  private allRows = signal<PartnerListRow[]>([]);
+  allRows = signal<PartnerListRow[]>([]);
   loading = signal(true);
   loadError = signal(false);
   deletedToast = signal(false);
