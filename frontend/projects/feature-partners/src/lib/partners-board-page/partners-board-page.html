@@ -21,7 +21,7 @@
   @if (dropError()) {
     <div class="board-drop-error" data-testid="board-drop-error" role="alert">
       <mat-icon aria-hidden="true">error_outline</mat-icon>
-      <span>Failed to move partner. Stage reverted.</span>
+      <span data-testid="board-drop-error-message">Failed to move partner. Stage reverted.</span>
     </div>
   }
 
