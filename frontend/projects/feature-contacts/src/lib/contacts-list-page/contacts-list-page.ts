@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { debounceTime, distinctUntilChanged, filter, Subject, switchMap, of } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CONTACT_SERVICE, ContactListRow, ContactListResult, ContactSearchResult, REALTIME_SERVICE } from 'api';
-import { HighlightPipe, UrSearchComponent } from 'components';
+import { DialogService, HighlightPipe, UrSearchComponent } from 'components';
 import { NewContactDialogComponent } from '../new-contact-dialog/new-contact-dialog';
 
 type SortField = 'firstName' | 'lastName';
@@ -15,7 +15,7 @@ type SortDir = 'asc' | 'desc';
   selector: 'ur-contacts-list-page',
   templateUrl: './contacts-list-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, MatButtonModule, MatIconModule, UrSearchComponent, HighlightPipe, NewContactDialogComponent],
+  imports: [RouterLink, MatButtonModule, MatIconModule, UrSearchComponent, HighlightPipe],
   styles: [`
     .contacts-list-page { display: flex; flex-direction: column; height: 100%; }
     .contacts-list-page__header {
@@ -86,8 +86,6 @@ type SortDir = 'asc' | 'desc';
     @keyframes contact-shimmer { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
     .contacts-list-loading { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
     .contacts-list-loading__row { height: 44px; border-radius: 6px; background: var(--ur-border-default, #2a2a3a); animation: contact-shimmer 1.4s ease-in-out infinite; }
-    .contacts-list-page__overlay { position: fixed; inset: 0; background: rgba(10,10,15,0.7); display: flex; align-items: flex-start; justify-content: center; padding-top: 120px; z-index: 1000; }
-    .contacts-list-page__overlay ur-new-contact-dialog { width: 640px; max-width: calc(100vw - 48px); }
   `],
 })
 export class ContactsListPageComponent implements OnInit, OnDestroy {
@@ -95,8 +93,8 @@ export class ContactsListPageComponent implements OnInit, OnDestroy {
   private realtime = inject(REALTIME_SERVICE);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private dialog = inject(DialogService);
 
-  showNewContact = signal(false);
   term = signal('');
   searchResults = signal<ContactSearchResult[]>([]);
   listResult = signal<ContactListResult>({ rows: [], total: 0 });
@@ -150,6 +148,16 @@ export class ContactsListPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     clearTimeout(this.deletedToastTimer);
+  }
+
+  onNewContactClick(): void {
+    this.dialog.open<NewContactDialogComponent, { contactId: string }>(NewContactDialogComponent, {
+      ariaLabel: 'New contact',
+    }).closed$.subscribe(result => {
+      if (result?.contactId) {
+        this.router.navigate(['/contacts', result.contactId], { queryParams: { saved: '1' } });
+      }
+    });
   }
 
   loadPage(): void {

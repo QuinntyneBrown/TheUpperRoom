@@ -16,7 +16,7 @@
         aria-label="Search contacts"
         data-testid="contact-search-input"
       />
-      <button mat-raised-button (click)="showNewContact.set(true)" data-testid="new-contact-btn">+ New contact</button>
+      <button mat-raised-button (click)="onNewContactClick()" data-testid="new-contact-btn">+ New contact</button>
     </div>
   </header>
 
@@ -125,8 +125,3 @@
   </div>
 }
 
-@if (showNewContact()) {
-  <div class="contacts-list-page__overlay">
-    <ur-new-contact-dialog (closed)="showNewContact.set(false)" />
-  </div>
-}

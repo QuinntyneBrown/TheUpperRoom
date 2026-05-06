@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component, computed, inject, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { Router } from '@angular/router';
 import { CONTACT_SERVICE } from 'api';
-import { UrButtonComponent, UrDialogComponent, UrInputComponent } from 'components';
+import { UrButtonComponent, UrDialogComponent, UrDialogRef, UrInputComponent } from 'components';
 
 @Component({
   selector: 'ur-new-contact-dialog',
@@ -21,9 +20,7 @@ import { UrButtonComponent, UrDialogComponent, UrInputComponent } from 'componen
 })
 export class NewContactDialogComponent {
   private contacts = inject(CONTACT_SERVICE);
-  private router = inject(Router);
-
-  closed = output<void>();
+  ref = inject<UrDialogRef<{ contactId: string }>>(UrDialogRef);
 
   firstName = signal('');
   lastName = signal('');
@@ -54,8 +51,7 @@ export class NewContactDialogComponent {
     }).subscribe({
       next: ({ id }) => {
         this.loading.set(false);
-        this.closed.emit();
-        this.router.navigate(['/contacts', id], { queryParams: { saved: '1' } });
+        this.ref.close({ contactId: id });
       },
       error: (err: { status: number; error?: { fields?: Record<string, string[]> } }) => {
         this.loading.set(false);

@@ -1,6 +1,16 @@
 # T190 — Migrate "New contact" hand-rolled overlay to DialogService
 
-**Status:** ACCEPTED
+**Status:** COMPLETE
+
+## Implementation notes (radically simple)
+
+- `NewContactDialogComponent` refactored to inject `UrDialogRef<{ contactId: string }>` instead of `Router`. The `closed` output is gone; `(closed)`/cancel buttons in the template now call `ref.close()`. On save success the dialog calls `ref.close({ contactId: id })` instead of doing its own router navigation. The component template still has a `<ur-dialog>` root (consistent with T180–T185 / T187 dialogs — DialogService just hosts it as overlay content).
+- `contacts-list-page.ts`: dropped `NewContactDialogComponent` from `imports` and removed `showNewContact` signal. Added `DialogService` injection + `onNewContactClick()` that opens the dialog and navigates to `/contacts/{contactId}?saved=1` on a successful close.
+- The bespoke `.contacts-list-page__overlay` styles (`position: fixed; inset: 0; background: rgba(10,10,15,0.7); z-index: 1000;`) are deleted — the CDK overlay backdrop introduced in T179 supplies the scrim, and the `.cdk-overlay-pane.ur-dialog-pane` rules in `app-shell/styles.scss` size the panel.
+- Template: trigger button rebound from `(click)="showNewContact.set(true)"` to `(click)="onNewContactClick()"`. The `@if (showNewContact()) { <div class="contacts-list-page__overlay"> <ur-new-contact-dialog/> </div> }` block is gone.
+- All `data-testid` values preserved (`new-contact-btn`, `new-contact-dialog`, `new-contact-dialog-cancel`, `new-contact-dialog-submit`) — `e2e/tests/contacts/new-contact-dialog.spec.ts` and related specs need no updates.
+- This closes out the inline-dialog migration sweep started at T179. No `<ur-dialog>` instance in the codebase is now rendered inline; every dialog is opened via `DialogService` with the shared overlay backdrop, focus-return, and ESC/click-outside-close behaviors from T179.
+- Pencil .pen update deferred — same reasoning as T180–T189.
 **Type:** Refactor
 **Blocked by:** T179
 **Source:** `docs/inline-dialog-audit.md` ("With overlay" item A)
