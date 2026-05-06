@@ -19,14 +19,14 @@
     <div class="dashboard-page__empty" data-testid="dashboard-empty">
       <div class="dashboard-page__empty-intro" data-testid="dashboard-empty-intro">
         <h2 data-testid="dashboard-welcome-title">Welcome, {{ displayName() || 'there' }}</h2>
-        <p>Your dashboard is empty. Add widgets to track partners, hackathons, and your local team.</p>
+        <p data-testid="dashboard-welcome-body">Your dashboard is empty. Add widgets to track partners, hackathons, and your local team.</p>
       </div>
       <div class="dashboard-page__empty-zone">
         <div class="dashboard-page__empty-icon-wrap" data-testid="dashboard-empty-icon-wrap" aria-hidden="true">
           <mat-icon class="dashboard-page__empty-icon" aria-hidden="true">dashboard_customize</mat-icon>
         </div>
         <h3 data-testid="dashboard-empty-zone-title">Drop widgets here to start</h3>
-        <p>Choose from charts, KPI cards, recent activity, and more. Drag to rearrange. Resize from the corner.</p>
+        <p data-testid="dashboard-empty-zone-body">Choose from charts, KPI cards, recent activity, and more. Drag to rearrange. Resize from the corner.</p>
         <ur-button data-testid="add-widget-cta" (pressed)="onAddWidget()">+ Add widget</ur-button>
         <span class="dashboard-page__empty-hint" data-testid="dashboard-empty-hint">Or press W to open the catalog</span>
       </div>
