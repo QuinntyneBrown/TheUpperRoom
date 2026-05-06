@@ -25,7 +25,7 @@ import { UrButtonComponent } from 'components';
       } @else if (loadError()) {
         <div class="admin-error" data-testid="deleted-hackathons-error" role="alert">
           <mat-icon aria-hidden="true">error_outline</mat-icon>
-          <span>Failed to load deleted hackathons.</span>
+          <span data-testid="deleted-hackathons-load-error-message">Failed to load deleted hackathons.</span>
           <ur-button variant="secondary" (pressed)="load()" data-testid="deleted-hackathons-retry-btn">Retry</ur-button>
         </div>
       } @else if (rows().length === 0) {
