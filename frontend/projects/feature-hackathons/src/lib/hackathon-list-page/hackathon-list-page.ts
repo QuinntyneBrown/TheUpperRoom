@@ -13,7 +13,7 @@ import { HackathonCreatePageComponent } from '../hackathon-create-page/hackathon
   template: `
     <div class="hackathon-list-page" data-perf-ready="hackathons">
       <div class="hackathon-list-page__header">
-        <h1>Hackathons</h1>
+        <h1 data-testid="hackathons-list-title">Hackathons</h1>
         <ur-button (pressed)="onCreateClick()" data-testid="new-hackathon-btn">+ Plan hackathon</ur-button>
       </div>
       <div class="hackathon-list-page__scroll">
