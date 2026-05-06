@@ -68,10 +68,10 @@
       @for (t of teams(); track t.id) {
         <li>
           <a class="team-card" [attr.data-testid]="'team-card-' + t.id" [routerLink]="['/teams', t.id]">
-            <h3 class="team-card__city">{{ t.city }}</h3>
-            <p class="team-card__members">{{ t.memberCount }} members</p>
-            <p class="team-card__hackathons">{{ t.activeHackathonCount }} active hackathons</p>
-            <p class="team-card__partners">{{ t.partnerCount }} partners</p>
+            <h3 class="team-card__city" data-testid="team-card-city">{{ t.city }}</h3>
+            <p class="team-card__members" data-testid="team-card-members">{{ t.memberCount }} members</p>
+            <p class="team-card__hackathons" data-testid="team-card-hackathons">{{ t.activeHackathonCount }} active hackathons</p>
+            <p class="team-card__partners" data-testid="team-card-partners">{{ t.partnerCount }} partners</p>
           </a>
         </li>
       }
