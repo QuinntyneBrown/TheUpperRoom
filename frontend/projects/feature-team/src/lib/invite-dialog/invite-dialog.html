@@ -1,11 +1,12 @@
 <ur-dialog title="Invite team member" closeLabel="Cancel" (closed)="ref.close()" data-testid="invite-dialog">
   <form (submit)="$event.preventDefault(); submit()" class="invite-form">
     <div class="invite-form__field">
-      <label for="inviteEmail">Email address</label>
+      <label for="inviteEmail">Email address *</label>
       <input
         id="inviteEmail"
         type="email"
         placeholder="member@example.com"
+        required
         [value]="email()"
         (input)="email.set($any($event.target).value)"
         autocomplete="email"
