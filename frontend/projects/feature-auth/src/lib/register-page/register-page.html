@@ -60,7 +60,7 @@
       </ur-button>
       @if (submitError()) {
         <div class="auth-error" data-testid="register-submit-error" role="alert">
-          <mat-icon>error_outline</mat-icon>
+          <mat-icon aria-hidden="true">error_outline</mat-icon>
           <span>Registration failed. Please try again.</span>
         </div>
       }

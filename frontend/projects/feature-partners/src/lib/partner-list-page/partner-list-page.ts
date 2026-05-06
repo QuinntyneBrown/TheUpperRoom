@@ -53,7 +53,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
           </div>
         } @else if (loadError()) {
           <div class="partner-load-error" data-testid="partners-load-error" role="alert">
-            <mat-icon>error_outline</mat-icon>
+            <mat-icon aria-hidden="true">error_outline</mat-icon>
             <span>Failed to load partners.</span>
             <ur-button variant="secondary" (pressed)="loadPartners()" data-testid="partners-retry-btn">Retry</ur-button>
           </div>

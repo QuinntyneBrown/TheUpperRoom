@@ -28,7 +28,7 @@ import { HackathonCreatePageComponent } from '../hackathon-create-page/hackathon
           </div>
         } @else if (loadError()) {
           <div class="hackathon-list-error" data-testid="hackathons-error" role="alert">
-            <mat-icon>error_outline</mat-icon>
+            <mat-icon aria-hidden="true">error_outline</mat-icon>
             <span>Failed to load hackathons.</span>
             <ur-button variant="secondary" (pressed)="load()" data-testid="hackathons-retry-btn">Retry</ur-button>
           </div>

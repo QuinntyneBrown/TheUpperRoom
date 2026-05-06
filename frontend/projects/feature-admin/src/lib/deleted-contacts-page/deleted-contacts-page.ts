@@ -24,7 +24,7 @@ import { UrButtonComponent } from 'components';
         </div>
       } @else if (loadError()) {
         <div class="admin-error" data-testid="deleted-contacts-error" role="alert">
-          <mat-icon>error_outline</mat-icon>
+          <mat-icon aria-hidden="true">error_outline</mat-icon>
           <span>Failed to load deleted contacts.</span>
           <ur-button variant="secondary" (pressed)="load()" data-testid="deleted-contacts-retry-btn">Retry</ur-button>
         </div>
@@ -58,7 +58,7 @@ import { UrButtonComponent } from 'components';
     </div>
     @if (restoreError()) {
       <div class="admin-toast admin-toast--error" data-testid="restore-error-toast" role="alert">
-        <mat-icon>error_outline</mat-icon>
+        <mat-icon aria-hidden="true">error_outline</mat-icon>
         <span>Restore failed. Please try again.</span>
       </div>
     }

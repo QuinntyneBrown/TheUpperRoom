@@ -67,7 +67,7 @@ import { UrButtonComponent } from 'components';
     }
     @if (saveError()) {
       <div class="edit-error-toast" data-testid="edit-save-error-toast" role="alert">
-        <mat-icon>error_outline</mat-icon>
+        <mat-icon aria-hidden="true">error_outline</mat-icon>
         <span>Save failed. Please try again.</span>
       </div>
     }

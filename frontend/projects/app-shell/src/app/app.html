@@ -128,7 +128,7 @@
 
 @if (errorToast()) {
   <div class="shell__error-toast" role="alert" data-testid="global-error-toast">
-    <mat-icon>error_outline</mat-icon>
+    <mat-icon aria-hidden="true">error_outline</mat-icon>
     <span>{{ errorToast() }}</span>
   </div>
 }
