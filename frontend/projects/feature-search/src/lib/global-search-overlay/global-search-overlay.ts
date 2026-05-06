@@ -26,6 +26,9 @@ import { catchError, debounceTime, distinctUntilChanged, Subject, switchMap, of 
       border-top: 1px solid var(--ur-border-subtle, #222233);
       font-size: 0.75rem; color: var(--ur-fg-muted, #7a7a87);
     }
+    .search-overlay__input-wrap { display: flex; align-items: center; gap: 10px; }
+    .search-overlay__input-icon { color: var(--ur-fg-muted, #7a7a87); font-size: 20px; width: 20px; height: 20px; flex-shrink: 0; }
+    .search-overlay__input-wrap .search-overlay__input { flex: 1; }
     .search-overlay__group-header { display: flex; align-items: baseline; justify-content: space-between; }
     .search-overlay__group-count { font-size: 0.75rem; color: var(--ur-fg-muted, #7a7a87); }
     .search-overlay__item { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; }
