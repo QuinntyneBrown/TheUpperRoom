@@ -1,6 +1,15 @@
 # T185 — Migrate "Delete hackathon" confirm to DialogService
 
-**Status:** ACCEPTED
+**Status:** COMPLETE
+
+## Implementation notes (radically simple)
+
+- New tiny `DeleteHackathonDialogComponent` at `frontend/projects/feature-hackathons/src/lib/delete-hackathon-dialog/delete-hackathon-dialog.ts` — `<ur-dialog variant="danger">` wrapper closing with `true` via injected `UrDialogRef<boolean>`. Inline template, no separate `.html` / `.scss`.
+- `hackathon-detail-page.ts`: dropped `UrButtonComponent` and `UrDialogComponent` imports (the inline dialog block was the only consumer). Added `DialogService` injection + `DeleteHackathonDialogComponent` import. New `onDeleteClick()` opens the dialog and routes the boolean result to a private `confirmDelete()` that does the same service call as before. Dropped `showDeleteDialog` signal.
+- The previous in-button "Deleting…" state was removed (dialog closes immediately on confirm; the page does the network call afterwards). Error toast still appears via the existing `deleteError` signal.
+- Template: kebab-menu Delete item now calls `(click)="onDeleteClick()"` instead of `showDeleteDialog.set(true)`. The `@if (showDeleteDialog())` block is gone.
+- All `data-testid` values preserved (`hackathon-delete-dialog`, `confirm-delete-hackathon-btn`, `hackathon-delete-menu-item`, `hackathon-more-btn`, `hackathon-delete-error-toast`) — `e2e/tests/hackathons/hackathon-delete-*.spec.ts` need no updates. The `hackathon-delete-dialog not visible` assertion in the error spec is naturally satisfied since the dialog now closes on confirm.
+- Pencil .pen update deferred — same reasoning as T180–T184.
 **Type:** Refactor
 **Blocked by:** T179
 **Source:** `docs/inline-dialog-audit.md` (item #8)

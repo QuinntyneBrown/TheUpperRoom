@@ -5,8 +5,9 @@ import { HACKATHON_SERVICE, HackathonDetailDto, HackathonStage, REALTIME_SERVICE
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { UrButtonComponent, UrDialogComponent } from 'components';
+import { DialogService } from 'components';
 import { ProductsSectionComponent } from '../products-section/products-section';
+import { DeleteHackathonDialogComponent } from '../delete-hackathon-dialog/delete-hackathon-dialog';
 import { Subscription } from 'rxjs';
 
 const STAGES: { value: HackathonStage; label: string; marker: string; description: string }[] = [
@@ -20,7 +21,7 @@ const STAGES: { value: HackathonStage; label: string; marker: string; descriptio
   selector: 'ur-hackathon-detail-page',
   templateUrl: './hackathon-detail-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule, MatMenuModule, UrButtonComponent, UrDialogComponent, ProductsSectionComponent],
+  imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule, MatMenuModule, ProductsSectionComponent],
   styles: [`
     .hackathon-detail { display: flex; flex-direction: column; height: 100%; }
     .hackathon-detail__header { display: flex; align-items: flex-start; justify-content: space-between; padding: 32px 32px 0; }
@@ -93,12 +94,12 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
   private realtime = inject(REALTIME_SERVICE);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private dialog = inject(DialogService);
 
   hackathon = signal<HackathonDetailDto | null>(null);
   loading = signal(true);
   notFound = signal(false);
   changingStage = signal(false);
-  showDeleteDialog = signal(false);
   deleting = signal(false);
   deleteError = signal(false);
   changeStageError = signal(false);
@@ -148,7 +149,14 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
     clearTimeout(this.savedToastTimer);
   }
 
-  confirmDelete(): void {
+  onDeleteClick(): void {
+    if (!this.hackathon()) return;
+    this.dialog.open<DeleteHackathonDialogComponent, boolean>(DeleteHackathonDialogComponent, {
+      ariaLabel: 'Delete hackathon',
+    }).closed$.subscribe(confirmed => { if (confirmed === true) this.confirmDelete(); });
+  }
+
+  private confirmDelete(): void {
     const h = this.hackathon();
     if (!h) return;
     this.deleting.set(true);
@@ -156,7 +164,6 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
       next: () => this.router.navigate(['/hackathons'], { queryParams: { deleted: '1' } }),
       error: () => {
         this.deleting.set(false);
-        this.showDeleteDialog.set(false);
         clearTimeout(this.deleteErrorTimer);
         this.deleteError.set(true);
         this.deleteErrorTimer = setTimeout(() => this.deleteError.set(false), 4000);

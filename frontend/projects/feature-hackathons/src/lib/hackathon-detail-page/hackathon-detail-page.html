@@ -20,28 +20,13 @@
           <mat-icon>more_horiz</mat-icon>
         </button>
         <mat-menu #moreMenu="matMenu">
-          <button mat-menu-item (click)="showDeleteDialog.set(true)" data-testid="hackathon-delete-menu-item">
+          <button mat-menu-item (click)="onDeleteClick()" data-testid="hackathon-delete-menu-item">
             <mat-icon>delete</mat-icon>
             Delete hackathon
           </button>
         </mat-menu>
       </div>
     </header>
-
-    @if (showDeleteDialog()) {
-      <ur-dialog
-        title="Delete hackathon"
-        subtitle="This hackathon will be removed. An admin can restore it later."
-        variant="danger"
-        closeLabel="Cancel"
-        (closed)="showDeleteDialog.set(false)"
-        data-testid="hackathon-delete-dialog"
-      >
-        <ur-button variant="danger" [disabled]="deleting()" (click)="confirmDelete()" data-testid="confirm-delete-hackathon-btn">
-          {{ deleting() ? 'Deleting…' : 'Delete hackathon' }}
-        </ur-button>
-      </ur-dialog>
-    }
 
     <div class="hackathon-detail__body">
       <section class="four-d-cards" aria-label="4 D's stage">
