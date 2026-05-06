@@ -24,6 +24,10 @@ export class UrToastComponent {
   @Input() title = '';
   @Input() message = '';
   @Input() actionLabel = '';
+  @Input() titleTestId = '';
+  @Input() messageTestId = '';
+  @Input() actionTestId = '';
+  @Input() dismissTestId = '';
   @Input({ transform: booleanAttribute }) dismissible = true;
 
   @Output() actionSelected = new EventEmitter<void>();
@@ -31,6 +35,10 @@ export class UrToastComponent {
 
   get toastClass(): string {
     return ['ur-toast', `ur-toast--${this.variant}`].join(' ');
+  }
+
+  get ariaRole(): 'alert' | 'status' {
+    return this.variant === 'danger' || this.variant === 'warning' ? 'alert' : 'status';
   }
 
   get resolvedIcon(): string {

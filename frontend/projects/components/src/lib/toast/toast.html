@@ -1,20 +1,20 @@
-<mat-card [class]="toastClass" appearance="outlined" role="status">
+<mat-card [class]="toastClass" appearance="outlined" [attr.role]="ariaRole">
   <mat-icon class="ur-toast__icon" aria-hidden="true">{{ resolvedIcon }}</mat-icon>
 
   <div class="ur-toast__body">
     @if (title) {
-      <h3 class="ur-toast__title">{{ title }}</h3>
+      <h3 class="ur-toast__title" [attr.data-testid]="titleTestId || null">{{ title }}</h3>
     }
 
     @if (message) {
-      <p class="ur-toast__message">{{ message }}</p>
+      <p class="ur-toast__message" [attr.data-testid]="messageTestId || null">{{ message }}</p>
     }
 
     <ng-content />
   </div>
 
   @if (actionLabel) {
-    <button mat-button class="ur-toast__action" type="button" (click)="selectAction()">
+    <button mat-button class="ur-toast__action" type="button" [attr.data-testid]="actionTestId || null" (click)="selectAction()">
       {{ actionLabel }}
     </button>
   } @else if (dismissible) {
@@ -23,6 +23,7 @@
       class="ur-toast__dismiss"
       type="button"
       aria-label="Dismiss"
+      [attr.data-testid]="dismissTestId || null"
       (click)="dismiss()"
     >
       <mat-icon aria-hidden="true">close</mat-icon>
