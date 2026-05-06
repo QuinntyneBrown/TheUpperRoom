@@ -90,6 +90,27 @@
       font-weight: 600;
       color: var(--ur-fg-primary);
     }
+
+    ur-notification-center {
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+    }
+
+    ::ng-deep .notification-center__panel {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 8px;
+      width: 320px;
+      max-height: 480px;
+      overflow-y: auto;
+      background: var(--ur-bg-elevated, #16161f);
+      border: 1px solid var(--ur-border-default, #2a2a3a);
+      border-radius: 8px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      z-index: 1000;
+    }
   }
 
   &__spacer {

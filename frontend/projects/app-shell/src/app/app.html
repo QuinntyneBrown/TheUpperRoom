@@ -76,9 +76,7 @@
         <mat-icon class="shell__topbar-logo">church</mat-icon>
         <span class="shell__topbar-title">The Upper Room</span>
         <span class="shell__spacer"></span>
-        <button mat-icon-button aria-label="Notifications" (click)="sidenav.open()">
-          <mat-icon>notifications</mat-icon>
-        </button>
+        <ur-notification-center />
         <button mat-icon-button
                 aria-label="Profile menu"
                 [matMenuTriggerFor]="topbarProfileMenu">

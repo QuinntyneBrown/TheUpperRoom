@@ -1,6 +1,6 @@
 # T179 — Mobile/tablet topbar bell opens sidenav instead of notifications
 
-**Status:** Open
+**Status:** Fixed ✓
 
 ## Description
 
@@ -32,6 +32,13 @@ Per `docs/ui-design.pen` (e.g. `w04I0S` Mobile Dashboard right group: bell with 
 
 The topbar bell should toggle the notification panel directly, matching the behaviour of `<ur-notification-center>`'s own bell (used on the desktop sidebar footer).
 
-## Proposed fix
+## Fix applied
 
-Use a template reference variable on `<ur-notification-center>` and have the topbar bell call its `toggle()` (a new public method on `NotificationCenterComponent`). Remove the redundant hand-rolled topbar bell button and render a single `<ur-notification-center>` in the topbar slot for mobile/tablet, keeping the sidenav-footer instance for desktop. This keeps a single source of truth for "current notification state" and matches the `.pen` pattern.
+In `frontend/projects/app-shell/src/app/app.html`, replaced the hand-rolled topbar bell button with `<ur-notification-center />`. The notification-center already exposes a `toggle()` method bound to its bell click and renders its own panel keyed off an `open()` signal.
+
+In `frontend/projects/app-shell/src/app/app.scss`, added topbar-scoped styling so the embedded notification-center aligns with adjacent icon-buttons and its panel floats as a popover (`position: absolute; top: 100%; right: 0; …`) instead of pushing the toolbar baseline. The `::ng-deep` is required to bypass component view encapsulation for the panel class defined in `feature-notifications`.
+
+## Verified
+
+- Tablet (768): topbar bell aligned, click opens floating notification panel with proper background/border/shadow, sidenav stays closed.
+- Desktop (1440): sidebar-footer notification-center unaffected (topbar selector does not apply).
