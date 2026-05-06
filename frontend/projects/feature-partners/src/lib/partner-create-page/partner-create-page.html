@@ -43,13 +43,15 @@
     }
 
     <div class="partner-form__field">
-      <span class="partner-form__label">Stage</span>
-      <div class="partner-form__stage-opts">
+      <span id="partnerStageLabel" class="partner-form__label">Stage</span>
+      <div class="partner-form__stage-opts" role="radiogroup" aria-labelledby="partnerStageLabel">
         @for (s of stages; track s.value) {
           <button
             type="button"
+            role="radio"
             class="partner-form__stage-opt"
             [class.partner-form__stage-opt--selected]="stage() === s.value"
+            [attr.aria-checked]="stage() === s.value"
             (click)="stage.set(s.value)"
           >{{ s.label }}</button>
         }
