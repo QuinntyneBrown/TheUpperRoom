@@ -82,6 +82,7 @@
                 type="checkbox"
                 [checked]="selectedPartnerIds().has(p.id)"
                 (change)="togglePartner(p.id)"
+                [attr.data-testid]="'hackathon-create-partner-' + p.id"
               />
               {{ p.name }}
             </label>
