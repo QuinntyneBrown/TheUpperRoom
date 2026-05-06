@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, inject, OnDestroy, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, signal } from '@angular/core';
 import { TEAM_SERVICE } from 'api';
 import { MatIconModule } from '@angular/material/icon';
-import { UrButtonComponent, UrDialogComponent } from 'components';
+import { UrButtonComponent, UrDialogComponent, UrDialogRef } from 'components';
 
 const ALL_ROLES = ['CityLead', 'PrayerLead', 'EventLead', 'CommunicationLead'];
 const ROLE_LABELS: Record<string, string> = {
@@ -43,9 +43,7 @@ const ROLE_LABELS: Record<string, string> = {
 })
 export class InviteDialogComponent implements OnDestroy {
   private team = inject(TEAM_SERVICE);
-
-  closed = output<void>();
-  invited = output<void>();
+  ref = inject<UrDialogRef<{ invited: true }>>(UrDialogRef);
 
   allRoles = ALL_ROLES;
   roleLabel = (role: string) => ROLE_LABELS[role] ?? role;
@@ -83,7 +81,7 @@ export class InviteDialogComponent implements OnDestroy {
     }).subscribe({
       next: () => {
         this.saving.set(false);
-        this.invited.emit();
+        this.ref.close({ invited: true });
       },
       error: () => {
         this.saving.set(false);

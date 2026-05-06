@@ -1,6 +1,15 @@
 # T181 — Migrate "Invite team member" dialog to DialogService
 
-**Status:** ACCEPTED
+**Status:** COMPLETE
+
+## Implementation notes (radically simple)
+
+- `InviteDialogComponent` now injects `UrDialogRef<{ invited: true }>` instead of declaring `closed`/`invited` outputs. Cancel and the `<ur-dialog>` `(closed)` event call `ref.close()`; a successful invite calls `ref.close({ invited: true })`. The component's template root is still `<ur-dialog>` — kept that as-is for radical simplicity (T179's overlay just renders it as panel content; the redundant `cdkTrapFocus` inside `<ur-dialog>` is harmless).
+- `local-team-page`: dropped `InviteDialogComponent` from `imports`, dropped `showInvite` signal and `onInvited()` method. New `onInviteClick()` opens via `DialogService` and calls `loadTeam()` only when the closed result has `invited: true`.
+- Trigger button rebound from `(click)="showInvite.set(true)"` to `(click)="onInviteClick()"`.
+- Inline `<ur-invite-dialog>` block stripped from `local-team-page.html`.
+- All `data-testid` values preserved (`invite-member-button`, `invite-dialog`, `send-invite-btn`, `invite-role-*`, `invite-save-error`) — Playwright `getByTestId` works against the CDK overlay container, so existing e2e specs in `e2e/tests/team/invite-*.spec.ts` need no updates.
+- Pencil .pen update deferred — same reasoning as T180.
 **Type:** Refactor
 **Blocked by:** T179
 **Source:** `docs/inline-dialog-audit.md` (item #2)

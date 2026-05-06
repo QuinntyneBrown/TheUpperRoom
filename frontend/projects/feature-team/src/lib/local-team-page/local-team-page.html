@@ -4,16 +4,12 @@
     @if (canEdit()) {
       <div class="team-page__header-actions">
         <button mat-stroked-button data-testid="manage-roles-btn">Manage roles</button>
-        <ur-button (click)="showInvite.set(true)" data-testid="invite-member-button">+ Invite member</ur-button>
+        <ur-button (click)="onInviteClick()" data-testid="invite-member-button">+ Invite member</ur-button>
       </div>
     }
   </header>
 
   <div class="team-page__content">
-  @if (showInvite()) {
-    <ur-invite-dialog (closed)="showInvite.set(false)" (invited)="onInvited()"></ur-invite-dialog>
-  }
-
   @if (loading()) {
     <div class="team-loading" data-testid="team-loading" aria-busy="true" aria-label="Loading team members">
       @for (_ of [1,2,3]; track $index) {

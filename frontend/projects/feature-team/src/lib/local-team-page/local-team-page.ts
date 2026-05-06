@@ -11,7 +11,7 @@ import { RoleChipEditorComponent } from '../role-chip-editor/role-chip-editor';
   selector: 'ur-local-team-page',
   templateUrl: './local-team-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, MatIconModule, UrButtonComponent, InviteDialogComponent, RoleChipEditorComponent],
+  imports: [MatButtonModule, MatIconModule, UrButtonComponent, RoleChipEditorComponent],
   styles: [`
     .team-page { display: flex; flex-direction: column; height: 100%; }
     .team-page__header {
@@ -104,7 +104,6 @@ export class LocalTeamPageComponent implements OnInit, OnDestroy {
   loadError = signal(false);
   removeError = signal(false);
   removeSuccess = signal(false);
-  showInvite = signal(false);
   currentRoles = signal<string[]>([]);
 
   private removeErrorTimer?: ReturnType<typeof setTimeout>;
@@ -148,9 +147,9 @@ export class LocalTeamPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  onInvited(): void {
-    this.showInvite.set(false);
-    this.loadTeam();
+  onInviteClick(): void {
+    this.dialog.open<InviteDialogComponent, { invited: true }>(InviteDialogComponent, { ariaLabel: 'Invite team member' })
+      .closed$.subscribe(r => { if (r?.invited) this.loadTeam(); });
   }
 
   onRemoveClick(member: TeamMemberDto): void {

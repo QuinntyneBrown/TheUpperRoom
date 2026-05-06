@@ -1,4 +1,4 @@
-<ur-dialog title="Invite team member" closeLabel="Cancel" (closed)="closed.emit()" data-testid="invite-dialog">
+<ur-dialog title="Invite team member" closeLabel="Cancel" (closed)="ref.close()" data-testid="invite-dialog">
   <form (submit)="$event.preventDefault(); submit()" class="invite-form">
     <div class="invite-form__field">
       <label for="inviteEmail">Email address</label>
@@ -44,7 +44,7 @@
     }
 
     <div class="invite-form__actions">
-      <ur-button type="button" variant="ghost" (click)="closed.emit()">Cancel</ur-button>
+      <ur-button type="button" variant="ghost" (click)="ref.close()">Cancel</ur-button>
       <ur-button type="submit" [disabled]="saving()" data-testid="send-invite-btn">
         {{ saving() ? 'Sending…' : 'Send invite' }}
       </ur-button>
