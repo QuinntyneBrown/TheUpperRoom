@@ -20,7 +20,7 @@ export interface StageChangeDialogData {
   template: `
     <ur-dialog
       [title]="title"
-      subtitle="This change will be recorded in the stage history with your name and an optional reason."
+      [subtitle]="subtitle"
       [icon]="iconName"
       closeLabel="Cancel"
       (closed)="ref.close()"
@@ -53,6 +53,12 @@ export class StageChangeDialogComponent {
     return this.data.partnerName
       ? `Advance ${this.data.partnerName} to ${this.data.stageLabel}?`
       : `Advance to ${this.data.stageLabel}`;
+  }
+
+  get subtitle(): string {
+    return this.data.direction === 'revert'
+      ? 'Backward moves are unusual — please confirm and add a brief reason for the audit log.'
+      : 'This change will be recorded in the stage history with your name and an optional reason.';
   }
 
   get confirmLabel(): string {
