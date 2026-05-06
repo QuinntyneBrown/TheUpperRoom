@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { UrButtonComponent, UrDialogComponent, UrDialogRef } from 'components';
+import { UR_DIALOG_DATA, UrButtonComponent, UrDialogComponent, UrDialogRef } from 'components';
+
+export interface DeleteHackathonDialogData {
+  hackathonName: string;
+}
 
 @Component({
   selector: 'ur-delete-hackathon-dialog',
@@ -7,7 +11,7 @@ import { UrButtonComponent, UrDialogComponent, UrDialogRef } from 'components';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ur-dialog
-      title="Delete hackathon"
+      [title]="title"
       subtitle="This hackathon will be removed. An admin can restore it later."
       variant="danger"
       closeLabel="Cancel"
@@ -22,4 +26,9 @@ import { UrButtonComponent, UrDialogComponent, UrDialogRef } from 'components';
 })
 export class DeleteHackathonDialogComponent {
   ref = inject<UrDialogRef<boolean>>(UrDialogRef);
+  private data = inject<DeleteHackathonDialogData | null>(UR_DIALOG_DATA, { optional: true });
+
+  get title(): string {
+    return this.data?.hackathonName ? `Delete ${this.data.hackathonName}?` : 'Delete hackathon';
+  }
 }

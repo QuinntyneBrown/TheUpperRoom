@@ -150,9 +150,11 @@ export class HackathonDetailPageComponent implements OnInit, OnDestroy {
   }
 
   onDeleteClick(): void {
-    if (!this.hackathon()) return;
+    const h = this.hackathon();
+    if (!h) return;
     this.dialog.open<DeleteHackathonDialogComponent, boolean>(DeleteHackathonDialogComponent, {
       ariaLabel: 'Delete hackathon',
+      data: { hackathonName: h.title },
     }).closed$.subscribe(confirmed => { if (confirmed === true) this.confirmDelete(); });
   }
 
