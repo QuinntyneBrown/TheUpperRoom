@@ -1,13 +1,11 @@
-<div class="widget-catalog-dialog" data-testid="widget-catalog-dialog" role="dialog" aria-modal="true" aria-label="Widget catalog">
-  <header class="widget-catalog-dialog__header">
-    <div class="widget-catalog-dialog__header-text">
-      <h2>Widget catalog</h2>
-      <p class="widget-catalog-dialog__subtitle">Drag a widget onto your dashboard, or click to add it at the next free slot.</p>
-    </div>
-    <button class="widget-catalog-dialog__close" (click)="closed.emit()" aria-label="Close">
-      <mat-icon>close</mat-icon>
-    </button>
-  </header>
+<ur-dialog
+  title="Widget catalog"
+  subtitle="Drag a widget onto your dashboard, or click to add it at the next free slot."
+  closeLabel="Close"
+  [showActions]="false"
+  (closed)="ref.close()"
+  data-testid="widget-catalog-dialog"
+>
   <div class="widget-catalog-dialog__body">
     @for (section of sections(); track section.label) {
       <div class="widget-catalog-dialog__section">
@@ -31,4 +29,4 @@
       </div>
     }
   </div>
-</div>
+</ur-dialog>

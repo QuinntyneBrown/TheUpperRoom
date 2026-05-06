@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AUTH_SERVICE, DASHBOARD_SERVICE, DashboardItem } from 'api';
 import { Gridster, GridsterItem } from 'angular-gridster2';
 import { debounceTime, filter, Subject } from 'rxjs';
+import { DialogService } from 'components';
 import { WidgetCatalogDialogComponent } from '../widget-catalog-dialog/widget-catalog-dialog';
 import { LineChartWidgetComponent } from '../widgets/line-chart-widget/line-chart-widget';
 import { buildGridsterOptions } from './gridster-options';
@@ -15,7 +16,7 @@ const UNDO_MS = 8000;
   selector: 'ur-dashboard-page',
   templateUrl: './dashboard-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Gridster, GridsterItem, WidgetCatalogDialogComponent, LineChartWidgetComponent, MatButtonModule, MatIconModule],
+  imports: [Gridster, GridsterItem, LineChartWidgetComponent, MatButtonModule, MatIconModule],
   styles: [`
     .dashboard-page { display: flex; flex-direction: column; height: 100%; }
     .dashboard-page__header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid var(--ur-border-subtle, #222233); }
@@ -51,10 +52,10 @@ const UNDO_MS = 8000;
 export class DashboardPageComponent implements OnInit {
   private dashboardSvc = inject(DASHBOARD_SERVICE);
   private auth = inject(AUTH_SERVICE);
+  private dialog = inject(DialogService);
 
   displayName = signal('');
   items = signal<DashboardItem[]>([]);
-  showCatalog = signal(false);
   removedWidget = signal<DashboardItem | null>(null);
   savedToast = signal(false);
   saveErrorToast = signal(false);
@@ -89,9 +90,15 @@ export class DashboardPageComponent implements OnInit {
     });
   }
 
-  onWidgetAdded(item: DashboardItem): void {
-    this.items.update((prev) => [...prev, item]);
-    this.save$.next();
+  onAddWidget(): void {
+    this.dialog.open<WidgetCatalogDialogComponent, DashboardItem>(WidgetCatalogDialogComponent, {
+      ariaLabel: 'Widget catalog',
+    }).closed$.subscribe(item => {
+      if (item) {
+        this.items.update(prev => [...prev, item]);
+        this.save$.next();
+      }
+    });
   }
 
   removeWidget(item: DashboardItem): void {

@@ -4,15 +4,8 @@
       <h1>Dashboard</h1>
       <p class="dashboard-page__header-subtitle" data-testid="dashboard-header-subtitle">Welcome to your workspace</p>
     </div>
-    <button mat-raised-button data-testid="add-widget-btn" (click)="showCatalog.set(true)">+ Add widget</button>
+    <button mat-raised-button data-testid="add-widget-btn" (click)="onAddWidget()">+ Add widget</button>
   </header>
-
-  @if (showCatalog()) {
-    <ur-widget-catalog-dialog
-      (closed)="showCatalog.set(false)"
-      (selected)="onWidgetAdded($event)"
-    ></ur-widget-catalog-dialog>
-  }
 
   @if (loadError()) {
     <div class="dashboard-load-error" data-testid="dashboard-load-error" role="alert">
@@ -32,7 +25,7 @@
         <mat-icon class="dashboard-page__empty-icon">dashboard_customize</mat-icon>
         <h3>Drop widgets here to start</h3>
         <p>Choose from charts, KPI cards, recent activity, and more. Drag to rearrange. Resize from the corner.</p>
-        <button mat-raised-button data-testid="add-widget-cta" (click)="showCatalog.set(true)">+ Add widget</button>
+        <button mat-raised-button data-testid="add-widget-cta" (click)="onAddWidget()">+ Add widget</button>
         <span class="dashboard-page__empty-hint">Or press W to open the catalog</span>
       </div>
     </div>

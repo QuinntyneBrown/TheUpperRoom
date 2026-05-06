@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, output, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, ViewEncapsulation } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { DashboardItem } from 'api';
+import { UrDialogComponent, UrDialogRef } from 'components';
 import { WIDGET_CATALOG } from './widget-catalog';
 
 @Component({
@@ -8,27 +9,9 @@ import { WIDGET_CATALOG } from './widget-catalog';
   templateUrl: './widget-catalog-dialog.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  imports: [MatIconModule],
+  imports: [MatIconModule, UrDialogComponent],
   styles: [`
-    .widget-catalog-dialog {
-      display: flex; flex-direction: column;
-      background: var(--ur-bg-overlay, #16161f);
-      border: 1px solid var(--ur-border-default, #2a2a3a);
-      border-radius: 12px; overflow: hidden; min-width: 360px;
-    }
-    .widget-catalog-dialog__header {
-      display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;
-      padding: 24px; border-bottom: 1px solid var(--ur-border-subtle, #222233);
-    }
-    .widget-catalog-dialog__header-text { display: flex; flex-direction: column; gap: 4px; }
-    .widget-catalog-dialog__header h2 { margin: 0; font-size: 1.125rem; font-weight: 600; color: var(--ur-fg-primary, #f1f5f9); font-family: var(--ur-font-heading, 'Geist', sans-serif); }
-    .widget-catalog-dialog__subtitle { margin: 0; font-size: 0.8125rem; color: var(--ur-fg-secondary, #a1a1aa); }
-    .widget-catalog-dialog__close {
-      background: none; border: none; cursor: pointer; padding: 4px;
-      color: var(--ur-fg-secondary, #a1a1aa); display: flex; align-items: center; flex-shrink: 0;
-    }
-    .widget-catalog-dialog__close:hover { color: var(--ur-fg-primary, #f1f5f9); }
-    .widget-catalog-dialog__body { display: flex; flex-direction: column; gap: 16px; padding: 24px; }
+    .widget-catalog-dialog__body { display: flex; flex-direction: column; gap: 16px; }
     .widget-catalog-dialog__section-label {
       font-size: 0.6875rem; font-family: var(--ur-font-mono, 'Geist Mono', monospace);
       color: var(--ur-fg-muted, #64748b); font-weight: 400; letter-spacing: 1px; margin-bottom: 8px;
@@ -57,8 +40,7 @@ import { WIDGET_CATALOG } from './widget-catalog';
   `],
 })
 export class WidgetCatalogDialogComponent {
-  closed = output<void>();
-  selected = output<DashboardItem>();
+  ref = inject<UrDialogRef<DashboardItem>>(UrDialogRef);
 
   readonly sections = computed(() => {
     const map = new Map<string, typeof WIDGET_CATALOG>();
@@ -70,7 +52,7 @@ export class WidgetCatalogDialogComponent {
   });
 
   pick(wt: (typeof WIDGET_CATALOG)[number]): void {
-    this.selected.emit({
+    this.ref.close({
       id: crypto.randomUUID(),
       x: 0,
       y: 0,
@@ -79,6 +61,5 @@ export class WidgetCatalogDialogComponent {
       type: wt.type,
       config: { ...wt.defaultConfig },
     });
-    this.closed.emit();
   }
 }

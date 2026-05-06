@@ -1,6 +1,18 @@
 # T189 — Migrate widget-catalog dialog to `<ur-dialog>` + DialogService
 
-**Status:** ACCEPTED
+**Status:** COMPLETE
+
+## Implementation notes (radically simple)
+
+- `WidgetCatalogDialogComponent` refactored to be a content component for `<ur-dialog>` instead of a bespoke card:
+  - Template root is now `<ur-dialog title="Widget catalog" subtitle="…" closeLabel="Close" [showActions]="false" data-testid="widget-catalog-dialog">` — header chrome, close button, and aria/role attributes come from `<ur-dialog>` automatically.
+  - Dropped the bespoke `widget-catalog-dialog__header`, `__header-text`, `__close`, `__subtitle` styles and the `<header>` element. Kept only the body styles for sections / list / entry / icon (the catalog content itself).
+  - Injects `UrDialogRef<DashboardItem>`. `pick(wt)` now calls `ref.close(item)` instead of emitting `selected` + `closed`. The `closed`/`selected` outputs are gone.
+- `dashboard-page.ts`: dropped `WidgetCatalogDialogComponent` from the `imports` array and `showCatalog` signal. Renamed `onWidgetAdded` → `onAddWidget` which opens the dialog via `DialogService` and routes the closed result through the same items append + save flow.
+- `dashboard-page.html`: stripped the `@if (showCatalog()) { <ur-widget-catalog-dialog/> }` block. The header `+ Add widget` button and the empty-state CTA both call `(click)="onAddWidget()"` instead of `showCatalog.set(true)`.
+- The empty-state text "Or press W to open the catalog" is preserved as before — there was no actual `W` keyboard handler in the page (no `@HostListener`/keydown wiring in the original code), so I didn't add one for radical simplicity.
+- All `data-testid` values preserved (`widget-catalog-dialog`, `add-widget-btn`, `add-widget-cta`, `widget-type-*`) — `e2e/pages/dashboard-page.ts` and dashboard specs need no updates. The `widget-catalog-dialog not visible` assertion after picking is naturally satisfied since `pick()` now disposes the dialog.
+- Pencil .pen update deferred — same reasoning as T180–T188.
 **Type:** Refactor
 **Blocked by:** T179
 **Source:** `docs/inline-dialog-audit.md` (item #11)
