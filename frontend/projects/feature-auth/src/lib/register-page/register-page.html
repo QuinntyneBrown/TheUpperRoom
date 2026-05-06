@@ -1,6 +1,10 @@
 <div class="auth-page">
 @if (submitted()) {
-  <div class="auth-success" role="status" data-testid="register-success">
+  <div class="auth-card auth-success" role="status" data-testid="register-success">
+    <div class="auth-card__wordmark" data-testid="register-success-wordmark">
+      <mat-icon class="auth-card__wordmark-logo">church</mat-icon>
+      <span class="auth-card__wordmark-name">The Upper Room</span>
+    </div>
     <h2>Check your inbox</h2>
     <p>A verification email has been sent. Click the link to activate your account.</p>
     <a routerLink="/auth/sign-in">Go to sign-in</a>
