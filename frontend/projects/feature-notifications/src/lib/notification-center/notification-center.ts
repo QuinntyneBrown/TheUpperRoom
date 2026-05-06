@@ -33,7 +33,13 @@ const NOTIFICATION_EVENTS = new Set([
       display: flex; flex-direction: column; align-items: center; gap: 8px;
       padding: 32px 16px; text-align: center; color: var(--ur-text-muted, #64748b);
     }
-    .notification-center__error mat-icon { font-size: 32px; width: 32px; height: 32px; color: var(--ur-danger, #ef4444); }
+    .notification-center__error-icon-wrap {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 64px; height: 64px; border-radius: 9999px;
+      background: var(--ur-danger-soft, rgba(248, 113, 113, 0.12));
+      border: 1px solid var(--ur-danger, #f87171);
+    }
+    .notification-center__error-icon-wrap mat-icon { font-size: 28px; width: 28px; height: 28px; color: var(--ur-danger, #ef4444); }
     .notification-center__error p { margin: 0; font-weight: 500; color: inherit; }
     .notification-center__error-hint { font-size: 0.8rem; }
     .notification-center__empty {

@@ -32,7 +32,9 @@
         </div>
       } @else if (loadError()) {
         <div class="notification-center__error" data-testid="notifications-error" role="alert">
-          <mat-icon aria-hidden="true">wifi_off</mat-icon>
+          <div class="notification-center__error-icon-wrap" data-testid="notifications-error-icon-wrap" aria-hidden="true">
+            <mat-icon aria-hidden="true">wifi_off</mat-icon>
+          </div>
           <h2 data-testid="notifications-error-title">Couldn't load notifications</h2>
           <p class="notification-center__error-hint">Check your connection and try again.</p>
           <ur-button (pressed)="load()" data-testid="notifications-retry-btn">Retry</ur-button>
