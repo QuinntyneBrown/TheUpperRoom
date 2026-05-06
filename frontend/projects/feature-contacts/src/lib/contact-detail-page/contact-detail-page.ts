@@ -5,14 +5,15 @@ import { AUTH_SERVICE, CONTACT_SERVICE, ContactDto } from 'api';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { UrButtonComponent, UrDialogComponent } from 'components';
+import { DialogService } from 'components';
 import { NotesPanelComponent } from '../notes-panel/notes-panel';
+import { DeleteContactDialogComponent } from '../delete-contact-dialog/delete-contact-dialog';
 
 @Component({
   selector: 'ur-contact-detail-page',
   templateUrl: './contact-detail-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, MatButtonModule, MatIconModule, MatMenuModule, UrButtonComponent, UrDialogComponent, NotesPanelComponent],
+  imports: [RouterLink, MatButtonModule, MatIconModule, MatMenuModule, NotesPanelComponent],
   styles: [`
     .contact-toast {
       position: fixed; top: 16px; right: 24px; display: flex; align-items: center;
@@ -68,12 +69,12 @@ export class ContactDetailPageComponent implements OnInit, OnDestroy {
   private auth = inject(AUTH_SERVICE);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private dialog = inject(DialogService);
 
   contact = signal<ContactDto | null>(null);
   loading = signal(true);
   currentUserId = signal('');
   notFound = signal(false);
-  showDeleteDialog = signal(false);
   deleting = signal(false);
   deleteError = signal(false);
   savedToast = signal(false);
@@ -107,7 +108,14 @@ export class ContactDetailPageComponent implements OnInit, OnDestroy {
     clearTimeout(this.deleteErrorTimer);
   }
 
-  confirmDelete(): void {
+  onDeleteClick(): void {
+    if (!this.canDelete() || !this.contact()) return;
+    this.dialog.open<DeleteContactDialogComponent, boolean>(DeleteContactDialogComponent, {
+      ariaLabel: 'Delete contact',
+    }).closed$.subscribe(confirmed => { if (confirmed === true) this.confirmDelete(); });
+  }
+
+  private confirmDelete(): void {
     const c = this.contact();
     if (!c) return;
     this.deleting.set(true);
@@ -115,7 +123,6 @@ export class ContactDetailPageComponent implements OnInit, OnDestroy {
       next: () => this.router.navigate(['/contacts'], { queryParams: { deleted: '1' } }),
       error: () => {
         this.deleting.set(false);
-        this.showDeleteDialog.set(false);
         clearTimeout(this.deleteErrorTimer);
         this.deleteError.set(true);
         this.deleteErrorTimer = setTimeout(() => this.deleteError.set(false), 4000);

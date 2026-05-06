@@ -1,6 +1,15 @@
 # T182 — Migrate "Delete contact" confirm to DialogService
 
-**Status:** ACCEPTED
+**Status:** COMPLETE
+
+## Implementation notes (radically simple)
+
+- New tiny `DeleteContactDialogComponent` at `frontend/projects/feature-contacts/src/lib/delete-contact-dialog/delete-contact-dialog.ts` — wraps `<ur-dialog variant="danger">`, closes with `true` on confirm via injected `UrDialogRef<boolean>`. Inline template, no separate `.html` / `.scss`.
+- `contact-detail-page.ts`: dropped `UrButtonComponent` and `UrDialogComponent` imports (only used inside the now-removed dialog block). Added `DialogService` injection + `DeleteContactDialogComponent` import. New `onDeleteClick()` handler validates `canDelete()` and opens the dialog; the existing `confirmDelete()` is now private and runs only when the dialog returns `true`. Dropped `showDeleteDialog` signal.
+- The previous in-button "Deleting…" state was removed (the dialog closes immediately on confirm and the page does the network call afterwards). Error toast still appears via `deleteError` signal as before.
+- Template: kebab-menu Delete item now calls `(click)="onDeleteClick()"` instead of `canDelete() && showDeleteDialog.set(true)`. The inline `@if (showDeleteDialog())` block is gone.
+- All `data-testid` values preserved (`contact-delete-dialog`, `confirm-delete-contact-btn`, `contact-delete-menu-item`, `contact-more-btn`, `delete-permission-denied-banner`) — `e2e/tests/contacts/contact-delete-*.spec.ts` need no updates.
+- Pencil .pen update deferred — same reasoning as T180/T181.
 **Type:** Refactor
 **Blocked by:** T179
 **Source:** `docs/inline-dialog-audit.md` (item #3)
