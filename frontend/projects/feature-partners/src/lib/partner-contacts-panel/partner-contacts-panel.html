@@ -74,7 +74,7 @@
       @if (createLinkError()) {
         <div class="contacts-remove-error" data-testid="create-link-error" role="alert">
           <mat-icon aria-hidden="true">error_outline</mat-icon>
-          <span>Failed to create &amp; link contact. Please try again.</span>
+          <span data-testid="create-link-error-message">Failed to create &amp; link contact. Please try again.</span>
         </div>
       }
     </div>
@@ -83,7 +83,7 @@
   @if (removeError()) {
     <div class="contacts-remove-error" data-testid="contacts-remove-error" role="alert">
       <mat-icon aria-hidden="true">error_outline</mat-icon>
-      <span>Failed to remove contact. Please try again.</span>
+      <span data-testid="contacts-remove-error-message">Failed to remove contact. Please try again.</span>
     </div>
   }
 </div>
