@@ -22,7 +22,7 @@
     } @else if (loadError()) {
       <div class="chart-load-error" data-testid="chart-load-error" role="alert">
         <mat-icon aria-hidden="true">error_outline</mat-icon>
-        <span>Failed to load chart data.</span>
+        <span data-testid="chart-load-error-message">Failed to load chart data.</span>
       </div>
     }
   </div>
