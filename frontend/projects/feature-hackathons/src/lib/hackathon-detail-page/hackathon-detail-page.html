@@ -70,7 +70,10 @@
         } @else {
           <ul class="hackathon-partners">
             @for (p of h.partners; track p.id) {
-              <li class="hackathon-partners__item">{{ p.name }} · {{ p.city }}</li>
+              <li class="hackathon-partners__item">
+                <a [routerLink]="['/partners', p.id]">{{ p.name }}</a>
+                · {{ p.city }}
+              </li>
             }
           </ul>
         }
