@@ -23,7 +23,7 @@ const ALL_STAGES: { stage: PartnerStage; label: string }[] = [
         <div class="partner-list-page__title-row">
           <div class="partner-list-page__title-block">
             <h1>Partners</h1>
-            <p class="partner-list-page__count" data-testid="partners-count-subtitle">{{ allRows().length }} partners</p>
+            <p class="partner-list-page__count" data-testid="partners-count-subtitle">{{ allRows().length }} organizations · {{ leadCount() }} leads · {{ confirmedCount() }} confirmed</p>
           </div>
           <div class="partners-view-toggle">
             <a class="partners-view-toggle__btn partners-view-toggle__btn--active" routerLink="/partners" data-testid="partners-list-tab" aria-label="List view">List</a>
@@ -160,6 +160,9 @@ export class PartnerListPageComponent implements OnInit, OnDestroy {
     const rows = this.allRows();
     return active.length === 0 ? rows : rows.filter(r => active.includes(r.stage));
   });
+
+  leadCount = computed(() => this.allRows().filter(r => r.stage === 'Lead').length);
+  confirmedCount = computed(() => this.allRows().filter(r => r.stage === 'Confirmed').length);
 
   constructor() {
     this.route.queryParamMap.subscribe(params => {
