@@ -7,6 +7,17 @@
   data-testid="widget-catalog-dialog"
 >
   <div class="widget-catalog-dialog__body">
+    <label class="widget-catalog-dialog__search">
+      <mat-icon aria-hidden="true">search</mat-icon>
+      <input
+        type="search"
+        placeholder="Search the workspace..."
+        aria-label="Search widget catalog"
+        data-testid="widget-catalog-search"
+        [ngModel]="searchTerm()"
+        (ngModelChange)="searchTerm.set($event)"
+      />
+    </label>
     @for (section of sections(); track section.label) {
       <div class="widget-catalog-dialog__section">
         <p class="widget-catalog-dialog__section-label">{{ section.label }}</p>
