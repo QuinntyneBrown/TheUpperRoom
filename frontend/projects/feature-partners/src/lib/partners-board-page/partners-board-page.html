@@ -62,8 +62,8 @@
               >
                 <div cdkDragHandle class="partner-card__drag-handle" [attr.aria-label]="'Drag ' + row.name"><mat-icon aria-hidden="true">drag_indicator</mat-icon></div>
                 <div class="partner-card__body">
-                  <h3 class="partner-card__name">{{ row.name }}</h3>
-                  <p class="partner-card__city">{{ row.city }}</p>
+                  <h3 class="partner-card__name" data-testid="partner-card-name">{{ row.name }}</h3>
+                  <p class="partner-card__city" data-testid="partner-card-city">{{ row.city }}</p>
                 </div>
               </a>
             }
