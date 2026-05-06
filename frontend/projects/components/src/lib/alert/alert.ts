@@ -16,6 +16,8 @@ export class UrAlertComponent {
   @Input() icon = '';
   @Input() title = '';
   @Input() message = '';
+  @Input() titleTestId = '';
+  @Input() messageTestId = '';
 
   get alertClass(): string {
     return ['ur-alert', `ur-alert--${this.variant}`].join(' ');

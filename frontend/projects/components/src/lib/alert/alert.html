@@ -3,11 +3,11 @@
 
   <div class="ur-alert__body">
     @if (title) {
-      <h3 class="ur-alert__title">{{ title }}</h3>
+      <h3 class="ur-alert__title" [attr.data-testid]="titleTestId || null">{{ title }}</h3>
     }
 
     @if (message) {
-      <p class="ur-alert__message">{{ message }}</p>
+      <p class="ur-alert__message" [attr.data-testid]="messageTestId || null">{{ message }}</p>
     }
 
     <ng-content />
