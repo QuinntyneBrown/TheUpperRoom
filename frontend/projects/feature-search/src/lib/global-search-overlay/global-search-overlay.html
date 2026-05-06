@@ -48,7 +48,10 @@
                       class="search-overlay__item"
                       [attr.data-testid]="'search-result-' + item.id"
                       (click)="navigate(item)"
-                    >{{ item.label }}</button>
+                    >
+                      <mat-icon class="search-overlay__item-icon" aria-hidden="true">{{ iconFor(item.type) }}</mat-icon>
+                      <span>{{ item.label }}</span>
+                    </button>
                   </li>
                 }
               </ul>

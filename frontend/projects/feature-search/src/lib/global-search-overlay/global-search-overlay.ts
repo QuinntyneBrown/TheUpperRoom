@@ -26,6 +26,8 @@ import { catchError, debounceTime, distinctUntilChanged, Subject, switchMap, of 
       border-top: 1px solid var(--ur-border-subtle, #222233);
       font-size: 0.75rem; color: var(--ur-fg-muted, #7a7a87);
     }
+    .search-overlay__item { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; }
+    .search-overlay__item-icon { color: var(--ur-fg-muted, #7a7a87); font-size: 18px; width: 18px; height: 18px; flex-shrink: 0; }
     .search-overlay__keyboard-hint kbd {
       font-family: var(--ur-font-mono, monospace);
       padding: 1px 6px; margin-right: 4px;
@@ -88,6 +90,16 @@ export class GlobalSearchOverlayComponent implements OnInit {
   browse(route: string): void {
     this.router.navigateByUrl(route);
     this.open.set(false);
+  }
+
+  iconFor(type: string): string {
+    const icons: Record<string, string> = {
+      contact: 'person',
+      partner: 'handshake',
+      hackathon: 'rocket_launch',
+      member: 'badge',
+    };
+    return icons[type] ?? 'circle';
   }
 
   allGroups(): Array<{ label: string; items: SearchResultItem[] }> {
