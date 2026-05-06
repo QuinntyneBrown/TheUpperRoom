@@ -12,7 +12,7 @@
     <a routerLink="/partners" data-testid="partner-edit-not-found-back-link">Back to partners</a>
   </div>
 } @else if (partner(); as p) {
-  <div class="partner-edit" data-testid="partner-edit">
+  <article class="partner-edit" data-testid="partner-edit" aria-labelledby="partner-edit-heading">
     <header class="partner-edit__header">
       <a [routerLink]="['/partners', p.id]" class="partner-edit__back" data-testid="partner-edit-back-link"><mat-icon aria-hidden="true">arrow_back</mat-icon> Back</a>
     </header>
@@ -25,7 +25,7 @@
 
     <div class="partner-edit__center">
       <div class="partner-edit__card">
-        <h1 class="partner-edit__heading" data-testid="partner-edit-heading">Edit partner</h1>
+        <h1 id="partner-edit-heading" class="partner-edit__heading" data-testid="partner-edit-heading">Edit partner</h1>
         <form (ngSubmit)="save()">
           <div class="partner-edit__field">
             <label for="partnerName">Partner name <span aria-hidden="true">*</span></label>
@@ -89,7 +89,7 @@
         </form>
       </div>
     </div>
-  </div>
+  </article>
 }
 
 @if (saveError()) {
