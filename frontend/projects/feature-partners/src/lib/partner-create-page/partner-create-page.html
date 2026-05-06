@@ -70,7 +70,7 @@
     </div>
 
     <div class="partner-form__actions">
-      <ur-button type="button" variant="ghost" (click)="cancel()">Cancel</ur-button>
+      <ur-button type="button" variant="ghost" (click)="cancel()" data-testid="partner-create-cancel-btn">Cancel</ur-button>
       <ur-button type="submit" [disabled]="saving()" data-testid="add-partner-btn">
         {{ saving() ? 'Saving…' : 'Create partner' }}
       </ur-button>

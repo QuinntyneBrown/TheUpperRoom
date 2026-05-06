@@ -45,7 +45,7 @@
     }
 
     <div class="invite-form__actions">
-      <ur-button type="button" variant="ghost" (click)="ref.close()">Cancel</ur-button>
+      <ur-button type="button" variant="ghost" (click)="ref.close()" data-testid="invite-dialog-cancel-btn">Cancel</ur-button>
       <ur-button type="submit" [disabled]="saving()" data-testid="send-invite-btn">
         {{ saving() ? 'Sending…' : 'Send invite' }}
       </ur-button>

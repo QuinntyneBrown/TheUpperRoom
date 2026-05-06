@@ -86,7 +86,7 @@
     }
 
     <div class="hackathon-form__actions">
-      <ur-button type="button" variant="ghost" (click)="cancel()">Cancel</ur-button>
+      <ur-button type="button" variant="ghost" (click)="cancel()" data-testid="hackathon-create-cancel-btn">Cancel</ur-button>
       <ur-button type="submit" [disabled]="saving()" data-testid="plan-hackathon-btn">
         {{ saving() ? 'Saving…' : 'Plan hackathon' }}
       </ur-button>
