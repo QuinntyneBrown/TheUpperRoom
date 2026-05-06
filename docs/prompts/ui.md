@@ -3,17 +3,22 @@ Ensure the app is fully running, backend and frontend (app-shell) and accessible
 
 Pull any changes from origin
 
-Randomly find a flow in C:\projects\TheUpperRoom\docs\flows
+1. Login
 
-Exercise the flow in the browser.
+2. Compare the left side nav and top bar to C:\projects\TheUpperRoom\docs\ui-design.pen
 
-While exercising the flow, verify
+3. Verify
 
-    - prioritize major structural issues
+    - major structural design
+        - number of links
 
-        - Are the correct components implemented and same as C:\projects\TheUpperRoom\docs\ui-design.pen
+        - icons
 
-        - Are the same buttons, links, menu options the same as C:\projects\TheUpperRoom\docs\ui-design.pen
+        - alignment, margins padding
+
+        - xs, s, m, l and xl screens are displaying the right left side bar and top bar items
+
+        - Are the same buttons, links, icons, menu options the same as C:\projects\TheUpperRoom\docs\ui-design.pen
 
         - Are all the links triggering the correct behaviour
 
