@@ -68,8 +68,8 @@
     </div>
 
     @if (allPartners().length > 0) {
-      <div class="hackathon-form__field">
-        <span class="hackathon-form__label">Partners (optional)</span>
+      <fieldset class="hackathon-form__field hackathon-form__partners-group">
+        <legend class="hackathon-form__label">Partners (optional)</legend>
         <div class="hackathon-form__partners">
           @for (p of allPartners(); track p.id) {
             <label class="hackathon-form__partner-opt">
@@ -82,7 +82,7 @@
             </label>
           }
         </div>
-      </div>
+      </fieldset>
     }
 
     <div class="hackathon-form__actions">

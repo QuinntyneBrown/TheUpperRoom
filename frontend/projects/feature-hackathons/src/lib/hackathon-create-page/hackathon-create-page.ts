@@ -11,6 +11,8 @@ import { UrButtonComponent, UrDialogComponent, UrDialogRef } from 'components';
   styles: [`
     .hackathon-form { display: flex; flex-direction: column; gap: 16px; }
     .hackathon-form__field { display: flex; flex-direction: column; gap: 6px; }
+    fieldset.hackathon-form__field { border: 0; padding: 0; margin: 0; }
+    fieldset.hackathon-form__field legend { padding: 0; }
     .hackathon-form__field label, .hackathon-form__label {
       font-size: 0.875rem; font-weight: 500; color: var(--ur-fg-secondary, #94a3b8);
     }
