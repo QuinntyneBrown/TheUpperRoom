@@ -22,7 +22,7 @@
       <div class="partner-detail__header-actions">
         <a mat-stroked-button [routerLink]="['/partners', p.id, 'edit']" data-testid="partner-edit-link">Edit</a>
         <ur-button (pressed)="scrollToNotes()" data-testid="partner-add-note-btn">+ Add note</ur-button>
-        <button mat-icon-button [matMenuTriggerFor]="moreMenu" data-testid="partner-more-btn" aria-label="More options">
+        <button mat-icon-button [matMenuTriggerFor]="moreMenu" data-testid="partner-more-btn" [attr.aria-label]="'More options for ' + p.name">
           <mat-icon aria-hidden="true">more_horiz</mat-icon>
         </button>
         <mat-menu #moreMenu="matMenu">
