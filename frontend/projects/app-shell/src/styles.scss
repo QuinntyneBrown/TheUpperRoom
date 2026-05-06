@@ -22,6 +22,12 @@
   }
 }
 
+.profile-menu__sign-out,
+.profile-menu__sign-out .mat-icon,
+.profile-menu__sign-out .mdc-list-item__primary-text {
+  color: var(--ur-danger, #f87171) !important;
+}
+
 body {
   background-color: var(--ur-bg-base);
   color: var(--ur-fg-primary);
