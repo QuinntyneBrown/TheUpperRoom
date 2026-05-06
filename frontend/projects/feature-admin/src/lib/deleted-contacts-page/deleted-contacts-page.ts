@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, signal } from '@angular/core';
 import { CONTACT_SERVICE, DeletedContactDto } from 'api';
 import { DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
@@ -8,7 +9,7 @@ import { UrButtonComponent } from 'components';
 
 @Component({
   selector: 'lib-deleted-contacts-page',
-  imports: [DatePipe, MatButtonModule, MatIconModule, MatTableModule, UrButtonComponent],
+  imports: [DatePipe, RouterLink, MatButtonModule, MatIconModule, MatTableModule, UrButtonComponent],
   template: `
     <div class="deleted-contacts-page">
       <h1 data-testid="deleted-contacts-title">Deleted contacts</h1>
@@ -35,6 +36,7 @@ import { UrButtonComponent } from 'components';
           </div>
           <h2 data-testid="deleted-contacts-empty-title">Nothing in the archive</h2>
           <p data-testid="deleted-contacts-empty-subtitle">Soft-deleted contacts show up here for 30 days before being purged.</p>
+          <a routerLink="/contacts" data-testid="deleted-contacts-empty-back-link">Back to active contacts</a>
         </div>
       } @else {
         <table mat-table [dataSource]="rows()" aria-label="Deleted contacts">
