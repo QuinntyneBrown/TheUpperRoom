@@ -71,7 +71,17 @@ body {
 
 .auth-opts-row {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth-opts-row__remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--ur-fg-secondary, #a1a1aa);
+  cursor: pointer;
 }
 
 .auth-opts-row__forgot {

@@ -24,9 +24,13 @@ test.describe('Sign-in card spacing', () => {
     expect(color).not.toBe('rgb(255, 255, 255)');
   });
 
-  test('forgot-password opts row is right-aligned', async ({ page }) => {
-    const justify = await page.locator('.auth-opts-row').evaluate((el) => getComputedStyle(el).justifyContent);
-    expect(['flex-end', 'right', 'end']).toContain(justify);
+  test('forgot-password link sits on the right side of the opts row', async ({ page }) => {
+    const { rowRight, linkRight } = await page.evaluate(() => {
+      const row = document.querySelector('.auth-opts-row')!.getBoundingClientRect();
+      const link = document.querySelector('.auth-opts-row__forgot')!.getBoundingClientRect();
+      return { rowRight: row.right, linkRight: link.right };
+    });
+    expect(Math.abs(rowRight - linkRight)).toBeLessThan(2);
   });
 
   test('signup row is centred', async ({ page }) => {

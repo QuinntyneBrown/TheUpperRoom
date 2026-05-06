@@ -35,6 +35,15 @@
       (valueChange)="password.set($event)"
     />
     <div class="auth-opts-row">
+      <label class="auth-opts-row__remember">
+        <input
+          type="checkbox"
+          data-testid="sign-in-remember-me"
+          [checked]="rememberMe()"
+          (change)="rememberMe.set($any($event.target).checked)"
+        />
+        Remember me
+      </label>
       <a routerLink="/auth/forgot-password" class="auth-opts-row__forgot">Forgot password?</a>
     </div>
     <ur-button type="submit" [disabled]="loading()" fullWidth data-testid="sign-in-submit-btn">

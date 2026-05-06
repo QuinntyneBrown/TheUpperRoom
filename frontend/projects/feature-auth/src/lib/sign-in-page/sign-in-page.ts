@@ -19,6 +19,7 @@ export class SignInPageComponent implements OnInit {
 
   email = signal('');
   password = signal('');
+  rememberMe = signal(false);
   error = signal('');
   loading = signal(false);
   returnUrl = signal('');

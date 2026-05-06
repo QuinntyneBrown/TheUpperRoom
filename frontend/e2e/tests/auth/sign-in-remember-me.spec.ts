@@ -19,6 +19,7 @@ test.describe('Sign-in Remember me checkbox', () => {
       ([remember, forgot]) => remember!.compareDocumentPosition(forgot!),
       [rememberHandle, forgotHandle]
     );
-    expect(position & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    // Node.DOCUMENT_POSITION_FOLLOWING = 4
+    expect(position & 4).toBeTruthy();
   });
 });
