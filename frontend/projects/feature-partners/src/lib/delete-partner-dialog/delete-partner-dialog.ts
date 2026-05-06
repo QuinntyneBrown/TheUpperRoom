@@ -19,7 +19,7 @@ export interface DeletePartnerDialogData {
       data-testid="partner-delete-dialog"
     >
       <ur-button variant="danger" (click)="ref.close(true)" data-testid="confirm-delete-partner-btn">
-        Delete partner
+        {{ confirmLabel }}
       </ur-button>
     </ur-dialog>
   `,
@@ -30,5 +30,9 @@ export class DeletePartnerDialogComponent {
 
   get title(): string {
     return this.data?.partnerName ? `Delete ${this.data.partnerName}?` : 'Delete partner';
+  }
+
+  get confirmLabel(): string {
+    return this.data?.partnerName ? `Delete ${this.data.partnerName}` : 'Delete partner';
   }
 }
