@@ -21,6 +21,8 @@ export interface StageChangeDialogData {
     <ur-dialog
       [title]="title"
       [subtitle]="subtitle"
+      titleTestId="stage-change-dialog-title"
+      subtitleTestId="stage-change-dialog-subtitle"
       [icon]="iconName"
       closeLabel="Cancel"
       (closed)="ref.close()"
