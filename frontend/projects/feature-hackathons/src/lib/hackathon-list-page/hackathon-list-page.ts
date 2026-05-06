@@ -4,17 +4,17 @@ import { DatePipe } from '@angular/common';
 import { HACKATHON_SERVICE, HackathonListRow } from 'api';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { DialogService } from 'components';
+import { DialogService, UrButtonComponent } from 'components';
 import { HackathonCreatePageComponent } from '../hackathon-create-page/hackathon-create-page';
 
 @Component({
   selector: 'ur-hackathon-list-page',
-  imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule],
+  imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule, UrButtonComponent],
   template: `
     <div class="hackathon-list-page" data-perf-ready="hackathons">
       <div class="hackathon-list-page__header">
         <h1>Hackathons</h1>
-        <button mat-raised-button (click)="onCreateClick()" data-testid="new-hackathon-btn">+ Plan hackathon</button>
+        <ur-button (pressed)="onCreateClick()" data-testid="new-hackathon-btn">+ Plan hackathon</ur-button>
       </div>
       <div class="hackathon-list-page__scroll">
         @if (loading()) {
