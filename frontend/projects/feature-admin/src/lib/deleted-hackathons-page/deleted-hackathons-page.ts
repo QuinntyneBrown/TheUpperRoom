@@ -31,7 +31,7 @@ import { UrButtonComponent } from 'components';
       } @else if (rows().length === 0) {
         <div class="admin-empty" data-testid="deleted-hackathons-empty">
           <mat-icon aria-hidden="true">rocket_launch</mat-icon>
-          <h2 data-testid="deleted-hackathons-empty-title">No deleted hackathons.</h2>
+          <h2 data-testid="deleted-hackathons-empty-title">No deleted hackathons</h2>
         </div>
       } @else {
         <table mat-table [dataSource]="rows()" aria-label="Deleted hackathons">
