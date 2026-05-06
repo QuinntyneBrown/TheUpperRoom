@@ -19,5 +19,6 @@ export class UrBottomNavItemComponent {
   @Input() icon = '';
   @Input() label = '';
   @Input() href = '';
+  @Input() testId = '';
   @Input({ transform: booleanAttribute }) disabled = false;
 }

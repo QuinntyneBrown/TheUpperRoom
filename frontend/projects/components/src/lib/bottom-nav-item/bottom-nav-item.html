@@ -6,6 +6,7 @@
   [disabled]="disabled"
   #rla="routerLinkActive"
   [attr.aria-current]="rla.isActive ? 'page' : null"
+  [attr.data-testid]="testId || null"
 >
   @if (icon) {
     <mat-icon class="ur-bottom-nav-item__icon" aria-hidden="true">{{ icon }}</mat-icon>
