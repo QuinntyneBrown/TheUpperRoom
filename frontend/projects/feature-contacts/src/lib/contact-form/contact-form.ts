@@ -77,4 +77,9 @@ export class ContactFormComponent {
       notes: this.notes() || undefined,
     });
   }
+
+  cancel(): void {
+    const route = this.cancelRoute();
+    if (route) this.router.navigateByUrl(route);
+  }
 }
