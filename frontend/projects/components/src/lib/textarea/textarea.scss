@@ -16,6 +16,11 @@
   font: var(--mat-sys-label-medium);
 }
 
+.ur-textarea__required {
+  color: var(--ur-danger, #f87171);
+  margin-left: 2px;
+}
+
 .ur-textarea__field {
   --mat-form-field-outlined-container-shape: var(--ur-radius-md);
   --mat-form-field-outlined-caret-color: var(--ur-accent-primary);
