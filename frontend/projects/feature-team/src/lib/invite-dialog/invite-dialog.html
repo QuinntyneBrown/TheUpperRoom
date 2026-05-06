@@ -11,6 +11,7 @@
         (input)="email.set($any($event.target).value)"
         autocomplete="email"
         aria-describedby="inviteEmail-error"
+        data-testid="invite-email-input"
       />
       @if (errors()['email']) {
         <span id="inviteEmail-error" class="invite-form__error" data-testid="invite-email-error">{{ errors()['email'] }}</span>
