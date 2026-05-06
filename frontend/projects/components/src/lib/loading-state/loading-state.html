@@ -2,7 +2,9 @@
   class="ur-loading-state"
   appearance="outlined"
   aria-live="polite"
+  aria-busy="true"
   [attr.aria-label]="label"
+  [attr.data-testid]="testId || null"
 >
   <div class="ur-loading-state__rows" aria-hidden="true">
     @for (row of rowIndexes; track row) {

@@ -11,6 +11,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 })
 export class UrLoadingStateComponent {
   @Input() label = 'Loading';
+  @Input() testId = '';
   @Input({ transform: numberAttribute }) rows = 3;
 
   get rowIndexes(): number[] {
